@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewComiteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/> 
+            <h:form>
+                <div id="form" align="center">
+                    <p:panelGrid columns="2">
+                        <f:facet name="header">
+                            <p:row><p:column>#{bundle.ViewComiteTitle}</p:column></p:row>                            
+                        </f:facet>
+                        <h:outputText value="#{bundle.ViewComiteLabel_idComite}"/>
+                        <h:outputText value="#{comiteController.selected.idComite}" title="#{bundle.ViewComiteTitle_idComite}"/>
+                        <h:outputText value="#{bundle.ViewComiteLabel_comentarios}"/>
+                        <h:outputText value="#{comiteController.selected.comentarios}" title="#{bundle.ViewComiteTitle_comentarios}"/>
+                        <h:outputText value="#{bundle.ViewComiteLabel_fecCom}"/>
+                        <h:outputText value="#{comiteController.selected.fecCom}" title="#{bundle.ViewComiteTitle_fecCom}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewComiteLabel_numAct}"/>
+                        <h:outputText value="#{comiteController.selected.numAct}" title="#{bundle.ViewComiteTitle_numAct}"/>
+                        <h:outputText value="#{bundle.ViewComiteLabel_idReporteNovedad}"/>
+                        <h:outputText value="#{comiteController.selected.idReporteNovedad}" title="#{bundle.ViewComiteTitle_idReporteNovedad}"/>
+                        <h:outputText value="#{bundle.ViewComiteLabel_idSancion}"/>
+                        <h:outputText value="#{comiteController.selected.idSancion}" title="#{bundle.ViewComiteTitle_idSancion}"/>
+                        <h:outputText value="#{bundle.ViewComiteLabel_idFichaCaracterizacion}"/>
+                        <h:outputText value="#{comiteController.selected.idFichaCaracterizacion}" title="#{bundle.ViewComiteTitle_idFichaCaracterizacion}"/>
+                        <h:outputText value="#{bundle.ViewComiteLabel_idFalta}"/>
+                        <h:outputText value="#{comiteController.selected.idFalta}" title="#{bundle.ViewComiteTitle_idFalta}"/>
+                        <h:outputText value="#{bundle.ViewComiteLabel_idUsuario}"/>
+                        <h:outputText value="#{comiteController.selected.idUsuario}" title="#{bundle.ViewComiteTitle_idUsuario}"/>
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                    <p:commandButton oncomplete="confirmationDelete.show();" process="@this" value="#{bundle.ListComiteDestroyLink}"
+                                     title="#{bundle.ListComiteDestroyLink}" icon="ui-icon-trash">
+                    </p:commandButton>
+                    <p:button outcome="Edit" value="#{bundle.ViewComiteEditLink}" icon="ui-icon-pencil"/>
+                    <p:commandButton ajax="false" action="#{comiteController.prepareCreate}" value="#{bundle.ViewComiteCreateLink}" icon="ui-icon-document"/>
+                    <br />
+                    <br />
+                    <p:commandButton ajax="false" action="#{comiteController.prepareList}" value="#{bundle.ViewComiteShowAllLink}"/>
+                </div>            
+            </h:form>
+        </ui:define>
+        <ui:define name="dialogs">
+            <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  
+                             header="#{bundle.DeleteItemMessage}" severity="alert" widgetVar="confirmationDelete">  
+                <p:commandButton id="confirmDeleteButtonYes" value="#{bundle.DeleteButtonYes}" oncomplete="confirmationDelete.hide();"  
+                                 action="#{comiteController.destroy}"/>  
+                <p:commandButton id="confirmDeleteButtonNot" value="#{bundle.DeleteButtonNot}" onclick="confirmationDelete.hide();" type="button" />   
+            </p:confirmDialog>             
+        </ui:define>
+    </ui:composition>
+
+</html>

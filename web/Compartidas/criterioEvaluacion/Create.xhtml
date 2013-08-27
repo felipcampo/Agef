@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateCriterioEvaluacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formCriterioEvaluacion">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.CreateCriterioEvaluacionTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateCriterioEvaluacionLabel_idCriterioEvaluacion}" for="idCriterioEvaluacion" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="idCriterioEvaluacion" value="#{criterioEvaluacionController.selected.idCriterioEvaluacion}" title="#{bundle.CreateCriterioEvaluacionTitle_idCriterioEvaluacion}" required="true" requiredMessage="#{bundle.CreateCriterioEvaluacionRequiredMessage_idCriterioEvaluacion}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idCriterioEvaluacion"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateCriterioEvaluacionLabel_detallesCriterio}" for="detallesCriterio" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="detallesCriterio" value="#{criterioEvaluacionController.selected.detallesCriterio}" title="#{bundle.CreateCriterioEvaluacionTitle_detallesCriterio}" required="true" requiredMessage="#{bundle.CreateCriterioEvaluacionRequiredMessage_detallesCriterio}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="detallesCriterio"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateCriterioEvaluacionLabel_nomCriterio}" for="nomCriterio" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="nomCriterio" value="#{criterioEvaluacionController.selected.nomCriterio}" title="#{bundle.CreateCriterioEvaluacionTitle_nomCriterio}" required="true" requiredMessage="#{bundle.CreateCriterioEvaluacionRequiredMessage_nomCriterio}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="nomCriterio"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateCriterioEvaluacionLabel_idFactorProductiva}" for="idFactorProductiva" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idFactorProductiva" value="#{criterioEvaluacionController.selected.idFactorProductiva}" required="true" requiredMessage="#{bundle.CreateCriterioEvaluacionRequiredMessage_idFactorProductiva}">
+                                    <f:selectItems value="#{factorProductivaController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idFactorProductiva"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateCriterioEvaluacionLabel_idTituloCriterio}" for="idTituloCriterio" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idTituloCriterio" value="#{criterioEvaluacionController.selected.idTituloCriterio}" required="true" requiredMessage="#{bundle.CreateCriterioEvaluacionRequiredMessage_idTituloCriterio}">
+                                    <f:selectItems value="#{tituloCriterioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idTituloCriterio"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateCriterioEvaluacionLabel_idTipoCriterio}" for="idTipoCriterio" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idTipoCriterio" value="#{criterioEvaluacionController.selected.idTipoCriterio}" required="true" requiredMessage="#{bundle.CreateCriterioEvaluacionRequiredMessage_idTipoCriterio}">
+                                    <f:selectItems value="#{tipoCriterioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idTipoCriterio"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{criterioEvaluacionController.create}" value="#{bundle.CreateCriterioEvaluacionSaveLink}" icon="ui-icon-disk"/>
+                    <br />
+                    <br />
+                    <p:commandButton ajax="false" action="#{criterioEvaluacionController.prepareList}" value="#{bundle.CreateCriterioEvaluacionShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

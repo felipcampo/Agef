@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPlanMejoramientoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/> 
+            <h:form>
+                <div id="form" align="center">
+                    <p:panelGrid columns="2">
+                        <f:facet name="header">
+                            <p:row><p:column>#{bundle.ViewPlanMejoramientoTitle}</p:column></p:row>                            
+                        </f:facet>
+                        <h:outputText value="#{bundle.ViewPlanMejoramientoLabel_idPlanMejoramiento}"/>
+                        <h:outputText value="#{planMejoramientoController.selected.idPlanMejoramiento}" title="#{bundle.ViewPlanMejoramientoTitle_idPlanMejoramiento}"/>
+                        <h:outputText value="#{bundle.ViewPlanMejoramientoLabel_actividadesDesarrollar}"/>
+                        <h:outputText value="#{planMejoramientoController.selected.actividadesDesarrollar}" title="#{bundle.ViewPlanMejoramientoTitle_actividadesDesarrollar}"/>
+                        <h:outputText value="#{bundle.ViewPlanMejoramientoLabel_observaciones}"/>
+                        <h:outputText value="#{planMejoramientoController.selected.observaciones}" title="#{bundle.ViewPlanMejoramientoTitle_observaciones}"/>
+                        <h:outputText value="#{bundle.ViewPlanMejoramientoLabel_evidenciaCam}"/>
+                        <h:outputText value="#{planMejoramientoController.selected.evidenciaCam}" title="#{bundle.ViewPlanMejoramientoTitle_evidenciaCam}"/>
+                        <h:outputText value="#{bundle.ViewPlanMejoramientoLabel_fecFin}"/>
+                        <h:outputText value="#{planMejoramientoController.selected.fecFin}" title="#{bundle.ViewPlanMejoramientoTitle_fecFin}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPlanMejoramientoLabel_fecIni}"/>
+                        <h:outputText value="#{planMejoramientoController.selected.fecIni}" title="#{bundle.ViewPlanMejoramientoTitle_fecIni}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPlanMejoramientoLabel_fecRevision}"/>
+                        <h:outputText value="#{planMejoramientoController.selected.fecRevision}" title="#{bundle.ViewPlanMejoramientoTitle_fecRevision}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPlanMejoramientoLabel_tipoPlanMejoramiento}"/>
+                        <h:outputText value="#{planMejoramientoController.selected.tipoPlanMejoramiento}" title="#{bundle.ViewPlanMejoramientoTitle_tipoPlanMejoramiento}"/>
+                        <h:outputText value="#{bundle.ViewPlanMejoramientoLabel_juicioEvaluacion}"/>
+                        <h:outputText value="#{planMejoramientoController.selected.juicioEvaluacion}" title="#{bundle.ViewPlanMejoramientoTitle_juicioEvaluacion}"/>
+                        <h:outputText value="#{bundle.ViewPlanMejoramientoLabel_etapa}"/>
+                        <h:outputText value="#{planMejoramientoController.selected.etapa}" title="#{bundle.ViewPlanMejoramientoTitle_etapa}"/>
+                        <h:outputText value="#{bundle.ViewPlanMejoramientoLabel_lugar}"/>
+                        <h:outputText value="#{planMejoramientoController.selected.lugar}" title="#{bundle.ViewPlanMejoramientoTitle_lugar}"/>
+                        <h:outputText value="#{bundle.ViewPlanMejoramientoLabel_lugar2}"/>
+                        <h:outputText value="#{planMejoramientoController.selected.lugar2}" title="#{bundle.ViewPlanMejoramientoTitle_lugar2}"/>
+                        <h:outputText value="#{bundle.ViewPlanMejoramientoLabel_pertinencia}"/>
+                        <h:outputText value="#{planMejoramientoController.selected.pertinencia}" title="#{bundle.ViewPlanMejoramientoTitle_pertinencia}"/>
+                        <h:outputText value="#{bundle.ViewPlanMejoramientoLabel_vigencia}"/>
+                        <h:outputText value="#{planMejoramientoController.selected.vigencia}" title="#{bundle.ViewPlanMejoramientoTitle_vigencia}"/>
+                        <h:outputText value="#{bundle.ViewPlanMejoramientoLabel_autenticidad}"/>
+                        <h:outputText value="#{planMejoramientoController.selected.autenticidad}" title="#{bundle.ViewPlanMejoramientoTitle_autenticidad}"/>
+                        <h:outputText value="#{bundle.ViewPlanMejoramientoLabel_calidad}"/>
+                        <h:outputText value="#{planMejoramientoController.selected.calidad}" title="#{bundle.ViewPlanMejoramientoTitle_calidad}"/>
+                        <h:outputText value="#{bundle.ViewPlanMejoramientoLabel_aprendizaje}"/>
+                        <h:outputText value="#{planMejoramientoController.selected.aprendizaje}" title="#{bundle.ViewPlanMejoramientoTitle_aprendizaje}"/>
+                        <h:outputText value="#{bundle.ViewPlanMejoramientoLabel_total}"/>
+                        <h:outputText value="#{planMejoramientoController.selected.total}" title="#{bundle.ViewPlanMejoramientoTitle_total}"/>
+                        <h:outputText value="#{bundle.ViewPlanMejoramientoLabel_compromiso}"/>
+                        <h:outputText value="#{planMejoramientoController.selected.compromiso}" title="#{bundle.ViewPlanMejoramientoTitle_compromiso}"/>
+                        <h:outputText value="#{bundle.ViewPlanMejoramientoLabel_nombreJefe}"/>
+                        <h:outputText value="#{planMejoramientoController.selected.nombreJefe}" title="#{bundle.ViewPlanMejoramientoTitle_nombreJefe}"/>
+                        <h:outputText value="#{bundle.ViewPlanMejoramientoLabel_fechaConcertacion}"/>
+                        <h:outputText value="#{planMejoramientoController.selected.fechaConcertacion}" title="#{bundle.ViewPlanMejoramientoTitle_fechaConcertacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPlanMejoramientoLabel_idComite}"/>
+                        <h:outputText value="#{planMejoramientoController.selected.idComite}" title="#{bundle.ViewPlanMejoramientoTitle_idComite}"/>
+                        <h:outputText value="#{bundle.ViewPlanMejoramientoLabel_idFichaCaracterizacion}"/>
+                        <h:outputText value="#{planMejoramientoController.selected.idFichaCaracterizacion}" title="#{bundle.ViewPlanMejoramientoTitle_idFichaCaracterizacion}"/>
+                        <h:outputText value="#{bundle.ViewPlanMejoramientoLabel_idEmpresa}"/>
+                        <h:outputText value="#{planMejoramientoController.selected.idEmpresa}" title="#{bundle.ViewPlanMejoramientoTitle_idEmpresa}"/>
+                        <h:outputText value="#{bundle.ViewPlanMejoramientoLabel_idCiudadConcertacion}"/>
+                        <h:outputText value="#{planMejoramientoController.selected.idCiudadConcertacion}" title="#{bundle.ViewPlanMejoramientoTitle_idCiudadConcertacion}"/>
+                        <h:outputText value="#{bundle.ViewPlanMejoramientoLabel_idFalta}"/>
+                        <h:outputText value="#{planMejoramientoController.selected.idFalta}" title="#{bundle.ViewPlanMejoramientoTitle_idFalta}"/>
+                        <h:outputText value="#{bundle.ViewPlanMejoramientoLabel_idEstadoPlan}"/>
+                        <h:outputText value="#{planMejoramientoController.selected.idEstadoPlan}" title="#{bundle.ViewPlanMejoramientoTitle_idEstadoPlan}"/>
+                        <h:outputText value="#{bundle.ViewPlanMejoramientoLabel_idActividadProyecto}"/>
+                        <h:outputText value="#{planMejoramientoController.selected.idActividadProyecto}" title="#{bundle.ViewPlanMejoramientoTitle_idActividadProyecto}"/>
+                        <h:outputText value="#{bundle.ViewPlanMejoramientoLabel_idResultadoAprendizaje}"/>
+                        <h:outputText value="#{planMejoramientoController.selected.idResultadoAprendizaje}" title="#{bundle.ViewPlanMejoramientoTitle_idResultadoAprendizaje}"/>
+                        <h:outputText value="#{bundle.ViewPlanMejoramientoLabel_idFaseProyecto}"/>
+                        <h:outputText value="#{planMejoramientoController.selected.idFaseProyecto}" title="#{bundle.ViewPlanMejoramientoTitle_idFaseProyecto}"/>
+                        <h:outputText value="#{bundle.ViewPlanMejoramientoLabel_idUsuario2}"/>
+                        <h:outputText value="#{planMejoramientoController.selected.idUsuario2}" title="#{bundle.ViewPlanMejoramientoTitle_idUsuario2}"/>
+                        <h:outputText value="#{bundle.ViewPlanMejoramientoLabel_idUsuario}"/>
+                        <h:outputText value="#{planMejoramientoController.selected.idUsuario}" title="#{bundle.ViewPlanMejoramientoTitle_idUsuario}"/>
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                    <p:commandButton oncomplete="confirmationDelete.show();" process="@this" value="#{bundle.ListPlanMejoramientoDestroyLink}"
+                                     title="#{bundle.ListPlanMejoramientoDestroyLink}" icon="ui-icon-trash">
+                    </p:commandButton>
+                    <p:button outcome="Edit" value="#{bundle.ViewPlanMejoramientoEditLink}" icon="ui-icon-pencil"/>
+                    <p:commandButton ajax="false" action="#{planMejoramientoController.prepareCreate}" value="#{bundle.ViewPlanMejoramientoCreateLink}" icon="ui-icon-document"/>
+                    <br />
+                    <br />
+                    <p:commandButton ajax="false" action="#{planMejoramientoController.prepareList}" value="#{bundle.ViewPlanMejoramientoShowAllLink}"/>
+                </div>            
+            </h:form>
+        </ui:define>
+        <ui:define name="dialogs">
+            <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  
+                             header="#{bundle.DeleteItemMessage}" severity="alert" widgetVar="confirmationDelete">  
+                <p:commandButton id="confirmDeleteButtonYes" value="#{bundle.DeleteButtonYes}" oncomplete="confirmationDelete.hide();"  
+                                 action="#{planMejoramientoController.destroy}"/>  
+                <p:commandButton id="confirmDeleteButtonNot" value="#{bundle.DeleteButtonNot}" onclick="confirmationDelete.hide();" type="button" />   
+            </p:confirmDialog>             
+        </ui:define>
+    </ui:composition>
+
+</html>

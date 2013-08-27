@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditVisitaEtapaProductivaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formVisitaEtapaProductiva">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.EditVisitaEtapaProductivaTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditVisitaEtapaProductivaLabel_idVisitaEtapaProductiva}" for="idVisitaEtapaProductiva" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="idVisitaEtapaProductiva" value="#{visitaEtapaProductivaController.selected.idVisitaEtapaProductiva}" title="#{bundle.EditVisitaEtapaProductivaTitle_idVisitaEtapaProductiva}" required="true" requiredMessage="#{bundle.EditVisitaEtapaProductivaRequiredMessage_idVisitaEtapaProductiva}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idVisitaEtapaProductiva"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditVisitaEtapaProductivaLabel_disponibilidadFecha}" for="disponibilidadFecha" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="disponibilidadFecha" value="#{visitaEtapaProductivaController.selected.disponibilidadFecha}" title="#{bundle.EditVisitaEtapaProductivaTitle_disponibilidadFecha}" required="true" requiredMessage="#{bundle.EditVisitaEtapaProductivaRequiredMessage_disponibilidadFecha}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="disponibilidadFecha"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditVisitaEtapaProductivaLabel_estadoVisita}" for="estadoVisita" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="estadoVisita" value="#{visitaEtapaProductivaController.selected.estadoVisita}" title="#{bundle.EditVisitaEtapaProductivaTitle_estadoVisita}" required="true" requiredMessage="#{bundle.EditVisitaEtapaProductivaRequiredMessage_estadoVisita}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="estadoVisita"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditVisitaEtapaProductivaLabel_fechaInicio}" for="fechaInicio" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm:ss" showOn="button" id="fechaInicio" value="#{visitaEtapaProductivaController.selected.fechaInicio}" title="#{bundle.EditVisitaEtapaProductivaTitle_fechaInicio}" required="true" requiredMessage="#{bundle.EditVisitaEtapaProductivaRequiredMessage_fechaInicio}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fechaInicio"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditVisitaEtapaProductivaLabel_fechaFin}" for="fechaFin" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm:ss" showOn="button" id="fechaFin" value="#{visitaEtapaProductivaController.selected.fechaFin}" title="#{bundle.EditVisitaEtapaProductivaTitle_fechaFin}" required="true" requiredMessage="#{bundle.EditVisitaEtapaProductivaRequiredMessage_fechaFin}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fechaFin"/>
+                            </p:column>
+                        </p:row>      
+                    </p:panelGrid>
+                    <br />
+                    <br />                
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{visitaEtapaProductivaController.update}" value="#{bundle.EditVisitaEtapaProductivaSaveLink}" icon="ui-icon-disk"/>
+                    <p:button outcome="View" value="#{bundle.EditVisitaEtapaProductivaViewLink}" icon="ui-icon-searh"/>
+                    <br />
+                    <p:commandButton ajax="false" action="#{visitaEtapaProductivaController.prepareList}" value="#{bundle.EditVisitaEtapaProductivaShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateCentroFormacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formCentroFormacion">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.CreateCentroFormacionTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateCentroFormacionLabel_idCentroFormacion}" for="idCentroFormacion" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="idCentroFormacion" value="#{centroFormacionController.selected.idCentroFormacion}" title="#{bundle.CreateCentroFormacionTitle_idCentroFormacion}" required="true" requiredMessage="#{bundle.CreateCentroFormacionRequiredMessage_idCentroFormacion}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idCentroFormacion"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateCentroFormacionLabel_dirCen}" for="dirCen" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="dirCen" value="#{centroFormacionController.selected.dirCen}" title="#{bundle.CreateCentroFormacionTitle_dirCen}" required="true" requiredMessage="#{bundle.CreateCentroFormacionRequiredMessage_dirCen}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="dirCen"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateCentroFormacionLabel_nomCen}" for="nomCen" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="nomCen" value="#{centroFormacionController.selected.nomCen}" title="#{bundle.CreateCentroFormacionTitle_nomCen}" required="true" requiredMessage="#{bundle.CreateCentroFormacionRequiredMessage_nomCen}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="nomCen"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateCentroFormacionLabel_idRegional}" for="idRegional" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idRegional" value="#{centroFormacionController.selected.idRegional}" required="true" requiredMessage="#{bundle.CreateCentroFormacionRequiredMessage_idRegional}">
+                                    <f:selectItems value="#{regionalController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idRegional"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{centroFormacionController.create}" value="#{bundle.CreateCentroFormacionSaveLink}" icon="ui-icon-disk"/>
+                    <br />
+                    <br />
+                    <p:commandButton ajax="false" action="#{centroFormacionController.prepareList}" value="#{bundle.CreateCentroFormacionShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateControlOperativoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formControlOperativo">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.CreateControlOperativoTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateControlOperativoLabel_idControlOperativo}" for="idControlOperativo" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="idControlOperativo" value="#{controlOperativoController.selected.idControlOperativo}" title="#{bundle.CreateControlOperativoTitle_idControlOperativo}" required="true" requiredMessage="#{bundle.CreateControlOperativoRequiredMessage_idControlOperativo}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idControlOperativo"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateControlOperativoLabel_eleConOpe}" for="eleConOpe" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="eleConOpe" value="#{controlOperativoController.selected.eleConOpe}" title="#{bundle.CreateControlOperativoTitle_eleConOpe}" />
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="eleConOpe"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateControlOperativoLabel_fecDilConOpe}" for="fecDilConOpe" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecDilConOpe" value="#{controlOperativoController.selected.fecDilConOpe}" title="#{bundle.CreateControlOperativoTitle_fecDilConOpe}" />
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fecDilConOpe"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateControlOperativoLabel_sitConOpe}" for="sitConOpe" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="sitConOpe" value="#{controlOperativoController.selected.sitConOpe}" title="#{bundle.CreateControlOperativoTitle_sitConOpe}" />
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="sitConOpe"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateControlOperativoLabel_idAlistamiento}" for="idAlistamiento" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idAlistamiento" value="#{controlOperativoController.selected.idAlistamiento}" required="true" requiredMessage="#{bundle.CreateControlOperativoRequiredMessage_idAlistamiento}">
+                                    <f:selectItems value="#{alistamientoController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idAlistamiento"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{controlOperativoController.create}" value="#{bundle.CreateControlOperativoSaveLink}" icon="ui-icon-disk"/>
+                    <br />
+                    <br />
+                    <p:commandButton ajax="false" action="#{controlOperativoController.prepareList}" value="#{bundle.CreateControlOperativoShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

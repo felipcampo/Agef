@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewUsuarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/> 
+            <h:form>
+                <div id="form" align="center">
+                    <p:panelGrid columns="2">
+                        <f:facet name="header">
+                            <p:row><p:column>#{bundle.ViewUsuarioTitle}</p:column></p:row>                            
+                        </f:facet>
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_idUsuario}"/>
+                        <h:outputText value="#{usuarioController.selected.idUsuario}" title="#{bundle.ViewUsuarioTitle_idUsuario}"/>
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_numeroDocumento}"/>
+                        <h:outputText value="#{usuarioController.selected.numeroDocumento}" title="#{bundle.ViewUsuarioTitle_numeroDocumento}"/>
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_nomUsu}"/>
+                        <h:outputText value="#{usuarioController.selected.nomUsu}" title="#{bundle.ViewUsuarioTitle_nomUsu}"/>
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_apeUsu}"/>
+                        <h:outputText value="#{usuarioController.selected.apeUsu}" title="#{bundle.ViewUsuarioTitle_apeUsu}"/>
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_inicialesUsu}"/>
+                        <h:outputText value="#{usuarioController.selected.inicialesUsu}" title="#{bundle.ViewUsuarioTitle_inicialesUsu}"/>
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_dirUsu}"/>
+                        <h:outputText value="#{usuarioController.selected.dirUsu}" title="#{bundle.ViewUsuarioTitle_dirUsu}"/>
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_fechaNacimiento}"/>
+                        <h:outputText value="#{usuarioController.selected.fechaNacimiento}" title="#{bundle.ViewUsuarioTitle_fechaNacimiento}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_emailMisenaUsu}"/>
+                        <h:outputText value="#{usuarioController.selected.emailMisenaUsu}" title="#{bundle.ViewUsuarioTitle_emailMisenaUsu}"/>
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_emailPersonalUsu}"/>
+                        <h:outputText value="#{usuarioController.selected.emailPersonalUsu}" title="#{bundle.ViewUsuarioTitle_emailPersonalUsu}"/>
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_telUsu}"/>
+                        <h:outputText value="#{usuarioController.selected.telUsu}" title="#{bundle.ViewUsuarioTitle_telUsu}"/>
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_genero}"/>
+                        <h:outputText value="#{usuarioController.selected.genero}" title="#{bundle.ViewUsuarioTitle_genero}"/>
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_estadoCivil}"/>
+                        <h:outputText value="#{usuarioController.selected.estadoCivil}" title="#{bundle.ViewUsuarioTitle_estadoCivil}"/>
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_password}"/>
+                        <h:outputText value="#{usuarioController.selected.password}" title="#{bundle.ViewUsuarioTitle_password}"/>
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_idEstadoAspirante}"/>
+                        <h:outputText value="#{usuarioController.selected.idEstadoAspirante}" title="#{bundle.ViewUsuarioTitle_idEstadoAspirante}"/>
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_idBarrio}"/>
+                        <h:outputText value="#{usuarioController.selected.idBarrio}" title="#{bundle.ViewUsuarioTitle_idBarrio}"/>
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_idCiudadNacimiento}"/>
+                        <h:outputText value="#{usuarioController.selected.idCiudadNacimiento}" title="#{bundle.ViewUsuarioTitle_idCiudadNacimiento}"/>
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_idSituacionMilitar}"/>
+                        <h:outputText value="#{usuarioController.selected.idSituacionMilitar}" title="#{bundle.ViewUsuarioTitle_idSituacionMilitar}"/>
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_idTipoDocumento}"/>
+                        <h:outputText value="#{usuarioController.selected.idTipoDocumento}" title="#{bundle.ViewUsuarioTitle_idTipoDocumento}"/>
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_idTipoContrato}"/>
+                        <h:outputText value="#{usuarioController.selected.idTipoContrato}" title="#{bundle.ViewUsuarioTitle_idTipoContrato}"/>
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                    <p:commandButton oncomplete="confirmationDelete.show();" process="@this" value="#{bundle.ListUsuarioDestroyLink}"
+                                     title="#{bundle.ListUsuarioDestroyLink}" icon="ui-icon-trash">
+                    </p:commandButton>
+                    <p:button outcome="Edit" value="#{bundle.ViewUsuarioEditLink}" icon="ui-icon-pencil"/>
+                    <p:commandButton ajax="false" action="#{usuarioController.prepareCreate}" value="#{bundle.ViewUsuarioCreateLink}" icon="ui-icon-document"/>
+                    <br />
+                    <br />
+                    <p:commandButton ajax="false" action="#{usuarioController.prepareList}" value="#{bundle.ViewUsuarioShowAllLink}"/>
+                </div>            
+            </h:form>
+        </ui:define>
+        <ui:define name="dialogs">
+            <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  
+                             header="#{bundle.DeleteItemMessage}" severity="alert" widgetVar="confirmationDelete">  
+                <p:commandButton id="confirmDeleteButtonYes" value="#{bundle.DeleteButtonYes}" oncomplete="confirmationDelete.hide();"  
+                                 action="#{usuarioController.destroy}"/>  
+                <p:commandButton id="confirmDeleteButtonNot" value="#{bundle.DeleteButtonNot}" onclick="confirmationDelete.hide();" type="button" />   
+            </p:confirmDialog>             
+        </ui:define>
+    </ui:composition>
+
+</html>

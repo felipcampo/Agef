@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateFaseProyectoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formFaseProyecto">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.CreateFaseProyectoTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateFaseProyectoLabel_idFaseProyecto}" for="idFaseProyecto" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="idFaseProyecto" value="#{faseProyectoController.selected.idFaseProyecto}" title="#{bundle.CreateFaseProyectoTitle_idFaseProyecto}" required="true" requiredMessage="#{bundle.CreateFaseProyectoRequiredMessage_idFaseProyecto}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idFaseProyecto"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateFaseProyectoLabel_descrFaseProyecto}" for="descrFaseProyecto" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="descrFaseProyecto" value="#{faseProyectoController.selected.descrFaseProyecto}" title="#{bundle.CreateFaseProyectoTitle_descrFaseProyecto}" required="true" requiredMessage="#{bundle.CreateFaseProyectoRequiredMessage_descrFaseProyecto}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="descrFaseProyecto"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateFaseProyectoLabel_durHorFas}" for="durHorFas" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="durHorFas" value="#{faseProyectoController.selected.durHorFas}" title="#{bundle.CreateFaseProyectoTitle_durHorFas}" required="true" requiredMessage="#{bundle.CreateFaseProyectoRequiredMessage_durHorFas}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="durHorFas"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateFaseProyectoLabel_descrNomFasPro}" for="descrNomFasPro" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="descrNomFasPro" value="#{faseProyectoController.selected.descrNomFasPro}" title="#{bundle.CreateFaseProyectoTitle_descrNomFasPro}" required="true" requiredMessage="#{bundle.CreateFaseProyectoRequiredMessage_descrNomFasPro}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="descrNomFasPro"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{faseProyectoController.create}" value="#{bundle.CreateFaseProyectoSaveLink}" icon="ui-icon-disk"/>
+                    <br />
+                    <br />
+                    <p:commandButton ajax="false" action="#{faseProyectoController.prepareList}" value="#{bundle.CreateFaseProyectoShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

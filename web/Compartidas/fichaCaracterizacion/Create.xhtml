@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateFichaCaracterizacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formFichaCaracterizacion">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.CreateFichaCaracterizacionTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateFichaCaracterizacionLabel_idFichaCaracterizacion}" for="idFichaCaracterizacion" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="idFichaCaracterizacion" value="#{fichaCaracterizacionController.selected.idFichaCaracterizacion}" title="#{bundle.CreateFichaCaracterizacionTitle_idFichaCaracterizacion}" required="true" requiredMessage="#{bundle.CreateFichaCaracterizacionRequiredMessage_idFichaCaracterizacion}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idFichaCaracterizacion"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateFichaCaracterizacionLabel_fecIniEtaLec}" for="fecIniEtaLec" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecIniEtaLec" value="#{fichaCaracterizacionController.selected.fecIniEtaLec}" title="#{bundle.CreateFichaCaracterizacionTitle_fecIniEtaLec}" required="true" requiredMessage="#{bundle.CreateFichaCaracterizacionRequiredMessage_fecIniEtaLec}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fecIniEtaLec"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateFichaCaracterizacionLabel_fecFinEtaLec}" for="fecFinEtaLec" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecFinEtaLec" value="#{fichaCaracterizacionController.selected.fecFinEtaLec}" title="#{bundle.CreateFichaCaracterizacionTitle_fecFinEtaLec}" required="true" requiredMessage="#{bundle.CreateFichaCaracterizacionRequiredMessage_fecFinEtaLec}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fecFinEtaLec"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateFichaCaracterizacionLabel_fecIniEtaPro}" for="fecIniEtaPro" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecIniEtaPro" value="#{fichaCaracterizacionController.selected.fecIniEtaPro}" title="#{bundle.CreateFichaCaracterizacionTitle_fecIniEtaPro}" required="true" requiredMessage="#{bundle.CreateFichaCaracterizacionRequiredMessage_fecIniEtaPro}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fecIniEtaPro"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateFichaCaracterizacionLabel_fecFinEtaPro}" for="fecFinEtaPro" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecFinEtaPro" value="#{fichaCaracterizacionController.selected.fecFinEtaPro}" title="#{bundle.CreateFichaCaracterizacionTitle_fecFinEtaPro}" required="true" requiredMessage="#{bundle.CreateFichaCaracterizacionRequiredMessage_fecFinEtaPro}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fecFinEtaPro"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateFichaCaracterizacionLabel_numCupFic}" for="numCupFic" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="numCupFic" value="#{fichaCaracterizacionController.selected.numCupFic}" title="#{bundle.CreateFichaCaracterizacionTitle_numCupFic}" required="true" requiredMessage="#{bundle.CreateFichaCaracterizacionRequiredMessage_numCupFic}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="numCupFic"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateFichaCaracterizacionLabel_numCupIns}" for="numCupIns" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="numCupIns" value="#{fichaCaracterizacionController.selected.numCupIns}" title="#{bundle.CreateFichaCaracterizacionTitle_numCupIns}" required="true" requiredMessage="#{bundle.CreateFichaCaracterizacionRequiredMessage_numCupIns}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="numCupIns"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateFichaCaracterizacionLabel_idProyectoFormativo}" for="idProyectoFormativo" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idProyectoFormativo" value="#{fichaCaracterizacionController.selected.idProyectoFormativo}" required="true" requiredMessage="#{bundle.CreateFichaCaracterizacionRequiredMessage_idProyectoFormativo}">
+                                    <f:selectItems value="#{proyectoFormativoController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idProyectoFormativo"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateFichaCaracterizacionLabel_idSedeCentro}" for="idSedeCentro" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idSedeCentro" value="#{fichaCaracterizacionController.selected.idSedeCentro}" required="true" requiredMessage="#{bundle.CreateFichaCaracterizacionRequiredMessage_idSedeCentro}">
+                                    <f:selectItems value="#{sedeCentroController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idSedeCentro"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateFichaCaracterizacionLabel_idPrograma}" for="idPrograma" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idPrograma" value="#{fichaCaracterizacionController.selected.idPrograma}" required="true" requiredMessage="#{bundle.CreateFichaCaracterizacionRequiredMessage_idPrograma}">
+                                    <f:selectItems value="#{programaController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idPrograma"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateFichaCaracterizacionLabel_idTipoFormacion}" for="idTipoFormacion" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idTipoFormacion" value="#{fichaCaracterizacionController.selected.idTipoFormacion}" required="true" requiredMessage="#{bundle.CreateFichaCaracterizacionRequiredMessage_idTipoFormacion}">
+                                    <f:selectItems value="#{tipoFormacionController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idTipoFormacion"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateFichaCaracterizacionLabel_idNivelFormacion}" for="idNivelFormacion" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idNivelFormacion" value="#{fichaCaracterizacionController.selected.idNivelFormacion}" required="true" requiredMessage="#{bundle.CreateFichaCaracterizacionRequiredMessage_idNivelFormacion}">
+                                    <f:selectItems value="#{nivelFormacionController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idNivelFormacion"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateFichaCaracterizacionLabel_idTipoOferta}" for="idTipoOferta" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idTipoOferta" value="#{fichaCaracterizacionController.selected.idTipoOferta}" required="true" requiredMessage="#{bundle.CreateFichaCaracterizacionRequiredMessage_idTipoOferta}">
+                                    <f:selectItems value="#{tipoOfertaController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idTipoOferta"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateFichaCaracterizacionLabel_idJornadaFormacion}" for="idJornadaFormacion" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idJornadaFormacion" value="#{fichaCaracterizacionController.selected.idJornadaFormacion}" required="true" requiredMessage="#{bundle.CreateFichaCaracterizacionRequiredMessage_idJornadaFormacion}">
+                                    <f:selectItems value="#{jornadaFormacionController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idJornadaFormacion"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{fichaCaracterizacionController.create}" value="#{bundle.CreateFichaCaracterizacionSaveLink}" icon="ui-icon-disk"/>
+                    <br />
+                    <br />
+                    <p:commandButton ajax="false" action="#{fichaCaracterizacionController.prepareList}" value="#{bundle.CreateFichaCaracterizacionShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

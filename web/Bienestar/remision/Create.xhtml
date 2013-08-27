@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateRemisionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formRemision">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.CreateRemisionTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateRemisionLabel_idRemision}" for="idRemision" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="idRemision" value="#{remisionController.selected.idRemision}" title="#{bundle.CreateRemisionTitle_idRemision}" required="true" requiredMessage="#{bundle.CreateRemisionRequiredMessage_idRemision}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idRemision"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateRemisionLabel_descrRemision}" for="descrRemision" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="descrRemision" value="#{remisionController.selected.descrRemision}" title="#{bundle.CreateRemisionTitle_descrRemision}" required="true" requiredMessage="#{bundle.CreateRemisionRequiredMessage_descrRemision}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="descrRemision"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateRemisionLabel_idUsuario}" for="idUsuario" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idUsuario" value="#{remisionController.selected.idUsuario}" required="true" requiredMessage="#{bundle.CreateRemisionRequiredMessage_idUsuario}">
+                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idUsuario"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateRemisionLabel_idTipoCasoBienestar}" for="idTipoCasoBienestar" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idTipoCasoBienestar" value="#{remisionController.selected.idTipoCasoBienestar}" required="true" requiredMessage="#{bundle.CreateRemisionRequiredMessage_idTipoCasoBienestar}">
+                                    <f:selectItems value="#{tipoCasoBienestarController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idTipoCasoBienestar"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{remisionController.create}" value="#{bundle.CreateRemisionSaveLink}" icon="ui-icon-disk"/>
+                    <br />
+                    <br />
+                    <p:commandButton ajax="false" action="#{remisionController.prepareList}" value="#{bundle.CreateRemisionShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

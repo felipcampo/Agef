@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateIncidenteProductivaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formIncidenteProductiva">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.CreateIncidenteProductivaTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateIncidenteProductivaLabel_idIncidenteProductiva}" for="idIncidenteProductiva" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="idIncidenteProductiva" value="#{incidenteProductivaController.selected.idIncidenteProductiva}" title="#{bundle.CreateIncidenteProductivaTitle_idIncidenteProductiva}" required="true" requiredMessage="#{bundle.CreateIncidenteProductivaRequiredMessage_idIncidenteProductiva}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idIncidenteProductiva"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateIncidenteProductivaLabel_detalleIncidente}" for="detalleIncidente" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="detalleIncidente" value="#{incidenteProductivaController.selected.detalleIncidente}" title="#{bundle.CreateIncidenteProductivaTitle_detalleIncidente}" required="true" requiredMessage="#{bundle.CreateIncidenteProductivaRequiredMessage_detalleIncidente}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="detalleIncidente"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateIncidenteProductivaLabel_fecIncio}" for="fecIncio" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecIncio" value="#{incidenteProductivaController.selected.fecIncio}" title="#{bundle.CreateIncidenteProductivaTitle_fecIncio}" required="true" requiredMessage="#{bundle.CreateIncidenteProductivaRequiredMessage_fecIncio}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fecIncio"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateIncidenteProductivaLabel_solucionInc}" for="solucionInc" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="solucionInc" value="#{incidenteProductivaController.selected.solucionInc}" title="#{bundle.CreateIncidenteProductivaTitle_solucionInc}" required="true" requiredMessage="#{bundle.CreateIncidenteProductivaRequiredMessage_solucionInc}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="solucionInc"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateIncidenteProductivaLabel_tipoIncio}" for="tipoIncio" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="tipoIncio" value="#{incidenteProductivaController.selected.tipoIncio}" title="#{bundle.CreateIncidenteProductivaTitle_tipoIncio}" required="true" requiredMessage="#{bundle.CreateIncidenteProductivaRequiredMessage_tipoIncio}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="tipoIncio"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateIncidenteProductivaLabel_idVisitaEtapaProductiva}" for="idVisitaEtapaProductiva" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idVisitaEtapaProductiva" value="#{incidenteProductivaController.selected.idVisitaEtapaProductiva}" required="true" requiredMessage="#{bundle.CreateIncidenteProductivaRequiredMessage_idVisitaEtapaProductiva}">
+                                    <f:selectItems value="#{visitaEtapaProductivaController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idVisitaEtapaProductiva"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{incidenteProductivaController.create}" value="#{bundle.CreateIncidenteProductivaSaveLink}" icon="ui-icon-disk"/>
+                    <br />
+                    <br />
+                    <p:commandButton ajax="false" action="#{incidenteProductivaController.prepareList}" value="#{bundle.CreateIncidenteProductivaShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

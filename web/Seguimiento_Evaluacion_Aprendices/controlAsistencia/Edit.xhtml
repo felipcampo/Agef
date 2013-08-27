@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditControlAsistenciaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formControlAsistencia">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.EditControlAsistenciaTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditControlAsistenciaLabel_idControlAsistencia}" for="idControlAsistencia" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="idControlAsistencia" value="#{controlAsistenciaController.selected.idControlAsistencia}" title="#{bundle.EditControlAsistenciaTitle_idControlAsistencia}" required="true" requiredMessage="#{bundle.EditControlAsistenciaRequiredMessage_idControlAsistencia}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idControlAsistencia"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditControlAsistenciaLabel_asistencia}" for="asistencia" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="asistencia" value="#{controlAsistenciaController.selected.asistencia}" title="#{bundle.EditControlAsistenciaTitle_asistencia}" />
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="asistencia"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditControlAsistenciaLabel_fecAsistencia}" for="fecAsistencia" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecAsistencia" value="#{controlAsistenciaController.selected.fecAsistencia}" title="#{bundle.EditControlAsistenciaTitle_fecAsistencia}" required="true" requiredMessage="#{bundle.EditControlAsistenciaRequiredMessage_fecAsistencia}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fecAsistencia"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditControlAsistenciaLabel_idUsuario2}" for="idUsuario2" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idUsuario2" value="#{controlAsistenciaController.selected.idUsuario2}" required="true" requiredMessage="#{bundle.EditControlAsistenciaRequiredMessage_idUsuario2}">
+                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idUsuario2"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditControlAsistenciaLabel_idUsuario1}" for="idUsuario1" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idUsuario1" value="#{controlAsistenciaController.selected.idUsuario1}" required="true" requiredMessage="#{bundle.EditControlAsistenciaRequiredMessage_idUsuario1}">
+                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idUsuario1"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditControlAsistenciaLabel_idUsuario}" for="idUsuario" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idUsuario" value="#{controlAsistenciaController.selected.idUsuario}" required="true" requiredMessage="#{bundle.EditControlAsistenciaRequiredMessage_idUsuario}">
+                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idUsuario"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditControlAsistenciaLabel_idEstadoAprendiz}" for="idEstadoAprendiz" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idEstadoAprendiz" value="#{controlAsistenciaController.selected.idEstadoAprendiz}" required="true" requiredMessage="#{bundle.EditControlAsistenciaRequiredMessage_idEstadoAprendiz}">
+                                    <f:selectItems value="#{estadoAprendizController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idEstadoAprendiz"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditControlAsistenciaLabel_idFichaCaracterizacion}" for="idFichaCaracterizacion" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idFichaCaracterizacion" value="#{controlAsistenciaController.selected.idFichaCaracterizacion}" required="true" requiredMessage="#{bundle.EditControlAsistenciaRequiredMessage_idFichaCaracterizacion}">
+                                    <f:selectItems value="#{fichaCaracterizacionController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idFichaCaracterizacion"/>
+                            </p:column>
+                        </p:row>      
+                    </p:panelGrid>
+                    <br />
+                    <br />                
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{controlAsistenciaController.update}" value="#{bundle.EditControlAsistenciaSaveLink}" icon="ui-icon-disk"/>
+                    <p:button outcome="View" value="#{bundle.EditControlAsistenciaViewLink}" icon="ui-icon-searh"/>
+                    <br />
+                    <p:commandButton ajax="false" action="#{controlAsistenciaController.prepareList}" value="#{bundle.EditControlAsistenciaShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

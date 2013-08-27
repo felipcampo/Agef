@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewProgramaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/> 
+            <h:form>
+                <div id="form" align="center">
+                    <p:panelGrid columns="2">
+                        <f:facet name="header">
+                            <p:row><p:column>#{bundle.ViewProgramaTitle}</p:column></p:row>                            
+                        </f:facet>
+                        <h:outputText value="#{bundle.ViewProgramaLabel_idPrograma}"/>
+                        <h:outputText value="#{programaController.selected.idPrograma}" title="#{bundle.ViewProgramaTitle_idPrograma}"/>
+                        <h:outputText value="#{bundle.ViewProgramaLabel_version}"/>
+                        <h:outputText value="#{programaController.selected.version}" title="#{bundle.ViewProgramaTitle_version}"/>
+                        <h:outputText value="#{bundle.ViewProgramaLabel_durPrgLec}"/>
+                        <h:outputText value="#{programaController.selected.durPrgLec}" title="#{bundle.ViewProgramaTitle_durPrgLec}"/>
+                        <h:outputText value="#{bundle.ViewProgramaLabel_durPrgPrac}"/>
+                        <h:outputText value="#{programaController.selected.durPrgPrac}" title="#{bundle.ViewProgramaTitle_durPrgPrac}"/>
+                        <h:outputText value="#{bundle.ViewProgramaLabel_duracionTotalProg}"/>
+                        <h:outputText value="#{programaController.selected.duracionTotalProg}" title="#{bundle.ViewProgramaTitle_duracionTotalProg}"/>
+                        <h:outputText value="#{bundle.ViewProgramaLabel_jusPrg}"/>
+                        <h:outputText value="#{programaController.selected.jusPrg}" title="#{bundle.ViewProgramaTitle_jusPrg}"/>
+                        <h:outputText value="#{bundle.ViewProgramaLabel_nomPrg}"/>
+                        <h:outputText value="#{programaController.selected.nomPrg}" title="#{bundle.ViewProgramaTitle_nomPrg}"/>
+                        <h:outputText value="#{bundle.ViewProgramaLabel_numTotCom}"/>
+                        <h:outputText value="#{programaController.selected.numTotCom}" title="#{bundle.ViewProgramaTitle_numTotCom}"/>
+                        <h:outputText value="#{bundle.ViewProgramaLabel_numTotResApr}"/>
+                        <h:outputText value="#{programaController.selected.numTotResApr}" title="#{bundle.ViewProgramaTitle_numTotResApr}"/>
+                        <h:outputText value="#{bundle.ViewProgramaLabel_reqIngPrg}"/>
+                        <h:outputText value="#{programaController.selected.reqIngPrg}" title="#{bundle.ViewProgramaTitle_reqIngPrg}"/>
+                        <h:outputText value="#{bundle.ViewProgramaLabel_idCentroFormacion}"/>
+                        <h:outputText value="#{programaController.selected.idCentroFormacion}" title="#{bundle.ViewProgramaTitle_idCentroFormacion}"/>
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                    <p:commandButton oncomplete="confirmationDelete.show();" process="@this" value="#{bundle.ListProgramaDestroyLink}"
+                                     title="#{bundle.ListProgramaDestroyLink}" icon="ui-icon-trash">
+                    </p:commandButton>
+                    <p:button outcome="Edit" value="#{bundle.ViewProgramaEditLink}" icon="ui-icon-pencil"/>
+                    <p:commandButton ajax="false" action="#{programaController.prepareCreate}" value="#{bundle.ViewProgramaCreateLink}" icon="ui-icon-document"/>
+                    <br />
+                    <br />
+                    <p:commandButton ajax="false" action="#{programaController.prepareList}" value="#{bundle.ViewProgramaShowAllLink}"/>
+                </div>            
+            </h:form>
+        </ui:define>
+        <ui:define name="dialogs">
+            <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  
+                             header="#{bundle.DeleteItemMessage}" severity="alert" widgetVar="confirmationDelete">  
+                <p:commandButton id="confirmDeleteButtonYes" value="#{bundle.DeleteButtonYes}" oncomplete="confirmationDelete.hide();"  
+                                 action="#{programaController.destroy}"/>  
+                <p:commandButton id="confirmDeleteButtonNot" value="#{bundle.DeleteButtonNot}" onclick="confirmationDelete.hide();" type="button" />   
+            </p:confirmDialog>             
+        </ui:define>
+    </ui:composition>
+
+</html>

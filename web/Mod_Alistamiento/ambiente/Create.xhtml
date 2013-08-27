@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateAmbienteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formAmbiente">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.CreateAmbienteTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateAmbienteLabel_idAmbiente}" for="idAmbiente" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="idAmbiente" value="#{ambienteController.selected.idAmbiente}" title="#{bundle.CreateAmbienteTitle_idAmbiente}" required="true" requiredMessage="#{bundle.CreateAmbienteRequiredMessage_idAmbiente}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idAmbiente"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateAmbienteLabel_descrNomAmb}" for="descrNomAmb" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="descrNomAmb" value="#{ambienteController.selected.descrNomAmb}" title="#{bundle.CreateAmbienteTitle_descrNomAmb}" required="true" requiredMessage="#{bundle.CreateAmbienteRequiredMessage_descrNomAmb}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="descrNomAmb"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateAmbienteLabel_tipoAmbiente}" for="tipoAmbiente" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="tipoAmbiente" value="#{ambienteController.selected.tipoAmbiente}" title="#{bundle.CreateAmbienteTitle_tipoAmbiente}" required="true" requiredMessage="#{bundle.CreateAmbienteRequiredMessage_tipoAmbiente}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="tipoAmbiente"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{ambienteController.create}" value="#{bundle.CreateAmbienteSaveLink}" icon="ui-icon-disk"/>
+                    <br />
+                    <br />
+                    <p:commandButton ajax="false" action="#{ambienteController.prepareList}" value="#{bundle.CreateAmbienteShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

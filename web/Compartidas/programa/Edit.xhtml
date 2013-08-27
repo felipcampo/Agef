@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditProgramaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formPrograma">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.EditProgramaTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditProgramaLabel_idPrograma}" for="idPrograma" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="idPrograma" value="#{programaController.selected.idPrograma}" title="#{bundle.EditProgramaTitle_idPrograma}" required="true" requiredMessage="#{bundle.EditProgramaRequiredMessage_idPrograma}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idPrograma"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditProgramaLabel_version}" for="version" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="version" value="#{programaController.selected.version}" title="#{bundle.EditProgramaTitle_version}" required="true" requiredMessage="#{bundle.EditProgramaRequiredMessage_version}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="version"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditProgramaLabel_durPrgLec}" for="durPrgLec" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="durPrgLec" value="#{programaController.selected.durPrgLec}" title="#{bundle.EditProgramaTitle_durPrgLec}" required="true" requiredMessage="#{bundle.EditProgramaRequiredMessage_durPrgLec}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="durPrgLec"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditProgramaLabel_durPrgPrac}" for="durPrgPrac" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="durPrgPrac" value="#{programaController.selected.durPrgPrac}" title="#{bundle.EditProgramaTitle_durPrgPrac}" required="true" requiredMessage="#{bundle.EditProgramaRequiredMessage_durPrgPrac}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="durPrgPrac"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditProgramaLabel_duracionTotalProg}" for="duracionTotalProg" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="duracionTotalProg" value="#{programaController.selected.duracionTotalProg}" title="#{bundle.EditProgramaTitle_duracionTotalProg}" required="true" requiredMessage="#{bundle.EditProgramaRequiredMessage_duracionTotalProg}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="duracionTotalProg"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditProgramaLabel_jusPrg}" for="jusPrg" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputTextarea rows="4" cols="30" id="jusPrg" value="#{programaController.selected.jusPrg}" title="#{bundle.EditProgramaTitle_jusPrg}" required="true" requiredMessage="#{bundle.EditProgramaRequiredMessage_jusPrg}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="jusPrg"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditProgramaLabel_nomPrg}" for="nomPrg" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="nomPrg" value="#{programaController.selected.nomPrg}" title="#{bundle.EditProgramaTitle_nomPrg}" required="true" requiredMessage="#{bundle.EditProgramaRequiredMessage_nomPrg}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="nomPrg"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditProgramaLabel_numTotCom}" for="numTotCom" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="numTotCom" value="#{programaController.selected.numTotCom}" title="#{bundle.EditProgramaTitle_numTotCom}" required="true" requiredMessage="#{bundle.EditProgramaRequiredMessage_numTotCom}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="numTotCom"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditProgramaLabel_numTotResApr}" for="numTotResApr" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="numTotResApr" value="#{programaController.selected.numTotResApr}" title="#{bundle.EditProgramaTitle_numTotResApr}" required="true" requiredMessage="#{bundle.EditProgramaRequiredMessage_numTotResApr}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="numTotResApr"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditProgramaLabel_reqIngPrg}" for="reqIngPrg" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputTextarea rows="4" cols="30" id="reqIngPrg" value="#{programaController.selected.reqIngPrg}" title="#{bundle.EditProgramaTitle_reqIngPrg}" required="true" requiredMessage="#{bundle.EditProgramaRequiredMessage_reqIngPrg}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="reqIngPrg"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditProgramaLabel_idCentroFormacion}" for="idCentroFormacion" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idCentroFormacion" value="#{programaController.selected.idCentroFormacion}" required="true" requiredMessage="#{bundle.EditProgramaRequiredMessage_idCentroFormacion}">
+                                    <f:selectItems value="#{centroFormacionController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idCentroFormacion"/>
+                            </p:column>
+                        </p:row>      
+                    </p:panelGrid>
+                    <br />
+                    <br />                
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{programaController.update}" value="#{bundle.EditProgramaSaveLink}" icon="ui-icon-disk"/>
+                    <p:button outcome="View" value="#{bundle.EditProgramaViewLink}" icon="ui-icon-searh"/>
+                    <br />
+                    <p:commandButton ajax="false" action="#{programaController.prepareList}" value="#{bundle.EditProgramaShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

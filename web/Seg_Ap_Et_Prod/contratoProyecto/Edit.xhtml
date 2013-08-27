@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditContratoProyectoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formContratoProyecto">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.EditContratoProyectoTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditContratoProyectoLabel_idContratoProyecto}" for="idContratoProyecto" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="idContratoProyecto" value="#{contratoProyectoController.selected.idContratoProyecto}" title="#{bundle.EditContratoProyectoTitle_idContratoProyecto}" required="true" requiredMessage="#{bundle.EditContratoProyectoRequiredMessage_idContratoProyecto}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idContratoProyecto"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditContratoProyectoLabel_arcCop}" for="arcCop" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputTextarea rows="4" cols="30" id="arcCop" value="#{contratoProyectoController.selected.arcCop}" title="#{bundle.EditContratoProyectoTitle_arcCop}" required="true" requiredMessage="#{bundle.EditContratoProyectoRequiredMessage_arcCop}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="arcCop"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditContratoProyectoLabel_fecSub}" for="fecSub" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm:ss" showOn="button" id="fecSub" value="#{contratoProyectoController.selected.fecSub}" title="#{bundle.EditContratoProyectoTitle_fecSub}" required="true" requiredMessage="#{bundle.EditContratoProyectoRequiredMessage_fecSub}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fecSub"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditContratoProyectoLabel_ffiCop}" for="ffiCop" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="ffiCop" value="#{contratoProyectoController.selected.ffiCop}" title="#{bundle.EditContratoProyectoTitle_ffiCop}" required="true" requiredMessage="#{bundle.EditContratoProyectoRequiredMessage_ffiCop}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="ffiCop"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditContratoProyectoLabel_finCop}" for="finCop" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="finCop" value="#{contratoProyectoController.selected.finCop}" title="#{bundle.EditContratoProyectoTitle_finCop}" required="true" requiredMessage="#{bundle.EditContratoProyectoRequiredMessage_finCop}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="finCop"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditContratoProyectoLabel_idUsuario}" for="idUsuario" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idUsuario" value="#{contratoProyectoController.selected.idUsuario}" required="true" requiredMessage="#{bundle.EditContratoProyectoRequiredMessage_idUsuario}">
+                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idUsuario"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditContratoProyectoLabel_idEmpresa}" for="idEmpresa" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idEmpresa" value="#{contratoProyectoController.selected.idEmpresa}" required="true" requiredMessage="#{bundle.EditContratoProyectoRequiredMessage_idEmpresa}">
+                                    <f:selectItems value="#{empresaController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idEmpresa"/>
+                            </p:column>
+                        </p:row>      
+                    </p:panelGrid>
+                    <br />
+                    <br />                
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{contratoProyectoController.update}" value="#{bundle.EditContratoProyectoSaveLink}" icon="ui-icon-disk"/>
+                    <p:button outcome="View" value="#{bundle.EditContratoProyectoViewLink}" icon="ui-icon-searh"/>
+                    <br />
+                    <p:commandButton ajax="false" action="#{contratoProyectoController.prepareList}" value="#{bundle.EditContratoProyectoShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

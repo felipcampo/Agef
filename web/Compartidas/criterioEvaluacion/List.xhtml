@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListCriterioEvaluacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form id="listCriterioEvaluacion" styleClass="jsfcrud_list_form">
+                <div id="list" align="center">
+                    <p:growl id="msgs" showDetail="false" sticky="false"/>
+                    <h:outputText escape="false" value="#{bundle.ListCriterioEvaluacionEmpty}" rendered="#{criterioEvaluacionController.lazyModel.rowCount == 0}"/>
+                    <h:panelGroup rendered="#{criterioEvaluacionController.lazyModel.rowCount > 0}">
+                        <p:dataTable id="tableListCriterioEvaluacion" 
+                                     value="#{criterioEvaluacionController.lazyModel}" 
+                                     var="item" 
+                                     paginator="true" rows="10" paginatorAlwaysVisible="false"
+                                     paginatorTemplate="{FirstPageLink} {PreviousPageLink}
+                                     {PageLinks} {NextPageLink}
+                                     {LastPageLink} {RowsPerPageDropdown}"  
+                                     rowsPerPageTemplate="5,10,15" paginatorPosition="bottom"
+                                     lazy="true"
+                                     emptyMessage="No se encontraron datos con el criterio dado"
+                                     widgetVar="tableCriterioEvaluacion">
+                            <p:column headerText="#{bundle.ListCriterioEvaluacionTitle_idCriterioEvaluacion}"
+                                      filterBy="#{item.idCriterioEvaluacion}"
+                                      sortBy="#{item.idCriterioEvaluacion}">                        
+                                <h:outputText value="#{item.idCriterioEvaluacion}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListCriterioEvaluacionTitle_detallesCriterio}"
+                                      filterBy="#{item.detallesCriterio}"
+                                      sortBy="#{item.detallesCriterio}">                        
+                                <h:outputText value="#{item.detallesCriterio}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListCriterioEvaluacionTitle_nomCriterio}"
+                                      filterBy="#{item.nomCriterio}"
+                                      sortBy="#{item.nomCriterio}">                        
+                                <h:outputText value="#{item.nomCriterio}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListCriterioEvaluacionTitle_idFactorProductiva}"
+                                      filterBy="#{item.idFactorProductiva}"
+                                      sortBy="#{item.idFactorProductiva}">                        
+                                <h:outputText value="#{item.idFactorProductiva}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListCriterioEvaluacionTitle_idTituloCriterio}"
+                                      filterBy="#{item.idTituloCriterio}"
+                                      sortBy="#{item.idTituloCriterio}">                        
+                                <h:outputText value="#{item.idTituloCriterio}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListCriterioEvaluacionTitle_idTipoCriterio}"
+                                      filterBy="#{item.idTipoCriterio}"
+                                      sortBy="#{item.idTipoCriterio}">                        
+                                <h:outputText value="#{item.idTipoCriterio}"/>
+                            </p:column>
+                            <p:column>                        
+                                <p:commandButton ajax="false" action="#{criterioEvaluacionController.prepareView}" title="#{bundle.ListCriterioEvaluacionViewLink}" icon="ui-icon-search"/>
+                                <p:commandButton ajax="false" action="#{criterioEvaluacionController.prepareEdit}" title="#{bundle.ListCriterioEvaluacionEditLink}" icon="ui-icon-pencil"/>
+                                <p:commandButton oncomplete="confirmationDelete.show();" process="@this"
+                                                 title="#{bundle.ListCriterioEvaluacionDestroyLink}" icon="ui-icon-trash">
+                                    <f:setPropertyActionListener value="#{item}" target="#{criterioEvaluacionController.selected}"/>
+                                </p:commandButton>
+                            </p:column>
+                        </p:dataTable>
+                    </h:panelGroup>
+                    <br />
+                    <p:commandButton ajax="false" action="#{criterioEvaluacionController.prepareCreate}" value="#{bundle.ListCriterioEvaluacionCreateLink}" icon="ui-icon-document"/>
+                </div>        
+            </h:form>
+        </ui:define>
+        <ui:define name="dialogs">
+            <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  
+                             header="#{bundle.DeleteItemMessage}" severity="alert" widgetVar="confirmationDelete">  
+                <p:commandButton id="confirmDeleteButtonYes" value="#{bundle.DeleteButtonYes}" update=":listCriterioEvaluacion" oncomplete="confirmationDelete.hide();"  
+                                 action="#{criterioEvaluacionController.destroy}"/>  
+                <p:commandButton id="confirmDeleteButtonNot" value="#{bundle.DeleteButtonNot}" onclick="confirmationDelete.hide();" type="button" />   
+            </p:confirmDialog>             
+        </ui:define>
+    </ui:composition>
+
+</html>

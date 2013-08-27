@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.Seg_ProyectosinicioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="menumodulo">
+            <ui:include src="Menu_seg.xhtml"/>
+        </ui:define>
+        <ui:define name="body">
+            <head>
+                <meta charset="utf-8" />
+                <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" />
+                <meta name="description" content="Liquid Slider : A JQuery Slider Plugin" />
+
+                <!-- You may want to "minify" these after making edits http://www.refresh-sf.com/yui/ -->
+                <link rel="stylesheet" href="resources/css/animate.css"/> <!-- Optional -->
+                <link rel="stylesheet" href="resources/css/liquid-slider.css"/>
+
+                <!-- Liquid Slider relies on jQuery -->
+                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+                <!-- More scripts below! -->
+
+                <title>SEGUIMIENTO A PROYECTOS FORMATIVOS</title>
+            </head>
+            <body>
+                <div class="liquid-slider"  id="main-slider">
+                    <div>
+                        <h2 class="title"><center>Seguimiento a Proyectos</center></h2><br/>
+                        <p><center><img src="resources/img/1.jpg" width="800" height="375"/></center></p>
+                    </div>
+                    <div>
+                        <h2 class="title"><center>Seguimiento a Proyectos</center></h2><br/>
+                        <p><center><img src="resources/img/2.jpg" width="800" height="375"/></center></p>
+                    </div>          
+                    <div>
+                        <h2 class="title"><center>Seguimiento a Proyectos</center></h2><br/>
+                        <p><center><img src="resources/img/3.jpg" width="800" height="375"/></center></p>
+                    </div>
+                    <div>
+                        <h2 class="title"><center>Seguimiento a Proyectos</center></h2><br/>
+                        <p><center><img src="resources/img/4.jpg" width="800" height="375"/></center></p>
+                    </div>
+                </div>
+                <!-- Feel free to load scripts in the footer -->
+                <script src="resources/js/jquery.easing.1.3.js"></script>
+                <script src="resources/js/jquery.touchSwipe.min.js"></script>
+                <script src="resources/js/jquery.liquid-slider-custom.min.js"></script>  
+                <script>
+                    $('#main-slider').liquidSlider();
+
+                    /* If you need to access the internal property or methods, use this:
+                     var api = $.data( $('#slider-id')[0], 'liquidSlider');
+                     */
+                </script>
+            </body>
+        </ui:define>
+    </ui:composition>
+</html>

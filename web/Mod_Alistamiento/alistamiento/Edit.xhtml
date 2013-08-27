@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAlistamientoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formAlistamiento">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.EditAlistamientoTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditAlistamientoLabel_idAlistamiento}" for="idAlistamiento" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="idAlistamiento" value="#{alistamientoController.selected.idAlistamiento}" title="#{bundle.EditAlistamientoTitle_idAlistamiento}" required="true" requiredMessage="#{bundle.EditAlistamientoRequiredMessage_idAlistamiento}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idAlistamiento"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditAlistamientoLabel_terminal}" for="terminal" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="terminal" value="#{alistamientoController.selected.terminal}" title="#{bundle.EditAlistamientoTitle_terminal}" />
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="terminal"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditAlistamientoLabel_fechaAlistamiento}" for="fechaAlistamiento" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fechaAlistamiento" value="#{alistamientoController.selected.fechaAlistamiento}" title="#{bundle.EditAlistamientoTitle_fechaAlistamiento}" />
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fechaAlistamiento"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditAlistamientoLabel_idGuiaAprendizaje}" for="idGuiaAprendizaje" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idGuiaAprendizaje" value="#{alistamientoController.selected.idGuiaAprendizaje}" >
+                                    <f:selectItems value="#{guiaAprendizajeController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idGuiaAprendizaje"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditAlistamientoLabel_idEvaluacionSeguimiento}" for="idEvaluacionSeguimiento" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idEvaluacionSeguimiento" value="#{alistamientoController.selected.idEvaluacionSeguimiento}" >
+                                    <f:selectItems value="#{evaluacionSeguimientoController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idEvaluacionSeguimiento"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditAlistamientoLabel_idPlaneacionPedagogica}" for="idPlaneacionPedagogica" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idPlaneacionPedagogica" value="#{alistamientoController.selected.idPlaneacionPedagogica}" >
+                                    <f:selectItems value="#{planeacionPedagogicaController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idPlaneacionPedagogica"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditAlistamientoLabel_idProgramacionProyecto}" for="idProgramacionProyecto" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idProgramacionProyecto" value="#{alistamientoController.selected.idProgramacionProyecto}" >
+                                    <f:selectItems value="#{programacionProyectoController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idProgramacionProyecto"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditAlistamientoLabel_idVerificacionAmbienteTitulado}" for="idVerificacionAmbienteTitulado" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idVerificacionAmbienteTitulado" value="#{alistamientoController.selected.idVerificacionAmbienteTitulado}" >
+                                    <f:selectItems value="#{verificacionAmbienteTituladoController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idVerificacionAmbienteTitulado"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditAlistamientoLabel_idFichaCaracterizacion}" for="idFichaCaracterizacion" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idFichaCaracterizacion" value="#{alistamientoController.selected.idFichaCaracterizacion}" required="true" requiredMessage="#{bundle.EditAlistamientoRequiredMessage_idFichaCaracterizacion}">
+                                    <f:selectItems value="#{fichaCaracterizacionController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idFichaCaracterizacion"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditAlistamientoLabel_idActividadProyecto}" for="idActividadProyecto" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idActividadProyecto" value="#{alistamientoController.selected.idActividadProyecto}" required="true" requiredMessage="#{bundle.EditAlistamientoRequiredMessage_idActividadProyecto}">
+                                    <f:selectItems value="#{actividadProyectoController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idActividadProyecto"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditAlistamientoLabel_idProyectoFormativo}" for="idProyectoFormativo" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idProyectoFormativo" value="#{alistamientoController.selected.idProyectoFormativo}" >
+                                    <f:selectItems value="#{proyectoFormativoController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idProyectoFormativo"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditAlistamientoLabel_idUsuario}" for="idUsuario" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idUsuario" value="#{alistamientoController.selected.idUsuario}" required="true" requiredMessage="#{bundle.EditAlistamientoRequiredMessage_idUsuario}">
+                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idUsuario"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditAlistamientoLabel_idTipoAlistamiento}" for="idTipoAlistamiento" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idTipoAlistamiento" value="#{alistamientoController.selected.idTipoAlistamiento}" required="true" requiredMessage="#{bundle.EditAlistamientoRequiredMessage_idTipoAlistamiento}">
+                                    <f:selectItems value="#{tipoAlistamientoController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idTipoAlistamiento"/>
+                            </p:column>
+                        </p:row>      
+                    </p:panelGrid>
+                    <br />
+                    <br />                
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{alistamientoController.update}" value="#{bundle.EditAlistamientoSaveLink}" icon="ui-icon-disk"/>
+                    <p:button outcome="View" value="#{bundle.EditAlistamientoViewLink}" icon="ui-icon-searh"/>
+                    <br />
+                    <p:commandButton ajax="false" action="#{alistamientoController.prepareList}" value="#{bundle.EditAlistamientoShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

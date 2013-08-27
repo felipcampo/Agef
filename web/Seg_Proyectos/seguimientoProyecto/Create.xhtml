@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSeguimientoProyectoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formSeguimientoProyecto">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.CreateSeguimientoProyectoTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idSeguimientoProyecto}" for="idSeguimientoProyecto" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="idSeguimientoProyecto" value="#{seguimientoProyectoController.selected.idSeguimientoProyecto}" title="#{bundle.CreateSeguimientoProyectoTitle_idSeguimientoProyecto}" required="true" requiredMessage="#{bundle.CreateSeguimientoProyectoRequiredMessage_idSeguimientoProyecto}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idSeguimientoProyecto"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_fechaSeguimientoInicio}" for="fechaSeguimientoInicio" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm:ss" showOn="button" id="fechaSeguimientoInicio" value="#{seguimientoProyectoController.selected.fechaSeguimientoInicio}" title="#{bundle.CreateSeguimientoProyectoTitle_fechaSeguimientoInicio}" />
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fechaSeguimientoInicio"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_fechaSeguimientoFin}" for="fechaSeguimientoFin" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm:ss" showOn="button" id="fechaSeguimientoFin" value="#{seguimientoProyectoController.selected.fechaSeguimientoFin}" title="#{bundle.CreateSeguimientoProyectoTitle_fechaSeguimientoFin}" />
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fechaSeguimientoFin"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_nomInstructor}" for="nomInstructor" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="nomInstructor" value="#{seguimientoProyectoController.selected.nomInstructor}" title="#{bundle.CreateSeguimientoProyectoTitle_nomInstructor}" />
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="nomInstructor"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_evaluacionProyecto}" for="evaluacionProyecto" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="evaluacionProyecto" value="#{seguimientoProyectoController.selected.evaluacionProyecto}" title="#{bundle.CreateSeguimientoProyectoTitle_evaluacionProyecto}" />
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="evaluacionProyecto"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_fechaProgramacionSeguimiento}" for="fechaProgramacionSeguimiento" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm:ss" showOn="button" id="fechaProgramacionSeguimiento" value="#{seguimientoProyectoController.selected.fechaProgramacionSeguimiento}" title="#{bundle.CreateSeguimientoProyectoTitle_fechaProgramacionSeguimiento}" />
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fechaProgramacionSeguimiento"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idSedeCentro}" for="idSedeCentro" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idSedeCentro" value="#{seguimientoProyectoController.selected.idSedeCentro}" >
+                                    <f:selectItems value="#{sedeCentroController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idSedeCentro"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idProyectoFormativo}" for="idProyectoFormativo" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idProyectoFormativo" value="#{seguimientoProyectoController.selected.idProyectoFormativo}" >
+                                    <f:selectItems value="#{proyectoFormativoController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idProyectoFormativo"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idEstadoAspirante}" for="idEstadoAspirante" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idEstadoAspirante" value="#{seguimientoProyectoController.selected.idEstadoAspirante}" >
+                                    <f:selectItems value="#{estadoAspiranteController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idEstadoAspirante"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idJornadaFormacion}" for="idJornadaFormacion" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idJornadaFormacion" value="#{seguimientoProyectoController.selected.idJornadaFormacion}" >
+                                    <f:selectItems value="#{jornadaFormacionController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idJornadaFormacion"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idEstadoAprendiz}" for="idEstadoAprendiz" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idEstadoAprendiz" value="#{seguimientoProyectoController.selected.idEstadoAprendiz}" >
+                                    <f:selectItems value="#{estadoAprendizController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idEstadoAprendiz"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idEstadoJuicio}" for="idEstadoJuicio" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idEstadoJuicio" value="#{seguimientoProyectoController.selected.idEstadoJuicio}" >
+                                    <f:selectItems value="#{estadoJuicioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idEstadoJuicio"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idFichaCaracterizacion}" for="idFichaCaracterizacion" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idFichaCaracterizacion" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion}" >
+                                    <f:selectItems value="#{fichaCaracterizacionController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idFichaCaracterizacion"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idGradoJuicio}" for="idGradoJuicio" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idGradoJuicio" value="#{seguimientoProyectoController.selected.idGradoJuicio}" >
+                                    <f:selectItems value="#{gradoJuicioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idGradoJuicio"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idNivelFormacion}" for="idNivelFormacion" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idNivelFormacion" value="#{seguimientoProyectoController.selected.idNivelFormacion}" >
+                                    <f:selectItems value="#{nivelFormacionController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idNivelFormacion"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idRegional}" for="idRegional" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idRegional" value="#{seguimientoProyectoController.selected.idRegional}" >
+                                    <f:selectItems value="#{regionalController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idRegional"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idResultadoAprendizaje}" for="idResultadoAprendizaje" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idResultadoAprendizaje" value="#{seguimientoProyectoController.selected.idResultadoAprendizaje}" >
+                                    <f:selectItems value="#{resultadoAprendizajeController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idResultadoAprendizaje"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idTipoJuicio}" for="idTipoJuicio" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idTipoJuicio" value="#{seguimientoProyectoController.selected.idTipoJuicio}" >
+                                    <f:selectItems value="#{tipoJuicioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idTipoJuicio"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idTituloCriterio}" for="idTituloCriterio" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idTituloCriterio" value="#{seguimientoProyectoController.selected.idTituloCriterio}" >
+                                    <f:selectItems value="#{tituloCriterioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idTituloCriterio"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idUsuario}" for="idUsuario" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idUsuario" value="#{seguimientoProyectoController.selected.idUsuario}" >
+                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idUsuario"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idArea}" for="idArea" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idArea" value="#{seguimientoProyectoController.selected.idArea}" >
+                                    <f:selectItems value="#{areaController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idArea"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_rolIdRol}" for="rolIdRol" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="rolIdRol" value="#{seguimientoProyectoController.selected.rolIdRol}" >
+                                    <f:selectItems value="#{rolController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="rolIdRol"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{seguimientoProyectoController.create}" value="#{bundle.CreateSeguimientoProyectoSaveLink}" icon="ui-icon-disk"/>
+                    <br />
+                    <br />
+                    <p:commandButton ajax="false" action="#{seguimientoProyectoController.prepareList}" value="#{bundle.CreateSeguimientoProyectoShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

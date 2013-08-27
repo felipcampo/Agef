@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListMatrizCaracterizacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form id="listMatrizCaracterizacion" styleClass="jsfcrud_list_form">
+                <div id="list" align="center">
+                    <p:growl id="msgs" showDetail="false" sticky="false"/>
+                    <h:outputText escape="false" value="#{bundle.ListMatrizCaracterizacionEmpty}" rendered="#{matrizCaracterizacionController.lazyModel.rowCount == 0}"/>
+                    <h:panelGroup rendered="#{matrizCaracterizacionController.lazyModel.rowCount > 0}">
+                        <p:dataTable id="tableListMatrizCaracterizacion" 
+                                     value="#{matrizCaracterizacionController.lazyModel}" 
+                                     var="item" 
+                                     paginator="true" rows="10" paginatorAlwaysVisible="false"
+                                     paginatorTemplate="{FirstPageLink} {PreviousPageLink}
+                                     {PageLinks} {NextPageLink}
+                                     {LastPageLink} {RowsPerPageDropdown}"  
+                                     rowsPerPageTemplate="5,10,15" paginatorPosition="bottom"
+                                     lazy="true"
+                                     emptyMessage="No se encontraron datos con el criterio dado"
+                                     widgetVar="tableMatrizCaracterizacion">
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_idMatrizCaracterizacion}"
+                                      filterBy="#{item.idMatrizCaracterizacion}"
+                                      sortBy="#{item.idMatrizCaracterizacion}">                        
+                                <h:outputText value="#{item.idMatrizCaracterizacion}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_descrEstrato}"
+                                      filterBy="#{item.descrEstrato}"
+                                      sortBy="#{item.descrEstrato}">                        
+                                <h:outputText value="#{item.descrEstrato}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_descrConformacionHogar}"
+                                      filterBy="#{item.descrConformacionHogar}"
+                                      sortBy="#{item.descrConformacionHogar}">                        
+                                <h:outputText value="#{item.descrConformacionHogar}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_tienePadre}"
+                                      filterBy="#{item.tienePadre}"
+                                      sortBy="#{item.tienePadre}">                        
+                                <h:outputText value="#{item.tienePadre}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_tieneMadre}"
+                                      filterBy="#{item.tieneMadre}"
+                                      sortBy="#{item.tieneMadre}">                        
+                                <h:outputText value="#{item.tieneMadre}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_numeroHijos}"
+                                      filterBy="#{item.numeroHijos}"
+                                      sortBy="#{item.numeroHijos}">                        
+                                <h:outputText value="#{item.numeroHijos}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_numeroPersonasAcargo}"
+                                      filterBy="#{item.numeroPersonasAcargo}"
+                                      sortBy="#{item.numeroPersonasAcargo}">                        
+                                <h:outputText value="#{item.numeroPersonasAcargo}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_ultimoTituloAspirante}"
+                                      filterBy="#{item.ultimoTituloAspirante}"
+                                      sortBy="#{item.ultimoTituloAspirante}">                        
+                                <h:outputText value="#{item.ultimoTituloAspirante}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_expectativaCurso}"
+                                      filterBy="#{item.expectativaCurso}"
+                                      sortBy="#{item.expectativaCurso}">                        
+                                <h:outputText value="#{item.expectativaCurso}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_trabajoAnterior}"
+                                      filterBy="#{item.trabajoAnterior}"
+                                      sortBy="#{item.trabajoAnterior}">                        
+                                <h:outputText value="#{item.trabajoAnterior}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_trabajoActual}"
+                                      filterBy="#{item.trabajoActual}"
+                                      sortBy="#{item.trabajoActual}">                        
+                                <h:outputText value="#{item.trabajoActual}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_horaTrabajoSemanal}"
+                                      filterBy="#{item.horaTrabajoSemanal}"
+                                      sortBy="#{item.horaTrabajoSemanal}">                        
+                                <h:outputText value="#{item.horaTrabajoSemanal}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_promedioIngresoLaboralMes}"
+                                      filterBy="#{item.promedioIngresoLaboralMes}"
+                                      sortBy="#{item.promedioIngresoLaboralMes}">                        
+                                <h:outputText value="#{item.promedioIngresoLaboralMes}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_tieneEps}"
+                                      filterBy="#{item.tieneEps}"
+                                      sortBy="#{item.tieneEps}">                        
+                                <h:outputText value="#{item.tieneEps}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_tieneSisben}"
+                                      filterBy="#{item.tieneSisben}"
+                                      sortBy="#{item.tieneSisben}">                        
+                                <h:outputText value="#{item.tieneSisben}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_observacionMedica}"
+                                      filterBy="#{item.observacionMedica}"
+                                      sortBy="#{item.observacionMedica}">                        
+                                <h:outputText value="#{item.observacionMedica}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_subsidioAlimenticio}"
+                                      filterBy="#{item.subsidioAlimenticio}"
+                                      sortBy="#{item.subsidioAlimenticio}">                        
+                                <h:outputText value="#{item.subsidioAlimenticio}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_justificacionSubsidio}"
+                                      filterBy="#{item.justificacionSubsidio}"
+                                      sortBy="#{item.justificacionSubsidio}">                        
+                                <h:outputText value="#{item.justificacionSubsidio}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_idContactoEmergencia}"
+                                      filterBy="#{item.idContactoEmergencia}"
+                                      sortBy="#{item.idContactoEmergencia}">                        
+                                <h:outputText value="#{item.idContactoEmergencia}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_idNivelAlimentacion}"
+                                      filterBy="#{item.idNivelAlimentacion}"
+                                      sortBy="#{item.idNivelAlimentacion}">                        
+                                <h:outputText value="#{item.idNivelAlimentacion}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_idSisben}"
+                                      filterBy="#{item.idSisben}"
+                                      sortBy="#{item.idSisben}">                        
+                                <h:outputText value="#{item.idSisben}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_idTipoSangre}"
+                                      filterBy="#{item.idTipoSangre}"
+                                      sortBy="#{item.idTipoSangre}">                        
+                                <h:outputText value="#{item.idTipoSangre}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_idEps}"
+                                      filterBy="#{item.idEps}"
+                                      sortBy="#{item.idEps}">                        
+                                <h:outputText value="#{item.idEps}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_idMedioTransporte}"
+                                      filterBy="#{item.idMedioTransporte}"
+                                      sortBy="#{item.idMedioTransporte}">                        
+                                <h:outputText value="#{item.idMedioTransporte}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_idActividadAcademica}"
+                                      filterBy="#{item.idActividadAcademica}"
+                                      sortBy="#{item.idActividadAcademica}">                        
+                                <h:outputText value="#{item.idActividadAcademica}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_idEscolaridadAspirante}"
+                                      filterBy="#{item.idEscolaridadAspirante}"
+                                      sortBy="#{item.idEscolaridadAspirante}">                        
+                                <h:outputText value="#{item.idEscolaridadAspirante}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_idMotivoInscripcion}"
+                                      filterBy="#{item.idMotivoInscripcion}"
+                                      sortBy="#{item.idMotivoInscripcion}">                        
+                                <h:outputText value="#{item.idMotivoInscripcion}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_idNivelConocimentoIngles}"
+                                      filterBy="#{item.idNivelConocimentoIngles}"
+                                      sortBy="#{item.idNivelConocimentoIngles}">                        
+                                <h:outputText value="#{item.idNivelConocimentoIngles}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_idNivelConocimentoInformatica}"
+                                      filterBy="#{item.idNivelConocimentoInformatica}"
+                                      sortBy="#{item.idNivelConocimentoInformatica}">                        
+                                <h:outputText value="#{item.idNivelConocimentoInformatica}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_idNivelFor}"
+                                      filterBy="#{item.idNivelFor}"
+                                      sortBy="#{item.idNivelFor}">                        
+                                <h:outputText value="#{item.idNivelFor}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_idFichaCaracterizacion}"
+                                      filterBy="#{item.idFichaCaracterizacion}"
+                                      sortBy="#{item.idFichaCaracterizacion}">                        
+                                <h:outputText value="#{item.idFichaCaracterizacion}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_idProgramaEstado}"
+                                      filterBy="#{item.idProgramaEstado}"
+                                      sortBy="#{item.idProgramaEstado}">                        
+                                <h:outputText value="#{item.idProgramaEstado}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_idUsuario}"
+                                      filterBy="#{item.idUsuario}"
+                                      sortBy="#{item.idUsuario}">                        
+                                <h:outputText value="#{item.idUsuario}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_idCaracterizacionPoblacion}"
+                                      filterBy="#{item.idCaracterizacionPoblacion}"
+                                      sortBy="#{item.idCaracterizacionPoblacion}">                        
+                                <h:outputText value="#{item.idCaracterizacionPoblacion}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_idCambioResidencia}"
+                                      filterBy="#{item.idCambioResidencia}"
+                                      sortBy="#{item.idCambioResidencia}">                        
+                                <h:outputText value="#{item.idCambioResidencia}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_idTipoVivienda}"
+                                      filterBy="#{item.idTipoVivienda}"
+                                      sortBy="#{item.idTipoVivienda}">                        
+                                <h:outputText value="#{item.idTipoVivienda}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_idJefeHogar}"
+                                      filterBy="#{item.idJefeHogar}"
+                                      sortBy="#{item.idJefeHogar}">                        
+                                <h:outputText value="#{item.idJefeHogar}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_idOcupacionJefeHogar}"
+                                      filterBy="#{item.idOcupacionJefeHogar}"
+                                      sortBy="#{item.idOcupacionJefeHogar}">                        
+                                <h:outputText value="#{item.idOcupacionJefeHogar}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_idIngresoMensual}"
+                                      filterBy="#{item.idIngresoMensual}"
+                                      sortBy="#{item.idIngresoMensual}">                        
+                                <h:outputText value="#{item.idIngresoMensual}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_idEscolaridadPadre}"
+                                      filterBy="#{item.idEscolaridadPadre}"
+                                      sortBy="#{item.idEscolaridadPadre}">                        
+                                <h:outputText value="#{item.idEscolaridadPadre}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_idEscolaridadMadre}"
+                                      filterBy="#{item.idEscolaridadMadre}"
+                                      sortBy="#{item.idEscolaridadMadre}">                        
+                                <h:outputText value="#{item.idEscolaridadMadre}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListMatrizCaracterizacionTitle_idDependenciaEconomica}"
+                                      filterBy="#{item.idDependenciaEconomica}"
+                                      sortBy="#{item.idDependenciaEconomica}">                        
+                                <h:outputText value="#{item.idDependenciaEconomica}"/>
+                            </p:column>
+                            <p:column>                        
+                                <p:commandButton ajax="false" action="#{matrizCaracterizacionController.prepareView}" title="#{bundle.ListMatrizCaracterizacionViewLink}" icon="ui-icon-search"/>
+                                <p:commandButton ajax="false" action="#{matrizCaracterizacionController.prepareEdit}" title="#{bundle.ListMatrizCaracterizacionEditLink}" icon="ui-icon-pencil"/>
+                                <p:commandButton oncomplete="confirmationDelete.show();" process="@this"
+                                                 title="#{bundle.ListMatrizCaracterizacionDestroyLink}" icon="ui-icon-trash">
+                                    <f:setPropertyActionListener value="#{item}" target="#{matrizCaracterizacionController.selected}"/>
+                                </p:commandButton>
+                            </p:column>
+                        </p:dataTable>
+                    </h:panelGroup>
+                    <br />
+                    <p:commandButton ajax="false" action="#{matrizCaracterizacionController.prepareCreate}" value="#{bundle.ListMatrizCaracterizacionCreateLink}" icon="ui-icon-document"/>
+                </div>        
+            </h:form>
+        </ui:define>
+        <ui:define name="dialogs">
+            <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  
+                             header="#{bundle.DeleteItemMessage}" severity="alert" widgetVar="confirmationDelete">  
+                <p:commandButton id="confirmDeleteButtonYes" value="#{bundle.DeleteButtonYes}" update=":listMatrizCaracterizacion" oncomplete="confirmationDelete.hide();"  
+                                 action="#{matrizCaracterizacionController.destroy}"/>  
+                <p:commandButton id="confirmDeleteButtonNot" value="#{bundle.DeleteButtonNot}" onclick="confirmationDelete.hide();" type="button" />   
+            </p:confirmDialog>             
+        </ui:define>
+    </ui:composition>
+
+</html>

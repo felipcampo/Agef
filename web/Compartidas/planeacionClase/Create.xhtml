@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePlaneacionClaseTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formPlaneacionClase">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.CreatePlaneacionClaseTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreatePlaneacionClaseLabel_idPlaneacionClase}" for="idPlaneacionClase" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="idPlaneacionClase" value="#{planeacionClaseController.selected.idPlaneacionClase}" title="#{bundle.CreatePlaneacionClaseTitle_idPlaneacionClase}" required="true" requiredMessage="#{bundle.CreatePlaneacionClaseRequiredMessage_idPlaneacionClase}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idPlaneacionClase"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreatePlaneacionClaseLabel_conocimientoConcepPrincip}" for="conocimientoConcepPrincip" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="conocimientoConcepPrincip" value="#{planeacionClaseController.selected.conocimientoConcepPrincip}" title="#{bundle.CreatePlaneacionClaseTitle_conocimientoConcepPrincip}" required="true" requiredMessage="#{bundle.CreatePlaneacionClaseRequiredMessage_conocimientoConcepPrincip}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="conocimientoConcepPrincip"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreatePlaneacionClaseLabel_conocimientoProceso}" for="conocimientoProceso" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="conocimientoProceso" value="#{planeacionClaseController.selected.conocimientoProceso}" title="#{bundle.CreatePlaneacionClaseTitle_conocimientoProceso}" required="true" requiredMessage="#{bundle.CreatePlaneacionClaseRequiredMessage_conocimientoProceso}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="conocimientoProceso"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreatePlaneacionClaseLabel_proyeccionMeses}" for="proyeccionMeses" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="proyeccionMeses" value="#{planeacionClaseController.selected.proyeccionMeses}" title="#{bundle.CreatePlaneacionClaseTitle_proyeccionMeses}" required="true" requiredMessage="#{bundle.CreatePlaneacionClaseRequiredMessage_proyeccionMeses}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="proyeccionMeses"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreatePlaneacionClaseLabel_hora}" for="hora" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="hora" value="#{planeacionClaseController.selected.hora}" title="#{bundle.CreatePlaneacionClaseTitle_hora}" required="true" requiredMessage="#{bundle.CreatePlaneacionClaseRequiredMessage_hora}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="hora"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreatePlaneacionClaseLabel_programaCumplido}" for="programaCumplido" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="programaCumplido" value="#{planeacionClaseController.selected.programaCumplido}" title="#{bundle.CreatePlaneacionClaseTitle_programaCumplido}" required="true" requiredMessage="#{bundle.CreatePlaneacionClaseRequiredMessage_programaCumplido}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="programaCumplido"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreatePlaneacionClaseLabel_observaciones}" for="observaciones" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="observaciones" value="#{planeacionClaseController.selected.observaciones}" title="#{bundle.CreatePlaneacionClaseTitle_observaciones}" />
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="observaciones"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreatePlaneacionClaseLabel_idUsuarioInstructor}" for="idUsuarioInstructor" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idUsuarioInstructor" value="#{planeacionClaseController.selected.idUsuarioInstructor}" required="true" requiredMessage="#{bundle.CreatePlaneacionClaseRequiredMessage_idUsuarioInstructor}">
+                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idUsuarioInstructor"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreatePlaneacionClaseLabel_idUsuarioGestor}" for="idUsuarioGestor" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idUsuarioGestor" value="#{planeacionClaseController.selected.idUsuarioGestor}" required="true" requiredMessage="#{bundle.CreatePlaneacionClaseRequiredMessage_idUsuarioGestor}">
+                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idUsuarioGestor"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreatePlaneacionClaseLabel_idCriterioEvaluacion}" for="idCriterioEvaluacion" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idCriterioEvaluacion" value="#{planeacionClaseController.selected.idCriterioEvaluacion}" required="true" requiredMessage="#{bundle.CreatePlaneacionClaseRequiredMessage_idCriterioEvaluacion}">
+                                    <f:selectItems value="#{criterioEvaluacionController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idCriterioEvaluacion"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreatePlaneacionClaseLabel_idFichaCaracterizacion}" for="idFichaCaracterizacion" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idFichaCaracterizacion" value="#{planeacionClaseController.selected.idFichaCaracterizacion}" required="true" requiredMessage="#{bundle.CreatePlaneacionClaseRequiredMessage_idFichaCaracterizacion}">
+                                    <f:selectItems value="#{fichaCaracterizacionController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idFichaCaracterizacion"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{planeacionClaseController.create}" value="#{bundle.CreatePlaneacionClaseSaveLink}" icon="ui-icon-disk"/>
+                    <br />
+                    <br />
+                    <p:commandButton ajax="false" action="#{planeacionClaseController.prepareList}" value="#{bundle.CreatePlaneacionClaseShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

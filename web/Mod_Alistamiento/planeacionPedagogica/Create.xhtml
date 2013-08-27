@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePlaneacionPedagogicaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formPlaneacionPedagogica">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.CreatePlaneacionPedagogicaTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreatePlaneacionPedagogicaLabel_idPlaneacionPedagogica}" for="idPlaneacionPedagogica" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="idPlaneacionPedagogica" value="#{planeacionPedagogicaController.selected.idPlaneacionPedagogica}" title="#{bundle.CreatePlaneacionPedagogicaTitle_idPlaneacionPedagogica}" required="true" requiredMessage="#{bundle.CreatePlaneacionPedagogicaRequiredMessage_idPlaneacionPedagogica}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idPlaneacionPedagogica"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreatePlaneacionPedagogicaLabel_fechaPlaneacion}" for="fechaPlaneacion" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fechaPlaneacion" value="#{planeacionPedagogicaController.selected.fechaPlaneacion}" title="#{bundle.CreatePlaneacionPedagogicaTitle_fechaPlaneacion}" required="true" requiredMessage="#{bundle.CreatePlaneacionPedagogicaRequiredMessage_fechaPlaneacion}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fechaPlaneacion"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreatePlaneacionPedagogicaLabel_fechaInicio}" for="fechaInicio" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fechaInicio" value="#{planeacionPedagogicaController.selected.fechaInicio}" title="#{bundle.CreatePlaneacionPedagogicaTitle_fechaInicio}" required="true" requiredMessage="#{bundle.CreatePlaneacionPedagogicaRequiredMessage_fechaInicio}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fechaInicio"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreatePlaneacionPedagogicaLabel_fechaFinal}" for="fechaFinal" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fechaFinal" value="#{planeacionPedagogicaController.selected.fechaFinal}" title="#{bundle.CreatePlaneacionPedagogicaTitle_fechaFinal}" required="true" requiredMessage="#{bundle.CreatePlaneacionPedagogicaRequiredMessage_fechaFinal}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fechaFinal"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreatePlaneacionPedagogicaLabel_ciudad}" for="ciudad" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="ciudad" value="#{planeacionPedagogicaController.selected.ciudad}" title="#{bundle.CreatePlaneacionPedagogicaTitle_ciudad}" required="true" requiredMessage="#{bundle.CreatePlaneacionPedagogicaRequiredMessage_ciudad}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="ciudad"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreatePlaneacionPedagogicaLabel_estrategiasDidacticas}" for="estrategiasDidacticas" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="estrategiasDidacticas" value="#{planeacionPedagogicaController.selected.estrategiasDidacticas}" title="#{bundle.CreatePlaneacionPedagogicaTitle_estrategiasDidacticas}" required="true" requiredMessage="#{bundle.CreatePlaneacionPedagogicaRequiredMessage_estrategiasDidacticas}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="estrategiasDidacticas"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreatePlaneacionPedagogicaLabel_recursosDidacticos}" for="recursosDidacticos" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="recursosDidacticos" value="#{planeacionPedagogicaController.selected.recursosDidacticos}" title="#{bundle.CreatePlaneacionPedagogicaTitle_recursosDidacticos}" required="true" requiredMessage="#{bundle.CreatePlaneacionPedagogicaRequiredMessage_recursosDidacticos}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="recursosDidacticos"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreatePlaneacionPedagogicaLabel_escenarios}" for="escenarios" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="escenarios" value="#{planeacionPedagogicaController.selected.escenarios}" title="#{bundle.CreatePlaneacionPedagogicaTitle_escenarios}" required="true" requiredMessage="#{bundle.CreatePlaneacionPedagogicaRequiredMessage_escenarios}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="escenarios"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreatePlaneacionPedagogicaLabel_criterioEvaluacion}" for="criterioEvaluacion" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="criterioEvaluacion" value="#{planeacionPedagogicaController.selected.criterioEvaluacion}" title="#{bundle.CreatePlaneacionPedagogicaTitle_criterioEvaluacion}" required="true" requiredMessage="#{bundle.CreatePlaneacionPedagogicaRequiredMessage_criterioEvaluacion}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="criterioEvaluacion"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreatePlaneacionPedagogicaLabel_decrEvidenciaAprendizaje}" for="decrEvidenciaAprendizaje" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="decrEvidenciaAprendizaje" value="#{planeacionPedagogicaController.selected.decrEvidenciaAprendizaje}" title="#{bundle.CreatePlaneacionPedagogicaTitle_decrEvidenciaAprendizaje}" required="true" requiredMessage="#{bundle.CreatePlaneacionPedagogicaRequiredMessage_decrEvidenciaAprendizaje}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="decrEvidenciaAprendizaje"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreatePlaneacionPedagogicaLabel_observaciones}" for="observaciones" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="observaciones" value="#{planeacionPedagogicaController.selected.observaciones}" title="#{bundle.CreatePlaneacionPedagogicaTitle_observaciones}" required="true" requiredMessage="#{bundle.CreatePlaneacionPedagogicaRequiredMessage_observaciones}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="observaciones"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreatePlaneacionPedagogicaLabel_idSubactividadProyecto}" for="idSubactividadProyecto" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idSubactividadProyecto" value="#{planeacionPedagogicaController.selected.idSubactividadProyecto}" required="true" requiredMessage="#{bundle.CreatePlaneacionPedagogicaRequiredMessage_idSubactividadProyecto}">
+                                    <f:selectItems value="#{subactividadProyectoController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idSubactividadProyecto"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreatePlaneacionPedagogicaLabel_idUsuario}" for="idUsuario" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idUsuario" value="#{planeacionPedagogicaController.selected.idUsuario}" required="true" requiredMessage="#{bundle.CreatePlaneacionPedagogicaRequiredMessage_idUsuario}">
+                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idUsuario"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreatePlaneacionPedagogicaLabel_idProyectoFormativo}" for="idProyectoFormativo" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idProyectoFormativo" value="#{planeacionPedagogicaController.selected.idProyectoFormativo}" required="true" requiredMessage="#{bundle.CreatePlaneacionPedagogicaRequiredMessage_idProyectoFormativo}">
+                                    <f:selectItems value="#{proyectoFormativoController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idProyectoFormativo"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{planeacionPedagogicaController.create}" value="#{bundle.CreatePlaneacionPedagogicaSaveLink}" icon="ui-icon-disk"/>
+                    <br />
+                    <br />
+                    <p:commandButton ajax="false" action="#{planeacionPedagogicaController.prepareList}" value="#{bundle.CreatePlaneacionPedagogicaShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

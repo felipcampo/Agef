@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCriterioSeguimientoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formCriterioSeguimiento">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.EditCriterioSeguimientoTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditCriterioSeguimientoLabel_idCriterioSeguimiento}" for="idCriterioSeguimiento" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="idCriterioSeguimiento" value="#{criterioSeguimientoController.selected.idCriterioSeguimiento}" title="#{bundle.EditCriterioSeguimientoTitle_idCriterioSeguimiento}" required="true" requiredMessage="#{bundle.EditCriterioSeguimientoRequiredMessage_idCriterioSeguimiento}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idCriterioSeguimiento"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditCriterioSeguimientoLabel_obsCep}" for="obsCep" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputTextarea rows="4" cols="30" id="obsCep" value="#{criterioSeguimientoController.selected.obsCep}" title="#{bundle.EditCriterioSeguimientoTitle_obsCep}" required="true" requiredMessage="#{bundle.EditCriterioSeguimientoRequiredMessage_obsCep}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="obsCep"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditCriterioSeguimientoLabel_valCep}" for="valCep" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="valCep" value="#{criterioSeguimientoController.selected.valCep}" title="#{bundle.EditCriterioSeguimientoTitle_valCep}" required="true" requiredMessage="#{bundle.EditCriterioSeguimientoRequiredMessage_valCep}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="valCep"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditCriterioSeguimientoLabel_idSeguimientoProductiva}" for="idSeguimientoProductiva" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="idSeguimientoProductiva" value="#{criterioSeguimientoController.selected.idSeguimientoProductiva}" title="#{bundle.EditCriterioSeguimientoTitle_idSeguimientoProductiva}" required="true" requiredMessage="#{bundle.EditCriterioSeguimientoRequiredMessage_idSeguimientoProductiva}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idSeguimientoProductiva"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditCriterioSeguimientoLabel_idCriterioEvaluacion}" for="idCriterioEvaluacion" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idCriterioEvaluacion" value="#{criterioSeguimientoController.selected.idCriterioEvaluacion}" required="true" requiredMessage="#{bundle.EditCriterioSeguimientoRequiredMessage_idCriterioEvaluacion}">
+                                    <f:selectItems value="#{criterioEvaluacionController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idCriterioEvaluacion"/>
+                            </p:column>
+                        </p:row>      
+                    </p:panelGrid>
+                    <br />
+                    <br />                
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{criterioSeguimientoController.update}" value="#{bundle.EditCriterioSeguimientoSaveLink}" icon="ui-icon-disk"/>
+                    <p:button outcome="View" value="#{bundle.EditCriterioSeguimientoViewLink}" icon="ui-icon-searh"/>
+                    <br />
+                    <p:commandButton ajax="false" action="#{criterioSeguimientoController.prepareList}" value="#{bundle.EditCriterioSeguimientoShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

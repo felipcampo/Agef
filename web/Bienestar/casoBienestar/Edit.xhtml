@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCasoBienestarTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formCasoBienestar">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.EditCasoBienestarTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditCasoBienestarLabel_idCasoBienestar}" for="idCasoBienestar" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="idCasoBienestar" value="#{casoBienestarController.selected.idCasoBienestar}" title="#{bundle.EditCasoBienestarTitle_idCasoBienestar}" required="true" requiredMessage="#{bundle.EditCasoBienestarRequiredMessage_idCasoBienestar}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idCasoBienestar"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditCasoBienestarLabel_fecFinCas}" for="fecFinCas" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecFinCas" value="#{casoBienestarController.selected.fecFinCas}" title="#{bundle.EditCasoBienestarTitle_fecFinCas}" required="true" requiredMessage="#{bundle.EditCasoBienestarRequiredMessage_fecFinCas}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fecFinCas"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditCasoBienestarLabel_fecIniCas}" for="fecIniCas" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecIniCas" value="#{casoBienestarController.selected.fecIniCas}" title="#{bundle.EditCasoBienestarTitle_fecIniCas}" required="true" requiredMessage="#{bundle.EditCasoBienestarRequiredMessage_fecIniCas}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fecIniCas"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditCasoBienestarLabel_idRemision}" for="idRemision" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idRemision" value="#{casoBienestarController.selected.idRemision}" required="true" requiredMessage="#{bundle.EditCasoBienestarRequiredMessage_idRemision}">
+                                    <f:selectItems value="#{remisionController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idRemision"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditCasoBienestarLabel_idEstadoCasoBienestar}" for="idEstadoCasoBienestar" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idEstadoCasoBienestar" value="#{casoBienestarController.selected.idEstadoCasoBienestar}" required="true" requiredMessage="#{bundle.EditCasoBienestarRequiredMessage_idEstadoCasoBienestar}">
+                                    <f:selectItems value="#{estadoCasoBienestarController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idEstadoCasoBienestar"/>
+                            </p:column>
+                        </p:row>      
+                    </p:panelGrid>
+                    <br />
+                    <br />                
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{casoBienestarController.update}" value="#{bundle.EditCasoBienestarSaveLink}" icon="ui-icon-disk"/>
+                    <p:button outcome="View" value="#{bundle.EditCasoBienestarViewLink}" icon="ui-icon-searh"/>
+                    <br />
+                    <p:commandButton ajax="false" action="#{casoBienestarController.prepareList}" value="#{bundle.EditCasoBienestarShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

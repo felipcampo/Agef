@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewVerificacionAmbienteTituladoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/> 
+            <h:form>
+                <div id="form" align="center">
+                    <p:panelGrid columns="2">
+                        <f:facet name="header">
+                            <p:row><p:column>#{bundle.ViewVerificacionAmbienteTituladoTitle}</p:column></p:row>                            
+                        </f:facet>
+                        <h:outputText value="#{bundle.ViewVerificacionAmbienteTituladoLabel_idVerificacionAmbienteTitulado}"/>
+                        <h:outputText value="#{verificacionAmbienteTituladoController.selected.idVerificacionAmbienteTitulado}" title="#{bundle.ViewVerificacionAmbienteTituladoTitle_idVerificacionAmbienteTitulado}"/>
+                        <h:outputText value="#{bundle.ViewVerificacionAmbienteTituladoLabel_localizacion}"/>
+                        <h:outputText value="#{verificacionAmbienteTituladoController.selected.localizacion}" title="#{bundle.ViewVerificacionAmbienteTituladoTitle_localizacion}"/>
+                        <h:outputText value="#{bundle.ViewVerificacionAmbienteTituladoLabel_denominacion}"/>
+                        <h:outputText value="#{verificacionAmbienteTituladoController.selected.denominacion}" title="#{bundle.ViewVerificacionAmbienteTituladoTitle_denominacion}"/>
+                        <h:outputText value="#{bundle.ViewVerificacionAmbienteTituladoLabel_tipoAmbiente}"/>
+                        <h:outputText value="#{verificacionAmbienteTituladoController.selected.tipoAmbiente}" title="#{bundle.ViewVerificacionAmbienteTituladoTitle_tipoAmbiente}"/>
+                        <h:outputText value="#{bundle.ViewVerificacionAmbienteTituladoLabel_viabilidadAmbiente}"/>
+                        <h:outputText value="#{verificacionAmbienteTituladoController.selected.viabilidadAmbiente}" title="#{bundle.ViewVerificacionAmbienteTituladoTitle_viabilidadAmbiente}"/>
+                        <h:outputText value="#{bundle.ViewVerificacionAmbienteTituladoLabel_ciudad}"/>
+                        <h:outputText value="#{verificacionAmbienteTituladoController.selected.ciudad}" title="#{bundle.ViewVerificacionAmbienteTituladoTitle_ciudad}"/>
+                        <h:outputText value="#{bundle.ViewVerificacionAmbienteTituladoLabel_fecha}"/>
+                        <h:outputText value="#{verificacionAmbienteTituladoController.selected.fecha}" title="#{bundle.ViewVerificacionAmbienteTituladoTitle_fecha}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewVerificacionAmbienteTituladoLabel_idListaVerificacion}"/>
+                        <h:outputText value="#{verificacionAmbienteTituladoController.selected.idListaVerificacion}" title="#{bundle.ViewVerificacionAmbienteTituladoTitle_idListaVerificacion}"/>
+                        <h:outputText value="#{bundle.ViewVerificacionAmbienteTituladoLabel_idUsuario}"/>
+                        <h:outputText value="#{verificacionAmbienteTituladoController.selected.idUsuario}" title="#{bundle.ViewVerificacionAmbienteTituladoTitle_idUsuario}"/>
+                        <h:outputText value="#{bundle.ViewVerificacionAmbienteTituladoLabel_idProyectoFormativo}"/>
+                        <h:outputText value="#{verificacionAmbienteTituladoController.selected.idProyectoFormativo}" title="#{bundle.ViewVerificacionAmbienteTituladoTitle_idProyectoFormativo}"/>
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                    <p:commandButton oncomplete="confirmationDelete.show();" process="@this" value="#{bundle.ListVerificacionAmbienteTituladoDestroyLink}"
+                                     title="#{bundle.ListVerificacionAmbienteTituladoDestroyLink}" icon="ui-icon-trash">
+                    </p:commandButton>
+                    <p:button outcome="Edit" value="#{bundle.ViewVerificacionAmbienteTituladoEditLink}" icon="ui-icon-pencil"/>
+                    <p:commandButton ajax="false" action="#{verificacionAmbienteTituladoController.prepareCreate}" value="#{bundle.ViewVerificacionAmbienteTituladoCreateLink}" icon="ui-icon-document"/>
+                    <br />
+                    <br />
+                    <p:commandButton ajax="false" action="#{verificacionAmbienteTituladoController.prepareList}" value="#{bundle.ViewVerificacionAmbienteTituladoShowAllLink}"/>
+                </div>            
+            </h:form>
+        </ui:define>
+        <ui:define name="dialogs">
+            <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  
+                             header="#{bundle.DeleteItemMessage}" severity="alert" widgetVar="confirmationDelete">  
+                <p:commandButton id="confirmDeleteButtonYes" value="#{bundle.DeleteButtonYes}" oncomplete="confirmationDelete.hide();"  
+                                 action="#{verificacionAmbienteTituladoController.destroy}"/>  
+                <p:commandButton id="confirmDeleteButtonNot" value="#{bundle.DeleteButtonNot}" onclick="confirmationDelete.hide();" type="button" />   
+            </p:confirmDialog>             
+        </ui:define>
+    </ui:composition>
+
+</html>

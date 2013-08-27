@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateProyectoFormativoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formProyectoFormativo">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.CreateProyectoFormativoTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_idProyectoFormativo}" for="idProyectoFormativo" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="idProyectoFormativo" value="#{proyectoFormativoController.selected.idProyectoFormativo}" title="#{bundle.CreateProyectoFormativoTitle_idProyectoFormativo}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_idProyectoFormativo}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idProyectoFormativo"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_nombreProyecto}" for="nombreProyecto" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="nombreProyecto" value="#{proyectoFormativoController.selected.nombreProyecto}" title="#{bundle.CreateProyectoFormativoTitle_nombreProyecto}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_nombreProyecto}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="nombreProyecto"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_numResAprBasicos}" for="numResAprBasicos" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="numResAprBasicos" value="#{proyectoFormativoController.selected.numResAprBasicos}" title="#{bundle.CreateProyectoFormativoTitle_numResAprBasicos}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_numResAprBasicos}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="numResAprBasicos"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_numResAprEspecifico}" for="numResAprEspecifico" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="numResAprEspecifico" value="#{proyectoFormativoController.selected.numResAprEspecifico}" title="#{bundle.CreateProyectoFormativoTitle_numResAprEspecifico}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_numResAprEspecifico}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="numResAprEspecifico"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_numResAprTransversal}" for="numResAprTransversal" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="numResAprTransversal" value="#{proyectoFormativoController.selected.numResAprTransversal}" title="#{bundle.CreateProyectoFormativoTitle_numResAprTransversal}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_numResAprTransversal}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="numResAprTransversal"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_programaFormacionRespuesta}" for="programaFormacionRespuesta" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="programaFormacionRespuesta" value="#{proyectoFormativoController.selected.programaFormacionRespuesta}" title="#{bundle.CreateProyectoFormativoTitle_programaFormacionRespuesta}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_programaFormacionRespuesta}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="programaFormacionRespuesta"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_benficiarioProyecto}" for="benficiarioProyecto" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="benficiarioProyecto" value="#{proyectoFormativoController.selected.benficiarioProyecto}" title="#{bundle.CreateProyectoFormativoTitle_benficiarioProyecto}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_benficiarioProyecto}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="benficiarioProyecto"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_impSocial}" for="impSocial" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="impSocial" value="#{proyectoFormativoController.selected.impSocial}" title="#{bundle.CreateProyectoFormativoTitle_impSocial}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_impSocial}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="impSocial"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_impEconomico}" for="impEconomico" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="impEconomico" value="#{proyectoFormativoController.selected.impEconomico}" title="#{bundle.CreateProyectoFormativoTitle_impEconomico}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_impEconomico}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="impEconomico"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_impactoAmbiental}" for="impactoAmbiental" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="impactoAmbiental" value="#{proyectoFormativoController.selected.impactoAmbiental}" title="#{bundle.CreateProyectoFormativoTitle_impactoAmbiental}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_impactoAmbiental}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="impactoAmbiental"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_impTecnologico}" for="impTecnologico" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="impTecnologico" value="#{proyectoFormativoController.selected.impTecnologico}" title="#{bundle.CreateProyectoFormativoTitle_impTecnologico}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_impTecnologico}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="impTecnologico"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_fichaAsociada}" for="fichaAsociada" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="fichaAsociada" value="#{proyectoFormativoController.selected.fichaAsociada}" title="#{bundle.CreateProyectoFormativoTitle_fichaAsociada}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_fichaAsociada}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fichaAsociada"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_plateamientoProblema}" for="plateamientoProblema" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="plateamientoProblema" value="#{proyectoFormativoController.selected.plateamientoProblema}" title="#{bundle.CreateProyectoFormativoTitle_plateamientoProblema}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_plateamientoProblema}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="plateamientoProblema"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_justificacionProyecto}" for="justificacionProyecto" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="justificacionProyecto" value="#{proyectoFormativoController.selected.justificacionProyecto}" title="#{bundle.CreateProyectoFormativoTitle_justificacionProyecto}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_justificacionProyecto}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="justificacionProyecto"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_objGeneral}" for="objGeneral" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="objGeneral" value="#{proyectoFormativoController.selected.objGeneral}" title="#{bundle.CreateProyectoFormativoTitle_objGeneral}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_objGeneral}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="objGeneral"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_objEspecifico}" for="objEspecifico" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="objEspecifico" value="#{proyectoFormativoController.selected.objEspecifico}" title="#{bundle.CreateProyectoFormativoTitle_objEspecifico}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_objEspecifico}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="objEspecifico"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_riesgosAsociados}" for="riesgosAsociados" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="riesgosAsociados" value="#{proyectoFormativoController.selected.riesgosAsociados}" title="#{bundle.CreateProyectoFormativoTitle_riesgosAsociados}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_riesgosAsociados}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="riesgosAsociados"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_resultadoProyecto}" for="resultadoProyecto" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="resultadoProyecto" value="#{proyectoFormativoController.selected.resultadoProyecto}" title="#{bundle.CreateProyectoFormativoTitle_resultadoProyecto}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_resultadoProyecto}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="resultadoProyecto"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_tiempoProyecto}" for="tiempoProyecto" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="tiempoProyecto" value="#{proyectoFormativoController.selected.tiempoProyecto}" title="#{bundle.CreateProyectoFormativoTitle_tiempoProyecto}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_tiempoProyecto}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="tiempoProyecto"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_palabrasClaves}" for="palabrasClaves" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="palabrasClaves" value="#{proyectoFormativoController.selected.palabrasClaves}" title="#{bundle.CreateProyectoFormativoTitle_palabrasClaves}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_palabrasClaves}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="palabrasClaves"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_numeroTotalResultados}" for="numeroTotalResultados" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="numeroTotalResultados" value="#{proyectoFormativoController.selected.numeroTotalResultados}" title="#{bundle.CreateProyectoFormativoTitle_numeroTotalResultados}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_numeroTotalResultados}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="numeroTotalResultados"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_resuelveNecSectorProd}" for="resuelveNecSectorProd" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="resuelveNecSectorProd" value="#{proyectoFormativoController.selected.resuelveNecSectorProd}" title="#{bundle.CreateProyectoFormativoTitle_resuelveNecSectorProd}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_resuelveNecSectorProd}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="resuelveNecSectorProd"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_mejoraProcesoProd}" for="mejoraProcesoProd" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="mejoraProcesoProd" value="#{proyectoFormativoController.selected.mejoraProcesoProd}" title="#{bundle.CreateProyectoFormativoTitle_mejoraProcesoProd}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_mejoraProcesoProd}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="mejoraProcesoProd"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_involucraNvTec}" for="involucraNvTec" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="involucraNvTec" value="#{proyectoFormativoController.selected.involucraNvTec}" title="#{bundle.CreateProyectoFormativoTitle_involucraNvTec}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_involucraNvTec}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="involucraNvTec"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_productoFinSusc}" for="productoFinSusc" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="productoFinSusc" value="#{proyectoFormativoController.selected.productoFinSusc}" title="#{bundle.CreateProyectoFormativoTitle_productoFinSusc}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_productoFinSusc}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="productoFinSusc"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_productoObtPro}" for="productoObtPro" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="productoObtPro" value="#{proyectoFormativoController.selected.productoObtPro}" title="#{bundle.CreateProyectoFormativoTitle_productoObtPro}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_productoObtPro}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="productoObtPro"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_desarrolloProSatis}" for="desarrolloProSatis" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="desarrolloProSatis" value="#{proyectoFormativoController.selected.desarrolloProSatis}" title="#{bundle.CreateProyectoFormativoTitle_desarrolloProSatis}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_desarrolloProSatis}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="desarrolloProSatis"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_viabilidadProPlan}" for="viabilidadProPlan" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="viabilidadProPlan" value="#{proyectoFormativoController.selected.viabilidadProPlan}" title="#{bundle.CreateProyectoFormativoTitle_viabilidadProPlan}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_viabilidadProPlan}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="viabilidadProPlan"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_intructoresReq}" for="intructoresReq" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="intructoresReq" value="#{proyectoFormativoController.selected.intructoresReq}" title="#{bundle.CreateProyectoFormativoTitle_intructoresReq}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_intructoresReq}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="intructoresReq"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_aprendicesReq}" for="aprendicesReq" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="aprendicesReq" value="#{proyectoFormativoController.selected.aprendicesReq}" title="#{bundle.CreateProyectoFormativoTitle_aprendicesReq}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_aprendicesReq}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="aprendicesReq"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_descrAmbApr}" for="descrAmbApr" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="descrAmbApr" value="#{proyectoFormativoController.selected.descrAmbApr}" title="#{bundle.CreateProyectoFormativoTitle_descrAmbApr}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_descrAmbApr}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="descrAmbApr"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_idUsuario}" for="idUsuario" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idUsuario" value="#{proyectoFormativoController.selected.idUsuario}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_idUsuario}">
+                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idUsuario"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_idDatalleRecurso}" for="idDatalleRecurso" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idDatalleRecurso" value="#{proyectoFormativoController.selected.idDatalleRecurso}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_idDatalleRecurso}">
+                                    <f:selectItems value="#{detalleRecursoController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idDatalleRecurso"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_idResultadoAprendizaje}" for="idResultadoAprendizaje" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idResultadoAprendizaje" value="#{proyectoFormativoController.selected.idResultadoAprendizaje}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_idResultadoAprendizaje}">
+                                    <f:selectItems value="#{resultadoAprendizajeController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idResultadoAprendizaje"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_idActividadProyecto}" for="idActividadProyecto" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idActividadProyecto" value="#{proyectoFormativoController.selected.idActividadProyecto}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_idActividadProyecto}">
+                                    <f:selectItems value="#{actividadProyectoController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idActividadProyecto"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_idPrograma}" for="idPrograma" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idPrograma" value="#{proyectoFormativoController.selected.idPrograma}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_idPrograma}">
+                                    <f:selectItems value="#{programaController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idPrograma"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_idEstadoProyecto}" for="idEstadoProyecto" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idEstadoProyecto" value="#{proyectoFormativoController.selected.idEstadoProyecto}" required="true" requiredMessage="#{bundle.CreateProyectoFormativoRequiredMessage_idEstadoProyecto}">
+                                    <f:selectItems value="#{estadoProyectoController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idEstadoProyecto"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{proyectoFormativoController.create}" value="#{bundle.CreateProyectoFormativoSaveLink}" icon="ui-icon-disk"/>
+                    <br />
+                    <br />
+                    <p:commandButton ajax="false" action="#{proyectoFormativoController.prepareList}" value="#{bundle.CreateProyectoFormativoShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

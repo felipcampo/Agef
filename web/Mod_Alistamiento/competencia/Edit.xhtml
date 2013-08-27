@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCompetenciaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formCompetencia">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.EditCompetenciaTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditCompetenciaLabel_idCompetencia}" for="idCompetencia" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="idCompetencia" value="#{competenciaController.selected.idCompetencia}" title="#{bundle.EditCompetenciaTitle_idCompetencia}" required="true" requiredMessage="#{bundle.EditCompetenciaRequiredMessage_idCompetencia}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idCompetencia"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditCompetenciaLabel_duracionCompetencia}" for="duracionCompetencia" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="duracionCompetencia" value="#{competenciaController.selected.duracionCompetencia}" title="#{bundle.EditCompetenciaTitle_duracionCompetencia}" required="true" requiredMessage="#{bundle.EditCompetenciaRequiredMessage_duracionCompetencia}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="duracionCompetencia"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditCompetenciaLabel_nomCom}" for="nomCom" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputTextarea rows="4" cols="30" id="nomCom" value="#{competenciaController.selected.nomCom}" title="#{bundle.EditCompetenciaTitle_nomCom}" required="true" requiredMessage="#{bundle.EditCompetenciaRequiredMessage_nomCom}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="nomCom"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditCompetenciaLabel_idPrograma}" for="idPrograma" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idPrograma" value="#{competenciaController.selected.idPrograma}" required="true" requiredMessage="#{bundle.EditCompetenciaRequiredMessage_idPrograma}">
+                                    <f:selectItems value="#{programaController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idPrograma"/>
+                            </p:column>
+                        </p:row>      
+                    </p:panelGrid>
+                    <br />
+                    <br />                
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{competenciaController.update}" value="#{bundle.EditCompetenciaSaveLink}" icon="ui-icon-disk"/>
+                    <p:button outcome="View" value="#{bundle.EditCompetenciaViewLink}" icon="ui-icon-searh"/>
+                    <br />
+                    <p:commandButton ajax="false" action="#{competenciaController.prepareList}" value="#{bundle.EditCompetenciaShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

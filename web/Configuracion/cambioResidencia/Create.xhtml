@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateCambioResidenciaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formCambioResidencia">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.CreateCambioResidenciaTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateCambioResidenciaLabel_idCambioResidencia}" for="idCambioResidencia" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="idCambioResidencia" value="#{cambioResidenciaController.selected.idCambioResidencia}" title="#{bundle.CreateCambioResidenciaTitle_idCambioResidencia}" required="true" requiredMessage="#{bundle.CreateCambioResidenciaRequiredMessage_idCambioResidencia}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idCambioResidencia"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateCambioResidenciaLabel_descrCambioResidencia}" for="descrCambioResidencia" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="descrCambioResidencia" value="#{cambioResidenciaController.selected.descrCambioResidencia}" title="#{bundle.CreateCambioResidenciaTitle_descrCambioResidencia}" required="true" requiredMessage="#{bundle.CreateCambioResidenciaRequiredMessage_descrCambioResidencia}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="descrCambioResidencia"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{cambioResidenciaController.create}" value="#{bundle.CreateCambioResidenciaSaveLink}" icon="ui-icon-disk"/>
+                    <br />
+                    <br />
+                    <p:commandButton ajax="false" action="#{cambioResidenciaController.prepareList}" value="#{bundle.CreateCambioResidenciaShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListComiteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form id="listComite" styleClass="jsfcrud_list_form">
+                <div id="list" align="center">
+                    <p:growl id="msgs" showDetail="false" sticky="false"/>
+                    <h:outputText escape="false" value="#{bundle.ListComiteEmpty}" rendered="#{comiteController.lazyModel.rowCount == 0}"/>
+                    <h:panelGroup rendered="#{comiteController.lazyModel.rowCount > 0}">
+                        <p:dataTable id="tableListComite" 
+                                     value="#{comiteController.lazyModel}" 
+                                     var="item" 
+                                     paginator="true" rows="10" paginatorAlwaysVisible="false"
+                                     paginatorTemplate="{FirstPageLink} {PreviousPageLink}
+                                     {PageLinks} {NextPageLink}
+                                     {LastPageLink} {RowsPerPageDropdown}"  
+                                     rowsPerPageTemplate="5,10,15" paginatorPosition="bottom"
+                                     lazy="true"
+                                     emptyMessage="No se encontraron datos con el criterio dado"
+                                     widgetVar="tableComite">
+                            <p:column headerText="#{bundle.ListComiteTitle_idComite}"
+                                      filterBy="#{item.idComite}"
+                                      sortBy="#{item.idComite}">                        
+                                <h:outputText value="#{item.idComite}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListComiteTitle_comentarios}"
+                                      filterBy="#{item.comentarios}"
+                                      sortBy="#{item.comentarios}">                        
+                                <h:outputText value="#{item.comentarios}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListComiteTitle_fecCom}"
+                                      filterBy="#{item.fecCom}"
+                                      sortBy="#{item.fecCom}">                        
+                                <h:outputText value="#{item.fecCom}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListComiteTitle_numAct}"
+                                      filterBy="#{item.numAct}"
+                                      sortBy="#{item.numAct}">                        
+                                <h:outputText value="#{item.numAct}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListComiteTitle_idReporteNovedad}"
+                                      filterBy="#{item.idReporteNovedad}"
+                                      sortBy="#{item.idReporteNovedad}">                        
+                                <h:outputText value="#{item.idReporteNovedad}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListComiteTitle_idSancion}"
+                                      filterBy="#{item.idSancion}"
+                                      sortBy="#{item.idSancion}">                        
+                                <h:outputText value="#{item.idSancion}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListComiteTitle_idFichaCaracterizacion}"
+                                      filterBy="#{item.idFichaCaracterizacion}"
+                                      sortBy="#{item.idFichaCaracterizacion}">                        
+                                <h:outputText value="#{item.idFichaCaracterizacion}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListComiteTitle_idFalta}"
+                                      filterBy="#{item.idFalta}"
+                                      sortBy="#{item.idFalta}">                        
+                                <h:outputText value="#{item.idFalta}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListComiteTitle_idUsuario}"
+                                      filterBy="#{item.idUsuario}"
+                                      sortBy="#{item.idUsuario}">                        
+                                <h:outputText value="#{item.idUsuario}"/>
+                            </p:column>
+                            <p:column>                        
+                                <p:commandButton ajax="false" action="#{comiteController.prepareView}" title="#{bundle.ListComiteViewLink}" icon="ui-icon-search"/>
+                                <p:commandButton ajax="false" action="#{comiteController.prepareEdit}" title="#{bundle.ListComiteEditLink}" icon="ui-icon-pencil"/>
+                                <p:commandButton oncomplete="confirmationDelete.show();" process="@this"
+                                                 title="#{bundle.ListComiteDestroyLink}" icon="ui-icon-trash">
+                                    <f:setPropertyActionListener value="#{item}" target="#{comiteController.selected}"/>
+                                </p:commandButton>
+                            </p:column>
+                        </p:dataTable>
+                    </h:panelGroup>
+                    <br />
+                    <p:commandButton ajax="false" action="#{comiteController.prepareCreate}" value="#{bundle.ListComiteCreateLink}" icon="ui-icon-document"/>
+                </div>        
+            </h:form>
+        </ui:define>
+        <ui:define name="dialogs">
+            <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  
+                             header="#{bundle.DeleteItemMessage}" severity="alert" widgetVar="confirmationDelete">  
+                <p:commandButton id="confirmDeleteButtonYes" value="#{bundle.DeleteButtonYes}" update=":listComite" oncomplete="confirmationDelete.hide();"  
+                                 action="#{comiteController.destroy}"/>  
+                <p:commandButton id="confirmDeleteButtonNot" value="#{bundle.DeleteButtonNot}" onclick="confirmationDelete.hide();" type="button" />   
+            </p:confirmDialog>             
+        </ui:define>
+    </ui:composition>
+
+</html>

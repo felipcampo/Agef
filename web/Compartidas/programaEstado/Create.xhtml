@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateProgramaEstadoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formProgramaEstado">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.CreateProgramaEstadoTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProgramaEstadoLabel_idProgramaEstado}" for="idProgramaEstado" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="idProgramaEstado" value="#{programaEstadoController.selected.idProgramaEstado}" title="#{bundle.CreateProgramaEstadoTitle_idProgramaEstado}" required="true" requiredMessage="#{bundle.CreateProgramaEstadoRequiredMessage_idProgramaEstado}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idProgramaEstado"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateProgramaEstadoLabel_descrProgramaEstado}" for="descrProgramaEstado" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="descrProgramaEstado" value="#{programaEstadoController.selected.descrProgramaEstado}" title="#{bundle.CreateProgramaEstadoTitle_descrProgramaEstado}" required="true" requiredMessage="#{bundle.CreateProgramaEstadoRequiredMessage_descrProgramaEstado}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="descrProgramaEstado"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{programaEstadoController.create}" value="#{bundle.CreateProgramaEstadoSaveLink}" icon="ui-icon-disk"/>
+                    <br />
+                    <br />
+                    <p:commandButton ajax="false" action="#{programaEstadoController.prepareList}" value="#{bundle.CreateProgramaEstadoShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

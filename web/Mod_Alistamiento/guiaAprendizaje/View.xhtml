@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewGuiaAprendizajeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/> 
+            <h:form>
+                <div id="form" align="center">
+                    <p:panelGrid columns="2">
+                        <f:facet name="header">
+                            <p:row><p:column>#{bundle.ViewGuiaAprendizajeTitle}</p:column></p:row>                            
+                        </f:facet>
+                        <h:outputText value="#{bundle.ViewGuiaAprendizajeLabel_idGuiaAprendizaje}"/>
+                        <h:outputText value="#{guiaAprendizajeController.selected.idGuiaAprendizaje}" title="#{bundle.ViewGuiaAprendizajeTitle_idGuiaAprendizaje}"/>
+                        <h:outputText value="#{bundle.ViewGuiaAprendizajeLabel_introduccionGuia}"/>
+                        <h:outputText value="#{guiaAprendizajeController.selected.introduccionGuia}" title="#{bundle.ViewGuiaAprendizajeTitle_introduccionGuia}"/>
+                        <h:outputText value="#{bundle.ViewGuiaAprendizajeLabel_actividadReflexionInicial}"/>
+                        <h:outputText value="#{guiaAprendizajeController.selected.actividadReflexionInicial}" title="#{bundle.ViewGuiaAprendizajeTitle_actividadReflexionInicial}"/>
+                        <h:outputText value="#{bundle.ViewGuiaAprendizajeLabel_actividadContextualizacion}"/>
+                        <h:outputText value="#{guiaAprendizajeController.selected.actividadContextualizacion}" title="#{bundle.ViewGuiaAprendizajeTitle_actividadContextualizacion}"/>
+                        <h:outputText value="#{bundle.ViewGuiaAprendizajeLabel_actividadApropiacionPro}"/>
+                        <h:outputText value="#{guiaAprendizajeController.selected.actividadApropiacionPro}" title="#{bundle.ViewGuiaAprendizajeTitle_actividadApropiacionPro}"/>
+                        <h:outputText value="#{bundle.ViewGuiaAprendizajeLabel_actividadTransferenciaConoci}"/>
+                        <h:outputText value="#{guiaAprendizajeController.selected.actividadTransferenciaConoci}" title="#{bundle.ViewGuiaAprendizajeTitle_actividadTransferenciaConoci}"/>
+                        <h:outputText value="#{bundle.ViewGuiaAprendizajeLabel_bibliografia}"/>
+                        <h:outputText value="#{guiaAprendizajeController.selected.bibliografia}" title="#{bundle.ViewGuiaAprendizajeTitle_bibliografia}"/>
+                        <h:outputText value="#{bundle.ViewGuiaAprendizajeLabel_glosario}"/>
+                        <h:outputText value="#{guiaAprendizajeController.selected.glosario}" title="#{bundle.ViewGuiaAprendizajeTitle_glosario}"/>
+                        <h:outputText value="#{bundle.ViewGuiaAprendizajeLabel_idProyectoFormativo}"/>
+                        <h:outputText value="#{guiaAprendizajeController.selected.idProyectoFormativo}" title="#{bundle.ViewGuiaAprendizajeTitle_idProyectoFormativo}"/>
+                        <h:outputText value="#{bundle.ViewGuiaAprendizajeLabel_idAmbiente}"/>
+                        <h:outputText value="#{guiaAprendizajeController.selected.idAmbiente}" title="#{bundle.ViewGuiaAprendizajeTitle_idAmbiente}"/>
+                        <h:outputText value="#{bundle.ViewGuiaAprendizajeLabel_idDatalleRecurso}"/>
+                        <h:outputText value="#{guiaAprendizajeController.selected.idDatalleRecurso}" title="#{bundle.ViewGuiaAprendizajeTitle_idDatalleRecurso}"/>
+                        <h:outputText value="#{bundle.ViewGuiaAprendizajeLabel_idActividadProyecto}"/>
+                        <h:outputText value="#{guiaAprendizajeController.selected.idActividadProyecto}" title="#{bundle.ViewGuiaAprendizajeTitle_idActividadProyecto}"/>
+                        <h:outputText value="#{bundle.ViewGuiaAprendizajeLabel_idFichaCaracterizacion}"/>
+                        <h:outputText value="#{guiaAprendizajeController.selected.idFichaCaracterizacion}" title="#{bundle.ViewGuiaAprendizajeTitle_idFichaCaracterizacion}"/>
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                    <p:commandButton oncomplete="confirmationDelete.show();" process="@this" value="#{bundle.ListGuiaAprendizajeDestroyLink}"
+                                     title="#{bundle.ListGuiaAprendizajeDestroyLink}" icon="ui-icon-trash">
+                    </p:commandButton>
+                    <p:button outcome="Edit" value="#{bundle.ViewGuiaAprendizajeEditLink}" icon="ui-icon-pencil"/>
+                    <p:commandButton ajax="false" action="#{guiaAprendizajeController.prepareCreate}" value="#{bundle.ViewGuiaAprendizajeCreateLink}" icon="ui-icon-document"/>
+                    <br />
+                    <br />
+                    <p:commandButton ajax="false" action="#{guiaAprendizajeController.prepareList}" value="#{bundle.ViewGuiaAprendizajeShowAllLink}"/>
+                </div>            
+            </h:form>
+        </ui:define>
+        <ui:define name="dialogs">
+            <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  
+                             header="#{bundle.DeleteItemMessage}" severity="alert" widgetVar="confirmationDelete">  
+                <p:commandButton id="confirmDeleteButtonYes" value="#{bundle.DeleteButtonYes}" oncomplete="confirmationDelete.hide();"  
+                                 action="#{guiaAprendizajeController.destroy}"/>  
+                <p:commandButton id="confirmDeleteButtonNot" value="#{bundle.DeleteButtonNot}" onclick="confirmationDelete.hide();" type="button" />   
+            </p:confirmDialog>             
+        </ui:define>
+    </ui:composition>
+
+</html>

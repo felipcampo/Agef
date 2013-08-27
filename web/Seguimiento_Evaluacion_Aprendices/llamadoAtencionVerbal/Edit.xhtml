@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditLlamadoAtencionVerbalTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formLlamadoAtencionVerbal">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.EditLlamadoAtencionVerbalTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditLlamadoAtencionVerbalLabel_idLlamadoAtencionVerbal}" for="idLlamadoAtencionVerbal" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="idLlamadoAtencionVerbal" value="#{llamadoAtencionVerbalController.selected.idLlamadoAtencionVerbal}" title="#{bundle.EditLlamadoAtencionVerbalTitle_idLlamadoAtencionVerbal}" required="true" requiredMessage="#{bundle.EditLlamadoAtencionVerbalRequiredMessage_idLlamadoAtencionVerbal}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idLlamadoAtencionVerbal"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditLlamadoAtencionVerbalLabel_compromiso}" for="compromiso" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputTextarea rows="4" cols="30" id="compromiso" value="#{llamadoAtencionVerbalController.selected.compromiso}" title="#{bundle.EditLlamadoAtencionVerbalTitle_compromiso}" required="true" requiredMessage="#{bundle.EditLlamadoAtencionVerbalRequiredMessage_compromiso}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="compromiso"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditLlamadoAtencionVerbalLabel_descripcion}" for="descripcion" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputTextarea rows="4" cols="30" id="descripcion" value="#{llamadoAtencionVerbalController.selected.descripcion}" title="#{bundle.EditLlamadoAtencionVerbalTitle_descripcion}" required="true" requiredMessage="#{bundle.EditLlamadoAtencionVerbalRequiredMessage_descripcion}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="descripcion"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditLlamadoAtencionVerbalLabel_efecto}" for="efecto" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputTextarea rows="4" cols="30" id="efecto" value="#{llamadoAtencionVerbalController.selected.efecto}" title="#{bundle.EditLlamadoAtencionVerbalTitle_efecto}" required="true" requiredMessage="#{bundle.EditLlamadoAtencionVerbalRequiredMessage_efecto}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="efecto"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditLlamadoAtencionVerbalLabel_fecha}" for="fecha" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecha" value="#{llamadoAtencionVerbalController.selected.fecha}" title="#{bundle.EditLlamadoAtencionVerbalTitle_fecha}" required="true" requiredMessage="#{bundle.EditLlamadoAtencionVerbalRequiredMessage_fecha}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fecha"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditLlamadoAtencionVerbalLabel_impacto}" for="impacto" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputTextarea rows="4" cols="30" id="impacto" value="#{llamadoAtencionVerbalController.selected.impacto}" title="#{bundle.EditLlamadoAtencionVerbalTitle_impacto}" required="true" requiredMessage="#{bundle.EditLlamadoAtencionVerbalRequiredMessage_impacto}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="impacto"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditLlamadoAtencionVerbalLabel_situacion}" for="situacion" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputTextarea rows="4" cols="30" id="situacion" value="#{llamadoAtencionVerbalController.selected.situacion}" title="#{bundle.EditLlamadoAtencionVerbalTitle_situacion}" required="true" requiredMessage="#{bundle.EditLlamadoAtencionVerbalRequiredMessage_situacion}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="situacion"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditLlamadoAtencionVerbalLabel_idEstadoLlamado}" for="idEstadoLlamado" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idEstadoLlamado" value="#{llamadoAtencionVerbalController.selected.idEstadoLlamado}" required="true" requiredMessage="#{bundle.EditLlamadoAtencionVerbalRequiredMessage_idEstadoLlamado}">
+                                    <f:selectItems value="#{estadoLlamadoController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idEstadoLlamado"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditLlamadoAtencionVerbalLabel_idFichaCaracterizacion}" for="idFichaCaracterizacion" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idFichaCaracterizacion" value="#{llamadoAtencionVerbalController.selected.idFichaCaracterizacion}" required="true" requiredMessage="#{bundle.EditLlamadoAtencionVerbalRequiredMessage_idFichaCaracterizacion}">
+                                    <f:selectItems value="#{fichaCaracterizacionController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idFichaCaracterizacion"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditLlamadoAtencionVerbalLabel_idUsuario}" for="idUsuario" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idUsuario" value="#{llamadoAtencionVerbalController.selected.idUsuario}" required="true" requiredMessage="#{bundle.EditLlamadoAtencionVerbalRequiredMessage_idUsuario}">
+                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idUsuario"/>
+                            </p:column>
+                        </p:row>      
+                    </p:panelGrid>
+                    <br />
+                    <br />                
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{llamadoAtencionVerbalController.update}" value="#{bundle.EditLlamadoAtencionVerbalSaveLink}" icon="ui-icon-disk"/>
+                    <p:button outcome="View" value="#{bundle.EditLlamadoAtencionVerbalViewLink}" icon="ui-icon-searh"/>
+                    <br />
+                    <p:commandButton ajax="false" action="#{llamadoAtencionVerbalController.prepareList}" value="#{bundle.EditLlamadoAtencionVerbalShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

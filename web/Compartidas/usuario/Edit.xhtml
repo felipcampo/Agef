@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditUsuarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formUsuario">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.EditUsuarioTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditUsuarioLabel_idUsuario}" for="idUsuario" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="idUsuario" value="#{usuarioController.selected.idUsuario}" title="#{bundle.EditUsuarioTitle_idUsuario}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_idUsuario}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idUsuario"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditUsuarioLabel_numeroDocumento}" for="numeroDocumento" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="numeroDocumento" value="#{usuarioController.selected.numeroDocumento}" title="#{bundle.EditUsuarioTitle_numeroDocumento}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_numeroDocumento}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="numeroDocumento"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditUsuarioLabel_nomUsu}" for="nomUsu" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="nomUsu" value="#{usuarioController.selected.nomUsu}" title="#{bundle.EditUsuarioTitle_nomUsu}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_nomUsu}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="nomUsu"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditUsuarioLabel_apeUsu}" for="apeUsu" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="apeUsu" value="#{usuarioController.selected.apeUsu}" title="#{bundle.EditUsuarioTitle_apeUsu}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_apeUsu}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="apeUsu"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditUsuarioLabel_inicialesUsu}" for="inicialesUsu" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="inicialesUsu" value="#{usuarioController.selected.inicialesUsu}" title="#{bundle.EditUsuarioTitle_inicialesUsu}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_inicialesUsu}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="inicialesUsu"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditUsuarioLabel_dirUsu}" for="dirUsu" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="dirUsu" value="#{usuarioController.selected.dirUsu}" title="#{bundle.EditUsuarioTitle_dirUsu}" />
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="dirUsu"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditUsuarioLabel_fechaNacimiento}" for="fechaNacimiento" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fechaNacimiento" value="#{usuarioController.selected.fechaNacimiento}" title="#{bundle.EditUsuarioTitle_fechaNacimiento}" />
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fechaNacimiento"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditUsuarioLabel_emailMisenaUsu}" for="emailMisenaUsu" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="emailMisenaUsu" value="#{usuarioController.selected.emailMisenaUsu}" title="#{bundle.EditUsuarioTitle_emailMisenaUsu}" />
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="emailMisenaUsu"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditUsuarioLabel_emailPersonalUsu}" for="emailPersonalUsu" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="emailPersonalUsu" value="#{usuarioController.selected.emailPersonalUsu}" title="#{bundle.EditUsuarioTitle_emailPersonalUsu}" />
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="emailPersonalUsu"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditUsuarioLabel_telUsu}" for="telUsu" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="telUsu" value="#{usuarioController.selected.telUsu}" title="#{bundle.EditUsuarioTitle_telUsu}" />
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="telUsu"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditUsuarioLabel_genero}" for="genero" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="genero" value="#{usuarioController.selected.genero}" title="#{bundle.EditUsuarioTitle_genero}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_genero}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="genero"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditUsuarioLabel_estadoCivil}" for="estadoCivil" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="estadoCivil" value="#{usuarioController.selected.estadoCivil}" title="#{bundle.EditUsuarioTitle_estadoCivil}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_estadoCivil}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="estadoCivil"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditUsuarioLabel_password}" for="password" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="password" value="#{usuarioController.selected.password}" title="#{bundle.EditUsuarioTitle_password}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_password}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="password"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditUsuarioLabel_idEstadoAspirante}" for="idEstadoAspirante" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idEstadoAspirante" value="#{usuarioController.selected.idEstadoAspirante}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_idEstadoAspirante}">
+                                    <f:selectItems value="#{estadoAspiranteController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idEstadoAspirante"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditUsuarioLabel_idBarrio}" for="idBarrio" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idBarrio" value="#{usuarioController.selected.idBarrio}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_idBarrio}">
+                                    <f:selectItems value="#{barrioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idBarrio"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditUsuarioLabel_idCiudadNacimiento}" for="idCiudadNacimiento" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idCiudadNacimiento" value="#{usuarioController.selected.idCiudadNacimiento}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_idCiudadNacimiento}">
+                                    <f:selectItems value="#{ciudadController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idCiudadNacimiento"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditUsuarioLabel_idSituacionMilitar}" for="idSituacionMilitar" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idSituacionMilitar" value="#{usuarioController.selected.idSituacionMilitar}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_idSituacionMilitar}">
+                                    <f:selectItems value="#{situacionMilitarController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idSituacionMilitar"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditUsuarioLabel_idTipoDocumento}" for="idTipoDocumento" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idTipoDocumento" value="#{usuarioController.selected.idTipoDocumento}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_idTipoDocumento}">
+                                    <f:selectItems value="#{tipoDocumentoController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idTipoDocumento"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditUsuarioLabel_idTipoContrato}" for="idTipoContrato" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idTipoContrato" value="#{usuarioController.selected.idTipoContrato}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_idTipoContrato}">
+                                    <f:selectItems value="#{tipoContratoController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idTipoContrato"/>
+                            </p:column>
+                        </p:row>      
+                    </p:panelGrid>
+                    <br />
+                    <br />                
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{usuarioController.update}" value="#{bundle.EditUsuarioSaveLink}" icon="ui-icon-disk"/>
+                    <p:button outcome="View" value="#{bundle.EditUsuarioViewLink}" icon="ui-icon-searh"/>
+                    <br />
+                    <p:commandButton ajax="false" action="#{usuarioController.prepareList}" value="#{bundle.EditUsuarioShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

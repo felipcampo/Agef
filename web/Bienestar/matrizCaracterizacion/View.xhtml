@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewMatrizCaracterizacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/> 
+            <h:form>
+                <div id="form" align="center">
+                    <p:panelGrid columns="2">
+                        <f:facet name="header">
+                            <p:row><p:column>#{bundle.ViewMatrizCaracterizacionTitle}</p:column></p:row>                            
+                        </f:facet>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_idMatrizCaracterizacion}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.idMatrizCaracterizacion}" title="#{bundle.ViewMatrizCaracterizacionTitle_idMatrizCaracterizacion}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_descrEstrato}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.descrEstrato}" title="#{bundle.ViewMatrizCaracterizacionTitle_descrEstrato}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_descrConformacionHogar}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.descrConformacionHogar}" title="#{bundle.ViewMatrizCaracterizacionTitle_descrConformacionHogar}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_tienePadre}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.tienePadre}" title="#{bundle.ViewMatrizCaracterizacionTitle_tienePadre}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_tieneMadre}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.tieneMadre}" title="#{bundle.ViewMatrizCaracterizacionTitle_tieneMadre}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_numeroHijos}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.numeroHijos}" title="#{bundle.ViewMatrizCaracterizacionTitle_numeroHijos}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_numeroPersonasAcargo}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.numeroPersonasAcargo}" title="#{bundle.ViewMatrizCaracterizacionTitle_numeroPersonasAcargo}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_ultimoTituloAspirante}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.ultimoTituloAspirante}" title="#{bundle.ViewMatrizCaracterizacionTitle_ultimoTituloAspirante}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_expectativaCurso}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.expectativaCurso}" title="#{bundle.ViewMatrizCaracterizacionTitle_expectativaCurso}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_trabajoAnterior}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.trabajoAnterior}" title="#{bundle.ViewMatrizCaracterizacionTitle_trabajoAnterior}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_trabajoActual}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.trabajoActual}" title="#{bundle.ViewMatrizCaracterizacionTitle_trabajoActual}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_horaTrabajoSemanal}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.horaTrabajoSemanal}" title="#{bundle.ViewMatrizCaracterizacionTitle_horaTrabajoSemanal}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_promedioIngresoLaboralMes}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.promedioIngresoLaboralMes}" title="#{bundle.ViewMatrizCaracterizacionTitle_promedioIngresoLaboralMes}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_tieneEps}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.tieneEps}" title="#{bundle.ViewMatrizCaracterizacionTitle_tieneEps}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_tieneSisben}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.tieneSisben}" title="#{bundle.ViewMatrizCaracterizacionTitle_tieneSisben}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_observacionMedica}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.observacionMedica}" title="#{bundle.ViewMatrizCaracterizacionTitle_observacionMedica}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_subsidioAlimenticio}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.subsidioAlimenticio}" title="#{bundle.ViewMatrizCaracterizacionTitle_subsidioAlimenticio}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_justificacionSubsidio}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.justificacionSubsidio}" title="#{bundle.ViewMatrizCaracterizacionTitle_justificacionSubsidio}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_idContactoEmergencia}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.idContactoEmergencia}" title="#{bundle.ViewMatrizCaracterizacionTitle_idContactoEmergencia}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_idNivelAlimentacion}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.idNivelAlimentacion}" title="#{bundle.ViewMatrizCaracterizacionTitle_idNivelAlimentacion}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_idSisben}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.idSisben}" title="#{bundle.ViewMatrizCaracterizacionTitle_idSisben}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_idTipoSangre}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.idTipoSangre}" title="#{bundle.ViewMatrizCaracterizacionTitle_idTipoSangre}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_idEps}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.idEps}" title="#{bundle.ViewMatrizCaracterizacionTitle_idEps}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_idMedioTransporte}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.idMedioTransporte}" title="#{bundle.ViewMatrizCaracterizacionTitle_idMedioTransporte}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_idActividadAcademica}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.idActividadAcademica}" title="#{bundle.ViewMatrizCaracterizacionTitle_idActividadAcademica}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_idEscolaridadAspirante}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.idEscolaridadAspirante}" title="#{bundle.ViewMatrizCaracterizacionTitle_idEscolaridadAspirante}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_idMotivoInscripcion}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.idMotivoInscripcion}" title="#{bundle.ViewMatrizCaracterizacionTitle_idMotivoInscripcion}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_idNivelConocimentoIngles}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.idNivelConocimentoIngles}" title="#{bundle.ViewMatrizCaracterizacionTitle_idNivelConocimentoIngles}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_idNivelConocimentoInformatica}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.idNivelConocimentoInformatica}" title="#{bundle.ViewMatrizCaracterizacionTitle_idNivelConocimentoInformatica}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_idNivelFor}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.idNivelFor}" title="#{bundle.ViewMatrizCaracterizacionTitle_idNivelFor}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_idFichaCaracterizacion}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.idFichaCaracterizacion}" title="#{bundle.ViewMatrizCaracterizacionTitle_idFichaCaracterizacion}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_idProgramaEstado}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.idProgramaEstado}" title="#{bundle.ViewMatrizCaracterizacionTitle_idProgramaEstado}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_idUsuario}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.idUsuario}" title="#{bundle.ViewMatrizCaracterizacionTitle_idUsuario}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_idCaracterizacionPoblacion}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.idCaracterizacionPoblacion}" title="#{bundle.ViewMatrizCaracterizacionTitle_idCaracterizacionPoblacion}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_idCambioResidencia}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.idCambioResidencia}" title="#{bundle.ViewMatrizCaracterizacionTitle_idCambioResidencia}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_idTipoVivienda}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.idTipoVivienda}" title="#{bundle.ViewMatrizCaracterizacionTitle_idTipoVivienda}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_idJefeHogar}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.idJefeHogar}" title="#{bundle.ViewMatrizCaracterizacionTitle_idJefeHogar}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_idOcupacionJefeHogar}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.idOcupacionJefeHogar}" title="#{bundle.ViewMatrizCaracterizacionTitle_idOcupacionJefeHogar}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_idIngresoMensual}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.idIngresoMensual}" title="#{bundle.ViewMatrizCaracterizacionTitle_idIngresoMensual}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_idEscolaridadPadre}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.idEscolaridadPadre}" title="#{bundle.ViewMatrizCaracterizacionTitle_idEscolaridadPadre}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_idEscolaridadMadre}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.idEscolaridadMadre}" title="#{bundle.ViewMatrizCaracterizacionTitle_idEscolaridadMadre}"/>
+                        <h:outputText value="#{bundle.ViewMatrizCaracterizacionLabel_idDependenciaEconomica}"/>
+                        <h:outputText value="#{matrizCaracterizacionController.selected.idDependenciaEconomica}" title="#{bundle.ViewMatrizCaracterizacionTitle_idDependenciaEconomica}"/>
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                    <p:commandButton oncomplete="confirmationDelete.show();" process="@this" value="#{bundle.ListMatrizCaracterizacionDestroyLink}"
+                                     title="#{bundle.ListMatrizCaracterizacionDestroyLink}" icon="ui-icon-trash">
+                    </p:commandButton>
+                    <p:button outcome="Edit" value="#{bundle.ViewMatrizCaracterizacionEditLink}" icon="ui-icon-pencil"/>
+                    <p:commandButton ajax="false" action="#{matrizCaracterizacionController.prepareCreate}" value="#{bundle.ViewMatrizCaracterizacionCreateLink}" icon="ui-icon-document"/>
+                    <br />
+                    <br />
+                    <p:commandButton ajax="false" action="#{matrizCaracterizacionController.prepareList}" value="#{bundle.ViewMatrizCaracterizacionShowAllLink}"/>
+                </div>            
+            </h:form>
+        </ui:define>
+        <ui:define name="dialogs">
+            <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  
+                             header="#{bundle.DeleteItemMessage}" severity="alert" widgetVar="confirmationDelete">  
+                <p:commandButton id="confirmDeleteButtonYes" value="#{bundle.DeleteButtonYes}" oncomplete="confirmationDelete.hide();"  
+                                 action="#{matrizCaracterizacionController.destroy}"/>  
+                <p:commandButton id="confirmDeleteButtonNot" value="#{bundle.DeleteButtonNot}" onclick="confirmationDelete.hide();" type="button" />   
+            </p:confirmDialog>             
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateVerificacionAmbienteTituladoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formVerificacionAmbienteTitulado">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.CreateVerificacionAmbienteTituladoTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateVerificacionAmbienteTituladoLabel_idVerificacionAmbienteTitulado}" for="idVerificacionAmbienteTitulado" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="idVerificacionAmbienteTitulado" value="#{verificacionAmbienteTituladoController.selected.idVerificacionAmbienteTitulado}" title="#{bundle.CreateVerificacionAmbienteTituladoTitle_idVerificacionAmbienteTitulado}" required="true" requiredMessage="#{bundle.CreateVerificacionAmbienteTituladoRequiredMessage_idVerificacionAmbienteTitulado}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idVerificacionAmbienteTitulado"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateVerificacionAmbienteTituladoLabel_localizacion}" for="localizacion" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="localizacion" value="#{verificacionAmbienteTituladoController.selected.localizacion}" title="#{bundle.CreateVerificacionAmbienteTituladoTitle_localizacion}" required="true" requiredMessage="#{bundle.CreateVerificacionAmbienteTituladoRequiredMessage_localizacion}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="localizacion"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateVerificacionAmbienteTituladoLabel_denominacion}" for="denominacion" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="denominacion" value="#{verificacionAmbienteTituladoController.selected.denominacion}" title="#{bundle.CreateVerificacionAmbienteTituladoTitle_denominacion}" required="true" requiredMessage="#{bundle.CreateVerificacionAmbienteTituladoRequiredMessage_denominacion}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="denominacion"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateVerificacionAmbienteTituladoLabel_tipoAmbiente}" for="tipoAmbiente" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="tipoAmbiente" value="#{verificacionAmbienteTituladoController.selected.tipoAmbiente}" title="#{bundle.CreateVerificacionAmbienteTituladoTitle_tipoAmbiente}" required="true" requiredMessage="#{bundle.CreateVerificacionAmbienteTituladoRequiredMessage_tipoAmbiente}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="tipoAmbiente"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateVerificacionAmbienteTituladoLabel_viabilidadAmbiente}" for="viabilidadAmbiente" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="viabilidadAmbiente" value="#{verificacionAmbienteTituladoController.selected.viabilidadAmbiente}" title="#{bundle.CreateVerificacionAmbienteTituladoTitle_viabilidadAmbiente}" required="true" requiredMessage="#{bundle.CreateVerificacionAmbienteTituladoRequiredMessage_viabilidadAmbiente}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="viabilidadAmbiente"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateVerificacionAmbienteTituladoLabel_ciudad}" for="ciudad" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="ciudad" value="#{verificacionAmbienteTituladoController.selected.ciudad}" title="#{bundle.CreateVerificacionAmbienteTituladoTitle_ciudad}" />
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="ciudad"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateVerificacionAmbienteTituladoLabel_fecha}" for="fecha" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecha" value="#{verificacionAmbienteTituladoController.selected.fecha}" title="#{bundle.CreateVerificacionAmbienteTituladoTitle_fecha}" required="true" requiredMessage="#{bundle.CreateVerificacionAmbienteTituladoRequiredMessage_fecha}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fecha"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateVerificacionAmbienteTituladoLabel_idListaVerificacion}" for="idListaVerificacion" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idListaVerificacion" value="#{verificacionAmbienteTituladoController.selected.idListaVerificacion}" required="true" requiredMessage="#{bundle.CreateVerificacionAmbienteTituladoRequiredMessage_idListaVerificacion}">
+                                    <f:selectItems value="#{listaVerificacionController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idListaVerificacion"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateVerificacionAmbienteTituladoLabel_idUsuario}" for="idUsuario" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idUsuario" value="#{verificacionAmbienteTituladoController.selected.idUsuario}" required="true" requiredMessage="#{bundle.CreateVerificacionAmbienteTituladoRequiredMessage_idUsuario}">
+                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idUsuario"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateVerificacionAmbienteTituladoLabel_idProyectoFormativo}" for="idProyectoFormativo" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idProyectoFormativo" value="#{verificacionAmbienteTituladoController.selected.idProyectoFormativo}" required="true" requiredMessage="#{bundle.CreateVerificacionAmbienteTituladoRequiredMessage_idProyectoFormativo}">
+                                    <f:selectItems value="#{proyectoFormativoController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idProyectoFormativo"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{verificacionAmbienteTituladoController.create}" value="#{bundle.CreateVerificacionAmbienteTituladoSaveLink}" icon="ui-icon-disk"/>
+                    <br />
+                    <br />
+                    <p:commandButton ajax="false" action="#{verificacionAmbienteTituladoController.prepareList}" value="#{bundle.CreateVerificacionAmbienteTituladoShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

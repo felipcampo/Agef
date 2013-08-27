@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEvidenciaAprendizajeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formEvidenciaAprendizaje">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.EditEvidenciaAprendizajeTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditEvidenciaAprendizajeLabel_idEvidenciaAprendizaje}" for="idEvidenciaAprendizaje" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="idEvidenciaAprendizaje" value="#{evidenciaAprendizajeController.selected.idEvidenciaAprendizaje}" title="#{bundle.EditEvidenciaAprendizajeTitle_idEvidenciaAprendizaje}" required="true" requiredMessage="#{bundle.EditEvidenciaAprendizajeRequiredMessage_idEvidenciaAprendizaje}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idEvidenciaAprendizaje"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditEvidenciaAprendizajeLabel_autentico}" for="autentico" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="autentico" value="#{evidenciaAprendizajeController.selected.autentico}" title="#{bundle.EditEvidenciaAprendizajeTitle_autentico}" required="true" requiredMessage="#{bundle.EditEvidenciaAprendizajeRequiredMessage_autentico}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="autentico"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditEvidenciaAprendizajeLabel_calidad}" for="calidad" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="calidad" value="#{evidenciaAprendizajeController.selected.calidad}" title="#{bundle.EditEvidenciaAprendizajeTitle_calidad}" required="true" requiredMessage="#{bundle.EditEvidenciaAprendizajeRequiredMessage_calidad}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="calidad"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditEvidenciaAprendizajeLabel_descrEviApr}" for="descrEviApr" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputTextarea rows="4" cols="30" id="descrEviApr" value="#{evidenciaAprendizajeController.selected.descrEviApr}" title="#{bundle.EditEvidenciaAprendizajeTitle_descrEviApr}" required="true" requiredMessage="#{bundle.EditEvidenciaAprendizajeRequiredMessage_descrEviApr}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="descrEviApr"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditEvidenciaAprendizajeLabel_fechaEvidenciaAprendizaje}" for="fechaEvidenciaAprendizaje" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fechaEvidenciaAprendizaje" value="#{evidenciaAprendizajeController.selected.fechaEvidenciaAprendizaje}" title="#{bundle.EditEvidenciaAprendizajeTitle_fechaEvidenciaAprendizaje}" required="true" requiredMessage="#{bundle.EditEvidenciaAprendizajeRequiredMessage_fechaEvidenciaAprendizaje}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fechaEvidenciaAprendizaje"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditEvidenciaAprendizajeLabel_nomEviApr}" for="nomEviApr" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputTextarea rows="4" cols="30" id="nomEviApr" value="#{evidenciaAprendizajeController.selected.nomEviApr}" title="#{bundle.EditEvidenciaAprendizajeTitle_nomEviApr}" required="true" requiredMessage="#{bundle.EditEvidenciaAprendizajeRequiredMessage_nomEviApr}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="nomEviApr"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditEvidenciaAprendizajeLabel_pertinente}" for="pertinente" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="pertinente" value="#{evidenciaAprendizajeController.selected.pertinente}" title="#{bundle.EditEvidenciaAprendizajeTitle_pertinente}" required="true" requiredMessage="#{bundle.EditEvidenciaAprendizajeRequiredMessage_pertinente}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="pertinente"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditEvidenciaAprendizajeLabel_validez}" for="validez" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="validez" value="#{evidenciaAprendizajeController.selected.validez}" title="#{bundle.EditEvidenciaAprendizajeTitle_validez}" required="true" requiredMessage="#{bundle.EditEvidenciaAprendizajeRequiredMessage_validez}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="validez"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditEvidenciaAprendizajeLabel_idAmbiente}" for="idAmbiente" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idAmbiente" value="#{evidenciaAprendizajeController.selected.idAmbiente}" required="true" requiredMessage="#{bundle.EditEvidenciaAprendizajeRequiredMessage_idAmbiente}">
+                                    <f:selectItems value="#{ambienteController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idAmbiente"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditEvidenciaAprendizajeLabel_idCriterioEvaluacion}" for="idCriterioEvaluacion" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idCriterioEvaluacion" value="#{evidenciaAprendizajeController.selected.idCriterioEvaluacion}" required="true" requiredMessage="#{bundle.EditEvidenciaAprendizajeRequiredMessage_idCriterioEvaluacion}">
+                                    <f:selectItems value="#{criterioEvaluacionController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idCriterioEvaluacion"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditEvidenciaAprendizajeLabel_idSubactividadProyecto}" for="idSubactividadProyecto" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idSubactividadProyecto" value="#{evidenciaAprendizajeController.selected.idSubactividadProyecto}" required="true" requiredMessage="#{bundle.EditEvidenciaAprendizajeRequiredMessage_idSubactividadProyecto}">
+                                    <f:selectItems value="#{subactividadProyectoController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idSubactividadProyecto"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditEvidenciaAprendizajeLabel_idResultadoAprendizaje}" for="idResultadoAprendizaje" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idResultadoAprendizaje" value="#{evidenciaAprendizajeController.selected.idResultadoAprendizaje}" required="true" requiredMessage="#{bundle.EditEvidenciaAprendizajeRequiredMessage_idResultadoAprendizaje}">
+                                    <f:selectItems value="#{resultadoAprendizajeController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idResultadoAprendizaje"/>
+                            </p:column>
+                        </p:row>      
+                    </p:panelGrid>
+                    <br />
+                    <br />                
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{evidenciaAprendizajeController.update}" value="#{bundle.EditEvidenciaAprendizajeSaveLink}" icon="ui-icon-disk"/>
+                    <p:button outcome="View" value="#{bundle.EditEvidenciaAprendizajeViewLink}" icon="ui-icon-searh"/>
+                    <br />
+                    <p:commandButton ajax="false" action="#{evidenciaAprendizajeController.prepareList}" value="#{bundle.EditEvidenciaAprendizajeShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

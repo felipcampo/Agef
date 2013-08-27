@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDetalleRecursoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formDetalleRecurso">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.EditDetalleRecursoTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditDetalleRecursoLabel_idDatalleRecurso}" for="idDatalleRecurso" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="idDatalleRecurso" value="#{detalleRecursoController.selected.idDatalleRecurso}" title="#{bundle.EditDetalleRecursoTitle_idDatalleRecurso}" required="true" requiredMessage="#{bundle.EditDetalleRecursoRequiredMessage_idDatalleRecurso}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idDatalleRecurso"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditDetalleRecursoLabel_nombHerrEquiMate}" for="nombHerrEquiMate" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="nombHerrEquiMate" value="#{detalleRecursoController.selected.nombHerrEquiMate}" title="#{bundle.EditDetalleRecursoTitle_nombHerrEquiMate}" required="true" requiredMessage="#{bundle.EditDetalleRecursoRequiredMessage_nombHerrEquiMate}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="nombHerrEquiMate"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditDetalleRecursoLabel_unidadMedida}" for="unidadMedida" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="unidadMedida" value="#{detalleRecursoController.selected.unidadMedida}" title="#{bundle.EditDetalleRecursoTitle_unidadMedida}" required="true" requiredMessage="#{bundle.EditDetalleRecursoRequiredMessage_unidadMedida}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="unidadMedida"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditDetalleRecursoLabel_cantidad}" for="cantidad" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="cantidad" value="#{detalleRecursoController.selected.cantidad}" title="#{bundle.EditDetalleRecursoTitle_cantidad}" required="true" requiredMessage="#{bundle.EditDetalleRecursoRequiredMessage_cantidad}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="cantidad"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditDetalleRecursoLabel_valorUnitario}" for="valorUnitario" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="valorUnitario" value="#{detalleRecursoController.selected.valorUnitario}" title="#{bundle.EditDetalleRecursoTitle_valorUnitario}" required="true" requiredMessage="#{bundle.EditDetalleRecursoRequiredMessage_valorUnitario}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="valorUnitario"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditDetalleRecursoLabel_valorTotal}" for="valorTotal" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="valorTotal" value="#{detalleRecursoController.selected.valorTotal}" title="#{bundle.EditDetalleRecursoTitle_valorTotal}" required="true" requiredMessage="#{bundle.EditDetalleRecursoRequiredMessage_valorTotal}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="valorTotal"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditDetalleRecursoLabel_fuenteRecurso}" for="fuenteRecurso" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="fuenteRecurso" value="#{detalleRecursoController.selected.fuenteRecurso}" title="#{bundle.EditDetalleRecursoTitle_fuenteRecurso}" required="true" requiredMessage="#{bundle.EditDetalleRecursoRequiredMessage_fuenteRecurso}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fuenteRecurso"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditDetalleRecursoLabel_rubroProsupuestal}" for="rubroProsupuestal" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="rubroProsupuestal" value="#{detalleRecursoController.selected.rubroProsupuestal}" title="#{bundle.EditDetalleRecursoTitle_rubroProsupuestal}" required="true" requiredMessage="#{bundle.EditDetalleRecursoRequiredMessage_rubroProsupuestal}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="rubroProsupuestal"/>
+                            </p:column>
+                        </p:row>      
+                    </p:panelGrid>
+                    <br />
+                    <br />                
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{detalleRecursoController.update}" value="#{bundle.EditDetalleRecursoSaveLink}" icon="ui-icon-disk"/>
+                    <p:button outcome="View" value="#{bundle.EditDetalleRecursoViewLink}" icon="ui-icon-searh"/>
+                    <br />
+                    <p:commandButton ajax="false" action="#{detalleRecursoController.prepareList}" value="#{bundle.EditDetalleRecursoShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

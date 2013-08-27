@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewEvaluacionSeguimientoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/> 
+            <h:form>
+                <div id="form" align="center">
+                    <p:panelGrid columns="2">
+                        <f:facet name="header">
+                            <p:row><p:column>#{bundle.ViewEvaluacionSeguimientoTitle}</p:column></p:row>                            
+                        </f:facet>
+                        <h:outputText value="#{bundle.ViewEvaluacionSeguimientoLabel_idEvaluacionSeguimiento}"/>
+                        <h:outputText value="#{evaluacionSeguimientoController.selected.idEvaluacionSeguimiento}" title="#{bundle.ViewEvaluacionSeguimientoTitle_idEvaluacionSeguimiento}"/>
+                        <h:outputText value="#{bundle.ViewEvaluacionSeguimientoLabel_aprendizaje}"/>
+                        <h:outputText value="#{evaluacionSeguimientoController.selected.aprendizaje}" title="#{bundle.ViewEvaluacionSeguimientoTitle_aprendizaje}"/>
+                        <h:outputText value="#{bundle.ViewEvaluacionSeguimientoLabel_autenticidad}"/>
+                        <h:outputText value="#{evaluacionSeguimientoController.selected.autenticidad}" title="#{bundle.ViewEvaluacionSeguimientoTitle_autenticidad}"/>
+                        <h:outputText value="#{bundle.ViewEvaluacionSeguimientoLabel_calidad}"/>
+                        <h:outputText value="#{evaluacionSeguimientoController.selected.calidad}" title="#{bundle.ViewEvaluacionSeguimientoTitle_calidad}"/>
+                        <h:outputText value="#{bundle.ViewEvaluacionSeguimientoLabel_carApr}"/>
+                        <h:outputText value="#{evaluacionSeguimientoController.selected.carApr}" title="#{bundle.ViewEvaluacionSeguimientoTitle_carApr}"/>
+                        <h:outputText value="#{bundle.ViewEvaluacionSeguimientoLabel_fecIni}"/>
+                        <h:outputText value="#{evaluacionSeguimientoController.selected.fecIni}" title="#{bundle.ViewEvaluacionSeguimientoTitle_fecIni}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEvaluacionSeguimientoLabel_fecFin}"/>
+                        <h:outputText value="#{evaluacionSeguimientoController.selected.fecFin}" title="#{bundle.ViewEvaluacionSeguimientoTitle_fecFin}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEvaluacionSeguimientoLabel_fecRecEvi}"/>
+                        <h:outputText value="#{evaluacionSeguimientoController.selected.fecRecEvi}" title="#{bundle.ViewEvaluacionSeguimientoTitle_fecRecEvi}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEvaluacionSeguimientoLabel_medio}"/>
+                        <h:outputText value="#{evaluacionSeguimientoController.selected.medio}" title="#{bundle.ViewEvaluacionSeguimientoTitle_medio}"/>
+                        <h:outputText value="#{bundle.ViewEvaluacionSeguimientoLabel_observaciones}"/>
+                        <h:outputText value="#{evaluacionSeguimientoController.selected.observaciones}" title="#{bundle.ViewEvaluacionSeguimientoTitle_observaciones}"/>
+                        <h:outputText value="#{bundle.ViewEvaluacionSeguimientoLabel_pertinencia}"/>
+                        <h:outputText value="#{evaluacionSeguimientoController.selected.pertinencia}" title="#{bundle.ViewEvaluacionSeguimientoTitle_pertinencia}"/>
+                        <h:outputText value="#{bundle.ViewEvaluacionSeguimientoLabel_tipo}"/>
+                        <h:outputText value="#{evaluacionSeguimientoController.selected.tipo}" title="#{bundle.ViewEvaluacionSeguimientoTitle_tipo}"/>
+                        <h:outputText value="#{bundle.ViewEvaluacionSeguimientoLabel_vigencia}"/>
+                        <h:outputText value="#{evaluacionSeguimientoController.selected.vigencia}" title="#{bundle.ViewEvaluacionSeguimientoTitle_vigencia}"/>
+                        <h:outputText value="#{bundle.ViewEvaluacionSeguimientoLabel_idResultadoAprendizaje}"/>
+                        <h:outputText value="#{evaluacionSeguimientoController.selected.idResultadoAprendizaje}" title="#{bundle.ViewEvaluacionSeguimientoTitle_idResultadoAprendizaje}"/>
+                        <h:outputText value="#{bundle.ViewEvaluacionSeguimientoLabel_idEvidenciaAprendizaje}"/>
+                        <h:outputText value="#{evaluacionSeguimientoController.selected.idEvidenciaAprendizaje}" title="#{bundle.ViewEvaluacionSeguimientoTitle_idEvidenciaAprendizaje}"/>
+                        <h:outputText value="#{bundle.ViewEvaluacionSeguimientoLabel_idFichaCaracterizacion}"/>
+                        <h:outputText value="#{evaluacionSeguimientoController.selected.idFichaCaracterizacion}" title="#{bundle.ViewEvaluacionSeguimientoTitle_idFichaCaracterizacion}"/>
+                        <h:outputText value="#{bundle.ViewEvaluacionSeguimientoLabel_idActividadProyecto}"/>
+                        <h:outputText value="#{evaluacionSeguimientoController.selected.idActividadProyecto}" title="#{bundle.ViewEvaluacionSeguimientoTitle_idActividadProyecto}"/>
+                        <h:outputText value="#{bundle.ViewEvaluacionSeguimientoLabel_idUsuario1}"/>
+                        <h:outputText value="#{evaluacionSeguimientoController.selected.idUsuario1}" title="#{bundle.ViewEvaluacionSeguimientoTitle_idUsuario1}"/>
+                        <h:outputText value="#{bundle.ViewEvaluacionSeguimientoLabel_idUsuario}"/>
+                        <h:outputText value="#{evaluacionSeguimientoController.selected.idUsuario}" title="#{bundle.ViewEvaluacionSeguimientoTitle_idUsuario}"/>
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                    <p:commandButton oncomplete="confirmationDelete.show();" process="@this" value="#{bundle.ListEvaluacionSeguimientoDestroyLink}"
+                                     title="#{bundle.ListEvaluacionSeguimientoDestroyLink}" icon="ui-icon-trash">
+                    </p:commandButton>
+                    <p:button outcome="Edit" value="#{bundle.ViewEvaluacionSeguimientoEditLink}" icon="ui-icon-pencil"/>
+                    <p:commandButton ajax="false" action="#{evaluacionSeguimientoController.prepareCreate}" value="#{bundle.ViewEvaluacionSeguimientoCreateLink}" icon="ui-icon-document"/>
+                    <br />
+                    <br />
+                    <p:commandButton ajax="false" action="#{evaluacionSeguimientoController.prepareList}" value="#{bundle.ViewEvaluacionSeguimientoShowAllLink}"/>
+                </div>            
+            </h:form>
+        </ui:define>
+        <ui:define name="dialogs">
+            <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  
+                             header="#{bundle.DeleteItemMessage}" severity="alert" widgetVar="confirmationDelete">  
+                <p:commandButton id="confirmDeleteButtonYes" value="#{bundle.DeleteButtonYes}" oncomplete="confirmationDelete.hide();"  
+                                 action="#{evaluacionSeguimientoController.destroy}"/>  
+                <p:commandButton id="confirmDeleteButtonNot" value="#{bundle.DeleteButtonNot}" onclick="confirmationDelete.hide();" type="button" />   
+            </p:confirmDialog>             
+        </ui:define>
+    </ui:composition>
+
+</html>

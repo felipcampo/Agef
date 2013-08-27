@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTipoAlistamientoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formTipoAlistamiento">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.EditTipoAlistamientoTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditTipoAlistamientoLabel_idTipoAlistamiento}" for="idTipoAlistamiento" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="idTipoAlistamiento" value="#{tipoAlistamientoController.selected.idTipoAlistamiento}" title="#{bundle.EditTipoAlistamientoTitle_idTipoAlistamiento}" required="true" requiredMessage="#{bundle.EditTipoAlistamientoRequiredMessage_idTipoAlistamiento}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idTipoAlistamiento"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditTipoAlistamientoLabel_nomTipoAlistamiento}" for="nomTipoAlistamiento" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="nomTipoAlistamiento" value="#{tipoAlistamientoController.selected.nomTipoAlistamiento}" title="#{bundle.EditTipoAlistamientoTitle_nomTipoAlistamiento}" required="true" requiredMessage="#{bundle.EditTipoAlistamientoRequiredMessage_nomTipoAlistamiento}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="nomTipoAlistamiento"/>
+                            </p:column>
+                        </p:row>      
+                    </p:panelGrid>
+                    <br />
+                    <br />                
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{tipoAlistamientoController.update}" value="#{bundle.EditTipoAlistamientoSaveLink}" icon="ui-icon-disk"/>
+                    <p:button outcome="View" value="#{bundle.EditTipoAlistamientoViewLink}" icon="ui-icon-searh"/>
+                    <br />
+                    <p:commandButton ajax="false" action="#{tipoAlistamientoController.prepareList}" value="#{bundle.EditTipoAlistamientoShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

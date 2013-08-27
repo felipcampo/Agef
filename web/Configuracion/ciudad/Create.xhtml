@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateCiudadTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formCiudad">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.CreateCiudadTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateCiudadLabel_idCiudad}" for="idCiudad" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="idCiudad" value="#{ciudadController.selected.idCiudad}" title="#{bundle.CreateCiudadTitle_idCiudad}" required="true" requiredMessage="#{bundle.CreateCiudadRequiredMessage_idCiudad}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idCiudad"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateCiudadLabel_nomCiu}" for="nomCiu" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="nomCiu" value="#{ciudadController.selected.nomCiu}" title="#{bundle.CreateCiudadTitle_nomCiu}" required="true" requiredMessage="#{bundle.CreateCiudadRequiredMessage_nomCiu}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="nomCiu"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateCiudadLabel_descrZona}" for="descrZona" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="descrZona" value="#{ciudadController.selected.descrZona}" title="#{bundle.CreateCiudadTitle_descrZona}" required="true" requiredMessage="#{bundle.CreateCiudadRequiredMessage_descrZona}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="descrZona"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateCiudadLabel_idDepartamento}" for="idDepartamento" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idDepartamento" value="#{ciudadController.selected.idDepartamento}" required="true" requiredMessage="#{bundle.CreateCiudadRequiredMessage_idDepartamento}">
+                                    <f:selectItems value="#{departamentoController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idDepartamento"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{ciudadController.create}" value="#{bundle.CreateCiudadSaveLink}" icon="ui-icon-disk"/>
+                    <br />
+                    <br />
+                    <p:commandButton ajax="false" action="#{ciudadController.prepareList}" value="#{bundle.CreateCiudadShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListEvaluacionSeguimientoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form id="listEvaluacionSeguimiento" styleClass="jsfcrud_list_form">
+                <div id="list" align="center">
+                    <p:growl id="msgs" showDetail="false" sticky="false"/>
+                    <h:outputText escape="false" value="#{bundle.ListEvaluacionSeguimientoEmpty}" rendered="#{evaluacionSeguimientoController.lazyModel.rowCount == 0}"/>
+                    <h:panelGroup rendered="#{evaluacionSeguimientoController.lazyModel.rowCount > 0}">
+                        <p:dataTable id="tableListEvaluacionSeguimiento" 
+                                     value="#{evaluacionSeguimientoController.lazyModel}" 
+                                     var="item" 
+                                     paginator="true" rows="10" paginatorAlwaysVisible="false"
+                                     paginatorTemplate="{FirstPageLink} {PreviousPageLink}
+                                     {PageLinks} {NextPageLink}
+                                     {LastPageLink} {RowsPerPageDropdown}"  
+                                     rowsPerPageTemplate="5,10,15" paginatorPosition="bottom"
+                                     lazy="true"
+                                     emptyMessage="No se encontraron datos con el criterio dado"
+                                     widgetVar="tableEvaluacionSeguimiento">
+                            <p:column headerText="#{bundle.ListEvaluacionSeguimientoTitle_idEvaluacionSeguimiento}"
+                                      filterBy="#{item.idEvaluacionSeguimiento}"
+                                      sortBy="#{item.idEvaluacionSeguimiento}">                        
+                                <h:outputText value="#{item.idEvaluacionSeguimiento}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListEvaluacionSeguimientoTitle_aprendizaje}"
+                                      filterBy="#{item.aprendizaje}"
+                                      sortBy="#{item.aprendizaje}">                        
+                                <h:outputText value="#{item.aprendizaje}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListEvaluacionSeguimientoTitle_autenticidad}"
+                                      filterBy="#{item.autenticidad}"
+                                      sortBy="#{item.autenticidad}">                        
+                                <h:outputText value="#{item.autenticidad}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListEvaluacionSeguimientoTitle_calidad}"
+                                      filterBy="#{item.calidad}"
+                                      sortBy="#{item.calidad}">                        
+                                <h:outputText value="#{item.calidad}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListEvaluacionSeguimientoTitle_carApr}"
+                                      filterBy="#{item.carApr}"
+                                      sortBy="#{item.carApr}">                        
+                                <h:outputText value="#{item.carApr}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListEvaluacionSeguimientoTitle_fecIni}"
+                                      filterBy="#{item.fecIni}"
+                                      sortBy="#{item.fecIni}">                        
+                                <h:outputText value="#{item.fecIni}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListEvaluacionSeguimientoTitle_fecFin}"
+                                      filterBy="#{item.fecFin}"
+                                      sortBy="#{item.fecFin}">                        
+                                <h:outputText value="#{item.fecFin}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListEvaluacionSeguimientoTitle_fecRecEvi}"
+                                      filterBy="#{item.fecRecEvi}"
+                                      sortBy="#{item.fecRecEvi}">                        
+                                <h:outputText value="#{item.fecRecEvi}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListEvaluacionSeguimientoTitle_medio}"
+                                      filterBy="#{item.medio}"
+                                      sortBy="#{item.medio}">                        
+                                <h:outputText value="#{item.medio}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListEvaluacionSeguimientoTitle_observaciones}"
+                                      filterBy="#{item.observaciones}"
+                                      sortBy="#{item.observaciones}">                        
+                                <h:outputText value="#{item.observaciones}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListEvaluacionSeguimientoTitle_pertinencia}"
+                                      filterBy="#{item.pertinencia}"
+                                      sortBy="#{item.pertinencia}">                        
+                                <h:outputText value="#{item.pertinencia}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListEvaluacionSeguimientoTitle_tipo}"
+                                      filterBy="#{item.tipo}"
+                                      sortBy="#{item.tipo}">                        
+                                <h:outputText value="#{item.tipo}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListEvaluacionSeguimientoTitle_vigencia}"
+                                      filterBy="#{item.vigencia}"
+                                      sortBy="#{item.vigencia}">                        
+                                <h:outputText value="#{item.vigencia}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListEvaluacionSeguimientoTitle_idResultadoAprendizaje}"
+                                      filterBy="#{item.idResultadoAprendizaje}"
+                                      sortBy="#{item.idResultadoAprendizaje}">                        
+                                <h:outputText value="#{item.idResultadoAprendizaje}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListEvaluacionSeguimientoTitle_idEvidenciaAprendizaje}"
+                                      filterBy="#{item.idEvidenciaAprendizaje}"
+                                      sortBy="#{item.idEvidenciaAprendizaje}">                        
+                                <h:outputText value="#{item.idEvidenciaAprendizaje}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListEvaluacionSeguimientoTitle_idFichaCaracterizacion}"
+                                      filterBy="#{item.idFichaCaracterizacion}"
+                                      sortBy="#{item.idFichaCaracterizacion}">                        
+                                <h:outputText value="#{item.idFichaCaracterizacion}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListEvaluacionSeguimientoTitle_idActividadProyecto}"
+                                      filterBy="#{item.idActividadProyecto}"
+                                      sortBy="#{item.idActividadProyecto}">                        
+                                <h:outputText value="#{item.idActividadProyecto}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListEvaluacionSeguimientoTitle_idUsuario1}"
+                                      filterBy="#{item.idUsuario1}"
+                                      sortBy="#{item.idUsuario1}">                        
+                                <h:outputText value="#{item.idUsuario1}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListEvaluacionSeguimientoTitle_idUsuario}"
+                                      filterBy="#{item.idUsuario}"
+                                      sortBy="#{item.idUsuario}">                        
+                                <h:outputText value="#{item.idUsuario}"/>
+                            </p:column>
+                            <p:column>                        
+                                <p:commandButton ajax="false" action="#{evaluacionSeguimientoController.prepareView}" title="#{bundle.ListEvaluacionSeguimientoViewLink}" icon="ui-icon-search"/>
+                                <p:commandButton ajax="false" action="#{evaluacionSeguimientoController.prepareEdit}" title="#{bundle.ListEvaluacionSeguimientoEditLink}" icon="ui-icon-pencil"/>
+                                <p:commandButton oncomplete="confirmationDelete.show();" process="@this"
+                                                 title="#{bundle.ListEvaluacionSeguimientoDestroyLink}" icon="ui-icon-trash">
+                                    <f:setPropertyActionListener value="#{item}" target="#{evaluacionSeguimientoController.selected}"/>
+                                </p:commandButton>
+                            </p:column>
+                        </p:dataTable>
+                    </h:panelGroup>
+                    <br />
+                    <p:commandButton ajax="false" action="#{evaluacionSeguimientoController.prepareCreate}" value="#{bundle.ListEvaluacionSeguimientoCreateLink}" icon="ui-icon-document"/>
+                </div>        
+            </h:form>
+        </ui:define>
+        <ui:define name="dialogs">
+            <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  
+                             header="#{bundle.DeleteItemMessage}" severity="alert" widgetVar="confirmationDelete">  
+                <p:commandButton id="confirmDeleteButtonYes" value="#{bundle.DeleteButtonYes}" update=":listEvaluacionSeguimiento" oncomplete="confirmationDelete.hide();"  
+                                 action="#{evaluacionSeguimientoController.destroy}"/>  
+                <p:commandButton id="confirmDeleteButtonNot" value="#{bundle.DeleteButtonNot}" onclick="confirmationDelete.hide();" type="button" />   
+            </p:confirmDialog>             
+        </ui:define>
+    </ui:composition>
+
+</html>

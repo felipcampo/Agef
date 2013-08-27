@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>AGEF</title>
+        <link rel="shortcut icon" href="https://lh3.googleusercontent.com/j8Zr_KqW7CylmvrPVJ_cHTsABx8zvN4ZRI6hPmRbD5KeCMOMzsuwOzcb-93zqP7GMQ=w1600" type="image/x-icon" />
+        <h:outputStylesheet name="css/agef_theme.css"/>
+        <h:outputStylesheet name="css/menuvertical.css"/>
+        <h:outputStylesheet name="css/boilerplate.css"/>
+        <h:outputStylesheet name="css/agef.css"/>
+        <h:outputScript name="idioma_calendario_es.js" library="js" target="head"/>
+        <script src="resources/js/respond.min.js"></script>
+    </h:head>
+
+    <h:body>
+        <p:layout fullPage="true">
+            <p:layoutUnit position="center">                
+                <div class="gridContainer clearfix">
+                    <div id="Layoutbanner"><div id="logo">
+                            <h:graphicImage library="images" name="logogrande.png" id="agefl"></h:graphicImage>
+                        </div>
+                        <h:graphicImage library="images" name="banner.JPG"/>
+                        <!-- <img  src="/resources/images/banner_nuevo.PNG" alt="agef"/> -->
+                    </div>
+                    <div id="Layoutmenu">
+                        <ui:insert name="menumodulo"/>
+                    </div>
+                    <div id="Layoutsubmenu">
+                        <ui:insert name="submenu"/>
+                    </div>
+                    <div id="Layoutmenuver"><ul id="navigationMenu">
+                            <li><a  href="/Agef/faces/index_1.xhtml">
+                                    <span>Inicio</span><h:graphicImage library="images" name="icono_inicio.png" />
+                                </a>
+                            </li>
+                            <li><a  href="/Agef/faces/Seguimiento_Evaluacion_Aprendices/index_seg_ap.xhtml">
+                                    <span>Seguimiento y Evaluación Aprendices</span><h:graphicImage library="images/icoseguimiento" name="seguimiento.png" />
+                                </a>
+                            </li>
+                            <li><a  href="/Agef/faces/Seg_Ap_Et_Prod/index_seg_et_prod.xhtml">
+                                    <span>Seguimiento y Evaluación Aprendices Etapa Productiva</span><h:graphicImage library="images/icosegappro" name="Seg_Ap_Et_Prod.png" />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Agef/faces/Mod_Alistamiento/index_alistamiento.xhtml">
+                                    <span>Seguimiento y Evaluación a Instructores</span><h:graphicImage library="images/icoseguimientoinstructores" name="seguimientoinstructores.png" />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Agef/faces/Mod_Alistamiento/index_alistamiento.xhtml">
+                                    <span>Alistamiento</span><h:graphicImage library="images/icoalistamiento" name="alistamiento.png" />
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="/Agef/faces/Seg_Proyectos/inicio_proyectos.xhtml">
+                                    <span>Seguimiento a Proyectos</span><h:graphicImage library="images/icoproyectos" name="logoproyecto.png" />
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="/Agef/faces/Indicadores/indexindicadores.xhtml">
+                                    <span>Indicadores</span><h:graphicImage library="images/icoindicadores" name="indicadores.png" />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Agef/faces/Bienestar/inicio_bienestar.xhtml">
+                                    <span>Bienestar</span><h:graphicImage library="images/icobienestar" name="icono_bienestar.png" />
+                                </a>
+                            </li>
+                        </ul></div>
+                    <div id="Layoutcontenido">
+                        <ui:insert name="body">Default Body</ui:insert>
+                    </div>
+                    <div id="Layoutpieprincipal">
+                        <div id="Layoutpie1">
+                            <p>Servicio Nacional de Aprendizaje SENA<br/>
+                                Dir. General Calle 57 No. 8-69, Bogotá D.C.<br/>
+                                PBX (57 1) 5461500</p>
+                        </div>
+                        <div id="Layoutpie2"><center></center></div>
+                        <div id="Layoutpie3">Línea gratuita de atención al ciudadano<br/>
+                            Bogotá 5925555 - Resto del país 018000 910270</div>
+                        <div id="Layoutpie4">Horario de atención: Lunes a Viernes 8:00 am - 5:30 pm<br/>
+                            Todos los derechos reservados - 2006 | 2013</div>
+                    </div>
+                </div>
+            </p:layoutUnit>
+        </p:layout>
+        <ui:insert name="dialogs" />    
+    </h:body>
+</html>

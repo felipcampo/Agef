@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewSeguimientoProductivaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/> 
+            <h:form>
+                <div id="form" align="center">
+                    <p:panelGrid columns="2">
+                        <f:facet name="header">
+                            <p:row><p:column>#{bundle.ViewSeguimientoProductivaTitle}</p:column></p:row>                            
+                        </f:facet>
+                        <h:outputText value="#{bundle.ViewSeguimientoProductivaLabel_idSeguimientoProductiva}"/>
+                        <h:outputText value="#{seguimientoProductivaController.selected.idSeguimientoProductiva}" title="#{bundle.ViewSeguimientoProductivaTitle_idSeguimientoProductiva}"/>
+                        <h:outputText value="#{bundle.ViewSeguimientoProductivaLabel_espRec}"/>
+                        <h:outputText value="#{seguimientoProductivaController.selected.espRec}" title="#{bundle.ViewSeguimientoProductivaTitle_espRec}"/>
+                        <h:outputText value="#{bundle.ViewSeguimientoProductivaLabel_fecRepFin}"/>
+                        <h:outputText value="#{seguimientoProductivaController.selected.fecRepFin}" title="#{bundle.ViewSeguimientoProductivaTitle_fecRepFin}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewSeguimientoProductivaLabel_fecRepIni}"/>
+                        <h:outputText value="#{seguimientoProductivaController.selected.fecRepIni}" title="#{bundle.ViewSeguimientoProductivaTitle_fecRepIni}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewSeguimientoProductivaLabel_juicioEva}"/>
+                        <h:outputText value="#{seguimientoProductivaController.selected.juicioEva}" title="#{bundle.ViewSeguimientoProductivaTitle_juicioEva}"/>
+                        <h:outputText value="#{bundle.ViewSeguimientoProductivaLabel_reconocimentoEspeciales}"/>
+                        <h:outputText value="#{seguimientoProductivaController.selected.reconocimentoEspeciales}" title="#{bundle.ViewSeguimientoProductivaTitle_reconocimentoEspeciales}"/>
+                        <h:outputText value="#{bundle.ViewSeguimientoProductivaLabel_requierePlanMejoramiento}"/>
+                        <h:outputText value="#{seguimientoProductivaController.selected.requierePlanMejoramiento}" title="#{bundle.ViewSeguimientoProductivaTitle_requierePlanMejoramiento}"/>
+                        <h:outputText value="#{bundle.ViewSeguimientoProductivaLabel_tipoInforme}"/>
+                        <h:outputText value="#{seguimientoProductivaController.selected.tipoInforme}" title="#{bundle.ViewSeguimientoProductivaTitle_tipoInforme}"/>
+                        <h:outputText value="#{bundle.ViewSeguimientoProductivaLabel_idFichaCaracterizacion}"/>
+                        <h:outputText value="#{seguimientoProductivaController.selected.idFichaCaracterizacion}" title="#{bundle.ViewSeguimientoProductivaTitle_idFichaCaracterizacion}"/>
+                        <h:outputText value="#{bundle.ViewSeguimientoProductivaLabel_idConcertacionPlanTrabajoProductiva}"/>
+                        <h:outputText value="#{seguimientoProductivaController.selected.idConcertacionPlanTrabajoProductiva}" title="#{bundle.ViewSeguimientoProductivaTitle_idConcertacionPlanTrabajoProductiva}"/>
+                        <h:outputText value="#{bundle.ViewSeguimientoProductivaLabel_idVisitaEtapaProductiva}"/>
+                        <h:outputText value="#{seguimientoProductivaController.selected.idVisitaEtapaProductiva}" title="#{bundle.ViewSeguimientoProductivaTitle_idVisitaEtapaProductiva}"/>
+                        <h:outputText value="#{bundle.ViewSeguimientoProductivaLabel_idEmpresa}"/>
+                        <h:outputText value="#{seguimientoProductivaController.selected.idEmpresa}" title="#{bundle.ViewSeguimientoProductivaTitle_idEmpresa}"/>
+                        <h:outputText value="#{bundle.ViewSeguimientoProductivaLabel_idUsuario}"/>
+                        <h:outputText value="#{seguimientoProductivaController.selected.idUsuario}" title="#{bundle.ViewSeguimientoProductivaTitle_idUsuario}"/>
+                        <h:outputText value="#{bundle.ViewSeguimientoProductivaLabel_idModalidadProductiva}"/>
+                        <h:outputText value="#{seguimientoProductivaController.selected.idModalidadProductiva}" title="#{bundle.ViewSeguimientoProductivaTitle_idModalidadProductiva}"/>
+                        <h:outputText value="#{bundle.ViewSeguimientoProductivaLabel_idCentroFormacion}"/>
+                        <h:outputText value="#{seguimientoProductivaController.selected.idCentroFormacion}" title="#{bundle.ViewSeguimientoProductivaTitle_idCentroFormacion}"/>
+                        <h:outputText value="#{bundle.ViewSeguimientoProductivaLabel_idIncidenteProductiva}"/>
+                        <h:outputText value="#{seguimientoProductivaController.selected.idIncidenteProductiva}" title="#{bundle.ViewSeguimientoProductivaTitle_idIncidenteProductiva}"/>
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                    <p:commandButton oncomplete="confirmationDelete.show();" process="@this" value="#{bundle.ListSeguimientoProductivaDestroyLink}"
+                                     title="#{bundle.ListSeguimientoProductivaDestroyLink}" icon="ui-icon-trash">
+                    </p:commandButton>
+                    <p:button outcome="Edit" value="#{bundle.ViewSeguimientoProductivaEditLink}" icon="ui-icon-pencil"/>
+                    <p:commandButton ajax="false" action="#{seguimientoProductivaController.prepareCreate}" value="#{bundle.ViewSeguimientoProductivaCreateLink}" icon="ui-icon-document"/>
+                    <br />
+                    <br />
+                    <p:commandButton ajax="false" action="#{seguimientoProductivaController.prepareList}" value="#{bundle.ViewSeguimientoProductivaShowAllLink}"/>
+                </div>            
+            </h:form>
+        </ui:define>
+        <ui:define name="dialogs">
+            <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  
+                             header="#{bundle.DeleteItemMessage}" severity="alert" widgetVar="confirmationDelete">  
+                <p:commandButton id="confirmDeleteButtonYes" value="#{bundle.DeleteButtonYes}" oncomplete="confirmationDelete.hide();"  
+                                 action="#{seguimientoProductivaController.destroy}"/>  
+                <p:commandButton id="confirmDeleteButtonNot" value="#{bundle.DeleteButtonNot}" onclick="confirmationDelete.hide();" type="button" />   
+            </p:confirmDialog>             
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditResultadoAprendizajeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formResultadoAprendizaje">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.EditResultadoAprendizajeTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditResultadoAprendizajeLabel_idResultadoAprendizaje}" for="idResultadoAprendizaje" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="idResultadoAprendizaje" value="#{resultadoAprendizajeController.selected.idResultadoAprendizaje}" title="#{bundle.EditResultadoAprendizajeTitle_idResultadoAprendizaje}" required="true" requiredMessage="#{bundle.EditResultadoAprendizajeRequiredMessage_idResultadoAprendizaje}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idResultadoAprendizaje"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditResultadoAprendizajeLabel_descrNomResuApr}" for="descrNomResuApr" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputTextarea rows="4" cols="30" id="descrNomResuApr" value="#{resultadoAprendizajeController.selected.descrNomResuApr}" title="#{bundle.EditResultadoAprendizajeTitle_descrNomResuApr}" required="true" requiredMessage="#{bundle.EditResultadoAprendizajeRequiredMessage_descrNomResuApr}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="descrNomResuApr"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditResultadoAprendizajeLabel_idCompetencia}" for="idCompetencia" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idCompetencia" value="#{resultadoAprendizajeController.selected.idCompetencia}" required="true" requiredMessage="#{bundle.EditResultadoAprendizajeRequiredMessage_idCompetencia}">
+                                    <f:selectItems value="#{competenciaController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idCompetencia"/>
+                            </p:column>
+                        </p:row>      
+                    </p:panelGrid>
+                    <br />
+                    <br />                
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{resultadoAprendizajeController.update}" value="#{bundle.EditResultadoAprendizajeSaveLink}" icon="ui-icon-disk"/>
+                    <p:button outcome="View" value="#{bundle.EditResultadoAprendizajeViewLink}" icon="ui-icon-searh"/>
+                    <br />
+                    <p:commandButton ajax="false" action="#{resultadoAprendizajeController.prepareList}" value="#{bundle.EditResultadoAprendizajeShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

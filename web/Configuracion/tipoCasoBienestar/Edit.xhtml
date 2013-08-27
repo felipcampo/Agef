@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTipoCasoBienestarTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formTipoCasoBienestar">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.EditTipoCasoBienestarTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditTipoCasoBienestarLabel_idTipoCasoBienestar}" for="idTipoCasoBienestar" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="idTipoCasoBienestar" value="#{tipoCasoBienestarController.selected.idTipoCasoBienestar}" title="#{bundle.EditTipoCasoBienestarTitle_idTipoCasoBienestar}" required="true" requiredMessage="#{bundle.EditTipoCasoBienestarRequiredMessage_idTipoCasoBienestar}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idTipoCasoBienestar"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditTipoCasoBienestarLabel_descrTipoBienestar}" for="descrTipoBienestar" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="descrTipoBienestar" value="#{tipoCasoBienestarController.selected.descrTipoBienestar}" title="#{bundle.EditTipoCasoBienestarTitle_descrTipoBienestar}" required="true" requiredMessage="#{bundle.EditTipoCasoBienestarRequiredMessage_descrTipoBienestar}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="descrTipoBienestar"/>
+                            </p:column>
+                        </p:row>      
+                    </p:panelGrid>
+                    <br />
+                    <br />                
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{tipoCasoBienestarController.update}" value="#{bundle.EditTipoCasoBienestarSaveLink}" icon="ui-icon-disk"/>
+                    <p:button outcome="View" value="#{bundle.EditTipoCasoBienestarViewLink}" icon="ui-icon-searh"/>
+                    <br />
+                    <p:commandButton ajax="false" action="#{tipoCasoBienestarController.prepareList}" value="#{bundle.EditTipoCasoBienestarShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateGuiaAprendizajeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formGuiaAprendizaje">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.CreateGuiaAprendizajeTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateGuiaAprendizajeLabel_idGuiaAprendizaje}" for="idGuiaAprendizaje" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="idGuiaAprendizaje" value="#{guiaAprendizajeController.selected.idGuiaAprendizaje}" title="#{bundle.CreateGuiaAprendizajeTitle_idGuiaAprendizaje}" required="true" requiredMessage="#{bundle.CreateGuiaAprendizajeRequiredMessage_idGuiaAprendizaje}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idGuiaAprendizaje"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateGuiaAprendizajeLabel_introduccionGuia}" for="introduccionGuia" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="introduccionGuia" value="#{guiaAprendizajeController.selected.introduccionGuia}" title="#{bundle.CreateGuiaAprendizajeTitle_introduccionGuia}" required="true" requiredMessage="#{bundle.CreateGuiaAprendizajeRequiredMessage_introduccionGuia}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="introduccionGuia"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateGuiaAprendizajeLabel_actividadReflexionInicial}" for="actividadReflexionInicial" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="actividadReflexionInicial" value="#{guiaAprendizajeController.selected.actividadReflexionInicial}" title="#{bundle.CreateGuiaAprendizajeTitle_actividadReflexionInicial}" required="true" requiredMessage="#{bundle.CreateGuiaAprendizajeRequiredMessage_actividadReflexionInicial}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="actividadReflexionInicial"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateGuiaAprendizajeLabel_actividadContextualizacion}" for="actividadContextualizacion" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="actividadContextualizacion" value="#{guiaAprendizajeController.selected.actividadContextualizacion}" title="#{bundle.CreateGuiaAprendizajeTitle_actividadContextualizacion}" required="true" requiredMessage="#{bundle.CreateGuiaAprendizajeRequiredMessage_actividadContextualizacion}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="actividadContextualizacion"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateGuiaAprendizajeLabel_actividadApropiacionPro}" for="actividadApropiacionPro" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="actividadApropiacionPro" value="#{guiaAprendizajeController.selected.actividadApropiacionPro}" title="#{bundle.CreateGuiaAprendizajeTitle_actividadApropiacionPro}" required="true" requiredMessage="#{bundle.CreateGuiaAprendizajeRequiredMessage_actividadApropiacionPro}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="actividadApropiacionPro"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateGuiaAprendizajeLabel_actividadTransferenciaConoci}" for="actividadTransferenciaConoci" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="actividadTransferenciaConoci" value="#{guiaAprendizajeController.selected.actividadTransferenciaConoci}" title="#{bundle.CreateGuiaAprendizajeTitle_actividadTransferenciaConoci}" required="true" requiredMessage="#{bundle.CreateGuiaAprendizajeRequiredMessage_actividadTransferenciaConoci}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="actividadTransferenciaConoci"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateGuiaAprendizajeLabel_bibliografia}" for="bibliografia" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="bibliografia" value="#{guiaAprendizajeController.selected.bibliografia}" title="#{bundle.CreateGuiaAprendizajeTitle_bibliografia}" required="true" requiredMessage="#{bundle.CreateGuiaAprendizajeRequiredMessage_bibliografia}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="bibliografia"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateGuiaAprendizajeLabel_glosario}" for="glosario" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="glosario" value="#{guiaAprendizajeController.selected.glosario}" title="#{bundle.CreateGuiaAprendizajeTitle_glosario}" required="true" requiredMessage="#{bundle.CreateGuiaAprendizajeRequiredMessage_glosario}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="glosario"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateGuiaAprendizajeLabel_idProyectoFormativo}" for="idProyectoFormativo" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idProyectoFormativo" value="#{guiaAprendizajeController.selected.idProyectoFormativo}" required="true" requiredMessage="#{bundle.CreateGuiaAprendizajeRequiredMessage_idProyectoFormativo}">
+                                    <f:selectItems value="#{proyectoFormativoController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idProyectoFormativo"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateGuiaAprendizajeLabel_idAmbiente}" for="idAmbiente" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idAmbiente" value="#{guiaAprendizajeController.selected.idAmbiente}" required="true" requiredMessage="#{bundle.CreateGuiaAprendizajeRequiredMessage_idAmbiente}">
+                                    <f:selectItems value="#{ambienteController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idAmbiente"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateGuiaAprendizajeLabel_idDatalleRecurso}" for="idDatalleRecurso" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idDatalleRecurso" value="#{guiaAprendizajeController.selected.idDatalleRecurso}" required="true" requiredMessage="#{bundle.CreateGuiaAprendizajeRequiredMessage_idDatalleRecurso}">
+                                    <f:selectItems value="#{detalleRecursoController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idDatalleRecurso"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateGuiaAprendizajeLabel_idActividadProyecto}" for="idActividadProyecto" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idActividadProyecto" value="#{guiaAprendizajeController.selected.idActividadProyecto}" required="true" requiredMessage="#{bundle.CreateGuiaAprendizajeRequiredMessage_idActividadProyecto}">
+                                    <f:selectItems value="#{actividadProyectoController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idActividadProyecto"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateGuiaAprendizajeLabel_idFichaCaracterizacion}" for="idFichaCaracterizacion" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idFichaCaracterizacion" value="#{guiaAprendizajeController.selected.idFichaCaracterizacion}" required="true" requiredMessage="#{bundle.CreateGuiaAprendizajeRequiredMessage_idFichaCaracterizacion}">
+                                    <f:selectItems value="#{fichaCaracterizacionController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idFichaCaracterizacion"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{guiaAprendizajeController.create}" value="#{bundle.CreateGuiaAprendizajeSaveLink}" icon="ui-icon-disk"/>
+                    <br />
+                    <br />
+                    <p:commandButton ajax="false" action="#{guiaAprendizajeController.prepareList}" value="#{bundle.CreateGuiaAprendizajeShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCriterioSeguimientoProyectoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formCriterioSeguimientoProyecto">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.EditCriterioSeguimientoProyectoTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditCriterioSeguimientoProyectoLabel_idCriterioSeguimientoProyecto}" for="idCriterioSeguimientoProyecto" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="idCriterioSeguimientoProyecto" value="#{criterioSeguimientoProyectoController.selected.idCriterioSeguimientoProyecto}" title="#{bundle.EditCriterioSeguimientoProyectoTitle_idCriterioSeguimientoProyecto}" required="true" requiredMessage="#{bundle.EditCriterioSeguimientoProyectoRequiredMessage_idCriterioSeguimientoProyecto}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idCriterioSeguimientoProyecto"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditCriterioSeguimientoProyectoLabel_obsCriSeg}" for="obsCriSeg" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputTextarea rows="4" cols="30" id="obsCriSeg" value="#{criterioSeguimientoProyectoController.selected.obsCriSeg}" title="#{bundle.EditCriterioSeguimientoProyectoTitle_obsCriSeg}" required="true" requiredMessage="#{bundle.EditCriterioSeguimientoProyectoRequiredMessage_obsCriSeg}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="obsCriSeg"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditCriterioSeguimientoProyectoLabel_idEstadoJuicio}" for="idEstadoJuicio" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idEstadoJuicio" value="#{criterioSeguimientoProyectoController.selected.idEstadoJuicio}" required="true" requiredMessage="#{bundle.EditCriterioSeguimientoProyectoRequiredMessage_idEstadoJuicio}">
+                                    <f:selectItems value="#{estadoJuicioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idEstadoJuicio"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditCriterioSeguimientoProyectoLabel_idGradoJuicio}" for="idGradoJuicio" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idGradoJuicio" value="#{criterioSeguimientoProyectoController.selected.idGradoJuicio}" required="true" requiredMessage="#{bundle.EditCriterioSeguimientoProyectoRequiredMessage_idGradoJuicio}">
+                                    <f:selectItems value="#{gradoJuicioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idGradoJuicio"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditCriterioSeguimientoProyectoLabel_idTipoJuicio}" for="idTipoJuicio" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idTipoJuicio" value="#{criterioSeguimientoProyectoController.selected.idTipoJuicio}" required="true" requiredMessage="#{bundle.EditCriterioSeguimientoProyectoRequiredMessage_idTipoJuicio}">
+                                    <f:selectItems value="#{tipoJuicioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idTipoJuicio"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditCriterioSeguimientoProyectoLabel_idEvaluacionCriterioSeguimientoProyecto}" for="idEvaluacionCriterioSeguimientoProyecto" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idEvaluacionCriterioSeguimientoProyecto" value="#{criterioSeguimientoProyectoController.selected.idEvaluacionCriterioSeguimientoProyecto}" required="true" requiredMessage="#{bundle.EditCriterioSeguimientoProyectoRequiredMessage_idEvaluacionCriterioSeguimientoProyecto}">
+                                    <f:selectItems value="#{evaluacionCriterioSeguimientoProyectoController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idEvaluacionCriterioSeguimientoProyecto"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditCriterioSeguimientoProyectoLabel_idCriterioEvaluacion}" for="idCriterioEvaluacion" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idCriterioEvaluacion" value="#{criterioSeguimientoProyectoController.selected.idCriterioEvaluacion}" required="true" requiredMessage="#{bundle.EditCriterioSeguimientoProyectoRequiredMessage_idCriterioEvaluacion}">
+                                    <f:selectItems value="#{criterioEvaluacionController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idCriterioEvaluacion"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditCriterioSeguimientoProyectoLabel_idSeguimientoProyecto}" for="idSeguimientoProyecto" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idSeguimientoProyecto" value="#{criterioSeguimientoProyectoController.selected.idSeguimientoProyecto}" required="true" requiredMessage="#{bundle.EditCriterioSeguimientoProyectoRequiredMessage_idSeguimientoProyecto}">
+                                    <f:selectItems value="#{seguimientoProyectoController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idSeguimientoProyecto"/>
+                            </p:column>
+                        </p:row>      
+                    </p:panelGrid>
+                    <br />
+                    <br />                
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{criterioSeguimientoProyectoController.update}" value="#{bundle.EditCriterioSeguimientoProyectoSaveLink}" icon="ui-icon-disk"/>
+                    <p:button outcome="View" value="#{bundle.EditCriterioSeguimientoProyectoViewLink}" icon="ui-icon-searh"/>
+                    <br />
+                    <p:commandButton ajax="false" action="#{criterioSeguimientoProyectoController.prepareList}" value="#{bundle.EditCriterioSeguimientoProyectoShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

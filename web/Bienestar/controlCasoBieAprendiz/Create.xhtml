@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateControlCasoBieAprendizTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formControlCasoBieAprendiz">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.CreateControlCasoBieAprendizTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateControlCasoBieAprendizLabel_idControlCasoBieAprendiz}" for="idControlCasoBieAprendiz" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="idControlCasoBieAprendiz" value="#{controlCasoBieAprendizController.selected.idControlCasoBieAprendiz}" title="#{bundle.CreateControlCasoBieAprendizTitle_idControlCasoBieAprendiz}" required="true" requiredMessage="#{bundle.CreateControlCasoBieAprendizRequiredMessage_idControlCasoBieAprendiz}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idControlCasoBieAprendiz"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateControlCasoBieAprendizLabel_comentarioIns}" for="comentarioIns" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="comentarioIns" value="#{controlCasoBieAprendizController.selected.comentarioIns}" title="#{bundle.CreateControlCasoBieAprendizTitle_comentarioIns}" />
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="comentarioIns"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateControlCasoBieAprendizLabel_fecInicioControlBie}" for="fecInicioControlBie" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm:ss" showOn="button" id="fecInicioControlBie" value="#{controlCasoBieAprendizController.selected.fecInicioControlBie}" title="#{bundle.CreateControlCasoBieAprendizTitle_fecInicioControlBie}" required="true" requiredMessage="#{bundle.CreateControlCasoBieAprendizRequiredMessage_fecInicioControlBie}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fecInicioControlBie"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateControlCasoBieAprendizLabel_fecFinControlBie}" for="fecFinControlBie" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm:ss" showOn="button" id="fecFinControlBie" value="#{controlCasoBieAprendizController.selected.fecFinControlBie}" title="#{bundle.CreateControlCasoBieAprendizTitle_fecFinControlBie}" />
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fecFinControlBie"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateControlCasoBieAprendizLabel_logrosControl}" for="logrosControl" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="logrosControl" value="#{controlCasoBieAprendizController.selected.logrosControl}" title="#{bundle.CreateControlCasoBieAprendizTitle_logrosControl}" required="true" requiredMessage="#{bundle.CreateControlCasoBieAprendizRequiredMessage_logrosControl}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="logrosControl"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateControlCasoBieAprendizLabel_numSegBie}" for="numSegBie" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="numSegBie" value="#{controlCasoBieAprendizController.selected.numSegBie}" title="#{bundle.CreateControlCasoBieAprendizTitle_numSegBie}" required="true" requiredMessage="#{bundle.CreateControlCasoBieAprendizRequiredMessage_numSegBie}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="numSegBie"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateControlCasoBieAprendizLabel_objectivoSes}" for="objectivoSes" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="objectivoSes" value="#{controlCasoBieAprendizController.selected.objectivoSes}" title="#{bundle.CreateControlCasoBieAprendizTitle_objectivoSes}" required="true" requiredMessage="#{bundle.CreateControlCasoBieAprendizRequiredMessage_objectivoSes}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="objectivoSes"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateControlCasoBieAprendizLabel_temaAbo}" for="temaAbo" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="temaAbo" value="#{controlCasoBieAprendizController.selected.temaAbo}" title="#{bundle.CreateControlCasoBieAprendizTitle_temaAbo}" required="true" requiredMessage="#{bundle.CreateControlCasoBieAprendizRequiredMessage_temaAbo}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="temaAbo"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateControlCasoBieAprendizLabel_idCasoBienestar}" for="idCasoBienestar" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idCasoBienestar" value="#{controlCasoBieAprendizController.selected.idCasoBienestar}" required="true" requiredMessage="#{bundle.CreateControlCasoBieAprendizRequiredMessage_idCasoBienestar}">
+                                    <f:selectItems value="#{casoBienestarController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idCasoBienestar"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{controlCasoBieAprendizController.create}" value="#{bundle.CreateControlCasoBieAprendizSaveLink}" icon="ui-icon-disk"/>
+                    <br />
+                    <br />
+                    <p:commandButton ajax="false" action="#{controlCasoBieAprendizController.prepareList}" value="#{bundle.CreateControlCasoBieAprendizShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

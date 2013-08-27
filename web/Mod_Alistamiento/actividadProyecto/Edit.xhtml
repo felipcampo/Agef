@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditActividadProyectoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formActividadProyecto">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.EditActividadProyectoTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditActividadProyectoLabel_idActividadProyecto}" for="idActividadProyecto" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="idActividadProyecto" value="#{actividadProyectoController.selected.idActividadProyecto}" title="#{bundle.EditActividadProyectoTitle_idActividadProyecto}" required="true" requiredMessage="#{bundle.EditActividadProyectoRequiredMessage_idActividadProyecto}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idActividadProyecto"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditActividadProyectoLabel_descrActividadProyecto}" for="descrActividadProyecto" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="descrActividadProyecto" value="#{actividadProyectoController.selected.descrActividadProyecto}" title="#{bundle.EditActividadProyectoTitle_descrActividadProyecto}" required="true" requiredMessage="#{bundle.EditActividadProyectoRequiredMessage_descrActividadProyecto}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="descrActividadProyecto"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditActividadProyectoLabel_duracionActividad}" for="duracionActividad" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="duracionActividad" value="#{actividadProyectoController.selected.duracionActividad}" title="#{bundle.EditActividadProyectoTitle_duracionActividad}" required="true" requiredMessage="#{bundle.EditActividadProyectoRequiredMessage_duracionActividad}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="duracionActividad"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditActividadProyectoLabel_idFaseProyecto}" for="idFaseProyecto" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idFaseProyecto" value="#{actividadProyectoController.selected.idFaseProyecto}" required="true" requiredMessage="#{bundle.EditActividadProyectoRequiredMessage_idFaseProyecto}">
+                                    <f:selectItems value="#{faseProyectoController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idFaseProyecto"/>
+                            </p:column>
+                        </p:row>      
+                    </p:panelGrid>
+                    <br />
+                    <br />                
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{actividadProyectoController.update}" value="#{bundle.EditActividadProyectoSaveLink}" icon="ui-icon-disk"/>
+                    <p:button outcome="View" value="#{bundle.EditActividadProyectoViewLink}" icon="ui-icon-searh"/>
+                    <br />
+                    <p:commandButton ajax="false" action="#{actividadProyectoController.prepareList}" value="#{bundle.EditActividadProyectoShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSeguimientoInstructorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formSeguimientoInstructor">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.EditSeguimientoInstructorTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditSeguimientoInstructorLabel_idSeguimientoInstructor}" for="idSeguimientoInstructor" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="idSeguimientoInstructor" value="#{seguimientoInstructorController.selected.idSeguimientoInstructor}" title="#{bundle.EditSeguimientoInstructorTitle_idSeguimientoInstructor}" required="true" requiredMessage="#{bundle.EditSeguimientoInstructorRequiredMessage_idSeguimientoInstructor}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idSeguimientoInstructor"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditSeguimientoInstructorLabel_area}" for="area" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="area" value="#{seguimientoInstructorController.selected.area}" title="#{bundle.EditSeguimientoInstructorTitle_area}" required="true" requiredMessage="#{bundle.EditSeguimientoInstructorRequiredMessage_area}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="area"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditSeguimientoInstructorLabel_fecSegIns}" for="fecSegIns" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecSegIns" value="#{seguimientoInstructorController.selected.fecSegIns}" title="#{bundle.EditSeguimientoInstructorTitle_fecSegIns}" required="true" requiredMessage="#{bundle.EditSeguimientoInstructorRequiredMessage_fecSegIns}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fecSegIns"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditSeguimientoInstructorLabel_horFin}" for="horFin" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:calendar navigator="true" pattern="HH:mm:ss" showOn="button" id="horFin" value="#{seguimientoInstructorController.selected.horFin}" title="#{bundle.EditSeguimientoInstructorTitle_horFin}" required="true" requiredMessage="#{bundle.EditSeguimientoInstructorRequiredMessage_horFin}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="horFin"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditSeguimientoInstructorLabel_horIni}" for="horIni" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:calendar navigator="true" pattern="HH:mm:ss" showOn="button" id="horIni" value="#{seguimientoInstructorController.selected.horIni}" title="#{bundle.EditSeguimientoInstructorTitle_horIni}" required="true" requiredMessage="#{bundle.EditSeguimientoInstructorRequiredMessage_horIni}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="horIni"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditSeguimientoInstructorLabel_nomIns}" for="nomIns" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="nomIns" value="#{seguimientoInstructorController.selected.nomIns}" title="#{bundle.EditSeguimientoInstructorTitle_nomIns}" required="true" requiredMessage="#{bundle.EditSeguimientoInstructorRequiredMessage_nomIns}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="nomIns"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditSeguimientoInstructorLabel_idUsuario}" for="idUsuario" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idUsuario" value="#{seguimientoInstructorController.selected.idUsuario}" required="true" requiredMessage="#{bundle.EditSeguimientoInstructorRequiredMessage_idUsuario}">
+                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idUsuario"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditSeguimientoInstructorLabel_idTituloCriterio}" for="idTituloCriterio" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idTituloCriterio" value="#{seguimientoInstructorController.selected.idTituloCriterio}" required="true" requiredMessage="#{bundle.EditSeguimientoInstructorRequiredMessage_idTituloCriterio}">
+                                    <f:selectItems value="#{tituloCriterioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idTituloCriterio"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditSeguimientoInstructorLabel_idTipoJuicio}" for="idTipoJuicio" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idTipoJuicio" value="#{seguimientoInstructorController.selected.idTipoJuicio}" required="true" requiredMessage="#{bundle.EditSeguimientoInstructorRequiredMessage_idTipoJuicio}">
+                                    <f:selectItems value="#{tipoJuicioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idTipoJuicio"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditSeguimientoInstructorLabel_idGradoJuicio}" for="idGradoJuicio" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idGradoJuicio" value="#{seguimientoInstructorController.selected.idGradoJuicio}" required="true" requiredMessage="#{bundle.EditSeguimientoInstructorRequiredMessage_idGradoJuicio}">
+                                    <f:selectItems value="#{gradoJuicioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idGradoJuicio"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditSeguimientoInstructorLabel_idFichaCaracterizacion}" for="idFichaCaracterizacion" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idFichaCaracterizacion" value="#{seguimientoInstructorController.selected.idFichaCaracterizacion}" required="true" requiredMessage="#{bundle.EditSeguimientoInstructorRequiredMessage_idFichaCaracterizacion}">
+                                    <f:selectItems value="#{fichaCaracterizacionController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idFichaCaracterizacion"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditSeguimientoInstructorLabel_idEstadoJuicio}" for="idEstadoJuicio" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idEstadoJuicio" value="#{seguimientoInstructorController.selected.idEstadoJuicio}" required="true" requiredMessage="#{bundle.EditSeguimientoInstructorRequiredMessage_idEstadoJuicio}">
+                                    <f:selectItems value="#{estadoJuicioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idEstadoJuicio"/>
+                            </p:column>
+                        </p:row>      
+                    </p:panelGrid>
+                    <br />
+                    <br />                
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{seguimientoInstructorController.update}" value="#{bundle.EditSeguimientoInstructorSaveLink}" icon="ui-icon-disk"/>
+                    <p:button outcome="View" value="#{bundle.EditSeguimientoInstructorViewLink}" icon="ui-icon-searh"/>
+                    <br />
+                    <p:commandButton ajax="false" action="#{seguimientoInstructorController.prepareList}" value="#{bundle.EditSeguimientoInstructorShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
