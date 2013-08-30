@@ -17,16 +17,16 @@ and open the template in the editor.
             <h:outputText value="Alistamiento"></h:outputText>
         </ui:define>
          <ui:define name="menumodulo">
-            <ui:include src="Menu_gestorpedagogo.xhtml"/>
+            <ui:include src="Menu_gestor.xhtml"/>
         </ui:define>
         <ui:define name="body">
              <div id="Layoutcontenido">
-             <div id="Layouttitulo">
+             <div id="Layouttituloalistamiento">
       <center>
-        <h1>BIENVENIDOS AL MODULO DE ALISTAMIENTO</h1>
+        BIENVENIDOS AL MODULO DE ALISTAMIENTO
       </center>
     </div>
-    <div id="Layoutacordeon">
+    <div id="Layoutacordeonalistamiento">
     <!--++++++++++++++++++++++++++++++++++++++++++++++++++++-->
     <p:accordionPanel>  
     <p:tab title="Función alistamiento">  
@@ -72,7 +72,7 @@ and open the template in the editor.
 </p:accordionPanel> 
   <!--****************imagen animada****************-->
    </div>
-                 <div id="Layoutimagen"><img id="img_alistamiento" src="../Mod_Alistamiento/imagenes/gif.gif" alt="img_alistamiento" /></div>
+                 <div id="Layoutimagenalistamiento"><h:graphicImage library="images/Mod_alistamiento" name="img_alistamiento.gif" id="img_alistamiento" ></h:graphicImage></div>
              </div>
             
         </ui:define>

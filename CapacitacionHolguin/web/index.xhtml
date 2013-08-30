@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>PrimeFaces</title>
+            </f:facet>
+            <script type="text/javascript">
+            PrimeFaces.locales['es'] = {
+                closeText: 'Cerrar',
+                prevText: 'Anterior',
+                nextText: 'Siguiente',
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'], weekHeader: 'Semana',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                timeOnlyTitle: 'Sólo hora',
+                timeText: 'Tiempo',
+                hourText: 'Hora',
+                minuteText: 'Minuto',
+                secondText: 'Segundo',
+                currentText: 'Fecha actual',
+                ampm: false,
+                month: 'Mes',
+                week: 'Semana',
+                day: 'Día',
+                allDayText: 'Todo el día'
+            };
+        </script>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                    Header
+                </p:layoutUnit>
+
+               
+
+                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                    <p:menu>
+                        <p:submenu label="Resources">
+                            <p:menuitem value="Demo" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
+                            <p:menuitem value="Documentation" url="http://www.primefaces.org/documentation.html" />
+                            <p:menuitem value="Forum" url="http://forum.primefaces.org/" />
+                            <p:menuitem value="Themes" url="http://www.primefaces.org/themes.html" />
+
+                        </p:submenu>
+
+                    </p:menu>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <p:pieChart id="sample" value="#{grafico.pieModel}" legendPosition="w"  
+                                title="Sample Pie Chart" style="width:500px;height:300px" />
+                   
+
+                </p:layoutUnit>
+                <h:panelGrid columns="1" cellpadding="5">  
+                    <p:commandButton id="modalDialogButton" value="Modal" onclick="dlg2.show();" process="@none" type="button"/>  
+
+                </h:panelGrid> 
+
+                <p:dialog id="modalDialog" header="Modal Dialog" showEffect="explode" widgetVar="dlg2" modal="false" dynamic="true" draggable="true" width="500" height="500"> 
+                     <div id="calndario" style="width: 300px; height: 250px;">
+                        <h:form id="form">                  
+            <p:growl id="messages" showDetail="true" />  
+            <p:schedule id="schedule" value="#{scheduleController.eventModel}" locale="es" widgetVar="myschedule">  
+
+                <p:ajax event="dateSelect" listener="#{scheduleController.onDateSelect}" oncomplete="eventDialog.show();" update="eventDetails"/>  
+                <p:ajax event="eventSelect" listener="#{scheduleController.onEventSelect}" oncomplete="eventDialog.show();" update="eventDetails"/>  
+                <p:ajax event="eventMove" listener="#{scheduleController.onEventMove}" update="messages" />  
+                <p:ajax event="eventResize" listener="#{scheduleController.onEventResize}" update="messages" />  
+
+            </p:schedule> 
+
+            <p:dialog  closeOnEscape="true" modal="false" widgetVar="eventDialog" header="Detalle Seguimiento" showEffect="clip" hideEffect="clip">  
+                <h:panelGrid id="eventDetails" columns="2" >  
+
+                    <h:outputLabel for="title" value="Detalle: " />  
+                    <p:inputText id="title" value="#{scheduleController.event.title}" required="true"/>  
+
+                    <h:outputLabel for="from" value="Desde: " />  
+                    <p:inputMask id="from" value="#{scheduleController.event.startDate}" mask="99/99/9999" >  
+                        <f:convertDateTime pattern="dd/MM/yyyy" />  
+                    </p:inputMask>  
+
+                    <h:outputLabel for="to" value="Hasta: " />  
+                    <p:inputMask id="to" value="#{scheduleController.event.endDate}" mask="99/99/9999" >  
+                        <f:convertDateTime pattern="dd/MM/yyyy" />  
+                    </p:inputMask>  
+
+                    <h:outputLabel for="allDay" value="Todo el día:" />  
+                    <h:selectBooleanCheckbox id="allDay" value="#{scheduleController.event.allDay}" />  
+
+                    <p:commandButton type="reset" value="Limpiar" />  
+                    <p:commandButton id="addButton" value="Guardar" actionListener="#{scheduleController.addEvent}" oncomplete="myschedule.update();eventDialog.hide();"/>  
+                </h:panelGrid>  
+            </p:dialog>  
+
+        </h:form>  
+
+                    </div> 
+                </p:dialog> 
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+
