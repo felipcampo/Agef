@@ -15,17 +15,20 @@ and open the template in the editor.
         <ui:define name="title">
             <h:outputText value="Realizar Alistamiento"></h:outputText>
         </ui:define>
+        <ui:define name="menumodulo">
+            <ui:include src="Menu_gestor.xhtml"/>
+        </ui:define>
         <ui:define name="body">
              <div id="Layoutcontenido">
-             <div id="Layouttitulo">
+             <div id="Layouttituloalistamiento">
       <center>
-        <h1>Realizar Alistamiento</h1>
+        Realizar Alistamiento
       </center>
          </div>
  
  <div id="Layoutcontenido">
       
-         <table width="717" height="343" border="0">
+     <table width="717" height="343" border="0" id="tabla_realizar_alistamiento">
   <tr bgcolor="#FD863E">
     <td width="396"><blockquote>
       <blockquote>
@@ -110,7 +113,7 @@ fecha 1
     </blockquote></td>
   </tr>
 </table>
-            <div id="LayoutTips"><img src="../Alistamientos/imagenes/tips.JPG" alt="img_alistamiento" width="400" height="400"/></div>
+            <div id="LayoutTipsalistamiento"><h:graphicImage library="images/Mod_alistamiento" name="tips.JPG" width="400" height="400" id="img_alistamiento" ></h:graphicImage></div>
         
     
   </div>                

@@ -7,29 +7,26 @@
 
 
     <ui:composition>
-        <h:form id="Menu_gestorpedagogo">
+        <h:form id="Menu_gestor">
             <div id="Layoutmenu">
                 <p:menubar  style="float: right">
-                      <p:submenu label="Inicio">
-                        
-                       </p:submenu>
+                    <p:menuitem outcome="index_alistamiento.xhtml" value="Inicio"/>
                     <p:submenu label="Realizar Alistamiento">
+                        <p:menuitem outcome="realizar_alistamiento_titulado.xhtml" value="Formación titulado"  />
+                        <p:menuitem value="Cursos Complementarios" />
+                        <p:menuitem value="Virtual Complementarios" />
+                    </p:submenu>
+                    <p:submenu label="Verificar Alistamiento">
                         <p:menuitem value="Formación titulado" />
                         <p:menuitem value="Cursos Complementarios" />
                         <p:menuitem value="Virtual Complementarios" />
                     </p:submenu>
-                     <p:submenu label="Verificar Alistamiento">
-                        <p:menuitem value="Formación titulado" />
-                        <p:menuitem value="Cursos Complementarios" />
-                        <p:menuitem value="Virtual Complementarios" />
-                    </p:submenu>
-                      <p:submenu label="Otros">
-                        <p:menuitem value="Mensajes" />
+                    <p:submenu label="Otros">
                         <p:menuitem value="Salir" />
                         <p:menuitem value="Documentos" />
                     </p:submenu>
                 </p:menubar>
-             
+
             </div>
 
         </h:form>
