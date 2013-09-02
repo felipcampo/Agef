@@ -130,13 +130,7 @@ img, object, embed, video {
     text-align: right;
     background-color: #EBEBEB;
 }
-/*#Layoutlogo {
-        clear: both;
-        float: left;
-        margin-left: 0;
-        width: 13.7931%;
-        display: block;
-}*/
+
 #logo {
     position: absolute;
     width: 15%;
@@ -265,6 +259,86 @@ img, object, embed, video {
     width: 100%;
     display: block;
 }
+/*css seguimiento a aprendices*/
+#Título{
+	clear: both;
+	
+	float: left;
+	
+	margin-left: 0;
+	
+	width: 100%;
+	
+	display: block;
+	
+}
+
+
+
+#Formulario{
+	clear: both;
+	
+	float: left;
+	
+	margin-left: 0;
+	
+	width: 100%;
+	
+	display: block;
+	
+}
+
+#contenido_extra{
+	clear: both;
+	
+	float: left;
+	
+	margin-left: 0;
+	
+	width: 100%;
+	
+	display: block;
+	
+}
+
+#ambientate{
+	clear: both;
+	
+	float: left;
+	
+	margin-left: 17.2413%;
+	
+	width: 65.5172%;
+	
+	display: block;
+	
+}
+
+#sabiasque{
+	clear: both;
+	
+	float: left;
+	
+	margin-left: 0;
+	
+	width: 100%;
+	
+	display: block;
+	
+}
+
+#Twits{
+	clear: both;
+	
+	float: left;
+	
+	margin-left: 0;
+	
+	width: 100%;
+	
+	display: block;
+	
+}
 /************Css alistamiento********************/    
 /* Diseño tableta: de 481 px a 768 px. Hereda estilos de: Diseño móvil. */
 
@@ -359,13 +433,7 @@ img, object, embed, video {
         display: block;
         background-color: #EBEBEB;
     }
-    /*#Layoutlogo {
-            clear: both;
-            float: left;
-            margin-left: 0;
-            width: 28.5714%;
-            display: block;
-    }*/
+    
     #logo {
         position: absolute;
         width: 23%;
@@ -496,6 +564,54 @@ img, object, embed, video {
         display: block;
     }
 
+  /*css seguimiento aprendices*/  
+#Título{
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+
+#Formulario{
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+
+#contenido_extra{
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+
+#ambientate{
+	clear: both;
+	float: left;
+	margin-left: 30.6122%;
+	width: 38.7755%;
+	display: block;
+}
+
+#sabiasque{
+	clear: both;
+	float: left;
+	margin-left: 10.204%;
+	width: 79.5918%;
+	display: block;
+}
+
+#Twits{
+	clear: both;
+	float: left;
+	margin-left: 10.204%;
+	width: 79.5918%;
+	display: block;
+}
 }
 
 /* Diseño escritorio: de 769 px hasta un máximo de 1232 px.  Hereda estilos de: Diseño móvil y Diseño tableta. */
@@ -594,13 +710,7 @@ img, object, embed, video {
         background-color: #EBEBEB;
         margin-left: 0px;
     }
-    /*#Layoutlogo {
-            clear: both;
-            float: inherit;
-            margin-left: 0;
-            width: 30.3797%;
-            display: block;
-    }*/
+    
     #logo {
         position: absolute;
         width: 20%;
@@ -792,7 +902,56 @@ img, object, embed, video {
         width: 24.0506%;
         display: block;
     }
-    /*******************Css alistamientos******************************/
+    
+    /*css seguimiento aprendices*/
+#Título{
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+
+
+#Formulario{
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 74.6835%;
+	display: block;
+}
+
+#contenido_extra{
+	clear: none;
+	float: left;
+	margin-left: 1.2658%;
+	width: 24.0506%;
+	display: block;
+}
+
+#ambientate{
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+
+#sabiasque{
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+
+#Twits{
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
 }
 
 #margen{margin:1.6%;
