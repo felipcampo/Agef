@@ -7,10 +7,11 @@ package jpa.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -22,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "titulo_criterio")
@@ -39,14 +40,15 @@ public class TituloCriterio implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "id_titulo_criterio")
     private String idTituloCriterio;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
+    @Size(max = 255)
     @Column(name = "descr_nom_titulo_criterio")
     private String descrNomTituloCriterio;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTituloCriterio")
+    @JoinColumn(name = "id_rol", referencedColumnName = "id_rol")
+    @ManyToOne(optional = false)
+    private Rol idRol;
+    @OneToMany(mappedBy = "idTituloCriterio")
     private List<SeguimientoInstructor> seguimientoInstructorList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTituloCriterio")
+    @OneToMany(mappedBy = "idTituloCriterio")
     private List<CriterioEvaluacion> criterioEvaluacionList;
     @OneToMany(mappedBy = "idTituloCriterio")
     private List<SeguimientoProyecto> seguimientoProyectoList;
@@ -56,11 +58,6 @@ public class TituloCriterio implements Serializable {
 
     public TituloCriterio(String idTituloCriterio) {
         this.idTituloCriterio = idTituloCriterio;
-    }
-
-    public TituloCriterio(String idTituloCriterio, String descrNomTituloCriterio) {
-        this.idTituloCriterio = idTituloCriterio;
-        this.descrNomTituloCriterio = descrNomTituloCriterio;
     }
 
     public String getIdTituloCriterio() {
@@ -77,6 +74,14 @@ public class TituloCriterio implements Serializable {
 
     public void setDescrNomTituloCriterio(String descrNomTituloCriterio) {
         this.descrNomTituloCriterio = descrNomTituloCriterio;
+    }
+
+    public Rol getIdRol() {
+        return idRol;
+    }
+
+    public void setIdRol(Rol idRol) {
+        this.idRol = idRol;
     }
 
     @XmlTransient
