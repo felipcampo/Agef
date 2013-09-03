@@ -7,9 +7,17 @@
       xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
+        
+        <ui:define name="plantilla">
+            <ui:include src="../plantilla_formulario.xhtml"/>
+        </ui:define>
+        
         <ui:define name="title">
             <h:outputText value="#{bundle.CreateLlamadoAtencionVerbalTitle}"></h:outputText>
         </ui:define>
+        
+        
+        
         <ui:define name="body">
             <p:growl id="msgs" showDetail="false" sticky="false"/>
             <h:form id="formLlamadoAtencionVerbal">
