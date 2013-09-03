@@ -36,12 +36,10 @@
                             <p:column colspan="7">
                                 <h:outputLabel value="#{bundle.EditSeguimientoProyectoLabel_fechaProgramacionSeguimiento}" for="fechaProgramacionSeguimiento" />
                             </p:column>
-                            <p:column colspan="8" style="border-right: white"> 
+                            <p:column colspan="13" > 
                                 <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm:ss" showOn="button" id="fechaProgramacionSeguimiento" value="#{seguimientoProyectoController.selected.fechaProgramacionSeguimiento}" title="#{bundle.EditSeguimientoProyectoTitle_fechaProgramacionSeguimiento}" />
                             </p:column>
-                            <p:column colspan="5" style="border-left: white;">
-                                <p:message for="fechaProgramacionSeguimiento"/>
-                            </p:column>
+                           
                         </p:row>
 
                         <p:row>
@@ -340,7 +338,7 @@
                             </p:column>   
 
                             <p:column colspan="12"> 
-                                <p:selectOneMenu id="idEstadoAprendiz" value="#{seguimientoProyectoController.selected.idEstadoAprendiz}" >
+                                <p:selectOneMenu id="idEstadoAprendiz1" value="#{seguimientoProyectoController.selected.idEstadoAprendiz}" >
                                     <f:selectItems value="#{estadoAprendizController.itemsAvailableSelectOne}"/>
                                 </p:selectOneMenu>
                             </p:column>  
@@ -357,7 +355,7 @@
                             </p:column>   
 
                             <p:column colspan="12"> 
-                                <p:selectOneMenu id="idEstadoAprendiz" value="#{seguimientoProyectoController.selected.idEstadoAprendiz}" >
+                                <p:selectOneMenu id="idEstadoAprendiz2" value="#{seguimientoProyectoController.selected.idEstadoAprendiz}" >
                                     <f:selectItems value="#{estadoAprendizController.itemsAvailableSelectOne}"/>
                                 </p:selectOneMenu>
                             </p:column>   
@@ -371,7 +369,7 @@
                             </p:column>   
 
                             <p:column colspan="12"> 
-                                <p:selectOneMenu id="idEstadoAprendiz" value="#{seguimientoProyectoController.selected.idEstadoAprendiz}" >
+                                <p:selectOneMenu id="idEstadoAprendiz3" value="#{seguimientoProyectoController.selected.idEstadoAprendiz}" >
                                     <f:selectItems value="#{estadoAprendizController.itemsAvailableSelectOne}"/>
                                 </p:selectOneMenu>
                             </p:column>   
@@ -385,7 +383,7 @@
                             </p:column>   
 
                             <p:column colspan="12"> 
-                                <p:selectOneMenu id="idEstadoAprendiz" value="#{seguimientoProyectoController.selected.idEstadoAprendiz}" >
+                                <p:selectOneMenu id="idEstadoAprendiz4" value="#{seguimientoProyectoController.selected.idEstadoAprendiz}" >
                                     <f:selectItems value="#{estadoAprendizController.itemsAvailableSelectOne}"/>
                                 </p:selectOneMenu>
                             </p:column>   
