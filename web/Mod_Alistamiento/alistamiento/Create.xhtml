@@ -55,14 +55,11 @@
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateAlistamientoLabel_idGuiaAprendizaje}" for="idGuiaAprendizaje" />
                             </p:column>
-                            <p:column style="border-right: white">    
-                                <p:selectOneMenu id="idGuiaAprendizaje" value="#{alistamientoController.selected.idGuiaAprendizaje}" >
-                                    <f:selectItems value="#{guiaAprendizajeController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
+                            <p:column colspan="3">
+                                <p:commandButton id="idGuiaAprendizaje" value="Guia Aprendizaje" oncomplete="dlg.show();" process="@none"/>                          
                             </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idGuiaAprendizaje"/>
-                            </p:column>
+
+
                         </p:row>
                         <p:row>
                             <p:column>
@@ -81,14 +78,11 @@
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateAlistamientoLabel_idPlaneacionPedagogica}" for="idPlaneacionPedagogica" />
                             </p:column>
-                            <p:column style="border-right: white">    
-                                <p:selectOneMenu id="idPlaneacionPedagogica" value="#{alistamientoController.selected.idPlaneacionPedagogica}" >
-                                    <f:selectItems value="#{planeacionPedagogicaController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
+                            <p:column colspan="3">
+                                <p:commandButton id="idPlaneacionPedagogica" value="planeacion" oncomplete="dlgo.show();" process="@none"/>                          
                             </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idPlaneacionPedagogica"/>
-                            </p:column>
+
+
                         </p:row>
                         <p:row>
                             <p:column>
@@ -181,12 +175,32 @@
                                 <p:message for="idTipoAlistamiento"/>
                             </p:column>
                         </p:row>
+
+                        <f:facet name="footer">
+                            <p:row>
+                                <p:column  colspan="4">
+
+                                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                                     action="#{alistamientoController.create}" value="#{bundle.CreateAlistamientoSaveLink}" icon="ui-icon-disk"/>
+                                    <p:commandButton type="reset" value="Limpiar" icon="ui-icon-trash"/>
+                                </p:column>                                        
+                            </p:row>
+                        </f:facet> 
                     </p:panelGrid>
                     <br />
                     <br />
-                    <p:commandButton process="@this, @form" update="@form, :msgs"
-                                     action="#{alistamientoController.create}" value="#{bundle.CreateAlistamientoSaveLink}" icon="ui-icon-disk"/>
-                    <br />
+
+                    <p:dialog  id="dialog"   closeOnEscape="true" header="#{bundle.CreateGuiaAprendizajeTitle}" widgetVar="dlg" minHeight="300" minWidth="450" 
+                               resizable="true" modal="false" showEffect="clip" hideEffect="clip">
+                        <ui:include src="../guiaAprendizaje/Create.xhtml" />
+                    </p:dialog>
+                    <p:dialog  id="dialog2"   closeOnEscape="true" header="#{bundle.CreatePlaneacionPedagogicaTitle}" widgetVar="dlgo" minHeight="300" minWidth="450" 
+                               resizable="true" modal="false" showEffect="clip" hideEffect="clip">
+                        <ui:include src="../guiaAprendizaje/Create.xhtml" />
+                    </p:dialog>
+
+
+
                     <br />
                     <p:commandButton ajax="false" action="#{alistamientoController.prepareList}" value="#{bundle.CreateAlistamientoShowAllLink}" immediate="true"/>
                 </div>
