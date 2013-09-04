@@ -34,10 +34,23 @@
                                 <h:outputLabel value="#{bundle.CreateTituloCriterioLabel_descrNomTituloCriterio}" for="descrNomTituloCriterio" />
                             </p:column>
                             <p:column style="border-right: white">    
-                                <p:inputText id="descrNomTituloCriterio" value="#{tituloCriterioController.selected.descrNomTituloCriterio}" title="#{bundle.CreateTituloCriterioTitle_descrNomTituloCriterio}" required="true" requiredMessage="#{bundle.CreateTituloCriterioRequiredMessage_descrNomTituloCriterio}"/>
+                                <p:inputText id="descrNomTituloCriterio" value="#{tituloCriterioController.selected.descrNomTituloCriterio}" title="#{bundle.CreateTituloCriterioTitle_descrNomTituloCriterio}" />
                             </p:column>
                             <p:column style="border-left: white;">
                                 <p:message for="descrNomTituloCriterio"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateTituloCriterioLabel_idRol}" for="idRol" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idRol" value="#{tituloCriterioController.selected.idRol}" required="true" requiredMessage="#{bundle.CreateTituloCriterioRequiredMessage_idRol}">
+                                    <f:selectItems value="#{rolController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idRol"/>
                             </p:column>
                         </p:row>
                     </p:panelGrid>

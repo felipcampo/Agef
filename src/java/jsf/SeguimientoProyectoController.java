@@ -17,6 +17,10 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.faces.model.SelectItem;
+import jpa.entities.EstadoAprendiz;
+import jpa.entities.FichaUsuario;
+import jpa.entities.Usuario;
+import jpa.sessions.FichaUsuarioFacade;
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
 
@@ -28,6 +32,8 @@ public class SeguimientoProyectoController implements Serializable {
     private LazyDataModel<SeguimientoProyecto> lazyModel = null;
     @EJB
     private jpa.sessions.SeguimientoProyectoFacade ejbFacade;
+    @EJB
+    private jpa.sessions.FichaUsuarioFacade ejbFacadeFichaUsuario;
 
     public SeguimientoProyectoController() {
     }
@@ -45,6 +51,10 @@ public class SeguimientoProyectoController implements Serializable {
 
     private SeguimientoProyectoFacade getFacade() {
         return ejbFacade;
+    }
+    
+    private FichaUsuarioFacade getFacadeFichaUsuario() {
+        return ejbFacadeFichaUsuario;
     }
 
     public LazyDataModel<SeguimientoProyecto> getLazyModel() {
@@ -139,6 +149,14 @@ public class SeguimientoProyectoController implements Serializable {
 
     private void recreateModel() {
         lazyModel = null;
+    }
+    
+    public int getAprendicesByCancelado (){
+        return getUsuariosByFicha(new EstadoAprendiz((short) 1)).size();
+    }
+    
+     public List<FichaUsuario> getUsuariosByFicha(EstadoAprendiz estado) {
+        return getFacadeFichaUsuario().findByEstado(estado, current.getIdFichaCaracterizacion());
     }
 
     public SelectItem[] getItemsAvailableSelectMany() {

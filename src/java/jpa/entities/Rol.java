@@ -7,11 +7,14 @@ package jpa.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -23,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "rol")
@@ -42,8 +45,13 @@ public class Rol implements Serializable {
     @Size(max = 255)
     @Column(name = "descr_rol")
     private String descrRol;
-    @ManyToMany(mappedBy = "rolList")
+    @JoinTable(name = "usuario_rol", joinColumns = {
+        @JoinColumn(name = "id_rol", referencedColumnName = "id_rol")}, inverseJoinColumns = {
+        @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")})
+    @ManyToMany
     private List<Usuario> usuarioList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idRol")
+    private List<TituloCriterio> tituloCriterioList;
     @OneToMany(mappedBy = "rolIdRol")
     private List<SeguimientoProyecto> seguimientoProyectoList;
 
@@ -77,6 +85,15 @@ public class Rol implements Serializable {
 
     public void setUsuarioList(List<Usuario> usuarioList) {
         this.usuarioList = usuarioList;
+    }
+
+    @XmlTransient
+    public List<TituloCriterio> getTituloCriterioList() {
+        return tituloCriterioList;
+    }
+
+    public void setTituloCriterioList(List<TituloCriterio> tituloCriterioList) {
+        this.tituloCriterioList = tituloCriterioList;
     }
 
     @XmlTransient
