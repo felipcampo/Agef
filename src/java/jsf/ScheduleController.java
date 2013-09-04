@@ -26,21 +26,10 @@ public class ScheduleController implements Serializable {
     private ScheduleEvent event = new DefaultScheduleEvent();  
   
     public ScheduleController() {  
-        eventModel = new DefaultScheduleModel();  
-        eventModel.addEvent(new DefaultScheduleEvent("ADSI 327038", previousDay8Pm(), previousDay11Pm()));  
-        eventModel.addEvent(new DefaultScheduleEvent("Dirección de Ventas 328596", today1Pm(), today6Pm()));  
-        eventModel.addEvent(new DefaultScheduleEvent("Gestión Logistica 258978", nextDay9Am(), nextDay11Am()));  
-        eventModel.addEvent(new DefaultScheduleEvent("Contabilidad y Finanzas 369878", theDayAfter3Pm(), fourDaysLater3pm()));  
+        eventModel = new DefaultScheduleModel();          
     }  
       
-    public Date getRandomDate(Date base) {  
-        Calendar date = Calendar.getInstance();  
-        date.setTime(base);  
-        date.add(Calendar.DATE, ((int) (Math.random()*30)) + 1);    //set random day of month  
-          
-        return date.getTime();  
-    }  
-      
+       
     public Date getInitialDate() {  
         Calendar calendar = Calendar.getInstance();  
         calendar.set(calendar.get(Calendar.YEAR), Calendar.FEBRUARY, calendar.get(Calendar.DATE), 0, 0, 0);  

@@ -17,6 +17,10 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.faces.model.SelectItem;
+import jpa.entities.CentroFormacion;
+import jpa.entities.Regional;
+import jpa.sessions.CentroFormacionFacade;
+import jpa.sessions.RegionalFacade;
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
 
@@ -25,9 +29,15 @@ import org.primefaces.model.SortOrder;
 public class SeguimientoProductivaController implements Serializable {
 
     private SeguimientoProductiva current;
+    private Regional currentRegional;
+    private CentroFormacion currentCentroFormacion;
     private LazyDataModel<SeguimientoProductiva> lazyModel = null;
     @EJB
     private jpa.sessions.SeguimientoProductivaFacade ejbFacade;
+    @EJB
+    private jpa.sessions.RegionalFacade ejbFacadeRegional;
+    @EJB
+    private jpa.sessions.CentroFormacionFacade ejbFacadeCentroFormacion;
 
     public SeguimientoProductivaController() {
     }
@@ -38,15 +48,41 @@ public class SeguimientoProductivaController implements Serializable {
         }
         return current;
     }
+    
+    public Regional getSelectedRegional() {
+        if (currentRegional == null) {
+            currentRegional = new Regional();
+        }
+        return currentRegional;
+    }
+    
+    public CentroFormacion getSelectedCentroFormacion() {
+        if (currentCentroFormacion == null) {
+            currentCentroFormacion = new CentroFormacion();
+        }
+        return currentCentroFormacion;
+    }
 
     public void setSelected(SeguimientoProductiva entity) {
         current = entity;
     }
 
+    public void setSelectedRegional (Regional regional) {
+        currentRegional = regional;
+    }
+    
     private SeguimientoProductivaFacade getFacade() {
         return ejbFacade;
     }
 
+    public RegionalFacade getFacadeRegional() {
+        return ejbFacadeRegional;
+    }
+
+    public CentroFormacionFacade getFacadeCentroFormacion() {
+        return ejbFacadeCentroFormacion;
+    }
+    
     public LazyDataModel<SeguimientoProductiva> getLazyModel() {
         if (lazyModel == null) {
             lazyModel = new LazyDataModel<SeguimientoProductiva>() {
@@ -92,6 +128,8 @@ public class SeguimientoProductivaController implements Serializable {
 
     public String prepareCreate() {
         current = new SeguimientoProductiva();
+        currentRegional = new Regional();
+        currentCentroFormacion = new CentroFormacion();                
         return "Create";
     }
 
@@ -147,6 +185,14 @@ public class SeguimientoProductivaController implements Serializable {
 
     public SelectItem[] getItemsAvailableSelectOne() {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
+    }
+    
+    public SelectItem[] getItemsAvailableSelectOneRegional() {
+        return JsfUtil.getSelectItems(ejbFacadeRegional.findAll(), true);
+    }
+    
+    public SelectItem[] getItemsAvailableSelectOneCentroByRegional() {
+        return JsfUtil.getSelectItems(ejbFacadeCentroFormacion.findByRegional(getSelectedRegional()), true);
     }
 
     @FacesConverter(forClass = SeguimientoProductiva.class)
