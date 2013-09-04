@@ -14,4 +14,4 @@ nbproject/
 # Package Files #
 *.war
 *.ear
-/dist/
+/build/

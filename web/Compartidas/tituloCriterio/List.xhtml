@@ -37,6 +37,11 @@
                                       sortBy="#{item.descrNomTituloCriterio}">                        
                                 <h:outputText value="#{item.descrNomTituloCriterio}"/>
                             </p:column>
+                            <p:column headerText="#{bundle.ListTituloCriterioTitle_idRol}"
+                                      filterBy="#{item.idRol}"
+                                      sortBy="#{item.idRol}">                        
+                                <h:outputText value="#{item.idRol}"/>
+                            </p:column>
                             <p:column>                        
                                 <p:commandButton ajax="false" action="#{tituloCriterioController.prepareView}" title="#{bundle.ListTituloCriterioViewLink}" icon="ui-icon-search"/>
                                 <p:commandButton ajax="false" action="#{tituloCriterioController.prepareEdit}" title="#{bundle.ListTituloCriterioEditLink}" icon="ui-icon-pencil"/>
