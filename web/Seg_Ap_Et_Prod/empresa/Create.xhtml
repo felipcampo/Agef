@@ -11,12 +11,18 @@
             <h:outputText value="#{bundle.CreateEmpresaTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+            
+            <div id="Layout_Titulo_Formulario_Agef"> <h2>SEGUIMIENTO AL APRENDIZ EN ETAPA PRODUCTIVA</h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen"> #{bundle.CreateEmpresaTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br>                    
             <p:growl id="msgs" showDetail="false" sticky="false"/>
             <h:form id="formEmpresa">
                 <div id="form" align="center">
                     <p:panelGrid>
                         <f:facet name="header">
-                            <p:row><p:column colspan="3">#{bundle.CreateEmpresaTitle}</p:column></p:row>                            
+                            <p:row><p:column colspan="3"></p:column></p:row>                            
                         </f:facet>                        
                         <p:row>
                             <p:column>
@@ -118,6 +124,14 @@
                     <p:commandButton ajax="false" action="#{empresaController.prepareList}" value="#{bundle.CreateEmpresaShowAllLink}" immediate="true"/>
                 </div>
             </h:form>
+            <br></br>
+            </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
     </ui:composition>
 
