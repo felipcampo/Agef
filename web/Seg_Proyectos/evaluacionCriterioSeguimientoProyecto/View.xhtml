@@ -11,6 +11,13 @@
             <h:outputText value="#{bundle.ViewEvaluacionCriterioSeguimientoProyectoTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+            
+               <div id="Layout_Titulo_Formulario_Agef"> <h2>SEGUIMIENTO A PROYECTOS</h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen">#{bundle.ViewEvaluacionCriterioSeguimientoProyectoTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br>  
+            
             <p:growl id="msgs" showDetail="false" sticky="false"/> 
             <h:form>
                 <div id="form" align="center">
@@ -35,6 +42,14 @@
                     <p:commandButton ajax="false" action="#{evaluacionCriterioSeguimientoProyectoController.prepareList}" value="#{bundle.ViewEvaluacionCriterioSeguimientoProyectoShowAllLink}"/>
                 </div>            
             </h:form>
+                  <br></br>
+            </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
         <ui:define name="dialogs">
             <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  

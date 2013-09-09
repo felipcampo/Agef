@@ -17,18 +17,17 @@
                     <p:panelGrid>
                         <f:facet name="header">
                             <p:row>
-                                <p:column colspan="9">EVALUACION Y SEGUIMIENTO <p:selectOneMenu id="rolIdRol" value="#{seguimientoProyectoController.selected.rolIdRol}" >
+                                <p:column colspan="9">EVALUACION Y SEGUIMIENTO
+                                    <p:selectOneMenu id="rolIdRol" value="#{seguimientoProyectoController.selected.rolIdRol}" required="true" requiredMessage="#{bundle.EditSeguimientoProyectoRequiredMessage_rolIdRol}" >
                                         <f:selectItems value="#{rolController.itemsAvailableSelectOne}"/>
                                     </p:selectOneMenu>
                                 </p:column>
-
                                 <p:column colspan="6">
                                     <h:outputLabel value="#{bundle.EditSeguimientoProyectoLabel_idSeguimientoProyecto}" for="idSeguimientoProyecto" />
                                 </p:column>
                                 <p:column colspan="5" style="border-right: white"> 
                                     <p:inputText id="idSeguimientoProyecto" value="#{seguimientoProyectoController.selected.idSeguimientoProyecto}" title="#{bundle.EditSeguimientoProyectoTitle_idSeguimientoProyecto}" required="true" requiredMessage="#{bundle.EditSeguimientoProyectoRequiredMessage_idSeguimientoProyecto}"/>
                                 </p:column>
-
                             </p:row>                            
                         </f:facet> 
 
@@ -36,12 +35,11 @@
                             <p:column colspan="7">
                                 <h:outputLabel value="#{bundle.EditSeguimientoProyectoLabel_fechaProgramacionSeguimiento}" for="fechaProgramacionSeguimiento" />
                             </p:column>
-                            <p:column colspan="13" > 
-                                <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm:ss" showOn="button" id="fechaProgramacionSeguimiento" value="#{seguimientoProyectoController.selected.fechaProgramacionSeguimiento}" title="#{bundle.EditSeguimientoProyectoTitle_fechaProgramacionSeguimiento}" />
+                            <p:column colspan="13"> 
+                                <p:inputText  readonly="true" id="fechaProgramacionSeguimiento" value="#{seguimientoProyectoController.selected.fechaProgramacionSeguimiento}" title="#{bundle.EditSeguimientoProyectoTitle_fechaProgramacionSeguimiento}" />
                             </p:column>
-                           
-                        </p:row>
 
+                        </p:row>
                         <p:row>
                             <p:column colspan="3">
                                 <h:outputLabel value="#{bundle.EditSeguimientoProyectoLabel_fechaSeguimientoInicio}" for="fechaSeguimientoInicio" />
@@ -55,46 +53,42 @@
                             <p:column colspan="4" style="border-right: white"> 
                                 <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm:ss" showOn="button" id="fechaSeguimientoFin" value="#{seguimientoProyectoController.selected.fechaSeguimientoFin}" title="#{bundle.EditSeguimientoProyectoTitle_fechaSeguimientoFin}" />
                             </p:column>
-                            <p:column colspan="6"> 
-                                <p:inputText id="totalhoras" disabled="true" value="Total horas" title=""  />
+                            <p:column colspan="6" > 
+                                <p:inputText id="totalhoras" readonly="true" value="Total horas" title=""  />
                             </p:column>
-
                         </p:row> 
 
                         <p:row>
                             <p:column colspan="3">
                                 <h:outputLabel value="#{bundle.EditSeguimientoProyectoLabel_idFichaCaracterizacion}" for="idFichaCaracterizacion" />
                             </p:column>
-                            <p:column colspan="4" style="border-right: white"> 
-                                <p:selectOneMenu id="idFichaCaracterizacion" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion}" >
-                                    <f:selectItems value="#{fichaCaracterizacionController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
+                            <p:column colspan="4" > 
+                                <p:inputText id="idFichaCaracterizacion" readonly="true"  value="#{seguimientoProyectoController.selected.idFichaCaracterizacion}" >
+                                </p:inputText>
                             </p:column>
                             <p:column colspan="3">
                                 <h:outputLabel value="Programa de formacion" for="Programa de formacion" />
                             </p:column >
                             <p:column  colspan="10" > 
-                                <p:selectOneMenu id="idProgramadeFormacion" value="" >
-                                    <f:selectItems value=""/>
-                                </p:selectOneMenu>
+                                <p:inputText id="idProgramadeFormacion" readonly="true" size="60"  value="aqui va el programa de for" >
+                                </p:inputText>
                             </p:column>
                         </p:row>
 
                         <p:row>
                             <p:column colspan="3">
-                                <h:outputLabel value="F. Apertura Ficha" for="idFichaCaracterizacion" />
+                                <h:outputLabel value="F. Apertura Ficha"/>
                             </p:column>
-                            <p:column colspan="4" style="border-right: white"> 
-                                <p:selectOneMenu id="idaperturaficha" value="" >
-                                    <f:selectItems value=""/>
-                                </p:selectOneMenu>
+                            <p:column colspan="4" >
+                                <p:inputText id="idFechaAperturaFicha" readonly="true"   value="fecha ap ficha" >
+                                </p:inputText>
                             </p:column>
                             <p:column colspan="3">
                                 <h:outputLabel value="Proyecto" for="" />
                             </p:column >
                             <p:column  colspan="10" > 
-                                <p:selectOneMenu id="idProyecto" value="" >
-                                    <f:selectItems value=""/>
+                                <p:selectOneMenu id="idProyectoFormativo" value="#{seguimientoProyectoController.selected.idProyectoFormativo}" >
+                                    <f:selectItems value="#{proyectoFormativoController.itemsAvailableSelectOne}"/>
                                 </p:selectOneMenu>
                             </p:column>
                         </p:row>
@@ -104,18 +98,18 @@
                             <p:column colspan="3">
                                 <h:outputLabel value="#{bundle.EditSeguimientoProyectoLabel_idNivelFormacion}" for="idNivelFormacion" />
                             </p:column>
-                            <p:column colspan="3" style="border-right: white"> 
+                            <p:column colspan="3" > 
                                 <p:selectOneMenu id="idNivelFormacion" value="#{seguimientoProyectoController.selected.idNivelFormacion}" >
                                     <f:selectItems value="#{nivelFormacionController.itemsAvailableSelectOne}"/>
                                 </p:selectOneMenu>
                             </p:column>
 
                             <p:column colspan="1">
-                                <h:outputLabel value="Area" for="" />
+                                <h:outputLabel value="#{bundle.EditSeguimientoProyectoLabel_idArea}" for="idArea" />
                             </p:column>
                             <p:column colspan="3" style="border-right: white"> 
-                                <p:selectOneMenu id="idarea" value="" >
-                                    <f:selectItems value=""/>
+                                <p:selectOneMenu id="idArea" value="#{seguimientoProyectoController.selected.idArea}" >
+                                    <f:selectItems value="#{areaController.itemsAvailableSelectOne}"/>
                                 </p:selectOneMenu>
                             </p:column>
 
@@ -131,31 +125,30 @@
 
                         <p:row>
                             <p:column colspan="3">
-                                <h:outputLabel value="Duracion etapa lectiva" for="" />
+                                <h:outputLabel value="Duracion etapa lectiva"  />
                             </p:column>
-                            <p:column colspan="4" style="border-right: white"> 
-                                <p:inputText id="del"   title=""  />
+                            <p:column colspan="4" > 
+                                <p:inputText id="durPrgLec"  value="Duracion"  />
                             </p:column>
                             <p:column colspan="3">
                                 <h:outputLabel value="D. etapa productiva" />
                             </p:column>
-                            <p:column colspan="4" style="border-right: white"> 
-                                <p:inputText id="dep"  />
+                            <p:column colspan="4" > 
+                                <p:inputText id="durPrgPrac"  value="Duracion"  />
                             </p:column>
                             <p:column colspan="3">
                                 <h:outputLabel value="M.formacion" />
                             </p:column>
                             <p:column colspan="3"> 
-                                <p:inputText id="mdf" />
+                                <p:inputText id="duracionTotalProg" readonly="true" value="duracion programa" />
                             </p:column>
-
                         </p:row> 
 
                         <p:row>
                             <p:column colspan="3">
                                 <h:outputLabel value="#{bundle.EditSeguimientoProyectoLabel_idRegional}" for="idRegional" />
                             </p:column>
-                            <p:column colspan="4" style="border-right: white"> 
+                            <p:column colspan="4" > 
                                 <p:selectOneMenu id="idRegional" value="#{seguimientoProyectoController.selected.idRegional}" >
                                     <f:selectItems value="#{regionalController.itemsAvailableSelectOne}"/>
                                 </p:selectOneMenu>
@@ -171,21 +164,20 @@
                             </p:column>
                         </p:row>
 
-
                         <p:row>
                             <p:column colspan="3">
                                 <h:outputLabel value="Duracion en horas"  />
                             </p:column>
                             <p:column colspan="4" > 
-                                <p:inputText id="dh" />
+                                <p:inputText id="dh" readonly="true" value="cantidad de horas de duracion" />
                             </p:column>
 
                             <p:column colspan="3">
-                                <h:outputLabel value="Instructor" for="" />
+                                <h:outputLabel value="Instructor"  />
                             </p:column >
                             <p:column  colspan="10" > 
-                                <p:selectOneMenu id="idUsuario" value="#{seguimientoProyectoController.selected.idUsuario}" >
-                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                                <p:selectOneMenu id="nomInstructor" value="#{seguimientoProyectoController.selected.nomInstructor}" >
+                                    <f:selectItems value="#{seguimientoProyectoController.itemsAvailableSelectOne}"/>
                                 </p:selectOneMenu>
                             </p:column>
                         </p:row>
@@ -195,29 +187,31 @@
                                 <h:outputLabel value="Matriculados" />
                             </p:column>
                             <p:column colspan="4" > 
-                                <p:inputText id="m" /> </p:column>
+                                <p:inputText id="m" readonly="true" value="cantidad" />
+                            </p:column>
                             <p:column colspan="3">
                                 <h:outputLabel value="Activos" />
                             </p:column>
                             <p:column colspan="4" > 
-                                <p:inputText id="a" />
+                                <p:inputText id="a" readonly="true" value="cantidad" />
                             </p:column>
                             <p:column colspan="3">
                                 <h:outputLabel value="% Desercion" />
                             </p:column>    
                             <p:column colspan="3"> 
-                                <p:inputText id="df" /> </p:column>
+                                <p:inputText id="desercion" readonly="true" value="cantidad" />
+                            </p:column>
                         </p:row> 
-
                         <p:row>
                             <p:column colspan="3">
-                                <h:outputLabel value="Evaluador" />
+                                <h:outputLabel value="Evaluador" for="idUsuario" />
                             </p:column>
                             <p:column colspan="17" > 
-                                <p:inputText id="ev"  size="70"/> </p:column>
-
+                                <p:selectOneMenu id="idUsuario" value="#{seguimientoProyectoController.selected.idUsuario}" >
+                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>   
                         </p:row> 
-
                         <p:row>
                             <p:column colspan="2">
                                 <h:outputLabel value="F. Proyecto" />
@@ -227,25 +221,26 @@
                                 <h:outputLabel value="Analisis" />
                             </p:column>
                             <p:column colspan="3">
-                                <p:inputText id="an" size="8" /> 
+                                <p:inputText id="an" size="8" readonly="true" value="resultado  calculado" /> 
+
                             </p:column>
                             <p:column colspan="1" style="border-right: white"> 
                                 <h:outputLabel value="Planeacion" />
                             </p:column>
                             <p:column colspan="2">
-                                <p:inputText id="pl" size="8" /> 
-                            </p:column>    
+                                <p:inputText id="pn" size="8" readonly="true" value="resultado  calculado" /> 
+                            </p:column>  
                             <p:column colspan="1"> 
                                 <h:outputLabel value="Ejecucion" />
                             </p:column>
                             <p:column colspan="4">
-                                <p:inputText id="ej" size="8" /> 
+                                <p:inputText id="ejcu" size="8" readonly="true" value="resultado  calculado" /> 
                             </p:column> 
                             <p:column colspan="2"> 
                                 <h:outputLabel value="Evaluacion" />
                             </p:column>
                             <p:column colspan="4"> 
-                                <p:inputText id="eva" size="8" /> 
+                                <p:inputText id="eval" size="8" readonly="true" value="resultado  calculado" /> 
                             </p:column>
                         </p:row> 
                         <p:row>  
@@ -265,14 +260,14 @@
 
                         <p:row>
 
-
                             <p:column colspan="5"> 
                                 <h:outputLabel value="Beneficiarios" /> 
                             </p:column>   
 
                             <p:column colspan="15"> 
-                                <p:inputText id="b"  size="70"/>
+                                <p:inputText id="b"  readonly="true" value="de otra tabla" size="70"/>
                             </p:column>  
+                           
                         </p:row>
 
                         <p:row>
@@ -283,9 +278,9 @@
                             </p:column>   
 
                             <p:column colspan="15"> 
-                                <p:inputText id="Ip"  size="70"/>
-                            </p:column>  
-                        </p:row>
+                                <p:inputText id="Ip"  readonly="true" value="de otra tabla" size="70"/>
+                            </p:column> 
+                       </p:row>
 
                         <p:row>
 
@@ -295,10 +290,10 @@
                             </p:column>   
 
                             <p:column colspan="15"> 
-                                <p:inputText id="Ie"  size="70"/>
+                                <p:inputText id="Ie" readonly="true" value="de otra tabla" size="70"/>
                             </p:column>  
                         </p:row>
-
+                    
                         <p:row>
 
 
@@ -307,21 +302,18 @@
                             </p:column>   
 
                             <p:column colspan="15"> 
-                                <p:inputText id="Ia"  size="70"/>
+                                <p:inputText id="iam"  readonly="true" value="de otra tabla" size="70"/>
                             </p:column>  
                         </p:row>
-
-                        <p:row>
+                       <p:row>
                             <p:column colspan="5"> 
                                 <h:outputLabel value="Impacto Tecnologico" /> 
                             </p:column>   
 
                             <p:column colspan="15"> 
-                                <p:inputText id="It"  size="70"/>
+                                <p:inputText id="It"  readonly="true" value="de otra tabla" size="70"/>
                             </p:column>  
                         </p:row>
-
-
                         <p:row>
 
 
@@ -338,14 +330,11 @@
                             </p:column>   
 
                             <p:column colspan="12"> 
-                                <p:selectOneMenu id="idEstadoAprendiz1" value="#{seguimientoProyectoController.selected.idEstadoAprendiz}" >
-                                    <f:selectItems value="#{estadoAprendizController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
+                                <p:inputText id="idEstadoAprendiz"  readonly="true" value="#{seguimientoProyectoController.selected.idEstadoAprendiz}" />
                             </p:column>  
-
                             <p:column rowspan="4"> 
-                                <h:outputLabel value="Describa la evaluacion inicial" />
-                                <p:inputTextarea id="dei" rows="6" cols="20" />  
+                                <h:outputLabel value="#{bundle.EditSeguimientoProyectoLabel_evaluacionProyecto}" />
+                                <p:inputTextarea id="evaluacionProyecto" value="#{seguimientoProyectoController.selected.evaluacionProyecto}" title="#{bundle.EditSeguimientoProyectoTitle_evaluacionProyecto}" rows="6" readonly="true" cols="20" />  
                             </p:column>  
                         </p:row>
                         <p:row>
@@ -355,52 +344,44 @@
                             </p:column>   
 
                             <p:column colspan="12"> 
-                                <p:selectOneMenu id="idEstadoAprendiz2" value="#{seguimientoProyectoController.selected.idEstadoAprendiz}" >
-                                    <f:selectItems value="#{estadoAprendizController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
+                                <p:inputText id="cancelados"  readonly="true" value="viene de otra tabla"/>
                             </p:column>   
 
                         </p:row>
-
-                        <p:row>
+                       <p:row>
 
                             <p:column colspan="5"> 
                                 <h:outputLabel value="Trasladados" /> 
                             </p:column>   
 
                             <p:column colspan="12"> 
-                                <p:selectOneMenu id="idEstadoAprendiz3" value="#{seguimientoProyectoController.selected.idEstadoAprendiz}" >
-                                    <f:selectItems value="#{estadoAprendizController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
+                                <p:inputText id="trasladados"  readonly="true" value="viene de otra tabla"/>
                             </p:column>   
-
                         </p:row>
 
                         <p:row>
 
                             <p:column colspan="5"> 
-                                <h:outputLabel value="Condicionado" /> 
+                                <h:outputLabel value="Condicionados" /> 
                             </p:column>   
 
                             <p:column colspan="12"> 
-                                <p:selectOneMenu id="idEstadoAprendiz4" value="#{seguimientoProyectoController.selected.idEstadoAprendiz}" >
-                                    <f:selectItems value="#{estadoAprendizController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
+                                <p:inputText id="condicionados"  readonly="true" value="viene de otra tabla"/>
                             </p:column>   
 
                         </p:row>
-
-
-                        <p:row>
+                         <p:row>
                             <p:column colspan="3">
                                 <h:outputLabel value="Competencias Actuales"  />
                             </p:column>
                             <p:column colspan="4" > 
-                                <p:inputText id="dh" />
+                                <p:inputText id="competenciasactuales" readonly="true" value="viene de otra tabla" />
                             </p:column>
 
+
                             <p:column colspan="3">
-                                <h:outputLabel value="#{bundle.EditSeguimientoProyectoLabel_idResultadoAprendizaje}" for="idResultadoAprendizaje" /></p:column >
+                                <h:outputLabel value="#{bundle.EditSeguimientoProyectoLabel_idResultadoAprendizaje}" for="idResultadoAprendizaje" />
+                            </p:column>
                             <p:column  colspan="10" > 
                                 <p:selectOneMenu id="idResultadoAprendizaje" value="#{seguimientoProyectoController.selected.idResultadoAprendizaje}" >
                                     <f:selectItems value="#{resultadoAprendizajeController.itemsAvailableSelectOne}"/>
@@ -408,10 +389,35 @@
                             </p:column>
                         </p:row>
                         
-                            <p:row>  
-                                <p:column colspan="20" style="background-color: #fc7323;"><center><font color="white"><strong>Revision y seguimiento al proyecto</strong></font></center> </p:column> 
-                            </p:row> 
-                     </p:panelGrid>
+
+                        <p:row>  
+                            <p:column colspan="20" style="background-color: #fc7323;"><center><font color="white"><strong>Revision y seguimiento al proyecto</strong></font></center> </p:column> 
+                        </p:row> 
+                                           
+                    
+                  
+
+                        <p:row>
+                            <p:column colspan="5">
+                                <h:outputLabel value="#{bundle.EditSeguimientoProyectoLabel_idTituloCriterio}" for="idTituloCriterio" />
+                            </p:column>
+                            <p:column colspan="5"> 
+                                <p:selectOneMenu id="idTituloCriterio" value="#{seguimientoProyectoController.selected.idTituloCriterio}" >
+                                    <f:selectItems value="#{tituloCriterioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+
+                            <p:column colspan="5">
+                                <h:outputLabel value="#{bundle.EditSeguimientoProyectoLabel_idEstadoAspirante}" for="idEstadoAspirante" />
+                            </p:column>
+                            <p:column colspan="5"> 
+                                <p:selectOneMenu id="idEstadoAspirante" value="}" >
+                                    <f:selectItems value="#{estadoAspiranteController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                        </p:row> 
+
+                    </p:panelGrid>
                     <br />
                     <br />                
                     <p:commandButton process="@this, @form" update="@form, :msgs"
@@ -425,3 +431,5 @@
     </ui:composition>
 
 </html>
+
+

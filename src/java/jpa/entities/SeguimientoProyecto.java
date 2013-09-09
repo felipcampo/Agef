@@ -5,10 +5,10 @@
 package jpa.entities;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "seguimiento_proyecto")
@@ -35,11 +35,11 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "SeguimientoProyecto.findAll", query = "SELECT s FROM SeguimientoProyecto s"),
     @NamedQuery(name = "SeguimientoProyecto.findByIdSeguimientoProyecto", query = "SELECT s FROM SeguimientoProyecto s WHERE s.idSeguimientoProyecto = :idSeguimientoProyecto"),
-    @NamedQuery(name = "SeguimientoProyecto.findByFechaSeguimientoInicio", query = "SELECT s FROM SeguimientoProyecto s WHERE s.fechaSeguimientoInicio = :fechaSeguimientoInicio"),
-    @NamedQuery(name = "SeguimientoProyecto.findByFechaSeguimientoFin", query = "SELECT s FROM SeguimientoProyecto s WHERE s.fechaSeguimientoFin = :fechaSeguimientoFin"),
-    @NamedQuery(name = "SeguimientoProyecto.findByNomInstructor", query = "SELECT s FROM SeguimientoProyecto s WHERE s.nomInstructor = :nomInstructor"),
     @NamedQuery(name = "SeguimientoProyecto.findByEvaluacionProyecto", query = "SELECT s FROM SeguimientoProyecto s WHERE s.evaluacionProyecto = :evaluacionProyecto"),
-    @NamedQuery(name = "SeguimientoProyecto.findByFechaProgramacionSeguimiento", query = "SELECT s FROM SeguimientoProyecto s WHERE s.fechaProgramacionSeguimiento = :fechaProgramacionSeguimiento")})
+    @NamedQuery(name = "SeguimientoProyecto.findByFechaProgramacionSeguimiento", query = "SELECT s FROM SeguimientoProyecto s WHERE s.fechaProgramacionSeguimiento = :fechaProgramacionSeguimiento"),
+    @NamedQuery(name = "SeguimientoProyecto.findByFechaSeguimientoFin", query = "SELECT s FROM SeguimientoProyecto s WHERE s.fechaSeguimientoFin = :fechaSeguimientoFin"),
+    @NamedQuery(name = "SeguimientoProyecto.findByFechaSeguimientoInicio", query = "SELECT s FROM SeguimientoProyecto s WHERE s.fechaSeguimientoInicio = :fechaSeguimientoInicio"),
+    @NamedQuery(name = "SeguimientoProyecto.findByNomInstructor", query = "SELECT s FROM SeguimientoProyecto s WHERE s.nomInstructor = :nomInstructor")})
 public class SeguimientoProyecto implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -48,70 +48,61 @@ public class SeguimientoProyecto implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "id_seguimiento_proyecto")
     private String idSeguimientoProyecto;
-    @Column(name = "fecha_seguimiento_inicio")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaSeguimientoInicio;
-    @Column(name = "fecha_seguimiento_fin")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaSeguimientoFin;
-    @Size(max = 255)
-    @Column(name = "nom_instructor")
-    private String nomInstructor;
     @Column(name = "evaluacion_proyecto")
-    private Long evaluacionProyecto;
+    private BigInteger evaluacionProyecto;
     @Column(name = "fecha_programacion_seguimiento")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaProgramacionSeguimiento;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSeguimientoProyecto")
+    @Column(name = "fecha_seguimiento_fin")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaSeguimientoFin;
+    @Column(name = "fecha_seguimiento_inicio")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaSeguimientoInicio;
+    @Size(max = 255)
+    @Column(name = "nom_instructor")
+    private String nomInstructor;
+    @OneToMany(mappedBy = "idSeguimientoProyecto")
     private List<CriterioSeguimientoProyecto> criterioSeguimientoProyectoList;
-    @JoinColumn(name = "id_sede_centro", referencedColumnName = "id_sede_centro")
+    @JoinColumn(name = "rol_id_rol", referencedColumnName = "id_rol")
     @ManyToOne
-    private SedeCentro idSedeCentro;
-    @JoinColumn(name = "id_proyecto_formativo", referencedColumnName = "id_proyecto_formativo")
+    private Rol rolIdRol;
+    @JoinColumn(name = "id_area", referencedColumnName = "id_area")
     @ManyToOne
-    private ProyectoFormativo idProyectoFormativo;
-    @JoinColumn(name = "id_estado_aspirante", referencedColumnName = "id_estado_aspirante")
-    @ManyToOne
-    private EstadoAspirante idEstadoAspirante;
-    @JoinColumn(name = "id_jornada_formacion", referencedColumnName = "id_jornada_formacion")
-    @ManyToOne
-    private JornadaFormacion idJornadaFormacion;
+    private Area idArea;
     @JoinColumn(name = "id_estado_aprendiz", referencedColumnName = "id_estado_aprendiz")
     @ManyToOne
     private EstadoAprendiz idEstadoAprendiz;
-    @JoinColumn(name = "id_estado_juicio", referencedColumnName = "id_estado_juicio")
+    @JoinColumn(name = "id_estado_aspirante", referencedColumnName = "id_estado_aspirante")
     @ManyToOne
-    private EstadoJuicio idEstadoJuicio;
+    private EstadoAspirante idEstadoAspirante;
     @JoinColumn(name = "id_ficha_caracterizacion", referencedColumnName = "id_ficha_caracterizacion")
     @ManyToOne
     private FichaCaracterizacion idFichaCaracterizacion;
-    @JoinColumn(name = "id_grado_juicio", referencedColumnName = "id_grado_juicio")
+    @JoinColumn(name = "id_jornada_formacion", referencedColumnName = "id_jornada_formacion")
     @ManyToOne
-    private GradoJuicio idGradoJuicio;
+    private JornadaFormacion idJornadaFormacion;
     @JoinColumn(name = "id_nivel_formacion", referencedColumnName = "id_nivel_formacion")
     @ManyToOne
     private NivelFormacion idNivelFormacion;
+    @JoinColumn(name = "id_proyecto_formativo", referencedColumnName = "id_proyecto_formativo")
+    @ManyToOne
+    private ProyectoFormativo idProyectoFormativo;
     @JoinColumn(name = "id_regional", referencedColumnName = "id_regional")
     @ManyToOne
     private Regional idRegional;
     @JoinColumn(name = "id_resultado_aprendizaje", referencedColumnName = "id_resultado_aprendizaje")
     @ManyToOne
     private ResultadoAprendizaje idResultadoAprendizaje;
-    @JoinColumn(name = "id_tipo_juicio", referencedColumnName = "id_tipo_juicio")
+    @JoinColumn(name = "id_sede_centro", referencedColumnName = "id_sede_centro")
     @ManyToOne
-    private TipoJuicio idTipoJuicio;
+    private SedeCentro idSedeCentro;
     @JoinColumn(name = "id_titulo_criterio", referencedColumnName = "id_titulo_criterio")
     @ManyToOne
     private TituloCriterio idTituloCriterio;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne
     private Usuario idUsuario;
-    @JoinColumn(name = "id_area", referencedColumnName = "id_area")
-    @ManyToOne
-    private Area idArea;
-    @JoinColumn(name = "rol_id_rol", referencedColumnName = "id_rol")
-    @ManyToOne
-    private Rol rolIdRol;
 
     public SeguimientoProyecto() {
     }
@@ -128,35 +119,11 @@ public class SeguimientoProyecto implements Serializable {
         this.idSeguimientoProyecto = idSeguimientoProyecto;
     }
 
-    public Date getFechaSeguimientoInicio() {
-        return fechaSeguimientoInicio;
-    }
-
-    public void setFechaSeguimientoInicio(Date fechaSeguimientoInicio) {
-        this.fechaSeguimientoInicio = fechaSeguimientoInicio;
-    }
-
-    public Date getFechaSeguimientoFin() {
-        return fechaSeguimientoFin;
-    }
-
-    public void setFechaSeguimientoFin(Date fechaSeguimientoFin) {
-        this.fechaSeguimientoFin = fechaSeguimientoFin;
-    }
-
-    public String getNomInstructor() {
-        return nomInstructor;
-    }
-
-    public void setNomInstructor(String nomInstructor) {
-        this.nomInstructor = nomInstructor;
-    }
-
-    public Long getEvaluacionProyecto() {
+    public BigInteger getEvaluacionProyecto() {
         return evaluacionProyecto;
     }
 
-    public void setEvaluacionProyecto(Long evaluacionProyecto) {
+    public void setEvaluacionProyecto(BigInteger evaluacionProyecto) {
         this.evaluacionProyecto = evaluacionProyecto;
     }
 
@@ -168,6 +135,30 @@ public class SeguimientoProyecto implements Serializable {
         this.fechaProgramacionSeguimiento = fechaProgramacionSeguimiento;
     }
 
+    public Date getFechaSeguimientoFin() {
+        return fechaSeguimientoFin;
+    }
+
+    public void setFechaSeguimientoFin(Date fechaSeguimientoFin) {
+        this.fechaSeguimientoFin = fechaSeguimientoFin;
+    }
+
+    public Date getFechaSeguimientoInicio() {
+        return fechaSeguimientoInicio;
+    }
+
+    public void setFechaSeguimientoInicio(Date fechaSeguimientoInicio) {
+        this.fechaSeguimientoInicio = fechaSeguimientoInicio;
+    }
+
+    public String getNomInstructor() {
+        return nomInstructor;
+    }
+
+    public void setNomInstructor(String nomInstructor) {
+        this.nomInstructor = nomInstructor;
+    }
+
     @XmlTransient
     public List<CriterioSeguimientoProyecto> getCriterioSeguimientoProyectoList() {
         return criterioSeguimientoProyectoList;
@@ -177,36 +168,20 @@ public class SeguimientoProyecto implements Serializable {
         this.criterioSeguimientoProyectoList = criterioSeguimientoProyectoList;
     }
 
-    public SedeCentro getIdSedeCentro() {
-        return idSedeCentro;
+    public Rol getRolIdRol() {
+        return rolIdRol;
     }
 
-    public void setIdSedeCentro(SedeCentro idSedeCentro) {
-        this.idSedeCentro = idSedeCentro;
+    public void setRolIdRol(Rol rolIdRol) {
+        this.rolIdRol = rolIdRol;
     }
 
-    public ProyectoFormativo getIdProyectoFormativo() {
-        return idProyectoFormativo;
+    public Area getIdArea() {
+        return idArea;
     }
 
-    public void setIdProyectoFormativo(ProyectoFormativo idProyectoFormativo) {
-        this.idProyectoFormativo = idProyectoFormativo;
-    }
-
-    public EstadoAspirante getIdEstadoAspirante() {
-        return idEstadoAspirante;
-    }
-
-    public void setIdEstadoAspirante(EstadoAspirante idEstadoAspirante) {
-        this.idEstadoAspirante = idEstadoAspirante;
-    }
-
-    public JornadaFormacion getIdJornadaFormacion() {
-        return idJornadaFormacion;
-    }
-
-    public void setIdJornadaFormacion(JornadaFormacion idJornadaFormacion) {
-        this.idJornadaFormacion = idJornadaFormacion;
+    public void setIdArea(Area idArea) {
+        this.idArea = idArea;
     }
 
     public EstadoAprendiz getIdEstadoAprendiz() {
@@ -217,12 +192,12 @@ public class SeguimientoProyecto implements Serializable {
         this.idEstadoAprendiz = idEstadoAprendiz;
     }
 
-    public EstadoJuicio getIdEstadoJuicio() {
-        return idEstadoJuicio;
+    public EstadoAspirante getIdEstadoAspirante() {
+        return idEstadoAspirante;
     }
 
-    public void setIdEstadoJuicio(EstadoJuicio idEstadoJuicio) {
-        this.idEstadoJuicio = idEstadoJuicio;
+    public void setIdEstadoAspirante(EstadoAspirante idEstadoAspirante) {
+        this.idEstadoAspirante = idEstadoAspirante;
     }
 
     public FichaCaracterizacion getIdFichaCaracterizacion() {
@@ -233,12 +208,12 @@ public class SeguimientoProyecto implements Serializable {
         this.idFichaCaracterizacion = idFichaCaracterizacion;
     }
 
-    public GradoJuicio getIdGradoJuicio() {
-        return idGradoJuicio;
+    public JornadaFormacion getIdJornadaFormacion() {
+        return idJornadaFormacion;
     }
 
-    public void setIdGradoJuicio(GradoJuicio idGradoJuicio) {
-        this.idGradoJuicio = idGradoJuicio;
+    public void setIdJornadaFormacion(JornadaFormacion idJornadaFormacion) {
+        this.idJornadaFormacion = idJornadaFormacion;
     }
 
     public NivelFormacion getIdNivelFormacion() {
@@ -247,6 +222,14 @@ public class SeguimientoProyecto implements Serializable {
 
     public void setIdNivelFormacion(NivelFormacion idNivelFormacion) {
         this.idNivelFormacion = idNivelFormacion;
+    }
+
+    public ProyectoFormativo getIdProyectoFormativo() {
+        return idProyectoFormativo;
+    }
+
+    public void setIdProyectoFormativo(ProyectoFormativo idProyectoFormativo) {
+        this.idProyectoFormativo = idProyectoFormativo;
     }
 
     public Regional getIdRegional() {
@@ -265,12 +248,12 @@ public class SeguimientoProyecto implements Serializable {
         this.idResultadoAprendizaje = idResultadoAprendizaje;
     }
 
-    public TipoJuicio getIdTipoJuicio() {
-        return idTipoJuicio;
+    public SedeCentro getIdSedeCentro() {
+        return idSedeCentro;
     }
 
-    public void setIdTipoJuicio(TipoJuicio idTipoJuicio) {
-        this.idTipoJuicio = idTipoJuicio;
+    public void setIdSedeCentro(SedeCentro idSedeCentro) {
+        this.idSedeCentro = idSedeCentro;
     }
 
     public TituloCriterio getIdTituloCriterio() {
@@ -287,22 +270,6 @@ public class SeguimientoProyecto implements Serializable {
 
     public void setIdUsuario(Usuario idUsuario) {
         this.idUsuario = idUsuario;
-    }
-
-    public Area getIdArea() {
-        return idArea;
-    }
-
-    public void setIdArea(Area idArea) {
-        this.idArea = idArea;
-    }
-
-    public Rol getRolIdRol() {
-        return rolIdRol;
-    }
-
-    public void setRolIdRol(Rol rolIdRol) {
-        this.rolIdRol = rolIdRol;
     }
 
     @Override
