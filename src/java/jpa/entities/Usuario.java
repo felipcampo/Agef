@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "usuario")
@@ -151,24 +151,26 @@ public class Usuario implements Serializable {
     private List<MatrizCaracterizacion> matrizCaracterizacionList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
     private List<VerificacionAmbienteTitulado> verificacionAmbienteTituladoList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+    private List<AspiranteFicha> aspiranteFichaList;
     @JoinColumn(name = "id_estado_aspirante", referencedColumnName = "id_estado_aspirante")
     @ManyToOne(optional = false)
     private EstadoAspirante idEstadoAspirante;
+    @JoinColumn(name = "id_situacion_militar", referencedColumnName = "id_situacion_militar")
+    @ManyToOne(optional = false)
+    private SituacionMilitar idSituacionMilitar;
+    @JoinColumn(name = "id_tipo_contrato", referencedColumnName = "id_tipo_contrato")
+    @ManyToOne(optional = false)
+    private TipoContrato idTipoContrato;
+    @JoinColumn(name = "id_tipo_documento", referencedColumnName = "id_tipo_documento")
+    @ManyToOne(optional = false)
+    private TipoDocumento idTipoDocumento;
     @JoinColumn(name = "id_barrio", referencedColumnName = "id_barrio")
     @ManyToOne(optional = false)
     private Barrio idBarrio;
     @JoinColumn(name = "id_ciudad_nacimiento", referencedColumnName = "id_ciudad")
     @ManyToOne(optional = false)
     private Ciudad idCiudadNacimiento;
-    @JoinColumn(name = "id_situacion_militar", referencedColumnName = "id_situacion_militar")
-    @ManyToOne(optional = false)
-    private SituacionMilitar idSituacionMilitar;
-    @JoinColumn(name = "id_tipo_documento", referencedColumnName = "id_tipo_documento")
-    @ManyToOne(optional = false)
-    private TipoDocumento idTipoDocumento;
-    @JoinColumn(name = "id_tipo_contrato", referencedColumnName = "id_tipo_contrato")
-    @ManyToOne(optional = false)
-    private TipoContrato idTipoContrato;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
     private List<LlamadoAtencionVerbal> llamadoAtencionVerbalList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
@@ -481,12 +483,45 @@ public class Usuario implements Serializable {
         this.verificacionAmbienteTituladoList = verificacionAmbienteTituladoList;
     }
 
+    @XmlTransient
+    public List<AspiranteFicha> getAspiranteFichaList() {
+        return aspiranteFichaList;
+    }
+
+    public void setAspiranteFichaList(List<AspiranteFicha> aspiranteFichaList) {
+        this.aspiranteFichaList = aspiranteFichaList;
+    }
+
     public EstadoAspirante getIdEstadoAspirante() {
         return idEstadoAspirante;
     }
 
     public void setIdEstadoAspirante(EstadoAspirante idEstadoAspirante) {
         this.idEstadoAspirante = idEstadoAspirante;
+    }
+
+    public SituacionMilitar getIdSituacionMilitar() {
+        return idSituacionMilitar;
+    }
+
+    public void setIdSituacionMilitar(SituacionMilitar idSituacionMilitar) {
+        this.idSituacionMilitar = idSituacionMilitar;
+    }
+
+    public TipoContrato getIdTipoContrato() {
+        return idTipoContrato;
+    }
+
+    public void setIdTipoContrato(TipoContrato idTipoContrato) {
+        this.idTipoContrato = idTipoContrato;
+    }
+
+    public TipoDocumento getIdTipoDocumento() {
+        return idTipoDocumento;
+    }
+
+    public void setIdTipoDocumento(TipoDocumento idTipoDocumento) {
+        this.idTipoDocumento = idTipoDocumento;
     }
 
     public Barrio getIdBarrio() {
@@ -503,30 +538,6 @@ public class Usuario implements Serializable {
 
     public void setIdCiudadNacimiento(Ciudad idCiudadNacimiento) {
         this.idCiudadNacimiento = idCiudadNacimiento;
-    }
-
-    public SituacionMilitar getIdSituacionMilitar() {
-        return idSituacionMilitar;
-    }
-
-    public void setIdSituacionMilitar(SituacionMilitar idSituacionMilitar) {
-        this.idSituacionMilitar = idSituacionMilitar;
-    }
-
-    public TipoDocumento getIdTipoDocumento() {
-        return idTipoDocumento;
-    }
-
-    public void setIdTipoDocumento(TipoDocumento idTipoDocumento) {
-        this.idTipoDocumento = idTipoDocumento;
-    }
-
-    public TipoContrato getIdTipoContrato() {
-        return idTipoContrato;
-    }
-
-    public void setIdTipoContrato(TipoContrato idTipoContrato) {
-        this.idTipoContrato = idTipoContrato;
     }
 
     @XmlTransient
