@@ -7,7 +7,6 @@ package jpa.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -22,7 +21,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "tipo_juicio")
@@ -39,28 +38,19 @@ public class TipoJuicio implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "id_tipo_juicio")
     private String idTipoJuicio;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
+    @Size(max = 255)
     @Column(name = "nom_tip_jui")
     private String nomTipJui;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTipoJuicio")
-    private List<SeguimientoInstructor> seguimientoInstructorList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTipoJuicio")
-    private List<CriterioSeguimientoProyecto> criterioSeguimientoProyectoList;
     @OneToMany(mappedBy = "idTipoJuicio")
-    private List<SeguimientoProyecto> seguimientoProyectoList;
+    private List<SeguimientoInstructor> seguimientoInstructorList;
+    @OneToMany(mappedBy = "idTipoJuicio")
+    private List<CriterioSeguimientoProyecto> criterioSeguimientoProyectoList;
 
     public TipoJuicio() {
     }
 
     public TipoJuicio(String idTipoJuicio) {
         this.idTipoJuicio = idTipoJuicio;
-    }
-
-    public TipoJuicio(String idTipoJuicio, String nomTipJui) {
-        this.idTipoJuicio = idTipoJuicio;
-        this.nomTipJui = nomTipJui;
     }
 
     public String getIdTipoJuicio() {
@@ -95,15 +85,6 @@ public class TipoJuicio implements Serializable {
 
     public void setCriterioSeguimientoProyectoList(List<CriterioSeguimientoProyecto> criterioSeguimientoProyectoList) {
         this.criterioSeguimientoProyectoList = criterioSeguimientoProyectoList;
-    }
-
-    @XmlTransient
-    public List<SeguimientoProyecto> getSeguimientoProyectoList() {
-        return seguimientoProyectoList;
-    }
-
-    public void setSeguimientoProyectoList(List<SeguimientoProyecto> seguimientoProyectoList) {
-        this.seguimientoProyectoList = seguimientoProyectoList;
     }
 
     @Override

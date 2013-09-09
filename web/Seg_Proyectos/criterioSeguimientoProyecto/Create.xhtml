@@ -11,6 +11,13 @@
             <h:outputText value="#{bundle.CreateCriterioSeguimientoProyectoTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+            
+             <div id="Layout_Titulo_Formulario_Agef"> <h2>SEGUIMIENTO A PROYECTOS</h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen"> #{bundle.CreateEvaluacionCriterioSeguimientoProyectoTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br>  
+            
             <p:growl id="msgs" showDetail="false" sticky="false"/>
             <h:form id="formCriterioSeguimientoProyecto">
                 <div id="form" align="center">
@@ -34,7 +41,7 @@
                                 <h:outputLabel value="#{bundle.CreateCriterioSeguimientoProyectoLabel_obsCriSeg}" for="obsCriSeg" />
                             </p:column>
                             <p:column style="border-right: white">    
-                                <p:inputTextarea rows="4" cols="30" id="obsCriSeg" value="#{criterioSeguimientoProyectoController.selected.obsCriSeg}" title="#{bundle.CreateCriterioSeguimientoProyectoTitle_obsCriSeg}" required="true" requiredMessage="#{bundle.CreateCriterioSeguimientoProyectoRequiredMessage_obsCriSeg}"/>
+                                <p:inputTextarea rows="4" cols="30" id="obsCriSeg" value="#{criterioSeguimientoProyectoController.selected.obsCriSeg}" title="#{bundle.CreateCriterioSeguimientoProyectoTitle_obsCriSeg}" />
                             </p:column>
                             <p:column style="border-left: white;">
                                 <p:message for="obsCriSeg"/>
@@ -42,36 +49,10 @@
                         </p:row>
                         <p:row>
                             <p:column>
-                                <h:outputLabel value="#{bundle.CreateCriterioSeguimientoProyectoLabel_idEstadoJuicio}" for="idEstadoJuicio" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:selectOneMenu id="idEstadoJuicio" value="#{criterioSeguimientoProyectoController.selected.idEstadoJuicio}" required="true" requiredMessage="#{bundle.CreateCriterioSeguimientoProyectoRequiredMessage_idEstadoJuicio}">
-                                    <f:selectItems value="#{estadoJuicioController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idEstadoJuicio"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateCriterioSeguimientoProyectoLabel_idGradoJuicio}" for="idGradoJuicio" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:selectOneMenu id="idGradoJuicio" value="#{criterioSeguimientoProyectoController.selected.idGradoJuicio}" required="true" requiredMessage="#{bundle.CreateCriterioSeguimientoProyectoRequiredMessage_idGradoJuicio}">
-                                    <f:selectItems value="#{gradoJuicioController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idGradoJuicio"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
                                 <h:outputLabel value="#{bundle.CreateCriterioSeguimientoProyectoLabel_idTipoJuicio}" for="idTipoJuicio" />
                             </p:column>
                             <p:column style="border-right: white">    
-                                <p:selectOneMenu id="idTipoJuicio" value="#{criterioSeguimientoProyectoController.selected.idTipoJuicio}" required="true" requiredMessage="#{bundle.CreateCriterioSeguimientoProyectoRequiredMessage_idTipoJuicio}">
+                                <p:selectOneMenu id="idTipoJuicio" value="#{criterioSeguimientoProyectoController.selected.idTipoJuicio}" >
                                     <f:selectItems value="#{tipoJuicioController.itemsAvailableSelectOne}"/>
                                 </p:selectOneMenu>
                             </p:column>
@@ -81,10 +62,36 @@
                         </p:row>
                         <p:row>
                             <p:column>
+                                <h:outputLabel value="#{bundle.CreateCriterioSeguimientoProyectoLabel_idGradoJuicio}" for="idGradoJuicio" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idGradoJuicio" value="#{criterioSeguimientoProyectoController.selected.idGradoJuicio}" >
+                                    <f:selectItems value="#{gradoJuicioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idGradoJuicio"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateCriterioSeguimientoProyectoLabel_idEstadoJuicio}" for="idEstadoJuicio" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idEstadoJuicio" value="#{criterioSeguimientoProyectoController.selected.idEstadoJuicio}" >
+                                    <f:selectItems value="#{estadoJuicioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idEstadoJuicio"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
                                 <h:outputLabel value="#{bundle.CreateCriterioSeguimientoProyectoLabel_idEvaluacionCriterioSeguimientoProyecto}" for="idEvaluacionCriterioSeguimientoProyecto" />
                             </p:column>
                             <p:column style="border-right: white">    
-                                <p:selectOneMenu id="idEvaluacionCriterioSeguimientoProyecto" value="#{criterioSeguimientoProyectoController.selected.idEvaluacionCriterioSeguimientoProyecto}" required="true" requiredMessage="#{bundle.CreateCriterioSeguimientoProyectoRequiredMessage_idEvaluacionCriterioSeguimientoProyecto}">
+                                <p:selectOneMenu id="idEvaluacionCriterioSeguimientoProyecto" value="#{criterioSeguimientoProyectoController.selected.idEvaluacionCriterioSeguimientoProyecto}" >
                                     <f:selectItems value="#{evaluacionCriterioSeguimientoProyectoController.itemsAvailableSelectOne}"/>
                                 </p:selectOneMenu>
                             </p:column>
@@ -97,7 +104,7 @@
                                 <h:outputLabel value="#{bundle.CreateCriterioSeguimientoProyectoLabel_idCriterioEvaluacion}" for="idCriterioEvaluacion" />
                             </p:column>
                             <p:column style="border-right: white">    
-                                <p:selectOneMenu id="idCriterioEvaluacion" value="#{criterioSeguimientoProyectoController.selected.idCriterioEvaluacion}" required="true" requiredMessage="#{bundle.CreateCriterioSeguimientoProyectoRequiredMessage_idCriterioEvaluacion}">
+                                <p:selectOneMenu id="idCriterioEvaluacion" value="#{criterioSeguimientoProyectoController.selected.idCriterioEvaluacion}" >
                                     <f:selectItems value="#{criterioEvaluacionController.itemsAvailableSelectOne}"/>
                                 </p:selectOneMenu>
                             </p:column>
@@ -110,7 +117,7 @@
                                 <h:outputLabel value="#{bundle.CreateCriterioSeguimientoProyectoLabel_idSeguimientoProyecto}" for="idSeguimientoProyecto" />
                             </p:column>
                             <p:column style="border-right: white">    
-                                <p:selectOneMenu id="idSeguimientoProyecto" value="#{criterioSeguimientoProyectoController.selected.idSeguimientoProyecto}" required="true" requiredMessage="#{bundle.CreateCriterioSeguimientoProyectoRequiredMessage_idSeguimientoProyecto}">
+                                <p:selectOneMenu id="idSeguimientoProyecto" value="#{criterioSeguimientoProyectoController.selected.idSeguimientoProyecto}" >
                                     <f:selectItems value="#{seguimientoProyectoController.itemsAvailableSelectOne}"/>
                                 </p:selectOneMenu>
                             </p:column>
@@ -128,6 +135,14 @@
                     <p:commandButton ajax="false" action="#{criterioSeguimientoProyectoController.prepareList}" value="#{bundle.CreateCriterioSeguimientoProyectoShowAllLink}" immediate="true"/>
                 </div>
             </h:form>
+                <br></br>
+            </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
     </ui:composition>
 

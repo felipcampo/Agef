@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <head>
+            <meta charset="utf-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" />
+            <meta name="description" content="Liquid Slider : A JQuery Slider Plugin" />
+
+            <!-- You may want to "minify" these after making edits http://www.refresh-sf.com/yui/ -->
+            <link rel="stylesheet" href="recursos/css/animate.css"/> <!-- Optional -->
+            <link rel="stylesheet" href="recursos/css/liquid-slider.css"/>
+            <link rel="stylesheet" href="recursos/css/bootstrap.css"/>
+            <!-- Liquid Slider relies on jQuery -->
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+            <!-- More scripts below! -->
+        </head>
+
+        <body>
+
+            <div class="liquid-slider"  id="main-slider">
+                <div>
+                    <h2 class="title" ><font face="myriad pro" color="#fc7323"><center>SEGUIMIENTO A PROYECTOS CBI PALMIRA</center></font></h2>
+                    <p><center><img src="recursos/img/1.jpg" width="700" height="350"/></center></p>
+                    <p><font face="myriad pro" color="#fc7323"><center>Diferentes areas</center></font></p>
+                </div>
+                <div>
+                    <h2 class="title" ><font face="myriad pro" color="#fc7323"><center>SEGUIMIENTO A PROYECTOS CBI PALMIRA</center></font></h2>
+                    <p><center><img src="recursos/img/2.jpg" width="700" height="350"/></center></p>
+                <p><font face="myriad pro" color="#fc7323"><center>Seguimiento pedagogico</center></font></p>
+                </div>          
+                <div>
+                   <h2 class="title" ><font face="myriad pro" color="#fc7323"><center>SEGUIMIENTO A PROYECTOS CBI PALMIRA</center></font></h2>
+                    <p><center><img src="recursos/img/3.jpg" width="700" height="350"/></center></p>
+                <p><font face="myriad pro" color="#fc7323"><center>Resultados de los seguimientos</center></font></p>
+                </div>
+                
+            </div>
+            <!-- Feel free to load scripts in the footer -->
+            <script src="recursos/js/jquery.easing.1.3.js"></script>
+            <script src="recursos/js/jquery.touchSwipe.min.js"></script>
+            <script src="recursos/js/jquery.liquid-slider-custom.min.js"></script>  
+            <script src="recursos/js/bootstrap.min.js"></script> 
+             
+            <script>
+                $('#main-slider').liquidSlider();
+
+                /* If you need to access the internal property or methods, use this:
+                 var api = $.data( $('#slider-id')[0], 'liquidSlider');
+                 */
+            </script>
+            
+               <div class="span12">
+		
+			<ul class="thumbnails">
+				<li class="span4"><span class="thumbnail"><img alt="300x200"  src="recursos/img/DSCN0017.JPG" /></span>
+					<div class="thumbnail">
+					  <div class="caption">
+                        <div align="center"><font size="3" face="Myriad Pro" color="#fc7323">OBJETIVO GENERAL</font><br/>	
+                          <font  face="Myriad Pro" class="justifi1">
+                            El objetivo general del modulo Seguimiento a Proyectos es crear un informe detallado de seguimiento a cada proyecto de formacion del sena, para generar estadisticas y resultados evaluativos en cada etapa de la formacion del proyecto.
+                          </font><br/>
+                        </div>
+					  </div>
+					</div>
+				</li>
+					<li class="span4">
+                    <span class="thumbnail"><img src="recursos/img/DSCN0001.JPG" alt="350x200"/> </span>
+                         <div class="thumbnail">
+                         <div class="caption">
+                           <div align="center"><font size="3" face="Myriad Pro" color="#fc7323">MÓDULO SEGUIMIENTO A PROYECTOS</font><br/>
+                             <font  face="Myriad Pro" class="justifi">
+                               El módulo Seguimiento a Proyectos identificara todas las actividades realizadas en periodos de planeacion ya establecido para buscar y verificar los resultados del proyecto de formacion.
+                             </font></div>
+                           </div>                    
+                      </div>
+				</li>
+					<li class="span4">
+                    <span class="thumbnail">
+						<img alt="300x200" src="recursos/img/DSCN9994.JPG"  /></span>
+                        <div class="thumbnail">
+                        <div class="caption">
+                          <div align="center"><font size="3" face="Myriad Pro" color="#fc7323">COMPORTAMIENTO SEGUIMIENTO A PROYECTOS</font><br/>
+                            <font face="Myriad Pro" class="justifi2">
+                              El comportamiento del proyecto reflejara porcentajes y gráficos de cumplimiento y desempeño, describiendo cada una de las actividades que se realizara para poder ser evaluado posteriormente por el comite a proyectos de acuerdo a las estadisticas este calificara.   
+                            </font></div>
+                        </div>
+					</div>
+				</li>
+			</ul>
+		</div>
+        </body>
+    </ui:composition> 
+</html>
