@@ -80,7 +80,7 @@ public abstract class AbstractFacade<T> {
         try {                       
              if (filters != null) {
              EntityType<T> Entity_ = entity.getModel();
-             List<Predicate> ps = new ArrayList<>();
+             List<Predicate> ps = new ArrayList<Predicate>();
              for (Map.Entry<String, String> param : filters.entrySet()) {
              String campo = param.getKey();
              String valor = "%" + param.getValue() + "%";

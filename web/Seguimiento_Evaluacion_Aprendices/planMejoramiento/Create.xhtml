@@ -14,9 +14,10 @@
             <p:growl id="msgs" showDetail="false" sticky="false"/>
             <h:form id="formPlanMejoramiento">
                 <div id="form" align="center">
+                    <h3>#{bundle.CreatePlanMejoramientoTitle}</h3>
                     <p:panelGrid>
                         <f:facet name="header">
-                            <p:row><p:column colspan="3">#{bundle.CreatePlanMejoramientoTitle}</p:column></p:row>                            
+                            <p:row><p:column colspan="3">1. INFORMACIÓN GENERAL</p:column></p:row>                            
                         </f:facet>                        
                         <p:row>
                             <p:column>
@@ -99,12 +100,13 @@
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_tipoPlanMejoramiento}" for="tipoPlanMejoramiento" />
                             </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputText id="tipoPlanMejoramiento" value="#{planMejoramientoController.selected.tipoPlanMejoramiento}" title="#{bundle.CreatePlanMejoramientoTitle_tipoPlanMejoramiento}" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_tipoPlanMejoramiento}"/>
+                            <p:column colspan="3">  
+                                   
+                                <p:selectBooleanButton value="#{planMejoramientoController.selected.tipoPlanMejoramiento}" onLabel="Academico" offLabel="Disciplinario" >  
+                                    
+                                </p:selectBooleanButton>  
                             </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="tipoPlanMejoramiento"/>
-                            </p:column>
+
                         </p:row>
                         <p:row>
                             <p:column>
@@ -176,34 +178,28 @@
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_autenticidad}" for="autenticidad" />
                             </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputText id="autenticidad" value="#{planMejoramientoController.selected.autenticidad}" title="#{bundle.CreatePlanMejoramientoTitle_autenticidad}" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_autenticidad}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="autenticidad"/>
-                            </p:column>
+                            <p:column colspan="3">    
+                                <p:selectBooleanButton id="autenticidad" value="#{planMejoramientoController.selected.autenticidad}" onLabel="Si" offLabel="No" onIcon="ui-icon-check" offIcon="ui-icon-close" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_autenticidad}"/> 
+                            </p:column> 
+
                         </p:row>
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_calidad}" for="calidad" />
                             </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputText id="calidad" value="#{planMejoramientoController.selected.calidad}" title="#{bundle.CreatePlanMejoramientoTitle_calidad}" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_calidad}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="calidad"/>
-                            </p:column>
+                             <p:column colspan="3">    
+                                 <p:selectBooleanButton id="calidad" value="#{planMejoramientoController.selected.calidad}" onLabel="Si" offLabel="No" onIcon="ui-icon-check" offIcon="ui-icon-close" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_calidad}"/> 
+                            </p:column> 
+                            
                         </p:row>
                         <p:row>
                             <p:column>
-                                <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_aprendizaje}" for="aprendizaje" />
+                                <h:outputLabel value="Logro el Aprendizaje?" for="aprendizaje" />
                             </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputText id="aprendizaje" value="#{planMejoramientoController.selected.aprendizaje}" title="#{bundle.CreatePlanMejoramientoTitle_aprendizaje}" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_aprendizaje}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="aprendizaje"/>
-                            </p:column>
+                            <p:column colspan="3">    
+                                <p:selectBooleanButton id="aprendizaje" value="#{planMejoramientoController.selected.aprendizaje}" onLabel="Si" offLabel="No" onIcon="ui-icon-check" offIcon="ui-icon-close" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_aprendizaje}"/> 
+                            </p:column> 
+                            
                         </p:row>
                         <p:row>
                             <p:column>
