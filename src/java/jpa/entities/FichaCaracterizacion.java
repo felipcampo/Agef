@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "ficha_caracterizacion")
@@ -90,6 +90,15 @@ public class FichaCaracterizacion implements Serializable {
     private List<ReporteNovedad> reporteNovedadList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idFichaCaracterizacion")
     private List<PlaneacionClase> planeacionClaseList;
+    @JoinColumn(name = "id_nivel_formacion", referencedColumnName = "id_nivel_formacion")
+    @ManyToOne(optional = false)
+    private NivelFormacion idNivelFormacion;
+    @JoinColumn(name = "id_tipo_formacion", referencedColumnName = "id_tipo_formacion")
+    @ManyToOne(optional = false)
+    private TipoFormacion idTipoFormacion;
+    @JoinColumn(name = "id_tipo_oferta", referencedColumnName = "id_tipo_oferta")
+    @ManyToOne(optional = false)
+    private TipoOferta idTipoOferta;
     @JoinColumn(name = "id_proyecto_formativo", referencedColumnName = "id_proyecto_formativo")
     @ManyToOne(optional = false)
     private ProyectoFormativo idProyectoFormativo;
@@ -99,15 +108,6 @@ public class FichaCaracterizacion implements Serializable {
     @JoinColumn(name = "id_programa", referencedColumnName = "id_programa")
     @ManyToOne(optional = false)
     private Programa idPrograma;
-    @JoinColumn(name = "id_tipo_formacion", referencedColumnName = "id_tipo_formacion")
-    @ManyToOne(optional = false)
-    private TipoFormacion idTipoFormacion;
-    @JoinColumn(name = "id_nivel_formacion", referencedColumnName = "id_nivel_formacion")
-    @ManyToOne(optional = false)
-    private NivelFormacion idNivelFormacion;
-    @JoinColumn(name = "id_tipo_oferta", referencedColumnName = "id_tipo_oferta")
-    @ManyToOne(optional = false)
-    private TipoOferta idTipoOferta;
     @JoinColumn(name = "id_jornada_formacion", referencedColumnName = "id_jornada_formacion")
     @ManyToOne(optional = false)
     private JornadaFormacion idJornadaFormacion;
@@ -121,6 +121,8 @@ public class FichaCaracterizacion implements Serializable {
     private List<SeguimientoInstructor> seguimientoInstructorList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idFichaCaracterizacion")
     private List<MatrizCaracterizacion> matrizCaracterizacionList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fichaCaracterizacion")
+    private List<AspiranteFicha> aspiranteFichaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idFichaCaracterizacion")
     private List<LlamadoAtencionVerbal> llamadoAtencionVerbalList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idFichaCaracterizacion")
@@ -250,6 +252,30 @@ public class FichaCaracterizacion implements Serializable {
         this.planeacionClaseList = planeacionClaseList;
     }
 
+    public NivelFormacion getIdNivelFormacion() {
+        return idNivelFormacion;
+    }
+
+    public void setIdNivelFormacion(NivelFormacion idNivelFormacion) {
+        this.idNivelFormacion = idNivelFormacion;
+    }
+
+    public TipoFormacion getIdTipoFormacion() {
+        return idTipoFormacion;
+    }
+
+    public void setIdTipoFormacion(TipoFormacion idTipoFormacion) {
+        this.idTipoFormacion = idTipoFormacion;
+    }
+
+    public TipoOferta getIdTipoOferta() {
+        return idTipoOferta;
+    }
+
+    public void setIdTipoOferta(TipoOferta idTipoOferta) {
+        this.idTipoOferta = idTipoOferta;
+    }
+
     public ProyectoFormativo getIdProyectoFormativo() {
         return idProyectoFormativo;
     }
@@ -272,30 +298,6 @@ public class FichaCaracterizacion implements Serializable {
 
     public void setIdPrograma(Programa idPrograma) {
         this.idPrograma = idPrograma;
-    }
-
-    public TipoFormacion getIdTipoFormacion() {
-        return idTipoFormacion;
-    }
-
-    public void setIdTipoFormacion(TipoFormacion idTipoFormacion) {
-        this.idTipoFormacion = idTipoFormacion;
-    }
-
-    public NivelFormacion getIdNivelFormacion() {
-        return idNivelFormacion;
-    }
-
-    public void setIdNivelFormacion(NivelFormacion idNivelFormacion) {
-        this.idNivelFormacion = idNivelFormacion;
-    }
-
-    public TipoOferta getIdTipoOferta() {
-        return idTipoOferta;
-    }
-
-    public void setIdTipoOferta(TipoOferta idTipoOferta) {
-        this.idTipoOferta = idTipoOferta;
     }
 
     public JornadaFormacion getIdJornadaFormacion() {
@@ -349,6 +351,15 @@ public class FichaCaracterizacion implements Serializable {
 
     public void setMatrizCaracterizacionList(List<MatrizCaracterizacion> matrizCaracterizacionList) {
         this.matrizCaracterizacionList = matrizCaracterizacionList;
+    }
+
+    @XmlTransient
+    public List<AspiranteFicha> getAspiranteFichaList() {
+        return aspiranteFichaList;
+    }
+
+    public void setAspiranteFichaList(List<AspiranteFicha> aspiranteFichaList) {
+        this.aspiranteFichaList = aspiranteFichaList;
     }
 
     @XmlTransient

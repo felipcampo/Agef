@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "estado_aspirante")
@@ -39,12 +39,14 @@ public class EstadoAspirante implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_estado_aspirante")
-    private Integer idEstadoAspirante;
+    private Short idEstadoAspirante;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
     @Column(name = "nom_est_asp")
     private String nomEstAsp;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "estadoAspirante")
+    private List<AspiranteFicha> aspiranteFichaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEstadoAspirante")
     private List<Usuario> usuarioList;
     @OneToMany(mappedBy = "idEstadoAspirante")
@@ -53,20 +55,20 @@ public class EstadoAspirante implements Serializable {
     public EstadoAspirante() {
     }
 
-    public EstadoAspirante(Integer idEstadoAspirante) {
+    public EstadoAspirante(Short idEstadoAspirante) {
         this.idEstadoAspirante = idEstadoAspirante;
     }
 
-    public EstadoAspirante(Integer idEstadoAspirante, String nomEstAsp) {
+    public EstadoAspirante(Short idEstadoAspirante, String nomEstAsp) {
         this.idEstadoAspirante = idEstadoAspirante;
         this.nomEstAsp = nomEstAsp;
     }
 
-    public Integer getIdEstadoAspirante() {
+    public Short getIdEstadoAspirante() {
         return idEstadoAspirante;
     }
 
-    public void setIdEstadoAspirante(Integer idEstadoAspirante) {
+    public void setIdEstadoAspirante(Short idEstadoAspirante) {
         this.idEstadoAspirante = idEstadoAspirante;
     }
 
@@ -76,6 +78,15 @@ public class EstadoAspirante implements Serializable {
 
     public void setNomEstAsp(String nomEstAsp) {
         this.nomEstAsp = nomEstAsp;
+    }
+
+    @XmlTransient
+    public List<AspiranteFicha> getAspiranteFichaList() {
+        return aspiranteFichaList;
+    }
+
+    public void setAspiranteFichaList(List<AspiranteFicha> aspiranteFichaList) {
+        this.aspiranteFichaList = aspiranteFichaList;
     }
 
     @XmlTransient
