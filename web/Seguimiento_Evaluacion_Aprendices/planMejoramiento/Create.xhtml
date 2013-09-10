@@ -11,53 +11,137 @@
             <h:outputText value="#{bundle.CreatePlanMejoramientoTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-
-            <div id="Layout_Titulo_Formulario_Agef"> <h2> Evaluación y Seguimiento Aprendices </h2></div>
-            <div id="Layout_Nom_Form_Agef">
-                <h3 id="margen"> #{bundle.CreatePlanMejoramientoTitle}</h3>
-                <div id="Layout_Formulario_Agef">
-                    <br></br>
                     <p:growl id="msgs" showDetail="false" sticky="false"/>
                     <h:form id="formPlanMejoramiento">
                         <div id="form" align="center">
                            
                             <p:panelGrid>
                                 <f:facet name="header">
-                                    <p:row><p:column colspan="3">1. INFORMACIÓN GENERAL</p:column></p:row>                            
-                                </f:facet>                        
+                                    <p:row><p:column colspan="10">1. INFORMACIÓN GENERAL</p:column></p:row>                            
+                                </f:facet>
+                                <p:row>  
+                            <p:column> 
+                                <h:outputLabel value="#{bundle.CreateCentroFormacionLabel_idRegional}" for="codReg" />
+                            </p:column>  
+                            <p:column>
+                                <p:selectOneMenu id="codReg" value="#{planMejoramientoController.selected.idFichaCaracterizacion.idSedeCentro.idCentroFormacion.idRegional}" required="true" requiredMessage="#{bundle.CreateCentroFormacionRequiredMessage_idRegional}">
+                                    <f:selectItems value="#{regionalController.itemsAvailableSelectOne}"/>
+                                    <p:ajax update="codCen"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateCentroFormacionLabel_idCentroFormacion}" for="codCen" />
+                            </p:column>
+                            <p:column>
+                                <p:selectOneMenu id="codCen" value="#{planMejoramientoController.selected.idFichaCaracterizacion.idSedeCentro.idCentroFormacion}" required="true" requiredMessage="#{bundle.CreateCentroFormacionRequiredMessage_idCentroFormacion}">
+                                    <f:selectItems value="#{centroFormacionController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column> 
+                        </p:row> 
                                 <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateFichaCaracterizacionLabel_idPrograma}" for="codPro" />
+                            </p:column>
+                            <p:column>
+                                <p:selectOneMenu id="codPro" value="#{fichaCaracterizacionController.selected.idPrograma}" required="true" requiredMessage="#{bundle.CreateFichaCaracterizacionRequiredMessage_idPrograma}">
+                                    <f:selectItems value="#{programaController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column> 
                                     <p:column>
-                                        <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_idPlanMejoramiento}" for="idPlanMejoramiento" />
-                                    </p:column>
-                                    <p:column style="border-right: white">    
-                                        <p:inputText id="idPlanMejoramiento" value="#{planMejoramientoController.selected.idPlanMejoramiento}" title="#{bundle.CreatePlanMejoramientoTitle_idPlanMejoramiento}" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_idPlanMejoramiento}"/>
-                                    </p:column>
-                                    <p:column style="border-left: white;">
-                                        <p:message for="idPlanMejoramiento"/>
-                                    </p:column>
+                                        <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_idProyectoFormativo}" for="idProyectoFormativo" />
+                            </p:column>
+                            <p:column>
+                                <p:selectOneMenu id="idProyectoFormativo" value="#{fichaCaracterizacionController.selected.idProyectoFormativo}" required="true" requiredMessage="#{bundle.CreateFichaCaracterizacionRequiredMessage_idProyectoFormativo}">
+                                    <f:selectItems value="#{proyectoFormativoController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
                                 </p:row>
                                 <p:row>
+                                    
+                                    <p:column>
+                                        <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_idResultadoAprendizaje}" for="idResultadoAprendizaje" />
+                                    </p:column>
+                                    <p:column>    
+                                        <p:selectOneMenu id="idResultadoAprendizaje" value="#{planMejoramientoController.selected.idResultadoAprendizaje}" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_idResultadoAprendizaje}">
+                                            <f:selectItems value="#{resultadoAprendizajeController.itemsAvailableSelectOne}"/>
+                                        </p:selectOneMenu>
+                                    </p:column>
+                                                           
+                                    <p:column>
+                                        <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_idFichaCaracterizacion}" for="idFichaCaracterizacion" />
+                                    </p:column>
+                                    <p:column>    
+                                        <p:selectOneMenu id="idFichaCaracterizacion" value="#{planMejoramientoController.selected.idFichaCaracterizacion}" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_idFichaCaracterizacion}">
+                                            <f:selectItems value="#{fichaCaracterizacionController.itemsAvailableSelectOne}"/>
+                                        </p:selectOneMenu>
+                                    </p:column>
+                                    
+                                </p:row>
+                                <p:row>  
+                            <p:column colspan="4" styleClass="ui-widget-header">  
+                                <p:spacer height="0"/>  
+                            </p:column>  
+                        </p:row>
+                                <p:row> 
+                            <p:column style="font-weight: bold;" rowspan="3">DATOS DEL APRENDIZ</p:column>  
+                        </p:row>
+                                 <p:row>                                      
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateSeguimientoProductivaLabel_idUsuario}" for="idUsuario" />
+                            </p:column>
+                            <p:column colspan="3">    
+                                <p:selectOneMenu id="idUsuario" value="#{seguimientoProductivaController.selected.idUsuario}" required="true" requiredMessage="#{bundle.CreateSeguimientoProductivaRequiredMessage_idUsuario}">
+                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column> 
+                        </p:row> 
+                                <p:row>                                      
+                            <p:column><h:outputText value="#{bundle.ViewUsuarioLabel_nomUsu}"/> </p:column>  
+                            <p:column colspan="2"><h:outputText value="#{usuarioController.selected.nomUsu}" title="#{bundle.ViewUsuarioTitle_nomUsu}"/> 
+                                <h:outputText value="#{usuarioController.selected.apeUsu}" title="#{bundle.ViewUsuarioTitle_apeUsu}"/></p:column>   
+                        </p:row>
+                                <p:row>  
+                            <p:column colspan="4" styleClass="ui-widget-header">  
+                                <p:spacer height="0"/>  
+                            </p:column>  
+                        </p:row>
+                                <p:row> 
+                            <p:column style="font-weight: bold;" rowspan="3">DATOS DEL INSTRUCTOR</p:column>  
+                        </p:row>
+                                 <p:row>                                      
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateSeguimientoProductivaLabel_idUsuario}" for="idUsuario" />
+                            </p:column>
+                            <p:column colspan="3">    
+                                <p:selectOneMenu id="idUsuario" value="#{seguimientoProductivaController.selected.idUsuario}" required="true" requiredMessage="#{bundle.CreateSeguimientoProductivaRequiredMessage_idUsuario}">
+                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column> 
+                        </p:row> 
+                                <p:row>                                      
+                            <p:column><h:outputText value="#{bundle.ViewUsuarioLabel_nomUsu}"/> </p:column>  
+                            <p:column colspan="2"><h:outputText value="#{usuarioController.selected.nomUsu}" title="#{bundle.ViewUsuarioTitle_nomUsu}"/> 
+                                <h:outputText value="#{usuarioController.selected.apeUsu}" title="#{bundle.ViewUsuarioTitle_apeUsu}"/></p:column>   
+                        </p:row> 
+                                <p:row>  
+                            <p:column colspan="4" styleClass="ui-widget-header">  
+                                <p:spacer height="0"/>  
+                            </p:column>  
+                        </p:row>
+                              <p:row>
                                     <p:column>
                                         <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_actividadesDesarrollar}" for="actividadesDesarrollar" />
                                     </p:column>
-                                    <p:column style="border-right: white">    
+                                    <p:column>    
                                         <p:inputTextarea rows="4" cols="30" id="actividadesDesarrollar" value="#{planMejoramientoController.selected.actividadesDesarrollar}" title="#{bundle.CreatePlanMejoramientoTitle_actividadesDesarrollar}" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_actividadesDesarrollar}"/>
                                     </p:column>
-                                    <p:column style="border-left: white;">
-                                        <p:message for="actividadesDesarrollar"/>
-                                    </p:column>
-                                </p:row>
-                                <p:row>
-                                    <p:column>
+                                         <p:column>
                                         <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_observaciones}" for="observaciones" />
                                     </p:column>
-                                    <p:column style="border-right: white">    
+                                    <p:column>    
                                         <p:inputTextarea rows="4" cols="30" id="observaciones" value="#{planMejoramientoController.selected.observaciones}" title="#{bundle.CreatePlanMejoramientoTitle_observaciones}" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_observaciones}"/>
                                     </p:column>
-                                    <p:column style="border-left: white;">
-                                        <p:message for="observaciones"/>
-                                    </p:column>
-                                </p:row>
+                                   </p:row>
                                 <p:row>
                                     <p:column>
                                         <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_evidenciaCam}" for="evidenciaCam" />
@@ -261,19 +345,7 @@
                                         <p:message for="idComite"/>
                                     </p:column>
                                 </p:row>
-                                <p:row>
-                                    <p:column>
-                                        <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_idFichaCaracterizacion}" for="idFichaCaracterizacion" />
-                                    </p:column>
-                                    <p:column style="border-right: white">    
-                                        <p:selectOneMenu id="idFichaCaracterizacion" value="#{planMejoramientoController.selected.idFichaCaracterizacion}" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_idFichaCaracterizacion}">
-                                            <f:selectItems value="#{fichaCaracterizacionController.itemsAvailableSelectOne}"/>
-                                        </p:selectOneMenu>
-                                    </p:column>
-                                    <p:column style="border-left: white;">
-                                        <p:message for="idFichaCaracterizacion"/>
-                                    </p:column>
-                                </p:row>
+                                
                                 <p:row>
                                     <p:column>
                                         <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_idEmpresa}" for="idEmpresa" />
@@ -341,19 +413,6 @@
                                 </p:row>
                                 <p:row>
                                     <p:column>
-                                        <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_idResultadoAprendizaje}" for="idResultadoAprendizaje" />
-                                    </p:column>
-                                    <p:column style="border-right: white">    
-                                        <p:selectOneMenu id="idResultadoAprendizaje" value="#{planMejoramientoController.selected.idResultadoAprendizaje}" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_idResultadoAprendizaje}">
-                                            <f:selectItems value="#{resultadoAprendizajeController.itemsAvailableSelectOne}"/>
-                                        </p:selectOneMenu>
-                                    </p:column>
-                                    <p:column style="border-left: white;">
-                                        <p:message for="idResultadoAprendizaje"/>
-                                    </p:column>
-                                </p:row>
-                                <p:row>
-                                    <p:column>
                                         <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_idFaseProyecto}" for="idFaseProyecto" />
                                     </p:column>
                                     <p:column style="border-right: white">    
@@ -401,15 +460,6 @@
                             <p:commandButton ajax="false" action="#{planMejoramientoController.prepareList}" value="#{bundle.CreatePlanMejoramientoShowAllLink}" immediate="true"/>
                         </div>
                     </h:form>
-
-                    <br></br>
-                </div>
-            </div>
-            <div id="Layout_Info_Agef">
-                <h4>INFORMACION</h4>
-                <hr></hr>
-                <p id="margen">Informacion de ayuda para formularios</p>
-            </div>
         </ui:define>
     </ui:composition>
 
