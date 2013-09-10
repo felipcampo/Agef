@@ -87,10 +87,10 @@
                         </p:row>
                                  <p:row>                                      
                             <p:column>
-                                <h:outputLabel value="#{bundle.CreateSeguimientoProductivaLabel_idUsuario}" for="idUsuario" />
+                                <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_idUsuario}" for="idUsuario" />
                             </p:column>
                             <p:column colspan="3">    
-                                <p:selectOneMenu id="idUsuario" value="#{seguimientoProductivaController.selected.idUsuario}" required="true" requiredMessage="#{bundle.CreateSeguimientoProductivaRequiredMessage_idUsuario}">
+                                <p:selectOneMenu id="idUsuario" value="#{planMejoramientoController.selected.idUsuario}" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_idUsuario}">
                                     <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
                                 </p:selectOneMenu>
                             </p:column> 
@@ -110,10 +110,10 @@
                         </p:row>
                                  <p:row>                                      
                             <p:column>
-                                <h:outputLabel value="#{bundle.CreateSeguimientoProductivaLabel_idUsuario}" for="idUsuario" />
+                                <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_idUsuario2}" for="idUsuario2" />
                             </p:column>
                             <p:column colspan="3">    
-                                <p:selectOneMenu id="idUsuario" value="#{seguimientoProductivaController.selected.idUsuario}" required="true" requiredMessage="#{bundle.CreateSeguimientoProductivaRequiredMessage_idUsuario}">
+                                <p:selectOneMenu id="idUsuario2" value="#{planMejoramientoController.selected.idUsuario2}" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_idUsuario2}">
                                     <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
                                 </p:selectOneMenu>
                             </p:column> 
@@ -128,6 +128,7 @@
                                 <p:spacer height="0"/>  
                             </p:column>  
                         </p:row>
+                                
                               <p:row>
                                     <p:column>
                                         <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_actividadesDesarrollar}" for="actividadesDesarrollar" />
@@ -135,6 +136,24 @@
                                     <p:column>    
                                         <p:inputTextarea rows="4" cols="30" id="actividadesDesarrollar" value="#{planMejoramientoController.selected.actividadesDesarrollar}" title="#{bundle.CreatePlanMejoramientoTitle_actividadesDesarrollar}" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_actividadesDesarrollar}"/>
                                     </p:column>
+                                    <p:column>
+                                        <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_fecIni}" for="fecIni" />
+                                    </p:column>
+                                    <p:column>    
+                                        <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecIni" value="#{planMejoramientoController.selected.fecIni}" title="#{bundle.CreatePlanMejoramientoTitle_fecIni}" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_fecIni}"/>
+                                    </p:column>
+                              </p:row>
+                                  <p:row>
+                                    <p:column>
+                                        <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_fecFin}" for="fecFin" />
+                                    </p:column>
+                                    <p:column>    
+                                        <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecFin" value="#{planMejoramientoController.selected.fecFin}" title="#{bundle.CreatePlanMejoramientoTitle_fecFin}" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_fecFin}"/>
+                                    </p:column>
+                                   
+                              </p:row>
+                                
+                                  <p:row>
                                          <p:column>
                                         <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_observaciones}" for="observaciones" />
                                     </p:column>
@@ -153,28 +172,7 @@
                                         <p:message for="evidenciaCam"/>
                                     </p:column>
                                 </p:row>
-                                <p:row>
-                                    <p:column>
-                                        <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_fecFin}" for="fecFin" />
-                                    </p:column>
-                                    <p:column style="border-right: white">    
-                                        <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecFin" value="#{planMejoramientoController.selected.fecFin}" title="#{bundle.CreatePlanMejoramientoTitle_fecFin}" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_fecFin}"/>
-                                    </p:column>
-                                    <p:column style="border-left: white;">
-                                        <p:message for="fecFin"/>
-                                    </p:column>
-                                </p:row>
-                                <p:row>
-                                    <p:column>
-                                        <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_fecIni}" for="fecIni" />
-                                    </p:column>
-                                    <p:column style="border-right: white">    
-                                        <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecIni" value="#{planMejoramientoController.selected.fecIni}" title="#{bundle.CreatePlanMejoramientoTitle_fecIni}" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_fecIni}"/>
-                                    </p:column>
-                                    <p:column style="border-left: white;">
-                                        <p:message for="fecIni"/>
-                                    </p:column>
-                                </p:row>
+                                
                                 <p:row>
                                     <p:column>
                                         <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_fecRevision}" for="fecRevision" />
@@ -424,32 +422,7 @@
                                         <p:message for="idFaseProyecto"/>
                                     </p:column>
                                 </p:row>
-                                <p:row>
-                                    <p:column>
-                                        <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_idUsuario2}" for="idUsuario2" />
-                                    </p:column>
-                                    <p:column style="border-right: white">    
-                                        <p:selectOneMenu id="idUsuario2" value="#{planMejoramientoController.selected.idUsuario2}" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_idUsuario2}">
-                                            <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
-                                        </p:selectOneMenu>
-                                    </p:column>
-                                    <p:column style="border-left: white;">
-                                        <p:message for="idUsuario2"/>
-                                    </p:column>
-                                </p:row>
-                                <p:row>
-                                    <p:column>
-                                        <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_idUsuario}" for="idUsuario" />
-                                    </p:column>
-                                    <p:column style="border-right: white">    
-                                        <p:selectOneMenu id="idUsuario" value="#{planMejoramientoController.selected.idUsuario}" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_idUsuario}">
-                                            <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
-                                        </p:selectOneMenu>
-                                    </p:column>
-                                    <p:column style="border-left: white;">
-                                        <p:message for="idUsuario"/>
-                                    </p:column>
-                                </p:row>
+                                      
                             </p:panelGrid>
                             <br />
                             <br />
