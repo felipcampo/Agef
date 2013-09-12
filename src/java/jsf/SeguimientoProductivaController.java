@@ -3,9 +3,10 @@ package jsf;
 import jpa.entities.SeguimientoProductiva;
 import jsf.util.JsfUtil;
 import jpa.sessions.SeguimientoProductivaFacade;
-
+import jpa.sessions.UsuarioFacade;
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -18,8 +19,13 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.faces.model.SelectItem;
 import jpa.entities.CentroFormacion;
+import jpa.entities.FichaCaracterizacion;
+import jpa.entities.Programa;
 import jpa.entities.Regional;
+import jpa.entities.Usuario;
 import jpa.sessions.CentroFormacionFacade;
+import jpa.sessions.FichaCaracterizacionFacade;
+import jpa.sessions.ProgramaFacade;
 import jpa.sessions.RegionalFacade;
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
@@ -28,9 +34,13 @@ import org.primefaces.model.SortOrder;
 @SessionScoped
 public class SeguimientoProductivaController implements Serializable {
 
+    private Usuario usuarioActual;
+    private List<Usuario> listBusquedaUsuarios;
     private SeguimientoProductiva current;
-    private Regional currentRegional;
+    private Regional currentRegional;    
     private CentroFormacion currentCentroFormacion;
+    private FichaCaracterizacion currentFichaCaracterizacion;
+    private Programa currentPrograma; 
     private LazyDataModel<SeguimientoProductiva> lazyModel = null;
     @EJB
     private jpa.sessions.SeguimientoProductivaFacade ejbFacade;
@@ -38,8 +48,33 @@ public class SeguimientoProductivaController implements Serializable {
     private jpa.sessions.RegionalFacade ejbFacadeRegional;
     @EJB
     private jpa.sessions.CentroFormacionFacade ejbFacadeCentroFormacion;
+    @EJB
+    private jpa.sessions.UsuarioFacade usuarioFacade;
+    @EJB
+    private jpa.sessions.FichaCaracterizacionFacade ejbFacadeFichaCaracterizacion;
+    @EJB
+    private jpa.sessions.ProgramaFacade ejbFacadePrograma;
 
     public SeguimientoProductivaController() {
+    }
+
+    public Usuario getUsuarioActual() {
+        if (usuarioActual == null) {
+            usuarioActual = new Usuario();
+        }
+        return usuarioActual;
+    }
+
+    public void setUsuarioActual(Usuario usuario) {
+        usuarioActual = usuario;
+    }
+
+    private UsuarioFacade getUsuarioFacade() {
+        return usuarioFacade;
+    }
+
+    public List<Usuario> getListBusquedaUsuarios() {
+        return listBusquedaUsuarios;
     }
 
     public SeguimientoProductiva getSelected() {
@@ -48,7 +83,7 @@ public class SeguimientoProductivaController implements Serializable {
         }
         return current;
     }
-    
+
     public Regional getSelectedRegional() {
         if (currentRegional == null) {
             currentRegional = new Regional();
@@ -56,19 +91,38 @@ public class SeguimientoProductivaController implements Serializable {
         return currentRegional;
     }
     
+    public Programa getSelectedPrograma() {
+        if (currentPrograma == null) {
+            currentPrograma = new Programa();
+        }
+        return currentPrograma;
+    }
+    
+
     public CentroFormacion getSelectedCentroFormacion() {
         if (currentCentroFormacion == null) {
             currentCentroFormacion = new CentroFormacion();
         }
         return currentCentroFormacion;
     }
+    
+    public FichaCaracterizacion getSelectedFichaCaracterizacion() {
+        if (currentFichaCaracterizacion == null) {
+            currentFichaCaracterizacion = new FichaCaracterizacion();
+        }
+        return currentFichaCaracterizacion;
+    }    
 
     public void setSelected(SeguimientoProductiva entity) {
         current = entity;
     }
 
-    public void setSelectedRegional (Regional regional) {
+    public void setSelectedRegional(Regional regional) {
         currentRegional = regional;
+    }
+    
+    public void setSelectedPrograma(Programa programa) {
+        currentPrograma = programa;
     }
     
     private SeguimientoProductivaFacade getFacade() {
@@ -78,11 +132,21 @@ public class SeguimientoProductivaController implements Serializable {
     public RegionalFacade getFacadeRegional() {
         return ejbFacadeRegional;
     }
+    
+    public ProgramaFacade getFacadePrograma() {
+        return ejbFacadePrograma;
+    }
+    
 
     public CentroFormacionFacade getFacadeCentroFormacion() {
         return ejbFacadeCentroFormacion;
     }
     
+    public FichaCaracterizacionFacade getFacadeFichaCaracterizacion() {
+        return ejbFacadeFichaCaracterizacion;
+    }
+    
+
     public LazyDataModel<SeguimientoProductiva> getLazyModel() {
         if (lazyModel == null) {
             lazyModel = new LazyDataModel<SeguimientoProductiva>() {
@@ -129,12 +193,30 @@ public class SeguimientoProductivaController implements Serializable {
     public String prepareCreate() {
         current = new SeguimientoProductiva();
         currentRegional = new Regional();
-        currentCentroFormacion = new CentroFormacion();                
+        currentCentroFormacion = new CentroFormacion();
+        currentPrograma = new Programa();
+        currentFichaCaracterizacion = new FichaCaracterizacion();        
+        usuarioActual = new Usuario();
+        listBusquedaUsuarios = new ArrayList<>();
         return "Create";
+    }
+
+    public void buscarUsuario() {
+        if (usuarioActual.getNumeroDocumento().equals("")
+                && usuarioActual.getNomUsu().equals("") && usuarioActual.getApeUsu().equals("")) {
+            JsfUtil.addErrorMessage(ResourceBundle.getBundle("propierties/Bundle").getString("CriteriosVacios"));
+        } else {
+            try {
+                listBusquedaUsuarios = getUsuarioFacade().findUsuario(usuarioActual);
+            } catch (Exception e) {
+                JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("propierties/Bundle").getString("PersistenceErrorOccured"));
+            }
+        }
     }
 
     public String create() {
         try {
+            current.setIdUsuario(usuarioActual);
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("SeguimientoProductivaCreated"));
             return "View";
@@ -186,14 +268,19 @@ public class SeguimientoProductivaController implements Serializable {
     public SelectItem[] getItemsAvailableSelectOne() {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
-    
+
     public SelectItem[] getItemsAvailableSelectOneRegional() {
         return JsfUtil.getSelectItems(ejbFacadeRegional.findAll(), true);
     }
-    
+
     public SelectItem[] getItemsAvailableSelectOneCentroByRegional() {
         return JsfUtil.getSelectItems(ejbFacadeCentroFormacion.findByRegional(getSelectedRegional()), true);
-    }
+    }   
+    
+    public SelectItem[] getItemsAvailableSelectOneFichaCaracterizacionByPrograma() {
+        return JsfUtil.getSelectItems(ejbFacadeFichaCaracterizacion.findByPrograma(getSelectedPrograma()), true);
+    }  
+    
 
     @FacesConverter(forClass = SeguimientoProductiva.class)
     public static class SeguimientoProductivaControllerConverter implements Converter {

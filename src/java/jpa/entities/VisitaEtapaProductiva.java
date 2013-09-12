@@ -11,6 +11,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -25,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "visita_etapa_productiva")
@@ -33,27 +35,19 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "VisitaEtapaProductiva.findAll", query = "SELECT v FROM VisitaEtapaProductiva v"),
     @NamedQuery(name = "VisitaEtapaProductiva.findByIdVisitaEtapaProductiva", query = "SELECT v FROM VisitaEtapaProductiva v WHERE v.idVisitaEtapaProductiva = :idVisitaEtapaProductiva"),
-    @NamedQuery(name = "VisitaEtapaProductiva.findByDisponibilidadFecha", query = "SELECT v FROM VisitaEtapaProductiva v WHERE v.disponibilidadFecha = :disponibilidadFecha"),
-    @NamedQuery(name = "VisitaEtapaProductiva.findByEstadoVisita", query = "SELECT v FROM VisitaEtapaProductiva v WHERE v.estadoVisita = :estadoVisita"),
+    @NamedQuery(name = "VisitaEtapaProductiva.findByTituloVisita", query = "SELECT v FROM VisitaEtapaProductiva v WHERE v.tituloVisita = :tituloVisita"),
     @NamedQuery(name = "VisitaEtapaProductiva.findByFechaInicio", query = "SELECT v FROM VisitaEtapaProductiva v WHERE v.fechaInicio = :fechaInicio"),
     @NamedQuery(name = "VisitaEtapaProductiva.findByFechaFin", query = "SELECT v FROM VisitaEtapaProductiva v WHERE v.fechaFin = :fechaFin")})
 public class VisitaEtapaProductiva implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
     @Column(name = "id_visita_etapa_productiva")
-    private String idVisitaEtapaProductiva;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "disponibilidad_fecha")
-    private boolean disponibilidadFecha;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "estado_visita")
-    private String estadoVisita;
+    private Integer idVisitaEtapaProductiva;
+    @Size(max = 255)
+    @Column(name = "titulo_visita")
+    private String tituloVisita;
     @Basic(optional = false)
     @NotNull
     @Column(name = "fecha_inicio")
@@ -66,46 +60,36 @@ public class VisitaEtapaProductiva implements Serializable {
     private Date fechaFin;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idVisitaEtapaProductiva")
     private List<IncidenteProductiva> incidenteProductivaList;
-    @OneToMany(mappedBy = "idVisitaEtapaProductiva")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idVisitaEtapaProductiva")
     private List<SeguimientoProductiva> seguimientoProductivaList;
 
     public VisitaEtapaProductiva() {
     }
 
-    public VisitaEtapaProductiva(String idVisitaEtapaProductiva) {
+    public VisitaEtapaProductiva(Integer idVisitaEtapaProductiva) {
         this.idVisitaEtapaProductiva = idVisitaEtapaProductiva;
     }
 
-    public VisitaEtapaProductiva(String idVisitaEtapaProductiva, boolean disponibilidadFecha, String estadoVisita, Date fechaInicio, Date fechaFin) {
+    public VisitaEtapaProductiva(Integer idVisitaEtapaProductiva, Date fechaInicio, Date fechaFin) {
         this.idVisitaEtapaProductiva = idVisitaEtapaProductiva;
-        this.disponibilidadFecha = disponibilidadFecha;
-        this.estadoVisita = estadoVisita;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
     }
 
-    public String getIdVisitaEtapaProductiva() {
+    public Integer getIdVisitaEtapaProductiva() {
         return idVisitaEtapaProductiva;
     }
 
-    public void setIdVisitaEtapaProductiva(String idVisitaEtapaProductiva) {
+    public void setIdVisitaEtapaProductiva(Integer idVisitaEtapaProductiva) {
         this.idVisitaEtapaProductiva = idVisitaEtapaProductiva;
     }
 
-    public boolean getDisponibilidadFecha() {
-        return disponibilidadFecha;
+    public String getTituloVisita() {
+        return tituloVisita;
     }
 
-    public void setDisponibilidadFecha(boolean disponibilidadFecha) {
-        this.disponibilidadFecha = disponibilidadFecha;
-    }
-
-    public String getEstadoVisita() {
-        return estadoVisita;
-    }
-
-    public void setEstadoVisita(String estadoVisita) {
-        this.estadoVisita = estadoVisita;
+    public void setTituloVisita(String tituloVisita) {
+        this.tituloVisita = tituloVisita;
     }
 
     public Date getFechaInicio() {

@@ -39,10 +39,6 @@ public class VisitaEtapaProductivaController implements Serializable {
         return current;
     }
 
-    public void setSelected(VisitaEtapaProductiva entity) {
-        current = entity;
-    }
-
     private VisitaEtapaProductivaFacade getFacade() {
         return ejbFacade;
     }
@@ -86,60 +82,65 @@ public class VisitaEtapaProductivaController implements Serializable {
     }
 
     public String prepareView() {
-        current = (VisitaEtapaProductiva) getLazyModel().getRowData();
+        current = (VisitaEtapaProductiva) getLazyModel().getRowData();        
         return "View";
     }
 
     public String prepareCreate() {
-        current = new VisitaEtapaProductiva();
+        current = new VisitaEtapaProductiva();        
         return "Create";
     }
 
     public String create() {
         try {
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("VisitaEtapaProductivaCreated"));
-            return "View";
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("propierties/Bundle").getString("VisitaEtapaProductivaCreated"));
+            return prepareCreate();
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/properties/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("propierties/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }
     }
 
     public String prepareEdit() {
-        current = (VisitaEtapaProductiva) getLazyModel().getRowData();
+        current = (VisitaEtapaProductiva) getLazyModel().getRowData();        
         return "Edit";
     }
 
     public String update() {
         try {
             getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("VisitaEtapaProductivaUpdated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("propierties/Bundle").getString("VisitaEtapaProductivaUpdated"));
             return "View";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/properties/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("propierties/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }
     }
 
-    public String destroy() {
-        performDestroy();
+    public String destroy() {              
+        performDestroy();        
         recreateModel();
         return "List";
     }
 
+    
     private void performDestroy() {
         try {
             getFacade().remove(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("VisitaEtapaProductivaDeleted"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("propierties/Bundle").getString("VisitaEtapaProductivaDeleted"));
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/properties/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("propierties/Bundle").getString("PersistenceErrorOccured"));
         }
     }
 
+    
+    
     private void recreateModel() {
         lazyModel = null;
     }
+
+    
 
     public SelectItem[] getItemsAvailableSelectMany() {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), false);
@@ -149,30 +150,36 @@ public class VisitaEtapaProductivaController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
+    public VisitaEtapaProductiva getVisitaEtapaProductiva(java.lang.Integer id) {
+        return ejbFacade.find(id);
+    }
+
     @FacesConverter(forClass = VisitaEtapaProductiva.class)
     public static class VisitaEtapaProductivaControllerConverter implements Converter {
 
+        @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
             VisitaEtapaProductivaController controller = (VisitaEtapaProductivaController) facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "visitaEtapaProductivaController");
-            return controller.ejbFacade.find(getKey(value));
+            return controller.getVisitaEtapaProductiva(getKey(value));
         }
 
-        java.lang.String getKey(String value) {
-            java.lang.String key;
-            key = value;
+        java.lang.Integer getKey(String value) {
+            java.lang.Integer key;
+            key = Integer.valueOf(value);
             return key;
         }
 
-        String getStringKey(java.lang.String value) {
-            StringBuffer sb = new StringBuffer();
+        String getStringKey(java.lang.Integer value) {
+            StringBuilder sb = new StringBuilder();
             sb.append(value);
             return sb.toString();
         }
 
+        @Override
         public String getAsString(FacesContext facesContext, UIComponent component, Object object) {
             if (object == null) {
                 return null;

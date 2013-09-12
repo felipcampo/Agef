@@ -4,10 +4,18 @@
  */
 package jpa.sessions;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import jpa.entities.FichaCaracterizacion;
+import jpa.entities.FichaCaracterizacion_;
+import jpa.entities.Programa;
+
 
 /**
  *
@@ -27,4 +35,13 @@ public class FichaCaracterizacionFacade extends AbstractFacade<FichaCaracterizac
         super(FichaCaracterizacion.class);
     }
     
+public List<FichaCaracterizacion> findByPrograma(Programa programa) {
+        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<FichaCaracterizacion> cq = cb.createQuery(FichaCaracterizacion.class);
+        Root<FichaCaracterizacion> fichaCaracterizacion = cq.from(FichaCaracterizacion.class);
+        cq.where(cb.equal(fichaCaracterizacion.get(FichaCaracterizacion_.idPrograma), programa));
+        TypedQuery<FichaCaracterizacion> q = getEntityManager().createQuery(cq);        
+        return q.getResultList();
+    }
+
 }

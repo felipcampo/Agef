@@ -28,29 +28,21 @@
                             <p:column style="border-left: white;">
                                 <p:message for="idVisitaEtapaProductiva"/>
                             </p:column>
-                        </p:row>
+                        </p:row> 
+                        
                         <p:row>
                             <p:column>
-                                <h:outputLabel value="#{bundle.CreateVisitaEtapaProductivaLabel_disponibilidadFecha}" for="disponibilidadFecha" />
+                                <h:outputLabel value="#{bundle.CreateVisitaEtapaProductivaLabel_tituloVisita}" for="tituloVisita"/>
                             </p:column>
                             <p:column style="border-right: white">    
-                                <p:inputText id="disponibilidadFecha" value="#{visitaEtapaProductivaController.selected.disponibilidadFecha}" title="#{bundle.CreateVisitaEtapaProductivaTitle_disponibilidadFecha}" required="true" requiredMessage="#{bundle.CreateVisitaEtapaProductivaRequiredMessage_disponibilidadFecha}"/>
+                                <p:inputText id="tituloVisita" value="#{visitaEtapaProductivaController.selected.tituloVisita}" title="#{bundle.CreateVisitaEtapaProductivaTitle_tituloVisita}"/>
                             </p:column>
                             <p:column style="border-left: white;">
-                                <p:message for="disponibilidadFecha"/>
+                                <p:message for="tituloVisita"/>
                             </p:column>
                         </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateVisitaEtapaProductivaLabel_estadoVisita}" for="estadoVisita" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputText id="estadoVisita" value="#{visitaEtapaProductivaController.selected.estadoVisita}" title="#{bundle.CreateVisitaEtapaProductivaTitle_estadoVisita}" required="true" requiredMessage="#{bundle.CreateVisitaEtapaProductivaRequiredMessage_estadoVisita}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="estadoVisita"/>
-                            </p:column>
-                        </p:row>
+                        
+                        
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateVisitaEtapaProductivaLabel_fechaInicio}" for="fechaInicio" />
