@@ -9,15 +9,8 @@
     <ui:composition>  
         <h:form id="formCriterioSeguimiento">
             <div id="form" align="center">
-                <p:panelGrid>                                            
-                    <p:row>
-                        <p:column>
-                            <h:outputLabel value="#{bundle.CreateCriterioSeguimientoLabel_idCriterioSeguimiento}" for="idCriterioSeguimiento" />
-                        </p:column>
-                        <p:column style="border-right: white">    
-                            <p:inputText id="idCriterioSeguimiento" value="#{criterioSeguimientoController.selected.idCriterioSeguimiento}" title="#{bundle.CreateCriterioSeguimientoTitle_idCriterioSeguimiento}" required="true" requiredMessage="#{bundle.CreateCriterioSeguimientoRequiredMessage_idCriterioSeguimiento}"/>
-                        </p:column>                           
-                    </p:row>
+                <p:panelGrid>                                           
+                    
                     <p:row>
                         <p:column>
                             <h:outputLabel value="#{bundle.CreateCriterioSeguimientoLabel_idCriterioEvaluacion}" for="idCriterioEvaluacion" />

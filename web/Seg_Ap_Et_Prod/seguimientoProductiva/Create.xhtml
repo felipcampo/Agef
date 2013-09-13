@@ -154,9 +154,7 @@
                                         <h:outputLabel value="#{bundle.CreateSeguimientoProductivaLabel_idEmpresa}" for="idEmpresa" />
                                     </p:column>
                                     <p:column colspan="3">    
-                                        <p:selectOneMenu id="idEmpresa" value="#{seguimientoProductivaController.selected.idEmpresa}" required="true" requiredMessage="#{bundle.CreateSeguimientoProductivaRequiredMessage_idEmpresa}">
-                                            <f:selectItems value="#{empresaController.itemsAvailableSelectOne}"/>
-                                        </p:selectOneMenu>
+                                        <p:commandButton id="idEmpresa" icon="ui-icon-search" onclick="dlgBuscarEmpresa.show();" type="button"/>
                                     </p:column>
                                 </p:row> 
 
@@ -327,6 +325,16 @@
                                         <p:selectBooleanButton id="recEsp" value="#{seguimientoProductivaController.selected.reconocimentoEspeciales}" onLabel="Si" offLabel="No" onIcon="ui-icon-check" offIcon="ui-icon-close" required="true" requiredMessage="#{bundle.CreateSeguimientoProductivaRequiredMessage_reconocimentoEspeciales}"/>
                                     </p:column>                                    
                                 </p:row>
+                                
+                                <p:row>
+                                    <p:column>
+                                        <h:outputLabel value="#{bundle.CreateSeguimientoProductivaLabel_espRec}" for="espRec" />
+                                    </p:column>
+                                    <p:column colspan="3">    
+                                        <p:inputTextarea rows="4" cols="100" id="espRec" value="#{seguimientoProductivaController.selected.espRec}" title="#{bundle.CreateSeguimientoProductivaTitle_espRec}" required="true" requiredMessage="#{bundle.CreateSeguimientoProductivaRequiredMessage_espRec}"/>
+                                    </p:column>                                    
+                                </p:row>
+                                
 
                                 <p:row>
                                     <p:column>
@@ -441,6 +449,68 @@
                     </p:dataTable>  
                 </h:form>                     
             </p:dialog>
+            
+            <p:dialog id="buscarEmpresa" widgetVar="dlgBuscarEmpresa" modal="true" resizable="false" 
+                      showEffect="clip" hideEffect="clip" closeOnEscape="true">
+                <h:form id="formularioBuscar2"> 
+                    <p:panelGrid>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateEmpresaLabel_idEmpresa}" for="idEmpresa" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="idEmpresa" value="#{empresaController.selected.idEmpresa}" title="#{bundle.CreateEmpresaTitle_idEmpresa}" required="true" requiredMessage="#{bundle.CreateEmpresaRequiredMessage_idEmpresa}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idEmpresa"/>
+                            </p:column>
+                        </p:row>
+                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateEmpresaLabel_razonSocialEmpresa}" for="razonSocialEmpresa" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="razonSocialEmpresa" value="#{empresaController.selected.razonSocialEmpresa}" title="#{bundle.CreateEmpresaTitle_razonSocialEmpresa}" required="true" requiredMessage="#{bundle.CreateEmpresaRequiredMessage_razonSocialEmpresa}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="razonSocialEmpresa"/>
+                            </p:column>
+                        </p:row> 
+                        
+                        <p:row>
+                            <p:column colspan="3">
+                                <p:commandButton action="#{SeguimientoProductivaController.buscarEmpresa()}"
+                                                 value="Buscar"
+                                                 icon="ui-icon-search"
+                                                 process="@this,razonSocialEmpresa"
+                                                 update="tablaEmpresas, :msgs"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <br /><br /><br />
+                    <p:dataTable value="#{SeguimientoProductivaController.listBusquedaEmpresas}"
+                                 var="item" paginator="true" rows="5" id="tablaEmpresas">                
+                        <p:column>
+                            <h:outputText value="#{item.idEmpresa}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{item.razonSocialEmpresa}"/>
+                        </p:column>
+                        
+                        <p:column>
+                            <p:commandButton id="botonSeleccionEmpresa" update=":formSeguimientoProductiva:usuario"
+                                             oncomplete="dlgBuscarEmpresa.hide();" icon="ui-icon-plus">
+                                <f:setPropertyActionListener value="#{item}" target="#{SeguimientoProductivaController.empresaActual}"/>
+                            </p:commandButton>
+                        </p:column>
+                    </p:dataTable>  
+                </h:form>                     
+            </p:dialog>
+            
+            
+            
+            
         </ui:define> 
     </ui:composition>
 </html>

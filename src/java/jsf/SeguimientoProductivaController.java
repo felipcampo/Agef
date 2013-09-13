@@ -19,11 +19,13 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.faces.model.SelectItem;
 import jpa.entities.CentroFormacion;
+import jpa.entities.Empresa;
 import jpa.entities.FichaCaracterizacion;
 import jpa.entities.Programa;
 import jpa.entities.Regional;
 import jpa.entities.Usuario;
 import jpa.sessions.CentroFormacionFacade;
+import jpa.sessions.EmpresaFacade;
 import jpa.sessions.FichaCaracterizacionFacade;
 import jpa.sessions.ProgramaFacade;
 import jpa.sessions.RegionalFacade;
@@ -34,7 +36,9 @@ import org.primefaces.model.SortOrder;
 @SessionScoped
 public class SeguimientoProductivaController implements Serializable {
 
+    private Empresa empresaActual;
     private Usuario usuarioActual;
+    private List<Empresa> listBusquedaEmpresas;
     private List<Usuario> listBusquedaUsuarios;
     private SeguimientoProductiva current;
     private Regional currentRegional;    
@@ -51,6 +55,8 @@ public class SeguimientoProductivaController implements Serializable {
     @EJB
     private jpa.sessions.UsuarioFacade usuarioFacade;
     @EJB
+    private jpa.sessions.EmpresaFacade empresaFacade;
+    @EJB
     private jpa.sessions.FichaCaracterizacionFacade ejbFacadeFichaCaracterizacion;
     @EJB
     private jpa.sessions.ProgramaFacade ejbFacadePrograma;
@@ -64,17 +70,36 @@ public class SeguimientoProductivaController implements Serializable {
         }
         return usuarioActual;
     }
+    
+    public Empresa getEmpresaActual() {
+        if (empresaActual == null) {
+            empresaActual = new Empresa();
+        }
+        return empresaActual;
+    }
 
     public void setUsuarioActual(Usuario usuario) {
         usuarioActual = usuario;
+    }
+    
+    public void setEmpresaActual(Empresa empresa) {
+        empresaActual = empresa;
     }
 
     private UsuarioFacade getUsuarioFacade() {
         return usuarioFacade;
     }
+    
+    private EmpresaFacade getEmpresaFacade() {
+        return empresaFacade;
+    }
 
     public List<Usuario> getListBusquedaUsuarios() {
         return listBusquedaUsuarios;
+    }
+    
+    public List<Empresa> getListBusquedaEmpresas() {
+        return listBusquedaEmpresas;
     }
 
     public SeguimientoProductiva getSelected() {
@@ -197,6 +222,7 @@ public class SeguimientoProductivaController implements Serializable {
         currentPrograma = new Programa();
         currentFichaCaracterizacion = new FichaCaracterizacion();        
         usuarioActual = new Usuario();
+        empresaActual = new Empresa();
         listBusquedaUsuarios = new ArrayList<>();
         return "Create";
     }
@@ -213,6 +239,19 @@ public class SeguimientoProductivaController implements Serializable {
             }
         }
     }
+    
+    public void buscarEmpresa() {
+        if (empresaActual.getIdEmpresa()==0 && empresaActual.getRazonSocialEmpresa().equals("")) {
+            JsfUtil.addErrorMessage(ResourceBundle.getBundle("propierties/Bundle").getString("CriteriosVacios"));
+        } else {
+            try {
+                listBusquedaEmpresas = getEmpresaFacade().findEmpresa(empresaActual);
+            } catch (Exception e) {
+                JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("propierties/Bundle").getString("PersistenceErrorOccured"));
+            }
+        }
+    }
+    
 
     public String create() {
         try {
