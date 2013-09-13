@@ -42,7 +42,6 @@ public class Empresa implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
     @Column(name = "id_empresa")
     private Integer idEmpresa;
     @Basic(optional = false)
@@ -57,7 +56,7 @@ public class Empresa implements Serializable {
     private String emailEmpresa;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 255)
+    @Size(max = 255)
     @Column(name = "razon_social_empresa")
     private String razonSocialEmpresa;
     @Basic(optional = false)

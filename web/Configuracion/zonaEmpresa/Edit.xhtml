@@ -17,18 +17,8 @@
                     <p:panelGrid>
                         <f:facet name="header">
                             <p:row><p:column colspan="3">#{bundle.EditZonaEmpresaTitle}</p:column></p:row>                            
-                        </f:facet>                        
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.EditZonaEmpresaLabel_idZonaEmpresa}" for="idZonaEmpresa" />
-                            </p:column>
-                            <p:column style="border-right: white"> 
-                                <p:inputText id="idZonaEmpresa" value="#{zonaEmpresaController.selected.idZonaEmpresa}" title="#{bundle.EditZonaEmpresaTitle_idZonaEmpresa}" required="true" requiredMessage="#{bundle.EditZonaEmpresaRequiredMessage_idZonaEmpresa}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idZonaEmpresa"/>
-                            </p:column>
-                        </p:row>      
+                        </f:facet>                       
+                           
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.EditZonaEmpresaLabel_descrZona}" for="descrZona" />
