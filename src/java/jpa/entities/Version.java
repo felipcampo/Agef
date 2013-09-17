@@ -9,9 +9,9 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "version")
@@ -35,32 +35,35 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Version implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id_version")
+    private Integer idVersion;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "id_version")
-    private String idVersion;
-    @Size(max = 255)
+    @Size(min = 1, max = 45)
     @Column(name = "nombre_version")
     private String nombreVersion;
-    @JoinTable(name = "programa_version", joinColumns = {
-        @JoinColumn(name = "id_version", referencedColumnName = "id_version")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_programa", referencedColumnName = "id_programa")})
-    @ManyToMany
+    @ManyToMany(mappedBy = "versionList")
     private List<Programa> programaList;
 
     public Version() {
     }
 
-    public Version(String idVersion) {
+    public Version(Integer idVersion) {
         this.idVersion = idVersion;
     }
 
-    public String getIdVersion() {
+    public Version(Integer idVersion, String nombreVersion) {
+        this.idVersion = idVersion;
+        this.nombreVersion = nombreVersion;
+    }
+
+    public Integer getIdVersion() {
         return idVersion;
     }
 
-    public void setIdVersion(String idVersion) {
+    public void setIdVersion(Integer idVersion) {
         this.idVersion = idVersion;
     }
 

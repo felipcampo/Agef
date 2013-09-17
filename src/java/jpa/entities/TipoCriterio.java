@@ -7,9 +7,10 @@ package jpa.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -22,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "tipo_criterio")
@@ -34,36 +35,35 @@ import javax.xml.bind.annotation.XmlTransient;
 public class TipoCriterio implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
     @Column(name = "id_tipo_criterio")
-    private String idTipoCriterio;
+    private Short idTipoCriterio;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
     @Column(name = "nom_tipo_criterio")
     private String nomTipoCriterio;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTipoCriterio")
+    @OneToMany(mappedBy = "idTipoCriterio")
     private List<CriterioEvaluacion> criterioEvaluacionList;
 
     public TipoCriterio() {
     }
 
-    public TipoCriterio(String idTipoCriterio) {
+    public TipoCriterio(Short idTipoCriterio) {
         this.idTipoCriterio = idTipoCriterio;
     }
 
-    public TipoCriterio(String idTipoCriterio, String nomTipoCriterio) {
+    public TipoCriterio(Short idTipoCriterio, String nomTipoCriterio) {
         this.idTipoCriterio = idTipoCriterio;
         this.nomTipoCriterio = nomTipoCriterio;
     }
 
-    public String getIdTipoCriterio() {
+    public Short getIdTipoCriterio() {
         return idTipoCriterio;
     }
 
-    public void setIdTipoCriterio(String idTipoCriterio) {
+    public void setIdTipoCriterio(Short idTipoCriterio) {
         this.idTipoCriterio = idTipoCriterio;
     }
 

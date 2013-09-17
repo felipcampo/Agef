@@ -224,6 +224,7 @@ public class SeguimientoProductivaController implements Serializable {
         usuarioActual = new Usuario();
         empresaActual = new Empresa();
         listBusquedaUsuarios = new ArrayList<>();
+        listBusquedaEmpresas = new ArrayList<>();
         return "Create";
     }
 
@@ -241,7 +242,7 @@ public class SeguimientoProductivaController implements Serializable {
     }
     
     public void buscarEmpresa() {
-        if (empresaActual.getIdEmpresa()==0 && empresaActual.getRazonSocialEmpresa().equals("")) {
+        if (empresaActual.getIdEmpresa()==null && empresaActual.getRazonSocialEmpresa().equals("")) {
             JsfUtil.addErrorMessage(ResourceBundle.getBundle("propierties/Bundle").getString("CriteriosVacios"));
         } else {
             try {
@@ -252,10 +253,23 @@ public class SeguimientoProductivaController implements Serializable {
         }
     }
     
+    public void agregarEmpresa (){
+        current.setIdEmpresa(empresaActual);
+        empresaActual = new Empresa();
+        listBusquedaEmpresas = new ArrayList<>();
+    }
+    
+    public void agregarUsuario (){
+        current.setIdUsuario(usuarioActual);
+        usuarioActual = new Usuario();
+        listBusquedaUsuarios = new ArrayList<>();
+    }
+    
 
     public String create() {
         try {
             current.setIdUsuario(usuarioActual);
+            current.setIdEmpresa(empresaActual);
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("SeguimientoProductivaCreated"));
             return "View";
@@ -339,7 +353,7 @@ public class SeguimientoProductivaController implements Serializable {
             return key;
         }
 
-        String getStringKey(java.lang.String value) {
+        String getStringKey(java.lang.Integer value) {
             StringBuffer sb = new StringBuffer();
             sb.append(value);
             return sb.toString();

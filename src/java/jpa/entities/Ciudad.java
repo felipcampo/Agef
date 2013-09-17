@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "ciudad")
@@ -48,15 +48,11 @@ public class Ciudad implements Serializable {
     @Size(min = 1, max = 100)
     @Column(name = "nom_ciu")
     private String nomCiu;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 10)
+    @Size(max = 10)
     @Column(name = "descr_zona")
     private String descrZona;
     @ManyToMany(mappedBy = "ciudadList")
     private List<Comuna> comunaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCiudad")
-    private List<SedeCentro> sedeCentroList;
     @JoinColumn(name = "id_departamento", referencedColumnName = "id_departamento")
     @ManyToOne(optional = false)
     private Departamento idDepartamento;
@@ -74,10 +70,9 @@ public class Ciudad implements Serializable {
         this.idCiudad = idCiudad;
     }
 
-    public Ciudad(String idCiudad, String nomCiu, String descrZona) {
+    public Ciudad(String idCiudad, String nomCiu) {
         this.idCiudad = idCiudad;
         this.nomCiu = nomCiu;
-        this.descrZona = descrZona;
     }
 
     public String getIdCiudad() {
@@ -111,15 +106,6 @@ public class Ciudad implements Serializable {
 
     public void setComunaList(List<Comuna> comunaList) {
         this.comunaList = comunaList;
-    }
-
-    @XmlTransient
-    public List<SedeCentro> getSedeCentroList() {
-        return sedeCentroList;
-    }
-
-    public void setSedeCentroList(List<SedeCentro> sedeCentroList) {
-        this.sedeCentroList = sedeCentroList;
     }
 
     public Departamento getIdDepartamento() {

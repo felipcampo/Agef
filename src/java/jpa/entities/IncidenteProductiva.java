@@ -11,6 +11,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
@@ -28,7 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "incidente_productiva")
@@ -42,11 +44,10 @@ import javax.xml.bind.annotation.XmlTransient;
 public class IncidenteProductiva implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
     @Column(name = "id_incidente_productiva")
-    private String idIncidenteProductiva;
+    private Short idIncidenteProductiva;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
@@ -77,11 +78,11 @@ public class IncidenteProductiva implements Serializable {
     public IncidenteProductiva() {
     }
 
-    public IncidenteProductiva(String idIncidenteProductiva) {
+    public IncidenteProductiva(Short idIncidenteProductiva) {
         this.idIncidenteProductiva = idIncidenteProductiva;
     }
 
-    public IncidenteProductiva(String idIncidenteProductiva, String detalleIncidente, Date fecIncio, String solucionInc, String tipoIncio) {
+    public IncidenteProductiva(Short idIncidenteProductiva, String detalleIncidente, Date fecIncio, String solucionInc, String tipoIncio) {
         this.idIncidenteProductiva = idIncidenteProductiva;
         this.detalleIncidente = detalleIncidente;
         this.fecIncio = fecIncio;
@@ -89,11 +90,11 @@ public class IncidenteProductiva implements Serializable {
         this.tipoIncio = tipoIncio;
     }
 
-    public String getIdIncidenteProductiva() {
+    public Short getIdIncidenteProductiva() {
         return idIncidenteProductiva;
     }
 
-    public void setIdIncidenteProductiva(String idIncidenteProductiva) {
+    public void setIdIncidenteProductiva(Short idIncidenteProductiva) {
         this.idIncidenteProductiva = idIncidenteProductiva;
     }
 

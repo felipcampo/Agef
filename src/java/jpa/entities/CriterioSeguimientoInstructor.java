@@ -5,7 +5,9 @@
 package jpa.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -14,14 +16,16 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "criterio_seguimiento_instructor")
@@ -42,15 +46,17 @@ public class CriterioSeguimientoInstructor implements Serializable {
     @Size(min = 1, max = 65535)
     @Column(name = "obs_cri_ins")
     private String obsCriIns;
-    @JoinColumn(name = "id_criterio_evaluacion", referencedColumnName = "id_criterio_evaluacion")
-    @ManyToOne(optional = false)
-    private CriterioEvaluacion idCriterioEvaluacion;
-    @JoinColumn(name = "id_evaluacion_criterio_seguimiento_instructor", referencedColumnName = "id_evaluacion_criterio_seguimiento_instructor")
-    @ManyToOne(optional = false)
-    private EvaluacionCriterioSeguimientoInstructor idEvaluacionCriterioSeguimientoInstructor;
     @JoinColumn(name = "id_seguimiento_instructor", referencedColumnName = "id_seguimiento_instructor")
     @ManyToOne(optional = false)
     private SeguimientoInstructor idSeguimientoInstructor;
+    @JoinColumn(name = "id_evaluacion_criterio_seguimiento_instructor", referencedColumnName = "id_evaluacion_criterio_seguimiento_instructor")
+    @ManyToOne(optional = false)
+    private EvaluacionCriterioSeguimientoInstructor idEvaluacionCriterioSeguimientoInstructor;
+    @JoinColumn(name = "id_criterio_evaluacion", referencedColumnName = "id_criterio_evaluacion")
+    @ManyToOne(optional = false)
+    private CriterioEvaluacion idCriterioEvaluacion;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCriterioSeguimientoInstructor")
+    private List<SeguimientoInstructor> seguimientoInstructorList;
 
     public CriterioSeguimientoInstructor() {
     }
@@ -80,12 +86,12 @@ public class CriterioSeguimientoInstructor implements Serializable {
         this.obsCriIns = obsCriIns;
     }
 
-    public CriterioEvaluacion getIdCriterioEvaluacion() {
-        return idCriterioEvaluacion;
+    public SeguimientoInstructor getIdSeguimientoInstructor() {
+        return idSeguimientoInstructor;
     }
 
-    public void setIdCriterioEvaluacion(CriterioEvaluacion idCriterioEvaluacion) {
-        this.idCriterioEvaluacion = idCriterioEvaluacion;
+    public void setIdSeguimientoInstructor(SeguimientoInstructor idSeguimientoInstructor) {
+        this.idSeguimientoInstructor = idSeguimientoInstructor;
     }
 
     public EvaluacionCriterioSeguimientoInstructor getIdEvaluacionCriterioSeguimientoInstructor() {
@@ -96,12 +102,21 @@ public class CriterioSeguimientoInstructor implements Serializable {
         this.idEvaluacionCriterioSeguimientoInstructor = idEvaluacionCriterioSeguimientoInstructor;
     }
 
-    public SeguimientoInstructor getIdSeguimientoInstructor() {
-        return idSeguimientoInstructor;
+    public CriterioEvaluacion getIdCriterioEvaluacion() {
+        return idCriterioEvaluacion;
     }
 
-    public void setIdSeguimientoInstructor(SeguimientoInstructor idSeguimientoInstructor) {
-        this.idSeguimientoInstructor = idSeguimientoInstructor;
+    public void setIdCriterioEvaluacion(CriterioEvaluacion idCriterioEvaluacion) {
+        this.idCriterioEvaluacion = idCriterioEvaluacion;
+    }
+
+    @XmlTransient
+    public List<SeguimientoInstructor> getSeguimientoInstructorList() {
+        return seguimientoInstructorList;
+    }
+
+    public void setSeguimientoInstructorList(List<SeguimientoInstructor> seguimientoInstructorList) {
+        this.seguimientoInstructorList = seguimientoInstructorList;
     }
 
     @Override

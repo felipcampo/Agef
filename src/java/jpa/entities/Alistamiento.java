@@ -11,9 +11,10 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -22,14 +23,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "alistamiento")
@@ -42,21 +41,20 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Alistamiento implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
     @Column(name = "id_alistamiento")
-    private String idAlistamiento;
+    private Integer idAlistamiento;
     @Column(name = "terminal")
     private Boolean terminal;
     @Column(name = "fecha_alistamiento")
     @Temporal(TemporalType.DATE)
     private Date fechaAlistamiento;
-    @JoinTable(name = "alistamiento_guia_aprendizaje", joinColumns = {
-        @JoinColumn(name = "id_alistamiento", referencedColumnName = "id_alistamiento")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_guia_aprendizaje", referencedColumnName = "id_guia_aprendizaje")})
-    @ManyToMany
+    @ManyToMany(mappedBy = "alistamientoList")
     private List<GuiaAprendizaje> guiaAprendizajeList;
+    @JoinColumn(name = "id_tipo_alistamiento", referencedColumnName = "id_tipo_alistamiento")
+    @ManyToOne(optional = false)
+    private TipoAlistamiento idTipoAlistamiento;
     @JoinColumn(name = "id_guia_aprendizaje", referencedColumnName = "id_guia_aprendizaje")
     @ManyToOne
     private GuiaAprendizaje idGuiaAprendizaje;
@@ -84,24 +82,21 @@ public class Alistamiento implements Serializable {
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false)
     private Usuario idUsuario;
-    @JoinColumn(name = "id_tipo_alistamiento", referencedColumnName = "id_tipo_alistamiento")
-    @ManyToOne(optional = false)
-    private TipoAlistamiento idTipoAlistamiento;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idAlistamiento")
     private List<ControlOperativo> controlOperativoList;
 
     public Alistamiento() {
     }
 
-    public Alistamiento(String idAlistamiento) {
+    public Alistamiento(Integer idAlistamiento) {
         this.idAlistamiento = idAlistamiento;
     }
 
-    public String getIdAlistamiento() {
+    public Integer getIdAlistamiento() {
         return idAlistamiento;
     }
 
-    public void setIdAlistamiento(String idAlistamiento) {
+    public void setIdAlistamiento(Integer idAlistamiento) {
         this.idAlistamiento = idAlistamiento;
     }
 
@@ -128,6 +123,14 @@ public class Alistamiento implements Serializable {
 
     public void setGuiaAprendizajeList(List<GuiaAprendizaje> guiaAprendizajeList) {
         this.guiaAprendizajeList = guiaAprendizajeList;
+    }
+
+    public TipoAlistamiento getIdTipoAlistamiento() {
+        return idTipoAlistamiento;
+    }
+
+    public void setIdTipoAlistamiento(TipoAlistamiento idTipoAlistamiento) {
+        this.idTipoAlistamiento = idTipoAlistamiento;
     }
 
     public GuiaAprendizaje getIdGuiaAprendizaje() {
@@ -200,14 +203,6 @@ public class Alistamiento implements Serializable {
 
     public void setIdUsuario(Usuario idUsuario) {
         this.idUsuario = idUsuario;
-    }
-
-    public TipoAlistamiento getIdTipoAlistamiento() {
-        return idTipoAlistamiento;
-    }
-
-    public void setIdTipoAlistamiento(TipoAlistamiento idTipoAlistamiento) {
-        this.idTipoAlistamiento = idTipoAlistamiento;
     }
 
     @XmlTransient

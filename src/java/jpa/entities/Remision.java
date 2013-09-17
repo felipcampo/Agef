@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "remision")
@@ -48,12 +48,12 @@ public class Remision implements Serializable {
     @Size(min = 1, max = 65535)
     @Column(name = "descr_remision")
     private String descrRemision;
-    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
-    @ManyToOne(optional = false)
-    private Usuario idUsuario;
     @JoinColumn(name = "id_tipo_caso_bienestar", referencedColumnName = "id_tipo_caso_bienestar")
     @ManyToOne(optional = false)
     private TipoCasoBienestar idTipoCasoBienestar;
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
+    @ManyToOne(optional = false)
+    private Usuario idUsuario;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idRemision")
     private List<CasoBienestar> casoBienestarList;
 
@@ -85,20 +85,20 @@ public class Remision implements Serializable {
         this.descrRemision = descrRemision;
     }
 
-    public Usuario getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Usuario idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
     public TipoCasoBienestar getIdTipoCasoBienestar() {
         return idTipoCasoBienestar;
     }
 
     public void setIdTipoCasoBienestar(TipoCasoBienestar idTipoCasoBienestar) {
         this.idTipoCasoBienestar = idTipoCasoBienestar;
+    }
+
+    public Usuario getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Usuario idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     @XmlTransient

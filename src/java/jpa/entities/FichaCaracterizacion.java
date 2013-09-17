@@ -121,6 +121,8 @@ public class FichaCaracterizacion implements Serializable {
     private List<SeguimientoInstructor> seguimientoInstructorList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idFichaCaracterizacion")
     private List<MatrizCaracterizacion> matrizCaracterizacionList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idFichaCaracterizacion")
+    private List<VerificacionAmbienteTitulado> verificacionAmbienteTituladoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "fichaCaracterizacion")
     private List<AspiranteFicha> aspiranteFichaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idFichaCaracterizacion")
@@ -351,6 +353,15 @@ public class FichaCaracterizacion implements Serializable {
 
     public void setMatrizCaracterizacionList(List<MatrizCaracterizacion> matrizCaracterizacionList) {
         this.matrizCaracterizacionList = matrizCaracterizacionList;
+    }
+
+    @XmlTransient
+    public List<VerificacionAmbienteTitulado> getVerificacionAmbienteTituladoList() {
+        return verificacionAmbienteTituladoList;
+    }
+
+    public void setVerificacionAmbienteTituladoList(List<VerificacionAmbienteTitulado> verificacionAmbienteTituladoList) {
+        this.verificacionAmbienteTituladoList = verificacionAmbienteTituladoList;
     }
 
     @XmlTransient

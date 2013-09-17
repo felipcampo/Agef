@@ -10,6 +10,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -22,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "evaluacion_criterio_seguimiento_instructor")
@@ -34,11 +36,10 @@ import javax.xml.bind.annotation.XmlTransient;
 public class EvaluacionCriterioSeguimientoInstructor implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
     @Column(name = "id_evaluacion_criterio_seguimiento_instructor")
-    private String idEvaluacionCriterioSeguimientoInstructor;
+    private Short idEvaluacionCriterioSeguimientoInstructor;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
@@ -50,20 +51,20 @@ public class EvaluacionCriterioSeguimientoInstructor implements Serializable {
     public EvaluacionCriterioSeguimientoInstructor() {
     }
 
-    public EvaluacionCriterioSeguimientoInstructor(String idEvaluacionCriterioSeguimientoInstructor) {
+    public EvaluacionCriterioSeguimientoInstructor(Short idEvaluacionCriterioSeguimientoInstructor) {
         this.idEvaluacionCriterioSeguimientoInstructor = idEvaluacionCriterioSeguimientoInstructor;
     }
 
-    public EvaluacionCriterioSeguimientoInstructor(String idEvaluacionCriterioSeguimientoInstructor, String nomEvaluacionCriterioInstructores) {
+    public EvaluacionCriterioSeguimientoInstructor(Short idEvaluacionCriterioSeguimientoInstructor, String nomEvaluacionCriterioInstructores) {
         this.idEvaluacionCriterioSeguimientoInstructor = idEvaluacionCriterioSeguimientoInstructor;
         this.nomEvaluacionCriterioInstructores = nomEvaluacionCriterioInstructores;
     }
 
-    public String getIdEvaluacionCriterioSeguimientoInstructor() {
+    public Short getIdEvaluacionCriterioSeguimientoInstructor() {
         return idEvaluacionCriterioSeguimientoInstructor;
     }
 
-    public void setIdEvaluacionCriterioSeguimientoInstructor(String idEvaluacionCriterioSeguimientoInstructor) {
+    public void setIdEvaluacionCriterioSeguimientoInstructor(Short idEvaluacionCriterioSeguimientoInstructor) {
         this.idEvaluacionCriterioSeguimientoInstructor = idEvaluacionCriterioSeguimientoInstructor;
     }
 

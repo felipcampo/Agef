@@ -10,6 +10,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -22,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "situacion_militar")
@@ -34,10 +36,10 @@ import javax.xml.bind.annotation.XmlTransient;
 public class SituacionMilitar implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "id_situacion_militar")
-    private Integer idSituacionMilitar;
+    private Short idSituacionMilitar;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
@@ -49,20 +51,20 @@ public class SituacionMilitar implements Serializable {
     public SituacionMilitar() {
     }
 
-    public SituacionMilitar(Integer idSituacionMilitar) {
+    public SituacionMilitar(Short idSituacionMilitar) {
         this.idSituacionMilitar = idSituacionMilitar;
     }
 
-    public SituacionMilitar(Integer idSituacionMilitar, String descrSituacionMilitar) {
+    public SituacionMilitar(Short idSituacionMilitar, String descrSituacionMilitar) {
         this.idSituacionMilitar = idSituacionMilitar;
         this.descrSituacionMilitar = descrSituacionMilitar;
     }
 
-    public Integer getIdSituacionMilitar() {
+    public Short getIdSituacionMilitar() {
         return idSituacionMilitar;
     }
 
-    public void setIdSituacionMilitar(Integer idSituacionMilitar) {
+    public void setIdSituacionMilitar(Short idSituacionMilitar) {
         this.idSituacionMilitar = idSituacionMilitar;
     }
 

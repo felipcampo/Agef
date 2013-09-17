@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "nivel_conocimento")
@@ -45,9 +45,9 @@ public class NivelConocimento implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "descr_nivel_conocimentocol")
     private String descrNivelConocimentocol;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idNivelConocimentoIngles")
-    private List<MatrizCaracterizacion> matrizCaracterizacionList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idNivelConocimentoInformatica")
+    private List<MatrizCaracterizacion> matrizCaracterizacionList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idNivelConocimentoIngles")
     private List<MatrizCaracterizacion> matrizCaracterizacionList1;
 
     public NivelConocimento() {

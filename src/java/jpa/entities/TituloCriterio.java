@@ -7,8 +7,11 @@ package jpa.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -35,36 +38,40 @@ import javax.xml.bind.annotation.XmlTransient;
 public class TituloCriterio implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id_titulo_criterio")
+    private Short idTituloCriterio;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "id_titulo_criterio")
-    private String idTituloCriterio;
-    @Size(max = 255)
     @Column(name = "descr_nom_titulo_criterio")
     private String descrNomTituloCriterio;
     @JoinColumn(name = "id_rol", referencedColumnName = "id_rol")
     @ManyToOne(optional = false)
     private Rol idRol;
-    @OneToMany(mappedBy = "idTituloCriterio")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTituloCriterio")
     private List<SeguimientoInstructor> seguimientoInstructorList;
     @OneToMany(mappedBy = "idTituloCriterio")
     private List<CriterioEvaluacion> criterioEvaluacionList;
-    @OneToMany(mappedBy = "idTituloCriterio")
-    private List<SeguimientoProyecto> seguimientoProyectoList;
 
     public TituloCriterio() {
     }
 
-    public TituloCriterio(String idTituloCriterio) {
+    public TituloCriterio(Short idTituloCriterio) {
         this.idTituloCriterio = idTituloCriterio;
     }
 
-    public String getIdTituloCriterio() {
+    public TituloCriterio(Short idTituloCriterio, String descrNomTituloCriterio) {
+        this.idTituloCriterio = idTituloCriterio;
+        this.descrNomTituloCriterio = descrNomTituloCriterio;
+    }
+
+    public Short getIdTituloCriterio() {
         return idTituloCriterio;
     }
 
-    public void setIdTituloCriterio(String idTituloCriterio) {
+    public void setIdTituloCriterio(Short idTituloCriterio) {
         this.idTituloCriterio = idTituloCriterio;
     }
 
@@ -100,15 +107,6 @@ public class TituloCriterio implements Serializable {
 
     public void setCriterioEvaluacionList(List<CriterioEvaluacion> criterioEvaluacionList) {
         this.criterioEvaluacionList = criterioEvaluacionList;
-    }
-
-    @XmlTransient
-    public List<SeguimientoProyecto> getSeguimientoProyectoList() {
-        return seguimientoProyectoList;
-    }
-
-    public void setSeguimientoProyectoList(List<SeguimientoProyecto> seguimientoProyectoList) {
-        this.seguimientoProyectoList = seguimientoProyectoList;
     }
 
     @Override

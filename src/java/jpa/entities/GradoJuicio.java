@@ -7,8 +7,11 @@ package jpa.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -33,31 +36,37 @@ import javax.xml.bind.annotation.XmlTransient;
 public class GradoJuicio implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id_grado_juicio")
+    private Short idGradoJuicio;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "id_grado_juicio")
-    private String idGradoJuicio;
-    @Size(max = 255)
     @Column(name = "descr_grado_juicio")
     private String descrGradoJuicio;
-    @OneToMany(mappedBy = "idGradoJuicio")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idGradoJuicio")
     private List<SeguimientoInstructor> seguimientoInstructorList;
-    @OneToMany(mappedBy = "idGradoJuicio")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idGradoJuicio")
     private List<CriterioSeguimientoProyecto> criterioSeguimientoProyectoList;
 
     public GradoJuicio() {
     }
 
-    public GradoJuicio(String idGradoJuicio) {
+    public GradoJuicio(Short idGradoJuicio) {
         this.idGradoJuicio = idGradoJuicio;
     }
 
-    public String getIdGradoJuicio() {
+    public GradoJuicio(Short idGradoJuicio, String descrGradoJuicio) {
+        this.idGradoJuicio = idGradoJuicio;
+        this.descrGradoJuicio = descrGradoJuicio;
+    }
+
+    public Short getIdGradoJuicio() {
         return idGradoJuicio;
     }
 
-    public void setIdGradoJuicio(String idGradoJuicio) {
+    public void setIdGradoJuicio(Short idGradoJuicio) {
         this.idGradoJuicio = idGradoJuicio;
     }
 

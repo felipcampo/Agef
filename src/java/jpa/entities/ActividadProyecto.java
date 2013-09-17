@@ -12,6 +12,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -25,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "actividad_proyecto")
@@ -52,7 +53,10 @@ public class ActividadProyecto implements Serializable {
     @NotNull
     @Column(name = "duracion_actividad")
     private int duracionActividad;
-    @ManyToMany(mappedBy = "actividadProyectoList")
+    @JoinTable(name = "actividad_criterio", joinColumns = {
+        @JoinColumn(name = "id_actividad_proyecto", referencedColumnName = "id_actividad_proyecto")}, inverseJoinColumns = {
+        @JoinColumn(name = "id_criterio_evaluacion", referencedColumnName = "id_criterio_evaluacion")})
+    @ManyToMany
     private List<CriterioEvaluacion> criterioEvaluacionList;
     @ManyToMany(mappedBy = "actividadProyectoList")
     private List<Competencia> competenciaList;

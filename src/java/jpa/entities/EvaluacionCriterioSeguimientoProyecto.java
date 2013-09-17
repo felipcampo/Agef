@@ -10,6 +10,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -22,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "evaluacion_criterio_seguimiento_proyecto")
@@ -34,11 +36,10 @@ import javax.xml.bind.annotation.XmlTransient;
 public class EvaluacionCriterioSeguimientoProyecto implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
     @Column(name = "id_evaluacion_criterio_seguimiento_proyecto")
-    private String idEvaluacionCriterioSeguimientoProyecto;
+    private Short idEvaluacionCriterioSeguimientoProyecto;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
@@ -50,20 +51,20 @@ public class EvaluacionCriterioSeguimientoProyecto implements Serializable {
     public EvaluacionCriterioSeguimientoProyecto() {
     }
 
-    public EvaluacionCriterioSeguimientoProyecto(String idEvaluacionCriterioSeguimientoProyecto) {
+    public EvaluacionCriterioSeguimientoProyecto(Short idEvaluacionCriterioSeguimientoProyecto) {
         this.idEvaluacionCriterioSeguimientoProyecto = idEvaluacionCriterioSeguimientoProyecto;
     }
 
-    public EvaluacionCriterioSeguimientoProyecto(String idEvaluacionCriterioSeguimientoProyecto, String nomEvaCri) {
+    public EvaluacionCriterioSeguimientoProyecto(Short idEvaluacionCriterioSeguimientoProyecto, String nomEvaCri) {
         this.idEvaluacionCriterioSeguimientoProyecto = idEvaluacionCriterioSeguimientoProyecto;
         this.nomEvaCri = nomEvaCri;
     }
 
-    public String getIdEvaluacionCriterioSeguimientoProyecto() {
+    public Short getIdEvaluacionCriterioSeguimientoProyecto() {
         return idEvaluacionCriterioSeguimientoProyecto;
     }
 
-    public void setIdEvaluacionCriterioSeguimientoProyecto(String idEvaluacionCriterioSeguimientoProyecto) {
+    public void setIdEvaluacionCriterioSeguimientoProyecto(Short idEvaluacionCriterioSeguimientoProyecto) {
         this.idEvaluacionCriterioSeguimientoProyecto = idEvaluacionCriterioSeguimientoProyecto;
     }
 

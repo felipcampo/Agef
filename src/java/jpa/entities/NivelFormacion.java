@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "nivel_formacion")
@@ -39,7 +39,7 @@ public class NivelFormacion implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_nivel_formacion")
-    private Integer idNivelFormacion;
+    private Short idNivelFormacion;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
@@ -47,7 +47,7 @@ public class NivelFormacion implements Serializable {
     private String descrNivFor;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idNivelFormacion")
     private List<FichaCaracterizacion> fichaCaracterizacionList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idNivelFor")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idNivelFormacion")
     private List<MatrizCaracterizacion> matrizCaracterizacionList;
     @OneToMany(mappedBy = "idNivelFormacion")
     private List<SeguimientoProyecto> seguimientoProyectoList;
@@ -55,20 +55,20 @@ public class NivelFormacion implements Serializable {
     public NivelFormacion() {
     }
 
-    public NivelFormacion(Integer idNivelFormacion) {
+    public NivelFormacion(Short idNivelFormacion) {
         this.idNivelFormacion = idNivelFormacion;
     }
 
-    public NivelFormacion(Integer idNivelFormacion, String descrNivFor) {
+    public NivelFormacion(Short idNivelFormacion, String descrNivFor) {
         this.idNivelFormacion = idNivelFormacion;
         this.descrNivFor = descrNivFor;
     }
 
-    public Integer getIdNivelFormacion() {
+    public Short getIdNivelFormacion() {
         return idNivelFormacion;
     }
 
-    public void setIdNivelFormacion(Integer idNivelFormacion) {
+    public void setIdNivelFormacion(Short idNivelFormacion) {
         this.idNivelFormacion = idNivelFormacion;
     }
 

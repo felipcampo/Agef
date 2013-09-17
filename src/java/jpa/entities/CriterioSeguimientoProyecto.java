@@ -8,6 +8,8 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
@@ -32,46 +34,52 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class CriterioSeguimientoProyecto implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id_criterio_seguimiento_proyecto")
+    private Short idCriterioSeguimientoProyecto;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "id_criterio_seguimiento_proyecto")
-    private String idCriterioSeguimientoProyecto;
     @Lob
-    @Size(max = 2147483647)
+    @Size(min = 1, max = 65535)
     @Column(name = "obs_cri_seg")
     private String obsCriSeg;
-    @JoinColumn(name = "id_tipo_juicio", referencedColumnName = "id_tipo_juicio")
-    @ManyToOne
-    private TipoJuicio idTipoJuicio;
-    @JoinColumn(name = "id_grado_juicio", referencedColumnName = "id_grado_juicio")
-    @ManyToOne
-    private GradoJuicio idGradoJuicio;
     @JoinColumn(name = "id_estado_juicio", referencedColumnName = "id_estado_juicio")
-    @ManyToOne
+    @ManyToOne(optional = false)
     private EstadoJuicio idEstadoJuicio;
-    @JoinColumn(name = "id_evaluacion_criterio_seguimiento_proyecto", referencedColumnName = "id_evaluacion_criterio_seguimiento_proyecto")
-    @ManyToOne
-    private EvaluacionCriterioSeguimientoProyecto idEvaluacionCriterioSeguimientoProyecto;
-    @JoinColumn(name = "id_criterio_evaluacion", referencedColumnName = "id_criterio_evaluacion")
-    @ManyToOne
-    private CriterioEvaluacion idCriterioEvaluacion;
+    @JoinColumn(name = "id_grado_juicio", referencedColumnName = "id_grado_juicio")
+    @ManyToOne(optional = false)
+    private GradoJuicio idGradoJuicio;
+    @JoinColumn(name = "id_tipo_juicio", referencedColumnName = "id_tipo_juicio")
+    @ManyToOne(optional = false)
+    private TipoJuicio idTipoJuicio;
     @JoinColumn(name = "id_seguimiento_proyecto", referencedColumnName = "id_seguimiento_proyecto")
-    @ManyToOne
+    @ManyToOne(optional = false)
     private SeguimientoProyecto idSeguimientoProyecto;
+    @JoinColumn(name = "id_criterio_evaluacion", referencedColumnName = "id_criterio_evaluacion")
+    @ManyToOne(optional = false)
+    private CriterioEvaluacion idCriterioEvaluacion;
+    @JoinColumn(name = "id_evaluacion_criterio_seguimiento_proyecto", referencedColumnName = "id_evaluacion_criterio_seguimiento_proyecto")
+    @ManyToOne(optional = false)
+    private EvaluacionCriterioSeguimientoProyecto idEvaluacionCriterioSeguimientoProyecto;
 
     public CriterioSeguimientoProyecto() {
     }
 
-    public CriterioSeguimientoProyecto(String idCriterioSeguimientoProyecto) {
+    public CriterioSeguimientoProyecto(Short idCriterioSeguimientoProyecto) {
         this.idCriterioSeguimientoProyecto = idCriterioSeguimientoProyecto;
     }
 
-    public String getIdCriterioSeguimientoProyecto() {
+    public CriterioSeguimientoProyecto(Short idCriterioSeguimientoProyecto, String obsCriSeg) {
+        this.idCriterioSeguimientoProyecto = idCriterioSeguimientoProyecto;
+        this.obsCriSeg = obsCriSeg;
+    }
+
+    public Short getIdCriterioSeguimientoProyecto() {
         return idCriterioSeguimientoProyecto;
     }
 
-    public void setIdCriterioSeguimientoProyecto(String idCriterioSeguimientoProyecto) {
+    public void setIdCriterioSeguimientoProyecto(Short idCriterioSeguimientoProyecto) {
         this.idCriterioSeguimientoProyecto = idCriterioSeguimientoProyecto;
     }
 
@@ -83,12 +91,12 @@ public class CriterioSeguimientoProyecto implements Serializable {
         this.obsCriSeg = obsCriSeg;
     }
 
-    public TipoJuicio getIdTipoJuicio() {
-        return idTipoJuicio;
+    public EstadoJuicio getIdEstadoJuicio() {
+        return idEstadoJuicio;
     }
 
-    public void setIdTipoJuicio(TipoJuicio idTipoJuicio) {
-        this.idTipoJuicio = idTipoJuicio;
+    public void setIdEstadoJuicio(EstadoJuicio idEstadoJuicio) {
+        this.idEstadoJuicio = idEstadoJuicio;
     }
 
     public GradoJuicio getIdGradoJuicio() {
@@ -99,20 +107,20 @@ public class CriterioSeguimientoProyecto implements Serializable {
         this.idGradoJuicio = idGradoJuicio;
     }
 
-    public EstadoJuicio getIdEstadoJuicio() {
-        return idEstadoJuicio;
+    public TipoJuicio getIdTipoJuicio() {
+        return idTipoJuicio;
     }
 
-    public void setIdEstadoJuicio(EstadoJuicio idEstadoJuicio) {
-        this.idEstadoJuicio = idEstadoJuicio;
+    public void setIdTipoJuicio(TipoJuicio idTipoJuicio) {
+        this.idTipoJuicio = idTipoJuicio;
     }
 
-    public EvaluacionCriterioSeguimientoProyecto getIdEvaluacionCriterioSeguimientoProyecto() {
-        return idEvaluacionCriterioSeguimientoProyecto;
+    public SeguimientoProyecto getIdSeguimientoProyecto() {
+        return idSeguimientoProyecto;
     }
 
-    public void setIdEvaluacionCriterioSeguimientoProyecto(EvaluacionCriterioSeguimientoProyecto idEvaluacionCriterioSeguimientoProyecto) {
-        this.idEvaluacionCriterioSeguimientoProyecto = idEvaluacionCriterioSeguimientoProyecto;
+    public void setIdSeguimientoProyecto(SeguimientoProyecto idSeguimientoProyecto) {
+        this.idSeguimientoProyecto = idSeguimientoProyecto;
     }
 
     public CriterioEvaluacion getIdCriterioEvaluacion() {
@@ -123,12 +131,12 @@ public class CriterioSeguimientoProyecto implements Serializable {
         this.idCriterioEvaluacion = idCriterioEvaluacion;
     }
 
-    public SeguimientoProyecto getIdSeguimientoProyecto() {
-        return idSeguimientoProyecto;
+    public EvaluacionCriterioSeguimientoProyecto getIdEvaluacionCriterioSeguimientoProyecto() {
+        return idEvaluacionCriterioSeguimientoProyecto;
     }
 
-    public void setIdSeguimientoProyecto(SeguimientoProyecto idSeguimientoProyecto) {
-        this.idSeguimientoProyecto = idSeguimientoProyecto;
+    public void setIdEvaluacionCriterioSeguimientoProyecto(EvaluacionCriterioSeguimientoProyecto idEvaluacionCriterioSeguimientoProyecto) {
+        this.idEvaluacionCriterioSeguimientoProyecto = idEvaluacionCriterioSeguimientoProyecto;
     }
 
     @Override

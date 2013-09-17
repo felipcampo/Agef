@@ -38,8 +38,8 @@ public class FichaCaracterizacionFacade extends AbstractFacade<FichaCaracterizac
 public List<FichaCaracterizacion> findByPrograma(Programa programa) {
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<FichaCaracterizacion> cq = cb.createQuery(FichaCaracterizacion.class);
-        Root<FichaCaracterizacion> fichaCaracterizacion = cq.from(FichaCaracterizacion.class);
-        cq.where(cb.equal(fichaCaracterizacion.get(FichaCaracterizacion_.idPrograma), programa));
+        Root<FichaCaracterizacion> ficha = cq.from(FichaCaracterizacion.class);
+        cq.where(cb.equal(ficha.get(FichaCaracterizacion_.idPrograma), programa));
         TypedQuery<FichaCaracterizacion> q = getEntityManager().createQuery(cq);        
         return q.getResultList();
     }

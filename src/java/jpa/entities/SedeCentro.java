@@ -13,8 +13,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -26,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "sede_centro")
@@ -36,7 +34,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "SedeCentro.findByIdSedeCentro", query = "SELECT s FROM SedeCentro s WHERE s.idSedeCentro = :idSedeCentro"),
     @NamedQuery(name = "SedeCentro.findByNomSedeCentro", query = "SELECT s FROM SedeCentro s WHERE s.nomSedeCentro = :nomSedeCentro"),
     @NamedQuery(name = "SedeCentro.findByDirSedeCentro", query = "SELECT s FROM SedeCentro s WHERE s.dirSedeCentro = :dirSedeCentro"),
-    @NamedQuery(name = "SedeCentro.findByTelSedeCentro", query = "SELECT s FROM SedeCentro s WHERE s.telSedeCentro = :telSedeCentro")})
+    @NamedQuery(name = "SedeCentro.findByTelSedeCentro", query = "SELECT s FROM SedeCentro s WHERE s.telSedeCentro = :telSedeCentro"),
+    @NamedQuery(name = "SedeCentro.findByIdCentroFormacion", query = "SELECT s FROM SedeCentro s WHERE s.idCentroFormacion = :idCentroFormacion"),
+    @NamedQuery(name = "SedeCentro.findByIdCiudad", query = "SELECT s FROM SedeCentro s WHERE s.idCiudad = :idCiudad")})
 public class SedeCentro implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -55,12 +55,16 @@ public class SedeCentro implements Serializable {
     @Size(max = 20)
     @Column(name = "tel_sede_centro")
     private String telSedeCentro;
-    @JoinColumn(name = "id_ciudad", referencedColumnName = "id_ciudad")
-    @ManyToOne(optional = false)
-    private Ciudad idCiudad;
-    @JoinColumn(name = "id_centro_formacion", referencedColumnName = "id_centro_formacion")
-    @ManyToOne(optional = false)
-    private CentroFormacion idCentroFormacion;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 10)
+    @Column(name = "id_centro_formacion")
+    private String idCentroFormacion;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 10)
+    @Column(name = "id_ciudad")
+    private String idCiudad;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSedeCentro")
     private List<FichaCaracterizacion> fichaCaracterizacionList;
     @OneToMany(mappedBy = "idSedeCentro")
@@ -73,9 +77,11 @@ public class SedeCentro implements Serializable {
         this.idSedeCentro = idSedeCentro;
     }
 
-    public SedeCentro(Short idSedeCentro, String nomSedeCentro) {
+    public SedeCentro(Short idSedeCentro, String nomSedeCentro, String idCentroFormacion, String idCiudad) {
         this.idSedeCentro = idSedeCentro;
         this.nomSedeCentro = nomSedeCentro;
+        this.idCentroFormacion = idCentroFormacion;
+        this.idCiudad = idCiudad;
     }
 
     public Short getIdSedeCentro() {
@@ -110,20 +116,20 @@ public class SedeCentro implements Serializable {
         this.telSedeCentro = telSedeCentro;
     }
 
-    public Ciudad getIdCiudad() {
-        return idCiudad;
-    }
-
-    public void setIdCiudad(Ciudad idCiudad) {
-        this.idCiudad = idCiudad;
-    }
-
-    public CentroFormacion getIdCentroFormacion() {
+    public String getIdCentroFormacion() {
         return idCentroFormacion;
     }
 
-    public void setIdCentroFormacion(CentroFormacion idCentroFormacion) {
+    public void setIdCentroFormacion(String idCentroFormacion) {
         this.idCentroFormacion = idCentroFormacion;
+    }
+
+    public String getIdCiudad() {
+        return idCiudad;
+    }
+
+    public void setIdCiudad(String idCiudad) {
+        this.idCiudad = idCiudad;
     }
 
     @XmlTransient

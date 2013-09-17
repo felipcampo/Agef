@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "estado_ficha")
@@ -38,7 +38,7 @@ public class EstadoFicha implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_estado_ficha")
-    private Integer idEstadoFicha;
+    private Short idEstadoFicha;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
@@ -50,20 +50,20 @@ public class EstadoFicha implements Serializable {
     public EstadoFicha() {
     }
 
-    public EstadoFicha(Integer idEstadoFicha) {
+    public EstadoFicha(Short idEstadoFicha) {
         this.idEstadoFicha = idEstadoFicha;
     }
 
-    public EstadoFicha(Integer idEstadoFicha, String nomEstadoFicha) {
+    public EstadoFicha(Short idEstadoFicha, String nomEstadoFicha) {
         this.idEstadoFicha = idEstadoFicha;
         this.nomEstadoFicha = nomEstadoFicha;
     }
 
-    public Integer getIdEstadoFicha() {
+    public Short getIdEstadoFicha() {
         return idEstadoFicha;
     }
 
-    public void setIdEstadoFicha(Integer idEstadoFicha) {
+    public void setIdEstadoFicha(Short idEstadoFicha) {
         this.idEstadoFicha = idEstadoFicha;
     }
 

@@ -17,13 +17,14 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "tipo_documento")
@@ -38,8 +39,10 @@ public class TipoDocumento implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_tipo_documento")
-    private Integer idTipoDocumento;
-    @Size(max = 45)
+    private Short idTipoDocumento;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
     @Column(name = "descr_tipo_documento")
     private String descrTipoDocumento;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTipoDocumento")
@@ -48,15 +51,20 @@ public class TipoDocumento implements Serializable {
     public TipoDocumento() {
     }
 
-    public TipoDocumento(Integer idTipoDocumento) {
+    public TipoDocumento(Short idTipoDocumento) {
         this.idTipoDocumento = idTipoDocumento;
     }
 
-    public Integer getIdTipoDocumento() {
+    public TipoDocumento(Short idTipoDocumento, String descrTipoDocumento) {
+        this.idTipoDocumento = idTipoDocumento;
+        this.descrTipoDocumento = descrTipoDocumento;
+    }
+
+    public Short getIdTipoDocumento() {
         return idTipoDocumento;
     }
 
-    public void setIdTipoDocumento(Integer idTipoDocumento) {
+    public void setIdTipoDocumento(Short idTipoDocumento) {
         this.idTipoDocumento = idTipoDocumento;
     }
 

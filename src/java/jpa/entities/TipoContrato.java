@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "tipo_contrato")
@@ -39,7 +39,7 @@ public class TipoContrato implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_tipo_contrato")
-    private Integer idTipoContrato;
+    private Short idTipoContrato;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
@@ -51,20 +51,20 @@ public class TipoContrato implements Serializable {
     public TipoContrato() {
     }
 
-    public TipoContrato(Integer idTipoContrato) {
+    public TipoContrato(Short idTipoContrato) {
         this.idTipoContrato = idTipoContrato;
     }
 
-    public TipoContrato(Integer idTipoContrato, String descrTipoContrato) {
+    public TipoContrato(Short idTipoContrato, String descrTipoContrato) {
         this.idTipoContrato = idTipoContrato;
         this.descrTipoContrato = descrTipoContrato;
     }
 
-    public Integer getIdTipoContrato() {
+    public Short getIdTipoContrato() {
         return idTipoContrato;
     }
 
-    public void setIdTipoContrato(Integer idTipoContrato) {
+    public void setIdTipoContrato(Short idTipoContrato) {
         this.idTipoContrato = idTipoContrato;
     }
 

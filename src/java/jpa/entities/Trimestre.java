@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "trimestre")
@@ -40,7 +40,7 @@ public class Trimestre implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_trimestre")
-    private Integer idTrimestre;
+    private Short idTrimestre;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
@@ -57,21 +57,21 @@ public class Trimestre implements Serializable {
     public Trimestre() {
     }
 
-    public Trimestre(Integer idTrimestre) {
+    public Trimestre(Short idTrimestre) {
         this.idTrimestre = idTrimestre;
     }
 
-    public Trimestre(Integer idTrimestre, String fechaInicio, String fechaFinal) {
+    public Trimestre(Short idTrimestre, String fechaInicio, String fechaFinal) {
         this.idTrimestre = idTrimestre;
         this.fechaInicio = fechaInicio;
         this.fechaFinal = fechaFinal;
     }
 
-    public Integer getIdTrimestre() {
+    public Short getIdTrimestre() {
         return idTrimestre;
     }
 
-    public void setIdTrimestre(Integer idTrimestre) {
+    public void setIdTrimestre(Short idTrimestre) {
         this.idTrimestre = idTrimestre;
     }
 

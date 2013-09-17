@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "regional")
@@ -117,7 +117,7 @@ public class Regional implements Serializable {
 
     @Override
     public String toString() {
-        return nomReg;
+        return "jpa.entities.Regional[ idRegional=" + idRegional + " ]";
     }
     
 }

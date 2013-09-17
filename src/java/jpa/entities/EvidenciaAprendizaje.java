@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "evidencia_aprendizaje")
@@ -96,18 +96,20 @@ public class EvidenciaAprendizaje implements Serializable {
     private List<CriterioEvaluacion> criterioEvaluacionList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEvidenciaAprendizaje")
     private List<EvaluacionSeguimiento> evaluacionSeguimientoList;
-    @JoinColumn(name = "id_ambiente", referencedColumnName = "id_ambiente")
-    @ManyToOne(optional = false)
-    private Ambiente idAmbiente;
     @JoinColumn(name = "id_criterio_evaluacion", referencedColumnName = "id_criterio_evaluacion")
     @ManyToOne(optional = false)
     private CriterioEvaluacion idCriterioEvaluacion;
+    @JoinColumn(name = "id_ambiente", referencedColumnName = "id_ambiente")
+    @ManyToOne(optional = false)
+    private Ambiente idAmbiente;
     @JoinColumn(name = "id_subactividad_proyecto", referencedColumnName = "id_subactividad_proyecto")
     @ManyToOne(optional = false)
     private SubactividadProyecto idSubactividadProyecto;
     @JoinColumn(name = "id_resultado_aprendizaje", referencedColumnName = "id_resultado_aprendizaje")
     @ManyToOne(optional = false)
     private ResultadoAprendizaje idResultadoAprendizaje;
+    @OneToMany(mappedBy = "idEvidenciaAprendizaje")
+    private List<ProyectoFormativo> proyectoFormativoList;
 
     public EvidenciaAprendizaje() {
     }
@@ -218,20 +220,20 @@ public class EvidenciaAprendizaje implements Serializable {
         this.evaluacionSeguimientoList = evaluacionSeguimientoList;
     }
 
-    public Ambiente getIdAmbiente() {
-        return idAmbiente;
-    }
-
-    public void setIdAmbiente(Ambiente idAmbiente) {
-        this.idAmbiente = idAmbiente;
-    }
-
     public CriterioEvaluacion getIdCriterioEvaluacion() {
         return idCriterioEvaluacion;
     }
 
     public void setIdCriterioEvaluacion(CriterioEvaluacion idCriterioEvaluacion) {
         this.idCriterioEvaluacion = idCriterioEvaluacion;
+    }
+
+    public Ambiente getIdAmbiente() {
+        return idAmbiente;
+    }
+
+    public void setIdAmbiente(Ambiente idAmbiente) {
+        this.idAmbiente = idAmbiente;
     }
 
     public SubactividadProyecto getIdSubactividadProyecto() {
@@ -248,6 +250,15 @@ public class EvidenciaAprendizaje implements Serializable {
 
     public void setIdResultadoAprendizaje(ResultadoAprendizaje idResultadoAprendizaje) {
         this.idResultadoAprendizaje = idResultadoAprendizaje;
+    }
+
+    @XmlTransient
+    public List<ProyectoFormativo> getProyectoFormativoList() {
+        return proyectoFormativoList;
+    }
+
+    public void setProyectoFormativoList(List<ProyectoFormativo> proyectoFormativoList) {
+        this.proyectoFormativoList = proyectoFormativoList;
     }
 
     @Override

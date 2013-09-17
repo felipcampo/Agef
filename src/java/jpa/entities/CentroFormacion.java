@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "centro_formacion")
@@ -52,8 +52,6 @@ public class CentroFormacion implements Serializable {
     @Size(min = 1, max = 100)
     @Column(name = "nom_cen")
     private String nomCen;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCentroFormacion")
-    private List<SedeCentro> sedeCentroList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCentroFormacion")
     private List<Programa> programaList;
     @JoinColumn(name = "id_regional", referencedColumnName = "id_regional")
@@ -99,15 +97,6 @@ public class CentroFormacion implements Serializable {
 
     public void setNomCen(String nomCen) {
         this.nomCen = nomCen;
-    }
-
-    @XmlTransient
-    public List<SedeCentro> getSedeCentroList() {
-        return sedeCentroList;
-    }
-
-    public void setSedeCentroList(List<SedeCentro> sedeCentroList) {
-        this.sedeCentroList = sedeCentroList;
     }
 
     @XmlTransient
@@ -167,7 +156,7 @@ public class CentroFormacion implements Serializable {
 
     @Override
     public String toString() {
-        return nomCen;
+        return "jpa.entities.CentroFormacion[ idCentroFormacion=" + idCentroFormacion + " ]";
     }
     
 }

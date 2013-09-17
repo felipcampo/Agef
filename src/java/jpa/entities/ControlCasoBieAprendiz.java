@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "control_caso_bie_aprendiz")
@@ -79,6 +79,18 @@ public class ControlCasoBieAprendiz implements Serializable {
     @Size(min = 1, max = 65535)
     @Column(name = "tema_abo")
     private String temaAbo;
+    @JoinColumn(name = "id_usuario_funcionario", referencedColumnName = "id_usuario")
+    @ManyToOne(optional = false)
+    private Usuario idUsuarioFuncionario;
+    @JoinColumn(name = "id_usuario_intructor", referencedColumnName = "id_usuario")
+    @ManyToOne(optional = false)
+    private Usuario idUsuarioIntructor;
+    @JoinColumn(name = "id_usuario_aprendiz", referencedColumnName = "id_usuario")
+    @ManyToOne(optional = false)
+    private Usuario idUsuarioAprendiz;
+    @JoinColumn(name = "id_matriz_caracterizacion", referencedColumnName = "id_matriz_caracterizacion")
+    @ManyToOne(optional = false)
+    private MatrizCaracterizacion idMatrizCaracterizacion;
     @JoinColumn(name = "id_caso_bienestar", referencedColumnName = "id_caso_bienestar")
     @ManyToOne(optional = false)
     private CasoBienestar idCasoBienestar;
@@ -161,6 +173,38 @@ public class ControlCasoBieAprendiz implements Serializable {
 
     public void setTemaAbo(String temaAbo) {
         this.temaAbo = temaAbo;
+    }
+
+    public Usuario getIdUsuarioFuncionario() {
+        return idUsuarioFuncionario;
+    }
+
+    public void setIdUsuarioFuncionario(Usuario idUsuarioFuncionario) {
+        this.idUsuarioFuncionario = idUsuarioFuncionario;
+    }
+
+    public Usuario getIdUsuarioIntructor() {
+        return idUsuarioIntructor;
+    }
+
+    public void setIdUsuarioIntructor(Usuario idUsuarioIntructor) {
+        this.idUsuarioIntructor = idUsuarioIntructor;
+    }
+
+    public Usuario getIdUsuarioAprendiz() {
+        return idUsuarioAprendiz;
+    }
+
+    public void setIdUsuarioAprendiz(Usuario idUsuarioAprendiz) {
+        this.idUsuarioAprendiz = idUsuarioAprendiz;
+    }
+
+    public MatrizCaracterizacion getIdMatrizCaracterizacion() {
+        return idMatrizCaracterizacion;
+    }
+
+    public void setIdMatrizCaracterizacion(MatrizCaracterizacion idMatrizCaracterizacion) {
+        this.idMatrizCaracterizacion = idMatrizCaracterizacion;
     }
 
     public CasoBienestar getIdCasoBienestar() {

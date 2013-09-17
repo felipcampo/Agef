@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "tipo_modalidad_productiva")
@@ -39,7 +39,7 @@ public class TipoModalidadProductiva implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_tipo_modalidad_productiva")
-    private Integer idTipoModalidadProductiva;
+    private Short idTipoModalidadProductiva;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
@@ -51,20 +51,20 @@ public class TipoModalidadProductiva implements Serializable {
     public TipoModalidadProductiva() {
     }
 
-    public TipoModalidadProductiva(Integer idTipoModalidadProductiva) {
+    public TipoModalidadProductiva(Short idTipoModalidadProductiva) {
         this.idTipoModalidadProductiva = idTipoModalidadProductiva;
     }
 
-    public TipoModalidadProductiva(Integer idTipoModalidadProductiva, String descrNomTdm) {
+    public TipoModalidadProductiva(Short idTipoModalidadProductiva, String descrNomTdm) {
         this.idTipoModalidadProductiva = idTipoModalidadProductiva;
         this.descrNomTdm = descrNomTdm;
     }
 
-    public Integer getIdTipoModalidadProductiva() {
+    public Short getIdTipoModalidadProductiva() {
         return idTipoModalidadProductiva;
     }
 
-    public void setIdTipoModalidadProductiva(Integer idTipoModalidadProductiva) {
+    public void setIdTipoModalidadProductiva(Short idTipoModalidadProductiva) {
         this.idTipoModalidadProductiva = idTipoModalidadProductiva;
     }
 

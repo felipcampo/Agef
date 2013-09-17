@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "proyecto_formativo")
@@ -226,6 +226,9 @@ public class ProyectoFormativo implements Serializable {
     private List<PraxisPedagogica> praxisPedagogicaList;
     @OneToMany(mappedBy = "idProyectoFormativo")
     private List<Alistamiento> alistamientoList;
+    @JoinColumn(name = "id_evidencia_aprendizaje", referencedColumnName = "id_evidencia_aprendizaje")
+    @ManyToOne
+    private EvidenciaAprendizaje idEvidenciaAprendizaje;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false)
     private Usuario idUsuario;
@@ -597,6 +600,14 @@ public class ProyectoFormativo implements Serializable {
 
     public void setAlistamientoList(List<Alistamiento> alistamientoList) {
         this.alistamientoList = alistamientoList;
+    }
+
+    public EvidenciaAprendizaje getIdEvidenciaAprendizaje() {
+        return idEvidenciaAprendizaje;
+    }
+
+    public void setIdEvidenciaAprendizaje(EvidenciaAprendizaje idEvidenciaAprendizaje) {
+        this.idEvidenciaAprendizaje = idEvidenciaAprendizaje;
     }
 
     public Usuario getIdUsuario() {

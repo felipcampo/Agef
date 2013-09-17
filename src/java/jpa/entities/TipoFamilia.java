@@ -12,8 +12,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -25,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "tipo_familia")
@@ -40,35 +38,32 @@ public class TipoFamilia implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_tipo_familia")
-    private Integer idTipoFamilia;
+    private Short idTipoFamilia;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
     @Column(name = "descr_tip_fam")
     private String descrTipFam;
-    @JoinTable(name = "tipo_familia_matriz", joinColumns = {
-        @JoinColumn(name = "id_tipo_familia", referencedColumnName = "id_tipo_familia")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_matriz_caracterizacion", referencedColumnName = "id_matriz_caracterizacion")})
-    @ManyToMany
+    @ManyToMany(mappedBy = "tipoFamiliaList")
     private List<MatrizCaracterizacion> matrizCaracterizacionList;
 
     public TipoFamilia() {
     }
 
-    public TipoFamilia(Integer idTipoFamilia) {
+    public TipoFamilia(Short idTipoFamilia) {
         this.idTipoFamilia = idTipoFamilia;
     }
 
-    public TipoFamilia(Integer idTipoFamilia, String descrTipFam) {
+    public TipoFamilia(Short idTipoFamilia, String descrTipFam) {
         this.idTipoFamilia = idTipoFamilia;
         this.descrTipFam = descrTipFam;
     }
 
-    public Integer getIdTipoFamilia() {
+    public Short getIdTipoFamilia() {
         return idTipoFamilia;
     }
 
-    public void setIdTipoFamilia(Integer idTipoFamilia) {
+    public void setIdTipoFamilia(Short idTipoFamilia) {
         this.idTipoFamilia = idTipoFamilia;
     }
 

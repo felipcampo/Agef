@@ -7,15 +7,18 @@ package jpa.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -24,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "matriz_caracterizacion")
@@ -120,8 +123,22 @@ public class MatrizCaracterizacion implements Serializable {
     private String justificacionSubsidio;
     @ManyToMany(mappedBy = "matrizCaracterizacionList")
     private List<ServicioVivienda> servicioViviendaList;
-    @ManyToMany(mappedBy = "matrizCaracterizacionList")
+    @JoinTable(name = "tipo_familia_matriz", joinColumns = {
+        @JoinColumn(name = "id_matriz_caracterizacion", referencedColumnName = "id_matriz_caracterizacion")}, inverseJoinColumns = {
+        @JoinColumn(name = "id_tipo_familia", referencedColumnName = "id_tipo_familia")})
+    @ManyToMany
     private List<TipoFamilia> tipoFamiliaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idMatrizCaracterizacion")
+    private List<ControlCasoBieAprendiz> controlCasoBieAprendizList;
+    @JoinColumn(name = "id_cambio_residencia", referencedColumnName = "id_cambio_residencia")
+    @ManyToOne(optional = false)
+    private CambioResidencia idCambioResidencia;
+    @JoinColumn(name = "id_nivel_formacion", referencedColumnName = "id_nivel_formacion")
+    @ManyToOne(optional = false)
+    private NivelFormacion idNivelFormacion;
+    @JoinColumn(name = "id_tipo_vivienda", referencedColumnName = "id_tipo_vivienda")
+    @ManyToOne(optional = false)
+    private TipoVivienda idTipoVivienda;
     @JoinColumn(name = "id_contacto_emergencia", referencedColumnName = "id_contacto_emergencia")
     @ManyToOne(optional = false)
     private ContactoEmergencia idContactoEmergencia;
@@ -149,15 +166,6 @@ public class MatrizCaracterizacion implements Serializable {
     @JoinColumn(name = "id_motivo_inscripcion", referencedColumnName = "id_motivo_inscripcion")
     @ManyToOne(optional = false)
     private MotivoInscripcion idMotivoInscripcion;
-    @JoinColumn(name = "id_nivel_conocimento_ingles", referencedColumnName = "id_nivel_conocimento")
-    @ManyToOne(optional = false)
-    private NivelConocimento idNivelConocimentoIngles;
-    @JoinColumn(name = "id_nivel_conocimento_informatica", referencedColumnName = "id_nivel_conocimento")
-    @ManyToOne(optional = false)
-    private NivelConocimento idNivelConocimentoInformatica;
-    @JoinColumn(name = "id_nivel_for", referencedColumnName = "id_nivel_formacion")
-    @ManyToOne(optional = false)
-    private NivelFormacion idNivelFor;
     @JoinColumn(name = "id_ficha_caracterizacion", referencedColumnName = "id_ficha_caracterizacion")
     @ManyToOne(optional = false)
     private FichaCaracterizacion idFichaCaracterizacion;
@@ -170,12 +178,6 @@ public class MatrizCaracterizacion implements Serializable {
     @JoinColumn(name = "id_caracterizacion_poblacion", referencedColumnName = "id_caracterizacion_poblacion")
     @ManyToOne(optional = false)
     private CaracterizacionPoblacion idCaracterizacionPoblacion;
-    @JoinColumn(name = "id_cambio_residencia", referencedColumnName = "id_cambio_residencia")
-    @ManyToOne(optional = false)
-    private CambioResidencia idCambioResidencia;
-    @JoinColumn(name = "id_tipo_vivienda", referencedColumnName = "id_tipo_vivienda")
-    @ManyToOne(optional = false)
-    private TipoVivienda idTipoVivienda;
     @JoinColumn(name = "id_jefe_hogar", referencedColumnName = "id_jefe_hogar")
     @ManyToOne(optional = false)
     private JefeHogar idJefeHogar;
@@ -194,6 +196,12 @@ public class MatrizCaracterizacion implements Serializable {
     @JoinColumn(name = "id_dependencia_economica", referencedColumnName = "id_dependencia_economica")
     @ManyToOne(optional = false)
     private DependenciaEconomica idDependenciaEconomica;
+    @JoinColumn(name = "id_nivel_conocimento_informatica", referencedColumnName = "id_nivel_conocimento")
+    @ManyToOne(optional = false)
+    private NivelConocimento idNivelConocimentoInformatica;
+    @JoinColumn(name = "id_nivel_conocimento_ingles", referencedColumnName = "id_nivel_conocimento")
+    @ManyToOne(optional = false)
+    private NivelConocimento idNivelConocimentoIngles;
 
     public MatrizCaracterizacion() {
     }
@@ -380,6 +388,39 @@ public class MatrizCaracterizacion implements Serializable {
         this.tipoFamiliaList = tipoFamiliaList;
     }
 
+    @XmlTransient
+    public List<ControlCasoBieAprendiz> getControlCasoBieAprendizList() {
+        return controlCasoBieAprendizList;
+    }
+
+    public void setControlCasoBieAprendizList(List<ControlCasoBieAprendiz> controlCasoBieAprendizList) {
+        this.controlCasoBieAprendizList = controlCasoBieAprendizList;
+    }
+
+    public CambioResidencia getIdCambioResidencia() {
+        return idCambioResidencia;
+    }
+
+    public void setIdCambioResidencia(CambioResidencia idCambioResidencia) {
+        this.idCambioResidencia = idCambioResidencia;
+    }
+
+    public NivelFormacion getIdNivelFormacion() {
+        return idNivelFormacion;
+    }
+
+    public void setIdNivelFormacion(NivelFormacion idNivelFormacion) {
+        this.idNivelFormacion = idNivelFormacion;
+    }
+
+    public TipoVivienda getIdTipoVivienda() {
+        return idTipoVivienda;
+    }
+
+    public void setIdTipoVivienda(TipoVivienda idTipoVivienda) {
+        this.idTipoVivienda = idTipoVivienda;
+    }
+
     public ContactoEmergencia getIdContactoEmergencia() {
         return idContactoEmergencia;
     }
@@ -452,30 +493,6 @@ public class MatrizCaracterizacion implements Serializable {
         this.idMotivoInscripcion = idMotivoInscripcion;
     }
 
-    public NivelConocimento getIdNivelConocimentoIngles() {
-        return idNivelConocimentoIngles;
-    }
-
-    public void setIdNivelConocimentoIngles(NivelConocimento idNivelConocimentoIngles) {
-        this.idNivelConocimentoIngles = idNivelConocimentoIngles;
-    }
-
-    public NivelConocimento getIdNivelConocimentoInformatica() {
-        return idNivelConocimentoInformatica;
-    }
-
-    public void setIdNivelConocimentoInformatica(NivelConocimento idNivelConocimentoInformatica) {
-        this.idNivelConocimentoInformatica = idNivelConocimentoInformatica;
-    }
-
-    public NivelFormacion getIdNivelFor() {
-        return idNivelFor;
-    }
-
-    public void setIdNivelFor(NivelFormacion idNivelFor) {
-        this.idNivelFor = idNivelFor;
-    }
-
     public FichaCaracterizacion getIdFichaCaracterizacion() {
         return idFichaCaracterizacion;
     }
@@ -506,22 +523,6 @@ public class MatrizCaracterizacion implements Serializable {
 
     public void setIdCaracterizacionPoblacion(CaracterizacionPoblacion idCaracterizacionPoblacion) {
         this.idCaracterizacionPoblacion = idCaracterizacionPoblacion;
-    }
-
-    public CambioResidencia getIdCambioResidencia() {
-        return idCambioResidencia;
-    }
-
-    public void setIdCambioResidencia(CambioResidencia idCambioResidencia) {
-        this.idCambioResidencia = idCambioResidencia;
-    }
-
-    public TipoVivienda getIdTipoVivienda() {
-        return idTipoVivienda;
-    }
-
-    public void setIdTipoVivienda(TipoVivienda idTipoVivienda) {
-        this.idTipoVivienda = idTipoVivienda;
     }
 
     public JefeHogar getIdJefeHogar() {
@@ -570,6 +571,22 @@ public class MatrizCaracterizacion implements Serializable {
 
     public void setIdDependenciaEconomica(DependenciaEconomica idDependenciaEconomica) {
         this.idDependenciaEconomica = idDependenciaEconomica;
+    }
+
+    public NivelConocimento getIdNivelConocimentoInformatica() {
+        return idNivelConocimentoInformatica;
+    }
+
+    public void setIdNivelConocimentoInformatica(NivelConocimento idNivelConocimentoInformatica) {
+        this.idNivelConocimentoInformatica = idNivelConocimentoInformatica;
+    }
+
+    public NivelConocimento getIdNivelConocimentoIngles() {
+        return idNivelConocimentoIngles;
+    }
+
+    public void setIdNivelConocimentoIngles(NivelConocimento idNivelConocimentoIngles) {
+        this.idNivelConocimentoIngles = idNivelConocimentoIngles;
     }
 
     @Override

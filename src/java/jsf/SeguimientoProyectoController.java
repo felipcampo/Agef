@@ -5,6 +5,7 @@ import jsf.util.JsfUtil;
 import jpa.sessions.SeguimientoProyectoFacade;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,9 +18,15 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.faces.model.SelectItem;
+import jpa.entities.CriterioEvaluacion;
+import jpa.entities.CriterioSeguimientoProyecto;
 import jpa.entities.EstadoAprendiz;
+import jpa.entities.EvaluacionCriterioSeguimientoProyecto;
 import jpa.entities.FichaUsuario;
-import jpa.entities.Usuario;
+import jpa.entities.TipoCriterio;
+import jpa.sessions.CriterioEvaluacionFacade;
+import jpa.sessions.CriterioSeguimientoProyectoFacade;
+import jpa.sessions.EvaluacionCriterioSeguimientoProyectoFacade;
 import jpa.sessions.FichaUsuarioFacade;
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
@@ -30,10 +37,19 @@ public class SeguimientoProyectoController implements Serializable {
 
     private SeguimientoProyecto current;
     private LazyDataModel<SeguimientoProyecto> lazyModel = null;
+    private CriterioSeguimientoProyecto currentCriterioSeg;
+    List<CriterioSeguimientoProyecto> listCriteriosSeg;
+    List<CriterioEvaluacion> listCriteriosEval;
     @EJB
     private jpa.sessions.SeguimientoProyectoFacade ejbFacade;
     @EJB
     private jpa.sessions.FichaUsuarioFacade ejbFacadeFichaUsuario;
+    @EJB
+    private jpa.sessions.CriterioSeguimientoProyectoFacade ejbFacadeCriterioSeg;
+    @EJB
+    private jpa.sessions.CriterioEvaluacionFacade ejbFacadeCriterioEval;
+    @EJB
+    private jpa.sessions.EvaluacionCriterioSeguimientoProyectoFacade ejbFacadeEvalCriterioSeg;
 
     public SeguimientoProyectoController() {
     }
@@ -52,9 +68,29 @@ public class SeguimientoProyectoController implements Serializable {
     private SeguimientoProyectoFacade getFacade() {
         return ejbFacade;
     }
-    
+
     private FichaUsuarioFacade getFacadeFichaUsuario() {
         return ejbFacadeFichaUsuario;
+    }
+
+    private CriterioSeguimientoProyectoFacade getFacadeCriterioSeg() {
+        return ejbFacadeCriterioSeg;
+    }
+    
+     private EvaluacionCriterioSeguimientoProyectoFacade getFacadeEvalCriterioSeg() {
+        return ejbFacadeEvalCriterioSeg;
+    }
+
+    private CriterioEvaluacionFacade getFacadeCriterioEval() {
+        return ejbFacadeCriterioEval;
+    }
+
+    public List<CriterioSeguimientoProyecto> getListCriteriosSeg() {
+        return listCriteriosSeg;
+    }
+
+    public List<CriterioEvaluacion> getListCriteriosEval() {
+        return listCriteriosEval;
     }
 
     public LazyDataModel<SeguimientoProyecto> getLazyModel() {
@@ -108,6 +144,11 @@ public class SeguimientoProyectoController implements Serializable {
     public String create() {
         try {
             getFacade().create(current);
+            for (CriterioSeguimientoProyecto criterio: listCriteriosSeg) {
+                criterio.setIdSeguimientoProyecto(current);
+                
+                getFacadeCriterioSeg().create(criterio);
+            }
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("SeguimientoProyectoCreated"));
             return "View";
         } catch (Exception e) {
@@ -118,6 +159,14 @@ public class SeguimientoProyectoController implements Serializable {
 
     public String prepareEdit() {
         current = (SeguimientoProyecto) getLazyModel().getRowData();
+        listCriteriosSeg = new ArrayList<>();
+        listCriteriosEval = getFacadeCriterioEval().findByTipo(new TipoCriterio((short) 1));
+        for (CriterioEvaluacion criterioEval : listCriteriosEval) {
+            currentCriterioSeg = new CriterioSeguimientoProyecto();
+            currentCriterioSeg.setIdCriterioEvaluacion(criterioEval);
+            currentCriterioSeg.setIdEvaluacionCriterioSeguimientoProyecto(new EvaluacionCriterioSeguimientoProyecto());
+            listCriteriosSeg.add(currentCriterioSeg);
+        }
         return "Edit";
     }
 
@@ -150,12 +199,12 @@ public class SeguimientoProyectoController implements Serializable {
     private void recreateModel() {
         lazyModel = null;
     }
-    
-    public int getAprendicesByCancelado (){
+
+    public int getAprendicesByCancelado() {
         return getUsuariosByFicha(new EstadoAprendiz((short) 1)).size();
     }
-    
-     public List<FichaUsuario> getUsuariosByFicha(EstadoAprendiz estado) {
+
+    public List<FichaUsuario> getUsuariosByFicha(EstadoAprendiz estado) {
         return getFacadeFichaUsuario().findByEstado(estado, current.getIdFichaCaracterizacion());
     }
 
@@ -165,6 +214,10 @@ public class SeguimientoProyectoController implements Serializable {
 
     public SelectItem[] getItemsAvailableSelectOne() {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
+    }
+
+    public SelectItem[] getItemsAvailableSelectOneEval() {
+        return JsfUtil.getSelectItems(ejbFacadeEvalCriterioSeg.findAll(), true);
     }
 
     @FacesConverter(forClass = SeguimientoProyecto.class)
@@ -185,7 +238,7 @@ public class SeguimientoProyectoController implements Serializable {
             return key;
         }
 
-        String getStringKey(java.lang.String value) {
+        String getStringKey(java.lang.Integer value) {
             StringBuffer sb = new StringBuffer();
             sb.append(value);
             return sb.toString();

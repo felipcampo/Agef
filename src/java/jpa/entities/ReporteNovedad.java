@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "reporte_novedad")
@@ -41,7 +41,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "ReporteNovedad.findByConAccCor", query = "SELECT r FROM ReporteNovedad r WHERE r.conAccCor = :conAccCor"),
     @NamedQuery(name = "ReporteNovedad.findByFecRep", query = "SELECT r FROM ReporteNovedad r WHERE r.fecRep = :fecRep"),
     @NamedQuery(name = "ReporteNovedad.findByFecUltPlaMej", query = "SELECT r FROM ReporteNovedad r WHERE r.fecUltPlaMej = :fecUltPlaMej"),
-    @NamedQuery(name = "ReporteNovedad.findByNumAccCor", query = "SELECT r FROM ReporteNovedad r WHERE r.numAccCor = :numAccCor")})
+    @NamedQuery(name = "ReporteNovedad.findByNumAccCor", query = "SELECT r FROM ReporteNovedad r WHERE r.numAccCor = :numAccCor"),
+    @NamedQuery(name = "ReporteNovedad.findByFechaHecho", query = "SELECT r FROM ReporteNovedad r WHERE r.fechaHecho = :fechaHecho")})
 public class ReporteNovedad implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -93,16 +94,18 @@ public class ReporteNovedad implements Serializable {
     private int numAccCor;
     @Basic(optional = false)
     @NotNull
-    @Lob
-    @Size(min = 1, max = 65535)
-    @Column(name = "pruebas")
-    private String pruebas;
+    @Column(name = "fecha_hecho")
+    @Temporal(TemporalType.DATE)
+    private Date fechaHecho;
     @Basic(optional = false)
     @NotNull
     @Lob
     @Size(min = 1, max = 65535)
-    @Column(name = "testigos")
-    private String testigos;
+    @Column(name = "testigos_pruebas")
+    private String testigosPruebas;
+    @JoinColumn(name = "id_desercion", referencedColumnName = "id_desercion")
+    @ManyToOne(optional = false)
+    private Desercion idDesercion;
     @JoinColumn(name = "id_resultado_aprendizaje", referencedColumnName = "id_resultado_aprendizaje")
     @ManyToOne(optional = false)
     private ResultadoAprendizaje idResultadoAprendizaje;
@@ -122,7 +125,7 @@ public class ReporteNovedad implements Serializable {
         this.idReporteNovedad = idReporteNovedad;
     }
 
-    public ReporteNovedad(Integer idReporteNovedad, int conAccCor, String desAnt, String desFal, String desPru, Date fecRep, Date fecUltPlaMej, String hechos, int numAccCor, String pruebas, String testigos) {
+    public ReporteNovedad(Integer idReporteNovedad, int conAccCor, String desAnt, String desFal, String desPru, Date fecRep, Date fecUltPlaMej, String hechos, int numAccCor, Date fechaHecho, String testigosPruebas) {
         this.idReporteNovedad = idReporteNovedad;
         this.conAccCor = conAccCor;
         this.desAnt = desAnt;
@@ -132,8 +135,8 @@ public class ReporteNovedad implements Serializable {
         this.fecUltPlaMej = fecUltPlaMej;
         this.hechos = hechos;
         this.numAccCor = numAccCor;
-        this.pruebas = pruebas;
-        this.testigos = testigos;
+        this.fechaHecho = fechaHecho;
+        this.testigosPruebas = testigosPruebas;
     }
 
     public Integer getIdReporteNovedad() {
@@ -208,20 +211,28 @@ public class ReporteNovedad implements Serializable {
         this.numAccCor = numAccCor;
     }
 
-    public String getPruebas() {
-        return pruebas;
+    public Date getFechaHecho() {
+        return fechaHecho;
     }
 
-    public void setPruebas(String pruebas) {
-        this.pruebas = pruebas;
+    public void setFechaHecho(Date fechaHecho) {
+        this.fechaHecho = fechaHecho;
     }
 
-    public String getTestigos() {
-        return testigos;
+    public String getTestigosPruebas() {
+        return testigosPruebas;
     }
 
-    public void setTestigos(String testigos) {
-        this.testigos = testigos;
+    public void setTestigosPruebas(String testigosPruebas) {
+        this.testigosPruebas = testigosPruebas;
+    }
+
+    public Desercion getIdDesercion() {
+        return idDesercion;
+    }
+
+    public void setIdDesercion(Desercion idDesercion) {
+        this.idDesercion = idDesercion;
     }
 
     public ResultadoAprendizaje getIdResultadoAprendizaje() {

@@ -23,6 +23,7 @@ import jpa.entities.Usuario_;
  */
 @Stateless
 public class EmpresaFacade extends AbstractFacade<Empresa> {
+
     @PersistenceContext(unitName = "AgefPU")
     private EntityManager em;
 
@@ -34,17 +35,16 @@ public class EmpresaFacade extends AbstractFacade<Empresa> {
     public EmpresaFacade() {
         super(Empresa.class);
     }
-    
-public List<Empresa> findEmpresa(Empresa empresa){
-CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+
+    public List<Empresa> findEmpresa(Empresa empresa) {
+        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<Empresa> cq = cb.createQuery(Empresa.class);
         Root<Empresa> u = cq.from(Empresa.class);
-        cq.where(cb.or(                
+        cq.where(cb.or(
                 cb.equal(u.get(Empresa_.idEmpresa), empresa.getIdEmpresa()),
-                cb.equal(u.get(Empresa_.razonSocialEmpresa), empresa.getRazonSocialEmpresa())                
-                ));
-        TypedQuery<Empresa> q = getEntityManager().createQuery(cq);        
-        return q.getResultList();
-}
-
+                cb.like(u.get(Empresa_.razonSocialEmpresa), "%" + empresa.getRazonSocialEmpresa() + "%")));
+        TypedQuery<Empresa> q = getEntityManager().createQuery(cq);
+        List<Empresa> results = q.getResultList();
+        return results;
+    }
 }

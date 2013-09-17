@@ -167,7 +167,7 @@ public class TipoCasoBienestarController implements Serializable {
             return key;
         }
 
-        String getStringKey(java.lang.Integer value) {
+        String getStringKey(java.lang.Short value) {
             StringBuffer sb = new StringBuffer();
             sb.append(value);
             return sb.toString();

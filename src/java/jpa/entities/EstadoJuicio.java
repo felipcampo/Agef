@@ -7,8 +7,11 @@ package jpa.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -33,31 +36,37 @@ import javax.xml.bind.annotation.XmlTransient;
 public class EstadoJuicio implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id_estado_juicio")
+    private Short idEstadoJuicio;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "id_estado_juicio")
-    private String idEstadoJuicio;
-    @Size(max = 255)
     @Column(name = "nom_estado_juicio")
     private String nomEstadoJuicio;
-    @OneToMany(mappedBy = "idEstadoJuicio")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEstadoJuicio")
     private List<SeguimientoInstructor> seguimientoInstructorList;
-    @OneToMany(mappedBy = "idEstadoJuicio")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEstadoJuicio")
     private List<CriterioSeguimientoProyecto> criterioSeguimientoProyectoList;
 
     public EstadoJuicio() {
     }
 
-    public EstadoJuicio(String idEstadoJuicio) {
+    public EstadoJuicio(Short idEstadoJuicio) {
         this.idEstadoJuicio = idEstadoJuicio;
     }
 
-    public String getIdEstadoJuicio() {
+    public EstadoJuicio(Short idEstadoJuicio, String nomEstadoJuicio) {
+        this.idEstadoJuicio = idEstadoJuicio;
+        this.nomEstadoJuicio = nomEstadoJuicio;
+    }
+
+    public Short getIdEstadoJuicio() {
         return idEstadoJuicio;
     }
 
-    public void setIdEstadoJuicio(String idEstadoJuicio) {
+    public void setIdEstadoJuicio(Short idEstadoJuicio) {
         this.idEstadoJuicio = idEstadoJuicio;
     }
 

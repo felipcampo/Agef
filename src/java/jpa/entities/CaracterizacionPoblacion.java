@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "caracterizacion_poblacion")
@@ -39,7 +39,7 @@ public class CaracterizacionPoblacion implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_caracterizacion_poblacion")
-    private Integer idCaracterizacionPoblacion;
+    private Short idCaracterizacionPoblacion;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
@@ -51,20 +51,20 @@ public class CaracterizacionPoblacion implements Serializable {
     public CaracterizacionPoblacion() {
     }
 
-    public CaracterizacionPoblacion(Integer idCaracterizacionPoblacion) {
+    public CaracterizacionPoblacion(Short idCaracterizacionPoblacion) {
         this.idCaracterizacionPoblacion = idCaracterizacionPoblacion;
     }
 
-    public CaracterizacionPoblacion(Integer idCaracterizacionPoblacion, String nomCarPob) {
+    public CaracterizacionPoblacion(Short idCaracterizacionPoblacion, String nomCarPob) {
         this.idCaracterizacionPoblacion = idCaracterizacionPoblacion;
         this.nomCarPob = nomCarPob;
     }
 
-    public Integer getIdCaracterizacionPoblacion() {
+    public Short getIdCaracterizacionPoblacion() {
         return idCaracterizacionPoblacion;
     }
 
-    public void setIdCaracterizacionPoblacion(Integer idCaracterizacionPoblacion) {
+    public void setIdCaracterizacionPoblacion(Short idCaracterizacionPoblacion) {
         this.idCaracterizacionPoblacion = idCaracterizacionPoblacion;
     }
 

@@ -6,7 +6,9 @@ package jpa.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,16 +17,18 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "praxis_pedagogica")
@@ -64,6 +68,8 @@ public class PraxisPedagogica implements Serializable {
     @Size(max = 255)
     @Column(name = "revisor")
     private String revisor;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPraxisPedagogica")
+    private List<SeguimientoInstructor> seguimientoInstructorList;
     @JoinColumn(name = "id_proyecto_formativo", referencedColumnName = "id_proyecto_formativo")
     @ManyToOne(optional = false)
     private ProyectoFormativo idProyectoFormativo;
@@ -140,6 +146,15 @@ public class PraxisPedagogica implements Serializable {
 
     public void setRevisor(String revisor) {
         this.revisor = revisor;
+    }
+
+    @XmlTransient
+    public List<SeguimientoInstructor> getSeguimientoInstructorList() {
+        return seguimientoInstructorList;
+    }
+
+    public void setSeguimientoInstructorList(List<SeguimientoInstructor> seguimientoInstructorList) {
+        this.seguimientoInstructorList = seguimientoInstructorList;
     }
 
     public ProyectoFormativo getIdProyectoFormativo() {

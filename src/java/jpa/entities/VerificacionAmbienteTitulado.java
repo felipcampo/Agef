@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "verificacion_ambiente_titulado")
@@ -76,6 +76,9 @@ public class VerificacionAmbienteTitulado implements Serializable {
     @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
     private Date fecha;
+    @JoinColumn(name = "id_ficha_caracterizacion", referencedColumnName = "id_ficha_caracterizacion")
+    @ManyToOne(optional = false)
+    private FichaCaracterizacion idFichaCaracterizacion;
     @JoinColumn(name = "id_lista_verificacion", referencedColumnName = "id_lista_verificacion")
     @ManyToOne(optional = false)
     private ListaVerificacion idListaVerificacion;
@@ -158,6 +161,14 @@ public class VerificacionAmbienteTitulado implements Serializable {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
+    }
+
+    public FichaCaracterizacion getIdFichaCaracterizacion() {
+        return idFichaCaracterizacion;
+    }
+
+    public void setIdFichaCaracterizacion(FichaCaracterizacion idFichaCaracterizacion) {
+        this.idFichaCaracterizacion = idFichaCaracterizacion;
     }
 
     public ListaVerificacion getIdListaVerificacion() {

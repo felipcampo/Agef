@@ -7,8 +7,11 @@ package jpa.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -33,31 +36,37 @@ import javax.xml.bind.annotation.XmlTransient;
 public class TipoJuicio implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id_tipo_juicio")
+    private Short idTipoJuicio;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "id_tipo_juicio")
-    private String idTipoJuicio;
-    @Size(max = 255)
     @Column(name = "nom_tip_jui")
     private String nomTipJui;
-    @OneToMany(mappedBy = "idTipoJuicio")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTipoJuicio")
     private List<SeguimientoInstructor> seguimientoInstructorList;
-    @OneToMany(mappedBy = "idTipoJuicio")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTipoJuicio")
     private List<CriterioSeguimientoProyecto> criterioSeguimientoProyectoList;
 
     public TipoJuicio() {
     }
 
-    public TipoJuicio(String idTipoJuicio) {
+    public TipoJuicio(Short idTipoJuicio) {
         this.idTipoJuicio = idTipoJuicio;
     }
 
-    public String getIdTipoJuicio() {
+    public TipoJuicio(Short idTipoJuicio, String nomTipJui) {
+        this.idTipoJuicio = idTipoJuicio;
+        this.nomTipJui = nomTipJui;
+    }
+
+    public Short getIdTipoJuicio() {
         return idTipoJuicio;
     }
 
-    public void setIdTipoJuicio(String idTipoJuicio) {
+    public void setIdTipoJuicio(Short idTipoJuicio) {
         this.idTipoJuicio = idTipoJuicio;
     }
 

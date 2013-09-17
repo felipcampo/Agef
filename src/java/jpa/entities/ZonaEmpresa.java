@@ -10,6 +10,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -22,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "zona_empresa")
@@ -34,14 +36,13 @@ import javax.xml.bind.annotation.XmlTransient;
 public class ZonaEmpresa implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
     @Column(name = "id_zona_empresa")
-    private String idZonaEmpresa;
+    private Short idZonaEmpresa;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 255)
+    @Size(min = 1, max = 45)
     @Column(name = "descr_zona")
     private String descrZona;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idZonaEmpresa")
@@ -50,20 +51,20 @@ public class ZonaEmpresa implements Serializable {
     public ZonaEmpresa() {
     }
 
-    public ZonaEmpresa(String idZonaEmpresa) {
+    public ZonaEmpresa(Short idZonaEmpresa) {
         this.idZonaEmpresa = idZonaEmpresa;
     }
 
-    public ZonaEmpresa(String idZonaEmpresa, String descrZona) {
+    public ZonaEmpresa(Short idZonaEmpresa, String descrZona) {
         this.idZonaEmpresa = idZonaEmpresa;
         this.descrZona = descrZona;
     }
 
-    public String getIdZonaEmpresa() {
+    public Short getIdZonaEmpresa() {
         return idZonaEmpresa;
     }
 
-    public void setIdZonaEmpresa(String idZonaEmpresa) {
+    public void setIdZonaEmpresa(Short idZonaEmpresa) {
         this.idZonaEmpresa = idZonaEmpresa;
     }
 

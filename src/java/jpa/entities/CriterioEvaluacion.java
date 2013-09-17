@@ -10,9 +10,10 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -20,45 +21,36 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "criterio_evaluacion")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "CriterioEvaluacion.findAll", query = "SELECT c FROM CriterioEvaluacion c"),
-    @NamedQuery(name = "CriterioEvaluacion.findByIdCriterioEvaluacion", query = "SELECT c FROM CriterioEvaluacion c WHERE c.idCriterioEvaluacion = :idCriterioEvaluacion"),
-    @NamedQuery(name = "CriterioEvaluacion.findByNomCriterio", query = "SELECT c FROM CriterioEvaluacion c WHERE c.nomCriterio = :nomCriterio")})
+    @NamedQuery(name = "CriterioEvaluacion.findByIdCriterioEvaluacion", query = "SELECT c FROM CriterioEvaluacion c WHERE c.idCriterioEvaluacion = :idCriterioEvaluacion")})
 public class CriterioEvaluacion implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
     @Column(name = "id_criterio_evaluacion")
-    private String idCriterioEvaluacion;
-    @Basic(optional = false)
-    @NotNull
+    private Integer idCriterioEvaluacion;
     @Lob
-    @Size(min = 1, max = 65535)
+    @Size(max = 65535)
     @Column(name = "detalles_criterio")
     private String detallesCriterio;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
+    @Lob
+    @Size(max = 2147483647)
     @Column(name = "nom_criterio")
     private String nomCriterio;
-    @JoinTable(name = "actividad_criterio", joinColumns = {
-        @JoinColumn(name = "id_criterio_evaluacion", referencedColumnName = "id_criterio_evaluacion")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_actividad_proyecto", referencedColumnName = "id_actividad_proyecto")})
-    @ManyToMany
+    @ManyToMany(mappedBy = "criterioEvaluacionList")
     private List<ActividadProyecto> actividadProyectoList;
     @ManyToMany(mappedBy = "criterioEvaluacionList")
     private List<EvidenciaAprendizaje> evidenciaAprendizajeList;
@@ -71,13 +63,13 @@ public class CriterioEvaluacion implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCriterioEvaluacion")
     private List<CriterioSeguimientoProyecto> criterioSeguimientoProyectoList;
     @JoinColumn(name = "id_factor_productiva", referencedColumnName = "id_factor_productiva")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private FactorProductiva idFactorProductiva;
     @JoinColumn(name = "id_titulo_criterio", referencedColumnName = "id_titulo_criterio")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private TituloCriterio idTituloCriterio;
     @JoinColumn(name = "id_tipo_criterio", referencedColumnName = "id_tipo_criterio")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private TipoCriterio idTipoCriterio;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCriterioEvaluacion")
     private List<CriterioSeguimiento> criterioSeguimientoList;
@@ -85,21 +77,15 @@ public class CriterioEvaluacion implements Serializable {
     public CriterioEvaluacion() {
     }
 
-    public CriterioEvaluacion(String idCriterioEvaluacion) {
+    public CriterioEvaluacion(Integer idCriterioEvaluacion) {
         this.idCriterioEvaluacion = idCriterioEvaluacion;
     }
 
-    public CriterioEvaluacion(String idCriterioEvaluacion, String detallesCriterio, String nomCriterio) {
-        this.idCriterioEvaluacion = idCriterioEvaluacion;
-        this.detallesCriterio = detallesCriterio;
-        this.nomCriterio = nomCriterio;
-    }
-
-    public String getIdCriterioEvaluacion() {
+    public Integer getIdCriterioEvaluacion() {
         return idCriterioEvaluacion;
     }
 
-    public void setIdCriterioEvaluacion(String idCriterioEvaluacion) {
+    public void setIdCriterioEvaluacion(Integer idCriterioEvaluacion) {
         this.idCriterioEvaluacion = idCriterioEvaluacion;
     }
 

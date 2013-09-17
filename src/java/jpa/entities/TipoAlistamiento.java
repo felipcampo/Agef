@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "tipo_alistamiento")
@@ -39,7 +39,7 @@ public class TipoAlistamiento implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_tipo_alistamiento")
-    private Integer idTipoAlistamiento;
+    private Short idTipoAlistamiento;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
@@ -51,20 +51,20 @@ public class TipoAlistamiento implements Serializable {
     public TipoAlistamiento() {
     }
 
-    public TipoAlistamiento(Integer idTipoAlistamiento) {
+    public TipoAlistamiento(Short idTipoAlistamiento) {
         this.idTipoAlistamiento = idTipoAlistamiento;
     }
 
-    public TipoAlistamiento(Integer idTipoAlistamiento, String nomTipoAlistamiento) {
+    public TipoAlistamiento(Short idTipoAlistamiento, String nomTipoAlistamiento) {
         this.idTipoAlistamiento = idTipoAlistamiento;
         this.nomTipoAlistamiento = nomTipoAlistamiento;
     }
 
-    public Integer getIdTipoAlistamiento() {
+    public Short getIdTipoAlistamiento() {
         return idTipoAlistamiento;
     }
 
-    public void setIdTipoAlistamiento(Integer idTipoAlistamiento) {
+    public void setIdTipoAlistamiento(Short idTipoAlistamiento) {
         this.idTipoAlistamiento = idTipoAlistamiento;
     }
 

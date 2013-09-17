@@ -7,9 +7,10 @@ package jpa.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -22,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "factor_productiva")
@@ -34,36 +35,35 @@ import javax.xml.bind.annotation.XmlTransient;
 public class FactorProductiva implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
     @Column(name = "id_factor_productiva")
-    private String idFactorProductiva;
+    private Short idFactorProductiva;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
     @Column(name = "nom_factor_productiva")
     private String nomFactorProductiva;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idFactorProductiva")
+    @OneToMany(mappedBy = "idFactorProductiva")
     private List<CriterioEvaluacion> criterioEvaluacionList;
 
     public FactorProductiva() {
     }
 
-    public FactorProductiva(String idFactorProductiva) {
+    public FactorProductiva(Short idFactorProductiva) {
         this.idFactorProductiva = idFactorProductiva;
     }
 
-    public FactorProductiva(String idFactorProductiva, String nomFactorProductiva) {
+    public FactorProductiva(Short idFactorProductiva, String nomFactorProductiva) {
         this.idFactorProductiva = idFactorProductiva;
         this.nomFactorProductiva = nomFactorProductiva;
     }
 
-    public String getIdFactorProductiva() {
+    public Short getIdFactorProductiva() {
         return idFactorProductiva;
     }
 
-    public void setIdFactorProductiva(String idFactorProductiva) {
+    public void setIdFactorProductiva(Short idFactorProductiva) {
         this.idFactorProductiva = idFactorProductiva;
     }
 

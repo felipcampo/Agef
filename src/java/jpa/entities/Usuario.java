@@ -137,6 +137,12 @@ public class Usuario implements Serializable {
     private List<PlaneacionClase> planeacionClaseList1;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
     private List<PlaneacionPedagogica> planeacionPedagogicaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuarioFuncionario")
+    private List<ControlCasoBieAprendiz> controlCasoBieAprendizList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuarioIntructor")
+    private List<ControlCasoBieAprendiz> controlCasoBieAprendizList1;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuarioAprendiz")
+    private List<ControlCasoBieAprendiz> controlCasoBieAprendizList2;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
     private List<Remision> remisionList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario2")
@@ -149,10 +155,18 @@ public class Usuario implements Serializable {
     private List<SeguimientoInstructor> seguimientoInstructorList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
     private List<MatrizCaracterizacion> matrizCaracterizacionList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario2")
+    private List<Desercion> desercionList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario1")
+    private List<Desercion> desercionList1;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
+    private List<Desercion> desercionList2;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
     private List<VerificacionAmbienteTitulado> verificacionAmbienteTituladoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
     private List<AspiranteFicha> aspiranteFichaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
+    private List<EventoBienestar> eventoBienestarList;
     @JoinColumn(name = "id_estado_aspirante", referencedColumnName = "id_estado_aspirante")
     @ManyToOne(optional = false)
     private EstadoAspirante idEstadoAspirante;
@@ -421,6 +435,33 @@ public class Usuario implements Serializable {
     }
 
     @XmlTransient
+    public List<ControlCasoBieAprendiz> getControlCasoBieAprendizList() {
+        return controlCasoBieAprendizList;
+    }
+
+    public void setControlCasoBieAprendizList(List<ControlCasoBieAprendiz> controlCasoBieAprendizList) {
+        this.controlCasoBieAprendizList = controlCasoBieAprendizList;
+    }
+
+    @XmlTransient
+    public List<ControlCasoBieAprendiz> getControlCasoBieAprendizList1() {
+        return controlCasoBieAprendizList1;
+    }
+
+    public void setControlCasoBieAprendizList1(List<ControlCasoBieAprendiz> controlCasoBieAprendizList1) {
+        this.controlCasoBieAprendizList1 = controlCasoBieAprendizList1;
+    }
+
+    @XmlTransient
+    public List<ControlCasoBieAprendiz> getControlCasoBieAprendizList2() {
+        return controlCasoBieAprendizList2;
+    }
+
+    public void setControlCasoBieAprendizList2(List<ControlCasoBieAprendiz> controlCasoBieAprendizList2) {
+        this.controlCasoBieAprendizList2 = controlCasoBieAprendizList2;
+    }
+
+    @XmlTransient
     public List<Remision> getRemisionList() {
         return remisionList;
     }
@@ -475,6 +516,33 @@ public class Usuario implements Serializable {
     }
 
     @XmlTransient
+    public List<Desercion> getDesercionList() {
+        return desercionList;
+    }
+
+    public void setDesercionList(List<Desercion> desercionList) {
+        this.desercionList = desercionList;
+    }
+
+    @XmlTransient
+    public List<Desercion> getDesercionList1() {
+        return desercionList1;
+    }
+
+    public void setDesercionList1(List<Desercion> desercionList1) {
+        this.desercionList1 = desercionList1;
+    }
+
+    @XmlTransient
+    public List<Desercion> getDesercionList2() {
+        return desercionList2;
+    }
+
+    public void setDesercionList2(List<Desercion> desercionList2) {
+        this.desercionList2 = desercionList2;
+    }
+
+    @XmlTransient
     public List<VerificacionAmbienteTitulado> getVerificacionAmbienteTituladoList() {
         return verificacionAmbienteTituladoList;
     }
@@ -490,6 +558,15 @@ public class Usuario implements Serializable {
 
     public void setAspiranteFichaList(List<AspiranteFicha> aspiranteFichaList) {
         this.aspiranteFichaList = aspiranteFichaList;
+    }
+
+    @XmlTransient
+    public List<EventoBienestar> getEventoBienestarList() {
+        return eventoBienestarList;
+    }
+
+    public void setEventoBienestarList(List<EventoBienestar> eventoBienestarList) {
+        this.eventoBienestarList = eventoBienestarList;
     }
 
     public EstadoAspirante getIdEstadoAspirante() {

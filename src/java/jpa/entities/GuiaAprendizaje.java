@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -27,7 +28,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "guia_aprendizaje")
@@ -35,8 +36,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "GuiaAprendizaje.findAll", query = "SELECT g FROM GuiaAprendizaje g"),
     @NamedQuery(name = "GuiaAprendizaje.findByIdGuiaAprendizaje", query = "SELECT g FROM GuiaAprendizaje g WHERE g.idGuiaAprendizaje = :idGuiaAprendizaje"),
-    @NamedQuery(name = "GuiaAprendizaje.findByIntroduccionGuia", query = "SELECT g FROM GuiaAprendizaje g WHERE g.introduccionGuia = :introduccionGuia"),
-    @NamedQuery(name = "GuiaAprendizaje.findByBibliografia", query = "SELECT g FROM GuiaAprendizaje g WHERE g.bibliografia = :bibliografia"),
     @NamedQuery(name = "GuiaAprendizaje.findByGlosario", query = "SELECT g FROM GuiaAprendizaje g WHERE g.glosario = :glosario")})
 public class GuiaAprendizaje implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -47,7 +46,8 @@ public class GuiaAprendizaje implements Serializable {
     private Integer idGuiaAprendizaje;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 45)
+    @Lob
+    @Size(min = 1, max = 65535)
     @Column(name = "introduccion_guia")
     private String introduccionGuia;
     @Basic(optional = false)
@@ -76,7 +76,8 @@ public class GuiaAprendizaje implements Serializable {
     private String actividadTransferenciaConoci;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 45)
+    @Lob
+    @Size(min = 1, max = 65535)
     @Column(name = "bibliografia")
     private String bibliografia;
     @Basic(optional = false)
@@ -84,7 +85,10 @@ public class GuiaAprendizaje implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "glosario")
     private String glosario;
-    @ManyToMany(mappedBy = "guiaAprendizajeList")
+    @JoinTable(name = "alistamiento_guia_aprendizaje", joinColumns = {
+        @JoinColumn(name = "id_guia_aprendizaje", referencedColumnName = "id_guia_aprendizaje")}, inverseJoinColumns = {
+        @JoinColumn(name = "id_alistamiento", referencedColumnName = "id_alistamiento")})
+    @ManyToMany
     private List<Alistamiento> alistamientoList;
     @JoinColumn(name = "id_proyecto_formativo", referencedColumnName = "id_proyecto_formativo")
     @ManyToOne(optional = false)

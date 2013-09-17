@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "seguimiento_productiva")
@@ -45,9 +45,8 @@ public class SeguimientoProductiva implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull    
     @Column(name = "id_seguimiento_productiva")
-    private String idSeguimientoProductiva;
+    private Integer idSeguimientoProductiva;
     @Basic(optional = false)
     @NotNull
     @Lob
@@ -81,15 +80,18 @@ public class SeguimientoProductiva implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "tipo_informe")
     private String tipoInforme;
+    @JoinColumn(name = "id_incidente_productiva", referencedColumnName = "id_incidente_productiva")
+    @ManyToOne(optional = false)
+    private IncidenteProductiva idIncidenteProductiva;
+    @JoinColumn(name = "id_visita_etapa_productiva", referencedColumnName = "id_visita_etapa_productiva")
+    @ManyToOne(optional = false)
+    private VisitaEtapaProductiva idVisitaEtapaProductiva;
     @JoinColumn(name = "id_ficha_caracterizacion", referencedColumnName = "id_ficha_caracterizacion")
     @ManyToOne(optional = false)
     private FichaCaracterizacion idFichaCaracterizacion;
     @JoinColumn(name = "id_concertacion_plan_trabajo_productiva", referencedColumnName = "id_concertacion_plan_trabajo_productiva")
     @ManyToOne(optional = false)
     private ConcertacionPlanTrabajoProductiva idConcertacionPlanTrabajoProductiva;
-    @JoinColumn(name = "id_visita_etapa_productiva", referencedColumnName = "id_visita_etapa_productiva")
-    @ManyToOne
-    private VisitaEtapaProductiva idVisitaEtapaProductiva;
     @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
     @ManyToOne(optional = false)
     private Empresa idEmpresa;
@@ -102,18 +104,15 @@ public class SeguimientoProductiva implements Serializable {
     @JoinColumn(name = "id_centro_formacion", referencedColumnName = "id_centro_formacion")
     @ManyToOne(optional = false)
     private CentroFormacion idCentroFormacion;
-    @JoinColumn(name = "id_incidente_productiva", referencedColumnName = "id_incidente_productiva")
-    @ManyToOne(optional = false)
-    private IncidenteProductiva idIncidenteProductiva;
 
     public SeguimientoProductiva() {
     }
 
-    public SeguimientoProductiva(String idSeguimientoProductiva) {
+    public SeguimientoProductiva(Integer idSeguimientoProductiva) {
         this.idSeguimientoProductiva = idSeguimientoProductiva;
     }
 
-    public SeguimientoProductiva(String idSeguimientoProductiva, String espRec, Date fecRepFin, Date fecRepIni, boolean juicioEva, boolean reconocimentoEspeciales, boolean requierePlanMejoramiento, String tipoInforme) {
+    public SeguimientoProductiva(Integer idSeguimientoProductiva, String espRec, Date fecRepFin, Date fecRepIni, boolean juicioEva, boolean reconocimentoEspeciales, boolean requierePlanMejoramiento, String tipoInforme) {
         this.idSeguimientoProductiva = idSeguimientoProductiva;
         this.espRec = espRec;
         this.fecRepFin = fecRepFin;
@@ -124,11 +123,11 @@ public class SeguimientoProductiva implements Serializable {
         this.tipoInforme = tipoInforme;
     }
 
-    public String getIdSeguimientoProductiva() {
+    public Integer getIdSeguimientoProductiva() {
         return idSeguimientoProductiva;
     }
 
-    public void setIdSeguimientoProductiva(String idSeguimientoProductiva) {
+    public void setIdSeguimientoProductiva(Integer idSeguimientoProductiva) {
         this.idSeguimientoProductiva = idSeguimientoProductiva;
     }
 
@@ -188,6 +187,22 @@ public class SeguimientoProductiva implements Serializable {
         this.tipoInforme = tipoInforme;
     }
 
+    public IncidenteProductiva getIdIncidenteProductiva() {
+        return idIncidenteProductiva;
+    }
+
+    public void setIdIncidenteProductiva(IncidenteProductiva idIncidenteProductiva) {
+        this.idIncidenteProductiva = idIncidenteProductiva;
+    }
+
+    public VisitaEtapaProductiva getIdVisitaEtapaProductiva() {
+        return idVisitaEtapaProductiva;
+    }
+
+    public void setIdVisitaEtapaProductiva(VisitaEtapaProductiva idVisitaEtapaProductiva) {
+        this.idVisitaEtapaProductiva = idVisitaEtapaProductiva;
+    }
+
     public FichaCaracterizacion getIdFichaCaracterizacion() {
         return idFichaCaracterizacion;
     }
@@ -202,14 +217,6 @@ public class SeguimientoProductiva implements Serializable {
 
     public void setIdConcertacionPlanTrabajoProductiva(ConcertacionPlanTrabajoProductiva idConcertacionPlanTrabajoProductiva) {
         this.idConcertacionPlanTrabajoProductiva = idConcertacionPlanTrabajoProductiva;
-    }
-
-    public VisitaEtapaProductiva getIdVisitaEtapaProductiva() {
-        return idVisitaEtapaProductiva;
-    }
-
-    public void setIdVisitaEtapaProductiva(VisitaEtapaProductiva idVisitaEtapaProductiva) {
-        this.idVisitaEtapaProductiva = idVisitaEtapaProductiva;
     }
 
     public Empresa getIdEmpresa() {
@@ -242,14 +249,6 @@ public class SeguimientoProductiva implements Serializable {
 
     public void setIdCentroFormacion(CentroFormacion idCentroFormacion) {
         this.idCentroFormacion = idCentroFormacion;
-    }
-
-    public IncidenteProductiva getIdIncidenteProductiva() {
-        return idIncidenteProductiva;
-    }
-
-    public void setIdIncidenteProductiva(IncidenteProductiva idIncidenteProductiva) {
-        this.idIncidenteProductiva = idIncidenteProductiva;
     }
 
     @Override

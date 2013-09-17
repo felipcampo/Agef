@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leoandresm
+ * @author ADSI
  */
 @Entity
 @Table(name = "programa")
@@ -47,7 +47,7 @@ public class Programa implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 5)
+    @Size(min = 1, max = 255)
     @Column(name = "id_programa")
     private String idPrograma;
     @Basic(optional = false)
@@ -92,7 +92,10 @@ public class Programa implements Serializable {
     @Size(min = 1, max = 65535)
     @Column(name = "req_ing_prg")
     private String reqIngPrg;
-    @ManyToMany(mappedBy = "programaList")
+    @JoinTable(name = "programa_version", joinColumns = {
+        @JoinColumn(name = "id_programa", referencedColumnName = "id_programa")}, inverseJoinColumns = {
+        @JoinColumn(name = "version_id_version", referencedColumnName = "id_version")})
+    @ManyToMany
     private List<Version> versionList;
     @JoinTable(name = "programa_competencia", joinColumns = {
         @JoinColumn(name = "id_programa", referencedColumnName = "id_programa")}, inverseJoinColumns = {

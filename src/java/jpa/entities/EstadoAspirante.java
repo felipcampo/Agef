@@ -49,8 +49,6 @@ public class EstadoAspirante implements Serializable {
     private List<AspiranteFicha> aspiranteFichaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEstadoAspirante")
     private List<Usuario> usuarioList;
-    @OneToMany(mappedBy = "idEstadoAspirante")
-    private List<SeguimientoProyecto> seguimientoProyectoList;
 
     public EstadoAspirante() {
     }
@@ -96,15 +94,6 @@ public class EstadoAspirante implements Serializable {
 
     public void setUsuarioList(List<Usuario> usuarioList) {
         this.usuarioList = usuarioList;
-    }
-
-    @XmlTransient
-    public List<SeguimientoProyecto> getSeguimientoProyectoList() {
-        return seguimientoProyectoList;
-    }
-
-    public void setSeguimientoProyectoList(List<SeguimientoProyecto> seguimientoProyectoList) {
-        this.seguimientoProyectoList = seguimientoProyectoList;
     }
 
     @Override
