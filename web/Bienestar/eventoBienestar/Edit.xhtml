@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEventoBienestarTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formEventoBienestar">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.EditEventoBienestarTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditEventoBienestarLabel_idEventoBienestar}" for="idEventoBienestar" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="idEventoBienestar" value="#{eventoBienestarController.selected.idEventoBienestar}" title="#{bundle.EditEventoBienestarTitle_idEventoBienestar}" required="true" requiredMessage="#{bundle.EditEventoBienestarRequiredMessage_idEventoBienestar}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idEventoBienestar"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditEventoBienestarLabel_tituloEvento}" for="tituloEvento" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="tituloEvento" value="#{eventoBienestarController.selected.tituloEvento}" title="#{bundle.EditEventoBienestarTitle_tituloEvento}" required="true" requiredMessage="#{bundle.EditEventoBienestarRequiredMessage_tituloEvento}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="tituloEvento"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditEventoBienestarLabel_descrEvento}" for="descrEvento" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="descrEvento" value="#{eventoBienestarController.selected.descrEvento}" title="#{bundle.EditEventoBienestarTitle_descrEvento}" required="true" requiredMessage="#{bundle.EditEventoBienestarRequiredMessage_descrEvento}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="descrEvento"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditEventoBienestarLabel_fechaInicio}" for="fechaInicio" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fechaInicio" value="#{eventoBienestarController.selected.fechaInicio}" title="#{bundle.EditEventoBienestarTitle_fechaInicio}" required="true" requiredMessage="#{bundle.EditEventoBienestarRequiredMessage_fechaInicio}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fechaInicio"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditEventoBienestarLabel_fechaFin}" for="fechaFin" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fechaFin" value="#{eventoBienestarController.selected.fechaFin}" title="#{bundle.EditEventoBienestarTitle_fechaFin}" required="true" requiredMessage="#{bundle.EditEventoBienestarRequiredMessage_fechaFin}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fechaFin"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditEventoBienestarLabel_idUsuario}" for="idUsuario" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idUsuario" value="#{eventoBienestarController.selected.idUsuario}" required="true" requiredMessage="#{bundle.EditEventoBienestarRequiredMessage_idUsuario}">
+                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idUsuario"/>
+                            </p:column>
+                        </p:row>      
+                    </p:panelGrid>
+                    <br />
+                    <br />                
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{eventoBienestarController.update}" value="#{bundle.EditEventoBienestarSaveLink}" icon="ui-icon-disk"/>
+                    <p:button outcome="View" value="#{bundle.EditEventoBienestarViewLink}" icon="ui-icon-searh"/>
+                    <br />
+                    <p:commandButton ajax="false" action="#{eventoBienestarController.prepareList}" value="#{bundle.EditEventoBienestarShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

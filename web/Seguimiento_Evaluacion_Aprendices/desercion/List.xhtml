@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListDesercionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form id="listDesercion" styleClass="jsfcrud_list_form">
+                <div id="list" align="center">
+                    <p:growl id="msgs" showDetail="false" sticky="false"/>
+                    <h:outputText escape="false" value="#{bundle.ListDesercionEmpty}" rendered="#{desercionController.lazyModel.rowCount == 0}"/>
+                    <h:panelGroup rendered="#{desercionController.lazyModel.rowCount > 0}">
+                        <p:dataTable id="tableListDesercion" 
+                                     value="#{desercionController.lazyModel}" 
+                                     var="item" 
+                                     paginator="true" rows="10" paginatorAlwaysVisible="false"
+                                     paginatorTemplate="{FirstPageLink} {PreviousPageLink}
+                                     {PageLinks} {NextPageLink}
+                                     {LastPageLink} {RowsPerPageDropdown}"  
+                                     rowsPerPageTemplate="5,10,15" paginatorPosition="bottom"
+                                     lazy="true"
+                                     emptyMessage="No se encontraron datos con el criterio dado"
+                                     widgetVar="tableDesercion">
+                            <p:column headerText="#{bundle.ListDesercionTitle_idDesercion}"
+                                      filterBy="#{item.idDesercion}"
+                                      sortBy="#{item.idDesercion}">                        
+                                <h:outputText value="#{item.idDesercion}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListDesercionTitle_diasDesercion}"
+                                      filterBy="#{item.diasDesercion}"
+                                      sortBy="#{item.diasDesercion}">                        
+                                <h:outputText value="#{item.diasDesercion}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListDesercionTitle_fechaInicial}"
+                                      filterBy="#{item.fechaInicial}"
+                                      sortBy="#{item.fechaInicial}">                        
+                                <h:outputText value="#{item.fechaInicial}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListDesercionTitle_fechaFinal}"
+                                      filterBy="#{item.fechaFinal}"
+                                      sortBy="#{item.fechaFinal}">                        
+                                <h:outputText value="#{item.fechaFinal}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListDesercionTitle_causasDesercion}"
+                                      filterBy="#{item.causasDesercion}"
+                                      sortBy="#{item.causasDesercion}">                        
+                                <h:outputText value="#{item.causasDesercion}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListDesercionTitle_observaciones}"
+                                      filterBy="#{item.observaciones}"
+                                      sortBy="#{item.observaciones}">                        
+                                <h:outputText value="#{item.observaciones}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListDesercionTitle_idUsuario2}"
+                                      filterBy="#{item.idUsuario2}"
+                                      sortBy="#{item.idUsuario2}">                        
+                                <h:outputText value="#{item.idUsuario2}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListDesercionTitle_idUsuario1}"
+                                      filterBy="#{item.idUsuario1}"
+                                      sortBy="#{item.idUsuario1}">                        
+                                <h:outputText value="#{item.idUsuario1}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListDesercionTitle_idUsuario}"
+                                      filterBy="#{item.idUsuario}"
+                                      sortBy="#{item.idUsuario}">                        
+                                <h:outputText value="#{item.idUsuario}"/>
+                            </p:column>
+                            <p:column>                        
+                                <p:commandButton ajax="false" action="#{desercionController.prepareView}" title="#{bundle.ListDesercionViewLink}" icon="ui-icon-search"/>
+                                <p:commandButton ajax="false" action="#{desercionController.prepareEdit}" title="#{bundle.ListDesercionEditLink}" icon="ui-icon-pencil"/>
+                                <p:commandButton oncomplete="confirmationDelete.show();" process="@this"
+                                                 title="#{bundle.ListDesercionDestroyLink}" icon="ui-icon-trash">
+                                    <f:setPropertyActionListener value="#{item}" target="#{desercionController.selected}"/>
+                                </p:commandButton>
+                            </p:column>
+                        </p:dataTable>
+                    </h:panelGroup>
+                    <br />
+                    <p:commandButton ajax="false" action="#{desercionController.prepareCreate}" value="#{bundle.ListDesercionCreateLink}" icon="ui-icon-document"/>
+                </div>        
+            </h:form>
+        </ui:define>
+        <ui:define name="dialogs">
+            <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  
+                             header="#{bundle.DeleteItemMessage}" severity="alert" widgetVar="confirmationDelete">  
+                <p:commandButton id="confirmDeleteButtonYes" value="#{bundle.DeleteButtonYes}" update=":listDesercion" oncomplete="confirmationDelete.hide();"  
+                                 action="#{desercionController.destroy}"/>  
+                <p:commandButton id="confirmDeleteButtonNot" value="#{bundle.DeleteButtonNot}" onclick="confirmationDelete.hide();" type="button" />   
+            </p:confirmDialog>             
+        </ui:define>
+    </ui:composition>
+
+</html>
