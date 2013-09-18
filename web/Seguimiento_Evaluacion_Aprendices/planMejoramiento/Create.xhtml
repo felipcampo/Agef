@@ -90,15 +90,18 @@
                                 <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_idUsuario}" for="idUsuario" />
                             </p:column>
                             <p:column colspan="3">    
-                                <p:selectOneMenu id="idUsuario" value="#{planMejoramientoController.selected.idUsuario}" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_idUsuario}">
-                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
+                            <p:commandButton id="idUsuario" icon="ui-icon-search" onclick="dlgBuscarUsuario.show();" type="button"/>
                             </p:column> 
-                        </p:row> 
-                                <p:row>                                      
-                            <p:column><h:outputText value="#{bundle.ViewUsuarioLabel_nomUsu}"/> </p:column>  
+                                 </p:row>
+                                
+                                <p:row>
+                                    <p:column>
+                                <h:outputText value="#{bundle.ViewUsuarioLabel_nomUsu}"/> 
+                            </p:column>
                             <p:column colspan="2"><h:outputText value="#{usuarioController.selected.nomUsu}" title="#{bundle.ViewUsuarioTitle_nomUsu}"/> 
-                                <h:outputText value="#{usuarioController.selected.apeUsu}" title="#{bundle.ViewUsuarioTitle_apeUsu}"/></p:column>   
+                                <h:outputText value="#{planMejoramientoController.selected.idUsuario.nomUsu}" title="#{bundle.ViewUsuarioTitle_apeUsu}"/>
+                                <h:outputText value="#{planMejoramientoController.selected.idUsuario.apeUsu}" title="#{bundle.ViewUsuarioTitle_apeUsu}"/>
+                            </p:column> 
                         </p:row>
                                 <p:row>  
                             <p:column colspan="4" styleClass="ui-widget-header">  
@@ -113,16 +116,18 @@
                                 <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_idUsuario2}" for="idUsuario2" />
                             </p:column>
                             <p:column colspan="3">    
-                                <p:selectOneMenu id="idUsuario2" value="#{planMejoramientoController.selected.idUsuario2}" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_idUsuario2}">
-                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
+                            <p:commandButton id="idUsuario2" icon="ui-icon-search" onclick="dlgBuscarUsuario.show();" type="button"/>
                             </p:column> 
-                        </p:row> 
-                                <p:row>                                      
-                            <p:column><h:outputText value="#{bundle.ViewUsuarioLabel_nomUsu}"/> </p:column>  
+                                 </p:row> 
+                                <p:row>
+                                    <p:column>
+                                <h:outputText value="#{bundle.ViewUsuarioLabel_nomUsu}"/> 
+                            </p:column>
                             <p:column colspan="2"><h:outputText value="#{usuarioController.selected.nomUsu}" title="#{bundle.ViewUsuarioTitle_nomUsu}"/> 
-                                <h:outputText value="#{usuarioController.selected.apeUsu}" title="#{bundle.ViewUsuarioTitle_apeUsu}"/></p:column>   
-                        </p:row> 
+                                <h:outputText value="#{planMejoramientoController.selected.idUsuario2.nomUsu}" title="#{bundle.ViewUsuarioTitle_apeUsu}"/>
+                                <h:outputText value="#{planMejoramientoController.selected.idUsuario2.apeUsu}" title="#{bundle.ViewUsuarioTitle_apeUsu}"/>
+                            </p:column> 
+                        </p:row>
                                 <p:row>  
                             <p:column colspan="4" styleClass="ui-widget-header">  
                                 <p:spacer height="0"/>  
