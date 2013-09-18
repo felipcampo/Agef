@@ -3,10 +3,8 @@ package jsf;
 import jpa.entities.PlanMejoramiento;
 import jsf.util.JsfUtil;
 import jpa.sessions.PlanMejoramientoFacade;
-
 import java.io.Serializable;
 import java.util.ArrayList;
-
 import java.util.HashMap;
 import jpa.sessions.UsuarioFacade;
 import java.util.List;
@@ -68,6 +66,9 @@ public class PlanMejoramientoController implements Serializable {
     private PlanMejoramientoFacade getFacade() {
         return ejbFacade;
     }
+    public List<Usuario> getListBusquedaUsuarios() {
+        return listBusquedaUsuarios;
+    }
 
     public LazyDataModel<PlanMejoramiento> getLazyModel() {
         if (lazyModel == null) {
@@ -114,6 +115,8 @@ public class PlanMejoramientoController implements Serializable {
 
     public String prepareCreate() {
         current = new PlanMejoramiento();
+          usuarioActual = new Usuario();
+          listBusquedaUsuarios = new ArrayList<>();
         return "Create";
     }
     public void buscarUsuario() {
