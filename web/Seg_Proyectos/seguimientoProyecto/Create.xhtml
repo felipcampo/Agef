@@ -10,88 +10,128 @@
         <ui:define name="title">
             <h:outputText value="#{bundle.CreateSeguimientoProyectoTitle}"></h:outputText>
         </ui:define>
+        
+       <ui:define name="menumodulo">
+            <div id="Layoutmenu">
+                <p:menubar  style="float: right">
+                    <p:menuitem url="../inicio_proyectos.xhtml" value="Inicio" />
+                    <p:menuitem url="Create.xhtml" value="Programar fechas de Seguimiento" />
+                    <p:menuitem url="List.xhtml" value="Realizar Seguimiento a proyecto" />
+                </p:menubar>
+
+            </div>
+        </ui:define>
+        
         <ui:define name="body">
-            <p:growl id="msgs" showDetail="false" sticky="false"/>
-            <h:form id="formSeguimientoProyecto">
-                <div id="form" align="center">
-                    <p:panelGrid>
-                        <f:facet name="header">
-                            <p:row><p:column colspan="3">Programar Seguimiento</p:column></p:row>                            
-                        </f:facet>                        
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idSeguimientoProyecto}" for="idSeguimientoProyecto" />
-                            </p:column>
-                            <p:column >    
-                                <p:inputText id="idSeguimientoProyecto" value="#{seguimientoProyectoController.selected.idSeguimientoProyecto}" title="#{bundle.CreateSeguimientoProyectoTitle_idSeguimientoProyecto}" required="true" requiredMessage="#{bundle.CreateSeguimientoProyectoRequiredMessage_idSeguimientoProyecto}"/>
-                            </p:column>                           
-                        </p:row>
-                     
-                         <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idFichaCaracterizacion}" for="idFichaCaracterizacion" />
-                            </p:column>
-                            <p:column >    
-                                <p:selectOneMenu id="idFichaCaracterizacion" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion}" required="true" requiredMessage="#{bundle.CreateSeguimientoProyectoRequiredMessage_idFichaCaracterizacion}" >
-                                    <f:selectItems value="#{fichaCaracterizacionController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
-                            </p:column>                          
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_fechaProgramacionSeguimiento}" for="fechaProgramacionSeguimiento" />
-                            </p:column>
-                            <p:column >    
-                                <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm:ss" showOn="button" id="fechaProgramacionSeguimiento" value="#{seguimientoProyectoController.selected.fechaProgramacionSeguimiento}" title="#{bundle.CreateSeguimientoProyectoTitle_fechaProgramacionSeguimiento}" />
-                            </p:column>
-                          
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idSedeCentro}" for="idSedeCentro" />
-                            </p:column>
-                            <p:column >    
-                                <p:selectOneMenu id="idSedeCentro" value="#{seguimientoProyectoController.selected.idSedeCentro}" >
-                                    <f:selectItems value="#{sedeCentroController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
-                            </p:column>
-                           
-                        </p:row>
-                  
-                       
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idRegional}" for="idRegional" />
-                            </p:column>
-                            <p:column>    
-                                <p:selectOneMenu id="idRegional" value="#{seguimientoProyectoController.selected.idRegional}" >
-                                    <f:selectItems value="#{regionalController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
-                            </p:column>
-                            
-                        </p:row>
-                  
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_rolIdRol}" for="rolIdRol" />
-                            </p:column>
-                            <p:column >    
-                                <p:selectOneMenu id="rolIdRol" value="#{seguimientoProyectoController.selected.rolIdRol}" >
-                                    <f:selectItems value="#{rolController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
-                            </p:column>
-                           
-                        </p:row>
-                    </p:panelGrid>
-                    <br />
-                    <br />
-                    <p:commandButton process="@this, @form" update="@form, :msgs"
-                                     action="#{seguimientoProyectoController.create}" value="#{bundle.CreateSeguimientoProyectoSaveLink}" icon="ui-icon-disk"/>
-                    <br />
-                    <br />
-                    <p:commandButton ajax="false" action="#{seguimientoProyectoController.prepareList}" value="#{bundle.CreateSeguimientoProyectoShowAllLink}" immediate="true"/>
+
+            <div id="Layout_Titulo_Formulario_Agef"> <h2>SEGUIMIENTO AL APRENDIZ EN ETAPA PRODUCTIVA</h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen"> Programar Seguimiento</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br>  
+
+                    <p:growl id="msgs" showDetail="false" sticky="false"/>
+                    <h:form id="formSeguimientoProyecto">
+                        <div id="form" align="center">
+                            <p:panelGrid>
+                                <f:facet name="header">
+                                    <p:row><p:column colspan="3"></p:column></p:row>                            
+                                </f:facet>                        
+                                <p:row>
+                                    <p:column>
+                                        <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idSeguimientoProyecto}" for="idSeguimientoProyecto" />
+                                    </p:column>
+                                    <p:column >    
+                                        <p:inputText id="idSeguimientoProyecto" value="#{seguimientoProyectoController.selected.idSeguimientoProyecto}" title="#{bundle.CreateSeguimientoProyectoTitle_idSeguimientoProyecto}" required="true" requiredMessage="#{bundle.CreateSeguimientoProyectoRequiredMessage_idSeguimientoProyecto}"/>
+                                    </p:column>                           
+                                </p:row>
+
+                                <p:row>
+                                    <p:column>
+                                        <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idProgramaFormacion}" for="idProgramaFormacion" />
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectOneMenu id="idProgramaFormacion" value="#{seguimientoProductivaController.selectedPrograma}">
+                                            <f:selectItems value="#{programaController.itemsAvailableSelectOne}"/>
+                                            <p:ajax update="idFichaCaracterizacion"/>
+                                        </p:selectOneMenu>
+                                    </p:column>
+                                </p:row>
+                                <!---->
+                                <p:row>
+                                    <p:column>
+                                        <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idFichaCaracterizacion}" for="idFichaCaracterizacion" />
+                                    </p:column>
+                                    <p:column >    
+                                        <p:selectOneMenu id="idFichaCaracterizacion" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion}" required="true" requiredMessage="#{bundle.CreateSeguimientoProyectoRequiredMessage_idFichaCaracterizacion}" >
+                                            <f:selectItems value="#{seguimientoProductivaController.itemsAvailableSelectOneFichaCaracterizacionByPrograma}"/>
+                                        </p:selectOneMenu>
+                                    </p:column>                          
+                                </p:row>
+                                <!---->
+                                <p:row>
+                                    <p:column>
+                                        <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_fechaProgramacionSeguimiento}" for="fechaProgramacionSeguimiento" />
+                                    </p:column>
+                                    <p:column >    
+                                        <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm:ss" showOn="button" id="fechaProgramacionSeguimiento" value="#{seguimientoProyectoController.selected.fechaProgramacionSeguimiento}" title="#{bundle.CreateSeguimientoProyectoTitle_fechaProgramacionSeguimiento}" />
+                                    </p:column>
+
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idSedeCentro}" for="idSedeCentro" />
+                                    </p:column>
+                                    <p:column >    
+                                        <p:selectOneMenu id="idSedeCentro" value="#{seguimientoProyectoController.selected.idSedeCentro}" >
+                                            <f:selectItems value="#{sedeCentroController.itemsAvailableSelectOne}"/>
+                                        </p:selectOneMenu>
+                                    </p:column>
+
+                                </p:row>
+
+
+                                <p:row>
+                                    <p:column>
+                                        <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idRegional}" for="idRegional" />
+                                    </p:column>
+                                    <p:column>    
+                                        <p:selectOneMenu id="idRegional" value="#{seguimientoProyectoController.selected.idRegional}" >
+                                            <f:selectItems value="#{regionalController.itemsAvailableSelectOne}"/>
+                                        </p:selectOneMenu>
+                                    </p:column>
+
+                                </p:row>
+
+                                <p:row>
+                                    <p:column>
+                                        <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_rolIdRol}" for="rolIdRol" />
+                                    </p:column>
+                                    <p:column >    
+                                        <p:selectOneMenu id="rolIdRol" value="#{seguimientoProyectoController.selected.rolIdRol}" >
+                                            <f:selectItems value="#{rolController.itemsAvailableSelectOne}"/>
+                                        </p:selectOneMenu>
+                                    </p:column>
+
+                                </p:row>
+                            </p:panelGrid>
+                            <br />
+                            <br />
+                            <p:commandButton process="@this, @form" update="@form, :msgs"
+                                             action="#{seguimientoProyectoController.create}" value="#{bundle.CreateSeguimientoProyectoSaveLink}" icon="ui-icon-disk"/>
+                            <br />
+                            <br />
+                            <p:commandButton ajax="false" action="#{seguimientoProyectoController.prepareList}" value="#{bundle.CreateSeguimientoProyectoShowAllLink}" immediate="true"/>
+                        </div>
+                    </h:form>
+                    <br></br>
                 </div>
-            </h:form>
+            </div>
+            <div id="Layout_Info_Agef">
+                <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
     </ui:composition>
 

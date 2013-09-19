@@ -16,7 +16,7 @@
                 <p:menubar  style="float: right">
                     <p:menuitem url="../inicio_proyectos.xhtml" value="Inicio" />
                     <p:menuitem url="Create.xhtml" value="Programar fechas de Seguimiento" />
-                    <p:menuitem url="Edit.xhtml" value="Realizar Seguimiento a proyecto" />
+                    <p:menuitem url="List.xhtml" value="Realizar Seguimiento a proyecto" />
                 </p:menubar>
 
             </div>
@@ -160,20 +160,21 @@
                             <p:column colspan="3">
                                 <h:outputLabel value="#{bundle.EditSeguimientoProyectoLabel_idRegional}" for="idRegional" />
                             </p:column>
-                            <p:column colspan="4" > 
-                                <p:selectOneMenu id="idRegional" value="#{seguimientoProyectoController.selected.idRegional}" >
-                                    <f:selectItems value="#{regionalController.itemsAvailableSelectOne}"/>
+                             <p:column>
+                                <p:selectOneMenu id="idRegional" value="#{seguimientoProductivaController.selectedRegional}" required="true" requiredMessage="#{bundle.CreateCentroFormacionRequiredMessage_idRegional}">
+                                    <f:selectItems value="#{seguimientoProductivaController.itemsAvailableSelectOneRegional}"/>
+                                    <p:ajax update="codCen"/>
                                 </p:selectOneMenu>
                             </p:column>
 
                             <p:column colspan="3">
                                 <h:outputLabel value="#{bundle.EditSeguimientoProyectoLabel_idSedeCentro}" for="idSedeCentro" />
                             </p:column >
-                            <p:column  colspan="10" > 
-                                <p:selectOneMenu id="idSedeCentro" value="#{seguimientoProyectoController.selected.idSedeCentro}" >
-                                    <f:selectItems value="#{sedeCentroController.itemsAvailableSelectOne}"/>
+                            <p:column>
+                                <p:selectOneMenu id="codCen" value="#{seguimientoProductivaController.selected.idCentroFormacion}" required="true" requiredMessage="#{bundle.CreateSeguimientoProductivaRequiredMessage_idCentroFormacion}">
+                                    <f:selectItems value="#{seguimientoProductivaController.itemsAvailableSelectOneCentroByRegional}"/>
                                 </p:selectOneMenu>
-                            </p:column>
+                            </p:column> 
                         </p:row>
 
                         <p:row>
@@ -277,7 +278,7 @@
                             </p:column>   
 
                             <p:column colspan="15"> 
-                                <p:inputText id="b"  readonly="true" value="de otra tabla" size="70"/>
+                                <p:inputText id="b" readonly="true" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyecto.benficiarioProyecto}" size="70"/>
                             </p:column>  
 
                         </p:row>
@@ -290,7 +291,7 @@
                             </p:column>   
 
                             <p:column colspan="15"> 
-                                <p:inputText id="Ip"  readonly="true" value="de otra tabla" size="70"/>
+                                <p:inputText id="Ip"  readonly="true" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyecto.impSocial}" size="70"/>
                             </p:column> 
                         </p:row>
 
@@ -302,7 +303,7 @@
                             </p:column>   
 
                             <p:column colspan="15"> 
-                                <p:inputText id="Ie" readonly="true" value="de otra tabla" size="70"/>
+                                <p:inputText id="Ie" readonly="true" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyecto.impEconomico}" size="70"/>
                             </p:column>  
                         </p:row>
 
@@ -314,7 +315,7 @@
                             </p:column>   
 
                             <p:column colspan="15"> 
-                                <p:inputText id="iam"  readonly="true" value="de otra tabla" size="70"/>
+                                <p:inputText id="iam"  readonly="true" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyecto.impactoAmbiental}" size="70"/>
                             </p:column>  
                         </p:row>
                         <p:row>
@@ -323,7 +324,7 @@
                             </p:column>   
 
                             <p:column colspan="15"> 
-                                <p:inputText id="It"  readonly="true" value="de otra tabla" size="70"/>
+                                <p:inputText id="It"  readonly="true" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyecto.impTecnologico}" size="70"/>
                             </p:column>  
                         </p:row>
                         <p:row>
@@ -342,7 +343,7 @@
                             </p:column>   
 
                             <p:column colspan="12"> 
-                                <p:inputText id="idEstadoAprendiz" disabled="true" value="" />
+                                <p:inputText id="aplazados" readonly="true" value="#{seguimientoProyectoController.aprendicesByAplazado}" />
                             </p:column>  
                             <p:column rowspan="4"> 
                                 <h:outputLabel value="#{bundle.EditSeguimientoProyectoLabel_evaluacionProyecto}" />
@@ -356,7 +357,7 @@
                             </p:column>   
 
                             <p:column colspan="12"> 
-                                <p:inputText id="cancelados"  readonly="true" value="viene de otra tabla"/>
+                                <p:inputText id="cancelados"  readonly="true" value="#{seguimientoProyectoController.aprendicesByCancelado}"/>
                             </p:column>   
 
                         </p:row>
@@ -367,7 +368,7 @@
                             </p:column>   
 
                             <p:column colspan="12"> 
-                                <p:inputText id="trasladados"  readonly="true" value="viene de otra tabla"/>
+                                <p:inputText id="trasladados"  readonly="true" value="#{seguimientoProyectoController.aprendicesByTrasladado}"/>
                             </p:column>   
                         </p:row>
 
@@ -378,7 +379,7 @@
                             </p:column>   
 
                             <p:column colspan="12"> 
-                                <p:inputText id="condicionados"  readonly="true" value="viene de otra tabla"/>
+                                <p:inputText id="condicionados"  readonly="true" value="#{seguimientoProyectoController.aprendicesByCondicionado}"/>
                             </p:column>   
 
                         </p:row>
@@ -394,11 +395,9 @@
                             <p:column colspan="3">
                                 <h:outputLabel value="#{bundle.EditSeguimientoProyectoLabel_idResultadoAprendizaje}" for="idResultadoAprendizaje" />
                             </p:column>
-                            <p:column  colspan="10" > 
-                                <p:selectOneMenu id="idResultadoAprendizaje" value="#{seguimientoProyectoController.selected.idResultadoAprendizaje}" >
-                                    <f:selectItems value="#{resultadoAprendizajeController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
-                            </p:column>
+                             <p:column  colspan="10" > 
+                               <p:inputText id="idResultadoAprendizaje" readonly="true" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyecto.numeroTotalResultados}" />
+                             </p:column>
                         </p:row>
 
 
@@ -461,7 +460,11 @@
             </h:form>
         </ui:define>
     </ui:composition>
-
 </html>
+
+
+
+
+
 
 

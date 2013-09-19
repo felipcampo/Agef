@@ -456,7 +456,7 @@
                                 <h:outputLabel value="#{bundle.CreateUsuarioLabel_nomUsu}" for="nomUsu" />
                             </p:column>
                             <p:column style="border-right: white">    
-                                <p:inputText id="nomUsu" value="#{seguimientoProductivaController.usuarioActual.nomUsu}" title="#{bundle.CreateUsuarioTitle_nomUsu}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_nomUsu}"/>
+                                <p:inputText id="nomUsu" value="#{planMejoramientoController.usuarioActual.nomUsu}" title="#{bundle.CreateUsuarioTitle_nomUsu}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_nomUsu}"/>
                             </p:column>
                             <p:column style="border-left: white;">
                                 <p:message for="nomUsu"/>
@@ -467,7 +467,7 @@
                                 <h:outputLabel value="#{bundle.CreateUsuarioLabel_apeUsu}" for="apeUsu" />
                             </p:column>
                             <p:column style="border-right: white">    
-                                <p:inputText id="apeUsu" value="#{seguimientoProductivaController.usuarioActual.apeUsu}" title="#{bundle.CreateUsuarioTitle_apeUsu}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_apeUsu}"/>
+                                <p:inputText id="apeUsu" value="#{planMejoramientoController.usuarioActual.apeUsu}" title="#{bundle.CreateUsuarioTitle_apeUsu}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_apeUsu}"/>
                             </p:column>
                             <p:column style="border-left: white;">
                                 <p:message for="apeUsu"/>
@@ -476,7 +476,7 @@
 
                         <p:row>
                             <p:column colspan="3">
-                                <p:commandButton action="#{seguimientoProductivaController.buscarUsuario()}"
+                                <p:commandButton action="#{planMejoramientoController.buscarUsuario()}"
                                                  value="Buscar"
                                                  icon="ui-icon-search"
                                                  process="@this,numeroDocumento,nomUsu,apeUsu"
@@ -485,7 +485,7 @@
                         </p:row>
                     </p:panelGrid>
                     <br /><br /><br />
-                    <p:dataTable value="#{seguimientoProductivaController.listBusquedaUsuarios}"
+                    <p:dataTable value="#{planMejoramientoController.listBusquedaUsuarios}"
                                  var="item" paginator="true" rows="5" id="tablaUsuarios">
                         <p:column>
                             <h:outputText value="#{item.numeroDocumento}"/>
@@ -497,9 +497,9 @@
                             <h:outputText value="#{item.apeUsu}"/>
                         </p:column>
                         <p:column>
-                            <p:commandButton id="botonSeleccionUsuario" update=":formSeguimientoProductiva" action="#{seguimientoProductivaController.agregarUsuario}"
+                            <p:commandButton id="botonSeleccionUsuario" update=":formPlanMejoramiento" action="#{planMejoramientoController.agregarUsuario}"
                                              oncomplete="dlgBuscarUsuario.hide();" icon="ui-icon-plus">
-                                <f:setPropertyActionListener value="#{item}" target="#{seguimientoProductivaController.usuarioActual}"/>
+                                <f:setPropertyActionListener value="#{item}" target="#{planMejoramientoController.usuarioActual}"/>
                             </p:commandButton>
                         </p:column>
                     </p:dataTable>  

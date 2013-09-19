@@ -16,8 +16,6 @@ import jpa.entities.EstadoAprendiz;
 import jpa.entities.FichaCaracterizacion;
 import jpa.entities.FichaUsuario;
 import jpa.entities.FichaUsuario_;
-import jpa.entities.Usuario;
-import jpa.entities.Usuario_;
 
 /**
  *
