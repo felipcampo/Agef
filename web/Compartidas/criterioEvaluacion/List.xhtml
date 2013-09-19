@@ -11,6 +11,9 @@
             <h:outputText value="#{bundle.ListCriterioEvaluacionTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+            
+          
+            
             <h:form id="listCriterioEvaluacion" styleClass="jsfcrud_list_form">
                 <div id="list" align="center">
                     <p:growl id="msgs" showDetail="false" sticky="false"/>
@@ -71,6 +74,7 @@
                     <p:commandButton ajax="false" action="#{criterioEvaluacionController.prepareCreate}" value="#{bundle.ListCriterioEvaluacionCreateLink}" icon="ui-icon-document"/>
                 </div>        
             </h:form>
+                    
         </ui:define>
         <ui:define name="dialogs">
             <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  
