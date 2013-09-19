@@ -147,8 +147,6 @@
                                     <p:column>    
                                         <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" locale="es" id="fecIni" value="#{planMejoramientoController.selected.fecIni}" title="#{bundle.CreatePlanMejoramientoTitle_fecIni}" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_fecIni}"/>
                                     </p:column>
-                              </p:row>
-                                  <p:row>
                                     <p:column>
                                         <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_fecFin}" for="fecFin" />
                                     </p:column>
@@ -194,9 +192,7 @@
                                         <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_tipoPlanMejoramiento}" for="tipoPlanMejoramiento" />
                                     </p:column>
                                     <p:column colspan="3">  
-
-                                        <p:selectBooleanButton value="#{planMejoramientoController.selected.tipoPlanMejoramiento}" onLabel="Academico" offLabel="Disciplinario" >  
-
+                                <p:selectBooleanButton value="#{planMejoramientoController.selected.tipoPlanMejoramiento}" onLabel="Academico" offLabel="Disciplinario" >  
                                         </p:selectBooleanButton>  
                                     </p:column>
 
@@ -228,11 +224,10 @@
                                     <p:column>
                                         <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_lugar}" for="lugar" />
                                     </p:column>
-                                    <p:column style="border-right: white">    
-                                        <p:inputText id="lugar" value="#{planMejoramientoController.selected.lugar}" title="#{bundle.CreatePlanMejoramientoTitle_lugar}" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_lugar}"/>
-                                    </p:column>
-                                    <p:column style="border-left: white;">
-                                        <p:message for="lugar"/>
+                                    
+                                  <p:column colspan="3">  
+                                      <p:selectBooleanButton value="#{planMejoramientoController.selected.lugar}" onLabel="Centro Formación" offLabel="Empresa" >  
+                                        </p:selectBooleanButton>  
                                     </p:column>
                                 </p:row>
                                 <p:row>
