@@ -20,22 +20,8 @@
 
             <p:growl id="msgs" showDetail="false" sticky="false"/>
             <h:form id="formSeguimientoProductiva">
-                <div id="form" align="center">                   
-
-                    <p:toolbar>  
-                        <p:toolbarGroup align="left">
-                            <p:commandButton type="button" value="Nuevo" icon="ui-icon-document" /> 
-                            <p:commandButton ajax="false" value="Abrir" icon="ui-icon-folder-open" action="#{seguimientosProductivaController.prepareList}" immediate="true"/>
-                            <p:separator />                                      
-                            <p:commandButton type="button" value="Imprimir" icon="ui-icon-print"/>  
-                        </p:toolbarGroup>  
-                        <p:toolbarGroup align="right">  
-                            <p:menuButton value="Opciones">  
-                                <p:menuitem value="Inicio" url="#" />  
-                                <p:menuitem value="Novedades" url="#" />                                        
-                            </p:menuButton>  
-                        </p:toolbarGroup>  
-                    </p:toolbar> 
+                <div id="form" align="center"> 
+                    
                     <br />
                     <br />  
 
@@ -54,7 +40,7 @@
                                     <f:selectItems value="#{visitaEtapaProductivaController.itemsAvailableSelectOne}"/>
                                 </p:selectOneMenu>                                        
                             </p:column>                                    
-                            
+
                         </p:row>
 
                         <p:row>  
@@ -268,37 +254,55 @@
                             <p:column colspan="4" styleClass="ui-widget-header">  
                                 <p:spacer height="0"/>  
                             </p:column>  
-                        </p:row>
+                        </p:row>  
 
                         <p:row>  
-                            <p:column colspan="4"><p align="left"><strong>FACTORES ACTITUDINALES Y COMPORTAMENTALES</strong></p></p:column>  
+                            <p:column colspan="4"><p align="left"><strong>FACTORES</strong></p></p:column>  
                         </p:row>
 
                         <p:row>
-                            <p:column>
-                                <h:outputLabel value="Criterios" for="criteriosfac" />
-                            </p:column>
-                            <p:column colspan="3">
-                                <p:commandButton id="criteriosfac" icon="ui-icon-clipboard" onclick="dlg2.show();" process="@none"/>                          
-                            </p:column>
-                        </p:row>
 
-                        <p:row>  
-                            <p:column colspan="4" styleClass="ui-widget-header">  
-                                <p:spacer height="0"/>  
-                            </p:column>  
-                        </p:row>
-
-                        <p:row>  
-                            <p:column colspan="4"><p align="left"><strong>FACTORES TECNICOS</strong></p></p:column>  
-                        </p:row>
-
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="Criterios" for="criteriostec" />
-                            </p:column>
-                            <p:column colspan="3">
-                                <p:commandButton id="criteriostec" icon="ui-icon-clipboard" onclick="dlg2.show();" process="@none"/>                          
+                            <p:column colspan="4" >      
+                                <p:dataTable id="tableListCriterioEvaluacion" 
+                                             value="#{seguimientoProductivaController.listCriteriosSeg}" 
+                                             var="item" editable="true"  
+                                             paginator="true" rows="10" paginatorAlwaysVisible="false"
+                                             paginatorTemplate="{FirstPageLink} {PreviousPageLink}
+                                             {PageLinks} {NextPageLink}
+                                             {LastPageLink} {RowsPerPageDropdown}"  
+                                             rowsPerPageTemplate="5,10,15" paginatorPosition="bottom"                                     
+                                             emptyMessage="No se encontraron datos con el criterio dado"
+                                             widgetVar="tableCriterioEvaluacion">
+                                    <p:column headerText="Variable">                        
+                                        <h:outputText  title="#{item.idCriterioEvaluacion.detallesCriterio}" value="#{item.idCriterioEvaluacion.nomCriterio}"/>
+                                    </p:column>
+                                    
+                                    <p:column headerText="Valoración">                        
+                                        <p:cellEditor>  
+                                            <f:facet name="output">  
+                                                <p:selectBooleanButton disabled="true" value="#{item.valCep}" onLabel="Satisfactorio" offLabel="Por Mejorar" onIcon="ui-icon-check" offIcon="ui-icon-close" /> 
+                                            </f:facet>  
+                                            <f:facet name="input">                                                 
+                                               <p:selectBooleanButton id="valCep" value="#{item.valCep}" onLabel="Satisfactorio" offLabel="Por Mejorar" onIcon="ui-icon-check" offIcon="ui-icon-close" /> 
+                                            </f:facet> 
+                                        </p:cellEditor>  
+                                    </p:column>
+                                     
+                                    <p:column headerText="Observación">                        
+                                        <p:cellEditor>  
+                                            <f:facet name="output">  
+                                                <p:outputLabel value="#{item.obsCep}" /> 
+                                            </f:facet>  
+                                            <f:facet name="input">                                                 
+                                                <p:inputText value="#{item.obsCep}"/>
+                                            </f:facet> 
+                                        </p:cellEditor>  
+                                    </p:column>                                    
+                                    
+                                    <p:column style="width:6%">  
+                                        <p:rowEditor />  
+                                    </p:column> 
+                                </p:dataTable>
                             </p:column>
                         </p:row>
 
@@ -345,11 +349,10 @@
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateSeguimientoProductivaLabel_idIncidenteProductiva}" for="idIncidenteProductiva" />
                             </p:column>
-                            <p:column colspan="3">    
-                                <p:selectOneMenu id="idIncidenteProductiva" value="#{seguimientoProductivaController.selected.idIncidenteProductiva}" required="true" requiredMessage="#{bundle.CreateSeguimientoProductivaRequiredMessage_idIncidenteProductiva}">
-                                    <f:selectItems value="#{incidenteProductivaController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
-                            </p:column>                            
+                            <p:column colspan="3">
+                                <p:commandButton id="idIncidenteProductiva"  icon="ui-icon-plusthick" onclick="dlg2.show();" process="@none"/>                          
+                            </p:column>                           
+                                                  
                         </p:row>
 
                         <f:facet name="footer">
@@ -376,10 +379,12 @@
             <p:dialog  id="dialog"   closeOnEscape="true" header="#{bundle.CreateConcertacionPlanTrabajoProductivaTitle}" widgetVar="dlg" minHeight="300" minWidth="450" 
                        resizable="true" modal="true" showEffect="clip" hideEffect="clip">
                 <ui:include src="/Seg_Ap_Et_Prod/concertacionPlanTrabajoProductiva/Create.xhtml" />
-            </p:dialog>  
-            <p:dialog  id="dialog2"   closeOnEscape="true" header="#{bundle.CreateCriterioSeguimientoTitle}" widgetVar="dlg2" minHeight="300" minWidth="450" 
+            </p:dialog> 
+            
+            
+            <p:dialog  id="dialog2"   closeOnEscape="true" header="#{bundle.CreateIncidenteProductivaTitle}" widgetVar="dlg2" minHeight="300" minWidth="450" 
                        resizable="true" modal="true" showEffect="clip" hideEffect="clip">
-                <ui:include src="/Seg_Ap_Et_Prod/criterioSeguimiento/Create.xhtml" />
+                <ui:include src="/Seg_Ap_Et_Prod/incidenteProductiva/Create.xhtml" />
             </p:dialog> 
 
             <p:dialog id="buscarCliente" widgetVar="dlgBuscarUsuario" modal="true" resizable="false" 
@@ -489,7 +494,7 @@
                                                  update="tablaEmpresas, :msgs"/>
                             </p:column>
                         </p:row>
-                        
+
                     </p:panelGrid>
                     <br /><br /><br />
                     <p:dataTable value="#{seguimientoProductivaController.listBusquedaEmpresas}"
@@ -510,9 +515,6 @@
                     </p:dataTable>  
                 </h:form>                     
             </p:dialog>
-
-
-
 
         </ui:define> 
     </ui:composition>

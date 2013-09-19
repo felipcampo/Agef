@@ -29,45 +29,25 @@
                                 <p:message for="idVisitaEtapaProductiva"/>
                             </p:column>
                         </p:row>      
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.EditVisitaEtapaProductivaLabel_disponibilidadFecha}" for="disponibilidadFecha" />
-                            </p:column>
-                            <p:column style="border-right: white"> 
-                                <p:inputText id="disponibilidadFecha" value="#{visitaEtapaProductivaController.selected.disponibilidadFecha}" title="#{bundle.EditVisitaEtapaProductivaTitle_disponibilidadFecha}" required="true" requiredMessage="#{bundle.EditVisitaEtapaProductivaRequiredMessage_disponibilidadFecha}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="disponibilidadFecha"/>
-                            </p:column>
-                        </p:row>      
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.EditVisitaEtapaProductivaLabel_estadoVisita}" for="estadoVisita" />
-                            </p:column>
-                            <p:column style="border-right: white"> 
-                                <p:inputText id="estadoVisita" value="#{visitaEtapaProductivaController.selected.estadoVisita}" title="#{bundle.EditVisitaEtapaProductivaTitle_estadoVisita}" required="true" requiredMessage="#{bundle.EditVisitaEtapaProductivaRequiredMessage_estadoVisita}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="estadoVisita"/>
-                            </p:column>
-                        </p:row>      
+                           
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.EditVisitaEtapaProductivaLabel_fechaInicio}" for="fechaInicio" />
                             </p:column>
                             <p:column style="border-right: white"> 
-                                <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm:ss" showOn="button" id="fechaInicio" value="#{visitaEtapaProductivaController.selected.fechaInicio}" title="#{bundle.EditVisitaEtapaProductivaTitle_fechaInicio}" required="true" requiredMessage="#{bundle.EditVisitaEtapaProductivaRequiredMessage_fechaInicio}"/>
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm" showOn="button" id="fechaInicio" value="#{visitaEtapaProductivaController.selected.fechaInicio}" title="#{bundle.EditVisitaEtapaProductivaTitle_fechaInicio}" required="true" requiredMessage="#{bundle.EditVisitaEtapaProductivaRequiredMessage_fechaInicio}"/>
                             </p:column>
                             <p:column style="border-left: white;">
                                 <p:message for="fechaInicio"/>
                             </p:column>
                         </p:row>      
+                        
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.EditVisitaEtapaProductivaLabel_fechaFin}" for="fechaFin" />
                             </p:column>
                             <p:column style="border-right: white"> 
-                                <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm:ss" showOn="button" id="fechaFin" value="#{visitaEtapaProductivaController.selected.fechaFin}" title="#{bundle.EditVisitaEtapaProductivaTitle_fechaFin}" required="true" requiredMessage="#{bundle.EditVisitaEtapaProductivaRequiredMessage_fechaFin}"/>
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm" showOn="button" id="fechaFin" value="#{visitaEtapaProductivaController.selected.fechaFin}" title="#{bundle.EditVisitaEtapaProductivaTitle_fechaFin}" required="true" requiredMessage="#{bundle.EditVisitaEtapaProductivaRequiredMessage_fechaFin}"/>
                             </p:column>
                             <p:column style="border-left: white;">
                                 <p:message for="fechaFin"/>

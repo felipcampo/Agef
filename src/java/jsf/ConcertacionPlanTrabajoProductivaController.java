@@ -38,6 +38,7 @@ public class ConcertacionPlanTrabajoProductivaController implements Serializable
         }
         return current;
     }
+    
 
     public void setSelected(ConcertacionPlanTrabajoProductiva entity) {
         current = entity;

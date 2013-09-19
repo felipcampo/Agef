@@ -19,12 +19,17 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.faces.model.SelectItem;
 import jpa.entities.CentroFormacion;
+import jpa.entities.CriterioEvaluacion;
+import jpa.entities.CriterioSeguimiento;
 import jpa.entities.Empresa;
 import jpa.entities.FichaCaracterizacion;
 import jpa.entities.Programa;
 import jpa.entities.Regional;
+import jpa.entities.TipoCriterio;
 import jpa.entities.Usuario;
 import jpa.sessions.CentroFormacionFacade;
+import jpa.sessions.CriterioEvaluacionFacade;
+import jpa.sessions.CriterioSeguimientoFacade;
 import jpa.sessions.EmpresaFacade;
 import jpa.sessions.FichaCaracterizacionFacade;
 import jpa.sessions.ProgramaFacade;
@@ -38,6 +43,7 @@ public class SeguimientoProductivaController implements Serializable {
 
     private Empresa empresaActual;
     private Usuario usuarioActual;
+    private CriterioSeguimiento currentCriterioSeg;
     private List<Empresa> listBusquedaEmpresas;
     private List<Usuario> listBusquedaUsuarios;
     private SeguimientoProductiva current;
@@ -46,6 +52,8 @@ public class SeguimientoProductivaController implements Serializable {
     private FichaCaracterizacion currentFichaCaracterizacion;
     private Programa currentPrograma; 
     private LazyDataModel<SeguimientoProductiva> lazyModel = null;
+    List<CriterioSeguimiento> listCriteriosSeg;
+    List<CriterioEvaluacion> listCriteriosEval; 
     @EJB
     private jpa.sessions.SeguimientoProductivaFacade ejbFacade;
     @EJB
@@ -60,7 +68,11 @@ public class SeguimientoProductivaController implements Serializable {
     private jpa.sessions.FichaCaracterizacionFacade ejbFacadeFichaCaracterizacion;
     @EJB
     private jpa.sessions.ProgramaFacade ejbFacadePrograma;
-
+    @EJB
+    private jpa.sessions.CriterioEvaluacionFacade ejbFacadeCriterioEval;
+    @EJB
+    private jpa.sessions.CriterioSeguimientoFacade ejbFacadeEvalCriterioSeg;
+    
     public SeguimientoProductivaController() {
     }
 
@@ -93,7 +105,25 @@ public class SeguimientoProductivaController implements Serializable {
     private EmpresaFacade getEmpresaFacade() {
         return empresaFacade;
     }
+    
+    private CriterioEvaluacionFacade getFacadeCriterioEval() {
+        return ejbFacadeCriterioEval;
+    }
+    
+    private CriterioSeguimientoFacade getFacadeEvalCriterioSeg() {
+        return ejbFacadeEvalCriterioSeg;
+    }
+    
 
+    public List<CriterioEvaluacion> getListCriteriosEval() {
+        return listCriteriosEval;
+    }
+    
+    public List<CriterioSeguimiento> getListCriteriosSeg() {
+        return listCriteriosSeg;
+    }
+        
+    
     public List<Usuario> getListBusquedaUsuarios() {
         return listBusquedaUsuarios;
     }
@@ -225,6 +255,13 @@ public class SeguimientoProductivaController implements Serializable {
         empresaActual = new Empresa();
         listBusquedaUsuarios = new ArrayList<>();
         listBusquedaEmpresas = new ArrayList<>();
+        listCriteriosSeg = new ArrayList<>();
+        listCriteriosEval = getFacadeCriterioEval().findByTipo(new TipoCriterio((short) 2));
+        for (CriterioEvaluacion criterioEval : listCriteriosEval) {
+            currentCriterioSeg = new CriterioSeguimiento();
+            currentCriterioSeg.setIdCriterioEvaluacion(criterioEval);            
+            listCriteriosSeg.add(currentCriterioSeg);
+        }
         return "Create";
     }
 

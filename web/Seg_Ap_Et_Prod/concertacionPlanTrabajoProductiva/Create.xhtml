@@ -7,9 +7,9 @@
       xmlns:p="http://primefaces.org/ui">
 
     <ui:composition>        
-        <h:form id="formConcertacionPlanTrabajoProductiva">
+        <h:form enctype="multipart/form-data" id="formConcertacionPlanTrabajoProductiva">
             <div id="form" align="center">
-                <p:panelGrid>                                    
+                <p:panelGrid>                                  
                     
                     <p:row>
                         <p:column>
@@ -46,7 +46,7 @@
                     <p:row>
                         <p:column colspan="2">
                             <p:fileUpload fileUploadListener="#{concertacionPlanTrabajoProductivaController.selected.eviApr}" mode="advanced" dragDropSupport="false"  
-                                          multiple="true" sizeLimit="10000000" allowTypes="/(\.|\/)(gif|jpe?g|png|doc|doc?x|bmp|avi|pdf)$/" />
+                                          multiple="false" sizeLimit="10000000" allowTypes="/(\.|\/)(gif|jpe?g|png|zip|rar|doc|doc?x|bmp|avi|pdf)$/" />
                         </p:column>
                     </p:row>
                 </p:panelGrid>

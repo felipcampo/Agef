@@ -52,7 +52,7 @@ public class ConcertacionPlanTrabajoProductiva implements Serializable {
     @Column(name = "act_des")
     private String actDes;
     @Basic(optional = false)
-    @NotNull
+
     @Lob
     @Column(name = "evi_apr")
     private byte[] eviApr;

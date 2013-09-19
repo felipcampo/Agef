@@ -39,7 +39,7 @@ public class SeguimientoProyectoController implements Serializable {
     private LazyDataModel<SeguimientoProyecto> lazyModel = null;
     private CriterioSeguimientoProyecto currentCriterioSeg;
     List<CriterioSeguimientoProyecto> listCriteriosSeg;
-    List<CriterioEvaluacion> listCriteriosEval;
+    List<CriterioEvaluacion> listCriteriosEval;    
     @EJB
     private jpa.sessions.SeguimientoProyectoFacade ejbFacade;
     @EJB

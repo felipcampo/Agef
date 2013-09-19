@@ -20,17 +20,13 @@
                         </f:facet>
                         <h:outputText value="#{bundle.ViewVisitaEtapaProductivaLabel_idVisitaEtapaProductiva}"/>
                         <h:outputText value="#{visitaEtapaProductivaController.selected.idVisitaEtapaProductiva}" title="#{bundle.ViewVisitaEtapaProductivaTitle_idVisitaEtapaProductiva}"/>
-                        <h:outputText value="#{bundle.ViewVisitaEtapaProductivaLabel_disponibilidadFecha}"/>
-                        <h:outputText value="#{visitaEtapaProductivaController.selected.disponibilidadFecha}" title="#{bundle.ViewVisitaEtapaProductivaTitle_disponibilidadFecha}"/>
-                        <h:outputText value="#{bundle.ViewVisitaEtapaProductivaLabel_estadoVisita}"/>
-                        <h:outputText value="#{visitaEtapaProductivaController.selected.estadoVisita}" title="#{bundle.ViewVisitaEtapaProductivaTitle_estadoVisita}"/>
                         <h:outputText value="#{bundle.ViewVisitaEtapaProductivaLabel_fechaInicio}"/>
                         <h:outputText value="#{visitaEtapaProductivaController.selected.fechaInicio}" title="#{bundle.ViewVisitaEtapaProductivaTitle_fechaInicio}">
-                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm" />
                         </h:outputText>
                         <h:outputText value="#{bundle.ViewVisitaEtapaProductivaLabel_fechaFin}"/>
                         <h:outputText value="#{visitaEtapaProductivaController.selected.fechaFin}" title="#{bundle.ViewVisitaEtapaProductivaTitle_fechaFin}">
-                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm" />
                         </h:outputText>
                     </p:panelGrid>
                     <br />

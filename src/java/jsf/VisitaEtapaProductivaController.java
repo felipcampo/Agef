@@ -39,6 +39,10 @@ public class VisitaEtapaProductivaController implements Serializable {
         return current;
     }
 
+    public void setSelected(VisitaEtapaProductiva visita){
+        current = visita;
+    }
+    
     private VisitaEtapaProductivaFacade getFacade() {
         return ejbFacade;
     }
@@ -94,10 +98,10 @@ public class VisitaEtapaProductivaController implements Serializable {
     public String create() {
         try {
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("propierties/Bundle").getString("VisitaEtapaProductivaCreated"));
-            return prepareCreate();
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("properties/Bundle").getString("VisitaEtapaProductivaCreated"));
+            return "View";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("propierties/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("properties/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }
     }
@@ -110,10 +114,10 @@ public class VisitaEtapaProductivaController implements Serializable {
     public String update() {
         try {
             getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("propierties/Bundle").getString("VisitaEtapaProductivaUpdated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("properties/Bundle").getString("VisitaEtapaProductivaUpdated"));
             return "View";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("propierties/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("properties/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }
     }
@@ -128,9 +132,9 @@ public class VisitaEtapaProductivaController implements Serializable {
     private void performDestroy() {
         try {
             getFacade().remove(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("propierties/Bundle").getString("VisitaEtapaProductivaDeleted"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("properties/Bundle").getString("VisitaEtapaProductivaDeleted"));
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("propierties/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("properties/Bundle").getString("PersistenceErrorOccured"));
         }
     }
 

@@ -31,29 +31,26 @@
                                       filterBy="#{item.idVisitaEtapaProductiva}"
                                       sortBy="#{item.idVisitaEtapaProductiva}">                        
                                 <h:outputText value="#{item.idVisitaEtapaProductiva}"/>
+                            </p:column>   
+                            
+                            <p:column headerText="#{bundle.ListVisitaEtapaProductivaTitle_tituloVisita}"
+                                      filterBy="#{item.tituloVisita}"
+                                      sortBy="#{item.tituloVisita}">                        
+                                <h:outputText value="#{item.tituloVisita}"/>
                             </p:column>
-                            <p:column headerText="#{bundle.ListVisitaEtapaProductivaTitle_disponibilidadFecha}"
-                                      filterBy="#{item.disponibilidadFecha}"
-                                      sortBy="#{item.disponibilidadFecha}">                        
-                                <h:outputText value="#{item.disponibilidadFecha}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListVisitaEtapaProductivaTitle_estadoVisita}"
-                                      filterBy="#{item.estadoVisita}"
-                                      sortBy="#{item.estadoVisita}">                        
-                                <h:outputText value="#{item.estadoVisita}"/>
-                            </p:column>
+                           
                             <p:column headerText="#{bundle.ListVisitaEtapaProductivaTitle_fechaInicio}"
                                       filterBy="#{item.fechaInicio}"
                                       sortBy="#{item.fechaInicio}">                        
                                 <h:outputText value="#{item.fechaInicio}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm" />
                                 </h:outputText>
                             </p:column>
                             <p:column headerText="#{bundle.ListVisitaEtapaProductivaTitle_fechaFin}"
                                       filterBy="#{item.fechaFin}"
                                       sortBy="#{item.fechaFin}">                        
                                 <h:outputText value="#{item.fechaFin}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm" />
                                 </h:outputText>
                             </p:column>
                             <p:column>                        

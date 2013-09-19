@@ -17,18 +17,7 @@
                     <p:panelGrid>
                         <f:facet name="header">
                             <p:row><p:column colspan="3">#{bundle.CreateVisitaEtapaProductivaTitle}</p:column></p:row>                            
-                        </f:facet>                        
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateVisitaEtapaProductivaLabel_idVisitaEtapaProductiva}" for="idVisitaEtapaProductiva" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputText id="idVisitaEtapaProductiva" value="#{visitaEtapaProductivaController.selected.idVisitaEtapaProductiva}" title="#{bundle.CreateVisitaEtapaProductivaTitle_idVisitaEtapaProductiva}" required="true" requiredMessage="#{bundle.CreateVisitaEtapaProductivaRequiredMessage_idVisitaEtapaProductiva}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idVisitaEtapaProductiva"/>
-                            </p:column>
-                        </p:row> 
+                        </f:facet> 
                         
                         <p:row>
                             <p:column>
@@ -40,26 +29,26 @@
                             <p:column style="border-left: white;">
                                 <p:message for="tituloVisita"/>
                             </p:column>
-                        </p:row>
-                        
+                        </p:row>                        
                         
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateVisitaEtapaProductivaLabel_fechaInicio}" for="fechaInicio" />
                             </p:column>
                             <p:column style="border-right: white">    
-                                <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm:ss" showOn="button" id="fechaInicio" value="#{visitaEtapaProductivaController.selected.fechaInicio}" title="#{bundle.CreateVisitaEtapaProductivaTitle_fechaInicio}" required="true" requiredMessage="#{bundle.CreateVisitaEtapaProductivaRequiredMessage_fechaInicio}"/>
+                                <p:calendar locale="es" minHour="6" maxHour="17" showButtonPanel="true" stepMinute="15" navigator="true" pattern="MM/dd/yyyy HH:mm" showOn="button" id="fechaInicio" value="#{visitaEtapaProductivaController.selected.fechaInicio}" title="#{bundle.CreateVisitaEtapaProductivaTitle_fechaInicio}" required="true" requiredMessage="#{bundle.CreateVisitaEtapaProductivaRequiredMessage_fechaInicio}"/>
                             </p:column>
                             <p:column style="border-left: white;">
                                 <p:message for="fechaInicio"/>
                             </p:column>
                         </p:row>
+                        
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateVisitaEtapaProductivaLabel_fechaFin}" for="fechaFin" />
                             </p:column>
                             <p:column style="border-right: white">    
-                                <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm:ss" showOn="button" id="fechaFin" value="#{visitaEtapaProductivaController.selected.fechaFin}" title="#{bundle.CreateVisitaEtapaProductivaTitle_fechaFin}" required="true" requiredMessage="#{bundle.CreateVisitaEtapaProductivaRequiredMessage_fechaFin}"/>
+                                <p:calendar locale="es" showButtonPanel="true" navigator="true" minHour="6" maxHour="17"  stepMinute="15" pattern="MM/dd/yyyy HH:mm" showOn="button" id="fechaFin" value="#{visitaEtapaProductivaController.selected.fechaFin}" title="#{bundle.CreateVisitaEtapaProductivaTitle_fechaFin}" required="true" requiredMessage="#{bundle.CreateVisitaEtapaProductivaRequiredMessage_fechaFin}"/>
                             </p:column>
                             <p:column style="border-left: white;">
                                 <p:message for="fechaFin"/>
@@ -68,7 +57,7 @@
                     </p:panelGrid>
                     <br />
                     <br />
-                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                    <p:commandButton process="@this, @form" update="@form, :msgs" 
                                      action="#{visitaEtapaProductivaController.create}" value="#{bundle.CreateVisitaEtapaProductivaSaveLink}" icon="ui-icon-disk"/>
                     <br />
                     <br />
