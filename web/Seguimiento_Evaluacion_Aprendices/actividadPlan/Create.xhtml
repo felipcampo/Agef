@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateActividadPlanTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formActividadPlan">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.CreateActividadPlanTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateActividadPlanLabel_idActividadPlan}" for="idActividadPlan" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="idActividadPlan" value="#{actividadPlanController.selected.idActividadPlan}" title="#{bundle.CreateActividadPlanTitle_idActividadPlan}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_idActividadPlan}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idActividadPlan"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateActividadPlanLabel_descripcionActividad}" for="descripcionActividad" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="descripcionActividad" value="#{actividadPlanController.selected.descripcionActividad}" title="#{bundle.CreateActividadPlanTitle_descripcionActividad}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_descripcionActividad}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="descripcionActividad"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateActividadPlanLabel_fecFin}" for="fecFin" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecFin" value="#{actividadPlanController.selected.fecFin}" title="#{bundle.CreateActividadPlanTitle_fecFin}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_fecFin}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fecFin"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateActividadPlanLabel_fecIni}" for="fecIni" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecIni" value="#{actividadPlanController.selected.fecIni}" title="#{bundle.CreateActividadPlanTitle_fecIni}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_fecIni}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fecIni"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateActividadPlanLabel_lugar}" for="lugar" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="lugar" value="#{actividadPlanController.selected.lugar}" title="#{bundle.CreateActividadPlanTitle_lugar}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_lugar}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="lugar"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateActividadPlanLabel_pertinencia}" for="pertinencia" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="pertinencia" value="#{actividadPlanController.selected.pertinencia}" title="#{bundle.CreateActividadPlanTitle_pertinencia}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_pertinencia}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="pertinencia"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateActividadPlanLabel_vigencia}" for="vigencia" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="vigencia" value="#{actividadPlanController.selected.vigencia}" title="#{bundle.CreateActividadPlanTitle_vigencia}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_vigencia}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="vigencia"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateActividadPlanLabel_autenticidad}" for="autenticidad" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="autenticidad" value="#{actividadPlanController.selected.autenticidad}" title="#{bundle.CreateActividadPlanTitle_autenticidad}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_autenticidad}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="autenticidad"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateActividadPlanLabel_calidad}" for="calidad" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="calidad" value="#{actividadPlanController.selected.calidad}" title="#{bundle.CreateActividadPlanTitle_calidad}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_calidad}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="calidad"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateActividadPlanLabel_aprendizaje}" for="aprendizaje" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="aprendizaje" value="#{actividadPlanController.selected.aprendizaje}" title="#{bundle.CreateActividadPlanTitle_aprendizaje}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_aprendizaje}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="aprendizaje"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateActividadPlanLabel_fecRevision}" for="fecRevision" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm:ss" showOn="button" id="fecRevision" value="#{actividadPlanController.selected.fecRevision}" title="#{bundle.CreateActividadPlanTitle_fecRevision}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_fecRevision}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fecRevision"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateActividadPlanLabel_lugar2}" for="lugar2" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="lugar2" value="#{actividadPlanController.selected.lugar2}" title="#{bundle.CreateActividadPlanTitle_lugar2}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_lugar2}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="lugar2"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateActividadPlanLabel_idEvidenciaAprendizaje}" for="idEvidenciaAprendizaje" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idEvidenciaAprendizaje" value="#{actividadPlanController.selected.idEvidenciaAprendizaje}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_idEvidenciaAprendizaje}">
+                                    <f:selectItems value="#{evidenciaAprendizajeController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idEvidenciaAprendizaje"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <br />
+                    <br />
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{actividadPlanController.create}" value="#{bundle.CreateActividadPlanSaveLink}" icon="ui-icon-disk"/>
+                    <br />
+                    <br />
+                    <p:commandButton ajax="false" action="#{actividadPlanController.prepareList}" value="#{bundle.CreateActividadPlanShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

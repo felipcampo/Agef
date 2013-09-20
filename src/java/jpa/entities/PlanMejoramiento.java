@@ -37,19 +37,9 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "PlanMejoramiento.findAll", query = "SELECT p FROM PlanMejoramiento p"),
     @NamedQuery(name = "PlanMejoramiento.findByIdPlanMejoramiento", query = "SELECT p FROM PlanMejoramiento p WHERE p.idPlanMejoramiento = :idPlanMejoramiento"),
-    @NamedQuery(name = "PlanMejoramiento.findByFecFin", query = "SELECT p FROM PlanMejoramiento p WHERE p.fecFin = :fecFin"),
-    @NamedQuery(name = "PlanMejoramiento.findByFecIni", query = "SELECT p FROM PlanMejoramiento p WHERE p.fecIni = :fecIni"),
-    @NamedQuery(name = "PlanMejoramiento.findByFecRevision", query = "SELECT p FROM PlanMejoramiento p WHERE p.fecRevision = :fecRevision"),
     @NamedQuery(name = "PlanMejoramiento.findByTipoPlanMejoramiento", query = "SELECT p FROM PlanMejoramiento p WHERE p.tipoPlanMejoramiento = :tipoPlanMejoramiento"),
     @NamedQuery(name = "PlanMejoramiento.findByJuicioEvaluacion", query = "SELECT p FROM PlanMejoramiento p WHERE p.juicioEvaluacion = :juicioEvaluacion"),
     @NamedQuery(name = "PlanMejoramiento.findByEtapa", query = "SELECT p FROM PlanMejoramiento p WHERE p.etapa = :etapa"),
-    @NamedQuery(name = "PlanMejoramiento.findByLugar", query = "SELECT p FROM PlanMejoramiento p WHERE p.lugar = :lugar"),
-    @NamedQuery(name = "PlanMejoramiento.findByLugar2", query = "SELECT p FROM PlanMejoramiento p WHERE p.lugar2 = :lugar2"),
-    @NamedQuery(name = "PlanMejoramiento.findByPertinencia", query = "SELECT p FROM PlanMejoramiento p WHERE p.pertinencia = :pertinencia"),
-    @NamedQuery(name = "PlanMejoramiento.findByVigencia", query = "SELECT p FROM PlanMejoramiento p WHERE p.vigencia = :vigencia"),
-    @NamedQuery(name = "PlanMejoramiento.findByAutenticidad", query = "SELECT p FROM PlanMejoramiento p WHERE p.autenticidad = :autenticidad"),
-    @NamedQuery(name = "PlanMejoramiento.findByCalidad", query = "SELECT p FROM PlanMejoramiento p WHERE p.calidad = :calidad"),
-    @NamedQuery(name = "PlanMejoramiento.findByAprendizaje", query = "SELECT p FROM PlanMejoramiento p WHERE p.aprendizaje = :aprendizaje"),
     @NamedQuery(name = "PlanMejoramiento.findByTotal", query = "SELECT p FROM PlanMejoramiento p WHERE p.total = :total"),
     @NamedQuery(name = "PlanMejoramiento.findByNombreJefe", query = "SELECT p FROM PlanMejoramiento p WHERE p.nombreJefe = :nombreJefe"),
     @NamedQuery(name = "PlanMejoramiento.findByFechaConcertacion", query = "SELECT p FROM PlanMejoramiento p WHERE p.fechaConcertacion = :fechaConcertacion")})
@@ -64,35 +54,12 @@ public class PlanMejoramiento implements Serializable {
     @NotNull
     @Lob
     @Size(min = 1, max = 65535)
-    @Column(name = "actividades_desarrollar")
-    private String actividadesDesarrollar;
-    @Basic(optional = false)
-    @NotNull
-    @Lob
-    @Size(min = 1, max = 65535)
     @Column(name = "observaciones")
     private String observaciones;
-    @Basic(optional = false)
-    @NotNull
     @Lob
-    @Size(min = 1, max = 65535)
+    @Size(max = 65535)
     @Column(name = "evidencia_cam")
     private String evidenciaCam;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "fec_fin")
-    @Temporal(TemporalType.DATE)
-    private Date fecFin;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "fec_ini")
-    @Temporal(TemporalType.DATE)
-    private Date fecIni;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "fec_revision")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fecRevision;
     @Basic(optional = false)
     @NotNull
     @Column(name = "tipo_plan_mejoramiento")
@@ -105,39 +72,13 @@ public class PlanMejoramiento implements Serializable {
     @NotNull
     @Column(name = "etapa")
     private boolean etapa;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "lugar")
-    private boolean lugar;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "lugar2")
-    private boolean lugar2;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "pertinencia")
-    private boolean pertinencia;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "vigencia")
-    private boolean vigencia;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "autenticidad")
-    private boolean autenticidad;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "calidad")
-    private boolean calidad;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "aprendizaje")
-    private boolean aprendizaje;
     @Size(max = 10)
     @Column(name = "total")
     private String total;
+    @Basic(optional = false)
+    @NotNull
     @Lob
-    @Size(max = 65535)
+    @Size(min = 1, max = 65535)
     @Column(name = "compromiso")
     private String compromiso;
     @Size(max = 45)
@@ -150,6 +91,9 @@ public class PlanMejoramiento implements Serializable {
     private Date fechaConcertacion;
     @ManyToMany(mappedBy = "planMejoramientoList")
     private List<ResultadoAprendizaje> resultadoAprendizajeList;
+    @JoinColumn(name = "id_actividad_plan", referencedColumnName = "id_actividad_plan")
+    @ManyToOne(optional = false)
+    private ActividadPlan idActividadPlan;
     @JoinColumn(name = "id_comite", referencedColumnName = "id_comite")
     @ManyToOne(optional = false)
     private Comite idComite;
@@ -157,7 +101,7 @@ public class PlanMejoramiento implements Serializable {
     @ManyToOne(optional = false)
     private FichaCaracterizacion idFichaCaracterizacion;
     @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Empresa idEmpresa;
     @JoinColumn(name = "id_ciudad_concertacion", referencedColumnName = "id_ciudad")
     @ManyToOne(optional = false)
@@ -191,24 +135,13 @@ public class PlanMejoramiento implements Serializable {
         this.idPlanMejoramiento = idPlanMejoramiento;
     }
 
-    public PlanMejoramiento(Integer idPlanMejoramiento, String actividadesDesarrollar, String observaciones, String evidenciaCam, Date fecFin, Date fecIni, Date fecRevision, boolean tipoPlanMejoramiento, boolean juicioEvaluacion, boolean etapa, boolean lugar, boolean lugar2, boolean pertinencia, boolean vigencia, boolean autenticidad, boolean calidad, boolean aprendizaje, Date fechaConcertacion) {
+    public PlanMejoramiento(Integer idPlanMejoramiento, String observaciones, boolean tipoPlanMejoramiento, boolean juicioEvaluacion, boolean etapa, String compromiso, Date fechaConcertacion) {
         this.idPlanMejoramiento = idPlanMejoramiento;
-        this.actividadesDesarrollar = actividadesDesarrollar;
         this.observaciones = observaciones;
-        this.evidenciaCam = evidenciaCam;
-        this.fecFin = fecFin;
-        this.fecIni = fecIni;
-        this.fecRevision = fecRevision;
         this.tipoPlanMejoramiento = tipoPlanMejoramiento;
         this.juicioEvaluacion = juicioEvaluacion;
         this.etapa = etapa;
-        this.lugar = lugar;
-        this.lugar2 = lugar2;
-        this.pertinencia = pertinencia;
-        this.vigencia = vigencia;
-        this.autenticidad = autenticidad;
-        this.calidad = calidad;
-        this.aprendizaje = aprendizaje;
+        this.compromiso = compromiso;
         this.fechaConcertacion = fechaConcertacion;
     }
 
@@ -218,14 +151,6 @@ public class PlanMejoramiento implements Serializable {
 
     public void setIdPlanMejoramiento(Integer idPlanMejoramiento) {
         this.idPlanMejoramiento = idPlanMejoramiento;
-    }
-
-    public String getActividadesDesarrollar() {
-        return actividadesDesarrollar;
-    }
-
-    public void setActividadesDesarrollar(String actividadesDesarrollar) {
-        this.actividadesDesarrollar = actividadesDesarrollar;
     }
 
     public String getObservaciones() {
@@ -242,30 +167,6 @@ public class PlanMejoramiento implements Serializable {
 
     public void setEvidenciaCam(String evidenciaCam) {
         this.evidenciaCam = evidenciaCam;
-    }
-
-    public Date getFecFin() {
-        return fecFin;
-    }
-
-    public void setFecFin(Date fecFin) {
-        this.fecFin = fecFin;
-    }
-
-    public Date getFecIni() {
-        return fecIni;
-    }
-
-    public void setFecIni(Date fecIni) {
-        this.fecIni = fecIni;
-    }
-
-    public Date getFecRevision() {
-        return fecRevision;
-    }
-
-    public void setFecRevision(Date fecRevision) {
-        this.fecRevision = fecRevision;
     }
 
     public boolean getTipoPlanMejoramiento() {
@@ -290,62 +191,6 @@ public class PlanMejoramiento implements Serializable {
 
     public void setEtapa(boolean etapa) {
         this.etapa = etapa;
-    }
-
-    public boolean getLugar() {
-        return lugar;
-    }
-
-    public void setLugar(boolean lugar) {
-        this.lugar = lugar;
-    }
-
-    public boolean getLugar2() {
-        return lugar2;
-    }
-
-    public void setLugar2(boolean lugar2) {
-        this.lugar2 = lugar2;
-    }
-
-    public boolean getPertinencia() {
-        return pertinencia;
-    }
-
-    public void setPertinencia(boolean pertinencia) {
-        this.pertinencia = pertinencia;
-    }
-
-    public boolean getVigencia() {
-        return vigencia;
-    }
-
-    public void setVigencia(boolean vigencia) {
-        this.vigencia = vigencia;
-    }
-
-    public boolean getAutenticidad() {
-        return autenticidad;
-    }
-
-    public void setAutenticidad(boolean autenticidad) {
-        this.autenticidad = autenticidad;
-    }
-
-    public boolean getCalidad() {
-        return calidad;
-    }
-
-    public void setCalidad(boolean calidad) {
-        this.calidad = calidad;
-    }
-
-    public boolean getAprendizaje() {
-        return aprendizaje;
-    }
-
-    public void setAprendizaje(boolean aprendizaje) {
-        this.aprendizaje = aprendizaje;
     }
 
     public String getTotal() {
@@ -387,6 +232,14 @@ public class PlanMejoramiento implements Serializable {
 
     public void setResultadoAprendizajeList(List<ResultadoAprendizaje> resultadoAprendizajeList) {
         this.resultadoAprendizajeList = resultadoAprendizajeList;
+    }
+
+    public ActividadPlan getIdActividadPlan() {
+        return idActividadPlan;
+    }
+
+    public void setIdActividadPlan(ActividadPlan idActividadPlan) {
+        this.idActividadPlan = idActividadPlan;
     }
 
     public Comite getIdComite() {
