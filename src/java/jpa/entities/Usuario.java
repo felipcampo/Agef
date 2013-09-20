@@ -59,18 +59,15 @@ public class Usuario implements Serializable {
     @Column(name = "id_usuario")
     private Integer idUsuario;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
+    @Size(max = 20)
     @Column(name = "numero_documento")
     private String numeroDocumento;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
+    @Size(max = 100)
     @Column(name = "nom_usu")
     private String nomUsu;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
+    @Size(max = 100)
     @Column(name = "ape_usu")
     private String apeUsu;
     @Basic(optional = false)

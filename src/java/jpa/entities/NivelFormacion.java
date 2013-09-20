@@ -129,7 +129,7 @@ public class NivelFormacion implements Serializable {
 
     @Override
     public String toString() {
-        return "jpa.entities.NivelFormacion[ idNivelFormacion=" + idNivelFormacion + " ]";
+        return descrNivFor;
     }
     
 }

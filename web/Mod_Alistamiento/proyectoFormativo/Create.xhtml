@@ -437,6 +437,16 @@
                                 <p:message for="idEstadoProyecto"/>
                             </p:column>
                         </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="#{bundle.CreateProyectoFormativoLabel_idEvidenciaAprendizaje}" for="idEvidenciaAprendizaje" />
+                            </p:column>
+                            <p:column>
+                                <p:selectOneMenu id="idEvidenciaAprendizaje" value="#{proyectoFormativoController.selected.idEvidenciaAprendizaje}"  >
+                                    <f:selectItems value="#{evidenciaAprendizajeController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                        </p:row>
                     </p:panelGrid>
                     <br />
                     <br />

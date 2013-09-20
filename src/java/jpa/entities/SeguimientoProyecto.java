@@ -261,7 +261,7 @@ public class SeguimientoProyecto implements Serializable {
 
     @Override
     public String toString() {
-        return "jpa.entities.SeguimientoProyecto[ idSeguimientoProyecto=" + idSeguimientoProyecto + " ]";
+        return nomInstructor;
     }
     
 }

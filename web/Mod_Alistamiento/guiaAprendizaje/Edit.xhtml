@@ -19,16 +19,31 @@
                             <p:row><p:column colspan="3">#{bundle.EditGuiaAprendizajeTitle}</p:column></p:row>                            
                         </f:facet>                        
                         <p:row>
-                            <p:column>
+                            <p:column >
                                 <h:outputLabel value="#{bundle.EditGuiaAprendizajeLabel_idGuiaAprendizaje}" for="idGuiaAprendizaje" />
                             </p:column>
-                            <p:column style="border-right: white"> 
+                            <p:column  style="border-right: white"> 
                                 <p:inputText id="idGuiaAprendizaje" value="#{guiaAprendizajeController.selected.idGuiaAprendizaje}" title="#{bundle.EditGuiaAprendizajeTitle_idGuiaAprendizaje}" required="true" requiredMessage="#{bundle.EditGuiaAprendizajeRequiredMessage_idGuiaAprendizaje}"/>
                             </p:column>
-                            <p:column style="border-left: white;">
+                            <p:column  style="border-left: white;">
                                 <p:message for="idGuiaAprendizaje"/>
                             </p:column>
-                        </p:row>      
+                          
+                        </p:row>   
+                         <p:row>
+                             <p:column >
+                                <h:outputLabel value="#{bundle.EditGuiaAprendizajeLabel_idProyectoFormativo}" for="idProyectoFormativo" />
+                            </p:column>
+                            <p:column  > 
+                                <p:selectOneMenu id="idProyectoFormativo" value="#{guiaAprendizajeController.selected.idProyectoFormativo}" required="true" requiredMessage="#{bundle.EditGuiaAprendizajeRequiredMessage_idProyectoFormativo}">
+                                    <f:selectItems value="#{proyectoFormativoController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column  style="border-left: white;">
+                                <p:message for="idGuiaAprendizaje"/>
+                            </p:column>
+                             
+                        </p:row>
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.EditGuiaAprendizajeLabel_introduccionGuia}" for="introduccionGuia" />
@@ -106,19 +121,7 @@
                                 <p:message for="glosario"/>
                             </p:column>
                         </p:row>      
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.EditGuiaAprendizajeLabel_idProyectoFormativo}" for="idProyectoFormativo" />
-                            </p:column>
-                            <p:column style="border-right: white"> 
-                                <p:selectOneMenu id="idProyectoFormativo" value="#{guiaAprendizajeController.selected.idProyectoFormativo}" required="true" requiredMessage="#{bundle.EditGuiaAprendizajeRequiredMessage_idProyectoFormativo}">
-                                    <f:selectItems value="#{proyectoFormativoController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idProyectoFormativo"/>
-                            </p:column>
-                        </p:row>      
+                             
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.EditGuiaAprendizajeLabel_idAmbiente}" for="idAmbiente" />

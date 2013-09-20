@@ -46,7 +46,6 @@ public class FichaCaracterizacion implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
     @Column(name = "id_ficha_caracterizacion")
     private Integer idFichaCaracterizacion;
     @Basic(optional = false)

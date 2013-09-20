@@ -214,7 +214,7 @@ public class CriterioEvaluacion implements Serializable {
 
     @Override
     public String toString() {
-        return "jpa.entities.CriterioEvaluacion[ idCriterioEvaluacion=" + idCriterioEvaluacion + " ]";
+        return nomCriterio;
     }
     
 }

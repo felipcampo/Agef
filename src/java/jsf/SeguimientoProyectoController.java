@@ -3,7 +3,6 @@ package jsf;
 import jpa.entities.SeguimientoProyecto;
 import jsf.util.JsfUtil;
 import jpa.sessions.SeguimientoProyectoFacade;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,11 +21,14 @@ import jpa.entities.CriterioEvaluacion;
 import jpa.entities.CriterioSeguimientoProyecto;
 import jpa.entities.EstadoAprendiz;
 import jpa.entities.EvaluacionCriterioSeguimientoProyecto;
+import jpa.entities.FichaCaracterizacion;
 import jpa.entities.FichaUsuario;
+import jpa.entities.Programa;
 import jpa.entities.TipoCriterio;
 import jpa.sessions.CriterioEvaluacionFacade;
 import jpa.sessions.CriterioSeguimientoProyectoFacade;
 import jpa.sessions.EvaluacionCriterioSeguimientoProyectoFacade;
+import jpa.sessions.FichaCaracterizacionFacade;
 import jpa.sessions.FichaUsuarioFacade;
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
@@ -40,6 +42,9 @@ public class SeguimientoProyectoController implements Serializable {
     private CriterioSeguimientoProyecto currentCriterioSeg;
     List<CriterioSeguimientoProyecto> listCriteriosSeg;
     List<CriterioEvaluacion> listCriteriosEval;
+    private FichaCaracterizacion currentFicha;
+    private Programa currentPrograma;
+    private List<FichaCaracterizacion> listBusquedaFicha;
     @EJB
     private jpa.sessions.SeguimientoProyectoFacade ejbFacade;
     @EJB
@@ -50,6 +55,8 @@ public class SeguimientoProyectoController implements Serializable {
     private jpa.sessions.CriterioEvaluacionFacade ejbFacadeCriterioEval;
     @EJB
     private jpa.sessions.EvaluacionCriterioSeguimientoProyectoFacade ejbFacadeEvalCriterioSeg;
+    @EJB
+    private jpa.sessions.FichaCaracterizacionFacade ejbFacadeFicha;
 
     public SeguimientoProyectoController() {
     }
@@ -65,6 +72,28 @@ public class SeguimientoProyectoController implements Serializable {
         current = entity;
     }
 
+    public FichaCaracterizacion getSelectedFicha() {
+        if (currentFicha == null) {
+            currentFicha = new FichaCaracterizacion();
+        }
+        return currentFicha;
+    }
+
+    public void setSelectedFicha(FichaCaracterizacion entity) {
+        currentFicha = entity;
+    }
+
+    public Programa getSelectedPrograma() {
+        if (currentPrograma == null) {
+            currentPrograma = new Programa();
+        }
+        return currentPrograma;
+    }
+
+    public void setSelectedPrograma(Programa entity) {
+        currentPrograma = entity;
+    }
+
     private SeguimientoProyectoFacade getFacade() {
         return ejbFacade;
     }
@@ -76,9 +105,13 @@ public class SeguimientoProyectoController implements Serializable {
     private CriterioSeguimientoProyectoFacade getFacadeCriterioSeg() {
         return ejbFacadeCriterioSeg;
     }
-    
-     private EvaluacionCriterioSeguimientoProyectoFacade getFacadeEvalCriterioSeg() {
+
+    private EvaluacionCriterioSeguimientoProyectoFacade getFacadeEvalCriterioSeg() {
         return ejbFacadeEvalCriterioSeg;
+    }
+
+    private FichaCaracterizacionFacade getFacadeFicha() {
+        return ejbFacadeFicha;
     }
 
     private CriterioEvaluacionFacade getFacadeCriterioEval() {
@@ -91,6 +124,28 @@ public class SeguimientoProyectoController implements Serializable {
 
     public List<CriterioEvaluacion> getListCriteriosEval() {
         return listCriteriosEval;
+    }
+
+    public void buscarFicha() {
+        if (getSelectedFicha().getIdFichaCaracterizacion() == null && getSelectedPrograma().getNomPrg().equals("")) {
+            JsfUtil.addErrorMessage(ResourceBundle.getBundle("propierties/Bundle").getString("CriteriosVacios"));
+        } else {
+            try {
+                listBusquedaFicha = getFacadeFicha().findByIdAndPrograma(currentFicha, currentPrograma);
+            } catch (Exception e) {
+                JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("propierties/Bundle").getString("PersistenceErrorOccured"));
+            }
+        }
+    }
+
+    public void agregarFicha() {
+        current.setIdFichaCaracterizacion(currentFicha);
+        currentFicha = new FichaCaracterizacion();
+        listBusquedaFicha = new ArrayList<>();
+    }
+
+    public List<FichaCaracterizacion> getListBusquedaFicha() {
+        return listBusquedaFicha;
     }
 
     public LazyDataModel<SeguimientoProyecto> getLazyModel() {
@@ -138,15 +193,18 @@ public class SeguimientoProyectoController implements Serializable {
 
     public String prepareCreate() {
         current = new SeguimientoProyecto();
+        currentFicha = new FichaCaracterizacion();
+        currentPrograma = new Programa();
+        listBusquedaFicha = new ArrayList<>();
         return "Create";
     }
 
     public String create() {
         try {
             getFacade().create(current);
-            for (CriterioSeguimientoProyecto criterio: listCriteriosSeg) {
+            for (CriterioSeguimientoProyecto criterio : listCriteriosSeg) {
                 criterio.setIdSeguimientoProyecto(current);
-                
+
                 getFacadeCriterioSeg().create(criterio);
             }
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("SeguimientoProyectoCreated"));
@@ -203,7 +261,7 @@ public class SeguimientoProyectoController implements Serializable {
     public int getAprendicesByCancelado() {
         return getUsuariosByFicha(new EstadoAprendiz((short) 3)).size();
     }
-    
+
     public int getAprendicesByAplazado() {
         return getUsuariosByFicha(new EstadoAprendiz((short) 4)).size();
     }
@@ -211,11 +269,11 @@ public class SeguimientoProyectoController implements Serializable {
     public int getAprendicesByTrasladado() {
         return getUsuariosByFicha(new EstadoAprendiz((short) 5)).size();
     }
-    
-     public int getAprendicesByCondicionado() {
+
+    public int getAprendicesByCondicionado() {
         return getUsuariosByFicha(new EstadoAprendiz((short) 7)).size();
     }
-     
+
     public List<FichaUsuario> getUsuariosByFicha(EstadoAprendiz estado) {
         return getFacadeFichaUsuario().findByEstado(estado, current.getIdFichaCaracterizacion());
     }

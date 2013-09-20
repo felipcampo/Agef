@@ -118,7 +118,7 @@ public class GradoJuicio implements Serializable {
 
     @Override
     public String toString() {
-        return "jpa.entities.GradoJuicio[ idGradoJuicio=" + idGradoJuicio + " ]";
+        return descrGradoJuicio;
     }
     
 }

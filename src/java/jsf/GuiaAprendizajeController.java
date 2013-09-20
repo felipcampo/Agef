@@ -5,6 +5,7 @@ import jsf.util.JsfUtil;
 import jpa.sessions.GuiaAprendizajeFacade;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +18,9 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.faces.model.SelectItem;
+import jpa.entities.FichaCaracterizacion;
+import jpa.entities.Programa;
+import jpa.sessions.FichaCaracterizacionFacade;
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
 
@@ -25,9 +29,14 @@ import org.primefaces.model.SortOrder;
 public class GuiaAprendizajeController implements Serializable {
 
     private GuiaAprendizaje current;
+    private FichaCaracterizacion currentFicha;
+    private Programa currentPrograma;
+    private List<FichaCaracterizacion> listBusquedaFicha;
     private LazyDataModel<GuiaAprendizaje> lazyModel = null;
     @EJB
     private jpa.sessions.GuiaAprendizajeFacade ejbFacade;
+    @EJB
+    private jpa.sessions.FichaCaracterizacionFacade ejbFacadeFicha;
 
     public GuiaAprendizajeController() {
     }
@@ -42,9 +51,59 @@ public class GuiaAprendizajeController implements Serializable {
     public void setSelected(GuiaAprendizaje entity) {
         current = entity;
     }
+    
+     public FichaCaracterizacion getSelectedFicha() {
+        if (currentFicha == null) {
+            currentFicha = new FichaCaracterizacion();
+        }
+        return currentFicha;
+    }
 
+    public void setSelectedFicha(FichaCaracterizacion entity) {
+        currentFicha = entity;
+    }
+    
+    
+    public Programa getSelectedPrograma() {
+        if (currentPrograma == null) {
+            currentPrograma = new Programa();
+        }
+        return currentPrograma;
+    }
+
+    public void setSelectedPrograma(Programa entity) {
+        currentPrograma = entity;
+    }
+    
+    
+    public void buscarFicha() {
+        if (getSelectedFicha().getIdFichaCaracterizacion() == null && getSelectedPrograma().getNomPrg().equals("")) {
+            JsfUtil.addErrorMessage(ResourceBundle.getBundle("propierties/Bundle").getString("CriteriosVacios"));
+        } else {
+            try {
+                listBusquedaFicha = getFacadeFicha().findByIdAndPrograma(currentFicha, currentPrograma);
+            } catch (Exception e) {
+                JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("propierties/Bundle").getString("PersistenceErrorOccured"));
+            }
+        }
+    }
+    
+    public void agregarFicha(){
+        current.setIdFichaCaracterizacion(currentFicha);
+        currentFicha = new FichaCaracterizacion();
+        listBusquedaFicha = new ArrayList<>();
+    }
+            
+    public List<FichaCaracterizacion> getListBusquedaFicha() {
+        return listBusquedaFicha;
+    }
+    
     private GuiaAprendizajeFacade getFacade() {
         return ejbFacade;
+    }
+    
+    private FichaCaracterizacionFacade getFacadeFicha() {
+        return ejbFacadeFicha;
     }
 
     public LazyDataModel<GuiaAprendizaje> getLazyModel() {
@@ -92,6 +151,9 @@ public class GuiaAprendizajeController implements Serializable {
 
     public String prepareCreate() {
         current = new GuiaAprendizaje();
+        currentFicha = new FichaCaracterizacion();
+        currentPrograma = new Programa();
+        listBusquedaFicha = new ArrayList<>();
         return "Create";
     }
 

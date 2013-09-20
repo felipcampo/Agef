@@ -117,7 +117,7 @@ public class Regional implements Serializable {
 
     @Override
     public String toString() {
-        return "jpa.entities.Regional[ idRegional=" + idRegional + " ]";
+        return nomReg;
     }
     
 }

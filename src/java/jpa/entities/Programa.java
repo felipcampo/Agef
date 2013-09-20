@@ -74,8 +74,7 @@ public class Programa implements Serializable {
     @Column(name = "jus_prg")
     private String jusPrg;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
+    @Size(max = 255)
     @Column(name = "nom_prg")
     private String nomPrg;
     @Basic(optional = false)
