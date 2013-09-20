@@ -40,14 +40,18 @@
                         <h:outputText value="#{reporteNovedadController.selected.hechos}" title="#{bundle.ViewReporteNovedadTitle_hechos}"/>
                         <h:outputText value="#{bundle.ViewReporteNovedadLabel_numAccCor}"/>
                         <h:outputText value="#{reporteNovedadController.selected.numAccCor}" title="#{bundle.ViewReporteNovedadTitle_numAccCor}"/>
-                        <h:outputText value="#{bundle.ViewReporteNovedadLabel_pruebas}"/>
-                        <h:outputText value="#{reporteNovedadController.selected.pruebas}" title="#{bundle.ViewReporteNovedadTitle_pruebas}"/>
-                        <h:outputText value="#{bundle.ViewReporteNovedadLabel_testigos}"/>
-                        <h:outputText value="#{reporteNovedadController.selected.testigos}" title="#{bundle.ViewReporteNovedadTitle_testigos}"/>
-                        <h:outputText value="#{bundle.ViewReporteNovedadLabel_idResultadoAprendizaje}"/>
-                        <h:outputText value="#{reporteNovedadController.selected.idResultadoAprendizaje}" title="#{bundle.ViewReporteNovedadTitle_idResultadoAprendizaje}"/>
+                        <h:outputText value="#{bundle.ViewReporteNovedadLabel_fechaHecho}"/>
+                        <h:outputText value="#{reporteNovedadController.selected.fechaHecho}" title="#{bundle.ViewReporteNovedadTitle_fechaHecho}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewReporteNovedadLabel_testigosPruebas}"/>
+                        <h:outputText value="#{reporteNovedadController.selected.testigosPruebas}" title="#{bundle.ViewReporteNovedadTitle_testigosPruebas}"/>
                         <h:outputText value="#{bundle.ViewReporteNovedadLabel_idUsuario}"/>
                         <h:outputText value="#{reporteNovedadController.selected.idUsuario}" title="#{bundle.ViewReporteNovedadTitle_idUsuario}"/>
+                        <h:outputText value="#{bundle.ViewReporteNovedadLabel_idResultadoAprendizaje}"/>
+                        <h:outputText value="#{reporteNovedadController.selected.idResultadoAprendizaje}" title="#{bundle.ViewReporteNovedadTitle_idResultadoAprendizaje}"/>
+                        <h:outputText value="#{bundle.ViewReporteNovedadLabel_idDesercion}"/>
+                        <h:outputText value="#{reporteNovedadController.selected.idDesercion}" title="#{bundle.ViewReporteNovedadTitle_idDesercion}"/>
                         <h:outputText value="#{bundle.ViewReporteNovedadLabel_idFichaCaracterizacion}"/>
                         <h:outputText value="#{reporteNovedadController.selected.idFichaCaracterizacion}" title="#{bundle.ViewReporteNovedadTitle_idFichaCaracterizacion}"/>
                     </p:panelGrid>

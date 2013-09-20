@@ -201,9 +201,21 @@ public class SeguimientoProyectoController implements Serializable {
     }
 
     public int getAprendicesByCancelado() {
-        return getUsuariosByFicha(new EstadoAprendiz((short) 1)).size();
+        return getUsuariosByFicha(new EstadoAprendiz((short) 3)).size();
+    }
+    
+    public int getAprendicesByAplazado() {
+        return getUsuariosByFicha(new EstadoAprendiz((short) 4)).size();
     }
 
+    public int getAprendicesByTrasladado() {
+        return getUsuariosByFicha(new EstadoAprendiz((short) 5)).size();
+    }
+    
+     public int getAprendicesByCondicionado() {
+        return getUsuariosByFicha(new EstadoAprendiz((short) 7)).size();
+    }
+     
     public List<FichaUsuario> getUsuariosByFicha(EstadoAprendiz estado) {
         return getFacadeFichaUsuario().findByEstado(estado, current.getIdFichaCaracterizacion());
     }

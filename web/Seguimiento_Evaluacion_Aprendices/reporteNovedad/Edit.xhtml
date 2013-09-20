@@ -119,24 +119,37 @@
                         </p:row>      
                         <p:row>
                             <p:column>
-                                <h:outputLabel value="#{bundle.EditReporteNovedadLabel_pruebas}" for="pruebas" />
+                                <h:outputLabel value="#{bundle.EditReporteNovedadLabel_fechaHecho}" for="fechaHecho" />
                             </p:column>
                             <p:column style="border-right: white"> 
-                                <p:inputTextarea rows="4" cols="30" id="pruebas" value="#{reporteNovedadController.selected.pruebas}" title="#{bundle.EditReporteNovedadTitle_pruebas}" required="true" requiredMessage="#{bundle.EditReporteNovedadRequiredMessage_pruebas}"/>
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fechaHecho" value="#{reporteNovedadController.selected.fechaHecho}" title="#{bundle.EditReporteNovedadTitle_fechaHecho}" required="true" requiredMessage="#{bundle.EditReporteNovedadRequiredMessage_fechaHecho}"/>
                             </p:column>
                             <p:column style="border-left: white;">
-                                <p:message for="pruebas"/>
+                                <p:message for="fechaHecho"/>
                             </p:column>
                         </p:row>      
                         <p:row>
                             <p:column>
-                                <h:outputLabel value="#{bundle.EditReporteNovedadLabel_testigos}" for="testigos" />
+                                <h:outputLabel value="#{bundle.EditReporteNovedadLabel_testigosPruebas}" for="testigosPruebas" />
                             </p:column>
                             <p:column style="border-right: white"> 
-                                <p:inputTextarea rows="4" cols="30" id="testigos" value="#{reporteNovedadController.selected.testigos}" title="#{bundle.EditReporteNovedadTitle_testigos}" required="true" requiredMessage="#{bundle.EditReporteNovedadRequiredMessage_testigos}"/>
+                                <p:inputTextarea rows="4" cols="30" id="testigosPruebas" value="#{reporteNovedadController.selected.testigosPruebas}" title="#{bundle.EditReporteNovedadTitle_testigosPruebas}" required="true" requiredMessage="#{bundle.EditReporteNovedadRequiredMessage_testigosPruebas}"/>
                             </p:column>
                             <p:column style="border-left: white;">
-                                <p:message for="testigos"/>
+                                <p:message for="testigosPruebas"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditReporteNovedadLabel_idUsuario}" for="idUsuario" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idUsuario" value="#{reporteNovedadController.selected.idUsuario}" required="true" requiredMessage="#{bundle.EditReporteNovedadRequiredMessage_idUsuario}">
+                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idUsuario"/>
                             </p:column>
                         </p:row>      
                         <p:row>
@@ -154,15 +167,15 @@
                         </p:row>      
                         <p:row>
                             <p:column>
-                                <h:outputLabel value="#{bundle.EditReporteNovedadLabel_idUsuario}" for="idUsuario" />
+                                <h:outputLabel value="#{bundle.EditReporteNovedadLabel_idDesercion}" for="idDesercion" />
                             </p:column>
                             <p:column style="border-right: white"> 
-                                <p:selectOneMenu id="idUsuario" value="#{reporteNovedadController.selected.idUsuario}" required="true" requiredMessage="#{bundle.EditReporteNovedadRequiredMessage_idUsuario}">
-                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                                <p:selectOneMenu id="idDesercion" value="#{reporteNovedadController.selected.idDesercion}" required="true" requiredMessage="#{bundle.EditReporteNovedadRequiredMessage_idDesercion}">
+                                    <f:selectItems value="#{desercionController.itemsAvailableSelectOne}"/>
                                 </p:selectOneMenu>
                             </p:column>
                             <p:column style="border-left: white;">
-                                <p:message for="idUsuario"/>
+                                <p:message for="idDesercion"/>
                             </p:column>
                         </p:row>      
                         <p:row>

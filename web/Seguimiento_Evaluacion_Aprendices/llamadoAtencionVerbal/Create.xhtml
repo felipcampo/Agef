@@ -36,6 +36,39 @@
                             <p:column style="border-left: white;">
                                 <p:message for="idLlamadoAtencionVerbal"/>
                             </p:column>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateLlamadoAtencionVerbalLabel_fecha}" for="fecha" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecha" value="#{llamadoAtencionVerbalController.selected.fecha}" title="#{bundle.CreateLlamadoAtencionVerbalTitle_fecha}" required="true" requiredMessage="#{bundle.CreateLlamadoAtencionVerbalRequiredMessage_fecha}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fecha"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateLlamadoAtencionVerbalLabel_idFichaCaracterizacion}" for="idFichaCaracterizacion" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idFichaCaracterizacion" value="#{llamadoAtencionVerbalController.selected.idFichaCaracterizacion}" required="true" requiredMessage="#{bundle.CreateLlamadoAtencionVerbalRequiredMessage_idFichaCaracterizacion}">
+                                    <f:selectItems value="#{fichaCaracterizacionController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idFichaCaracterizacion"/>
+                            </p:column>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateLlamadoAtencionVerbalLabel_idUsuario}" for="idUsuario" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:selectOneMenu id="idUsuario" value="#{llamadoAtencionVerbalController.selected.idUsuario}" required="true" requiredMessage="#{bundle.CreateLlamadoAtencionVerbalRequiredMessage_idUsuario}">
+                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idUsuario"/>
+                            </p:column>
                         </p:row>
                         <p:row>
                             <p:column>
@@ -68,17 +101,6 @@
                             </p:column>
                             <p:column style="border-left: white;">
                                 <p:message for="efecto"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateLlamadoAtencionVerbalLabel_fecha}" for="fecha" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecha" value="#{llamadoAtencionVerbalController.selected.fecha}" title="#{bundle.CreateLlamadoAtencionVerbalTitle_fecha}" required="true" requiredMessage="#{bundle.CreateLlamadoAtencionVerbalRequiredMessage_fecha}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="fecha"/>
                             </p:column>
                         </p:row>
                         <p:row>
@@ -116,33 +138,7 @@
                                 <p:message for="idEstadoLlamado"/>
                             </p:column>
                         </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateLlamadoAtencionVerbalLabel_idFichaCaracterizacion}" for="idFichaCaracterizacion" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:selectOneMenu id="idFichaCaracterizacion" value="#{llamadoAtencionVerbalController.selected.idFichaCaracterizacion}" required="true" requiredMessage="#{bundle.CreateLlamadoAtencionVerbalRequiredMessage_idFichaCaracterizacion}">
-                                    <f:selectItems value="#{fichaCaracterizacionController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idFichaCaracterizacion"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateLlamadoAtencionVerbalLabel_idUsuario}" for="idUsuario" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:selectOneMenu id="idUsuario" value="#{llamadoAtencionVerbalController.selected.idUsuario}" required="true" requiredMessage="#{bundle.CreateLlamadoAtencionVerbalRequiredMessage_idUsuario}">
-                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idUsuario"/>
-                            </p:column>
-                        </p:row>
-                    </p:panelGrid>
+                       </p:panelGrid>
                     <br />
                     <br />
                     <p:commandButton process="@this, @form" update="@form, :msgs"

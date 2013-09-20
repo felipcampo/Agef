@@ -76,25 +76,32 @@
                                       sortBy="#{item.numAccCor}">                        
                                 <h:outputText value="#{item.numAccCor}"/>
                             </p:column>
-                            <p:column headerText="#{bundle.ListReporteNovedadTitle_pruebas}"
-                                      filterBy="#{item.pruebas}"
-                                      sortBy="#{item.pruebas}">                        
-                                <h:outputText value="#{item.pruebas}"/>
+                            <p:column headerText="#{bundle.ListReporteNovedadTitle_fechaHecho}"
+                                      filterBy="#{item.fechaHecho}"
+                                      sortBy="#{item.fechaHecho}">                        
+                                <h:outputText value="#{item.fechaHecho}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
                             </p:column>
-                            <p:column headerText="#{bundle.ListReporteNovedadTitle_testigos}"
-                                      filterBy="#{item.testigos}"
-                                      sortBy="#{item.testigos}">                        
-                                <h:outputText value="#{item.testigos}"/>
+                            <p:column headerText="#{bundle.ListReporteNovedadTitle_testigosPruebas}"
+                                      filterBy="#{item.testigosPruebas}"
+                                      sortBy="#{item.testigosPruebas}">                        
+                                <h:outputText value="#{item.testigosPruebas}"/>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListReporteNovedadTitle_idUsuario}"
+                                      filterBy="#{item.idUsuario}"
+                                      sortBy="#{item.idUsuario}">                        
+                                <h:outputText value="#{item.idUsuario}"/>
                             </p:column>
                             <p:column headerText="#{bundle.ListReporteNovedadTitle_idResultadoAprendizaje}"
                                       filterBy="#{item.idResultadoAprendizaje}"
                                       sortBy="#{item.idResultadoAprendizaje}">                        
                                 <h:outputText value="#{item.idResultadoAprendizaje}"/>
                             </p:column>
-                            <p:column headerText="#{bundle.ListReporteNovedadTitle_idUsuario}"
-                                      filterBy="#{item.idUsuario}"
-                                      sortBy="#{item.idUsuario}">                        
-                                <h:outputText value="#{item.idUsuario}"/>
+                            <p:column headerText="#{bundle.ListReporteNovedadTitle_idDesercion}"
+                                      filterBy="#{item.idDesercion}"
+                                      sortBy="#{item.idDesercion}">                        
+                                <h:outputText value="#{item.idDesercion}"/>
                             </p:column>
                             <p:column headerText="#{bundle.ListReporteNovedadTitle_idFichaCaracterizacion}"
                                       filterBy="#{item.idFichaCaracterizacion}"

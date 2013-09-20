@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDesercionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
+            <h:form id="formDesercion">
+                <div id="form" align="center">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row><p:column colspan="3">#{bundle.EditDesercionTitle}</p:column></p:row>                            
+                        </f:facet>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditDesercionLabel_idDesercion}" for="idDesercion" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="idDesercion" value="#{desercionController.selected.idDesercion}" title="#{bundle.EditDesercionTitle_idDesercion}" required="true" requiredMessage="#{bundle.EditDesercionRequiredMessage_idDesercion}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idDesercion"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditDesercionLabel_diasDesercion}" for="diasDesercion" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="diasDesercion" value="#{desercionController.selected.diasDesercion}" title="#{bundle.EditDesercionTitle_diasDesercion}" required="true" requiredMessage="#{bundle.EditDesercionRequiredMessage_diasDesercion}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="diasDesercion"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditDesercionLabel_fechaInicial}" for="fechaInicial" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fechaInicial" value="#{desercionController.selected.fechaInicial}" title="#{bundle.EditDesercionTitle_fechaInicial}" required="true" requiredMessage="#{bundle.EditDesercionRequiredMessage_fechaInicial}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fechaInicial"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditDesercionLabel_fechaFinal}" for="fechaFinal" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fechaFinal" value="#{desercionController.selected.fechaFinal}" title="#{bundle.EditDesercionTitle_fechaFinal}" required="true" requiredMessage="#{bundle.EditDesercionRequiredMessage_fechaFinal}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fechaFinal"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditDesercionLabel_causasDesercion}" for="causasDesercion" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="causasDesercion" value="#{desercionController.selected.causasDesercion}" title="#{bundle.EditDesercionTitle_causasDesercion}" required="true" requiredMessage="#{bundle.EditDesercionRequiredMessage_causasDesercion}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="causasDesercion"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditDesercionLabel_observaciones}" for="observaciones" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputTextarea rows="4" cols="30" id="observaciones" value="#{desercionController.selected.observaciones}" title="#{bundle.EditDesercionTitle_observaciones}" required="true" requiredMessage="#{bundle.EditDesercionRequiredMessage_observaciones}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="observaciones"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditDesercionLabel_idUsuario2}" for="idUsuario2" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idUsuario2" value="#{desercionController.selected.idUsuario2}" required="true" requiredMessage="#{bundle.EditDesercionRequiredMessage_idUsuario2}">
+                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idUsuario2"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditDesercionLabel_idUsuario1}" for="idUsuario1" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idUsuario1" value="#{desercionController.selected.idUsuario1}" required="true" requiredMessage="#{bundle.EditDesercionRequiredMessage_idUsuario1}">
+                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idUsuario1"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditDesercionLabel_idUsuario}" for="idUsuario" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idUsuario" value="#{desercionController.selected.idUsuario}" required="true" requiredMessage="#{bundle.EditDesercionRequiredMessage_idUsuario}">
+                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idUsuario"/>
+                            </p:column>
+                        </p:row>      
+                    </p:panelGrid>
+                    <br />
+                    <br />                
+                    <p:commandButton process="@this, @form" update="@form, :msgs"
+                                     action="#{desercionController.update}" value="#{bundle.EditDesercionSaveLink}" icon="ui-icon-disk"/>
+                    <p:button outcome="View" value="#{bundle.EditDesercionViewLink}" icon="ui-icon-searh"/>
+                    <br />
+                    <p:commandButton ajax="false" action="#{desercionController.prepareList}" value="#{bundle.EditDesercionShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

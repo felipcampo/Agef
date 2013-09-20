@@ -3,13 +3,15 @@ package jsf;
 import jpa.entities.PlanMejoramiento;
 import jsf.util.JsfUtil;
 import jpa.sessions.PlanMejoramientoFacade;
-
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
+import jpa.sessions.UsuarioFacade;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
+import jpa.entities.Usuario;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
@@ -17,19 +19,34 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.faces.model.SelectItem;
+import jpa.sessions.UsuarioFacade;
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
+import jpa.sessions.PlanMejoramientoFacade;
 
 @ManagedBean(name = "planMejoramientoController")
 @SessionScoped
 public class PlanMejoramientoController implements Serializable {
 
     private PlanMejoramiento current;
+    private Usuario usuarioActual;
+    private List<Usuario> listBusquedaUsuarios;
     private LazyDataModel<PlanMejoramiento> lazyModel = null;
     @EJB
     private jpa.sessions.PlanMejoramientoFacade ejbFacade;
+    @EJB
+    private jpa.sessions.UsuarioFacade usuarioFacade;
 
     public PlanMejoramientoController() {
+    }
+    public Usuario getUsuarioActual() {
+        if (usuarioActual == null) {
+            usuarioActual = new Usuario();
+        }
+        return usuarioActual;
+    }
+    public void setUsuarioActual(Usuario usuario) {
+        usuarioActual = usuario;
     }
 
     public PlanMejoramiento getSelected() {
@@ -42,9 +59,15 @@ public class PlanMejoramientoController implements Serializable {
     public void setSelected(PlanMejoramiento entity) {
         current = entity;
     }
+    private UsuarioFacade getUsuarioFacade() {
+        return usuarioFacade;
+    }
 
     private PlanMejoramientoFacade getFacade() {
         return ejbFacade;
+    }
+    public List<Usuario> getListBusquedaUsuarios() {
+        return listBusquedaUsuarios;
     }
 
     public LazyDataModel<PlanMejoramiento> getLazyModel() {
@@ -92,7 +115,27 @@ public class PlanMejoramientoController implements Serializable {
 
     public String prepareCreate() {
         current = new PlanMejoramiento();
+          usuarioActual = new Usuario();
+          listBusquedaUsuarios = new ArrayList<>();
         return "Create";
+    }
+    public void buscarUsuario() {
+        if (usuarioActual.getNumeroDocumento().equals("")
+                && usuarioActual.getNomUsu().equals("") && usuarioActual.getApeUsu().equals("")) {
+            JsfUtil.addErrorMessage(ResourceBundle.getBundle("propierties/Bundle").getString("CriteriosVacios"));
+        } else {
+            try {
+                listBusquedaUsuarios = getUsuarioFacade().findUsuario(usuarioActual);
+            } catch (Exception e) {
+                JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("propierties/Bundle").getString("PersistenceErrorOccured"));
+            }
+        }
+    }
+    
+    public void agregarUsuario (){
+        current.setIdUsuario(usuarioActual);
+        usuarioActual = new Usuario();
+        listBusquedaUsuarios = new ArrayList<>();
     }
 
     public String create() {
