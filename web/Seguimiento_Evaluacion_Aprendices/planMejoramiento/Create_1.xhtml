@@ -16,18 +16,97 @@
                 <div id="form" align="center">
                     <p:panelGrid>
                         <f:facet name="header">
-                            <p:row><p:column colspan="3">#{bundle.CreatePlanMejoramientoTitle}</p:column></p:row>                            
-                        </f:facet>                        
+                                    <p:row><p:column colspan="10">1. INFORMACIÓN GENERAL</p:column></p:row>                            
+                                </f:facet>  
+                        <p:row>  
+                            <p:column> 
+                                <h:outputLabel value="#{bundle.CreateCentroFormacionLabel_idRegional}" for="codReg" />
+                            </p:column>  
+                            <p:column>
+                                <p:selectOneMenu id="codReg" value="#{seguimientoProductivaController.selectedRegional}" required="true" requiredMessage="#{bundle.CreateCentroFormacionRequiredMessage_idRegional}">
+                                    <f:selectItems value="#{seguimientoProductivaController.itemsAvailableSelectOneRegional}"/>
+                                    <p:ajax update="codCen"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateSeguimientoProductivaLabel_idCentroFormacion}" for="codCen" />
+                            </p:column>
+                            <p:column>
+                                <p:selectOneMenu id="codCen" value="#{seguimientoProductivaController.selected.idCentroFormacion}" required="true" requiredMessage="#{bundle.CreateSeguimientoProductivaRequiredMessage_idCentroFormacion}">
+                                    <f:selectItems value="#{seguimientoProductivaController.itemsAvailableSelectOneCentroByRegional}"/>
+                                </p:selectOneMenu>
+                            </p:column> 
+                        </p:row> 
                         <p:row>
                             <p:column>
-                                <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_idPlanMejoramiento}" for="idPlanMejoramiento" />
+                                <h:outputLabel value="#{bundle.CreateFichaCaracterizacionLabel_idPrograma}" for="codPro" />
                             </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputText id="idPlanMejoramiento" value="#{planMejoramientoController.selected.idPlanMejoramiento}" title="#{bundle.CreatePlanMejoramientoTitle_idPlanMejoramiento}" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_idPlanMejoramiento}"/>
+                            <p:column>
+                                <p:selectOneMenu id="codPro" value="#{fichaCaracterizacionController.selected.idPrograma}" required="true" requiredMessage="#{bundle.CreateFichaCaracterizacionRequiredMessage_idPrograma}">
+                                    <f:selectItems value="#{programaController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column> 
+                                    <p:column>
+                                        <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_idProyectoFormativo}" for="idProyectoFormativo" />
                             </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idPlanMejoramiento"/>
+                            <p:column>
+                                <p:selectOneMenu id="idProyectoFormativo" value="#{fichaCaracterizacionController.selected.idProyectoFormativo}" required="true" requiredMessage="#{bundle.CreateFichaCaracterizacionRequiredMessage_idProyectoFormativo}">
+                                    <f:selectItems value="#{proyectoFormativoController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
                             </p:column>
+                                </p:row>
+                         <p:column colspan="4" styleClass="ui-widget-header">  
+                                <p:spacer height="0"/>  
+                            </p:column>
+                        <p:row> 
+                            <p:column style="font-weight: bold;" rowspan="3">DATOS DEL APRENDIZ</p:column>  
+                        </p:row>
+                                 <p:row>                                      
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_idUsuario}" for="idUsuario" />
+                            </p:column>
+                            <p:column colspan="3">    
+                            <p:commandButton id="idUsuario" icon="ui-icon-search" onclick="dlgBuscarUsuario.show();" type="button"/>
+                            </p:column> 
+                                 </p:row>
+                        <p:row>
+                                    <p:column>
+                                <h:outputText value="#{bundle.ViewUsuarioLabel_nomUsu}"/> 
+                            </p:column>
+                            <p:column colspan="2"><h:outputText value="#{usuarioController.selected.nomUsu}" title="#{bundle.ViewUsuarioTitle_nomUsu}"/> 
+                                <h:outputText value="#{planMejoramientoController.selected.idUsuario.nomUsu}" title="#{bundle.ViewUsuarioTitle_apeUsu}"/>
+                                <h:outputText value="#{planMejoramientoController.selected.idUsuario.apeUsu}" title="#{bundle.ViewUsuarioTitle_apeUsu}"/>
+                            </p:column> 
+                        </p:row>
+                        <p:row>  
+                            <p:column colspan="4" styleClass="ui-widget-header">  
+                                <p:spacer height="0"/>  
+                            </p:column>  
+                        </p:row>
+                        <p:row> 
+                            <p:column style="font-weight: bold;" rowspan="3">DATOS DEL INSTRUCTOR</p:column>  
+                        </p:row>
+                                 <p:row>                                      
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_idUsuario2}" for="idUsuario2" />
+                            </p:column>
+                            <p:column colspan="3">    
+                            <p:commandButton id="idUsuario2" icon="ui-icon-search" onclick="dlgBuscarUsuario.show();" type="button"/>
+                            </p:column> 
+                                 </p:row> 
+                        <p:row>
+                                    <p:column>
+                                <h:outputText value="#{bundle.ViewUsuarioLabel_nomUsu}"/> 
+                            </p:column>
+                            <p:column colspan="2"><h:outputText value="#{usuarioController.selected.nomUsu}" title="#{bundle.ViewUsuarioTitle_nomUsu}"/> 
+                                <h:outputText value="#{planMejoramientoController.selected.idUsuario2.nomUsu}" title="#{bundle.ViewUsuarioTitle_apeUsu}"/>
+                                <h:outputText value="#{planMejoramientoController.selected.idUsuario2.apeUsu}" title="#{bundle.ViewUsuarioTitle_apeUsu}"/>
+                            </p:column> 
+                        </p:row>
+                                <p:row>  
+                            <p:column colspan="4" styleClass="ui-widget-header">  
+                                <p:spacer height="0"/>  
+                            </p:column>  
                         </p:row>
                         <p:row>
                             <p:column>
@@ -122,7 +201,7 @@
                                 <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_fechaConcertacion}" for="fechaConcertacion" />
                             </p:column>
                             <p:column style="border-right: white">    
-                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fechaConcertacion" value="#{planMejoramientoController.selected.fechaConcertacion}" title="#{bundle.CreatePlanMejoramientoTitle_fechaConcertacion}" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_fechaConcertacion}"/>
+                                <p:calendar navigator="true" locale="es" pattern="MM/dd/yyyy" showOn="button" id="fechaConcertacion" value="#{planMejoramientoController.selected.fechaConcertacion}" title="#{bundle.CreatePlanMejoramientoTitle_fechaConcertacion}" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_fechaConcertacion}"/>
                             </p:column>
                             <p:column style="border-left: white;">
                                 <p:message for="fechaConcertacion"/>
@@ -258,32 +337,8 @@
                                 <p:message for="idFaseProyecto"/>
                             </p:column>
                         </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_idUsuario2}" for="idUsuario2" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:selectOneMenu id="idUsuario2" value="#{planMejoramientoController.selected.idUsuario2}" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_idUsuario2}">
-                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idUsuario2"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_idUsuario}" for="idUsuario" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:selectOneMenu id="idUsuario" value="#{planMejoramientoController.selected.idUsuario}" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_idUsuario}">
-                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idUsuario"/>
-                            </p:column>
-                        </p:row>
+                        
+                       
                     </p:panelGrid>
                     <br />
                     <br />
@@ -295,6 +350,78 @@
                 </div>
             </h:form>
         </ui:define>
+        <ui:define name="dialogs">
+           
+            <p:dialog id="buscarCliente" widgetVar="dlgBuscarUsuario" modal="true" resizable="false" 
+                      showEffect="clip" hideEffect="clip" closeOnEscape="true">
+                <h:form id="formularioBuscarUsuario"> 
+                    <p:panelGrid>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateUsuarioLabel_numeroDocumento}" for="numeroDocumento" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="numeroDocumento" value="#{planMejoramientoController.usuarioActual.numeroDocumento}" title="#{bundle.CreateUsuarioTitle_numeroDocumento}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_numeroDocumento}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="numeroDocumento"/>
+                            </p:column> 
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateUsuarioLabel_nomUsu}" for="nomUsu" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="nomUsu" value="#{planMejoramientoController.usuarioActual.nomUsu}" title="#{bundle.CreateUsuarioTitle_nomUsu}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_nomUsu}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="nomUsu"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateUsuarioLabel_apeUsu}" for="apeUsu" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="apeUsu" value="#{planMejoramientoController.usuarioActual.apeUsu}" title="#{bundle.CreateUsuarioTitle_apeUsu}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_apeUsu}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="apeUsu"/>
+                            </p:column>
+                        </p:row>
+
+                        <p:row>
+                            <p:column colspan="3">
+                                <p:commandButton action="#{planMejoramientoController.buscarUsuario()}"
+                                                 value="Buscar"
+                                                 icon="ui-icon-search"
+                                                 process="@this,numeroDocumento,nomUsu,apeUsu"
+                                                 update="tablaUsuarios, :msgs"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <br /><br /><br />
+                    <p:dataTable value="#{planMejoramientoController.listBusquedaUsuarios}"
+                                 var="item" paginator="true" rows="5" id="tablaUsuarios">
+                        <p:column>
+                            <h:outputText value="#{item.numeroDocumento}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{item.nomUsu}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{item.apeUsu}"/>
+                        </p:column>
+                        <p:column>
+                            <p:commandButton id="botonSeleccionUsuario" update=":formPlanMejoramiento" action="#{planMejoramientoController.agregarUsuario}"
+                                             oncomplete="dlgBuscarUsuario.hide();" icon="ui-icon-plus">
+                                <f:setPropertyActionListener value="#{item}" target="#{planMejoramientoController.usuarioActual}"/>
+                            </p:commandButton>
+                        </p:column>
+                    </p:dataTable>  
+                </h:form>                     
+            </p:dialog>
+             </ui:define> 
     </ui:composition>
 
 </html>
