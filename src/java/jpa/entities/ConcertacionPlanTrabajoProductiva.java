@@ -51,8 +51,6 @@ public class ConcertacionPlanTrabajoProductiva implements Serializable {
     @Size(min = 1, max = 65535)
     @Column(name = "act_des")
     private String actDes;
-    @Basic(optional = false)
-    @NotNull
     @Lob
     @Column(name = "evi_apr")
     private byte[] eviApr;
@@ -80,10 +78,9 @@ public class ConcertacionPlanTrabajoProductiva implements Serializable {
         this.idConcertacionPlanTrabajoProductiva = idConcertacionPlanTrabajoProductiva;
     }
 
-    public ConcertacionPlanTrabajoProductiva(Integer idConcertacionPlanTrabajoProductiva, String actDes, byte[] eviApr, Date fecCpt, String lugCpt) {
+    public ConcertacionPlanTrabajoProductiva(Integer idConcertacionPlanTrabajoProductiva, String actDes, Date fecCpt, String lugCpt) {
         this.idConcertacionPlanTrabajoProductiva = idConcertacionPlanTrabajoProductiva;
         this.actDes = actDes;
-        this.eviApr = eviApr;
         this.fecCpt = fecCpt;
         this.lugCpt = lugCpt;
     }

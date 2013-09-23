@@ -36,7 +36,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "ControlCasoBieAprendiz.findByIdControlCasoBieAprendiz", query = "SELECT c FROM ControlCasoBieAprendiz c WHERE c.idControlCasoBieAprendiz = :idControlCasoBieAprendiz"),
     @NamedQuery(name = "ControlCasoBieAprendiz.findByFecInicioControlBie", query = "SELECT c FROM ControlCasoBieAprendiz c WHERE c.fecInicioControlBie = :fecInicioControlBie"),
     @NamedQuery(name = "ControlCasoBieAprendiz.findByFecFinControlBie", query = "SELECT c FROM ControlCasoBieAprendiz c WHERE c.fecFinControlBie = :fecFinControlBie"),
-    @NamedQuery(name = "ControlCasoBieAprendiz.findByNumSegBie", query = "SELECT c FROM ControlCasoBieAprendiz c WHERE c.numSegBie = :numSegBie")})
+    @NamedQuery(name = "ControlCasoBieAprendiz.findByNumSegBie", query = "SELECT c FROM ControlCasoBieAprendiz c WHERE c.numSegBie = :numSegBie"),
+    @NamedQuery(name = "ControlCasoBieAprendiz.findByRemitido", query = "SELECT c FROM ControlCasoBieAprendiz c WHERE c.remitido = :remitido")})
 public class ControlCasoBieAprendiz implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -67,6 +68,10 @@ public class ControlCasoBieAprendiz implements Serializable {
     @Size(min = 1, max = 10)
     @Column(name = "num_seg_bie")
     private String numSegBie;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "remitido")
+    private boolean remitido;
     @Basic(optional = false)
     @NotNull
     @Lob
@@ -102,11 +107,12 @@ public class ControlCasoBieAprendiz implements Serializable {
         this.idControlCasoBieAprendiz = idControlCasoBieAprendiz;
     }
 
-    public ControlCasoBieAprendiz(Integer idControlCasoBieAprendiz, Date fecInicioControlBie, String logrosControl, String numSegBie, String objectivoSes, String temaAbo) {
+    public ControlCasoBieAprendiz(Integer idControlCasoBieAprendiz, Date fecInicioControlBie, String logrosControl, String numSegBie, boolean remitido, String objectivoSes, String temaAbo) {
         this.idControlCasoBieAprendiz = idControlCasoBieAprendiz;
         this.fecInicioControlBie = fecInicioControlBie;
         this.logrosControl = logrosControl;
         this.numSegBie = numSegBie;
+        this.remitido = remitido;
         this.objectivoSes = objectivoSes;
         this.temaAbo = temaAbo;
     }
@@ -157,6 +163,14 @@ public class ControlCasoBieAprendiz implements Serializable {
 
     public void setNumSegBie(String numSegBie) {
         this.numSegBie = numSegBie;
+    }
+
+    public boolean getRemitido() {
+        return remitido;
+    }
+
+    public void setRemitido(boolean remitido) {
+        this.remitido = remitido;
     }
 
     public String getObjectivoSes() {

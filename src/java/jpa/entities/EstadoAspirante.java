@@ -47,7 +47,7 @@ public class EstadoAspirante implements Serializable {
     private String nomEstAsp;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "estadoAspirante")
     private List<AspiranteFicha> aspiranteFichaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEstadoAspirante")
+    @OneToMany(mappedBy = "idEstadoAspirante")
     private List<Usuario> usuarioList;
 
     public EstadoAspirante() {

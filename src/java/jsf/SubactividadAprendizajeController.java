@@ -1,8 +1,8 @@
 package jsf;
 
-import jpa.entities.TipoModalidadProductiva;
+import jpa.entities.SubactividadAprendizaje;
 import jsf.util.JsfUtil;
-import jpa.sessions.TipoModalidadProductivaFacade;
+import jpa.sessions.SubactividadAprendizajeFacade;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -20,41 +20,41 @@ import javax.faces.model.SelectItem;
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
 
-@ManagedBean(name = "tipoModalidadProductivaController")
+@ManagedBean(name = "subactividadAprendizajeController")
 @SessionScoped
-public class TipoModalidadProductivaController implements Serializable {
+public class SubactividadAprendizajeController implements Serializable {
 
-    private TipoModalidadProductiva current;
-    private LazyDataModel<TipoModalidadProductiva> lazyModel = null;
+    private SubactividadAprendizaje current;
+    private LazyDataModel<SubactividadAprendizaje> lazyModel = null;
     @EJB
-    private jpa.sessions.TipoModalidadProductivaFacade ejbFacade;
+    private jpa.sessions.SubactividadAprendizajeFacade ejbFacade;
 
-    public TipoModalidadProductivaController() {
+    public SubactividadAprendizajeController() {
     }
 
-    public TipoModalidadProductiva getSelected() {
+    public SubactividadAprendizaje getSelected() {
         if (current == null) {
-            current = new TipoModalidadProductiva();
+            current = new SubactividadAprendizaje();
         }
         return current;
     }
 
-    public void setSelected(TipoModalidadProductiva entity) {
+    public void setSelected(SubactividadAprendizaje entity) {
         current = entity;
     }
 
-    private TipoModalidadProductivaFacade getFacade() {
+    private SubactividadAprendizajeFacade getFacade() {
         return ejbFacade;
     }
 
-    public LazyDataModel<TipoModalidadProductiva> getLazyModel() {
+    public LazyDataModel<SubactividadAprendizaje> getLazyModel() {
         if (lazyModel == null) {
-            lazyModel = new LazyDataModel<TipoModalidadProductiva>() {
+            lazyModel = new LazyDataModel<SubactividadAprendizaje>() {
                 @Override
-                public List<TipoModalidadProductiva> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String, String> filters) {
+                public List<SubactividadAprendizaje> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String, String> filters) {
 
                     lazyModel.setRowCount(getFacade().count(filters));
-                    List<TipoModalidadProductiva> result = getFacade().getResultList(first, pageSize, sortField, sortOrder, filters);
+                    List<SubactividadAprendizaje> result = getFacade().getResultList(first, pageSize, sortField, sortOrder, filters);
                     if (result.isEmpty()) {
                         lazyModel.setRowCount(getFacade().count(new HashMap<String, String>()));
                     }
@@ -62,12 +62,12 @@ public class TipoModalidadProductivaController implements Serializable {
                 }
 
                 @Override
-                public Object getRowKey(TipoModalidadProductiva entity) {
-                    return entity.getIdTipoModalidadProductiva();
+                public Object getRowKey(SubactividadAprendizaje entity) {
+                    return entity.getIdSubactividadAprendizaje();
                 }
 
                 @Override
-                public TipoModalidadProductiva getRowData(String rowKey) {
+                public SubactividadAprendizaje getRowData(String rowKey) {
                     try {
                         return getFacade().find(rowKey);
                     } catch (Exception e) {
@@ -86,19 +86,19 @@ public class TipoModalidadProductivaController implements Serializable {
     }
 
     public String prepareView() {
-        current = (TipoModalidadProductiva) getLazyModel().getRowData();
+        current = (SubactividadAprendizaje) getLazyModel().getRowData();
         return "View";
     }
 
     public String prepareCreate() {
-        current = new TipoModalidadProductiva();
+        current = new SubactividadAprendizaje();
         return "Create";
     }
 
     public String create() {
         try {
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("TipoModalidadProductivaCreated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("SubactividadAprendizajeCreated"));
             return "View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/properties/Bundle").getString("PersistenceErrorOccured"));
@@ -107,14 +107,14 @@ public class TipoModalidadProductivaController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (TipoModalidadProductiva) getLazyModel().getRowData();
+        current = (SubactividadAprendizaje) getLazyModel().getRowData();
         return "Edit";
     }
 
     public String update() {
         try {
             getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("TipoModalidadProductivaUpdated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("SubactividadAprendizajeUpdated"));
             return "View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/properties/Bundle").getString("PersistenceErrorOccured"));
@@ -131,7 +131,7 @@ public class TipoModalidadProductivaController implements Serializable {
     private void performDestroy() {
         try {
             getFacade().remove(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("TipoModalidadProductivaDeleted"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("SubactividadAprendizajeDeleted"));
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/properties/Bundle").getString("PersistenceErrorOccured"));
         }
@@ -149,25 +149,25 @@ public class TipoModalidadProductivaController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    @FacesConverter(forClass = TipoModalidadProductiva.class)
-    public static class TipoModalidadProductivaControllerConverter implements Converter {
+    @FacesConverter(forClass = SubactividadAprendizaje.class)
+    public static class SubactividadAprendizajeControllerConverter implements Converter {
 
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            TipoModalidadProductivaController controller = (TipoModalidadProductivaController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "tipoModalidadProductivaController");
+            SubactividadAprendizajeController controller = (SubactividadAprendizajeController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "subactividadAprendizajeController");
             return controller.ejbFacade.find(getKey(value));
         }
 
-        java.lang.Integer getKey(String value) {
-            java.lang.Integer key;
-            key = Integer.valueOf(value);
+        java.lang.String getKey(String value) {
+            java.lang.String key;
+            key = value;
             return key;
         }
 
-        String getStringKey(java.lang.Short value) {
+        String getStringKey(java.lang.String value) {
             StringBuffer sb = new StringBuffer();
             sb.append(value);
             return sb.toString();
@@ -177,11 +177,11 @@ public class TipoModalidadProductivaController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof TipoModalidadProductiva) {
-                TipoModalidadProductiva o = (TipoModalidadProductiva) object;
-                return getStringKey(o.getIdTipoModalidadProductiva());
+            if (object instanceof SubactividadAprendizaje) {
+                SubactividadAprendizaje o = (SubactividadAprendizaje) object;
+                return getStringKey(o.getIdSubactividadAprendizaje());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + TipoModalidadProductiva.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + SubactividadAprendizaje.class.getName());
             }
         }
     }

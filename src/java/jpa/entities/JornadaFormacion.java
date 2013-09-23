@@ -118,7 +118,7 @@ public class JornadaFormacion implements Serializable {
 
     @Override
     public String toString() {
-        return descrJornadaFormacion;
+        return "jpa.entities.JornadaFormacion[ idJornadaFormacion=" + idJornadaFormacion + " ]";
     }
     
 }

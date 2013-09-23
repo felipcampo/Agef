@@ -7,7 +7,6 @@ package jpa.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -50,7 +49,7 @@ public class Barrio implements Serializable {
     @JoinColumn(name = "id_comuna", referencedColumnName = "id_comuna")
     @ManyToOne(optional = false)
     private Comuna idComuna;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idBarrio")
+    @OneToMany(mappedBy = "idBarrio")
     private List<Usuario> usuarioList;
 
     public Barrio() {

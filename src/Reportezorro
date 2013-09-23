@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b9a1405a-6cb6-42c4-aabf-a3613aade8b6">
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     ciudad.`nom_ciu` AS ciudad_nom_ciu,
+     ciudad.`descr_zona` AS ciudad_descr_zona,
+     ciudad.`id_departamento` AS ciudad_id_departamento,
+     ciudad.`id_ciudad` AS ciudad_id_ciudad
+FROM
+     `ciudad` ciudad]]>
+	</queryString>
+	<field name="ciudad_nom_ciu" class="java.lang.String"/>
+	<field name="ciudad_descr_zona" class="java.lang.String"/>
+	<field name="ciudad_id_departamento" class="java.lang.String"/>
+	<field name="ciudad_id_ciudad" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image>
+				<reportElement uuid="41db911f-a913-4f6a-90d5-8614fa4137a1" x="275" y="0" width="300" height="64"/>
+				<imageExpression><![CDATA["leaf_banner_green.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="c9e20907-1bb4-44c7-8994-58d34e5389f4" style="Title" x="0" y="13" width="263" height="33"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Leaf Green Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e80d0e21-e7b7-48ac-a62d-f9ef3124f1d6" style="SubTitle" x="100" y="46" width="174" height="22"/>
+				<textElement/>
+				<text><![CDATA[Leaf Green SubTitle]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement uuid="c96a20b8-ef62-4dde-948f-321fa2958ccd" positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="69f0b50d-4465-43f1-8edc-fdfc81d74647" style="Column header" x="0" y="19" width="138" height="15"/>
+				<textElement/>
+				<text><![CDATA[ciudad_nom_ciu]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1355a044-1cd0-4e4b-a22e-512c0304535a" style="Column header" x="138" y="19" width="138" height="15"/>
+				<textElement/>
+				<text><![CDATA[ciudad_descr_zona]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8a65d181-975b-488e-a036-7467751c6913" style="Column header" x="276" y="19" width="138" height="15"/>
+				<textElement/>
+				<text><![CDATA[ciudad_id_departamento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1b4d1a43-d636-4456-9c72-d341ef668573" style="Column header" x="414" y="19" width="138" height="15"/>
+				<textElement/>
+				<text><![CDATA[ciudad_id_ciudad]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement uuid="bbd461d9-6eac-4377-be46-598cd41e04af" positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement uuid="1e447c64-fd5c-41f6-acc8-e349bc514054" style="Detail" x="0" y="0" width="138" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ciudad_nom_ciu}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2cb652a5-fa57-4c9f-9f1d-d05aecf77090" style="Detail" x="138" y="0" width="138" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ciudad_descr_zona}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7a58e454-cb62-45fe-8bac-30ccd514177e" style="Detail" x="276" y="0" width="138" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ciudad_id_departamento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="716e3773-4e4b-45c9-a219-d799fe64e4a0" style="Detail" x="414" y="0" width="138" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ciudad_id_ciudad}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement uuid="133b3862-adcf-4ece-b24d-a5fe6d77a709" positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="fd31d4c6-8973-4bcb-aaf0-544bbfaa1c70" style="Column header" x="433" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="cccfad44-6f04-4ced-b4a0-2a781868e7f4" style="Column header" x="513" y="0" width="40" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="13f536f0-c9f5-4dd8-8f9b-0774ae38141e" style="Column header" x="0" y="0" width="197" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

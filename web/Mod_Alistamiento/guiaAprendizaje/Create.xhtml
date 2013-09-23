@@ -195,17 +195,7 @@
                                 <p:row>
                                     <p:column colspan="10" styleClass="ui-widget-header" ><center>AMBIENTES DE APRENDIZAJE, DEDIOS Y RECURSOS DIDACTICOS</center></p:column>
                                 </p:row>
-                                <p:row>
-                                    <p:column colspan="2">
-                                        <h:outputLabel value="#{bundle.CreateGuiaAprendizajeLabel_idDatalleRecurso}" for="idDatalleRecurso" />
-                                    </p:column>
-                                    <p:column colspan="8" style="border-right: white">    
-                                        <p:selectOneMenu id="idDatalleRecurso" value="#{guiaAprendizajeController.selected.idDatalleRecurso}" required="true" requiredMessage="#{bundle.CreateGuiaAprendizajeRequiredMessage_idDatalleRecurso}">
-                                            <f:selectItems value="#{detalleRecursoController.itemsAvailableSelectOne}"/>
-                                        </p:selectOneMenu>
-                                    </p:column>
-
-                                </p:row>
+                          
                                 <p:row>
                                     <p:column colspan="2">
                                         <h:outputLabel value="Ambiente" for="idAmbiente" />

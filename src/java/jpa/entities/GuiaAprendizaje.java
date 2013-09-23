@@ -7,6 +7,7 @@ package jpa.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -90,15 +91,14 @@ public class GuiaAprendizaje implements Serializable {
         @JoinColumn(name = "id_alistamiento", referencedColumnName = "id_alistamiento")})
     @ManyToMany
     private List<Alistamiento> alistamientoList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idGuiaAprendizaje")
+    private List<EvaluacionSeguimiento> evaluacionSeguimientoList;
     @JoinColumn(name = "id_proyecto_formativo", referencedColumnName = "id_proyecto_formativo")
     @ManyToOne(optional = false)
     private ProyectoFormativo idProyectoFormativo;
     @JoinColumn(name = "id_ambiente", referencedColumnName = "id_ambiente")
     @ManyToOne(optional = false)
     private Ambiente idAmbiente;
-    @JoinColumn(name = "id_datalle_recurso", referencedColumnName = "id_datalle_recurso")
-    @ManyToOne(optional = false)
-    private DetalleRecurso idDatalleRecurso;
     @JoinColumn(name = "id_actividad_proyecto", referencedColumnName = "id_actividad_proyecto")
     @ManyToOne(optional = false)
     private ActividadProyecto idActividadProyecto;
@@ -199,6 +199,15 @@ public class GuiaAprendizaje implements Serializable {
         this.alistamientoList = alistamientoList;
     }
 
+    @XmlTransient
+    public List<EvaluacionSeguimiento> getEvaluacionSeguimientoList() {
+        return evaluacionSeguimientoList;
+    }
+
+    public void setEvaluacionSeguimientoList(List<EvaluacionSeguimiento> evaluacionSeguimientoList) {
+        this.evaluacionSeguimientoList = evaluacionSeguimientoList;
+    }
+
     public ProyectoFormativo getIdProyectoFormativo() {
         return idProyectoFormativo;
     }
@@ -213,14 +222,6 @@ public class GuiaAprendizaje implements Serializable {
 
     public void setIdAmbiente(Ambiente idAmbiente) {
         this.idAmbiente = idAmbiente;
-    }
-
-    public DetalleRecurso getIdDatalleRecurso() {
-        return idDatalleRecurso;
-    }
-
-    public void setIdDatalleRecurso(DetalleRecurso idDatalleRecurso) {
-        this.idDatalleRecurso = idDatalleRecurso;
     }
 
     public ActividadProyecto getIdActividadProyecto() {

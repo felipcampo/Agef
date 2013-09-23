@@ -7,7 +7,6 @@ package jpa.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -18,7 +17,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -55,16 +53,22 @@ public class Competencia implements Serializable {
     private String nomCom;
     @ManyToMany(mappedBy = "competenciaList")
     private List<Programa> programaList;
+    @JoinTable(name = "competencia_resultado_aprendizaje", joinColumns = {
+        @JoinColumn(name = "id_competencia", referencedColumnName = "id_competencia")}, inverseJoinColumns = {
+        @JoinColumn(name = "id_resultado_aprendizaje", referencedColumnName = "id_resultado_aprendizaje")})
+    @ManyToMany
+    private List<ResultadoAprendizaje> resultadoAprendizajeList;
     @JoinTable(name = "competencia_actividad", joinColumns = {
         @JoinColumn(name = "id_competencia", referencedColumnName = "id_competencia")}, inverseJoinColumns = {
         @JoinColumn(name = "id_actividad_proyecto", referencedColumnName = "id_actividad_proyecto")})
     @ManyToMany
     private List<ActividadProyecto> actividadProyectoList;
+    @JoinColumn(name = "id_actividad_proyecto", referencedColumnName = "id_actividad_proyecto")
+    @ManyToOne(optional = false)
+    private ActividadProyecto idActividadProyecto;
     @JoinColumn(name = "id_programa", referencedColumnName = "id_programa")
     @ManyToOne(optional = false)
     private Programa idPrograma;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCompetencia")
-    private List<ResultadoAprendizaje> resultadoAprendizajeList;
 
     public Competencia() {
     }
@@ -113,6 +117,15 @@ public class Competencia implements Serializable {
     }
 
     @XmlTransient
+    public List<ResultadoAprendizaje> getResultadoAprendizajeList() {
+        return resultadoAprendizajeList;
+    }
+
+    public void setResultadoAprendizajeList(List<ResultadoAprendizaje> resultadoAprendizajeList) {
+        this.resultadoAprendizajeList = resultadoAprendizajeList;
+    }
+
+    @XmlTransient
     public List<ActividadProyecto> getActividadProyectoList() {
         return actividadProyectoList;
     }
@@ -121,21 +134,20 @@ public class Competencia implements Serializable {
         this.actividadProyectoList = actividadProyectoList;
     }
 
+    public ActividadProyecto getIdActividadProyecto() {
+        return idActividadProyecto;
+    }
+
+    public void setIdActividadProyecto(ActividadProyecto idActividadProyecto) {
+        this.idActividadProyecto = idActividadProyecto;
+    }
+
     public Programa getIdPrograma() {
         return idPrograma;
     }
 
     public void setIdPrograma(Programa idPrograma) {
         this.idPrograma = idPrograma;
-    }
-
-    @XmlTransient
-    public List<ResultadoAprendizaje> getResultadoAprendizajeList() {
-        return resultadoAprendizajeList;
-    }
-
-    public void setResultadoAprendizajeList(List<ResultadoAprendizaje> resultadoAprendizajeList) {
-        this.resultadoAprendizajeList = resultadoAprendizajeList;
     }
 
     @Override

@@ -70,7 +70,7 @@
                         </p:row> 
 
                         <p:row>
-                            <p:column colspan="3">
+                             <p:column colspan="3">
                                 <h:outputLabel value="#{bundle.EditSeguimientoProyectoLabel_idFichaCaracterizacion}" for="idFichaCaracterizacion" />
                             </p:column>
                             <p:column colspan="4" > 
@@ -81,7 +81,7 @@
                                 <h:outputLabel value="Programa de formacion" for="Programa de formacion" />
                             </p:column >
                             <p:column  colspan="10" > 
-                                <p:inputText id="idProgramadeFormacion" readonly="true" size="60"  value="" >
+                                <p:inputText id="idProgramadeFormacion" readonly="true" size="60"  value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idPrograma.nomPrg}" >
                                 </p:inputText>
                             </p:column>
                         </p:row>
