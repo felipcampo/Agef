@@ -30,19 +30,19 @@
                             <p:column styleClass="ui-widget-header" colspan="4"><p align="center"> INFORMACIÓN GENERAL</p></p:column> 
                         </p:row> 
                         <p:row>  
-                            <p:column>
+                            <p:column colspan="1">
                                 <h:outputLabel value="#{bundle.CreateLlamadoAtencionVerbalLabel_fecha}" for="fecha" />
                             </p:column>
-                            <p:column style="border-right: white">    
+                            <p:column colspan="2">    
                                 <p:calendar locale="es" navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecha" value="#{llamadoAtencionVerbalController.selected.fecha}" title="#{bundle.CreateLlamadoAtencionVerbalTitle_fecha}" required="true" requiredMessage="#{bundle.CreateLlamadoAtencionVerbalRequiredMessage_fecha}"/>
                             </p:column>
                             
                         </p:row>
                         <p:row>
-                            <p:column>
+                            <p:column colspan="1">
                                 <h:outputLabel value="#{bundle.CreateLlamadoAtencionVerbalLabel_idFichaCaracterizacion}" for="idFichaCaracterizacion" />
                             </p:column>
-                            <p:column style="border-right: white">    
+                            <p:column colspan="2">    
                                 <p:selectOneMenu id="idFichaCaracterizacion" value="#{llamadoAtencionVerbalController.selected.idFichaCaracterizacion}" required="true" requiredMessage="#{bundle.CreateLlamadoAtencionVerbalRequiredMessage_idFichaCaracterizacion}">
                                     <f:selectItems value="#{fichaCaracterizacionController.itemsAvailableSelectOne}"/>
                                 </p:selectOneMenu>
