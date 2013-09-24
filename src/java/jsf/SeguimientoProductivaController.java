@@ -19,19 +19,23 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.faces.model.SelectItem;
 import jpa.entities.CentroFormacion;
+import jpa.entities.ConcertacionPlanTrabajoProductiva;
 import jpa.entities.CriterioEvaluacion;
 import jpa.entities.CriterioSeguimiento;
 import jpa.entities.Empresa;
 import jpa.entities.FichaCaracterizacion;
+import jpa.entities.IncidenteProductiva;
 import jpa.entities.Programa;
 import jpa.entities.Regional;
 import jpa.entities.TipoCriterio;
 import jpa.entities.Usuario;
 import jpa.sessions.CentroFormacionFacade;
+import jpa.sessions.ConcertacionPlanTrabajoProductivaFacade;
 import jpa.sessions.CriterioEvaluacionFacade;
 import jpa.sessions.CriterioSeguimientoFacade;
 import jpa.sessions.EmpresaFacade;
 import jpa.sessions.FichaCaracterizacionFacade;
+import jpa.sessions.IncidenteProductivaFacade;
 import jpa.sessions.ProgramaFacade;
 import jpa.sessions.RegionalFacade;
 import org.primefaces.model.LazyDataModel;
@@ -43,17 +47,19 @@ public class SeguimientoProductivaController implements Serializable {
 
     private Empresa empresaActual;
     private Usuario usuarioActual;
+    private ConcertacionPlanTrabajoProductiva concertacionActual;
+    private IncidenteProductiva incidenteActual;
     private CriterioSeguimiento currentCriterioSeg;
     private List<Empresa> listBusquedaEmpresas;
     private List<Usuario> listBusquedaUsuarios;
     private SeguimientoProductiva current;
-    private Regional currentRegional;    
+    private Regional currentRegional;
     private CentroFormacion currentCentroFormacion;
     private FichaCaracterizacion currentFichaCaracterizacion;
-    private Programa currentPrograma; 
+    private Programa currentPrograma;
     private LazyDataModel<SeguimientoProductiva> lazyModel = null;
     List<CriterioSeguimiento> listCriteriosSeg;
-    List<CriterioEvaluacion> listCriteriosEval; 
+    List<CriterioEvaluacion> listCriteriosEval;
     @EJB
     private jpa.sessions.SeguimientoProductivaFacade ejbFacade;
     @EJB
@@ -72,7 +78,11 @@ public class SeguimientoProductivaController implements Serializable {
     private jpa.sessions.CriterioEvaluacionFacade ejbFacadeCriterioEval;
     @EJB
     private jpa.sessions.CriterioSeguimientoFacade ejbFacadeEvalCriterioSeg;
-    
+    @EJB
+    private jpa.sessions.ConcertacionPlanTrabajoProductivaFacade ejbFacadeConcertacion;
+    @EJB
+    private jpa.sessions.IncidenteProductivaFacade ejbFacadeIncidente;
+
     public SeguimientoProductivaController() {
     }
 
@@ -82,7 +92,21 @@ public class SeguimientoProductivaController implements Serializable {
         }
         return usuarioActual;
     }
-    
+
+    public ConcertacionPlanTrabajoProductiva getConcertacionActual() {
+        if (concertacionActual == null) {
+            concertacionActual = new ConcertacionPlanTrabajoProductiva();
+        }
+        return concertacionActual;
+    }
+
+    public IncidenteProductiva getIncidenteActual() {
+        if (incidenteActual == null) {
+            incidenteActual = new IncidenteProductiva();
+        }
+        return incidenteActual;
+    }
+
     public Empresa getEmpresaActual() {
         if (empresaActual == null) {
             empresaActual = new Empresa();
@@ -93,7 +117,15 @@ public class SeguimientoProductivaController implements Serializable {
     public void setUsuarioActual(Usuario usuario) {
         usuarioActual = usuario;
     }
-    
+
+    public void setConcertacionActual(ConcertacionPlanTrabajoProductiva concertacion) {
+        concertacionActual = concertacion;
+    }
+
+    public void setIncidenteActual(IncidenteProductiva incidente) {
+        incidenteActual = incidente;
+    }
+
     public void setEmpresaActual(Empresa empresa) {
         empresaActual = empresa;
     }
@@ -101,33 +133,39 @@ public class SeguimientoProductivaController implements Serializable {
     private UsuarioFacade getUsuarioFacade() {
         return usuarioFacade;
     }
-    
+
     private EmpresaFacade getEmpresaFacade() {
         return empresaFacade;
     }
-    
+
     private CriterioEvaluacionFacade getFacadeCriterioEval() {
         return ejbFacadeCriterioEval;
     }
-    
+
     private CriterioSeguimientoFacade getFacadeEvalCriterioSeg() {
         return ejbFacadeEvalCriterioSeg;
     }
-    
+
+    private ConcertacionPlanTrabajoProductivaFacade getFacadeConcertacion() {
+        return ejbFacadeConcertacion;
+    }
+
+    private IncidenteProductivaFacade getFacadeIncidente() {
+        return ejbFacadeIncidente;
+    }
 
     public List<CriterioEvaluacion> getListCriteriosEval() {
         return listCriteriosEval;
     }
-    
+
     public List<CriterioSeguimiento> getListCriteriosSeg() {
         return listCriteriosSeg;
     }
-        
-    
+
     public List<Usuario> getListBusquedaUsuarios() {
         return listBusquedaUsuarios;
     }
-    
+
     public List<Empresa> getListBusquedaEmpresas() {
         return listBusquedaEmpresas;
     }
@@ -145,14 +183,27 @@ public class SeguimientoProductivaController implements Serializable {
         }
         return currentRegional;
     }
-    
+
     public Programa getSelectedPrograma() {
         if (currentPrograma == null) {
             currentPrograma = new Programa();
         }
         return currentPrograma;
     }
-    
+
+    public ConcertacionPlanTrabajoProductiva getSelectedConcertacionPlanTrabajoProductiva() {
+        if (concertacionActual == null) {
+            concertacionActual = new ConcertacionPlanTrabajoProductiva();
+        }
+        return concertacionActual;
+    }
+
+    public IncidenteProductiva getSelectedIncidenteProductiva() {
+        if (incidenteActual == null) {
+            incidenteActual = new IncidenteProductiva();
+        }
+        return incidenteActual;
+    }
 
     public CentroFormacion getSelectedCentroFormacion() {
         if (currentCentroFormacion == null) {
@@ -160,13 +211,13 @@ public class SeguimientoProductivaController implements Serializable {
         }
         return currentCentroFormacion;
     }
-    
+
     public FichaCaracterizacion getSelectedFichaCaracterizacion() {
         if (currentFichaCaracterizacion == null) {
             currentFichaCaracterizacion = new FichaCaracterizacion();
         }
         return currentFichaCaracterizacion;
-    }    
+    }
 
     public void setSelected(SeguimientoProductiva entity) {
         current = entity;
@@ -175,11 +226,11 @@ public class SeguimientoProductivaController implements Serializable {
     public void setSelectedRegional(Regional regional) {
         currentRegional = regional;
     }
-    
+
     public void setSelectedPrograma(Programa programa) {
         currentPrograma = programa;
     }
-    
+
     private SeguimientoProductivaFacade getFacade() {
         return ejbFacade;
     }
@@ -187,20 +238,18 @@ public class SeguimientoProductivaController implements Serializable {
     public RegionalFacade getFacadeRegional() {
         return ejbFacadeRegional;
     }
-    
+
     public ProgramaFacade getFacadePrograma() {
         return ejbFacadePrograma;
     }
-    
 
     public CentroFormacionFacade getFacadeCentroFormacion() {
         return ejbFacadeCentroFormacion;
     }
-    
+
     public FichaCaracterizacionFacade getFacadeFichaCaracterizacion() {
         return ejbFacadeFichaCaracterizacion;
     }
-    
 
     public LazyDataModel<SeguimientoProductiva> getLazyModel() {
         if (lazyModel == null) {
@@ -247,10 +296,12 @@ public class SeguimientoProductivaController implements Serializable {
 
     public String prepareCreate() {
         current = new SeguimientoProductiva();
+        concertacionActual = new ConcertacionPlanTrabajoProductiva();
+        incidenteActual = new IncidenteProductiva();
         currentRegional = new Regional();
         currentCentroFormacion = new CentroFormacion();
         currentPrograma = new Programa();
-        currentFichaCaracterizacion = new FichaCaracterizacion();        
+        currentFichaCaracterizacion = new FichaCaracterizacion();
         usuarioActual = new Usuario();
         empresaActual = new Empresa();
         listBusquedaUsuarios = new ArrayList<>();
@@ -259,7 +310,7 @@ public class SeguimientoProductivaController implements Serializable {
         listCriteriosEval = getFacadeCriterioEval().findByTipo(new TipoCriterio((short) 2));
         for (CriterioEvaluacion criterioEval : listCriteriosEval) {
             currentCriterioSeg = new CriterioSeguimiento();
-            currentCriterioSeg.setIdCriterioEvaluacion(criterioEval);            
+            currentCriterioSeg.setIdCriterioEvaluacion(criterioEval);
             listCriteriosSeg.add(currentCriterioSeg);
         }
         return "Create";
@@ -268,45 +319,48 @@ public class SeguimientoProductivaController implements Serializable {
     public void buscarUsuario() {
         if (usuarioActual.getNumeroDocumento().equals("")
                 && usuarioActual.getNomUsu().equals("") && usuarioActual.getApeUsu().equals("")) {
-            JsfUtil.addErrorMessage(ResourceBundle.getBundle("propierties/Bundle").getString("CriteriosVacios"));
+            JsfUtil.addErrorMessage(ResourceBundle.getBundle("properties/Bundle").getString("CriteriosVacios"));
         } else {
             try {
                 listBusquedaUsuarios = getUsuarioFacade().findUsuario(usuarioActual);
             } catch (Exception e) {
-                JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("propierties/Bundle").getString("PersistenceErrorOccured"));
+                JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("properties/Bundle").getString("PersistenceErrorOccured"));
             }
         }
     }
-    
+
     public void buscarEmpresa() {
-        if (empresaActual.getIdEmpresa()==null && empresaActual.getRazonSocialEmpresa().equals("")) {
-            JsfUtil.addErrorMessage(ResourceBundle.getBundle("propierties/Bundle").getString("CriteriosVacios"));
+        if (empresaActual.getIdEmpresa() == null && empresaActual.getRazonSocialEmpresa().equals("")) {
+            JsfUtil.addErrorMessage(ResourceBundle.getBundle("properties/Bundle").getString("CriteriosVacios"));
         } else {
             try {
                 listBusquedaEmpresas = getEmpresaFacade().findEmpresa(empresaActual);
             } catch (Exception e) {
-                JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("propierties/Bundle").getString("PersistenceErrorOccured"));
+                JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("properties/Bundle").getString("PersistenceErrorOccured"));
             }
         }
     }
-    
-    public void agregarEmpresa (){
+
+    public void agregarEmpresa() {
         current.setIdEmpresa(empresaActual);
         empresaActual = new Empresa();
         listBusquedaEmpresas = new ArrayList<>();
     }
-    
-    public void agregarUsuario (){
+
+    public void agregarUsuario() {
         current.setIdUsuario(usuarioActual);
         usuarioActual = new Usuario();
         listBusquedaUsuarios = new ArrayList<>();
     }
-    
 
     public String create() {
         try {
             current.setIdUsuario(usuarioActual);
             current.setIdEmpresa(empresaActual);
+            getFacadeConcertacion().create(concertacionActual);
+            current.setIdConcertacionPlanTrabajoProductiva(concertacionActual);
+            getFacadeIncidente().create(incidenteActual);
+            current.setIdIncidenteProductiva(incidenteActual);
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("SeguimientoProductivaCreated"));
             return "View";
@@ -365,12 +419,11 @@ public class SeguimientoProductivaController implements Serializable {
 
     public SelectItem[] getItemsAvailableSelectOneCentroByRegional() {
         return JsfUtil.getSelectItems(ejbFacadeCentroFormacion.findByRegional(getSelectedRegional()), true);
-    }   
-    
+    }
+
     public SelectItem[] getItemsAvailableSelectOneFichaCaracterizacionByPrograma() {
         return JsfUtil.getSelectItems(ejbFacadeFichaCaracterizacion.findByPrograma(getSelectedPrograma()), true);
-    }  
-    
+    }
 
     @FacesConverter(forClass = SeguimientoProductiva.class)
     public static class SeguimientoProductivaControllerConverter implements Converter {

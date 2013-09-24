@@ -3,7 +3,6 @@ package jsf;
 import jpa.entities.Usuario;
 import jsf.util.JsfUtil;
 import jpa.sessions.UsuarioFacade;
-
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;

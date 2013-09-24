@@ -100,7 +100,7 @@ public class ConcertacionPlanTrabajoProductivaController implements Serializable
         try {
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("ConcertacionPlanTrabajoProductivaCreated"));
-            return "View";
+            return "Create";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/properties/Bundle").getString("PersistenceErrorOccured"));
             return null;

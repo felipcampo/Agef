@@ -9,14 +9,14 @@
     <ui:composition>        
         <h:form enctype="multipart/form-data" id="formConcertacionPlanTrabajoProductiva">
             <div id="form" align="center">
-                <p:panelGrid>                                  
+                <p:panelGrid>                              
                     
                     <p:row>
                         <p:column>
                             <h:outputLabel value="#{bundle.CreateConcertacionPlanTrabajoProductivaLabel_actDes}" for="actDes" />
                         </p:column>
                         <p:column style="border-right: white">    
-                            <p:inputTextarea rows="4" cols="30" id="actDes" value="#{concertacionPlanTrabajoProductivaController.selected.actDes}" title="#{bundle.CreateConcertacionPlanTrabajoProductivaTitle_actDes}" required="true" requiredMessage="#{bundle.CreateConcertacionPlanTrabajoProductivaRequiredMessage_actDes}"/>
+                            <p:inputTextarea rows="4" cols="30" id="actDes" value="#{seguimientoProductivaController.selectedConcertacionPlanTrabajoProductiva.actDes}" title="#{bundle.CreateConcertacionPlanTrabajoProductivaTitle_actDes}" required="true" requiredMessage="#{bundle.CreateConcertacionPlanTrabajoProductivaRequiredMessage_actDes}"/>
                         </p:column>                        
                     </p:row> 
                     <p:row>
@@ -24,7 +24,7 @@
                             <h:outputLabel value="#{bundle.CreateConcertacionPlanTrabajoProductivaLabel_obsCpt}" for="obsCpt" />
                         </p:column>
                         <p:column style="border-right: white">    
-                            <p:inputTextarea rows="4" cols="30" id="obsCpt" value="#{concertacionPlanTrabajoProductivaController.selected.obsCpt}" title="#{bundle.CreateConcertacionPlanTrabajoProductivaTitle_obsCpt}" />
+                            <p:inputTextarea rows="4" cols="30" id="obsCpt" value="#{seguimientoProductivaController.selectedConcertacionPlanTrabajoProductiva.obsCpt}" title="#{bundle.CreateConcertacionPlanTrabajoProductivaTitle_obsCpt}" />
                         </p:column>                        
                     </p:row>
                     <p:row>
@@ -32,7 +32,7 @@
                             <h:outputLabel value="#{bundle.CreateConcertacionPlanTrabajoProductivaLabel_fecCpt}" for="fecCpt" />
                         </p:column>
                         <p:column style="border-right: white">    
-                            <p:calendar navigator="true" locale="es" pattern="MM/dd/yyyy" showOn="button" id="fecCpt" value="#{concertacionPlanTrabajoProductivaController.selected.fecCpt}" title="#{bundle.CreateConcertacionPlanTrabajoProductivaTitle_fecCpt}" required="true" requiredMessage="#{bundle.CreateConcertacionPlanTrabajoProductivaRequiredMessage_fecCpt}"/>
+                            <p:calendar navigator="true" locale="es" pattern="MM/dd/yyyy" showOn="button" id="fecCpt" value="#{seguimientoProductivaController.selectedConcertacionPlanTrabajoProductiva.fecCpt}" title="#{bundle.CreateConcertacionPlanTrabajoProductivaTitle_fecCpt}" required="true" requiredMessage="#{bundle.CreateConcertacionPlanTrabajoProductivaRequiredMessage_fecCpt}"/>
                         </p:column>                       
                     </p:row>                    
                     <p:row>
@@ -40,20 +40,22 @@
                             <h:outputLabel value="#{bundle.CreateConcertacionPlanTrabajoProductivaLabel_lugCpt}" for="lugCpt" />
                         </p:column>
                         <p:column style="border-right: white">    
-                            <p:inputText id="lugCpt" value="#{concertacionPlanTrabajoProductivaController.selected.lugCpt}" title="#{bundle.CreateConcertacionPlanTrabajoProductivaTitle_lugCpt}" required="true" requiredMessage="#{bundle.CreateConcertacionPlanTrabajoProductivaRequiredMessage_lugCpt}"/>
+                            <p:inputText id="lugCpt" value="#{seguimientoProductivaController.selectedConcertacionPlanTrabajoProductiva.lugCpt}" title="#{bundle.CreateConcertacionPlanTrabajoProductivaTitle_lugCpt}" required="true" requiredMessage="#{bundle.CreateConcertacionPlanTrabajoProductivaRequiredMessage_lugCpt}"/>
                         </p:column>                        
                     </p:row>                    
                     <p:row>
                         <p:column colspan="2">
-                            <p:fileUpload fileUploadListener="#{concertacionPlanTrabajoProductivaController.selected.eviApr}" mode="advanced" dragDropSupport="false"  
+                            <p:fileUpload id="eviApr" fileUploadListener="#{concertacionPlanTrabajoProductivaController.selected.eviApr}" mode="advanced" dragDropSupport="false"  
                                           multiple="false" sizeLimit="10000000" allowTypes="/(\.|\/)(gif|jpe?g|png|zip|rar|doc|doc?x|bmp|avi|pdf)$/" />
                         </p:column>
                     </p:row>
                 </p:panelGrid>
                 <br />
                 <br />
-                <p:commandButton process="@this, @form" update="@form, :msgs"
-                                 action="#{concertacionPlanTrabajoProductivaController.create}" value="#{bundle.CreateConcertacionPlanTrabajoProductivaSaveLink}" icon="ui-icon-disk"/>
+                <p:commandButton process="@this, @form" update="@form, :msgs"  
+                                 value="#{bundle.CreateConcertacionPlanTrabajoProductivaSaveLink}" oncomplete="if (!args.validationFailed) dlg.hide();" icon="ui-icon-disk"
+                                 actionListener="#{seguimientoProductivaController.concertacionActual}">
+                </p:commandButton>
                 <br />
                 <br />               
             </div>

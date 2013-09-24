@@ -21,7 +21,7 @@
             <p:growl id="msgs" showDetail="false" sticky="false"/>
             <h:form id="formSeguimientoProductiva">
                 <div id="form" align="center"> 
-                    
+
                     <br />
                     <br />  
 
@@ -74,7 +74,7 @@
                                 <h:outputLabel value="#{bundle.CreateFichaCaracterizacionLabel_idPrograma}" for="codPro" />
                             </p:column>
                             <p:column>
-                                <p:selectOneMenu id="codPro" value="#{seguimientoProductivaController.selectedPrograma}" required="true" requiredMessage="#{bundle.CreateFichaCaracterizacionRequiredMessage_idPrograma}">
+                                <p:selectOneMenu id="codPro" value="#{seguimientoProductivaController.selectedPrograma}" requiredMessage="#{bundle.CreateFichaCaracterizacionRequiredMessage_idPrograma}">
                                     <f:selectItems value="#{programaController.itemsAvailableSelectOne}"/>
                                     <p:ajax update="idFichaCaracterizacion"/>
                                 </p:selectOneMenu>
@@ -83,7 +83,7 @@
                                 <h:outputLabel value="#{bundle.CreateSeguimientoProductivaLabel_idFichaCaracterizacion}" for="idFichaCaracterizacion" />
                             </p:column>
                             <p:column>    
-                                <p:selectOneMenu id="idFichaCaracterizacion" value="#{seguimientoProductivaController.selected.idFichaCaracterizacion}" required="true" requiredMessage="#{bundle.CreateSeguimientoProductivaRequiredMessage_idFichaCaracterizacion}">
+                                <p:selectOneMenu id="idFichaCaracterizacion" value="#{seguimientoProductivaController.selected.idFichaCaracterizacion}" requiredMessage="#{bundle.CreateSeguimientoProductivaRequiredMessage_idFichaCaracterizacion}">
                                     <f:selectItems value="#{seguimientoProductivaController.itemsAvailableSelectOneFichaCaracterizacionByPrograma}"/>
                                 </p:selectOneMenu>
                             </p:column>                          
@@ -276,18 +276,18 @@
                                     <p:column headerText="Variable">                        
                                         <h:outputText  title="#{item.idCriterioEvaluacion.detallesCriterio}" value="#{item.idCriterioEvaluacion.nomCriterio}"/>
                                     </p:column>
-                                    
+
                                     <p:column headerText="Valoración">                        
                                         <p:cellEditor>  
                                             <f:facet name="output">  
                                                 <p:selectBooleanButton disabled="true" value="#{item.valCep}" onLabel="Satisfactorio" offLabel="Por Mejorar" onIcon="ui-icon-check" offIcon="ui-icon-close" /> 
                                             </f:facet>  
                                             <f:facet name="input">                                                 
-                                               <p:selectBooleanButton id="valCep" value="#{item.valCep}" onLabel="Satisfactorio" offLabel="Por Mejorar" onIcon="ui-icon-check" offIcon="ui-icon-close" /> 
+                                                <p:selectBooleanButton id="valCep" value="#{item.valCep}" onLabel="Satisfactorio" offLabel="Por Mejorar" onIcon="ui-icon-check" offIcon="ui-icon-close" /> 
                                             </f:facet> 
                                         </p:cellEditor>  
                                     </p:column>
-                                     
+
                                     <p:column headerText="Observación">                        
                                         <p:cellEditor>  
                                             <f:facet name="output">  
@@ -298,7 +298,7 @@
                                             </f:facet> 
                                         </p:cellEditor>  
                                     </p:column>                                    
-                                    
+
                                     <p:column style="width:6%">  
                                         <p:rowEditor />  
                                     </p:column> 
@@ -307,7 +307,7 @@
                         </p:row>
 
                         <p:row>  
-                            <p:column styleClass="ui-widget-header" colspan="4"><p align="center">VALORACIÓN ETAPA PRODUCTIVA</p></p:column>  
+                            <p:column styleClass="ui-widget-header" colspan="4"><p align="center">4. VALORACIÓN ETAPA PRODUCTIVA</p></p:column>  
                         </p:row>
 
                         <p:row>
@@ -340,7 +340,7 @@
                                 <h:outputLabel value="#{bundle.CreateSeguimientoProductivaLabel_espRec}" for="espRec" />
                             </p:column>
                             <p:column colspan="3">    
-                                <p:inputTextarea rows="4" cols="100" id="espRec" value="#{seguimientoProductivaController.selected.espRec}" title="#{bundle.CreateSeguimientoProductivaTitle_espRec}" required="true" requiredMessage="#{bundle.CreateSeguimientoProductivaRequiredMessage_espRec}"/>
+                                <p:inputTextarea rows="4" cols="100" id="espRec" value="#{seguimientoProductivaController.selected.espRec}" title="#{bundle.CreateSeguimientoProductivaTitle_espRec}" requiredMessage="#{bundle.CreateSeguimientoProductivaRequiredMessage_espRec}"/>
                             </p:column>                                    
                         </p:row>
 
@@ -352,7 +352,7 @@
                             <p:column colspan="3">
                                 <p:commandButton id="idIncidenteProductiva"  icon="ui-icon-plusthick" onclick="dlg2.show();" process="@none"/>                          
                             </p:column>                           
-                                                  
+
                         </p:row>
 
                         <f:facet name="footer">
@@ -380,14 +380,14 @@
                        resizable="true" modal="true" showEffect="clip" hideEffect="clip">
                 <ui:include src="/Seg_Ap_Et_Prod/concertacionPlanTrabajoProductiva/Create.xhtml" />
             </p:dialog> 
-            
-            
+
+
             <p:dialog  id="dialog2"   closeOnEscape="true" header="#{bundle.CreateIncidenteProductivaTitle}" widgetVar="dlg2" minHeight="300" minWidth="450" 
                        resizable="true" modal="true" showEffect="clip" hideEffect="clip">
                 <ui:include src="/Seg_Ap_Et_Prod/incidenteProductiva/Create.xhtml" />
             </p:dialog> 
 
-            <p:dialog id="buscarCliente" widgetVar="dlgBuscarUsuario" modal="true" resizable="false" 
+            <p:dialog id="buscarUsuario" widgetVar="dlgBuscarUsuario" modal="true" resizable="false" 
                       showEffect="clip" hideEffect="clip" closeOnEscape="true">
                 <h:form id="formularioBuscarUsuario"> 
                     <p:panelGrid>                        
