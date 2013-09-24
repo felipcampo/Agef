@@ -184,20 +184,21 @@
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_tipoPlanMejoramiento}" for="tipoPlanMejoramiento" />
                             </p:column>
-                            <p:column colspan="3">    
-                                <p:selectBooleanButton id="tipoPlanMejoramiento" value="#{planMejoramientoController.selected.tipoPlanMejoramiento}" onLabel="Aprovado" offLabel="No Aprovado" onIcon="ui-icon-check" offIcon="ui-icon-close" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_tipoPlanMejoramiento}"/> 
-                             </p:column>
+                            <p:column colspan="3">  
+                                <p:selectOneRadio id="tipoPlanMejoramiento" value="#{planMejoramientoController.selected.tipoPlanMejoramiento}" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_tipoPlanMejoramiento}">  
+                                    <f:selectItem itemLabel="Académico" itemValue="Academico" />  
+                                    <f:selectItem itemLabel="Disciplinario" itemValue="Disciplinario" />                                       
+                                </p:selectOneRadio>                                          
+                            </p:column> 
+                            
                         </p:row>
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_juicioEvaluacion}" for="juicioEvaluacion" />
                             </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputText id="juicioEvaluacion" value="#{planMejoramientoController.selected.juicioEvaluacion}" title="#{bundle.CreatePlanMejoramientoTitle_juicioEvaluacion}" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_juicioEvaluacion}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="juicioEvaluacion"/>
-                            </p:column>
+                            <p:column colspan="3">    
+                                <p:selectBooleanButton id="reqMej" value="#{planMejoramientoController.selected.tipoPlanMejoramiento}" onLabel="Aprovo" offLabel="No Aprovo" onIcon="ui-icon-check" offIcon="ui-icon-close" required="true" requiredMessage="#{bundle.CreatePlanMejoramientoRequiredMessage_tipoPlanMejoramiento}"/> 
+                            </p:column>              
                         </p:row>   
                         <p:row>
                             <p:column>
