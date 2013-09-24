@@ -46,6 +46,7 @@ public class FichaCaracterizacion implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
+    @NotNull
     @Column(name = "id_ficha_caracterizacion")
     private Integer idFichaCaracterizacion;
     @Basic(optional = false)
@@ -89,6 +90,12 @@ public class FichaCaracterizacion implements Serializable {
     private List<ReporteNovedad> reporteNovedadList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idFichaCaracterizacion")
     private List<PlaneacionClase> planeacionClaseList;
+    @JoinColumn(name = "id_programa", referencedColumnName = "id_programa")
+    @ManyToOne(optional = false)
+    private Programa idPrograma;
+    @JoinColumn(name = "id_proyecto_formativo", referencedColumnName = "id_proyecto_formativo")
+    @ManyToOne(optional = false)
+    private ProyectoFormativo idProyectoFormativo;
     @JoinColumn(name = "id_nivel_formacion", referencedColumnName = "id_nivel_formacion")
     @ManyToOne(optional = false)
     private NivelFormacion idNivelFormacion;
@@ -98,15 +105,6 @@ public class FichaCaracterizacion implements Serializable {
     @JoinColumn(name = "id_tipo_oferta", referencedColumnName = "id_tipo_oferta")
     @ManyToOne(optional = false)
     private TipoOferta idTipoOferta;
-    @JoinColumn(name = "id_proyecto_formativo", referencedColumnName = "id_proyecto_formativo")
-    @ManyToOne(optional = false)
-    private ProyectoFormativo idProyectoFormativo;
-    @JoinColumn(name = "id_sede_centro", referencedColumnName = "id_sede_centro")
-    @ManyToOne(optional = false)
-    private SedeCentro idSedeCentro;
-    @JoinColumn(name = "id_programa", referencedColumnName = "id_programa")
-    @ManyToOne(optional = false)
-    private Programa idPrograma;
     @JoinColumn(name = "id_jornada_formacion", referencedColumnName = "id_jornada_formacion")
     @ManyToOne(optional = false)
     private JornadaFormacion idJornadaFormacion;
@@ -253,6 +251,22 @@ public class FichaCaracterizacion implements Serializable {
         this.planeacionClaseList = planeacionClaseList;
     }
 
+    public Programa getIdPrograma() {
+        return idPrograma;
+    }
+
+    public void setIdPrograma(Programa idPrograma) {
+        this.idPrograma = idPrograma;
+    }
+
+    public ProyectoFormativo getIdProyectoFormativo() {
+        return idProyectoFormativo;
+    }
+
+    public void setIdProyectoFormativo(ProyectoFormativo idProyectoFormativo) {
+        this.idProyectoFormativo = idProyectoFormativo;
+    }
+
     public NivelFormacion getIdNivelFormacion() {
         return idNivelFormacion;
     }
@@ -275,30 +289,6 @@ public class FichaCaracterizacion implements Serializable {
 
     public void setIdTipoOferta(TipoOferta idTipoOferta) {
         this.idTipoOferta = idTipoOferta;
-    }
-
-    public ProyectoFormativo getIdProyectoFormativo() {
-        return idProyectoFormativo;
-    }
-
-    public void setIdProyectoFormativo(ProyectoFormativo idProyectoFormativo) {
-        this.idProyectoFormativo = idProyectoFormativo;
-    }
-
-    public SedeCentro getIdSedeCentro() {
-        return idSedeCentro;
-    }
-
-    public void setIdSedeCentro(SedeCentro idSedeCentro) {
-        this.idSedeCentro = idSedeCentro;
-    }
-
-    public Programa getIdPrograma() {
-        return idPrograma;
-    }
-
-    public void setIdPrograma(Programa idPrograma) {
-        this.idPrograma = idPrograma;
     }
 
     public JornadaFormacion getIdJornadaFormacion() {

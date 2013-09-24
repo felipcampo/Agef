@@ -60,7 +60,7 @@ public class VisitaEtapaProductiva implements Serializable {
     private Date fechaFin;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idVisitaEtapaProductiva")
     private List<IncidenteProductiva> incidenteProductivaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idVisitaEtapaProductiva")
+    @OneToMany(mappedBy = "idVisitaEtapaProductiva")
     private List<SeguimientoProductiva> seguimientoProductivaList;
 
     public VisitaEtapaProductiva() {

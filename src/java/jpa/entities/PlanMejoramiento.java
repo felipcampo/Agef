@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +20,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -37,12 +39,12 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "PlanMejoramiento.findAll", query = "SELECT p FROM PlanMejoramiento p"),
     @NamedQuery(name = "PlanMejoramiento.findByIdPlanMejoramiento", query = "SELECT p FROM PlanMejoramiento p WHERE p.idPlanMejoramiento = :idPlanMejoramiento"),
-    @NamedQuery(name = "PlanMejoramiento.findByTipoPlanMejoramiento", query = "SELECT p FROM PlanMejoramiento p WHERE p.tipoPlanMejoramiento = :tipoPlanMejoramiento"),
     @NamedQuery(name = "PlanMejoramiento.findByJuicioEvaluacion", query = "SELECT p FROM PlanMejoramiento p WHERE p.juicioEvaluacion = :juicioEvaluacion"),
     @NamedQuery(name = "PlanMejoramiento.findByEtapa", query = "SELECT p FROM PlanMejoramiento p WHERE p.etapa = :etapa"),
     @NamedQuery(name = "PlanMejoramiento.findByTotal", query = "SELECT p FROM PlanMejoramiento p WHERE p.total = :total"),
     @NamedQuery(name = "PlanMejoramiento.findByNombreJefe", query = "SELECT p FROM PlanMejoramiento p WHERE p.nombreJefe = :nombreJefe"),
-    @NamedQuery(name = "PlanMejoramiento.findByFechaConcertacion", query = "SELECT p FROM PlanMejoramiento p WHERE p.fechaConcertacion = :fechaConcertacion")})
+    @NamedQuery(name = "PlanMejoramiento.findByFechaConcertacion", query = "SELECT p FROM PlanMejoramiento p WHERE p.fechaConcertacion = :fechaConcertacion"),
+    @NamedQuery(name = "PlanMejoramiento.findByTipoPlanMejoramiento", query = "SELECT p FROM PlanMejoramiento p WHERE p.tipoPlanMejoramiento = :tipoPlanMejoramiento")})
 public class PlanMejoramiento implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -60,10 +62,6 @@ public class PlanMejoramiento implements Serializable {
     @Size(max = 65535)
     @Column(name = "evidencia_cam")
     private String evidenciaCam;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "tipo_plan_mejoramiento")
-    private boolean tipoPlanMejoramiento;
     @Basic(optional = false)
     @NotNull
     @Column(name = "juicio_evaluacion")
@@ -89,44 +87,51 @@ public class PlanMejoramiento implements Serializable {
     @Column(name = "fecha_concertacion")
     @Temporal(TemporalType.DATE)
     private Date fechaConcertacion;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 15)
+    @Column(name = "tipo_plan_mejoramiento")
+    private String tipoPlanMejoramiento;
     @ManyToMany(mappedBy = "planMejoramientoList")
     private List<ResultadoAprendizaje> resultadoAprendizajeList;
-    @JoinColumn(name = "id_actividad_plan", referencedColumnName = "id_actividad_plan")
-    @ManyToOne(optional = false)
-    private ActividadPlan idActividadPlan;
-    @JoinColumn(name = "id_comite", referencedColumnName = "id_comite")
-    @ManyToOne(optional = false)
-    private Comite idComite;
-    @JoinColumn(name = "id_ficha_caracterizacion", referencedColumnName = "id_ficha_caracterizacion")
-    @ManyToOne(optional = false)
-    private FichaCaracterizacion idFichaCaracterizacion;
-    @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
-    @ManyToOne
-    private Empresa idEmpresa;
-    @JoinColumn(name = "id_ciudad_concertacion", referencedColumnName = "id_ciudad")
-    @ManyToOne(optional = false)
-    private Ciudad idCiudadConcertacion;
-    @JoinColumn(name = "id_falta", referencedColumnName = "id_falta")
-    @ManyToOne(optional = false)
-    private Falta idFalta;
-    @JoinColumn(name = "id_estado_plan", referencedColumnName = "id_estado_plan")
-    @ManyToOne(optional = false)
-    private EstadoPlan idEstadoPlan;
-    @JoinColumn(name = "id_actividad_proyecto", referencedColumnName = "id_actividad_proyecto")
-    @ManyToOne(optional = false)
-    private ActividadProyecto idActividadProyecto;
-    @JoinColumn(name = "id_resultado_aprendizaje", referencedColumnName = "id_resultado_aprendizaje")
-    @ManyToOne(optional = false)
-    private ResultadoAprendizaje idResultadoAprendizaje;
-    @JoinColumn(name = "id_fase_proyecto", referencedColumnName = "id_fase_proyecto")
-    @ManyToOne(optional = false)
-    private FaseProyecto idFaseProyecto;
     @JoinColumn(name = "id_usuario2", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false)
     private Usuario idUsuario2;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false)
     private Usuario idUsuario;
+    @JoinColumn(name = "id_resultado_aprendizaje", referencedColumnName = "id_resultado_aprendizaje")
+    @ManyToOne(optional = false)
+    private ResultadoAprendizaje idResultadoAprendizaje;
+    @JoinColumn(name = "id_ficha_caracterizacion", referencedColumnName = "id_ficha_caracterizacion")
+    @ManyToOne(optional = false)
+    private FichaCaracterizacion idFichaCaracterizacion;
+    @JoinColumn(name = "id_fase_proyecto", referencedColumnName = "id_fase_proyecto")
+    @ManyToOne(optional = false)
+    private FaseProyecto idFaseProyecto;
+    @JoinColumn(name = "id_falta", referencedColumnName = "id_falta")
+    @ManyToOne(optional = false)
+    private Falta idFalta;
+    @JoinColumn(name = "id_estado_plan", referencedColumnName = "id_estado_plan")
+    @ManyToOne(optional = false)
+    private EstadoPlan idEstadoPlan;
+    @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
+    @ManyToOne
+    private Empresa idEmpresa;
+    @JoinColumn(name = "id_comite", referencedColumnName = "id_comite")
+    @ManyToOne(optional = false)
+    private Comite idComite;
+    @JoinColumn(name = "id_ciudad_concertacion", referencedColumnName = "id_ciudad")
+    @ManyToOne(optional = false)
+    private Ciudad idCiudadConcertacion;
+    @JoinColumn(name = "id_actividad_proyecto", referencedColumnName = "id_actividad_proyecto")
+    @ManyToOne(optional = false)
+    private ActividadProyecto idActividadProyecto;
+    @JoinColumn(name = "id_actividad_plan", referencedColumnName = "id_actividad_plan")
+    @ManyToOne(optional = false)
+    private ActividadPlan idActividadPlan;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPlanMejoramiento")
+    private List<SeguimientoInstructor> seguimientoInstructorList;
 
     public PlanMejoramiento() {
     }
@@ -135,14 +140,14 @@ public class PlanMejoramiento implements Serializable {
         this.idPlanMejoramiento = idPlanMejoramiento;
     }
 
-    public PlanMejoramiento(Integer idPlanMejoramiento, String observaciones, boolean tipoPlanMejoramiento, boolean juicioEvaluacion, boolean etapa, String compromiso, Date fechaConcertacion) {
+    public PlanMejoramiento(Integer idPlanMejoramiento, String observaciones, boolean juicioEvaluacion, boolean etapa, String compromiso, Date fechaConcertacion, String tipoPlanMejoramiento) {
         this.idPlanMejoramiento = idPlanMejoramiento;
         this.observaciones = observaciones;
-        this.tipoPlanMejoramiento = tipoPlanMejoramiento;
         this.juicioEvaluacion = juicioEvaluacion;
         this.etapa = etapa;
         this.compromiso = compromiso;
         this.fechaConcertacion = fechaConcertacion;
+        this.tipoPlanMejoramiento = tipoPlanMejoramiento;
     }
 
     public Integer getIdPlanMejoramiento() {
@@ -167,14 +172,6 @@ public class PlanMejoramiento implements Serializable {
 
     public void setEvidenciaCam(String evidenciaCam) {
         this.evidenciaCam = evidenciaCam;
-    }
-
-    public boolean getTipoPlanMejoramiento() {
-        return tipoPlanMejoramiento;
-    }
-
-    public void setTipoPlanMejoramiento(boolean tipoPlanMejoramiento) {
-        this.tipoPlanMejoramiento = tipoPlanMejoramiento;
     }
 
     public boolean getJuicioEvaluacion() {
@@ -225,6 +222,14 @@ public class PlanMejoramiento implements Serializable {
         this.fechaConcertacion = fechaConcertacion;
     }
 
+    public String getTipoPlanMejoramiento() {
+        return tipoPlanMejoramiento;
+    }
+
+    public void setTipoPlanMejoramiento(String tipoPlanMejoramiento) {
+        this.tipoPlanMejoramiento = tipoPlanMejoramiento;
+    }
+
     @XmlTransient
     public List<ResultadoAprendizaje> getResultadoAprendizajeList() {
         return resultadoAprendizajeList;
@@ -234,20 +239,28 @@ public class PlanMejoramiento implements Serializable {
         this.resultadoAprendizajeList = resultadoAprendizajeList;
     }
 
-    public ActividadPlan getIdActividadPlan() {
-        return idActividadPlan;
+    public Usuario getIdUsuario2() {
+        return idUsuario2;
     }
 
-    public void setIdActividadPlan(ActividadPlan idActividadPlan) {
-        this.idActividadPlan = idActividadPlan;
+    public void setIdUsuario2(Usuario idUsuario2) {
+        this.idUsuario2 = idUsuario2;
     }
 
-    public Comite getIdComite() {
-        return idComite;
+    public Usuario getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setIdComite(Comite idComite) {
-        this.idComite = idComite;
+    public void setIdUsuario(Usuario idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public ResultadoAprendizaje getIdResultadoAprendizaje() {
+        return idResultadoAprendizaje;
+    }
+
+    public void setIdResultadoAprendizaje(ResultadoAprendizaje idResultadoAprendizaje) {
+        this.idResultadoAprendizaje = idResultadoAprendizaje;
     }
 
     public FichaCaracterizacion getIdFichaCaracterizacion() {
@@ -258,20 +271,12 @@ public class PlanMejoramiento implements Serializable {
         this.idFichaCaracterizacion = idFichaCaracterizacion;
     }
 
-    public Empresa getIdEmpresa() {
-        return idEmpresa;
+    public FaseProyecto getIdFaseProyecto() {
+        return idFaseProyecto;
     }
 
-    public void setIdEmpresa(Empresa idEmpresa) {
-        this.idEmpresa = idEmpresa;
-    }
-
-    public Ciudad getIdCiudadConcertacion() {
-        return idCiudadConcertacion;
-    }
-
-    public void setIdCiudadConcertacion(Ciudad idCiudadConcertacion) {
-        this.idCiudadConcertacion = idCiudadConcertacion;
+    public void setIdFaseProyecto(FaseProyecto idFaseProyecto) {
+        this.idFaseProyecto = idFaseProyecto;
     }
 
     public Falta getIdFalta() {
@@ -290,6 +295,30 @@ public class PlanMejoramiento implements Serializable {
         this.idEstadoPlan = idEstadoPlan;
     }
 
+    public Empresa getIdEmpresa() {
+        return idEmpresa;
+    }
+
+    public void setIdEmpresa(Empresa idEmpresa) {
+        this.idEmpresa = idEmpresa;
+    }
+
+    public Comite getIdComite() {
+        return idComite;
+    }
+
+    public void setIdComite(Comite idComite) {
+        this.idComite = idComite;
+    }
+
+    public Ciudad getIdCiudadConcertacion() {
+        return idCiudadConcertacion;
+    }
+
+    public void setIdCiudadConcertacion(Ciudad idCiudadConcertacion) {
+        this.idCiudadConcertacion = idCiudadConcertacion;
+    }
+
     public ActividadProyecto getIdActividadProyecto() {
         return idActividadProyecto;
     }
@@ -298,36 +327,21 @@ public class PlanMejoramiento implements Serializable {
         this.idActividadProyecto = idActividadProyecto;
     }
 
-    public ResultadoAprendizaje getIdResultadoAprendizaje() {
-        return idResultadoAprendizaje;
+    public ActividadPlan getIdActividadPlan() {
+        return idActividadPlan;
     }
 
-    public void setIdResultadoAprendizaje(ResultadoAprendizaje idResultadoAprendizaje) {
-        this.idResultadoAprendizaje = idResultadoAprendizaje;
+    public void setIdActividadPlan(ActividadPlan idActividadPlan) {
+        this.idActividadPlan = idActividadPlan;
     }
 
-    public FaseProyecto getIdFaseProyecto() {
-        return idFaseProyecto;
+    @XmlTransient
+    public List<SeguimientoInstructor> getSeguimientoInstructorList() {
+        return seguimientoInstructorList;
     }
 
-    public void setIdFaseProyecto(FaseProyecto idFaseProyecto) {
-        this.idFaseProyecto = idFaseProyecto;
-    }
-
-    public Usuario getIdUsuario2() {
-        return idUsuario2;
-    }
-
-    public void setIdUsuario2(Usuario idUsuario2) {
-        this.idUsuario2 = idUsuario2;
-    }
-
-    public Usuario getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Usuario idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setSeguimientoInstructorList(List<SeguimientoInstructor> seguimientoInstructorList) {
+        this.seguimientoInstructorList = seguimientoInstructorList;
     }
 
     @Override

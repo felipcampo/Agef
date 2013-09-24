@@ -118,7 +118,7 @@ public class EstadoJuicio implements Serializable {
 
     @Override
     public String toString() {
-        return nomEstadoJuicio;
+        return "jpa.entities.EstadoJuicio[ idEstadoJuicio=" + idEstadoJuicio + " ]";
     }
     
 }

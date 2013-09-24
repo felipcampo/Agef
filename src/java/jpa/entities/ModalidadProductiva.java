@@ -59,11 +59,8 @@ public class ModalidadProductiva implements Serializable {
     @Size(min = 1, max = 65535)
     @Column(name = "informacion_requisitos")
     private String informacionRequisitos;
-    @JoinColumn(name = "id_tipo_modalidad_productiva", referencedColumnName = "id_tipo_modalidad_productiva")
-    @ManyToOne(optional = false)
-    private TipoModalidadProductiva idTipoModalidadProductiva;
     @JoinColumn(name = "id_contrato_proyecto", referencedColumnName = "id_contrato_proyecto")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private ContratoProyecto idContratoProyecto;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idModalidadProductiva")
     private List<SeguimientoProductiva> seguimientoProductivaList;
@@ -112,14 +109,6 @@ public class ModalidadProductiva implements Serializable {
 
     public void setInformacionRequisitos(String informacionRequisitos) {
         this.informacionRequisitos = informacionRequisitos;
-    }
-
-    public TipoModalidadProductiva getIdTipoModalidadProductiva() {
-        return idTipoModalidadProductiva;
-    }
-
-    public void setIdTipoModalidadProductiva(TipoModalidadProductiva idTipoModalidadProductiva) {
-        this.idTipoModalidadProductiva = idTipoModalidadProductiva;
     }
 
     public ContratoProyecto getIdContratoProyecto() {

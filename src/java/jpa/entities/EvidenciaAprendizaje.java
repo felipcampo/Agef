@@ -38,11 +38,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "EvidenciaAprendizaje.findAll", query = "SELECT e FROM EvidenciaAprendizaje e"),
     @NamedQuery(name = "EvidenciaAprendizaje.findByIdEvidenciaAprendizaje", query = "SELECT e FROM EvidenciaAprendizaje e WHERE e.idEvidenciaAprendizaje = :idEvidenciaAprendizaje"),
-    @NamedQuery(name = "EvidenciaAprendizaje.findByAutentico", query = "SELECT e FROM EvidenciaAprendizaje e WHERE e.autentico = :autentico"),
-    @NamedQuery(name = "EvidenciaAprendizaje.findByCalidad", query = "SELECT e FROM EvidenciaAprendizaje e WHERE e.calidad = :calidad"),
-    @NamedQuery(name = "EvidenciaAprendizaje.findByFechaEvidenciaAprendizaje", query = "SELECT e FROM EvidenciaAprendizaje e WHERE e.fechaEvidenciaAprendizaje = :fechaEvidenciaAprendizaje"),
-    @NamedQuery(name = "EvidenciaAprendizaje.findByPertinente", query = "SELECT e FROM EvidenciaAprendizaje e WHERE e.pertinente = :pertinente"),
-    @NamedQuery(name = "EvidenciaAprendizaje.findByValidez", query = "SELECT e FROM EvidenciaAprendizaje e WHERE e.validez = :validez")})
+    @NamedQuery(name = "EvidenciaAprendizaje.findByFechaEvidenciaAprendizaje", query = "SELECT e FROM EvidenciaAprendizaje e WHERE e.fechaEvidenciaAprendizaje = :fechaEvidenciaAprendizaje")})
 public class EvidenciaAprendizaje implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -53,37 +49,20 @@ public class EvidenciaAprendizaje implements Serializable {
     private String idEvidenciaAprendizaje;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "autentico")
-    private boolean autentico;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "calidad")
-    private boolean calidad;
-    @Basic(optional = false)
-    @NotNull
-    @Lob
-    @Size(min = 1, max = 65535)
-    @Column(name = "descr_evi_apr")
-    private String descrEviApr;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "fecha_evidencia_aprendizaje")
-    @Temporal(TemporalType.DATE)
-    private Date fechaEvidenciaAprendizaje;
-    @Basic(optional = false)
-    @NotNull
     @Lob
     @Size(min = 1, max = 65535)
     @Column(name = "nom_evi_apr")
     private String nomEviApr;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "pertinente")
-    private boolean pertinente;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "validez")
-    private boolean validez;
+    @Column(name = "fecha_evidencia_aprendizaje")
+    @Temporal(TemporalType.DATE)
+    private Date fechaEvidenciaAprendizaje;
+    @JoinTable(name = "evidencia_aprendizaje_criterio_evaluacion", joinColumns = {
+        @JoinColumn(name = "id_evidencia_aprendizaje", referencedColumnName = "id_evidencia_aprendizaje")}, inverseJoinColumns = {
+        @JoinColumn(name = "id_criterio_evaluacion", referencedColumnName = "id_criterio_evaluacion")})
+    @ManyToMany
+    private List<CriterioEvaluacion> criterioEvaluacionList;
     @JoinTable(name = "evidencia_aprendizaje_tipo_evidencia", joinColumns = {
         @JoinColumn(name = "id_evidencia_aprendizaje", referencedColumnName = "id_evidencia_aprendizaje")}, inverseJoinColumns = {
         @JoinColumn(name = "id_tipo_evidencia_aprendizaje", referencedColumnName = "id_tipo_evidencia_aprendizaje")})
@@ -93,23 +72,17 @@ public class EvidenciaAprendizaje implements Serializable {
         @JoinColumn(name = "id_evidencia_aprendizaje", referencedColumnName = "id_evidencia_aprendizaje")}, inverseJoinColumns = {
         @JoinColumn(name = "id_criterio_evaluacion", referencedColumnName = "id_criterio_evaluacion")})
     @ManyToMany
-    private List<CriterioEvaluacion> criterioEvaluacionList;
+    private List<CriterioEvaluacion> criterioEvaluacionList1;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEvidenciaAprendizaje")
+    private List<ActividadPlan> actividadPlanList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEvidenciaAprendizaje")
     private List<EvaluacionSeguimiento> evaluacionSeguimientoList;
+    @JoinColumn(name = "id_tipo_evidencia_aprendizaje", referencedColumnName = "id_tipo_evidencia_aprendizaje")
+    @ManyToOne(optional = false)
+    private TipoEvidenciaAprendizaje idTipoEvidenciaAprendizaje;
     @JoinColumn(name = "id_criterio_evaluacion", referencedColumnName = "id_criterio_evaluacion")
     @ManyToOne(optional = false)
     private CriterioEvaluacion idCriterioEvaluacion;
-    @JoinColumn(name = "id_ambiente", referencedColumnName = "id_ambiente")
-    @ManyToOne(optional = false)
-    private Ambiente idAmbiente;
-    @JoinColumn(name = "id_subactividad_proyecto", referencedColumnName = "id_subactividad_proyecto")
-    @ManyToOne(optional = false)
-    private SubactividadProyecto idSubactividadProyecto;
-    @JoinColumn(name = "id_resultado_aprendizaje", referencedColumnName = "id_resultado_aprendizaje")
-    @ManyToOne(optional = false)
-    private ResultadoAprendizaje idResultadoAprendizaje;
-    @OneToMany(mappedBy = "idEvidenciaAprendizaje")
-    private List<ProyectoFormativo> proyectoFormativoList;
 
     public EvidenciaAprendizaje() {
     }
@@ -118,15 +91,10 @@ public class EvidenciaAprendizaje implements Serializable {
         this.idEvidenciaAprendizaje = idEvidenciaAprendizaje;
     }
 
-    public EvidenciaAprendizaje(String idEvidenciaAprendizaje, boolean autentico, boolean calidad, String descrEviApr, Date fechaEvidenciaAprendizaje, String nomEviApr, boolean pertinente, boolean validez) {
+    public EvidenciaAprendizaje(String idEvidenciaAprendizaje, String nomEviApr, Date fechaEvidenciaAprendizaje) {
         this.idEvidenciaAprendizaje = idEvidenciaAprendizaje;
-        this.autentico = autentico;
-        this.calidad = calidad;
-        this.descrEviApr = descrEviApr;
-        this.fechaEvidenciaAprendizaje = fechaEvidenciaAprendizaje;
         this.nomEviApr = nomEviApr;
-        this.pertinente = pertinente;
-        this.validez = validez;
+        this.fechaEvidenciaAprendizaje = fechaEvidenciaAprendizaje;
     }
 
     public String getIdEvidenciaAprendizaje() {
@@ -137,38 +105,6 @@ public class EvidenciaAprendizaje implements Serializable {
         this.idEvidenciaAprendizaje = idEvidenciaAprendizaje;
     }
 
-    public boolean getAutentico() {
-        return autentico;
-    }
-
-    public void setAutentico(boolean autentico) {
-        this.autentico = autentico;
-    }
-
-    public boolean getCalidad() {
-        return calidad;
-    }
-
-    public void setCalidad(boolean calidad) {
-        this.calidad = calidad;
-    }
-
-    public String getDescrEviApr() {
-        return descrEviApr;
-    }
-
-    public void setDescrEviApr(String descrEviApr) {
-        this.descrEviApr = descrEviApr;
-    }
-
-    public Date getFechaEvidenciaAprendizaje() {
-        return fechaEvidenciaAprendizaje;
-    }
-
-    public void setFechaEvidenciaAprendizaje(Date fechaEvidenciaAprendizaje) {
-        this.fechaEvidenciaAprendizaje = fechaEvidenciaAprendizaje;
-    }
-
     public String getNomEviApr() {
         return nomEviApr;
     }
@@ -177,29 +113,12 @@ public class EvidenciaAprendizaje implements Serializable {
         this.nomEviApr = nomEviApr;
     }
 
-    public boolean getPertinente() {
-        return pertinente;
+    public Date getFechaEvidenciaAprendizaje() {
+        return fechaEvidenciaAprendizaje;
     }
 
-    public void setPertinente(boolean pertinente) {
-        this.pertinente = pertinente;
-    }
-
-    public boolean getValidez() {
-        return validez;
-    }
-
-    public void setValidez(boolean validez) {
-        this.validez = validez;
-    }
-
-    @XmlTransient
-    public List<TipoEvidenciaAprendizaje> getTipoEvidenciaAprendizajeList() {
-        return tipoEvidenciaAprendizajeList;
-    }
-
-    public void setTipoEvidenciaAprendizajeList(List<TipoEvidenciaAprendizaje> tipoEvidenciaAprendizajeList) {
-        this.tipoEvidenciaAprendizajeList = tipoEvidenciaAprendizajeList;
+    public void setFechaEvidenciaAprendizaje(Date fechaEvidenciaAprendizaje) {
+        this.fechaEvidenciaAprendizaje = fechaEvidenciaAprendizaje;
     }
 
     @XmlTransient
@@ -212,6 +131,33 @@ public class EvidenciaAprendizaje implements Serializable {
     }
 
     @XmlTransient
+    public List<TipoEvidenciaAprendizaje> getTipoEvidenciaAprendizajeList() {
+        return tipoEvidenciaAprendizajeList;
+    }
+
+    public void setTipoEvidenciaAprendizajeList(List<TipoEvidenciaAprendizaje> tipoEvidenciaAprendizajeList) {
+        this.tipoEvidenciaAprendizajeList = tipoEvidenciaAprendizajeList;
+    }
+
+    @XmlTransient
+    public List<CriterioEvaluacion> getCriterioEvaluacionList1() {
+        return criterioEvaluacionList1;
+    }
+
+    public void setCriterioEvaluacionList1(List<CriterioEvaluacion> criterioEvaluacionList1) {
+        this.criterioEvaluacionList1 = criterioEvaluacionList1;
+    }
+
+    @XmlTransient
+    public List<ActividadPlan> getActividadPlanList() {
+        return actividadPlanList;
+    }
+
+    public void setActividadPlanList(List<ActividadPlan> actividadPlanList) {
+        this.actividadPlanList = actividadPlanList;
+    }
+
+    @XmlTransient
     public List<EvaluacionSeguimiento> getEvaluacionSeguimientoList() {
         return evaluacionSeguimientoList;
     }
@@ -220,45 +166,20 @@ public class EvidenciaAprendizaje implements Serializable {
         this.evaluacionSeguimientoList = evaluacionSeguimientoList;
     }
 
+    public TipoEvidenciaAprendizaje getIdTipoEvidenciaAprendizaje() {
+        return idTipoEvidenciaAprendizaje;
+    }
+
+    public void setIdTipoEvidenciaAprendizaje(TipoEvidenciaAprendizaje idTipoEvidenciaAprendizaje) {
+        this.idTipoEvidenciaAprendizaje = idTipoEvidenciaAprendizaje;
+    }
+
     public CriterioEvaluacion getIdCriterioEvaluacion() {
         return idCriterioEvaluacion;
     }
 
     public void setIdCriterioEvaluacion(CriterioEvaluacion idCriterioEvaluacion) {
         this.idCriterioEvaluacion = idCriterioEvaluacion;
-    }
-
-    public Ambiente getIdAmbiente() {
-        return idAmbiente;
-    }
-
-    public void setIdAmbiente(Ambiente idAmbiente) {
-        this.idAmbiente = idAmbiente;
-    }
-
-    public SubactividadProyecto getIdSubactividadProyecto() {
-        return idSubactividadProyecto;
-    }
-
-    public void setIdSubactividadProyecto(SubactividadProyecto idSubactividadProyecto) {
-        this.idSubactividadProyecto = idSubactividadProyecto;
-    }
-
-    public ResultadoAprendizaje getIdResultadoAprendizaje() {
-        return idResultadoAprendizaje;
-    }
-
-    public void setIdResultadoAprendizaje(ResultadoAprendizaje idResultadoAprendizaje) {
-        this.idResultadoAprendizaje = idResultadoAprendizaje;
-    }
-
-    @XmlTransient
-    public List<ProyectoFormativo> getProyectoFormativoList() {
-        return proyectoFormativoList;
-    }
-
-    public void setProyectoFormativoList(List<ProyectoFormativo> proyectoFormativoList) {
-        this.proyectoFormativoList = proyectoFormativoList;
     }
 
     @Override

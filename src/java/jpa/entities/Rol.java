@@ -49,7 +49,7 @@ public class Rol implements Serializable {
     private List<TituloCriterio> tituloCriterioList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idRol")
     private List<SeguimientoInstructor> seguimientoInstructorList;
-    @OneToMany(mappedBy = "rolIdRol")
+    @OneToMany(mappedBy = "idRol")
     private List<SeguimientoProyecto> seguimientoProyectoList;
 
     public Rol() {
@@ -133,7 +133,7 @@ public class Rol implements Serializable {
 
     @Override
     public String toString() {
-        return descrRol;
+        return "jpa.entities.Rol[ idRol=" + idRol + " ]";
     }
     
 }

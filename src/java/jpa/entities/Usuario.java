@@ -59,15 +59,18 @@ public class Usuario implements Serializable {
     @Column(name = "id_usuario")
     private Integer idUsuario;
     @Basic(optional = false)
-    @Size(max = 20)
+    @NotNull
+    @Size(min = 1, max = 20)
     @Column(name = "numero_documento")
     private String numeroDocumento;
     @Basic(optional = false)
-    @Size(max = 100)
+    @NotNull
+    @Size(min = 1, max = 100)
     @Column(name = "nom_usu")
     private String nomUsu;
     @Basic(optional = false)
-    @Size(max = 100)
+    @NotNull
+    @Size(min = 1, max = 100)
     @Column(name = "ape_usu")
     private String apeUsu;
     @Basic(optional = false)
@@ -118,8 +121,6 @@ public class Usuario implements Serializable {
     private List<ControlOperativo> controlOperativoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
     private List<FichaUsuario> fichaUsuarioList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
-    private List<EstadoAprendiz> estadoAprendizList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario1")
     private List<EvaluacionSeguimiento> evaluacionSeguimientoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
@@ -165,7 +166,7 @@ public class Usuario implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
     private List<EventoBienestar> eventoBienestarList;
     @JoinColumn(name = "id_estado_aspirante", referencedColumnName = "id_estado_aspirante")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private EstadoAspirante idEstadoAspirante;
     @JoinColumn(name = "id_situacion_militar", referencedColumnName = "id_situacion_militar")
     @ManyToOne(optional = false)
@@ -177,7 +178,7 @@ public class Usuario implements Serializable {
     @ManyToOne(optional = false)
     private TipoDocumento idTipoDocumento;
     @JoinColumn(name = "id_barrio", referencedColumnName = "id_barrio")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Barrio idBarrio;
     @JoinColumn(name = "id_ciudad_nacimiento", referencedColumnName = "id_ciudad")
     @ManyToOne(optional = false)
@@ -357,15 +358,6 @@ public class Usuario implements Serializable {
 
     public void setFichaUsuarioList(List<FichaUsuario> fichaUsuarioList) {
         this.fichaUsuarioList = fichaUsuarioList;
-    }
-
-    @XmlTransient
-    public List<EstadoAprendiz> getEstadoAprendizList() {
-        return estadoAprendizList;
-    }
-
-    public void setEstadoAprendizList(List<EstadoAprendiz> estadoAprendizList) {
-        this.estadoAprendizList = estadoAprendizList;
     }
 
     @XmlTransient
