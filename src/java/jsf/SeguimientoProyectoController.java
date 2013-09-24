@@ -17,6 +17,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.faces.model.SelectItem;
+import javax.servlet.http.HttpSession;
 import jpa.entities.CriterioEvaluacion;
 import jpa.entities.CriterioSeguimientoProyecto;
 import jpa.entities.EstadoAprendiz;
@@ -59,6 +60,7 @@ public class SeguimientoProyectoController implements Serializable {
     private jpa.sessions.FichaCaracterizacionFacade ejbFacadeFicha;
 
     public SeguimientoProyectoController() {
+         HttpSession session = ( HttpSession ) FacesContext.getCurrentInstance().getExternalContext().getSession( true );
     }
 
     public SeguimientoProyecto getSelected() {

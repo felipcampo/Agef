@@ -45,7 +45,7 @@
                                 <h:outputLabel value="#{bundle.CreateActividadPlanLabel_fecFin}" for="fecFin" />
                             </p:column>
                             <p:column style="border-right: white">    
-                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecFin" value="#{actividadPlanController.selected.fecFin}" title="#{bundle.CreateActividadPlanTitle_fecFin}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_fecFin}"/>
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" locale="es" showOn="button" id="fecFin" value="#{actividadPlanController.selected.fecFin}" title="#{bundle.CreateActividadPlanTitle_fecFin}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_fecFin}"/>
                             </p:column>
                             <p:column style="border-left: white;">
                                 <p:message for="fecFin"/>
@@ -56,7 +56,7 @@
                                 <h:outputLabel value="#{bundle.CreateActividadPlanLabel_fecIni}" for="fecIni" />
                             </p:column>
                             <p:column style="border-right: white">    
-                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecIni" value="#{actividadPlanController.selected.fecIni}" title="#{bundle.CreateActividadPlanTitle_fecIni}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_fecIni}"/>
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" locale="es" showOn="button" id="fecIni" value="#{actividadPlanController.selected.fecIni}" title="#{bundle.CreateActividadPlanTitle_fecIni}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_fecIni}"/>
                             </p:column>
                             <p:column style="border-left: white;">
                                 <p:message for="fecIni"/>
@@ -66,34 +66,28 @@
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateActividadPlanLabel_lugar}" for="lugar" />
                             </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputText id="lugar" value="#{actividadPlanController.selected.lugar}" title="#{bundle.CreateActividadPlanTitle_lugar}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_lugar}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="lugar"/>
-                            </p:column>
+                            <p:column colspan="3">  
+                                <p:selectOneRadio id="lugar" value="#{actividadPlanController.selected.lugar}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_lugar}">  
+                                    <f:selectItem itemLabel="Centro de Formación" itemValue="Centro de Formacion" />  
+                                    <f:selectItem itemLabel="Empresa" itemValue="Empresa" />                                       
+                                </p:selectOneRadio>                                          
+                            </p:column> 
                         </p:row>
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateActividadPlanLabel_pertinencia}" for="pertinencia" />
                             </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputText id="pertinencia" value="#{actividadPlanController.selected.pertinencia}" title="#{bundle.CreateActividadPlanTitle_pertinencia}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_pertinencia}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="pertinencia"/>
-                            </p:column>
+                       <p:column colspan="3">    
+                           <p:selectBooleanButton id="pertinencia" value="#{actividadPlanController.selected.pertinencia}" onLabel="Si" offLabel="No" onIcon="ui-icon-check" offIcon="ui-icon-close" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_pertinencia}"/> 
+                                    </p:column>    
                         </p:row>
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateActividadPlanLabel_vigencia}" for="vigencia" />
                             </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputText id="vigencia" value="#{actividadPlanController.selected.vigencia}" title="#{bundle.CreateActividadPlanTitle_vigencia}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_vigencia}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="vigencia"/>
-                            </p:column>
+                            <p:column colspan="3">    
+                                <p:selectBooleanButton id="vigencia" value="#{actividadPlanController.selected.vigencia}" onLabel="Si" offLabel="No" onIcon="ui-icon-check" offIcon="ui-icon-close" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_vigencia}"/> 
+                                    </p:column> 
                         </p:row>
                         <p:row>
                             <p:column>
@@ -110,30 +104,24 @@
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateActividadPlanLabel_calidad}" for="calidad" />
                             </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputText id="calidad" value="#{actividadPlanController.selected.calidad}" title="#{bundle.CreateActividadPlanTitle_calidad}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_calidad}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="calidad"/>
-                            </p:column>
+                          <p:column colspan="3">    
+                              <p:selectBooleanButton id="calidad" value="#{actividadPlanController.selected.calidad}" onLabel="Si" offLabel="No" onIcon="ui-icon-check" offIcon="ui-icon-close" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_calidad}"/> 
+                                    </p:column>  
                         </p:row>
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateActividadPlanLabel_aprendizaje}" for="aprendizaje" />
                             </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputText id="aprendizaje" value="#{actividadPlanController.selected.aprendizaje}" title="#{bundle.CreateActividadPlanTitle_aprendizaje}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_aprendizaje}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="aprendizaje"/>
-                            </p:column>
+                         <p:column colspan="3">    
+                             <p:selectBooleanButton id="aprendizaje" value="#{actividadPlanController.selected.aprendizaje}" onLabel="Logro" offLabel="No logro" onIcon="ui-icon-check" offIcon="ui-icon-close" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_aprendizaje}"/> 
+                                    </p:column>    
                         </p:row>
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateActividadPlanLabel_fecRevision}" for="fecRevision" />
                             </p:column>
                             <p:column style="border-right: white">    
-                                <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm:ss" showOn="button" id="fecRevision" value="#{actividadPlanController.selected.fecRevision}" title="#{bundle.CreateActividadPlanTitle_fecRevision}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_fecRevision}"/>
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm:ss" showOn="button" locale="es" id="fecRevision" value="#{actividadPlanController.selected.fecRevision}" title="#{bundle.CreateActividadPlanTitle_fecRevision}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_fecRevision}"/>
                             </p:column>
                             <p:column style="border-left: white;">
                                 <p:message for="fecRevision"/>
@@ -143,12 +131,13 @@
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateActividadPlanLabel_lugar2}" for="lugar2" />
                             </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputText id="lugar2" value="#{actividadPlanController.selected.lugar2}" title="#{bundle.CreateActividadPlanTitle_lugar2}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_lugar2}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="lugar2"/>
-                            </p:column>
+                           <p:column colspan="3">  
+                               <p:selectOneRadio id="lugar2" value="#{actividadPlanController.selected.lugar2}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_lugar2}">  
+                                    <f:selectItem itemLabel="Centro de Formación" itemValue="Centro de Formacion" />  
+                                    <f:selectItem itemLabel="Empresa" itemValue="Empresa" />                                       
+                                </p:selectOneRadio>                                          
+                            </p:column> 
+                            
                         </p:row>
                         <p:row>
                             <p:column>

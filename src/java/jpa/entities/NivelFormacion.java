@@ -49,8 +49,6 @@ public class NivelFormacion implements Serializable {
     private List<FichaCaracterizacion> fichaCaracterizacionList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idNivelFormacion")
     private List<MatrizCaracterizacion> matrizCaracterizacionList;
-    @OneToMany(mappedBy = "idNivelFormacion")
-    private List<SeguimientoProyecto> seguimientoProyectoList;
 
     public NivelFormacion() {
     }
@@ -96,15 +94,6 @@ public class NivelFormacion implements Serializable {
 
     public void setMatrizCaracterizacionList(List<MatrizCaracterizacion> matrizCaracterizacionList) {
         this.matrizCaracterizacionList = matrizCaracterizacionList;
-    }
-
-    @XmlTransient
-    public List<SeguimientoProyecto> getSeguimientoProyectoList() {
-        return seguimientoProyectoList;
-    }
-
-    public void setSeguimientoProyectoList(List<SeguimientoProyecto> seguimientoProyectoList) {
-        this.seguimientoProyectoList = seguimientoProyectoList;
     }
 
     @Override

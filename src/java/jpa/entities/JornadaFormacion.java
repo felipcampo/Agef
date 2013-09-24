@@ -47,8 +47,6 @@ public class JornadaFormacion implements Serializable {
     private String descrJornadaFormacion;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idJornadaFormacion")
     private List<FichaCaracterizacion> fichaCaracterizacionList;
-    @OneToMany(mappedBy = "idJornadaFormacion")
-    private List<SeguimientoProyecto> seguimientoProyectoList;
 
     public JornadaFormacion() {
     }
@@ -85,15 +83,6 @@ public class JornadaFormacion implements Serializable {
 
     public void setFichaCaracterizacionList(List<FichaCaracterizacion> fichaCaracterizacionList) {
         this.fichaCaracterizacionList = fichaCaracterizacionList;
-    }
-
-    @XmlTransient
-    public List<SeguimientoProyecto> getSeguimientoProyectoList() {
-        return seguimientoProyectoList;
-    }
-
-    public void setSeguimientoProyectoList(List<SeguimientoProyecto> seguimientoProyectoList) {
-        this.seguimientoProyectoList = seguimientoProyectoList;
     }
 
     @Override
