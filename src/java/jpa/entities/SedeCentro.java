@@ -42,7 +42,7 @@ public class SedeCentro implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_sede_centro")
-    private Short idSedeCentro;
+    private Integer idSedeCentro;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 60)
@@ -65,27 +65,27 @@ public class SedeCentro implements Serializable {
     @Column(name = "id_ciudad")
     private String idCiudad;
     @OneToMany(mappedBy = "idSedeCentro")
-    private List<SeguimientoProyecto> seguimientoProyectoList;
+    private List<CentroFormacion> centroFormacionList;
 
     public SedeCentro() {
     }
 
-    public SedeCentro(Short idSedeCentro) {
+    public SedeCentro(Integer idSedeCentro) {
         this.idSedeCentro = idSedeCentro;
     }
 
-    public SedeCentro(Short idSedeCentro, String nomSedeCentro, String idCentroFormacion, String idCiudad) {
+    public SedeCentro(Integer idSedeCentro, String nomSedeCentro, String idCentroFormacion, String idCiudad) {
         this.idSedeCentro = idSedeCentro;
         this.nomSedeCentro = nomSedeCentro;
         this.idCentroFormacion = idCentroFormacion;
         this.idCiudad = idCiudad;
     }
 
-    public Short getIdSedeCentro() {
+    public Integer getIdSedeCentro() {
         return idSedeCentro;
     }
 
-    public void setIdSedeCentro(Short idSedeCentro) {
+    public void setIdSedeCentro(Integer idSedeCentro) {
         this.idSedeCentro = idSedeCentro;
     }
 
@@ -130,12 +130,12 @@ public class SedeCentro implements Serializable {
     }
 
     @XmlTransient
-    public List<SeguimientoProyecto> getSeguimientoProyectoList() {
-        return seguimientoProyectoList;
+    public List<CentroFormacion> getCentroFormacionList() {
+        return centroFormacionList;
     }
 
-    public void setSeguimientoProyectoList(List<SeguimientoProyecto> seguimientoProyectoList) {
-        this.seguimientoProyectoList = seguimientoProyectoList;
+    public void setCentroFormacionList(List<CentroFormacion> centroFormacionList) {
+        this.centroFormacionList = centroFormacionList;
     }
 
     @Override

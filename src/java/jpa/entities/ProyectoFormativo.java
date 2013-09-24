@@ -215,7 +215,7 @@ public class ProyectoFormativo implements Serializable {
     private List<FaseProyecto> faseProyectoList;
     @ManyToMany(mappedBy = "proyectoFormativoList")
     private List<ActividadProyecto> actividadProyectoList;
-    @JoinTable(name = "proyecto_formativo_has_detalle_recurso", joinColumns = {
+    @JoinTable(name = "proyecto_formativo_detalle_recurso", joinColumns = {
         @JoinColumn(name = "id_proyecto_formativo", referencedColumnName = "id_proyecto_formativo")}, inverseJoinColumns = {
         @JoinColumn(name = "id_datalle_recurso", referencedColumnName = "id_datalle_recurso")})
     @ManyToMany
@@ -241,8 +241,6 @@ public class ProyectoFormativo implements Serializable {
     @JoinColumn(name = "id_estado_proyecto", referencedColumnName = "id_estado_proyecto")
     @ManyToOne(optional = false)
     private EstadoProyecto idEstadoProyecto;
-    @OneToMany(mappedBy = "idProyectoFormativo")
-    private List<SeguimientoProyecto> seguimientoProyectoList;
 
     public ProyectoFormativo() {
     }
@@ -635,15 +633,6 @@ public class ProyectoFormativo implements Serializable {
 
     public void setIdEstadoProyecto(EstadoProyecto idEstadoProyecto) {
         this.idEstadoProyecto = idEstadoProyecto;
-    }
-
-    @XmlTransient
-    public List<SeguimientoProyecto> getSeguimientoProyectoList() {
-        return seguimientoProyectoList;
-    }
-
-    public void setSeguimientoProyectoList(List<SeguimientoProyecto> seguimientoProyectoList) {
-        this.seguimientoProyectoList = seguimientoProyectoList;
     }
 
     @Override

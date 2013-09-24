@@ -432,15 +432,15 @@
                     </p:panelGrid>
                     <br /><br /><br />
                     <p:dataTable value="#{seguimientoProductivaController.listBusquedaUsuarios}"
-                                 var="item" paginator="true" rows="5" id="tablaUsuarios">
+                                 var="itemUser" paginator="true" rows="5" id="tablaUsuarios">
                         <p:column>
-                            <h:outputText value="#{item.numeroDocumento}"/>
+                            <h:outputText value="#{itemUser.numeroDocumento}"/>
                         </p:column>
                         <p:column>
-                            <h:outputText value="#{item.nomUsu}"/>
+                            <h:outputText value="#{itemUser.nomUsu}"/>
                         </p:column>
                         <p:column>
-                            <h:outputText value="#{item.apeUsu}"/>
+                            <h:outputText value="#{itemUser.apeUsu}"/>
                         </p:column>
                         <p:column>
                             <p:commandButton id="botonSeleccionUsuario" update=":formSeguimientoProductiva" action="#{seguimientoProductivaController.agregarUsuario}"
@@ -510,10 +510,6 @@
                     </p:dataTable>  
                 </h:form>                     
             </p:dialog>
-
-
-
-
         </ui:define> 
     </ui:composition>
 </html>

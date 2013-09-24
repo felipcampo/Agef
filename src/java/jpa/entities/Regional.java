@@ -46,8 +46,6 @@ public class Regional implements Serializable {
     private String nomReg;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idRegional")
     private List<CentroFormacion> centroFormacionList;
-    @OneToMany(mappedBy = "idRegional")
-    private List<SeguimientoProyecto> seguimientoProyectoList;
 
     public Regional() {
     }
@@ -84,15 +82,6 @@ public class Regional implements Serializable {
 
     public void setCentroFormacionList(List<CentroFormacion> centroFormacionList) {
         this.centroFormacionList = centroFormacionList;
-    }
-
-    @XmlTransient
-    public List<SeguimientoProyecto> getSeguimientoProyectoList() {
-        return seguimientoProyectoList;
-    }
-
-    public void setSeguimientoProyectoList(List<SeguimientoProyecto> seguimientoProyectoList) {
-        this.seguimientoProyectoList = seguimientoProyectoList;
     }
 
     @Override

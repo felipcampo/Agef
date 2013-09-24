@@ -14,9 +14,9 @@
          <ui:define name="menumodulo">
             <div id="Layoutmenu">
                 <p:menubar  style="float: right">
-                    <p:menuitem url="../inicio_proyectos.xhtml" value="Inicio" />
-                    <p:menuitem url="Create.xhtml" value="Programar fechas de Seguimiento" />
-                    <p:menuitem url="List.xhtml" value="Realizar Seguimiento a proyecto" />
+                    <p:menuitem outcome="/Seg_Proyectos/inicio_proyectos" value="Inicio" />
+                    <p:menuitem outcome="Create" value="Programar fechas de Seguimiento" />
+                    <p:menuitem outcome="List" value="Realizar Seguimiento a proyecto" />
                 </p:menubar>
 
             </div>
@@ -89,9 +89,9 @@
                                 <h:outputText value="#{item.idUsuario}"/>
                             </p:column>
                             <p:column headerText="#{bundle.ListSeguimientoProyectoTitle_rolIdRol}"
-                                      filterBy="#{item.rolIdRol}"
-                                      sortBy="#{item.rolIdRol}">                        
-                                <h:outputText value="#{item.rolIdRol}"/>
+                                      filterBy="#{item.idRol}"
+                                      sortBy="#{item.idRol}">                        
+                                <h:outputText value="#{item.idRol}"/>
                             </p:column>
                             <p:column>                        
                                 <p:commandButton ajax="false" action="#{seguimientoProyectoController.prepareView}" title="#{bundle.ListSeguimientoProyectoViewLink}" icon="ui-icon-search"/>
@@ -113,7 +113,7 @@
             <div id="Layout_Info_Agef">
                 <h4>INFORMACION</h4>
                 <hr></hr>
-                <p id="margen">Informacion de ayuda para formularios</p>
+                <p id="margen1">Informacion de ayuda para formularios</p>
             </div>
         </ui:define>
         

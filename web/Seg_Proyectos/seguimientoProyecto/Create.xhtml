@@ -14,9 +14,9 @@
         <ui:define name="menumodulo">
             <div id="Layoutmenu">
                 <p:menubar  style="float: right">
-                    <p:menuitem url="../inicio_proyectos.xhtml" value="Inicio" />
-                    <p:menuitem url="Create.xhtml" value="Programar fechas de Seguimiento" />
-                    <p:menuitem url="List.xhtml" value="Realizar Seguimiento a proyecto" />
+                    <p:menuitem outcome="/Seg_Proyectos/inicio_proyectos.xhtml" value="Inicio" />
+                    <p:menuitem outcome="Create" value="Programar fechas de Seguimiento" />
+                    <p:menuitem outcome="List" value="Realizar Seguimiento a proyecto" />
                 </p:menubar>
 
             </div>
@@ -37,36 +37,14 @@
                                 <f:facet name="header">
                                     <p:row><p:column colspan="3"></p:column></p:row>                            
                                 </f:facet>                        
-                                <p:row>
-                                    <p:column>
-                                        <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idSeguimientoProyecto}" for="idSeguimientoProyecto" />
-                                    </p:column>
-                                    <p:column >    
-                                        <p:inputText id="idSeguimientoProyecto" value="#{seguimientoProyectoController.selected.idSeguimientoProyecto}" title="#{bundle.CreateSeguimientoProyectoTitle_idSeguimientoProyecto}" required="true" requiredMessage="#{bundle.CreateSeguimientoProyectoRequiredMessage_idSeguimientoProyecto}"/>
-                                    </p:column>                           
-                                </p:row>
-
-                                <p:row>
-                                    <p:column>
-                                        <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idProgramaFormacion}" for="idProgramaFormacion" />
-                                    </p:column>
-                                    <p:column>
-                                        <p:selectOneMenu id="idProgramaFormacion" value="#{seguimientoProductivaController.selectedPrograma}">
-                                            <f:selectItems value="#{programaController.itemsAvailableSelectOne}"/>
-
-                                        </p:selectOneMenu>
-                                    </p:column>
-                                </p:row>
+                               
                                 <!---->
                                 <p:row>
                                     <p:column>
                                         <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idFichaCaracterizacion}" for="idFichaCaracterizacion" />
                                     </p:column>
                                     <p:column >    
-                                        <p:selectOneMenu id="idFichaCaracterizacion" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion}" required="true" requiredMessage="#{bundle.CreateSeguimientoProyectoRequiredMessage_idFichaCaracterizacion}" >
-                                            <f:selectItems value="#{seguimientoProductivaController.itemsAvailableSelectOneFichaCaracterizacionByPrograma}"/>
-                                        </p:selectOneMenu>
-
+                                        <p:inputText id="idFichaCaracterizacion" readonly="true" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion}" required="true" requiredMessage="#{bundle.CreateSeguimientoProyectoRequiredMessage_idFichaCaracterizacion}" />
                                     </p:column> 
 
                                     <p:column >  
@@ -75,6 +53,15 @@
 
                                 </p:row>
                                 <!---->
+                                <p:row>
+                                    <p:column>
+                                        <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idProgramaFormacion}" for="idProgramaFormacion" />
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText id="idProgramaFormacion" readonly="true" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idPrograma.nomPrg}"/>
+                                    </p:column>
+                                </p:row>
+
                                 <p:row>
                                     <p:column>
                                         <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_fechaProgramacionSeguimiento}" for="fechaProgramacionSeguimiento" />
@@ -86,35 +73,32 @@
                                 </p:row>
                                 <p:row>
                                     <p:column>
-                                        <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idSedeCentro}" for="idSedeCentro" />
-                                    </p:column>
-                                    <p:column >    
-                                        <p:selectOneMenu id="idSedeCentro" value="#{seguimientoProyectoController.selected.idSedeCentro}" >
-                                            <f:selectItems value="#{sedeCentroController.itemsAvailableSelectOne}"/>
-                                        </p:selectOneMenu>
-                                    </p:column>
-
-                                </p:row>
-
-
-                                <p:row>
-                                    <p:column>
                                         <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idRegional}" for="idRegional" />
                                     </p:column>
                                     <p:column>    
-                                        <p:selectOneMenu id="idRegional" value="#{seguimientoProyectoController.selected.idRegional}" >
-                                            <f:selectItems value="#{regionalController.itemsAvailableSelectOne}"/>
-                                        </p:selectOneMenu>
+                                        <p:inputText id="idRegional" readonly="true" value="#{seguimientoProyectoController.selected.idRegional}" />
                                     </p:column>
 
                                 </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idSedeCentro}" for="idSedeCentro" />
+                                    </p:column>
+                                    <p:column >    
+                                        <p:inputText id="idSedeCentro" readonly="true" value="#{seguimientoProyectoController.selected.idSedeCentro}" />
+                                    </p:column>
+
+                                </p:row>
+
+
+
 
                                 <p:row>
                                     <p:column>
                                         <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_rolIdRol}" for="rolIdRol" />
                                     </p:column>
                                     <p:column >    
-                                        <p:selectOneMenu id="rolIdRol" value="#{seguimientoProyectoController.selected.rolIdRol}" >
+                                        <p:selectOneMenu id="rolIdRol" value="#{seguimientoProyectoController.selected.idRol}" >
                                             <f:selectItems value="#{rolController.itemsAvailableSelectOne}"/>
                                         </p:selectOneMenu>
                                     </p:column>
@@ -136,7 +120,7 @@
             <div id="Layout_Info_Agef">
                 <h4>INFORMACION</h4>
                 <hr></hr>
-                <p id="margen">Informacion de ayuda para formularios</p>
+                <p id="margen1">Informacion de ayuda para formularios</p>
             </div>
         </ui:define>
 
@@ -152,8 +136,8 @@
                             <p:panelGrid>
                                 <p:row>
                                     <p:column>   
-                                        <p:inputText id="idFichaCaracterizacion" value="#{seguimientoProyectoController.selectedFicha.idFichaCaracterizacion}" title="#{bundle.CreateFichaCaracterizacionTitle_idFichaCaracterizacion}"/>
-                                        <p:watermark value="#{bundle.CreateFichaCaracterizacionLabel_idFichaCaracterizacion}" for="idFichaCaracterizacion" />
+                                        <p:inputText id="idFichaCaracterizacion1" value="#{seguimientoProyectoController.selectedFicha.idFichaCaracterizacion}" title="#{bundle.CreateFichaCaracterizacionTitle_idFichaCaracterizacion}"/>
+                                        <p:watermark value="#{bundle.CreateFichaCaracterizacionLabel_idFichaCaracterizacion}" for="idFichaCaracterizacion1" />
                                     </p:column>
                                     <p:column>
                                         <p:inputText id="nomPrograma" value="#{seguimientoProyectoController.selectedPrograma.nomPrg}" title="#{bundle.CreateProgramaTitle_nomPrg}" />
@@ -163,7 +147,7 @@
                                         <p:commandButton action="#{seguimientoProyectoController.buscarFicha}"
                                                          value="Buscar"
                                                          icon="ui-icon-search"
-                                                         process="@this,idFichaCaracterizacion,nomPrograma"
+                                                         process="@this,idFichaCaracterizacion1,nomPrograma"
                                                          update="tablaFichaCaracterizacion, :msgDialogoBuscar"/>
                                     </p:column>
                                 </p:row>
@@ -190,7 +174,7 @@
                                     <h:outputText value="#{item.idPrograma}"/>
                                 </p:column>
                                 <p:column>
-                                    <p:commandButton id="botonSeleccionFicha" process="@this" action="#{seguimientoProyectoController.agregarFicha()}"
+                                    <p:commandButton id="botonSeleccionFicha" process="@this" action="#{seguimientoProyectoController.agregarFicha}"
                                                      oncomplete="dlgBuscarFicha.hide();" icon="ui-icon-plus" update=":formSeguimientoProyecto, :buscarFichas">
                                         <f:setPropertyActionListener value="#{item}" target="#{seguimientoProyectoController.selectedFicha}"/>
                                     </p:commandButton>

@@ -199,8 +199,6 @@ public class Usuario implements Serializable {
     private List<ControlAsistencia> controlAsistenciaList1;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
     private List<ControlAsistencia> controlAsistenciaList2;
-    @OneToMany(mappedBy = "idUsuario")
-    private List<SeguimientoProyecto> seguimientoProyectoList;
 
     public Usuario() {
     }
@@ -676,15 +674,6 @@ public class Usuario implements Serializable {
 
     public void setControlAsistenciaList2(List<ControlAsistencia> controlAsistenciaList2) {
         this.controlAsistenciaList2 = controlAsistenciaList2;
-    }
-
-    @XmlTransient
-    public List<SeguimientoProyecto> getSeguimientoProyectoList() {
-        return seguimientoProyectoList;
-    }
-
-    public void setSeguimientoProyectoList(List<SeguimientoProyecto> seguimientoProyectoList) {
-        this.seguimientoProyectoList = seguimientoProyectoList;
     }
 
     @Override

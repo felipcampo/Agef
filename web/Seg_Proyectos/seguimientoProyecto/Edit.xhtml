@@ -31,7 +31,7 @@
                         <f:facet name="header">
                             <p:row>
                                 <p:column colspan="9">EVALUACION Y SEGUIMIENTO
-                                    <p:inputText  readonly="true" id="rolIdRol" value="#{seguimientoProyectoController.selected.rolIdRol}" required="true" requiredMessage="#{bundle.EditSeguimientoProyectoRequiredMessage_rolIdRol}" />
+                                    <p:inputText  readonly="true" id="rolIdRol" value="#{seguimientoProyectoController.selected.idRol}" required="true" requiredMessage="#{bundle.EditSeguimientoProyectoRequiredMessage_rolIdRol}" />
                                 </p:column>
                                 <p:column colspan="6">
                                     <h:outputLabel value="#{bundle.EditSeguimientoProyectoLabel_idSeguimientoProyecto}" for="idSeguimientoProyecto" />
@@ -277,7 +277,7 @@
                             </p:column>   
 
                             <p:column colspan="15"> 
-                                <p:inputText id="b" readonly="true" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyecto.benficiarioProyecto}" size="70"/>
+                                <p:inputText id="b" readonly="true" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyectoFormativo.benficiarioProyecto}" size="70"/>
                             </p:column>  
 
                         </p:row>
@@ -290,7 +290,7 @@
                             </p:column>   
 
                             <p:column colspan="15"> 
-                                <p:inputText id="Ip"  readonly="true" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyecto.impSocial}" size="70"/>
+                                <p:inputText id="Ip"  readonly="true" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyectoFormativo.impSocial}" size="70"/>
                             </p:column> 
                         </p:row>
 
@@ -302,7 +302,7 @@
                             </p:column>   
 
                             <p:column colspan="15"> 
-                                <p:inputText id="Ie" readonly="true" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyecto.impEconomico}" size="70"/>
+                                <p:inputText id="Ie" readonly="true" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyectoFormativo.impEconomico}" size="70"/>
                             </p:column>  
                         </p:row>
 
@@ -314,7 +314,7 @@
                             </p:column>   
 
                             <p:column colspan="15"> 
-                                <p:inputText id="iam"  readonly="true" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyecto.impactoAmbiental}" size="70"/>
+                                <p:inputText id="iam"  readonly="true" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyectoFormativo.impactoAmbiental}" size="70"/>
                             </p:column>  
                         </p:row>
                         <p:row>
@@ -323,7 +323,7 @@
                             </p:column>   
 
                             <p:column colspan="15"> 
-                                <p:inputText id="It"  readonly="true" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyecto.impTecnologico}" size="70"/>
+                                <p:inputText id="It"  readonly="true" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyectoFormativo.impTecnologico}" size="70"/>
                             </p:column>  
                         </p:row>
                         <p:row>
@@ -395,7 +395,7 @@
                                 <h:outputLabel value="#{bundle.EditSeguimientoProyectoLabel_idResultadoAprendizaje}" for="idResultadoAprendizaje" />
                             </p:column>
                              <p:column  colspan="10" > 
-                               <p:inputText id="idResultadoAprendizaje" readonly="true" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyecto.numeroTotalResultados}" />
+                               <p:inputText id="idResultadoAprendizaje" readonly="true" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyectoFormativo.numeroTotalResultados}" />
                              </p:column>
                         </p:row>
 

@@ -54,6 +54,9 @@ public class CentroFormacion implements Serializable {
     private String nomCen;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCentroFormacion")
     private List<Programa> programaList;
+    @JoinColumn(name = "id_sede_centro", referencedColumnName = "id_sede_centro")
+    @ManyToOne
+    private SedeCentro idSedeCentro;
     @JoinColumn(name = "id_regional", referencedColumnName = "id_regional")
     @ManyToOne(optional = false)
     private Regional idRegional;
@@ -106,6 +109,14 @@ public class CentroFormacion implements Serializable {
 
     public void setProgramaList(List<Programa> programaList) {
         this.programaList = programaList;
+    }
+
+    public SedeCentro getIdSedeCentro() {
+        return idSedeCentro;
+    }
+
+    public void setIdSedeCentro(SedeCentro idSedeCentro) {
+        this.idSedeCentro = idSedeCentro;
     }
 
     public Regional getIdRegional() {
