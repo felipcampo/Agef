@@ -11,12 +11,17 @@
             <h:outputText value="#{bundle.EditCompetenciaTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+             <div id="Layout_Titulo_Formulario_Agef"> <h2> ALISTAMIENTO </h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen"> #{bundle.EditCompetenciaTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br>
             <p:growl id="msgs" showDetail="false" sticky="false"/>
             <h:form id="formCompetencia">
                 <div id="form" align="center">
                     <p:panelGrid>
                         <f:facet name="header">
-                            <p:row><p:column colspan="3">#{bundle.EditCompetenciaTitle}</p:column></p:row>                            
+                            <p:row><p:column colspan="10">#{bundle.EditCompetenciaTitle}</p:column></p:row>                            
                         </f:facet>                        
                         <p:row>
                             <p:column>
@@ -28,30 +33,6 @@
                             <p:column style="border-left: white;">
                                 <p:message for="idCompetencia"/>
                             </p:column>
-                        </p:row>      
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.EditCompetenciaLabel_duracionCompetencia}" for="duracionCompetencia" />
-                            </p:column>
-                            <p:column style="border-right: white"> 
-                                <p:inputText id="duracionCompetencia" value="#{competenciaController.selected.duracionCompetencia}" title="#{bundle.EditCompetenciaTitle_duracionCompetencia}" required="true" requiredMessage="#{bundle.EditCompetenciaRequiredMessage_duracionCompetencia}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="duracionCompetencia"/>
-                            </p:column>
-                        </p:row>      
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.EditCompetenciaLabel_nomCom}" for="nomCom" />
-                            </p:column>
-                            <p:column style="border-right: white"> 
-                                <p:inputTextarea rows="4" cols="30" id="nomCom" value="#{competenciaController.selected.nomCom}" title="#{bundle.EditCompetenciaTitle_nomCom}" required="true" requiredMessage="#{bundle.EditCompetenciaRequiredMessage_nomCom}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="nomCom"/>
-                            </p:column>
-                        </p:row>      
-                        <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.EditCompetenciaLabel_idPrograma}" for="idPrograma" />
                             </p:column>
@@ -63,7 +44,28 @@
                             <p:column style="border-left: white;">
                                 <p:message for="idPrograma"/>
                             </p:column>
+                        </p:row>  
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditCompetenciaLabel_duracionCompetencia}" for="duracionCompetencia" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="duracionCompetencia" value="#{competenciaController.selected.duracionCompetencia}" title="#{bundle.EditCompetenciaTitle_duracionCompetencia}" required="true" requiredMessage="#{bundle.EditCompetenciaRequiredMessage_duracionCompetencia}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="duracionCompetencia"/>
+                            </p:column>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditCompetenciaLabel_nomCom}" for="nomCom" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputTextarea rows="4" cols="30" id="nomCom" value="#{competenciaController.selected.nomCom}" title="#{bundle.EditCompetenciaTitle_nomCom}" required="true" requiredMessage="#{bundle.EditCompetenciaRequiredMessage_nomCom}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="nomCom"/>
+                            </p:column>
                         </p:row>      
+                          
                     </p:panelGrid>
                     <br />
                     <br />                
@@ -74,6 +76,15 @@
                     <p:commandButton ajax="false" action="#{competenciaController.prepareList}" value="#{bundle.EditCompetenciaShowAllLink}" immediate="true"/>
                 </div>
             </h:form>
+            
+<br></br>
+                </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                 <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
     </ui:composition>
 
