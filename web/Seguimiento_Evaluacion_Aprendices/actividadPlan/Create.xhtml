@@ -6,62 +6,39 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="/template.xhtml">
-        <ui:define name="title">
-            <h:outputText value="#{bundle.CreateActividadPlanTitle}"></h:outputText>
-        </ui:define>
-        <ui:define name="body">
-            <p:growl id="msgs" showDetail="false" sticky="false"/>
+    <ui:composition>
             <h:form id="formActividadPlan">
                 <div id="form" align="center">
-                    <p:panelGrid>
-                        <f:facet name="header">
-                            <p:row><p:column colspan="3">#{bundle.CreateActividadPlanTitle}</p:column></p:row>                            
-                        </f:facet>                        
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateActividadPlanLabel_idActividadPlan}" for="idActividadPlan" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputText id="idActividadPlan" value="#{actividadPlanController.selected.idActividadPlan}" title="#{bundle.CreateActividadPlanTitle_idActividadPlan}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_idActividadPlan}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idActividadPlan"/>
-                            </p:column>
-                        </p:row>
+                    <p:panelGrid>                    
+                        
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateActividadPlanLabel_descripcionActividad}" for="descripcionActividad" />
                             </p:column>
-                            <p:column style="border-right: white">    
+                            <p:column>    
                                 <p:inputText id="descripcionActividad" value="#{actividadPlanController.selected.descripcionActividad}" title="#{bundle.CreateActividadPlanTitle_descripcionActividad}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_descripcionActividad}"/>
                             </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="descripcionActividad"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateActividadPlanLabel_fecFin}" for="fecFin" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:calendar navigator="true" pattern="MM/dd/yyyy" locale="es" showOn="button" id="fecFin" value="#{actividadPlanController.selected.fecFin}" title="#{bundle.CreateActividadPlanTitle_fecFin}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_fecFin}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="fecFin"/>
-                            </p:column>
+                            
                         </p:row>
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateActividadPlanLabel_fecIni}" for="fecIni" />
                             </p:column>
-                            <p:column style="border-right: white">    
+                            <p:column>    
                                 <p:calendar navigator="true" pattern="MM/dd/yyyy" locale="es" showOn="button" id="fecIni" value="#{actividadPlanController.selected.fecIni}" title="#{bundle.CreateActividadPlanTitle_fecIni}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_fecIni}"/>
                             </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="fecIni"/>
-                            </p:column>
+                           
                         </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateActividadPlanLabel_fecFin}" for="fecFin" />
+                            </p:column>
+                            <p:column>    
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" locale="es" showOn="button" id="fecFin" value="#{actividadPlanController.selected.fecFin}" title="#{bundle.CreateActividadPlanTitle_fecFin}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_fecFin}"/>
+                            </p:column>
+                            
+                        </p:row>
+                        
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateActividadPlanLabel_lugar}" for="lugar" />
@@ -73,7 +50,50 @@
                                 </p:selectOneRadio>                                          
                             </p:column> 
                         </p:row>
+                        
+                        <p:row>  
+                            <p:column styleClass="ui-widget-header" colspan="3"><p align="center">EVIDENCIAS DE APRENDIZAJE</p></p:column> 
+                        </p:row> 
+                        
                         <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateActividadPlanLabel_idEvidenciaAprendizaje}" for="idEvidenciaAprendizaje" />
+                            </p:column>
+                            <p:column>    
+                                <p:selectOneMenu id="idEvidenciaAprendizaje" value="#{actividadPlanController.selected.idEvidenciaAprendizaje}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_idEvidenciaAprendizaje}">
+                                    <f:selectItems value="#{evidenciaAprendizajeController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            
+                        </p:row>
+                        <p:row>  
+                            <p:column styleClass="ui-widget-header" colspan="3"><p align="center">RECOLECCION DE EVIDENCIAS</p></p:column> 
+                        </p:row> 
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateActividadPlanLabel_fecRevision}" for="fecRevision" />
+                            </p:column>
+                            <p:column>    
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm:ss" showOn="button" locale="es" id="fecRevision" value="#{actividadPlanController.selected.fecRevision}" title="#{bundle.CreateActividadPlanTitle_fecRevision}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_fecRevision}"/>
+                            </p:column>
+                            
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateActividadPlanLabel_lugar2}" for="lugar2" />
+                            </p:column>
+                           <p:column colspan="3">  
+                               <p:selectOneRadio id="lugar2" value="#{actividadPlanController.selected.lugar2}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_lugar2}">  
+                                    <f:selectItem itemLabel="Centro de Formación" itemValue="Centro de Formacion" />  
+                                    <f:selectItem itemLabel="Empresa" itemValue="Empresa" />                                       
+                                </p:selectOneRadio>                                          
+                            </p:column> 
+                            
+                        </p:row>
+                        <p:row>  
+                            <p:column styleClass="ui-widget-header" colspan="3"><p align="center">VERIFICACION Y VALORACION DE EVIDENCIAS</p></p:column> 
+                        </p:row> 
+                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateActividadPlanLabel_pertinencia}" for="pertinencia" />
                             </p:column>
@@ -93,12 +113,10 @@
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateActividadPlanLabel_autenticidad}" for="autenticidad" />
                             </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputText id="autenticidad" value="#{actividadPlanController.selected.autenticidad}" title="#{bundle.CreateActividadPlanTitle_autenticidad}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_autenticidad}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="autenticidad"/>
-                            </p:column>
+                            <p:column colspan="3">    
+                                <p:selectBooleanButton id="autenticidad" value="#{actividadPlanController.selected.autenticidad}" onLabel="Si" offLabel="No" onIcon="ui-icon-check" offIcon="ui-icon-close" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_autenticidad}"/> 
+                                    </p:column> 
+                            
                         </p:row>
                         <p:row>
                             <p:column>
@@ -109,48 +127,17 @@
                                     </p:column>  
                         </p:row>
                         <p:row>
+                        <p:column colspan="4" styleClass="ui-widget-header">  
+                                <p:spacer height="0"/>  
+                            </p:column>
+                        </p:row>
+                        <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateActividadPlanLabel_aprendizaje}" for="aprendizaje" />
                             </p:column>
                          <p:column colspan="3">    
                              <p:selectBooleanButton id="aprendizaje" value="#{actividadPlanController.selected.aprendizaje}" onLabel="Logro" offLabel="No logro" onIcon="ui-icon-check" offIcon="ui-icon-close" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_aprendizaje}"/> 
                                     </p:column>    
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateActividadPlanLabel_fecRevision}" for="fecRevision" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm:ss" showOn="button" locale="es" id="fecRevision" value="#{actividadPlanController.selected.fecRevision}" title="#{bundle.CreateActividadPlanTitle_fecRevision}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_fecRevision}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="fecRevision"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateActividadPlanLabel_lugar2}" for="lugar2" />
-                            </p:column>
-                           <p:column colspan="3">  
-                               <p:selectOneRadio id="lugar2" value="#{actividadPlanController.selected.lugar2}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_lugar2}">  
-                                    <f:selectItem itemLabel="Centro de Formación" itemValue="Centro de Formacion" />  
-                                    <f:selectItem itemLabel="Empresa" itemValue="Empresa" />                                       
-                                </p:selectOneRadio>                                          
-                            </p:column> 
-                            
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateActividadPlanLabel_idEvidenciaAprendizaje}" for="idEvidenciaAprendizaje" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:selectOneMenu id="idEvidenciaAprendizaje" value="#{actividadPlanController.selected.idEvidenciaAprendizaje}" required="true" requiredMessage="#{bundle.CreateActividadPlanRequiredMessage_idEvidenciaAprendizaje}">
-                                    <f:selectItems value="#{evidenciaAprendizajeController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idEvidenciaAprendizaje"/>
-                            </p:column>
                         </p:row>
                     </p:panelGrid>
                     <br />
@@ -162,7 +149,7 @@
                     <p:commandButton ajax="false" action="#{actividadPlanController.prepareList}" value="#{bundle.CreateActividadPlanShowAllLink}" immediate="true"/>
                 </div>
             </h:form>
-        </ui:define>
+       
     </ui:composition>
 
 </html>
