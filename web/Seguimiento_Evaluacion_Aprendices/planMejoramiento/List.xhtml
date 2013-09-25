@@ -10,7 +10,6 @@
         <ui:define name="title">
             <h:outputText value="#{bundle.ListPlanMejoramientoTitle}"></h:outputText>
         </ui:define>
-        
         <ui:define name="body">
             <h:form id="listPlanMejoramiento" styleClass="jsfcrud_list_form">
                 <div id="list" align="center">
@@ -33,11 +32,6 @@
                                       sortBy="#{item.idPlanMejoramiento}">                        
                                 <h:outputText value="#{item.idPlanMejoramiento}"/>
                             </p:column>
-                            <p:column headerText="#{bundle.ListPlanMejoramientoTitle_actividadesDesarrollar}"
-                                      filterBy="#{item.actividadesDesarrollar}"
-                                      sortBy="#{item.actividadesDesarrollar}">                        
-                                <h:outputText value="#{item.actividadesDesarrollar}"/>
-                            </p:column>
                             <p:column headerText="#{bundle.ListPlanMejoramientoTitle_observaciones}"
                                       filterBy="#{item.observaciones}"
                                       sortBy="#{item.observaciones}">                        
@@ -47,27 +41,6 @@
                                       filterBy="#{item.evidenciaCam}"
                                       sortBy="#{item.evidenciaCam}">                        
                                 <h:outputText value="#{item.evidenciaCam}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListPlanMejoramientoTitle_fecFin}"
-                                      filterBy="#{item.fecFin}"
-                                      sortBy="#{item.fecFin}">                        
-                                <h:outputText value="#{item.fecFin}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy" />
-                                </h:outputText>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListPlanMejoramientoTitle_fecIni}"
-                                      filterBy="#{item.fecIni}"
-                                      sortBy="#{item.fecIni}">                        
-                                <h:outputText value="#{item.fecIni}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy" />
-                                </h:outputText>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListPlanMejoramientoTitle_fecRevision}"
-                                      filterBy="#{item.fecRevision}"
-                                      sortBy="#{item.fecRevision}">                        
-                                <h:outputText value="#{item.fecRevision}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                                </h:outputText>
                             </p:column>
                             <p:column headerText="#{bundle.ListPlanMejoramientoTitle_tipoPlanMejoramiento}"
                                       filterBy="#{item.tipoPlanMejoramiento}"
@@ -83,41 +56,6 @@
                                       filterBy="#{item.etapa}"
                                       sortBy="#{item.etapa}">                        
                                 <h:outputText value="#{item.etapa}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListPlanMejoramientoTitle_lugar}"
-                                      filterBy="#{item.lugar}"
-                                      sortBy="#{item.lugar}">                        
-                                <h:outputText value="#{item.lugar}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListPlanMejoramientoTitle_lugar2}"
-                                      filterBy="#{item.lugar2}"
-                                      sortBy="#{item.lugar2}">                        
-                                <h:outputText value="#{item.lugar2}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListPlanMejoramientoTitle_pertinencia}"
-                                      filterBy="#{item.pertinencia}"
-                                      sortBy="#{item.pertinencia}">                        
-                                <h:outputText value="#{item.pertinencia}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListPlanMejoramientoTitle_vigencia}"
-                                      filterBy="#{item.vigencia}"
-                                      sortBy="#{item.vigencia}">                        
-                                <h:outputText value="#{item.vigencia}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListPlanMejoramientoTitle_autenticidad}"
-                                      filterBy="#{item.autenticidad}"
-                                      sortBy="#{item.autenticidad}">                        
-                                <h:outputText value="#{item.autenticidad}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListPlanMejoramientoTitle_calidad}"
-                                      filterBy="#{item.calidad}"
-                                      sortBy="#{item.calidad}">                        
-                                <h:outputText value="#{item.calidad}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListPlanMejoramientoTitle_aprendizaje}"
-                                      filterBy="#{item.aprendizaje}"
-                                      sortBy="#{item.aprendizaje}">                        
-                                <h:outputText value="#{item.aprendizaje}"/>
                             </p:column>
                             <p:column headerText="#{bundle.ListPlanMejoramientoTitle_total}"
                                       filterBy="#{item.total}"
@@ -140,6 +78,11 @@
                                 <h:outputText value="#{item.fechaConcertacion}">
                                     <f:convertDateTime pattern="MM/dd/yyyy" />
                                 </h:outputText>
+                            </p:column>
+                            <p:column headerText="#{bundle.ListPlanMejoramientoTitle_idActividadPlan}"
+                                      filterBy="#{item.idActividadPlan}"
+                                      sortBy="#{item.idActividadPlan}">                        
+                                <h:outputText value="#{item.idActividadPlan}"/>
                             </p:column>
                             <p:column headerText="#{bundle.ListPlanMejoramientoTitle_idComite}"
                                       filterBy="#{item.idComite}"
