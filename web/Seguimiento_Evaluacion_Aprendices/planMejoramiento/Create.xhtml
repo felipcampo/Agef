@@ -252,7 +252,7 @@
                                 <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_idActividadPlan}" for="idActividadPlan" />
                             </p:column>
                             <p:column colspan="3">
-                                <p:commandButton id="idActividadPlan"  icon="ui-icon-plusthick" onclick="dlg.show();" process="@none"/>                          
+                                <p:commandButton id="idActividadPlan"  icon="ui-icon-plusthick" onclick="dlgact.show();" process="@none"/>                          
                             </p:column>
                             
                         </p:row>
@@ -327,7 +327,7 @@
         </ui:define>
         <ui:define name="dialogs">
             
-            <p:dialog  id="dialog"   closeOnEscape="true" header="#{bundle.CreateActividadPlanTitle}" widgetVar="dlg" minHeight="300" minWidth="450" 
+            <p:dialog  id="dialog"   closeOnEscape="true" header="#{bundle.CreateActividadPlanTitle}" widgetVar="dlgact" minHeight="300" minWidth="450" 
                        resizable="true" modal="true" showEffect="clip" hideEffect="clip">
                 <ui:include src="/Seguimiento_Evaluacion_Aprendices/actividadPlan/Create.xhtml" />
             </p:dialog>
