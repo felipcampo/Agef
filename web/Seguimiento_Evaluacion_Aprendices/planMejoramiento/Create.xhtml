@@ -18,7 +18,7 @@
                         <f:facet name="header">
                                     <p:row><p:column colspan="10">1. INFORMACIÓN GENERAL</p:column></p:row>                            
                                 </f:facet>  
-                       <!-- <p:row>  
+                       <!--<p:row>  
                             <p:column> 
                                 <h:outputLabel value="#{bundle.CreateCentroFormacionLabel_idRegional}" for="codReg" />
                             </p:column>  
@@ -36,7 +36,7 @@
                                     <f:selectItems value="#{seguimientoProductivaController.itemsAvailableSelectOneCentroByRegional}"/>
                                 </p:selectOneMenu>
                             </p:column> 
-                        </p:row> -->
+                        </p:row>-->
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateFichaCaracterizacionLabel_idPrograma}" for="codPro" />
@@ -141,7 +141,7 @@
                                 <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_idUsuario2}" for="idUsuario2" />
                             </p:column>
                             <p:column colspan="3">    
-                            <p:commandButton id="idUsuario2" icon="ui-icon-search" onclick="dlgBuscarUsuario.show();" type="button"/>
+                            <p:commandButton id="idUsuario2" icon="ui-icon-search" onclick="dlgBuscarUsuario2.show();" type="button"/>
                             </p:column> 
                                  </p:row> 
                         <p:row>
@@ -245,8 +245,8 @@
                             </p:column>
                         </p:row>
                         <p:row>  
-                            <p:column colspan="4"><p align="left"><strong>ACTIVIDADES A DESARROLLAR</strong></p></p:column>  
-                        </p:row>
+                            <p:column styleClass="ui-widget-header" colspan="3"><p align="center">ACTIVIDADES A DESARROLLAR</p></p:column> 
+                        </p:row> 
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreatePlanMejoramientoLabel_idActividadPlan}" for="idActividadPlan" />
@@ -256,8 +256,10 @@
                             </p:column>
                             
                         </p:row>
-                        <p:row>  
-                            <p:column styleClass="ui-widget-header" colspan="4"><p align="center"></p></p:column>  
+                        <p:row>
+                        <p:column colspan="4" styleClass="ui-widget-header">  
+                                <p:spacer height="0"/>  
+                            </p:column>
                         </p:row>
          
                         <p:row>
@@ -335,6 +337,76 @@
             <p:dialog id="buscarCliente" widgetVar="dlgBuscarUsuario" modal="true" resizable="false" 
                       showEffect="clip" hideEffect="clip" closeOnEscape="true">
                 <h:form id="formularioBuscarUsuario"> 
+                    <p:panelGrid>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateUsuarioLabel_numeroDocumento}" for="numeroDocumento" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="numeroDocumento" value="#{planMejoramientoController.usuarioActual.numeroDocumento}" title="#{bundle.CreateUsuarioTitle_numeroDocumento}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_numeroDocumento}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="numeroDocumento"/>
+                            </p:column> 
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateUsuarioLabel_nomUsu}" for="nomUsu" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="nomUsu" value="#{planMejoramientoController.usuarioActual.nomUsu}" title="#{bundle.CreateUsuarioTitle_nomUsu}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_nomUsu}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="nomUsu"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateUsuarioLabel_apeUsu}" for="apeUsu" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="apeUsu" value="#{planMejoramientoController.usuarioActual.apeUsu}" title="#{bundle.CreateUsuarioTitle_apeUsu}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_apeUsu}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="apeUsu"/>
+                            </p:column>
+                        </p:row>
+
+                        <p:row>
+                            <p:column colspan="3">
+                                <p:commandButton action="#{planMejoramientoController.buscarUsuario()}"
+                                                 value="Buscar"
+                                                 icon="ui-icon-search"
+                                                 process="@this,numeroDocumento,nomUsu,apeUsu"
+                                                 update="tablaUsuarios, :msgs"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <br /><br /><br />
+                    <p:dataTable value="#{planMejoramientoController.listBusquedaUsuarios}"
+                                 var="item" paginator="true" rows="5" id="tablaUsuarios">
+                        <p:column>
+                            <h:outputText value="#{item.numeroDocumento}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{item.nomUsu}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{item.apeUsu}"/>
+                        </p:column>
+                        <p:column>
+                            <p:commandButton id="botonSeleccionUsuario" update=":formPlanMejoramiento" action="#{planMejoramientoController.agregarUsuario}"
+                                             oncomplete="dlgBuscarUsuario.hide();" icon="ui-icon-plus">
+                                <f:setPropertyActionListener value="#{item}" target="#{planMejoramientoController.usuarioActual}"/>
+                            </p:commandButton>
+                        </p:column>
+                    </p:dataTable>  
+                </h:form>                     
+            </p:dialog>
+            
+            <p:dialog id="buscarCliente2" widgetVar="dlgBuscarUsuario2" modal="true" resizable="false" 
+                      showEffect="clip" hideEffect="clip" closeOnEscape="true">
+                <h:form id="formularioBuscarUsuario2"> 
                     <p:panelGrid>                        
                         <p:row>
                             <p:column>

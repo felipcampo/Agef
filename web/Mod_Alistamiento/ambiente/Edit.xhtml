@@ -11,12 +11,17 @@
             <h:outputText value="#{bundle.EditAmbienteTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+            <div id="Layout_Titulo_Formulario_Agef"> <h2> ALISTAMIENTO </h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen"> #{bundle.EditAmbienteTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br>
             <p:growl id="msgs" showDetail="false" sticky="false"/>
             <h:form id="formAmbiente">
                 <div id="form" align="center">
                     <p:panelGrid>
                         <f:facet name="header">
-                            <p:row><p:column colspan="3">#{bundle.EditAmbienteTitle}</p:column></p:row>                            
+                            <p:row><p:column colspan="3"></p:column></p:row>                            
                         </f:facet>                        
                         <p:row>
                             <p:column>
@@ -61,6 +66,14 @@
                     <p:commandButton ajax="false" action="#{ambienteController.prepareList}" value="#{bundle.EditAmbienteShowAllLink}" immediate="true"/>
                 </div>
             </h:form>
+               <br></br>
+                </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                 <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
     </ui:composition>
 

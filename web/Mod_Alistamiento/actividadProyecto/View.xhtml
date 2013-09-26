@@ -11,6 +11,11 @@
             <h:outputText value="#{bundle.ViewActividadProyectoTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+             <div id="Layout_Titulo_Formulario_Agef"> <h2> ALISTAMIENTO </h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen"> #{bundle.ViewActividadProyectoTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br>
             <p:growl id="msgs" showDetail="false" sticky="false"/> 
             <h:form>
                 <div id="form" align="center">
@@ -20,12 +25,13 @@
                         </f:facet>
                         <h:outputText value="#{bundle.ViewActividadProyectoLabel_idActividadProyecto}"/>
                         <h:outputText value="#{actividadProyectoController.selected.idActividadProyecto}" title="#{bundle.ViewActividadProyectoTitle_idActividadProyecto}"/>
+                        <h:outputText value="#{bundle.ViewActividadProyectoLabel_idFaseProyecto}"/>
+                        <h:outputText value="#{actividadProyectoController.selected.idFaseProyecto}" title="#{bundle.ViewActividadProyectoTitle_idFaseProyecto}"/>
                         <h:outputText value="#{bundle.ViewActividadProyectoLabel_descrActividadProyecto}"/>
                         <h:outputText value="#{actividadProyectoController.selected.descrActividadProyecto}" title="#{bundle.ViewActividadProyectoTitle_descrActividadProyecto}"/>
                         <h:outputText value="#{bundle.ViewActividadProyectoLabel_duracionActividad}"/>
                         <h:outputText value="#{actividadProyectoController.selected.duracionActividad}" title="#{bundle.ViewActividadProyectoTitle_duracionActividad}"/>
-                        <h:outputText value="#{bundle.ViewActividadProyectoLabel_idFaseProyecto}"/>
-                        <h:outputText value="#{actividadProyectoController.selected.idFaseProyecto}" title="#{bundle.ViewActividadProyectoTitle_idFaseProyecto}"/>
+                        
                     </p:panelGrid>
                     <br />
                     <br />
@@ -39,6 +45,15 @@
                     <p:commandButton ajax="false" action="#{actividadProyectoController.prepareList}" value="#{bundle.ViewActividadProyectoShowAllLink}"/>
                 </div>            
             </h:form>
+            
+<br></br>
+                </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                 <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
         <ui:define name="dialogs">
             <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  
