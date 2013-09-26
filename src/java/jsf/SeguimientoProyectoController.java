@@ -60,7 +60,7 @@ public class SeguimientoProyectoController implements Serializable {
     private jpa.sessions.FichaCaracterizacionFacade ejbFacadeFicha;
 
     public SeguimientoProyectoController() {
-         HttpSession session = ( HttpSession ) FacesContext.getCurrentInstance().getExternalContext().getSession( true );
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
     }
 
     public SeguimientoProyecto getSelected() {
@@ -206,7 +206,6 @@ public class SeguimientoProyectoController implements Serializable {
             getFacade().create(current);
             for (CriterioSeguimientoProyecto criterio : listCriteriosSeg) {
                 criterio.setIdSeguimientoProyecto(current);
-
                 getFacadeCriterioSeg().create(criterio);
             }
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("SeguimientoProyectoCreated"));
