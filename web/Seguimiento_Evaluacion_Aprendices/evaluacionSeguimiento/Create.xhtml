@@ -17,221 +17,163 @@
                     <p:panelGrid>
                         <f:facet name="header">
                             <p:row><p:column colspan="6">#{bundle.CreateEvaluacionSeguimientoTitle}</p:column></p:row>                            
-                        </f:facet>   
+                        </f:facet>
                         <p:row>
-                            <p:column>
+                            <p:column colspan="1"> <h3>Evaluación Número</h3></p:column>
+                          <p:column colspan="2">
+                                <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_idEvaluacionSeguimiento}" for="idEvaluacionSeguimiento" />
+                            </p:column>
+                            <p:column colspan="3">    
+                                <p:inputText style="width: 96%;" id="idEvaluacionSeguimiento" value="#{evaluacionSeguimientoController.selected.idEvaluacionSeguimiento}" title="#{bundle.CreateEvaluacionSeguimientoTitle_idEvaluacionSeguimiento}" required="true" requiredMessage="#{bundle.CreateEvaluacionSeguimientoRequiredMessage_idEvaluacionSeguimiento}"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column styleClass="ui-widget-header" colspan="6"> <h2 align="center">Información General</h2></p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column colspan="1">
                                 <h:outputLabel value="#{bundle.CreateFichaCaracterizacionLabel_idPrograma}" for="codPro" />
                             </p:column>
-                            <p:column>
+                            <p:column colspan="2">
                                 <p:selectOneMenu id="codPro" value="#{seguimientoProductivaController.selectedPrograma}" required="true" requiredMessage="#{bundle.CreateFichaCaracterizacionRequiredMessage_idPrograma}">
                                     <f:selectItems value="#{programaController.itemsAvailableSelectOne}"/>
                                     <p:ajax update="idFichaCaracterizacion"/>
                                 </p:selectOneMenu>
                             </p:column> 
-                               <p:column>
+                            <p:column colspan="1">
                                 <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_idFichaCaracterizacion}" for="idFichaCaracterizacion" />
                             </p:column>
-                            <p:column style="border-right: white">    
+                            <p:column colspan="2" >    
                                 <p:selectOneMenu id="idFichaCaracterizacion" value="#{evaluacionSeguimientoController.selected.idFichaCaracterizacion}" required="true" requiredMessage="#{bundle.CreateEvaluacionSeguimientoRequiredMessage_idFichaCaracterizacion}">
                                     <f:selectItems value="#{fichaCaracterizacionController.itemsAvailableSelectOne}"/>
                                 </p:selectOneMenu>
                             </p:column>                    
                         </p:row>
                         <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_idEvaluacionSeguimiento}" for="idEvaluacionSeguimiento" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputText id="idEvaluacionSeguimiento" value="#{evaluacionSeguimientoController.selected.idEvaluacionSeguimiento}" title="#{bundle.CreateEvaluacionSeguimientoTitle_idEvaluacionSeguimiento}" required="true" requiredMessage="#{bundle.CreateEvaluacionSeguimientoRequiredMessage_idEvaluacionSeguimiento}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idEvaluacionSeguimiento"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_aprendizaje}" for="aprendizaje" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:selectBooleanButton value="#{evaluacionSeguimientoController.selected.aprendizaje}" onLabel="Logro" offLabel="No Logro"/>
-                            </p:column>
-                            
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_autenticidad}" for="autenticidad" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:selectBooleanButton value="#{evaluacionSeguimientoController.selected.autenticidad}" onLabel="Cumple" offLabel="No Cumple"/>
-                            </p:column>
-                            
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_calidad}" for="calidad" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:selectBooleanButton  value="#{evaluacionSeguimientoController.selected.calidad}" onLabel="Cumple" offLabel="No Cumple"/>
-                            </p:column>
-                           
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_carApr}" for="carApr" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputTextarea rows="4" cols="30" id="carApr" value="#{evaluacionSeguimientoController.selected.carApr}" title="#{bundle.CreateEvaluacionSeguimientoTitle_carApr}" required="true" requiredMessage="#{bundle.CreateEvaluacionSeguimientoRequiredMessage_carApr}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="carApr"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_fecIni}" for="fecIni" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:calendar locale="es" navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecIni" value="#{evaluacionSeguimientoController.selected.fecIni}" title="#{bundle.CreateEvaluacionSeguimientoTitle_fecIni}" required="true" requiredMessage="#{bundle.CreateEvaluacionSeguimientoRequiredMessage_fecIni}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="fecIni"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_fecFin}" for="fecFin" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:calendar locale="es" navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecFin" value="#{evaluacionSeguimientoController.selected.fecFin}" title="#{bundle.CreateEvaluacionSeguimientoTitle_fecFin}" required="true" requiredMessage="#{bundle.CreateEvaluacionSeguimientoRequiredMessage_fecFin}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="fecFin"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_fecRecEvi}" for="fecRecEvi" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:calendar locale="es" navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecRecEvi" value="#{evaluacionSeguimientoController.selected.fecRecEvi}" title="#{bundle.CreateEvaluacionSeguimientoTitle_fecRecEvi}" required="true" requiredMessage="#{bundle.CreateEvaluacionSeguimientoRequiredMessage_fecRecEvi}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="fecRecEvi"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_medio}" for="medio" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:selectBooleanButton value="#{evaluacionSeguimientoController.selected.medio}" onLabel="Físico" offLabel="Digital" >  
-                                    </p:selectBooleanButton>
-                            </p:column>
-                            
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_observaciones}" for="observaciones" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputTextarea rows="4" cols="30" id="observaciones" value="#{evaluacionSeguimientoController.selected.observaciones}" title="#{bundle.CreateEvaluacionSeguimientoTitle_observaciones}" />
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="observaciones"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_pertinencia}" for="pertinencia" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:selectBooleanButton value="#{evaluacionSeguimientoController.selected.pertinencia}" onLabel="Si" offLabel="No"/>
-                            </p:column>
-                            
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_tipo}" for="tipo" />
-                            </p:column>
-                            <p:column>
-                            <p:selectManyCheckbox id="tipo" value="#{evaluacionSeguimientoController.selected.tipo}" required="true" requiredMessage="#{bundle.CreateEvaluacionSeguimientoRequiredMessage_tipo}">  
-            <f:selectItem itemLabel="Conocimiento" itemValue="Conocimiento" />  
-            <f:selectItem itemLabel="Desempeño" itemValue="Desempeño" />  
-            <f:selectItem itemLabel="Producto" itemValue="Producto" />  
-        </p:selectManyCheckbox>  
-                        </p:column>    
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_vigencia}" for="vigencia" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:selectBooleanButton value="#{evaluacionSeguimientoController.selected.vigencia}" onLabel="Si" offLabel="No"/>
-                            </p:column>
-                          
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_idResultadoAprendizaje}" for="idResultadoAprendizaje" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:selectOneMenu id="idResultadoAprendizaje" value="#{evaluacionSeguimientoController.selected.idResultadoAprendizaje}" required="true" requiredMessage="#{bundle.CreateEvaluacionSeguimientoRequiredMessage_idResultadoAprendizaje}">
-                                    <f:selectItems value="#{resultadoAprendizajeController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idResultadoAprendizaje"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_idEvidenciaAprendizaje}" for="idEvidenciaAprendizaje" />
-                            </p:column>
-                            
-                        </p:row>
-                        <!--<p:row>
-                            
-                            <p:column style="border-left: white;">
-                                <p:message for="idFichaCaracterizacion"/>
-                            </p:column>
-                        </p:row>-->
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_idActividadProyecto}" for="idActividadProyecto" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:selectOneMenu id="idActividadProyecto" value="#{evaluacionSeguimientoController.selected.idActividadProyecto}" required="true" requiredMessage="#{bundle.CreateEvaluacionSeguimientoRequiredMessage_idActividadProyecto}">
-                                    <f:selectItems value="#{actividadProyectoController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idActividadProyecto"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
+                            <p:column colspan="1">
                                 <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_idUsuario1}" for="idUsuario1" />
                             </p:column>
-                            <p:column style="border-right: white">    
+                            <p:column colspan="2">    
                                 <p:selectOneMenu id="idUsuario1" value="#{evaluacionSeguimientoController.selected.idUsuario1}" required="true" requiredMessage="#{bundle.CreateEvaluacionSeguimientoRequiredMessage_idUsuario1}">
                                     <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
                                 </p:selectOneMenu>
                             </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idUsuario1"/>
+                            <p:column colspan="1">
+                                <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_idUsuario}" for="idUsuario" />
+                            </p:column>
+                            <p:column colspan="2">    
+                                <p:commandButton id="idUsuario" icon="ui-icon-search" onclick="dlgBuscarUsuario.show();" type="button"/>
+                            </p:column>
+                        </p:row>
+                        
+                        
+                        <p:row>
+                            <p:column styleClass="ui-widget-header" colspan="6"> <h2 align="center">Identificación de Características del Aprendiz</h2> </p:column>
+                            </p:row>
+                        <p:row>
+                            <p:column colspan="1" >
+                                <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_carApr}" for="carApr" />
+                            </p:column>
+                            <p:column colspan="5">    
+                                <p:inputTextarea rows="4" cols="105" id="carApr" value="#{evaluacionSeguimientoController.selected.carApr}" title="#{bundle.CreateEvaluacionSeguimientoTitle_carApr}" required="true" requiredMessage="#{bundle.CreateEvaluacionSeguimientoRequiredMessage_carApr}"/>
                             </p:column>
                         </p:row>
                         <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_idUsuario}" for="idUsuario" />
+                            <p:column colspan="1">
+                                <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_fecIni}" for="fecIni" />
                             </p:column>
-                            <p:column style="border-right: white">    
-                                <p:selectOneMenu id="idUsuario" value="#{evaluacionSeguimientoController.selected.idUsuario}" required="true" requiredMessage="#{bundle.CreateEvaluacionSeguimientoRequiredMessage_idUsuario}">
-                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                            <p:column colspan="1">    
+                                <p:calendar locale="es" navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecIni" value="#{evaluacionSeguimientoController.selected.fecIni}" title="#{bundle.CreateEvaluacionSeguimientoTitle_fecIni}" required="true" requiredMessage="#{bundle.CreateEvaluacionSeguimientoRequiredMessage_fecIni}"/>
+                            </p:column>
+                            <p:column colspan="1">
+                                <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_fecFin}" for="fecFin" />
+                            </p:column>
+                            <p:column colspan="1">    
+                                <p:calendar locale="es" navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecFin" value="#{evaluacionSeguimientoController.selected.fecFin}" title="#{bundle.CreateEvaluacionSeguimientoTitle_fecFin}" required="true" requiredMessage="#{bundle.CreateEvaluacionSeguimientoRequiredMessage_fecFin}"/>
+                            </p:column>
+
+                            <p:column colspan="1">
+                                <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_fecRecEvi}" for="fecRecEvi" />
+                            </p:column>
+                            <p:column colspan="1">    
+                                <p:calendar locale="es" navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecRecEvi" value="#{evaluacionSeguimientoController.selected.fecRecEvi}" title="#{bundle.CreateEvaluacionSeguimientoTitle_fecRecEvi}" required="true" requiredMessage="#{bundle.CreateEvaluacionSeguimientoRequiredMessage_fecRecEvi}"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column colspan="1">
+                                <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_medio}" for="medio" />
+                            </p:column>
+                            <p:column colspan="3">  
+                                <p:selectOneRadio id="tipoPlanMejoramiento" value="#{evaluacionSeguimientoController.selected.medio}" required="true" requiredMessage="#{bundle.CreateEvaluacionSeguimientoRequiredMessage_medio}">  
+                                    <f:selectItem itemLabel="Físico" itemValue="Físico" />  
+                                    <f:selectItem itemLabel="Digital" itemValue="Digital" />                                       
+                                </p:selectOneRadio>                                          
+                            </p:column>
+                            <p:column colspan="1">
+                                <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_observaciones}" for="observaciones" />
+                            </p:column>
+                            <p:column colspan="1">    
+                                <p:inputTextarea rows="4" cols="30" id="observaciones" value="#{evaluacionSeguimientoController.selected.observaciones}" title="#{bundle.CreateEvaluacionSeguimientoTitle_observaciones}" />
+                            </p:column>
+                             <p:column colspan="1">
+                                <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_pertinencia}" for="pertinencia" />
+                            </p:column>
+                            <p:column colspan="1">    
+                                <p:selectBooleanButton value="#{evaluacionSeguimientoController.selected.pertinencia}" onLabel="Si" offLabel="No"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                    </p:row>
+                          <p:row>
+                            <p:column styleClass="ui-widget-header" colspan="6"> <h2 align="center">Plan de Formación y Evaluación</h2></p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column colspan="3">
+                                <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_idResultadoAprendizaje}" for="idResultadoAprendizaje" />
+                            </p:column>
+                            <p:column colspan="3">    
+                                <p:selectOneMenu id="idResultadoAprendizaje" value="#{evaluacionSeguimientoController.selected.idResultadoAprendizaje}" required="true" requiredMessage="#{bundle.CreateEvaluacionSeguimientoRequiredMessage_idResultadoAprendizaje}">
+                                    <f:selectItems value="#{resultadoAprendizajeController.itemsAvailableSelectOne}"/>
                                 </p:selectOneMenu>
                             </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idUsuario"/>
+                        </p:row>
+                        <p:row>
+                            <p:column colspan="1">
+                                <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_autenticidad}" for="autenticidad" />
+                            </p:column>
+                            <p:column colspan="2">    
+                                <p:selectBooleanButton value="#{evaluacionSeguimientoController.selected.autenticidad}" onLabel="Cumple" offLabel="No Cumple"/>
+                            </p:column>
+                            <p:column colspan="1">
+                                <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_calidad}" for="calidad" />
+                            </p:column>
+                            <p:column colspan="2">    
+                                <p:selectBooleanButton  value="#{evaluacionSeguimientoController.selected.calidad}" onLabel="Cumple" offLabel="No Cumple"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                                                      
+                            <p:column colspan="1">
+                                <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_aprendizaje}" for="aprendizaje" />
+                            </p:column>
+                            <p:column colspan="2">    
+                                <p:selectBooleanButton value="#{evaluacionSeguimientoController.selected.aprendizaje}" onLabel="Logro" offLabel="No Logro"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column colspan="1">
+                                <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_vigencia}" for="vigencia" />
+                            </p:column>
+                            <p:column colspan="2">    
+                                <p:selectBooleanButton value="#{evaluacionSeguimientoController.selected.vigencia}" onLabel="Si" offLabel="No"/>
+                            </p:column>
+                            <p:column colspan="1">
+                                <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_idEvidenciaAprendizaje}" for="idEvidenciaAprendizaje" />
+                            </p:column>
+                            <p:column colspan="2">    
+                                <p:selectOneMenu id="idEvidenciaAprendizaje" value="#{evaluacionSeguimientoController.selected.idEvidenciaAprendizaje}" required="true" requiredMessage="#{bundle.CreateEvaluacionSeguimientoRequiredMessage_idEvidenciaAprendizaje}">
+                                    <f:selectItems value="#{evidenciaAprendizajeController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
                             </p:column>
                         </p:row>
                     </p:panelGrid>
@@ -245,6 +187,86 @@
                 </div>
             </h:form>
         </ui:define>
+         <ui:define name="dialogs">
+            <p:dialog  id="dialog"   closeOnEscape="true" header="#{bundle.CreateConcertacionPlanTrabajoProductivaTitle}" widgetVar="dlg" minHeight="300" minWidth="450" 
+                       resizable="true" modal="true" showEffect="clip" hideEffect="clip">
+                <ui:include src="/Seg_Ap_Et_Prod/concertacionPlanTrabajoProductiva/Create.xhtml" />
+            </p:dialog>  
+            <p:dialog  id="dialog2"   closeOnEscape="true" header="#{bundle.CreateCriterioSeguimientoTitle}" widgetVar="dlg2" minHeight="300" minWidth="450" 
+                       resizable="true" modal="true" showEffect="clip" hideEffect="clip">
+                <ui:include src="/Seg_Ap_Et_Prod/criterioSeguimiento/Create.xhtml" />
+            </p:dialog> 
+
+            <p:dialog id="buscarCliente" widgetVar="dlgBuscarUsuario" modal="true" resizable="false" 
+                      showEffect="clip" hideEffect="clip" closeOnEscape="true">
+                <h:form id="formularioBuscarUsuario"> 
+                    <p:panelGrid>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateUsuarioLabel_numeroDocumento}" for="numeroDocumento" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="numeroDocumento" value="#{planMejoramientoController.usuarioActual.numeroDocumento}" title="#{bundle.CreateUsuarioTitle_numeroDocumento}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_numeroDocumento}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="numeroDocumento"/>
+                            </p:column> 
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateUsuarioLabel_nomUsu}" for="nomUsu" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="nomUsu" value="#{seguimientoProductivaController.usuarioActual.nomUsu}" title="#{bundle.CreateUsuarioTitle_nomUsu}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_nomUsu}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="nomUsu"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateUsuarioLabel_apeUsu}" for="apeUsu" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="apeUsu" value="#{seguimientoProductivaController.usuarioActual.apeUsu}" title="#{bundle.CreateUsuarioTitle_apeUsu}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_apeUsu}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="apeUsu"/>
+                            </p:column>
+                        </p:row>
+
+                        <p:row>
+                            <p:column colspan="3">
+                                <p:commandButton action="#{seguimientoProductivaController.buscarUsuario()}"
+                                                 value="Buscar"
+                                                 icon="ui-icon-search"
+                                                 process="@this,numeroDocumento,nomUsu,apeUsu"
+                                                 update="tablaUsuarios, :msgs"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <br /><br /><br />
+                    <p:dataTable value="#{seguimientoProductivaController.listBusquedaUsuarios}"
+                                 var="item" paginator="true" rows="5" id="tablaUsuarios">
+                        <p:column>
+                            <h:outputText value="#{item.numeroDocumento}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{item.nomUsu}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{item.apeUsu}"/>
+                        </p:column>
+                        <p:column>
+                            <p:commandButton id="botonSeleccionUsuario" update=":formSeguimientoProductiva" action="#{seguimientoProductivaController.agregarUsuario}"
+                                             oncomplete="dlgBuscarUsuario.hide();" icon="ui-icon-plus">
+                                <f:setPropertyActionListener value="#{item}" target="#{seguimientoProductivaController.usuarioActual}"/>
+                            </p:commandButton>
+                        </p:column>
+                    </p:dataTable>  
+                </h:form>                     
+            </p:dialog>
+        </ui:define> 
     </ui:composition>
 
 </html>

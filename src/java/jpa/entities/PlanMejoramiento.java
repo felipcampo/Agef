@@ -64,8 +64,9 @@ public class PlanMejoramiento implements Serializable {
     private String evidenciaCam;
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 15)
     @Column(name = "tipo_plan_mejoramiento")
-    private boolean tipoPlanMejoramiento;
+    private String tipoPlanMejoramiento;
     @Basic(optional = false)
     @NotNull
     @Column(name = "juicio_evaluacion")
@@ -139,7 +140,7 @@ public class PlanMejoramiento implements Serializable {
         this.idPlanMejoramiento = idPlanMejoramiento;
     }
 
-    public PlanMejoramiento(Integer idPlanMejoramiento, String observaciones, boolean tipoPlanMejoramiento, boolean juicioEvaluacion, boolean etapa, String compromiso, Date fechaConcertacion) {
+    public PlanMejoramiento(Integer idPlanMejoramiento, String observaciones, String tipoPlanMejoramiento, boolean juicioEvaluacion, boolean etapa, String compromiso, Date fechaConcertacion) {
         this.idPlanMejoramiento = idPlanMejoramiento;
         this.observaciones = observaciones;
         this.tipoPlanMejoramiento = tipoPlanMejoramiento;
@@ -173,11 +174,11 @@ public class PlanMejoramiento implements Serializable {
         this.evidenciaCam = evidenciaCam;
     }
 
-    public boolean getTipoPlanMejoramiento() {
+    public String getTipoPlanMejoramiento() {
         return tipoPlanMejoramiento;
     }
 
-    public void setTipoPlanMejoramiento(boolean tipoPlanMejoramiento) {
+    public void setTipoPlanMejoramiento(String tipoPlanMejoramiento) {
         this.tipoPlanMejoramiento = tipoPlanMejoramiento;
     }
 

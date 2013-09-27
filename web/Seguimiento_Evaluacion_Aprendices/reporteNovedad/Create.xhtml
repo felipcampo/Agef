@@ -14,109 +14,124 @@
             <p:growl id="msgs" showDetail="false" sticky="false"/>
             <h:form id="formReporteNovedad">
                 <div id="form" align="center">
+                    <h3>#{bundle.CreateReporteNovedadTitle}</h3>
+                    
+                    <p:toolbar>  
+                        <p:toolbarGroup align="left">
+                            <p:commandButton type="button" value="Nuevo" icon="ui-icon-document" /> 
+                            <p:commandButton ajax="false" value="Abrir" icon="ui-icon-folder-open" action="#{seguimientosProductivaController.prepareList}" immediate="true"/>
+                            <p:separator />                                      
+                            <p:commandButton type="button" value="Imprimir" icon="ui-icon-print"/>  
+                        </p:toolbarGroup>  
+                        <p:toolbarGroup align="right">  
+                            <p:menuButton value="Opciones">  
+                                <p:menuitem value="Inicio" url="#" />  
+                                <p:menuitem value="Novedades" url="#" />                                        
+                            </p:menuButton>  
+                        </p:toolbarGroup>  
+                    </p:toolbar> 
+                    <br />
+                    <br />  
+                    
                     <p:panelGrid>
-                        <f:facet name="header">
-                            <p:row><p:column colspan="3">#{bundle.CreateReporteNovedadTitle}</p:column></p:row>                            
-                        </f:facet>                        
-                        <p:row>
+                        
+                        <p:row>  
+                            <p:column styleClass="ui-widget-header" colspan="4"><p align="center">1. DATOS DEL APRENDIZ</p></p:column> 
+                        </p:row>
+                                              
+                        <p:row>                           
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateReporteNovedadLabel_idReporteNovedad}" for="idReporteNovedad" />
                             </p:column>
-                            <p:column style="border-right: white">    
+                            <p:column>    
                                 <p:inputText id="idReporteNovedad" value="#{reporteNovedadController.selected.idReporteNovedad}" title="#{bundle.CreateReporteNovedadTitle_idReporteNovedad}" required="true" requiredMessage="#{bundle.CreateReporteNovedadRequiredMessage_idReporteNovedad}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idReporteNovedad"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateReporteNovedadLabel_conAccCor}" for="conAccCor" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputText id="conAccCor" value="#{reporteNovedadController.selected.conAccCor}" title="#{bundle.CreateReporteNovedadTitle_conAccCor}" required="true" requiredMessage="#{bundle.CreateReporteNovedadRequiredMessage_conAccCor}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="conAccCor"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateReporteNovedadLabel_desAnt}" for="desAnt" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputTextarea rows="4" cols="30" id="desAnt" value="#{reporteNovedadController.selected.desAnt}" title="#{bundle.CreateReporteNovedadTitle_desAnt}" required="true" requiredMessage="#{bundle.CreateReporteNovedadRequiredMessage_desAnt}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="desAnt"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateReporteNovedadLabel_desFal}" for="desFal" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputTextarea rows="4" cols="30" id="desFal" value="#{reporteNovedadController.selected.desFal}" title="#{bundle.CreateReporteNovedadTitle_desFal}" required="true" requiredMessage="#{bundle.CreateReporteNovedadRequiredMessage_desFal}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="desFal"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateReporteNovedadLabel_desPru}" for="desPru" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputTextarea rows="4" cols="30" id="desPru" value="#{reporteNovedadController.selected.desPru}" title="#{bundle.CreateReporteNovedadTitle_desPru}" required="true" requiredMessage="#{bundle.CreateReporteNovedadRequiredMessage_desPru}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="desPru"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
+                            </p:column>  
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateReporteNovedadLabel_fecRep}" for="fecRep" />
                             </p:column>
                             <p:column style="border-right: white">    
                                 <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecRep" value="#{reporteNovedadController.selected.fecRep}" title="#{bundle.CreateReporteNovedadTitle_fecRep}" required="true" requiredMessage="#{bundle.CreateReporteNovedadRequiredMessage_fecRep}"/>
                             </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="fecRep"/>
-                            </p:column>
                         </p:row>
-                        <p:row>
+                        
+                      
+                        
+                         <p:row>
                             <p:column>
-                                <h:outputLabel value="#{bundle.CreateReporteNovedadLabel_fecUltPlaMej}" for="fecUltPlaMej" />
+                                <h:outputLabel value="#{bundle.CreateReporteNovedadLabel_idUsuario}" for="idUsuario" />
                             </p:column>
                             <p:column style="border-right: white">    
-                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecUltPlaMej" value="#{reporteNovedadController.selected.fecUltPlaMej}" title="#{bundle.CreateReporteNovedadTitle_fecUltPlaMej}" required="true" requiredMessage="#{bundle.CreateReporteNovedadRequiredMessage_fecUltPlaMej}"/>
+                                <p:selectOneMenu id="idUsuario" value="#{reporteNovedadController.selected.idUsuario}" required="true" requiredMessage="#{bundle.CreateReporteNovedadRequiredMessage_idUsuario}">
+                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
                             </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="fecUltPlaMej"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
                             <p:column>
-                                <h:outputLabel value="#{bundle.CreateReporteNovedadLabel_hechos}" for="hechos" />
+                                <h:outputLabel value="#{bundle.CreateReporteNovedadLabel_idFichaCaracterizacion}" for="idFichaCaracterizacion" />
                             </p:column>
                             <p:column style="border-right: white">    
-                                <p:inputTextarea rows="4" cols="30" id="hechos" value="#{reporteNovedadController.selected.hechos}" title="#{bundle.CreateReporteNovedadTitle_hechos}" required="true" requiredMessage="#{bundle.CreateReporteNovedadRequiredMessage_hechos}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="hechos"/>
-                            </p:column>
+                                <p:selectOneMenu id="idFichaCaracterizacion" value="#{reporteNovedadController.selected.idFichaCaracterizacion}" required="true" requiredMessage="#{bundle.CreateReporteNovedadRequiredMessage_idFichaCaracterizacion}">
+                                    <f:selectItems value="#{fichaCaracterizacionController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>                        
                         </p:row>
+                        
+                       
+                        
+                        
+                        
+                        <p:row>  
+                            <p:column styleClass="ui-widget-header" colspan="4"><p align="center">2. ANTECEDENTES DEL APRENDIZ</p></p:column> 
+                        </p:row>                      
+                       
+                                                
                         <p:row>
-                            <p:column>
+                            <p:column colspan="1">
                                 <h:outputLabel value="#{bundle.CreateReporteNovedadLabel_numAccCor}" for="numAccCor" />
                             </p:column>
-                            <p:column style="border-right: white">    
+                            <p:column colspan="3">    
                                 <p:inputText id="numAccCor" value="#{reporteNovedadController.selected.numAccCor}" title="#{bundle.CreateReporteNovedadTitle_numAccCor}" required="true" requiredMessage="#{bundle.CreateReporteNovedadRequiredMessage_numAccCor}"/>
                             </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="numAccCor"/>
-                            </p:column>
+                            
                         </p:row>
+                        
+                        <p:row>
+                            <p:column colspan="1">
+                                <h:outputLabel value="#{bundle.CreateReporteNovedadLabel_conAccCor}" for="conAccCor" />
+                            </p:column>
+                            <p:column colspan="3">    
+                                <p:inputText id="conAccCor" value="#{reporteNovedadController.selected.conAccCor}" title="#{bundle.CreateReporteNovedadTitle_conAccCor}" required="true" requiredMessage="#{bundle.CreateReporteNovedadRequiredMessage_conAccCor}"/>
+                            </p:column>
+                           
+                        </p:row>
+                        
+                        <p:row>
+                            <p:column colspan="1">
+                                <h:outputLabel value="#{bundle.CreateReporteNovedadLabel_desAnt}" for="desAnt" />
+                            </p:column>
+                            <p:column colspan="3">    
+                                <p:inputTextarea rows="4" cols="30" id="desAnt" value="#{reporteNovedadController.selected.desAnt}" title="#{bundle.CreateReporteNovedadTitle_desAnt}" required="true" requiredMessage="#{bundle.CreateReporteNovedadRequiredMessage_desAnt}"/>
+                            </p:column>
+                            
+                        </p:row>
+                        
+                        <p:row>
+                            <p:column colspan="1">
+                                <h:outputLabel value="#{bundle.CreateReporteNovedadLabel_fecUltPlaMej}" for="fecUltPlaMej" />
+                            </p:column>
+                            <p:column colspan="3">    
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecUltPlaMej" value="#{reporteNovedadController.selected.fecUltPlaMej}" title="#{bundle.CreateReporteNovedadTitle_fecUltPlaMej}" required="true" requiredMessage="#{bundle.CreateReporteNovedadRequiredMessage_fecUltPlaMej}"/>
+                            </p:column>
+                            
+                        </p:row>
+                        
+                        
+                        
+                        <p:row>  
+                            <p:column styleClass="ui-widget-header" colspan="4"><p align="center">3. DESCRIPCIÓN DETALLADA DE LOS HECHOS</p></p:column> 
+                        </p:row> 
+                        
+                        
+                        
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateReporteNovedadLabel_fechaHecho}" for="fechaHecho" />
@@ -128,44 +143,77 @@
                                 <p:message for="fechaHecho"/>
                             </p:column>
                         </p:row>
+                        
+                        
                         <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateReporteNovedadLabel_testigosPruebas}" for="testigosPruebas" />
+                            <p:column colspan="1">
+                                <h:outputLabel value="#{bundle.CreateReporteNovedadLabel_hechos}" for="hechos" />
                             </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputTextarea rows="4" cols="30" id="testigosPruebas" value="#{reporteNovedadController.selected.testigosPruebas}" title="#{bundle.CreateReporteNovedadTitle_testigosPruebas}" required="true" requiredMessage="#{bundle.CreateReporteNovedadRequiredMessage_testigosPruebas}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="testigosPruebas"/>
-                            </p:column>
+                            <p:column colspan="3">    
+                                <p:inputTextarea rows="4" cols="30" id="hechos" value="#{reporteNovedadController.selected.hechos}" title="#{bundle.CreateReporteNovedadTitle_hechos}" required="true" requiredMessage="#{bundle.CreateReporteNovedadRequiredMessage_hechos}"/>
+                            </p:column>                            
                         </p:row>
+                        
+                        
+                        
+                        
+                        
+                        <p:row>  
+                            <p:column styleClass="ui-widget-header" colspan="4"><p align="center">4. ANÁLISIS DEL CASO</p></p:column> 
+                        </p:row> 
+                                               
+                        
                         <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateReporteNovedadLabel_idUsuario}" for="idUsuario" />
+                            <p:column colspan="1">
+                                <h:outputLabel value="#{bundle.CreateReporteNovedadLabel_testigos}" for="testigos" />
                             </p:column>
-                            <p:column style="border-right: white">    
-                                <p:selectOneMenu id="idUsuario" value="#{reporteNovedadController.selected.idUsuario}" required="true" requiredMessage="#{bundle.CreateReporteNovedadRequiredMessage_idUsuario}">
-                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idUsuario"/>
-                            </p:column>
+                            <p:column colspan="3">    
+                                <p:inputTextarea rows="4" cols="30" id="testigos" value="#{reporteNovedadController.selected.testigosPruebas}" title="#{bundle.CreateReporteNovedadTitle_testigos}" required="true" requiredMessage="#{bundle.CreateReporteNovedadRequiredMessage_testigos}"/>
+                            </p:column>                            
                         </p:row>
+                        
+                        
+                        
                         <p:row>
-                            <p:column>
+                            <p:column colspan="1">
+                                <h:outputLabel value="#{bundle.CreateReporteNovedadLabel_desFal}" for="desFal" />
+                            </p:column>
+                            <p:column colspan="3">    
+                                <p:inputTextarea rows="4" cols="30" id="desFal" value="#{reporteNovedadController.selected.desFal}" title="#{bundle.CreateReporteNovedadTitle_desFal}" required="true" requiredMessage="#{bundle.CreateReporteNovedadRequiredMessage_desFal}"/>
+                            </p:column>
+                            
+                        </p:row>
+                        
+                        <p:row>
+                            <p:column colspan="1">
+                                <h:outputLabel value="#{bundle.CreateReporteNovedadLabel_desPru}" for="desPru" />
+                            </p:column>
+                            <p:column colspan="3">    
+                                <p:inputTextarea rows="4" cols="30" id="desPru" value="#{reporteNovedadController.selected.desPru}" title="#{bundle.CreateReporteNovedadTitle_desPru}" required="true" requiredMessage="#{bundle.CreateReporteNovedadRequiredMessage_desPru}"/>
+                            </p:column>
+                            
+                        </p:row>                  
+                       
+                        <p:row>
+                            <p:column colspan="1">
                                 <h:outputLabel value="#{bundle.CreateReporteNovedadLabel_idResultadoAprendizaje}" for="idResultadoAprendizaje" />
                             </p:column>
-                            <p:column style="border-right: white">    
+                            <p:column colspan="4">    
                                 <p:selectOneMenu id="idResultadoAprendizaje" value="#{reporteNovedadController.selected.idResultadoAprendizaje}" required="true" requiredMessage="#{bundle.CreateReporteNovedadRequiredMessage_idResultadoAprendizaje}">
                                     <f:selectItems value="#{resultadoAprendizajeController.itemsAvailableSelectOne}"/>
                                 </p:selectOneMenu>
                             </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idResultadoAprendizaje"/>
-                            </p:column>
+                            
                         </p:row>
-                        <p:row>
+                        
+                        
+                        
+                     <p:row>  
+                            <p:column styleClass="ui-widget-header" colspan="4"><p align="center">4. ANÁLISIS DEL CASO</p></p:column> 
+                        </p:row> 
+                        
+                        
+                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateReporteNovedadLabel_idDesercion}" for="idDesercion" />
                             </p:column>
@@ -178,19 +226,8 @@
                                 <p:message for="idDesercion"/>
                             </p:column>
                         </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateReporteNovedadLabel_idFichaCaracterizacion}" for="idFichaCaracterizacion" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:selectOneMenu id="idFichaCaracterizacion" value="#{reporteNovedadController.selected.idFichaCaracterizacion}" required="true" requiredMessage="#{bundle.CreateReporteNovedadRequiredMessage_idFichaCaracterizacion}">
-                                    <f:selectItems value="#{fichaCaracterizacionController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idFichaCaracterizacion"/>
-                            </p:column>
-                        </p:row>
+                       
+                        
                     </p:panelGrid>
                     <br />
                     <br />
@@ -205,3 +242,4 @@
     </ui:composition>
 
 </html>
+
