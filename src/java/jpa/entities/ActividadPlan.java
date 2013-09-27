@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADSI
+ * @author MAURICIO
  */
 @Entity
 @Table(name = "actividad_plan")
@@ -72,9 +72,8 @@ public class ActividadPlan implements Serializable {
     private Date fecIni;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 25)
     @Column(name = "lugar")
-    private String lugar;
+    private boolean lugar;
     @Basic(optional = false)
     @NotNull
     @Column(name = "pertinencia")
@@ -102,9 +101,8 @@ public class ActividadPlan implements Serializable {
     private Date fecRevision;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 25)
     @Column(name = "lugar2")
-    private String lugar2;
+    private boolean lugar2;
     @JoinColumn(name = "id_evidencia_aprendizaje", referencedColumnName = "id_evidencia_aprendizaje")
     @ManyToOne(optional = false)
     private EvidenciaAprendizaje idEvidenciaAprendizaje;
@@ -118,7 +116,7 @@ public class ActividadPlan implements Serializable {
         this.idActividadPlan = idActividadPlan;
     }
 
-    public ActividadPlan(Integer idActividadPlan, String descripcionActividad, Date fecFin, Date fecIni, String lugar, boolean pertinencia, boolean vigencia, boolean autenticidad, boolean calidad, boolean aprendizaje, Date fecRevision, String lugar2) {
+    public ActividadPlan(Integer idActividadPlan, String descripcionActividad, Date fecFin, Date fecIni, boolean lugar, boolean pertinencia, boolean vigencia, boolean autenticidad, boolean calidad, boolean aprendizaje, Date fecRevision, boolean lugar2) {
         this.idActividadPlan = idActividadPlan;
         this.descripcionActividad = descripcionActividad;
         this.fecFin = fecFin;
@@ -165,11 +163,11 @@ public class ActividadPlan implements Serializable {
         this.fecIni = fecIni;
     }
 
-    public String getLugar() {
+    public boolean getLugar() {
         return lugar;
     }
 
-    public void setLugar(String lugar) {
+    public void setLugar(boolean lugar) {
         this.lugar = lugar;
     }
 
@@ -221,11 +219,11 @@ public class ActividadPlan implements Serializable {
         this.fecRevision = fecRevision;
     }
 
-    public String getLugar2() {
+    public boolean getLugar2() {
         return lugar2;
     }
 
-    public void setLugar2(String lugar2) {
+    public void setLugar2(boolean lugar2) {
         this.lugar2 = lugar2;
     }
 

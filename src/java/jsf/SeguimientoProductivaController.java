@@ -242,7 +242,7 @@ public class SeguimientoProductivaController implements Serializable {
     }
     
     public void buscarEmpresa() {
-        if (empresaActual.getIdEmpresa()==null && empresaActual.getRazonSocialEmpresa().equals("")) {
+        if (empresaActual.getIdEmpresa()==null && empresaActual.getRazonSocialEmp().equals("")) {
             JsfUtil.addErrorMessage(ResourceBundle.getBundle("propierties/Bundle").getString("CriteriosVacios"));
         } else {
             try {

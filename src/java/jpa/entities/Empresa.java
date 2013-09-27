@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADSI
+ * @author MAURICIO
  */
 @Entity
 @Table(name = "empresa")
@@ -33,11 +33,11 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Empresa.findAll", query = "SELECT e FROM Empresa e"),
     @NamedQuery(name = "Empresa.findByIdEmpresa", query = "SELECT e FROM Empresa e WHERE e.idEmpresa = :idEmpresa"),
     @NamedQuery(name = "Empresa.findByDirEmp", query = "SELECT e FROM Empresa e WHERE e.dirEmp = :dirEmp"),
-    @NamedQuery(name = "Empresa.findByEmailEmpresa", query = "SELECT e FROM Empresa e WHERE e.emailEmpresa = :emailEmpresa"),
-    @NamedQuery(name = "Empresa.findByRazonSocialEmpresa", query = "SELECT e FROM Empresa e WHERE e.razonSocialEmpresa = :razonSocialEmpresa"),
+    @NamedQuery(name = "Empresa.findByEmailEmp", query = "SELECT e FROM Empresa e WHERE e.emailEmp = :emailEmp"),
+    @NamedQuery(name = "Empresa.findByRazonSocialEmp", query = "SELECT e FROM Empresa e WHERE e.razonSocialEmp = :razonSocialEmp"),
     @NamedQuery(name = "Empresa.findByTel1Emp", query = "SELECT e FROM Empresa e WHERE e.tel1Emp = :tel1Emp"),
     @NamedQuery(name = "Empresa.findByTel2Emp", query = "SELECT e FROM Empresa e WHERE e.tel2Emp = :tel2Emp"),
-    @NamedQuery(name = "Empresa.findByWwwEmp", query = "SELECT e FROM Empresa e WHERE e.wwwEmp = :wwwEmp")})
+    @NamedQuery(name = "Empresa.findByWebEmp", query = "SELECT e FROM Empresa e WHERE e.webEmp = :webEmp")})
 public class Empresa implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -53,13 +53,13 @@ public class Empresa implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "email_empresa")
-    private String emailEmpresa;
+    @Column(name = "email_emp")
+    private String emailEmp;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "razon_social_empresa")
-    private String razonSocialEmpresa;
+    @Column(name = "razon_social_emp")
+    private String razonSocialEmp;
     @Basic(optional = false)
     @NotNull
     @Column(name = "tel1_emp")
@@ -67,20 +67,20 @@ public class Empresa implements Serializable {
     @Column(name = "tel2_emp")
     private Integer tel2Emp;
     @Size(max = 255)
-    @Column(name = "www_emp")
-    private String wwwEmp;
+    @Column(name = "web_emp")
+    private String webEmp;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpresa")
     private List<ContratoProyecto> contratoProyectoList;
     @OneToMany(mappedBy = "idEmpresa")
     private List<PlanMejoramiento> planMejoramientoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpresa")
     private List<SeguimientoProductiva> seguimientoProductivaList;
-    @JoinColumn(name = "id_ciudad", referencedColumnName = "id_ciudad")
-    @ManyToOne(optional = false)
-    private Ciudad idCiudad;
     @JoinColumn(name = "id_zona_empresa", referencedColumnName = "id_zona_empresa")
     @ManyToOne(optional = false)
     private ZonaEmpresa idZonaEmpresa;
+    @JoinColumn(name = "id_ciudad", referencedColumnName = "id_ciudad")
+    @ManyToOne(optional = false)
+    private Ciudad idCiudad;
 
     public Empresa() {
     }
@@ -89,11 +89,11 @@ public class Empresa implements Serializable {
         this.idEmpresa = idEmpresa;
     }
 
-    public Empresa(Integer idEmpresa, String dirEmp, String emailEmpresa, String razonSocialEmpresa, int tel1Emp) {
+    public Empresa(Integer idEmpresa, String dirEmp, String emailEmp, String razonSocialEmp, int tel1Emp) {
         this.idEmpresa = idEmpresa;
         this.dirEmp = dirEmp;
-        this.emailEmpresa = emailEmpresa;
-        this.razonSocialEmpresa = razonSocialEmpresa;
+        this.emailEmp = emailEmp;
+        this.razonSocialEmp = razonSocialEmp;
         this.tel1Emp = tel1Emp;
     }
 
@@ -113,20 +113,20 @@ public class Empresa implements Serializable {
         this.dirEmp = dirEmp;
     }
 
-    public String getEmailEmpresa() {
-        return emailEmpresa;
+    public String getEmailEmp() {
+        return emailEmp;
     }
 
-    public void setEmailEmpresa(String emailEmpresa) {
-        this.emailEmpresa = emailEmpresa;
+    public void setEmailEmp(String emailEmp) {
+        this.emailEmp = emailEmp;
     }
 
-    public String getRazonSocialEmpresa() {
-        return razonSocialEmpresa;
+    public String getRazonSocialEmp() {
+        return razonSocialEmp;
     }
 
-    public void setRazonSocialEmpresa(String razonSocialEmpresa) {
-        this.razonSocialEmpresa = razonSocialEmpresa;
+    public void setRazonSocialEmp(String razonSocialEmp) {
+        this.razonSocialEmp = razonSocialEmp;
     }
 
     public int getTel1Emp() {
@@ -145,12 +145,12 @@ public class Empresa implements Serializable {
         this.tel2Emp = tel2Emp;
     }
 
-    public String getWwwEmp() {
-        return wwwEmp;
+    public String getWebEmp() {
+        return webEmp;
     }
 
-    public void setWwwEmp(String wwwEmp) {
-        this.wwwEmp = wwwEmp;
+    public void setWebEmp(String webEmp) {
+        this.webEmp = webEmp;
     }
 
     @XmlTransient
@@ -180,20 +180,20 @@ public class Empresa implements Serializable {
         this.seguimientoProductivaList = seguimientoProductivaList;
     }
 
-    public Ciudad getIdCiudad() {
-        return idCiudad;
-    }
-
-    public void setIdCiudad(Ciudad idCiudad) {
-        this.idCiudad = idCiudad;
-    }
-
     public ZonaEmpresa getIdZonaEmpresa() {
         return idZonaEmpresa;
     }
 
     public void setIdZonaEmpresa(ZonaEmpresa idZonaEmpresa) {
         this.idZonaEmpresa = idZonaEmpresa;
+    }
+
+    public Ciudad getIdCiudad() {
+        return idCiudad;
+    }
+
+    public void setIdCiudad(Ciudad idCiudad) {
+        this.idCiudad = idCiudad;
     }
 
     @Override

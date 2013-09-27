@@ -6,7 +6,9 @@ package jpa.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,16 +19,18 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADSI
+ * @author MAURICIO
  */
 @Entity
 @Table(name = "seguimiento_productiva")
@@ -81,9 +85,6 @@ public class SeguimientoProductiva implements Serializable {
     @JoinColumn(name = "id_incidente_productiva", referencedColumnName = "id_incidente_productiva")
     @ManyToOne
     private IncidenteProductiva idIncidenteProductiva;
-    @JoinColumn(name = "id_visita_etapa_productiva", referencedColumnName = "id_visita_etapa_productiva")
-    @ManyToOne
-    private VisitaEtapaProductiva idVisitaEtapaProductiva;
     @JoinColumn(name = "id_ficha_caracterizacion", referencedColumnName = "id_ficha_caracterizacion")
     @ManyToOne(optional = false)
     private FichaCaracterizacion idFichaCaracterizacion;
@@ -102,6 +103,8 @@ public class SeguimientoProductiva implements Serializable {
     @JoinColumn(name = "id_centro_formacion", referencedColumnName = "id_centro_formacion")
     @ManyToOne(optional = false)
     private CentroFormacion idCentroFormacion;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSeguimientoProductiva")
+    private List<CriterioSeguimiento> criterioSeguimientoList;
 
     public SeguimientoProductiva() {
     }
@@ -192,14 +195,6 @@ public class SeguimientoProductiva implements Serializable {
         this.idIncidenteProductiva = idIncidenteProductiva;
     }
 
-    public VisitaEtapaProductiva getIdVisitaEtapaProductiva() {
-        return idVisitaEtapaProductiva;
-    }
-
-    public void setIdVisitaEtapaProductiva(VisitaEtapaProductiva idVisitaEtapaProductiva) {
-        this.idVisitaEtapaProductiva = idVisitaEtapaProductiva;
-    }
-
     public FichaCaracterizacion getIdFichaCaracterizacion() {
         return idFichaCaracterizacion;
     }
@@ -246,6 +241,15 @@ public class SeguimientoProductiva implements Serializable {
 
     public void setIdCentroFormacion(CentroFormacion idCentroFormacion) {
         this.idCentroFormacion = idCentroFormacion;
+    }
+
+    @XmlTransient
+    public List<CriterioSeguimiento> getCriterioSeguimientoList() {
+        return criterioSeguimientoList;
+    }
+
+    public void setCriterioSeguimientoList(List<CriterioSeguimiento> criterioSeguimientoList) {
+        this.criterioSeguimientoList = criterioSeguimientoList;
     }
 
     @Override

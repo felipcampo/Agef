@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADSI
+ * @author MAURICIO
  */
 @Entity
 @Table(name = "plan_mejoramiento")
@@ -39,12 +39,12 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "PlanMejoramiento.findAll", query = "SELECT p FROM PlanMejoramiento p"),
     @NamedQuery(name = "PlanMejoramiento.findByIdPlanMejoramiento", query = "SELECT p FROM PlanMejoramiento p WHERE p.idPlanMejoramiento = :idPlanMejoramiento"),
+    @NamedQuery(name = "PlanMejoramiento.findByTipoPlanMejoramiento", query = "SELECT p FROM PlanMejoramiento p WHERE p.tipoPlanMejoramiento = :tipoPlanMejoramiento"),
     @NamedQuery(name = "PlanMejoramiento.findByJuicioEvaluacion", query = "SELECT p FROM PlanMejoramiento p WHERE p.juicioEvaluacion = :juicioEvaluacion"),
     @NamedQuery(name = "PlanMejoramiento.findByEtapa", query = "SELECT p FROM PlanMejoramiento p WHERE p.etapa = :etapa"),
     @NamedQuery(name = "PlanMejoramiento.findByTotal", query = "SELECT p FROM PlanMejoramiento p WHERE p.total = :total"),
     @NamedQuery(name = "PlanMejoramiento.findByNombreJefe", query = "SELECT p FROM PlanMejoramiento p WHERE p.nombreJefe = :nombreJefe"),
-    @NamedQuery(name = "PlanMejoramiento.findByFechaConcertacion", query = "SELECT p FROM PlanMejoramiento p WHERE p.fechaConcertacion = :fechaConcertacion"),
-    @NamedQuery(name = "PlanMejoramiento.findByTipoPlanMejoramiento", query = "SELECT p FROM PlanMejoramiento p WHERE p.tipoPlanMejoramiento = :tipoPlanMejoramiento")})
+    @NamedQuery(name = "PlanMejoramiento.findByFechaConcertacion", query = "SELECT p FROM PlanMejoramiento p WHERE p.fechaConcertacion = :fechaConcertacion")})
 public class PlanMejoramiento implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -62,6 +62,10 @@ public class PlanMejoramiento implements Serializable {
     @Size(max = 65535)
     @Column(name = "evidencia_cam")
     private String evidenciaCam;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "tipo_plan_mejoramiento")
+    private boolean tipoPlanMejoramiento;
     @Basic(optional = false)
     @NotNull
     @Column(name = "juicio_evaluacion")
@@ -87,11 +91,6 @@ public class PlanMejoramiento implements Serializable {
     @Column(name = "fecha_concertacion")
     @Temporal(TemporalType.DATE)
     private Date fechaConcertacion;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 15)
-    @Column(name = "tipo_plan_mejoramiento")
-    private String tipoPlanMejoramiento;
     @ManyToMany(mappedBy = "planMejoramientoList")
     private List<ResultadoAprendizaje> resultadoAprendizajeList;
     @JoinColumn(name = "id_usuario2", referencedColumnName = "id_usuario")
@@ -140,14 +139,14 @@ public class PlanMejoramiento implements Serializable {
         this.idPlanMejoramiento = idPlanMejoramiento;
     }
 
-    public PlanMejoramiento(Integer idPlanMejoramiento, String observaciones, boolean juicioEvaluacion, boolean etapa, String compromiso, Date fechaConcertacion, String tipoPlanMejoramiento) {
+    public PlanMejoramiento(Integer idPlanMejoramiento, String observaciones, boolean tipoPlanMejoramiento, boolean juicioEvaluacion, boolean etapa, String compromiso, Date fechaConcertacion) {
         this.idPlanMejoramiento = idPlanMejoramiento;
         this.observaciones = observaciones;
+        this.tipoPlanMejoramiento = tipoPlanMejoramiento;
         this.juicioEvaluacion = juicioEvaluacion;
         this.etapa = etapa;
         this.compromiso = compromiso;
         this.fechaConcertacion = fechaConcertacion;
-        this.tipoPlanMejoramiento = tipoPlanMejoramiento;
     }
 
     public Integer getIdPlanMejoramiento() {
@@ -172,6 +171,14 @@ public class PlanMejoramiento implements Serializable {
 
     public void setEvidenciaCam(String evidenciaCam) {
         this.evidenciaCam = evidenciaCam;
+    }
+
+    public boolean getTipoPlanMejoramiento() {
+        return tipoPlanMejoramiento;
+    }
+
+    public void setTipoPlanMejoramiento(boolean tipoPlanMejoramiento) {
+        this.tipoPlanMejoramiento = tipoPlanMejoramiento;
     }
 
     public boolean getJuicioEvaluacion() {
@@ -220,14 +227,6 @@ public class PlanMejoramiento implements Serializable {
 
     public void setFechaConcertacion(Date fechaConcertacion) {
         this.fechaConcertacion = fechaConcertacion;
-    }
-
-    public String getTipoPlanMejoramiento() {
-        return tipoPlanMejoramiento;
-    }
-
-    public void setTipoPlanMejoramiento(String tipoPlanMejoramiento) {
-        this.tipoPlanMejoramiento = tipoPlanMejoramiento;
     }
 
     @XmlTransient

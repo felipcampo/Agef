@@ -14,8 +14,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import jpa.entities.Empresa;
 import jpa.entities.Empresa_;
-import jpa.entities.Usuario;
-import jpa.entities.Usuario_;
+
 
 /**
  *
@@ -42,7 +41,7 @@ public class EmpresaFacade extends AbstractFacade<Empresa> {
         Root<Empresa> u = cq.from(Empresa.class);
         cq.where(cb.or(
                 cb.equal(u.get(Empresa_.idEmpresa), empresa.getIdEmpresa()),
-                cb.like(u.get(Empresa_.razonSocialEmpresa), "%" + empresa.getRazonSocialEmpresa() + "%")));
+                cb.like(u.get(Empresa_.razonSocialEmp), "%" + empresa.getRazonSocialEmp() + "%")));
         TypedQuery<Empresa> q = getEntityManager().createQuery(cq);
         List<Empresa> results = q.getResultList();
         return results;

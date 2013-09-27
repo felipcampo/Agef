@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADSI
+ * @author MAURICIO
  */
 @Entity
 @Table(name = "evidencia_aprendizaje")
@@ -58,10 +58,7 @@ public class EvidenciaAprendizaje implements Serializable {
     @Column(name = "fecha_evidencia_aprendizaje")
     @Temporal(TemporalType.DATE)
     private Date fechaEvidenciaAprendizaje;
-    @JoinTable(name = "evidencia_aprendizaje_criterio_evaluacion", joinColumns = {
-        @JoinColumn(name = "id_evidencia_aprendizaje", referencedColumnName = "id_evidencia_aprendizaje")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_criterio_evaluacion", referencedColumnName = "id_criterio_evaluacion")})
-    @ManyToMany
+    @ManyToMany(mappedBy = "evidenciaAprendizajeList")
     private List<CriterioEvaluacion> criterioEvaluacionList;
     @JoinTable(name = "evidencia_aprendizaje_tipo_evidencia", joinColumns = {
         @JoinColumn(name = "id_evidencia_aprendizaje", referencedColumnName = "id_evidencia_aprendizaje")}, inverseJoinColumns = {

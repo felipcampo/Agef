@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADSI
+ * @author MAURICIO
  */
 @Entity
 @Table(name = "nivel_conocimento")
@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "NivelConocimento.findAll", query = "SELECT n FROM NivelConocimento n"),
     @NamedQuery(name = "NivelConocimento.findByIdNivelConocimento", query = "SELECT n FROM NivelConocimento n WHERE n.idNivelConocimento = :idNivelConocimento"),
-    @NamedQuery(name = "NivelConocimento.findByDescrNivelConocimentocol", query = "SELECT n FROM NivelConocimento n WHERE n.descrNivelConocimentocol = :descrNivelConocimentocol")})
+    @NamedQuery(name = "NivelConocimento.findByDescrNivelConocimento", query = "SELECT n FROM NivelConocimento n WHERE n.descrNivelConocimento = :descrNivelConocimento")})
 public class NivelConocimento implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -43,11 +43,11 @@ public class NivelConocimento implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
-    @Column(name = "descr_nivel_conocimentocol")
-    private String descrNivelConocimentocol;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idNivelConocimentoInformatica")
-    private List<MatrizCaracterizacion> matrizCaracterizacionList;
+    @Column(name = "descr_nivel_conocimento")
+    private String descrNivelConocimento;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idNivelConocimentoIngles")
+    private List<MatrizCaracterizacion> matrizCaracterizacionList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idNivelConocimentoInformatica")
     private List<MatrizCaracterizacion> matrizCaracterizacionList1;
 
     public NivelConocimento() {
@@ -57,9 +57,9 @@ public class NivelConocimento implements Serializable {
         this.idNivelConocimento = idNivelConocimento;
     }
 
-    public NivelConocimento(Short idNivelConocimento, String descrNivelConocimentocol) {
+    public NivelConocimento(Short idNivelConocimento, String descrNivelConocimento) {
         this.idNivelConocimento = idNivelConocimento;
-        this.descrNivelConocimentocol = descrNivelConocimentocol;
+        this.descrNivelConocimento = descrNivelConocimento;
     }
 
     public Short getIdNivelConocimento() {
@@ -70,12 +70,12 @@ public class NivelConocimento implements Serializable {
         this.idNivelConocimento = idNivelConocimento;
     }
 
-    public String getDescrNivelConocimentocol() {
-        return descrNivelConocimentocol;
+    public String getDescrNivelConocimento() {
+        return descrNivelConocimento;
     }
 
-    public void setDescrNivelConocimentocol(String descrNivelConocimentocol) {
-        this.descrNivelConocimentocol = descrNivelConocimentocol;
+    public void setDescrNivelConocimento(String descrNivelConocimento) {
+        this.descrNivelConocimento = descrNivelConocimento;
     }
 
     @XmlTransient

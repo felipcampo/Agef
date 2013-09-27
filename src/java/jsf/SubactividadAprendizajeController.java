@@ -63,7 +63,7 @@ public class SubactividadAprendizajeController implements Serializable {
 
                 @Override
                 public Object getRowKey(SubactividadAprendizaje entity) {
-                    return entity.getIdSubactividadAprendizaje();
+                    return entity.getIdSubactividadProyecto();
                 }
 
                 @Override
@@ -179,7 +179,7 @@ public class SubactividadAprendizajeController implements Serializable {
             }
             if (object instanceof SubactividadAprendizaje) {
                 SubactividadAprendizaje o = (SubactividadAprendizaje) object;
-                return getStringKey(o.getIdSubactividadAprendizaje());
+                return getStringKey(o.getIdSubactividadProyecto());
             } else {
                 throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + SubactividadAprendizaje.class.getName());
             }

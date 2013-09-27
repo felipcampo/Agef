@@ -13,9 +13,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -27,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADSI
+ * @author MAURICIO
  */
 @Entity
 @Table(name = "modalidad_productiva")
@@ -59,9 +57,6 @@ public class ModalidadProductiva implements Serializable {
     @Size(min = 1, max = 65535)
     @Column(name = "informacion_requisitos")
     private String informacionRequisitos;
-    @JoinColumn(name = "id_contrato_proyecto", referencedColumnName = "id_contrato_proyecto")
-    @ManyToOne
-    private ContratoProyecto idContratoProyecto;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idModalidadProductiva")
     private List<SeguimientoProductiva> seguimientoProductivaList;
 
@@ -109,14 +104,6 @@ public class ModalidadProductiva implements Serializable {
 
     public void setInformacionRequisitos(String informacionRequisitos) {
         this.informacionRequisitos = informacionRequisitos;
-    }
-
-    public ContratoProyecto getIdContratoProyecto() {
-        return idContratoProyecto;
-    }
-
-    public void setIdContratoProyecto(ContratoProyecto idContratoProyecto) {
-        this.idContratoProyecto = idContratoProyecto;
     }
 
     @XmlTransient

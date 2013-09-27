@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADSI
+ * @author MAURICIO
  */
 @Entity
 @Table(name = "seguimiento_instructor")
@@ -76,33 +76,33 @@ public class SeguimientoInstructor implements Serializable {
     private String nomIns;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSeguimientoInstructor")
     private List<CriterioSeguimientoInstructor> criterioSeguimientoInstructorList;
-    @JoinColumn(name = "id_plan_mejoramiento", referencedColumnName = "id_plan_mejoramiento")
+    @JoinColumn(name = "id_titulo_criterio", referencedColumnName = "id_titulo_criterio")
     @ManyToOne(optional = false)
-    private PlanMejoramiento idPlanMejoramiento;
-    @JoinColumn(name = "id_criterio_evaluacion", referencedColumnName = "id_criterio_evaluacion")
+    private TituloCriterio idTituloCriterio;
+    @JoinColumn(name = "id_tipo_juicio", referencedColumnName = "id_tipo_juicio")
     @ManyToOne(optional = false)
-    private CriterioEvaluacion idCriterioEvaluacion;
-    @JoinColumn(name = "id_praxis_pedagogica", referencedColumnName = "id_praxis_pedagogica")
-    @ManyToOne(optional = false)
-    private PraxisPedagogica idPraxisPedagogica;
-    @JoinColumn(name = "id_criterio_seguimiento_instructor", referencedColumnName = "id_criterio_seguimiento_instructor")
-    @ManyToOne(optional = false)
-    private CriterioSeguimientoInstructor idCriterioSeguimientoInstructor;
+    private TipoJuicio idTipoJuicio;
     @JoinColumn(name = "id_rol", referencedColumnName = "id_rol")
     @ManyToOne(optional = false)
     private Rol idRol;
+    @JoinColumn(name = "id_praxis_pedagogica", referencedColumnName = "id_praxis_pedagogica")
+    @ManyToOne(optional = false)
+    private PraxisPedagogica idPraxisPedagogica;
+    @JoinColumn(name = "id_plan_mejoramiento", referencedColumnName = "id_plan_mejoramiento")
+    @ManyToOne(optional = false)
+    private PlanMejoramiento idPlanMejoramiento;
     @JoinColumn(name = "id_grado_juicio", referencedColumnName = "id_grado_juicio")
     @ManyToOne(optional = false)
     private GradoJuicio idGradoJuicio;
     @JoinColumn(name = "id_estado_juicio", referencedColumnName = "id_estado_juicio")
     @ManyToOne(optional = false)
     private EstadoJuicio idEstadoJuicio;
-    @JoinColumn(name = "id_tipo_juicio", referencedColumnName = "id_tipo_juicio")
+    @JoinColumn(name = "id_criterio_seguimiento_instructor", referencedColumnName = "id_criterio_seguimiento_instructor")
     @ManyToOne(optional = false)
-    private TipoJuicio idTipoJuicio;
-    @JoinColumn(name = "id_titulo_criterio", referencedColumnName = "id_titulo_criterio")
+    private CriterioSeguimientoInstructor idCriterioSeguimientoInstructor;
+    @JoinColumn(name = "id_criterio_evaluacion", referencedColumnName = "id_criterio_evaluacion")
     @ManyToOne(optional = false)
-    private TituloCriterio idTituloCriterio;
+    private CriterioEvaluacion idCriterioEvaluacion;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false)
     private Usuario idUsuario;
@@ -183,20 +183,28 @@ public class SeguimientoInstructor implements Serializable {
         this.criterioSeguimientoInstructorList = criterioSeguimientoInstructorList;
     }
 
-    public PlanMejoramiento getIdPlanMejoramiento() {
-        return idPlanMejoramiento;
+    public TituloCriterio getIdTituloCriterio() {
+        return idTituloCriterio;
     }
 
-    public void setIdPlanMejoramiento(PlanMejoramiento idPlanMejoramiento) {
-        this.idPlanMejoramiento = idPlanMejoramiento;
+    public void setIdTituloCriterio(TituloCriterio idTituloCriterio) {
+        this.idTituloCriterio = idTituloCriterio;
     }
 
-    public CriterioEvaluacion getIdCriterioEvaluacion() {
-        return idCriterioEvaluacion;
+    public TipoJuicio getIdTipoJuicio() {
+        return idTipoJuicio;
     }
 
-    public void setIdCriterioEvaluacion(CriterioEvaluacion idCriterioEvaluacion) {
-        this.idCriterioEvaluacion = idCriterioEvaluacion;
+    public void setIdTipoJuicio(TipoJuicio idTipoJuicio) {
+        this.idTipoJuicio = idTipoJuicio;
+    }
+
+    public Rol getIdRol() {
+        return idRol;
+    }
+
+    public void setIdRol(Rol idRol) {
+        this.idRol = idRol;
     }
 
     public PraxisPedagogica getIdPraxisPedagogica() {
@@ -207,20 +215,12 @@ public class SeguimientoInstructor implements Serializable {
         this.idPraxisPedagogica = idPraxisPedagogica;
     }
 
-    public CriterioSeguimientoInstructor getIdCriterioSeguimientoInstructor() {
-        return idCriterioSeguimientoInstructor;
+    public PlanMejoramiento getIdPlanMejoramiento() {
+        return idPlanMejoramiento;
     }
 
-    public void setIdCriterioSeguimientoInstructor(CriterioSeguimientoInstructor idCriterioSeguimientoInstructor) {
-        this.idCriterioSeguimientoInstructor = idCriterioSeguimientoInstructor;
-    }
-
-    public Rol getIdRol() {
-        return idRol;
-    }
-
-    public void setIdRol(Rol idRol) {
-        this.idRol = idRol;
+    public void setIdPlanMejoramiento(PlanMejoramiento idPlanMejoramiento) {
+        this.idPlanMejoramiento = idPlanMejoramiento;
     }
 
     public GradoJuicio getIdGradoJuicio() {
@@ -239,20 +239,20 @@ public class SeguimientoInstructor implements Serializable {
         this.idEstadoJuicio = idEstadoJuicio;
     }
 
-    public TipoJuicio getIdTipoJuicio() {
-        return idTipoJuicio;
+    public CriterioSeguimientoInstructor getIdCriterioSeguimientoInstructor() {
+        return idCriterioSeguimientoInstructor;
     }
 
-    public void setIdTipoJuicio(TipoJuicio idTipoJuicio) {
-        this.idTipoJuicio = idTipoJuicio;
+    public void setIdCriterioSeguimientoInstructor(CriterioSeguimientoInstructor idCriterioSeguimientoInstructor) {
+        this.idCriterioSeguimientoInstructor = idCriterioSeguimientoInstructor;
     }
 
-    public TituloCriterio getIdTituloCriterio() {
-        return idTituloCriterio;
+    public CriterioEvaluacion getIdCriterioEvaluacion() {
+        return idCriterioEvaluacion;
     }
 
-    public void setIdTituloCriterio(TituloCriterio idTituloCriterio) {
-        this.idTituloCriterio = idTituloCriterio;
+    public void setIdCriterioEvaluacion(CriterioEvaluacion idCriterioEvaluacion) {
+        this.idCriterioEvaluacion = idCriterioEvaluacion;
     }
 
     public Usuario getIdUsuario() {

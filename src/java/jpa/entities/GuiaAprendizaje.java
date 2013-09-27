@@ -14,7 +14,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -29,7 +28,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADSI
+ * @author MAURICIO
  */
 @Entity
 @Table(name = "guia_aprendizaje")
@@ -86,25 +85,22 @@ public class GuiaAprendizaje implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "glosario")
     private String glosario;
-    @JoinTable(name = "alistamiento_guia_aprendizaje", joinColumns = {
-        @JoinColumn(name = "id_guia_aprendizaje", referencedColumnName = "id_guia_aprendizaje")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_alistamiento", referencedColumnName = "id_alistamiento")})
-    @ManyToMany
+    @ManyToMany(mappedBy = "guiaAprendizajeList")
     private List<Alistamiento> alistamientoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idGuiaAprendizaje")
     private List<EvaluacionSeguimiento> evaluacionSeguimientoList;
     @JoinColumn(name = "id_proyecto_formativo", referencedColumnName = "id_proyecto_formativo")
     @ManyToOne(optional = false)
     private ProyectoFormativo idProyectoFormativo;
+    @JoinColumn(name = "id_ficha_caracterizacion", referencedColumnName = "id_ficha_caracterizacion")
+    @ManyToOne(optional = false)
+    private FichaCaracterizacion idFichaCaracterizacion;
     @JoinColumn(name = "id_ambiente", referencedColumnName = "id_ambiente")
     @ManyToOne(optional = false)
     private Ambiente idAmbiente;
     @JoinColumn(name = "id_actividad_proyecto", referencedColumnName = "id_actividad_proyecto")
     @ManyToOne(optional = false)
     private ActividadProyecto idActividadProyecto;
-    @JoinColumn(name = "id_ficha_caracterizacion", referencedColumnName = "id_ficha_caracterizacion")
-    @ManyToOne(optional = false)
-    private FichaCaracterizacion idFichaCaracterizacion;
     @OneToMany(mappedBy = "idGuiaAprendizaje")
     private List<Alistamiento> alistamientoList1;
 
@@ -216,6 +212,14 @@ public class GuiaAprendizaje implements Serializable {
         this.idProyectoFormativo = idProyectoFormativo;
     }
 
+    public FichaCaracterizacion getIdFichaCaracterizacion() {
+        return idFichaCaracterizacion;
+    }
+
+    public void setIdFichaCaracterizacion(FichaCaracterizacion idFichaCaracterizacion) {
+        this.idFichaCaracterizacion = idFichaCaracterizacion;
+    }
+
     public Ambiente getIdAmbiente() {
         return idAmbiente;
     }
@@ -230,14 +234,6 @@ public class GuiaAprendizaje implements Serializable {
 
     public void setIdActividadProyecto(ActividadProyecto idActividadProyecto) {
         this.idActividadProyecto = idActividadProyecto;
-    }
-
-    public FichaCaracterizacion getIdFichaCaracterizacion() {
-        return idFichaCaracterizacion;
-    }
-
-    public void setIdFichaCaracterizacion(FichaCaracterizacion idFichaCaracterizacion) {
-        this.idFichaCaracterizacion = idFichaCaracterizacion;
     }
 
     @XmlTransient

@@ -37,7 +37,7 @@
                                 <f:facet name="header">
                                     <p:row><p:column colspan="3"></p:column></p:row>                            
                                 </f:facet>                        
-                               
+
                                 <!---->
                                 <p:row>
                                     <p:column>
@@ -92,18 +92,20 @@
 
 
 
-
                                 <p:row>
                                     <p:column>
-                                        <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_rolIdRol}" for="rolIdRol" />
+                                        <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_rolIdRol}" for="idRol" />
                                     </p:column>
-                                    <p:column >    
-                                        <p:selectOneMenu id="rolIdRol" value="#{seguimientoProyectoController.selected.idRol}" >
+                                    <p:column style="border-right: white">    
+                                        <p:selectOneMenu id="idRol" value="#{seguimientoProyectoController.selected.idRol}" >
                                             <f:selectItems value="#{rolController.itemsAvailableSelectOne}"/>
                                         </p:selectOneMenu>
                                     </p:column>
-
+                                    
                                 </p:row>
+
+
+                             
                             </p:panelGrid>
                             <br />
                             <br />

@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author ADSI
+ * @author MAURICIO
  */
 @Entity
 @Table(name = "criterio_seguimiento_proyecto")
@@ -44,18 +44,18 @@ public class CriterioSeguimientoProyecto implements Serializable {
     @Size(min = 1, max = 65535)
     @Column(name = "obs_cri_seg")
     private String obsCriSeg;
-    @JoinColumn(name = "id_estado_juicio", referencedColumnName = "id_estado_juicio")
-    @ManyToOne(optional = false)
-    private EstadoJuicio idEstadoJuicio;
-    @JoinColumn(name = "id_grado_juicio", referencedColumnName = "id_grado_juicio")
-    @ManyToOne(optional = false)
-    private GradoJuicio idGradoJuicio;
     @JoinColumn(name = "id_tipo_juicio", referencedColumnName = "id_tipo_juicio")
     @ManyToOne(optional = false)
     private TipoJuicio idTipoJuicio;
     @JoinColumn(name = "id_seguimiento_proyecto", referencedColumnName = "id_seguimiento_proyecto")
     @ManyToOne(optional = false)
     private SeguimientoProyecto idSeguimientoProyecto;
+    @JoinColumn(name = "id_grado_juicio", referencedColumnName = "id_grado_juicio")
+    @ManyToOne(optional = false)
+    private GradoJuicio idGradoJuicio;
+    @JoinColumn(name = "id_estado_juicio", referencedColumnName = "id_estado_juicio")
+    @ManyToOne(optional = false)
+    private EstadoJuicio idEstadoJuicio;
     @JoinColumn(name = "id_criterio_evaluacion", referencedColumnName = "id_criterio_evaluacion")
     @ManyToOne(optional = false)
     private CriterioEvaluacion idCriterioEvaluacion;
@@ -91,22 +91,6 @@ public class CriterioSeguimientoProyecto implements Serializable {
         this.obsCriSeg = obsCriSeg;
     }
 
-    public EstadoJuicio getIdEstadoJuicio() {
-        return idEstadoJuicio;
-    }
-
-    public void setIdEstadoJuicio(EstadoJuicio idEstadoJuicio) {
-        this.idEstadoJuicio = idEstadoJuicio;
-    }
-
-    public GradoJuicio getIdGradoJuicio() {
-        return idGradoJuicio;
-    }
-
-    public void setIdGradoJuicio(GradoJuicio idGradoJuicio) {
-        this.idGradoJuicio = idGradoJuicio;
-    }
-
     public TipoJuicio getIdTipoJuicio() {
         return idTipoJuicio;
     }
@@ -121,6 +105,22 @@ public class CriterioSeguimientoProyecto implements Serializable {
 
     public void setIdSeguimientoProyecto(SeguimientoProyecto idSeguimientoProyecto) {
         this.idSeguimientoProyecto = idSeguimientoProyecto;
+    }
+
+    public GradoJuicio getIdGradoJuicio() {
+        return idGradoJuicio;
+    }
+
+    public void setIdGradoJuicio(GradoJuicio idGradoJuicio) {
+        this.idGradoJuicio = idGradoJuicio;
+    }
+
+    public EstadoJuicio getIdEstadoJuicio() {
+        return idEstadoJuicio;
+    }
+
+    public void setIdEstadoJuicio(EstadoJuicio idEstadoJuicio) {
+        this.idEstadoJuicio = idEstadoJuicio;
     }
 
     public CriterioEvaluacion getIdCriterioEvaluacion() {

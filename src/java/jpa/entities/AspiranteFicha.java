@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author ADSI
+ * @author MAURICIO
  */
 @Entity
 @Table(name = "aspirante_ficha")
@@ -30,15 +30,15 @@ public class AspiranteFicha implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected AspiranteFichaPK aspiranteFichaPK;
-    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Usuario usuario;
     @JoinColumn(name = "id_ficha_caracterizacion", referencedColumnName = "id_ficha_caracterizacion", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private FichaCaracterizacion fichaCaracterizacion;
     @JoinColumn(name = "id_estado_aspirante", referencedColumnName = "id_estado_aspirante", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private EstadoAspirante estadoAspirante;
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private Usuario usuario;
 
     public AspiranteFicha() {
     }
@@ -59,14 +59,6 @@ public class AspiranteFicha implements Serializable {
         this.aspiranteFichaPK = aspiranteFichaPK;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
     public FichaCaracterizacion getFichaCaracterizacion() {
         return fichaCaracterizacion;
     }
@@ -81,6 +73,14 @@ public class AspiranteFicha implements Serializable {
 
     public void setEstadoAspirante(EstadoAspirante estadoAspirante) {
         this.estadoAspirante = estadoAspirante;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     @Override

@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADSI
+ * @author MAURICIO
  */
 @Entity
 @Table(name = "usuario")
@@ -109,10 +109,7 @@ public class Usuario implements Serializable {
     private String password;
     @ManyToMany(mappedBy = "usuarioList")
     private List<ProgramacionProyecto> programacionProyectoList;
-    @JoinTable(name = "usuario_rol", joinColumns = {
-        @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_rol", referencedColumnName = "id_rol")})
-    @ManyToMany
+    @ManyToMany(mappedBy = "usuarioList")
     private List<Rol> rolList;
     @JoinTable(name = "usuarios_controles", joinColumns = {
         @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")}, inverseJoinColumns = {
@@ -165,24 +162,24 @@ public class Usuario implements Serializable {
     private List<AspiranteFicha> aspiranteFichaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
     private List<EventoBienestar> eventoBienestarList;
-    @JoinColumn(name = "id_estado_aspirante", referencedColumnName = "id_estado_aspirante")
-    @ManyToOne
-    private EstadoAspirante idEstadoAspirante;
-    @JoinColumn(name = "id_situacion_militar", referencedColumnName = "id_situacion_militar")
-    @ManyToOne(optional = false)
-    private SituacionMilitar idSituacionMilitar;
-    @JoinColumn(name = "id_tipo_contrato", referencedColumnName = "id_tipo_contrato")
-    @ManyToOne(optional = false)
-    private TipoContrato idTipoContrato;
     @JoinColumn(name = "id_tipo_documento", referencedColumnName = "id_tipo_documento")
     @ManyToOne(optional = false)
     private TipoDocumento idTipoDocumento;
-    @JoinColumn(name = "id_barrio", referencedColumnName = "id_barrio")
+    @JoinColumn(name = "id_tipo_contrato", referencedColumnName = "id_tipo_contrato")
+    @ManyToOne(optional = false)
+    private TipoContrato idTipoContrato;
+    @JoinColumn(name = "id_situacion_militar", referencedColumnName = "id_situacion_militar")
+    @ManyToOne(optional = false)
+    private SituacionMilitar idSituacionMilitar;
+    @JoinColumn(name = "id_estado_aspirante", referencedColumnName = "id_estado_aspirante")
     @ManyToOne
-    private Barrio idBarrio;
+    private EstadoAspirante idEstadoAspirante;
     @JoinColumn(name = "id_ciudad_nacimiento", referencedColumnName = "id_ciudad")
     @ManyToOne(optional = false)
     private Ciudad idCiudadNacimiento;
+    @JoinColumn(name = "id_barrio", referencedColumnName = "id_barrio")
+    @ManyToOne
+    private Barrio idBarrio;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
     private List<LlamadoAtencionVerbal> llamadoAtencionVerbalList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
@@ -556,20 +553,12 @@ public class Usuario implements Serializable {
         this.eventoBienestarList = eventoBienestarList;
     }
 
-    public EstadoAspirante getIdEstadoAspirante() {
-        return idEstadoAspirante;
+    public TipoDocumento getIdTipoDocumento() {
+        return idTipoDocumento;
     }
 
-    public void setIdEstadoAspirante(EstadoAspirante idEstadoAspirante) {
-        this.idEstadoAspirante = idEstadoAspirante;
-    }
-
-    public SituacionMilitar getIdSituacionMilitar() {
-        return idSituacionMilitar;
-    }
-
-    public void setIdSituacionMilitar(SituacionMilitar idSituacionMilitar) {
-        this.idSituacionMilitar = idSituacionMilitar;
+    public void setIdTipoDocumento(TipoDocumento idTipoDocumento) {
+        this.idTipoDocumento = idTipoDocumento;
     }
 
     public TipoContrato getIdTipoContrato() {
@@ -580,20 +569,20 @@ public class Usuario implements Serializable {
         this.idTipoContrato = idTipoContrato;
     }
 
-    public TipoDocumento getIdTipoDocumento() {
-        return idTipoDocumento;
+    public SituacionMilitar getIdSituacionMilitar() {
+        return idSituacionMilitar;
     }
 
-    public void setIdTipoDocumento(TipoDocumento idTipoDocumento) {
-        this.idTipoDocumento = idTipoDocumento;
+    public void setIdSituacionMilitar(SituacionMilitar idSituacionMilitar) {
+        this.idSituacionMilitar = idSituacionMilitar;
     }
 
-    public Barrio getIdBarrio() {
-        return idBarrio;
+    public EstadoAspirante getIdEstadoAspirante() {
+        return idEstadoAspirante;
     }
 
-    public void setIdBarrio(Barrio idBarrio) {
-        this.idBarrio = idBarrio;
+    public void setIdEstadoAspirante(EstadoAspirante idEstadoAspirante) {
+        this.idEstadoAspirante = idEstadoAspirante;
     }
 
     public Ciudad getIdCiudadNacimiento() {
@@ -602,6 +591,14 @@ public class Usuario implements Serializable {
 
     public void setIdCiudadNacimiento(Ciudad idCiudadNacimiento) {
         this.idCiudadNacimiento = idCiudadNacimiento;
+    }
+
+    public Barrio getIdBarrio() {
+        return idBarrio;
+    }
+
+    public void setIdBarrio(Barrio idBarrio) {
+        this.idBarrio = idBarrio;
     }
 
     @XmlTransient

@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADSI
+ * @author MAURICIO
  */
 @Entity
 @Table(name = "escolaridad")
@@ -45,11 +45,11 @@ public class Escolaridad implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "descr_escolaridad")
     private String descrEscolaridad;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEscolaridadAspirante")
-    private List<MatrizCaracterizacion> matrizCaracterizacionList;
     @OneToMany(mappedBy = "idEscolaridadPadre")
-    private List<MatrizCaracterizacion> matrizCaracterizacionList1;
+    private List<MatrizCaracterizacion> matrizCaracterizacionList;
     @OneToMany(mappedBy = "idEscolaridadMadre")
+    private List<MatrizCaracterizacion> matrizCaracterizacionList1;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEscolaridadAspirante")
     private List<MatrizCaracterizacion> matrizCaracterizacionList2;
 
     public Escolaridad() {

@@ -66,6 +66,12 @@
                                       sortBy="#{item.idFichaCaracterizacion.idProyectoFormativo.idUsuario}">                        
                                 <h:outputText value="#{item.idFichaCaracterizacion.idProyectoFormativo.idUsuario}"/>
                             </p:column>
+                            
+                                <p:column headerText="#{bundle.ListSeguimientoProyectoTitle_idRol}"
+                                      filterBy="#{item.idRol}"
+                                      sortBy="#{item.idRol}">                        
+                                <h:outputText value="#{item.idRol}"/>
+                            </p:column>
                            
                             <p:column>                        
                                 <p:commandButton ajax="false" action="#{seguimientoProyectoController.prepareView}" title="#{bundle.ListSeguimientoProyectoViewLink}" icon="ui-icon-search"/>

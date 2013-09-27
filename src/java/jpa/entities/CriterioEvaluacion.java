@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -27,7 +28,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADSI
+ * @author MAURICIO
  */
 @Entity
 @Table(name = "criterio_evaluacion")
@@ -50,7 +51,10 @@ public class CriterioEvaluacion implements Serializable {
     @Size(max = 2147483647)
     @Column(name = "nom_criterio")
     private String nomCriterio;
-    @ManyToMany(mappedBy = "criterioEvaluacionList")
+    @JoinTable(name = "evidencia_aprendizaje_criterio_evaluacion", joinColumns = {
+        @JoinColumn(name = "id_criterio_evaluacion", referencedColumnName = "id_criterio_evaluacion")}, inverseJoinColumns = {
+        @JoinColumn(name = "id_evidencia_aprendizaje", referencedColumnName = "id_evidencia_aprendizaje")})
+    @ManyToMany
     private List<EvidenciaAprendizaje> evidenciaAprendizajeList;
     @ManyToMany(mappedBy = "criterioEvaluacionList")
     private List<ActividadProyecto> actividadProyectoList;
@@ -66,18 +70,18 @@ public class CriterioEvaluacion implements Serializable {
     private List<EvidenciaAprendizaje> evidenciaAprendizajeList2;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCriterioEvaluacion")
     private List<CriterioSeguimientoProyecto> criterioSeguimientoProyectoList;
-    @JoinColumn(name = "id_resultado_aprendizaje", referencedColumnName = "id_resultado_aprendizaje")
-    @ManyToOne
-    private ResultadoAprendizaje idResultadoAprendizaje;
-    @JoinColumn(name = "id_factor_productiva", referencedColumnName = "id_factor_productiva")
-    @ManyToOne
-    private FactorProductiva idFactorProductiva;
     @JoinColumn(name = "id_titulo_criterio", referencedColumnName = "id_titulo_criterio")
     @ManyToOne
     private TituloCriterio idTituloCriterio;
     @JoinColumn(name = "id_tipo_criterio", referencedColumnName = "id_tipo_criterio")
     @ManyToOne
     private TipoCriterio idTipoCriterio;
+    @JoinColumn(name = "id_resultado_aprendizaje", referencedColumnName = "id_resultado_aprendizaje")
+    @ManyToOne
+    private ResultadoAprendizaje idResultadoAprendizaje;
+    @JoinColumn(name = "id_factor_productiva", referencedColumnName = "id_factor_productiva")
+    @ManyToOne
+    private FactorProductiva idFactorProductiva;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCriterioEvaluacion")
     private List<CriterioSeguimiento> criterioSeguimientoList;
 
@@ -184,22 +188,6 @@ public class CriterioEvaluacion implements Serializable {
         this.criterioSeguimientoProyectoList = criterioSeguimientoProyectoList;
     }
 
-    public ResultadoAprendizaje getIdResultadoAprendizaje() {
-        return idResultadoAprendizaje;
-    }
-
-    public void setIdResultadoAprendizaje(ResultadoAprendizaje idResultadoAprendizaje) {
-        this.idResultadoAprendizaje = idResultadoAprendizaje;
-    }
-
-    public FactorProductiva getIdFactorProductiva() {
-        return idFactorProductiva;
-    }
-
-    public void setIdFactorProductiva(FactorProductiva idFactorProductiva) {
-        this.idFactorProductiva = idFactorProductiva;
-    }
-
     public TituloCriterio getIdTituloCriterio() {
         return idTituloCriterio;
     }
@@ -214,6 +202,22 @@ public class CriterioEvaluacion implements Serializable {
 
     public void setIdTipoCriterio(TipoCriterio idTipoCriterio) {
         this.idTipoCriterio = idTipoCriterio;
+    }
+
+    public ResultadoAprendizaje getIdResultadoAprendizaje() {
+        return idResultadoAprendizaje;
+    }
+
+    public void setIdResultadoAprendizaje(ResultadoAprendizaje idResultadoAprendizaje) {
+        this.idResultadoAprendizaje = idResultadoAprendizaje;
+    }
+
+    public FactorProductiva getIdFactorProductiva() {
+        return idFactorProductiva;
+    }
+
+    public void setIdFactorProductiva(FactorProductiva idFactorProductiva) {
+        this.idFactorProductiva = idFactorProductiva;
     }
 
     @XmlTransient

@@ -12,8 +12,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -25,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADSI
+ * @author MAURICIO
  */
 @Entity
 @Table(name = "servicio_vivienda")
@@ -46,10 +44,7 @@ public class ServicioVivienda implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "descr_servicio_vivienda")
     private String descrServicioVivienda;
-    @JoinTable(name = "servicio_matriz", joinColumns = {
-        @JoinColumn(name = "id_servicio_vivienda", referencedColumnName = "id_servicio_vivienda")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_matriz_caracterizacion", referencedColumnName = "id_matriz_caracterizacion")})
-    @ManyToMany
+    @ManyToMany(mappedBy = "servicioViviendaList")
     private List<MatrizCaracterizacion> matrizCaracterizacionList;
 
     public ServicioVivienda() {

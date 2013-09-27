@@ -12,7 +12,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -27,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADSI
+ * @author MAURICIO
  */
 @Entity
 @Table(name = "proyecto_formativo")
@@ -208,17 +207,11 @@ public class ProyectoFormativo implements Serializable {
     @Size(min = 1, max = 65535)
     @Column(name = "descr_amb_apr")
     private String descrAmbApr;
-    @JoinTable(name = "proyecto_formativo_fase", joinColumns = {
-        @JoinColumn(name = "id_proyecto_formativo", referencedColumnName = "id_proyecto_formativo")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_fase_proyecto", referencedColumnName = "id_fase_proyecto")})
-    @ManyToMany
+    @ManyToMany(mappedBy = "proyectoFormativoList")
     private List<FaseProyecto> faseProyectoList;
     @ManyToMany(mappedBy = "proyectoFormativoList")
     private List<ActividadProyecto> actividadProyectoList;
-    @JoinTable(name = "proyecto_formativo_detalle_recurso", joinColumns = {
-        @JoinColumn(name = "id_proyecto_formativo", referencedColumnName = "id_proyecto_formativo")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_datalle_recurso", referencedColumnName = "id_datalle_recurso")})
-    @ManyToMany
+    @ManyToMany(mappedBy = "proyectoFormativoList")
     private List<DetalleRecurso> detalleRecursoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProyectoFormativo")
     private List<FichaCaracterizacion> fichaCaracterizacionList;

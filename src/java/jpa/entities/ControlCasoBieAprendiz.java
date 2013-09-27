@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author ADSI
+ * @author MAURICIO
  */
 @Entity
 @Table(name = "control_caso_bie_aprendiz")

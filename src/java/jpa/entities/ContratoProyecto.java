@@ -6,7 +6,6 @@ package jpa.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,17 +17,15 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADSI
+ * @author MAURICIO
  */
 @Entity
 @Table(name = "contrato_proyecto")
@@ -72,8 +69,6 @@ public class ContratoProyecto implements Serializable {
     @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
     @ManyToOne(optional = false)
     private Empresa idEmpresa;
-    @OneToMany(mappedBy = "idContratoProyecto")
-    private List<ModalidadProductiva> modalidadProductivaList;
 
     public ContratoProyecto() {
     }
@@ -144,15 +139,6 @@ public class ContratoProyecto implements Serializable {
 
     public void setIdEmpresa(Empresa idEmpresa) {
         this.idEmpresa = idEmpresa;
-    }
-
-    @XmlTransient
-    public List<ModalidadProductiva> getModalidadProductivaList() {
-        return modalidadProductivaList;
-    }
-
-    public void setModalidadProductivaList(List<ModalidadProductiva> modalidadProductivaList) {
-        this.modalidadProductivaList = modalidadProductivaList;
     }
 
     @Override

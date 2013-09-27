@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author ADSI
+ * @author MAURICIO
  */
 @Entity
 @Table(name = "criterio_seguimiento")
@@ -31,8 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "CriterioSeguimiento.findAll", query = "SELECT c FROM CriterioSeguimiento c"),
     @NamedQuery(name = "CriterioSeguimiento.findByIdCriterioSeguimiento", query = "SELECT c FROM CriterioSeguimiento c WHERE c.idCriterioSeguimiento = :idCriterioSeguimiento"),
-    @NamedQuery(name = "CriterioSeguimiento.findByValCep", query = "SELECT c FROM CriterioSeguimiento c WHERE c.valCep = :valCep"),
-    @NamedQuery(name = "CriterioSeguimiento.findByIdSeguimientoProductiva", query = "SELECT c FROM CriterioSeguimiento c WHERE c.idSeguimientoProductiva = :idSeguimientoProductiva")})
+    @NamedQuery(name = "CriterioSeguimiento.findByValCep", query = "SELECT c FROM CriterioSeguimiento c WHERE c.valCep = :valCep")})
 public class CriterioSeguimiento implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -50,11 +49,9 @@ public class CriterioSeguimiento implements Serializable {
     @NotNull
     @Column(name = "val_cep")
     private boolean valCep;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "id_seguimiento_productiva")
-    private String idSeguimientoProductiva;
+    @JoinColumn(name = "id_seguimiento_productiva", referencedColumnName = "id_seguimiento_productiva")
+    @ManyToOne(optional = false)
+    private SeguimientoProductiva idSeguimientoProductiva;
     @JoinColumn(name = "id_criterio_evaluacion", referencedColumnName = "id_criterio_evaluacion")
     @ManyToOne(optional = false)
     private CriterioEvaluacion idCriterioEvaluacion;
@@ -66,11 +63,10 @@ public class CriterioSeguimiento implements Serializable {
         this.idCriterioSeguimiento = idCriterioSeguimiento;
     }
 
-    public CriterioSeguimiento(Integer idCriterioSeguimiento, String obsCep, boolean valCep, String idSeguimientoProductiva) {
+    public CriterioSeguimiento(Integer idCriterioSeguimiento, String obsCep, boolean valCep) {
         this.idCriterioSeguimiento = idCriterioSeguimiento;
         this.obsCep = obsCep;
         this.valCep = valCep;
-        this.idSeguimientoProductiva = idSeguimientoProductiva;
     }
 
     public Integer getIdCriterioSeguimiento() {
@@ -97,11 +93,11 @@ public class CriterioSeguimiento implements Serializable {
         this.valCep = valCep;
     }
 
-    public String getIdSeguimientoProductiva() {
+    public SeguimientoProductiva getIdSeguimientoProductiva() {
         return idSeguimientoProductiva;
     }
 
-    public void setIdSeguimientoProductiva(String idSeguimientoProductiva) {
+    public void setIdSeguimientoProductiva(SeguimientoProductiva idSeguimientoProductiva) {
         this.idSeguimientoProductiva = idSeguimientoProductiva;
     }
 

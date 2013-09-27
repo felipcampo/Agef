@@ -13,9 +13,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -29,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADSI
+ * @author MAURICIO
  */
 @Entity
 @Table(name = "incidente_productiva")
@@ -62,9 +60,6 @@ public class IncidenteProductiva implements Serializable {
     @Size(min = 1, max = 65535)
     @Column(name = "solucion_inc")
     private String solucionInc;
-    @JoinColumn(name = "id_visita_etapa_productiva", referencedColumnName = "id_visita_etapa_productiva")
-    @ManyToOne(optional = false)
-    private VisitaEtapaProductiva idVisitaEtapaProductiva;
     @OneToMany(mappedBy = "idIncidenteProductiva")
     private List<SeguimientoProductiva> seguimientoProductivaList;
 
@@ -112,14 +107,6 @@ public class IncidenteProductiva implements Serializable {
 
     public void setSolucionInc(String solucionInc) {
         this.solucionInc = solucionInc;
-    }
-
-    public VisitaEtapaProductiva getIdVisitaEtapaProductiva() {
-        return idVisitaEtapaProductiva;
-    }
-
-    public void setIdVisitaEtapaProductiva(VisitaEtapaProductiva idVisitaEtapaProductiva) {
-        this.idVisitaEtapaProductiva = idVisitaEtapaProductiva;
     }
 
     @XmlTransient
