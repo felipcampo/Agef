@@ -58,7 +58,7 @@
                                         <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idProgramaFormacion}" for="idProgramaFormacion" />
                                     </p:column>
                                     <p:column>
-                                        <p:inputText id="idProgramaFormacion" readonly="true" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idPrograma.nomPrg}"/>
+                                        <h:outputText id="idProgramaFormacion" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idPrograma.nomPrg}"/>
                                     </p:column>
                                 </p:row>
 
@@ -67,7 +67,7 @@
                                         <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_fechaProgramacionSeguimiento}" for="fechaProgramacionSeguimiento" />
                                     </p:column>
                                     <p:column >    
-                                        <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm:ss" showOn="button" id="fechaProgramacionSeguimiento" value="#{seguimientoProyectoController.selected.fechaProgramacionSeguimiento}" title="#{bundle.CreateSeguimientoProyectoTitle_fechaProgramacionSeguimiento}" />
+                                        <p:calendar showButtonPanel="true" locale="es" navigator="true" minHour="07" maxHour="18" stepMinute="15" pattern="MM/dd/yyyy HH:mm" showOn="button" id="fechaProgramacionSeguimiento" value="#{seguimientoProyectoController.selected.fechaProgramacionSeguimiento}" title="#{bundle.CreateSeguimientoProyectoTitle_fechaProgramacionSeguimiento}" />
                                     </p:column>
 
                                 </p:row>
@@ -76,7 +76,7 @@
                                         <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idRegional}" for="idRegional" />
                                     </p:column>
                                     <p:column>    
-                                        <p:inputText id="idRegional" readonly="true" value="#{seguimientoProyectoController.selected.idRegional}" />
+                                        <h:outputText id="idRegional" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idPrograma.idCentroFormacion.idRegional}" />
                                     </p:column>
 
                                 </p:row>
@@ -85,7 +85,7 @@
                                         <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_idSedeCentro}" for="idSedeCentro" />
                                     </p:column>
                                     <p:column >    
-                                        <p:inputText id="idSedeCentro" readonly="true" value="#{seguimientoProyectoController.selected.idSedeCentro}" />
+                                        <h:outputText id="idSedeCentro" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idPrograma.idCentroFormacion}" />
                                     </p:column>
 
                                 </p:row>
