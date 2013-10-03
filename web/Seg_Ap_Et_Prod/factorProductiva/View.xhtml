@@ -11,30 +11,43 @@
             <h:outputText value="#{bundle.ViewFactorProductivaTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-            <p:growl id="msgs" showDetail="false" sticky="false"/> 
-            <h:form>
-                <div id="form" align="center">
-                    <p:panelGrid columns="2">
-                        <f:facet name="header">
-                            <p:row><p:column>#{bundle.ViewFactorProductivaTitle}</p:column></p:row>                            
-                        </f:facet>
-                        <h:outputText value="#{bundle.ViewFactorProductivaLabel_idFactorProductiva}"/>
-                        <h:outputText value="#{factorProductivaController.selected.idFactorProductiva}" title="#{bundle.ViewFactorProductivaTitle_idFactorProductiva}"/>
-                        <h:outputText value="#{bundle.ViewFactorProductivaLabel_nomFactorProductiva}"/>
-                        <h:outputText value="#{factorProductivaController.selected.nomFactorProductiva}" title="#{bundle.ViewFactorProductivaTitle_nomFactorProductiva}"/>
-                    </p:panelGrid>
-                    <br />
-                    <br />
-                    <p:commandButton oncomplete="confirmationDelete.show();" process="@this" value="#{bundle.ListFactorProductivaDestroyLink}"
-                                     title="#{bundle.ListFactorProductivaDestroyLink}" icon="ui-icon-trash">
-                    </p:commandButton>
-                    <p:button outcome="Edit" value="#{bundle.ViewFactorProductivaEditLink}" icon="ui-icon-pencil"/>
-                    <p:commandButton ajax="false" action="#{factorProductivaController.prepareCreate}" value="#{bundle.ViewFactorProductivaCreateLink}" icon="ui-icon-document"/>
-                    <br />
-                    <br />
-                    <p:commandButton ajax="false" action="#{factorProductivaController.prepareList}" value="#{bundle.ViewFactorProductivaShowAllLink}"/>
-                </div>            
-            </h:form>
+            <div id="Layout_Titulo_Formulario_Agef"> <h2>SEGUIMIENTO AL APRENDIZ EN ETAPA PRODUCTIVA</h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen">#{bundle.ViewFactorProductivaTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br> 
+                    <p:growl id="msgs" showDetail="false" sticky="false"/> 
+                    <h:form>
+                        <div id="form" align="center">
+                            <p:panelGrid columns="2">
+                                <f:facet name="header">
+                                    <p:row><p:column></p:column></p:row>                            
+                                </f:facet>
+                                <h:outputText value="#{bundle.ViewFactorProductivaLabel_idFactorProductiva}"/>
+                                <h:outputText value="#{factorProductivaController.selected.idFactorProductiva}" title="#{bundle.ViewFactorProductivaTitle_idFactorProductiva}"/>
+                                <h:outputText value="#{bundle.ViewFactorProductivaLabel_nomFactorProductiva}"/>
+                                <h:outputText value="#{factorProductivaController.selected.nomFactorProductiva}" title="#{bundle.ViewFactorProductivaTitle_nomFactorProductiva}"/>
+                            </p:panelGrid>
+                            <br />
+                            <br />
+                            <p:commandButton oncomplete="confirmationDelete.show();" process="@this" value="#{bundle.ListFactorProductivaDestroyLink}"
+                                             title="#{bundle.ListFactorProductivaDestroyLink}" icon="ui-icon-trash">
+                            </p:commandButton>
+                            <p:button outcome="Edit" value="#{bundle.ViewFactorProductivaEditLink}" icon="ui-icon-pencil"/>
+                            <p:commandButton ajax="false" action="#{factorProductivaController.prepareCreate}" value="#{bundle.ViewFactorProductivaCreateLink}" icon="ui-icon-document"/>
+                            <br />
+                            <br />
+                            <p:commandButton ajax="false" action="#{factorProductivaController.prepareList}" value="#{bundle.ViewFactorProductivaShowAllLink}"/>
+                        </div>            
+                    </h:form>
+                    <br></br>
+                </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen1">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
         <ui:define name="dialogs">
             <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  

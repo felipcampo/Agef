@@ -11,6 +11,13 @@
             <h:outputText value="#{bundle.ViewEmpresaTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+            
+            <div id="Layout_Titulo_Formulario_Agef"> <h2>SEGUIMIENTO AL APRENDIZ EN ETAPA PRODUCTIVA</h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen"> #{bundle.ViewEmpresaTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br> 
+            
             <p:growl id="msgs" showDetail="false" sticky="false"/> 
             <h:form>
                 <div id="form" align="center">
@@ -20,20 +27,24 @@
                         </f:facet>
                         <h:outputText value="#{bundle.ViewEmpresaLabel_idEmpresa}"/>
                         <h:outputText value="#{empresaController.selected.idEmpresa}" title="#{bundle.ViewEmpresaTitle_idEmpresa}"/>
+                        <h:outputText value="#{bundle.ViewEmpresaLabel_razonSocialEmpresa}"/>
+                        <h:outputText value="#{empresaController.selected.razonSocialEmp}" title="#{bundle.ViewEmpresaTitle_razonSocialEmpresa}"/>
+                        
                         <h:outputText value="#{bundle.ViewEmpresaLabel_dirEmp}"/>
                         <h:outputText value="#{empresaController.selected.dirEmp}" title="#{bundle.ViewEmpresaTitle_dirEmp}"/>
-                        <h:outputText value="#{bundle.ViewEmpresaLabel_emailEmpresa}"/>
-                        <h:outputText value="#{empresaController.selected.emailEmpresa}" title="#{bundle.ViewEmpresaTitle_emailEmpresa}"/>
-                        <h:outputText value="#{bundle.ViewEmpresaLabel_razonSocialEmpresa}"/>
-                        <h:outputText value="#{empresaController.selected.razonSocialEmpresa}" title="#{bundle.ViewEmpresaTitle_razonSocialEmpresa}"/>
                         <h:outputText value="#{bundle.ViewEmpresaLabel_tel1Emp}"/>
                         <h:outputText value="#{empresaController.selected.tel1Emp}" title="#{bundle.ViewEmpresaTitle_tel1Emp}"/>
                         <h:outputText value="#{bundle.ViewEmpresaLabel_tel2Emp}"/>
                         <h:outputText value="#{empresaController.selected.tel2Emp}" title="#{bundle.ViewEmpresaTitle_tel2Emp}"/>
+                        <h:outputText value="#{bundle.ViewEmpresaLabel_emailEmpresa}"/>
+                        <h:outputText value="#{empresaController.selected.emailEmp}" title="#{bundle.ViewEmpresaTitle_emailEmpresa}"/>
+                        
                         <h:outputText value="#{bundle.ViewEmpresaLabel_wwwEmp}"/>
-                        <h:outputText value="#{empresaController.selected.wwwEmp}" title="#{bundle.ViewEmpresaTitle_wwwEmp}"/>
+                        <h:outputText value="#{empresaController.selected.webEmp}" title="#{bundle.ViewEmpresaTitle_wwwEmp}"/>
+                        <h:outputText value="#{bundle.ViewEmpresaLabel_idCiudad}"/>
+                        <h:outputText value="#{empresaController.selected.idCiudad.nomCiu}" title="#{bundle.ViewEmpresaTitle_idCiudad}"/>
                         <h:outputText value="#{bundle.ViewEmpresaLabel_idZonaEmpresa}"/>
-                        <h:outputText value="#{empresaController.selected.idZonaEmpresa}" title="#{bundle.ViewEmpresaTitle_idZonaEmpresa}"/>
+                        <h:outputText value="#{empresaController.selected.idZonaEmpresa.descrZona}" title="#{bundle.ViewEmpresaTitle_idZonaEmpresa}"/>
                     </p:panelGrid>
                     <br />
                     <br />
@@ -47,6 +58,17 @@
                     <p:commandButton ajax="false" action="#{empresaController.prepareList}" value="#{bundle.ViewEmpresaShowAllLink}"/>
                 </div>            
             </h:form>
+            
+            <br></br>
+                </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen">Informacion de ayuda para formularios</p>
+            </div>
+            
+            
         </ui:define>
         <ui:define name="dialogs">
             <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  

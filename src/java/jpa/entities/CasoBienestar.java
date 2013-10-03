@@ -57,6 +57,9 @@ public class CasoBienestar implements Serializable {
     private Date fecIniCas;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCasoBienestar")
     private List<ControlCasoBieAprendiz> controlCasoBieAprendizList;
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
+    @ManyToOne(optional = false)
+    private Usuario idUsuario;
     @JoinColumn(name = "id_remision", referencedColumnName = "id_remision")
     @ManyToOne(optional = false)
     private Remision idRemision;
@@ -108,6 +111,14 @@ public class CasoBienestar implements Serializable {
 
     public void setControlCasoBieAprendizList(List<ControlCasoBieAprendiz> controlCasoBieAprendizList) {
         this.controlCasoBieAprendizList = controlCasoBieAprendizList;
+    }
+
+    public Usuario getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Usuario idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public Remision getIdRemision() {

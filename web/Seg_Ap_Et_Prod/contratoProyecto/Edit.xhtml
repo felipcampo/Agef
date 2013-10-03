@@ -11,41 +11,61 @@
             <h:outputText value="#{bundle.EditContratoProyectoTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+            <div id="Layout_Titulo_Formulario_Agef"> <h2>SEGUIMIENTO AL APRENDIZ EN ETAPA PRODUCTIVA</h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen">#{bundle.EditContratoProyectoTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br>
             <p:growl id="msgs" showDetail="false" sticky="false"/>
             <h:form id="formContratoProyecto">
                 <div id="form" align="center">
                     <p:panelGrid>
                         <f:facet name="header">
-                            <p:row><p:column colspan="3">#{bundle.EditContratoProyectoTitle}</p:column></p:row>                            
+                            <p:row><p:column colspan="3"></p:column></p:row>                            
                         </f:facet>                        
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.EditContratoProyectoLabel_idContratoProyecto}" for="idContratoProyecto" />
                             </p:column>
                             <p:column style="border-right: white"> 
-                                <p:inputText id="idContratoProyecto" value="#{contratoProyectoController.selected.idContratoProyecto}" title="#{bundle.EditContratoProyectoTitle_idContratoProyecto}" required="true" requiredMessage="#{bundle.EditContratoProyectoRequiredMessage_idContratoProyecto}"/>
+                                <p:inputText id="idContratoProyecto" disabled="true" value="#{contratoProyectoController.selected.idContratoProyecto}" title="#{bundle.EditContratoProyectoTitle_idContratoProyecto}" required="true" requiredMessage="#{bundle.EditContratoProyectoRequiredMessage_idContratoProyecto}"/>
                             </p:column>
                             <p:column style="border-left: white;">
                                 <p:message for="idContratoProyecto"/>
                             </p:column>
+                        </p:row>     
+                         <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditContratoProyectoLabel_idUsuario}" for="idUsuario" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idUsuario" value="#{contratoProyectoController.selected.idUsuario}" required="true" requiredMessage="#{bundle.EditContratoProyectoRequiredMessage_idUsuario}">
+                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idUsuario"/>
+                            </p:column>
                         </p:row>      
                         <p:row>
                             <p:column>
-                                <h:outputLabel value="#{bundle.EditContratoProyectoLabel_arcCop}" for="arcCop" />
+                                <h:outputLabel value="#{bundle.EditContratoProyectoLabel_idEmpresa}" for="idEmpresa" />
                             </p:column>
                             <p:column style="border-right: white"> 
-                                <p:inputTextarea rows="4" cols="30" id="arcCop" value="#{contratoProyectoController.selected.arcCop}" title="#{bundle.EditContratoProyectoTitle_arcCop}" required="true" requiredMessage="#{bundle.EditContratoProyectoRequiredMessage_arcCop}"/>
+                                <p:selectOneMenu id="idEmpresa" value="#{contratoProyectoController.selected.idEmpresa}" required="true" requiredMessage="#{bundle.EditContratoProyectoRequiredMessage_idEmpresa}">
+                                    <f:selectItems value="#{empresaController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
                             </p:column>
                             <p:column style="border-left: white;">
-                                <p:message for="arcCop"/>
+                                <p:message for="idEmpresa"/>
                             </p:column>
-                        </p:row>      
+                        </p:row>    
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.EditContratoProyectoLabel_fecSub}" for="fecSub" />
                             </p:column>
                             <p:column style="border-right: white"> 
-                                <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm:ss" showOn="button" id="fecSub" value="#{contratoProyectoController.selected.fecSub}" title="#{bundle.EditContratoProyectoTitle_fecSub}" required="true" requiredMessage="#{bundle.EditContratoProyectoRequiredMessage_fecSub}"/>
+                                <p:calendar navigator="true" disabled="true" pattern="MM/dd/yyyy HH:mm:ss" showOn="button" id="fecSub" value="#{contratoProyectoController.selected.fecSub}" title="#{bundle.EditContratoProyectoTitle_fecSub}" required="true" requiredMessage="#{bundle.EditContratoProyectoRequiredMessage_fecSub}"/>
                             </p:column>
                             <p:column style="border-left: white;">
                                 <p:message for="fecSub"/>
@@ -73,32 +93,7 @@
                                 <p:message for="finCop"/>
                             </p:column>
                         </p:row>      
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.EditContratoProyectoLabel_idUsuario}" for="idUsuario" />
-                            </p:column>
-                            <p:column style="border-right: white"> 
-                                <p:selectOneMenu id="idUsuario" value="#{contratoProyectoController.selected.idUsuario}" required="true" requiredMessage="#{bundle.EditContratoProyectoRequiredMessage_idUsuario}">
-                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idUsuario"/>
-                            </p:column>
-                        </p:row>      
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.EditContratoProyectoLabel_idEmpresa}" for="idEmpresa" />
-                            </p:column>
-                            <p:column style="border-right: white"> 
-                                <p:selectOneMenu id="idEmpresa" value="#{contratoProyectoController.selected.idEmpresa}" required="true" requiredMessage="#{bundle.EditContratoProyectoRequiredMessage_idEmpresa}">
-                                    <f:selectItems value="#{empresaController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idEmpresa"/>
-                            </p:column>
-                        </p:row>      
+                              
                     </p:panelGrid>
                     <br />
                     <br />                
@@ -109,6 +104,14 @@
                     <p:commandButton ajax="false" action="#{contratoProyectoController.prepareList}" value="#{bundle.EditContratoProyectoShowAllLink}" immediate="true"/>
                 </div>
             </h:form>
+            <br></br>
+                </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen1">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
     </ui:composition>
 

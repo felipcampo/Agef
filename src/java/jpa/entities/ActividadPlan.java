@@ -6,9 +6,7 @@ package jpa.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,14 +16,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -103,11 +99,12 @@ public class ActividadPlan implements Serializable {
     @NotNull
     @Column(name = "lugar2")
     private boolean lugar2;
+    @JoinColumn(name = "id_plan_mejoramiento", referencedColumnName = "id_plan_mejoramiento")
+    @ManyToOne(optional = false)
+    private PlanMejoramiento idPlanMejoramiento;
     @JoinColumn(name = "id_evidencia_aprendizaje", referencedColumnName = "id_evidencia_aprendizaje")
     @ManyToOne(optional = false)
     private EvidenciaAprendizaje idEvidenciaAprendizaje;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idActividadPlan")
-    private List<PlanMejoramiento> planMejoramientoList;
 
     public ActividadPlan() {
     }
@@ -227,21 +224,20 @@ public class ActividadPlan implements Serializable {
         this.lugar2 = lugar2;
     }
 
+    public PlanMejoramiento getIdPlanMejoramiento() {
+        return idPlanMejoramiento;
+    }
+
+    public void setIdPlanMejoramiento(PlanMejoramiento idPlanMejoramiento) {
+        this.idPlanMejoramiento = idPlanMejoramiento;
+    }
+
     public EvidenciaAprendizaje getIdEvidenciaAprendizaje() {
         return idEvidenciaAprendizaje;
     }
 
     public void setIdEvidenciaAprendizaje(EvidenciaAprendizaje idEvidenciaAprendizaje) {
         this.idEvidenciaAprendizaje = idEvidenciaAprendizaje;
-    }
-
-    @XmlTransient
-    public List<PlanMejoramiento> getPlanMejoramientoList() {
-        return planMejoramientoList;
-    }
-
-    public void setPlanMejoramientoList(List<PlanMejoramiento> planMejoramientoList) {
-        this.planMejoramientoList = planMejoramientoList;
     }
 
     @Override

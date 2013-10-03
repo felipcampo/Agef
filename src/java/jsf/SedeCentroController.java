@@ -167,7 +167,7 @@ public class SedeCentroController implements Serializable {
             return key;
         }
 
-        String getStringKey(java.lang.Short value) {
+        String getStringKey(java.lang.Integer value) {
             StringBuffer sb = new StringBuffer();
             sb.append(value);
             return sb.toString();

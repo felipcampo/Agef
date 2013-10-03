@@ -11,80 +11,93 @@
             <h:outputText value="#{bundle.EditCriterioSeguimientoTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-            <p:growl id="msgs" showDetail="false" sticky="false"/>
-            <h:form id="formCriterioSeguimiento">
-                <div id="form" align="center">
-                    <p:panelGrid>
-                        <f:facet name="header">
-                            <p:row><p:column colspan="3">#{bundle.EditCriterioSeguimientoTitle}</p:column></p:row>                            
-                        </f:facet>                        
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.EditCriterioSeguimientoLabel_idCriterioSeguimiento}" for="idCriterioSeguimiento" />
-                            </p:column>
-                            <p:column style="border-right: white"> 
-                                <p:inputText id="idCriterioSeguimiento" value="#{criterioSeguimientoController.selected.idCriterioSeguimiento}" title="#{bundle.EditCriterioSeguimientoTitle_idCriterioSeguimiento}" required="true" requiredMessage="#{bundle.EditCriterioSeguimientoRequiredMessage_idCriterioSeguimiento}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idCriterioSeguimiento"/>
-                            </p:column>
-                        </p:row>      
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.EditCriterioSeguimientoLabel_obsCep}" for="obsCep" />
-                            </p:column>
-                            <p:column style="border-right: white"> 
-                                <p:inputTextarea rows="4" cols="30" id="obsCep" value="#{criterioSeguimientoController.selected.obsCep}" title="#{bundle.EditCriterioSeguimientoTitle_obsCep}" required="true" requiredMessage="#{bundle.EditCriterioSeguimientoRequiredMessage_obsCep}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="obsCep"/>
-                            </p:column>
-                        </p:row>      
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.EditCriterioSeguimientoLabel_valCep}" for="valCep" />
-                            </p:column>
-                            <p:column style="border-right: white"> 
-                                <p:inputText id="valCep" value="#{criterioSeguimientoController.selected.valCep}" title="#{bundle.EditCriterioSeguimientoTitle_valCep}" required="true" requiredMessage="#{bundle.EditCriterioSeguimientoRequiredMessage_valCep}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="valCep"/>
-                            </p:column>
-                        </p:row>      
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.EditCriterioSeguimientoLabel_idSeguimientoProductiva}" for="idSeguimientoProductiva" />
-                            </p:column>
-                            <p:column style="border-right: white"> 
-                                <p:inputText id="idSeguimientoProductiva" value="#{criterioSeguimientoController.selected.idSeguimientoProductiva}" title="#{bundle.EditCriterioSeguimientoTitle_idSeguimientoProductiva}" required="true" requiredMessage="#{bundle.EditCriterioSeguimientoRequiredMessage_idSeguimientoProductiva}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idSeguimientoProductiva"/>
-                            </p:column>
-                        </p:row>      
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.EditCriterioSeguimientoLabel_idCriterioEvaluacion}" for="idCriterioEvaluacion" />
-                            </p:column>
-                            <p:column style="border-right: white"> 
-                                <p:selectOneMenu id="idCriterioEvaluacion" value="#{criterioSeguimientoController.selected.idCriterioEvaluacion}" required="true" requiredMessage="#{bundle.EditCriterioSeguimientoRequiredMessage_idCriterioEvaluacion}">
-                                    <f:selectItems value="#{criterioEvaluacionController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idCriterioEvaluacion"/>
-                            </p:column>
-                        </p:row>      
-                    </p:panelGrid>
-                    <br />
-                    <br />                
-                    <p:commandButton process="@this, @form" update="@form, :msgs"
-                                     action="#{criterioSeguimientoController.update}" value="#{bundle.EditCriterioSeguimientoSaveLink}" icon="ui-icon-disk"/>
-                    <p:button outcome="View" value="#{bundle.EditCriterioSeguimientoViewLink}" icon="ui-icon-searh"/>
-                    <br />
-                    <p:commandButton ajax="false" action="#{criterioSeguimientoController.prepareList}" value="#{bundle.EditCriterioSeguimientoShowAllLink}" immediate="true"/>
+            <div id="Layout_Titulo_Formulario_Agef"> <h2>SEGUIMIENTO AL APRENDIZ EN ETAPA PRODUCTIVA</h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen">#{bundle.EditCriterioSeguimientoTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br>
+                    <p:growl id="msgs" showDetail="false" sticky="false"/>
+                    <h:form id="formCriterioSeguimiento">
+                        <div id="form" align="center">
+                            <p:panelGrid>
+                                <f:facet name="header">
+                                    <p:row><p:column colspan="3"></p:column></p:row>                            
+                                </f:facet>                        
+                                <p:row>
+                                    <p:column>
+                                        <h:outputLabel value="#{bundle.EditCriterioSeguimientoLabel_idCriterioSeguimiento}" for="idCriterioSeguimiento" />
+                                    </p:column>
+                                    <p:column style="border-right: white"> 
+                                        <p:inputText id="idCriterioSeguimiento" value="#{criterioSeguimientoController.selected.idCriterioSeguimiento}" title="#{bundle.EditCriterioSeguimientoTitle_idCriterioSeguimiento}" required="true" requiredMessage="#{bundle.EditCriterioSeguimientoRequiredMessage_idCriterioSeguimiento}"/>
+                                    </p:column>
+                                    <p:column style="border-left: white;">
+                                        <p:message for="idCriterioSeguimiento"/>
+                                    </p:column>
+                                </p:row>      
+                                <p:row>
+                                    <p:column>
+                                        <h:outputLabel value="#{bundle.EditCriterioSeguimientoLabel_obsCep}" for="obsCep" />
+                                    </p:column>
+                                    <p:column style="border-right: white"> 
+                                        <p:inputTextarea rows="4" cols="30" id="obsCep" value="#{criterioSeguimientoController.selected.obsCep}" title="#{bundle.EditCriterioSeguimientoTitle_obsCep}" required="true" requiredMessage="#{bundle.EditCriterioSeguimientoRequiredMessage_obsCep}"/>
+                                    </p:column>
+                                    <p:column style="border-left: white;">
+                                        <p:message for="obsCep"/>
+                                    </p:column>
+                                </p:row>      
+                                <p:row>
+                                    <p:column>
+                                        <h:outputLabel value="#{bundle.EditCriterioSeguimientoLabel_valCep}" for="valCep" />
+                                    </p:column>
+                                    <p:column style="border-right: white"> 
+                                        <p:inputText id="valCep" value="#{criterioSeguimientoController.selected.valCep}" title="#{bundle.EditCriterioSeguimientoTitle_valCep}" required="true" requiredMessage="#{bundle.EditCriterioSeguimientoRequiredMessage_valCep}"/>
+                                    </p:column>
+                                    <p:column style="border-left: white;">
+                                        <p:message for="valCep"/>
+                                    </p:column>
+                                </p:row>      
+                                <p:row>
+                                    <p:column>
+                                        <h:outputLabel value="#{bundle.EditCriterioSeguimientoLabel_idSeguimientoProductiva}" for="idSeguimientoProductiva" />
+                                    </p:column>
+                                    <p:column style="border-right: white"> 
+                                        <p:inputText id="idSeguimientoProductiva" value="#{criterioSeguimientoController.selected.idSeguimientoProductiva}" title="#{bundle.EditCriterioSeguimientoTitle_idSeguimientoProductiva}" required="true" requiredMessage="#{bundle.EditCriterioSeguimientoRequiredMessage_idSeguimientoProductiva}"/>
+                                    </p:column>
+                                    <p:column style="border-left: white;">
+                                        <p:message for="idSeguimientoProductiva"/>
+                                    </p:column>
+                                </p:row>      
+                                <p:row>
+                                    <p:column>
+                                        <h:outputLabel value="#{bundle.EditCriterioSeguimientoLabel_idCriterioEvaluacion}" for="idCriterioEvaluacion" />
+                                    </p:column>
+                                    <p:column style="border-right: white"> 
+                                        <p:selectOneMenu  id="idCriterioEvaluacion" value="#{criterioSeguimientoController.selected.idCriterioEvaluacion}" required="true" requiredMessage="#{bundle.EditCriterioSeguimientoRequiredMessage_idCriterioEvaluacion}">
+                                            <f:selectItems  value="#{criterioEvaluacionController.itemsAvailableSelectOne}"/>
+                                        </p:selectOneMenu>
+                                    </p:column>
+                                    <p:column style="border-left: white;">
+                                        <p:message for="idCriterioEvaluacion"/>
+                                    </p:column>
+                                </p:row>      
+                            </p:panelGrid>
+                            <br />
+                            <br />                
+                            <p:commandButton process="@this, @form" update="@form, :msgs"
+                                             action="#{criterioSeguimientoController.update}" value="#{bundle.EditCriterioSeguimientoSaveLink}" icon="ui-icon-disk"/>
+                            <p:button outcome="View" value="#{bundle.EditCriterioSeguimientoViewLink}" icon="ui-icon-searh"/>
+                            <br />
+                            <p:commandButton ajax="false" action="#{criterioSeguimientoController.prepareList}" value="#{bundle.EditCriterioSeguimientoShowAllLink}" immediate="true"/>
+                        </div>
+                    </h:form>
+                    <br></br>
                 </div>
-            </h:form>
+            </div>
+            <div id="Layout_Info_Agef">
+                <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen1">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
     </ui:composition>
 

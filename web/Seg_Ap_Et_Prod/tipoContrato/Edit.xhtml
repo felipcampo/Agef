@@ -11,45 +11,58 @@
             <h:outputText value="#{bundle.EditTipoContratoTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-            <p:growl id="msgs" showDetail="false" sticky="false"/>
-            <h:form id="formTipoContrato">
-                <div id="form" align="center">
-                    <p:panelGrid>
-                        <f:facet name="header">
-                            <p:row><p:column colspan="3">#{bundle.EditTipoContratoTitle}</p:column></p:row>                            
-                        </f:facet>                        
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.EditTipoContratoLabel_idTipoContrato}" for="idTipoContrato" />
-                            </p:column>
-                            <p:column style="border-right: white"> 
-                                <p:inputText id="idTipoContrato" value="#{tipoContratoController.selected.idTipoContrato}" title="#{bundle.EditTipoContratoTitle_idTipoContrato}" required="true" requiredMessage="#{bundle.EditTipoContratoRequiredMessage_idTipoContrato}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idTipoContrato"/>
-                            </p:column>
-                        </p:row>      
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.EditTipoContratoLabel_descrTipoContrato}" for="descrTipoContrato" />
-                            </p:column>
-                            <p:column style="border-right: white"> 
-                                <p:inputText id="descrTipoContrato" value="#{tipoContratoController.selected.descrTipoContrato}" title="#{bundle.EditTipoContratoTitle_descrTipoContrato}" required="true" requiredMessage="#{bundle.EditTipoContratoRequiredMessage_descrTipoContrato}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="descrTipoContrato"/>
-                            </p:column>
-                        </p:row>      
-                    </p:panelGrid>
-                    <br />
-                    <br />                
-                    <p:commandButton process="@this, @form" update="@form, :msgs"
-                                     action="#{tipoContratoController.update}" value="#{bundle.EditTipoContratoSaveLink}" icon="ui-icon-disk"/>
-                    <p:button outcome="View" value="#{bundle.EditTipoContratoViewLink}" icon="ui-icon-searh"/>
-                    <br />
-                    <p:commandButton ajax="false" action="#{tipoContratoController.prepareList}" value="#{bundle.EditTipoContratoShowAllLink}" immediate="true"/>
+            <div id="Layout_Titulo_Formulario_Agef"> <h2>SEGUIMIENTO AL APRENDIZ EN ETAPA PRODUCTIVA</h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen">#{bundle.EditTipoContratoTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br>
+                    <p:growl id="msgs" showDetail="false" sticky="false"/>
+                    <h:form id="formTipoContrato">
+                        <div id="form" align="center">
+                            <p:panelGrid>
+                                <f:facet name="header">
+                                    <p:row><p:column colspan="3"></p:column></p:row>                            
+                                </f:facet>                        
+                                <p:row>
+                                    <p:column>
+                                        <h:outputLabel value="#{bundle.EditTipoContratoLabel_idTipoContrato}" for="idTipoContrato" />
+                                    </p:column>
+                                    <p:column style="border-right: white"> 
+                                        <p:inputText disabled="true" id="idTipoContrato" value="#{tipoContratoController.selected.idTipoContrato}" title="#{bundle.EditTipoContratoTitle_idTipoContrato}" required="true" requiredMessage="#{bundle.EditTipoContratoRequiredMessage_idTipoContrato}"/>
+                                    </p:column>
+                                    <p:column style="border-left: white;">
+                                        <p:message for="idTipoContrato"/>
+                                    </p:column>
+                                </p:row>      
+                                <p:row>
+                                    <p:column>
+                                        <h:outputLabel value="#{bundle.EditTipoContratoLabel_descrTipoContrato}" for="descrTipoContrato" />
+                                    </p:column>
+                                    <p:column style="border-right: white"> 
+                                        <p:inputText id="descrTipoContrato" value="#{tipoContratoController.selected.descrTipoContrato}" title="#{bundle.EditTipoContratoTitle_descrTipoContrato}" required="true" requiredMessage="#{bundle.EditTipoContratoRequiredMessage_descrTipoContrato}"/>
+                                    </p:column>
+                                    <p:column style="border-left: white;">
+                                        <p:message for="descrTipoContrato"/>
+                                    </p:column>
+                                </p:row>      
+                            </p:panelGrid>
+                            <br />
+                            <br />                
+                            <p:commandButton process="@this, @form" update="@form, :msgs"
+                                             action="#{tipoContratoController.update}" value="#{bundle.EditTipoContratoSaveLink}" icon="ui-icon-disk"/>
+                            <p:button outcome="View" value="#{bundle.EditTipoContratoViewLink}" icon="ui-icon-searh"/>
+                            <br />
+                            <p:commandButton ajax="false" action="#{tipoContratoController.prepareList}" value="#{bundle.EditTipoContratoShowAllLink}" immediate="true"/>
+                        </div>
+                    </h:form>
+                    <br></br>
                 </div>
-            </h:form>
+            </div>
+            <div id="Layout_Info_Agef">
+                <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen1">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
     </ui:composition>
 

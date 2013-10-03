@@ -11,68 +11,73 @@
             <h:outputText value="#{bundle.ListIncidenteProductivaTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-            <h:form id="listIncidenteProductiva" styleClass="jsfcrud_list_form">
-                <div id="list" align="center">
-                    <p:growl id="msgs" showDetail="false" sticky="false"/>
-                    <h:outputText escape="false" value="#{bundle.ListIncidenteProductivaEmpty}" rendered="#{incidenteProductivaController.lazyModel.rowCount == 0}"/>
-                    <h:panelGroup rendered="#{incidenteProductivaController.lazyModel.rowCount > 0}">
-                        <p:dataTable id="tableListIncidenteProductiva" 
-                                     value="#{incidenteProductivaController.lazyModel}" 
-                                     var="item" 
-                                     paginator="true" rows="10" paginatorAlwaysVisible="false"
-                                     paginatorTemplate="{FirstPageLink} {PreviousPageLink}
-                                     {PageLinks} {NextPageLink}
-                                     {LastPageLink} {RowsPerPageDropdown}"  
-                                     rowsPerPageTemplate="5,10,15" paginatorPosition="bottom"
-                                     lazy="true"
-                                     emptyMessage="No se encontraron datos con el criterio dado"
-                                     widgetVar="tableIncidenteProductiva">
-                            <p:column headerText="#{bundle.ListIncidenteProductivaTitle_idIncidenteProductiva}"
-                                      filterBy="#{item.idIncidenteProductiva}"
-                                      sortBy="#{item.idIncidenteProductiva}">                        
-                                <h:outputText value="#{item.idIncidenteProductiva}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListIncidenteProductivaTitle_detalleIncidente}"
-                                      filterBy="#{item.detalleIncidente}"
-                                      sortBy="#{item.detalleIncidente}">                        
-                                <h:outputText value="#{item.detalleIncidente}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListIncidenteProductivaTitle_fecIncio}"
-                                      filterBy="#{item.fecIncio}"
-                                      sortBy="#{item.fecIncio}">                        
-                                <h:outputText value="#{item.fecIncio}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy" />
-                                </h:outputText>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListIncidenteProductivaTitle_solucionInc}"
-                                      filterBy="#{item.solucionInc}"
-                                      sortBy="#{item.solucionInc}">                        
-                                <h:outputText value="#{item.solucionInc}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListIncidenteProductivaTitle_tipoIncio}"
-                                      filterBy="#{item.tipoIncio}"
-                                      sortBy="#{item.tipoIncio}">                        
-                                <h:outputText value="#{item.tipoIncio}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListIncidenteProductivaTitle_idVisitaEtapaProductiva}"
-                                      filterBy="#{item.idVisitaEtapaProductiva}"
-                                      sortBy="#{item.idVisitaEtapaProductiva}">                        
-                                <h:outputText value="#{item.idVisitaEtapaProductiva}"/>
-                            </p:column>
-                            <p:column>                        
-                                <p:commandButton ajax="false" action="#{incidenteProductivaController.prepareView}" title="#{bundle.ListIncidenteProductivaViewLink}" icon="ui-icon-search"/>
-                                <p:commandButton ajax="false" action="#{incidenteProductivaController.prepareEdit}" title="#{bundle.ListIncidenteProductivaEditLink}" icon="ui-icon-pencil"/>
-                                <p:commandButton oncomplete="confirmationDelete.show();" process="@this"
-                                                 title="#{bundle.ListIncidenteProductivaDestroyLink}" icon="ui-icon-trash">
-                                    <f:setPropertyActionListener value="#{item}" target="#{incidenteProductivaController.selected}"/>
-                                </p:commandButton>
-                            </p:column>
-                        </p:dataTable>
-                    </h:panelGroup>
-                    <br />
-                    <p:commandButton ajax="false" action="#{incidenteProductivaController.prepareCreate}" value="#{bundle.ListIncidenteProductivaCreateLink}" icon="ui-icon-document"/>
-                </div>        
-            </h:form>
+            <div id="Layout_Titulo_Formulario_Agef"> <h2>SEGUIMIENTO AL APRENDIZ EN ETAPA PRODUCTIVA</h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen">#{bundle.ListIncidenteProductivaTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br>
+                    <h:form id="listIncidenteProductiva" styleClass="jsfcrud_list_form">
+                        <div id="list" align="center">
+                            <p:growl id="msgs" showDetail="false" sticky="false"/>
+                            <h:outputText escape="false" value="#{bundle.ListIncidenteProductivaEmpty}" rendered="#{incidenteProductivaController.lazyModel.rowCount == 0}"/>
+                            <h:panelGroup rendered="#{incidenteProductivaController.lazyModel.rowCount > 0}">
+                                <p:dataTable id="tableListIncidenteProductiva" 
+                                             value="#{incidenteProductivaController.lazyModel}" 
+                                             var="item" 
+                                             paginator="true" rows="10" paginatorAlwaysVisible="false"
+                                             paginatorTemplate="{FirstPageLink} {PreviousPageLink}
+                                             {PageLinks} {NextPageLink}
+                                             {LastPageLink} {RowsPerPageDropdown}"  
+                                             rowsPerPageTemplate="5,10,15" paginatorPosition="bottom"
+                                             lazy="true"
+                                             emptyMessage="No se encontraron datos con el criterio dado"
+                                             widgetVar="tableIncidenteProductiva">
+                                    <p:column headerText="#{bundle.ListIncidenteProductivaTitle_idIncidenteProductiva}"
+                                              filterBy="#{item.idIncidenteProductiva}"
+                                              sortBy="#{item.idIncidenteProductiva}">                        
+                                        <h:outputText value="#{item.idIncidenteProductiva}"/>
+                                    </p:column>
+                                    <p:column headerText="#{bundle.ListIncidenteProductivaTitle_detalleIncidente}"
+                                              filterBy="#{item.detalleIncidente}"
+                                              sortBy="#{item.detalleIncidente}">                        
+                                        <h:outputText value="#{item.detalleIncidente}"/>
+                                    </p:column>
+                                    <p:column headerText="#{bundle.ListIncidenteProductivaTitle_fecIncio}"
+                                              filterBy="#{item.fecIncio}"
+                                              sortBy="#{item.fecIncio}">                        
+                                        <h:outputText value="#{item.fecIncio}">
+                                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column headerText="#{bundle.ListIncidenteProductivaTitle_solucionInc}"
+                                              filterBy="#{item.solucionInc}"
+                                              sortBy="#{item.solucionInc}">                        
+                                        <h:outputText value="#{item.solucionInc}"/>
+                                    </p:column>
+
+
+                                    <p:column>                        
+                                        <p:commandButton ajax="false" action="#{incidenteProductivaController.prepareView}" title="#{bundle.ListIncidenteProductivaViewLink}" icon="ui-icon-search"/>
+                                        <p:commandButton ajax="false" action="#{incidenteProductivaController.prepareEdit}" title="#{bundle.ListIncidenteProductivaEditLink}" icon="ui-icon-pencil"/>
+                                        <p:commandButton oncomplete="confirmationDelete.show();" process="@this"
+                                                         title="#{bundle.ListIncidenteProductivaDestroyLink}" icon="ui-icon-trash">
+                                            <f:setPropertyActionListener value="#{item}" target="#{incidenteProductivaController.selected}"/>
+                                        </p:commandButton>
+                                    </p:column>
+                                </p:dataTable>
+                            </h:panelGroup>
+                            <br />
+                            <p:commandButton ajax="false" action="#{incidenteProductivaController.prepareCreate}" value="#{bundle.ListIncidenteProductivaCreateLink}" icon="ui-icon-document"/>
+                        </div>        
+                    </h:form>
+                    <br></br>
+                </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen1">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
         <ui:define name="dialogs">
             <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  

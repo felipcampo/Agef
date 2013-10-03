@@ -58,19 +58,16 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_usuario")
     private Integer idUsuario;
-    @Basic(optional = false)
-   
-    @Size(min = 1, max = 20)
+    @Basic(optional = false)    
+    @Size(max = 20)
     @Column(name = "numero_documento")
     private String numeroDocumento;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
+    @Basic(optional = false)   
+    @Size(max = 100)
     @Column(name = "nom_usu")
     private String nomUsu;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
+    @Basic(optional = false)    
+    @Size(max = 100)
     @Column(name = "ape_usu")
     private String apeUsu;
     @Basic(optional = false)
@@ -183,8 +180,12 @@ public class Usuario implements Serializable {
     @JoinColumn(name = "id_ciudad_nacimiento", referencedColumnName = "id_ciudad")
     @ManyToOne(optional = false)
     private Ciudad idCiudadNacimiento;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario3")
     private List<LlamadoAtencionVerbal> llamadoAtencionVerbalList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario2")
+    private List<LlamadoAtencionVerbal> llamadoAtencionVerbalList1;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
+    private List<LlamadoAtencionVerbal> llamadoAtencionVerbalList2;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
     private List<SeguimientoProductiva> seguimientoProductivaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
@@ -193,6 +194,8 @@ public class Usuario implements Serializable {
     private List<Alistamiento> alistamientoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
     private List<ProyectoFormativo> proyectoFormativoList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
+    private List<CasoBienestar> casoBienestarList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario2")
     private List<ControlAsistencia> controlAsistenciaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario1")
@@ -616,6 +619,24 @@ public class Usuario implements Serializable {
     }
 
     @XmlTransient
+    public List<LlamadoAtencionVerbal> getLlamadoAtencionVerbalList1() {
+        return llamadoAtencionVerbalList1;
+    }
+
+    public void setLlamadoAtencionVerbalList1(List<LlamadoAtencionVerbal> llamadoAtencionVerbalList1) {
+        this.llamadoAtencionVerbalList1 = llamadoAtencionVerbalList1;
+    }
+
+    @XmlTransient
+    public List<LlamadoAtencionVerbal> getLlamadoAtencionVerbalList2() {
+        return llamadoAtencionVerbalList2;
+    }
+
+    public void setLlamadoAtencionVerbalList2(List<LlamadoAtencionVerbal> llamadoAtencionVerbalList2) {
+        this.llamadoAtencionVerbalList2 = llamadoAtencionVerbalList2;
+    }
+
+    @XmlTransient
     public List<SeguimientoProductiva> getSeguimientoProductivaList() {
         return seguimientoProductivaList;
     }
@@ -649,6 +670,15 @@ public class Usuario implements Serializable {
 
     public void setProyectoFormativoList(List<ProyectoFormativo> proyectoFormativoList) {
         this.proyectoFormativoList = proyectoFormativoList;
+    }
+
+    @XmlTransient
+    public List<CasoBienestar> getCasoBienestarList() {
+        return casoBienestarList;
+    }
+
+    public void setCasoBienestarList(List<CasoBienestar> casoBienestarList) {
+        this.casoBienestarList = casoBienestarList;
     }
 
     @XmlTransient

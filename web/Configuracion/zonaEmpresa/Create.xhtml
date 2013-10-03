@@ -11,35 +11,48 @@
             <h:outputText value="#{bundle.CreateZonaEmpresaTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-            <p:growl id="msgs" showDetail="false" sticky="false"/>
-            <h:form id="formZonaEmpresa">
-                <div id="form" align="center">
-                    <p:panelGrid>
-                        <f:facet name="header">
-                            <p:row><p:column colspan="3">#{bundle.CreateZonaEmpresaTitle}</p:column></p:row>                            
-                        </f:facet>                       
-                        
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateZonaEmpresaLabel_descrZona}" for="descrZona" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputText id="descrZona" value="#{zonaEmpresaController.selected.descrZona}" title="#{bundle.CreateZonaEmpresaTitle_descrZona}" required="true" requiredMessage="#{bundle.CreateZonaEmpresaRequiredMessage_descrZona}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="descrZona"/>
-                            </p:column>
-                        </p:row>
-                    </p:panelGrid>
-                    <br />
-                    <br />
-                    <p:commandButton process="@this, @form" update="@form, :msgs"
-                                     action="#{zonaEmpresaController.create}" value="#{bundle.CreateZonaEmpresaSaveLink}" icon="ui-icon-disk"/>
-                    <br />
-                    <br />
-                    <p:commandButton ajax="false" action="#{zonaEmpresaController.prepareList}" value="#{bundle.CreateZonaEmpresaShowAllLink}" immediate="true"/>
+            <div id="Layout_Titulo_Formulario_Agef"> <h2>SEGUIMIENTO AL APRENDIZ EN ETAPA PRODUCTIVA</h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen"> #{bundle.CreateZonaEmpresaTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br>  
+                    <p:growl id="msgs" showDetail="false" sticky="false"/>
+                    <h:form id="formZonaEmpresa">
+                        <div id="form" align="center">
+                            <p:panelGrid>
+                                <f:facet name="header">
+                                    <p:row><p:column colspan="3"></p:column></p:row>                            
+                                </f:facet>                       
+
+                                <p:row>
+                                    <p:column>
+                                        <h:outputLabel value="#{bundle.CreateZonaEmpresaLabel_descrZona}" for="descrZona" />
+                                    </p:column>
+                                    <p:column style="border-right: white">    
+                                        <p:inputText id="descrZona" value="#{zonaEmpresaController.selected.descrZona}" title="#{bundle.CreateZonaEmpresaTitle_descrZona}" required="true" requiredMessage="#{bundle.CreateZonaEmpresaRequiredMessage_descrZona}"/>
+                                    </p:column>
+                                    <p:column style="border-left: white;">
+                                        <p:message for="descrZona"/>
+                                    </p:column>
+                                </p:row>
+                            </p:panelGrid>
+                            <br />
+                            <br />
+                            <p:commandButton process="@this, @form" update="@form, :msgs"
+                                             action="#{zonaEmpresaController.create}" value="#{bundle.CreateZonaEmpresaSaveLink}" icon="ui-icon-disk"/>
+                            <br />
+                            <br />
+                            <p:commandButton ajax="false" action="#{zonaEmpresaController.prepareList}" value="#{bundle.CreateZonaEmpresaShowAllLink}" immediate="true"/>
+                        </div>
+                    </h:form>
+                    <br></br>
                 </div>
-            </h:form>
+            </div>
+            <div id="Layout_Info_Agef">
+                <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen1">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
     </ui:composition>
 

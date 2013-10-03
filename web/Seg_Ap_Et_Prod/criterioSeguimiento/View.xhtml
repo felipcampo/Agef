@@ -11,36 +11,52 @@
             <h:outputText value="#{bundle.ViewCriterioSeguimientoTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-            <p:growl id="msgs" showDetail="false" sticky="false"/> 
-            <h:form>
-                <div id="form" align="center">
-                    <p:panelGrid columns="2">
-                        <f:facet name="header">
-                            <p:row><p:column>#{bundle.ViewCriterioSeguimientoTitle}</p:column></p:row>                            
-                        </f:facet>
-                        <h:outputText value="#{bundle.ViewCriterioSeguimientoLabel_idCriterioSeguimiento}"/>
-                        <h:outputText value="#{criterioSeguimientoController.selected.idCriterioSeguimiento}" title="#{bundle.ViewCriterioSeguimientoTitle_idCriterioSeguimiento}"/>
-                        <h:outputText value="#{bundle.ViewCriterioSeguimientoLabel_obsCep}"/>
-                        <h:outputText value="#{criterioSeguimientoController.selected.obsCep}" title="#{bundle.ViewCriterioSeguimientoTitle_obsCep}"/>
-                        <h:outputText value="#{bundle.ViewCriterioSeguimientoLabel_valCep}"/>
-                        <h:outputText value="#{criterioSeguimientoController.selected.valCep}" title="#{bundle.ViewCriterioSeguimientoTitle_valCep}"/>
-                        <h:outputText value="#{bundle.ViewCriterioSeguimientoLabel_idSeguimientoProductiva}"/>
-                        <h:outputText value="#{criterioSeguimientoController.selected.idSeguimientoProductiva}" title="#{bundle.ViewCriterioSeguimientoTitle_idSeguimientoProductiva}"/>
-                        <h:outputText value="#{bundle.ViewCriterioSeguimientoLabel_idCriterioEvaluacion}"/>
-                        <h:outputText value="#{criterioSeguimientoController.selected.idCriterioEvaluacion}" title="#{bundle.ViewCriterioSeguimientoTitle_idCriterioEvaluacion}"/>
-                    </p:panelGrid>
-                    <br />
-                    <br />
-                    <p:commandButton oncomplete="confirmationDelete.show();" process="@this" value="#{bundle.ListCriterioSeguimientoDestroyLink}"
-                                     title="#{bundle.ListCriterioSeguimientoDestroyLink}" icon="ui-icon-trash">
-                    </p:commandButton>
-                    <p:button outcome="Edit" value="#{bundle.ViewCriterioSeguimientoEditLink}" icon="ui-icon-pencil"/>
-                    <p:commandButton ajax="false" action="#{criterioSeguimientoController.prepareCreate}" value="#{bundle.ViewCriterioSeguimientoCreateLink}" icon="ui-icon-document"/>
-                    <br />
-                    <br />
-                    <p:commandButton ajax="false" action="#{criterioSeguimientoController.prepareList}" value="#{bundle.ViewCriterioSeguimientoShowAllLink}"/>
-                </div>            
-            </h:form>
+            <div id="Layout_Titulo_Formulario_Agef"> <h2>SEGUIMIENTO AL APRENDIZ EN ETAPA PRODUCTIVA</h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen">#{bundle.ViewCriterioSeguimientoTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br>
+                    <p:growl id="msgs" showDetail="false" sticky="false"/> 
+                    <h:form>
+                        <div id="form" align="center">
+                            <p:panelGrid columns="2">
+                                <f:facet name="header">
+                                    <p:row><p:column></p:column></p:row>                            
+                                </f:facet>
+                                <h:outputText value="#{bundle.ViewCriterioSeguimientoLabel_idCriterioSeguimiento}"/>
+                                <h:outputText value="#{criterioSeguimientoController.selected.idCriterioSeguimiento}" title="#{bundle.ViewCriterioSeguimientoTitle_idCriterioSeguimiento}"/>
+                                <h:outputText value="#{bundle.ViewCriterioSeguimientoLabel_obsCep}"/>
+                                <h:outputText value="#{criterioSeguimientoController.selected.obsCep}" title="#{bundle.ViewCriterioSeguimientoTitle_obsCep}"/>
+                                
+                                <h:outputText value="#{bundle.ViewCriterioSeguimientoLabel_valCep}"/>
+                                <h:outputText value="SATISFATORIO" rendered="#{criterioSeguimientoController.selected.valCep}" title="#{bundle.ViewCriterioSeguimientoTitle_valCep}"/>
+                                <h:outputText value="POR MEJORAR" rendered="#{!criterioSeguimientoController.selected.valCep}" title="#{bundle.ViewCriterioSeguimientoTitle_valCep}"/>
+
+                                <h:outputText value="#{bundle.ViewCriterioSeguimientoLabel_idSeguimientoProductiva}"/>
+                                <h:outputText value="#{criterioSeguimientoController.selected.idSeguimientoProductiva}" title="#{bundle.ViewCriterioSeguimientoTitle_idSeguimientoProductiva}"/>
+                                <h:outputText value="#{bundle.ViewCriterioSeguimientoLabel_idCriterioEvaluacion}"/>
+                                <h:outputText value="#{criterioSeguimientoController.selected.idCriterioEvaluacion.detallesCriterio}" title="#{bundle.ViewCriterioSeguimientoTitle_idCriterioEvaluacion}"/>
+                            </p:panelGrid>
+                            <br />
+                            <br />
+                            <p:commandButton oncomplete="confirmationDelete.show();" process="@this" value="#{bundle.ListCriterioSeguimientoDestroyLink}"
+                                             title="#{bundle.ListCriterioSeguimientoDestroyLink}" icon="ui-icon-trash">
+                            </p:commandButton>
+                            <p:button outcome="Edit" value="#{bundle.ViewCriterioSeguimientoEditLink}" icon="ui-icon-pencil"/>
+                            <p:commandButton ajax="false" action="#{criterioSeguimientoController.prepareCreate}" value="#{bundle.ViewCriterioSeguimientoCreateLink}" icon="ui-icon-document"/>
+                            <br />
+                            <br />
+                            <p:commandButton ajax="false" action="#{criterioSeguimientoController.prepareList}" value="#{bundle.ViewCriterioSeguimientoShowAllLink}"/>
+                        </div>            
+                    </h:form>
+                    <br></br>
+                </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen1">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
         <ui:define name="dialogs">
             <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  

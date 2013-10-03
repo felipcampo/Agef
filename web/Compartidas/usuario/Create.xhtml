@@ -150,17 +150,7 @@
                                 <p:message for="estadoCivil"/>
                             </p:column>
                         </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateUsuarioLabel_password}" for="password" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputText id="password" value="#{usuarioController.selected.password}" title="#{bundle.CreateUsuarioTitle_password}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_password}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="password"/>
-                            </p:column>
-                        </p:row>
+                        
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateUsuarioLabel_idEstadoAspirante}" for="idEstadoAspirante" />
@@ -237,6 +227,30 @@
                             </p:column>
                             <p:column style="border-left: white;">
                                 <p:message for="idTipoContrato"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateUsuarioLabel_password}" for="password" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:password id="password" value="#{usuarioController.selected.password}" title="#{bundle.CreateUsuarioTitle_password}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_password}"
+                                            match="passwordMatch" feedback="true" strongLabel="Fuerte" goodLabel="Buena" promptLabel="Por favor ingrese unacontraseña"
+                                            weakLabel="Debil" validatorMessage="Las contraseñas no coinciden"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="password"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateUsuarioLabel_password}" for="passwordMatch" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:password id="passwordMatch" value="#{usuarioController.selected.password}" title="#{bundle.CreateUsuarioTitle_password}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_password}"/>
+                            </p:column>    
+                            <p:column style="border-left: white;">
+                                <p:message for="passwordMatch"/>
                             </p:column>
                         </p:row>
                     </p:panelGrid>

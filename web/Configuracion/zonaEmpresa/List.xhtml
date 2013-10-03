@@ -11,46 +11,59 @@
             <h:outputText value="#{bundle.ListZonaEmpresaTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-            <h:form id="listZonaEmpresa" styleClass="jsfcrud_list_form">
-                <div id="list" align="center">
-                    <p:growl id="msgs" showDetail="false" sticky="false"/>
-                    <h:outputText escape="false" value="#{bundle.ListZonaEmpresaEmpty}" rendered="#{zonaEmpresaController.lazyModel.rowCount == 0}"/>
-                    <h:panelGroup rendered="#{zonaEmpresaController.lazyModel.rowCount > 0}">
-                        <p:dataTable id="tableListZonaEmpresa" 
-                                     value="#{zonaEmpresaController.lazyModel}" 
-                                     var="item" 
-                                     paginator="true" rows="10" paginatorAlwaysVisible="false"
-                                     paginatorTemplate="{FirstPageLink} {PreviousPageLink}
-                                     {PageLinks} {NextPageLink}
-                                     {LastPageLink} {RowsPerPageDropdown}"  
-                                     rowsPerPageTemplate="5,10,15" paginatorPosition="bottom"
-                                     lazy="true"
-                                     emptyMessage="No se encontraron datos con el criterio dado"
-                                     widgetVar="tableZonaEmpresa">
-                            <p:column headerText="#{bundle.ListZonaEmpresaTitle_idZonaEmpresa}"
-                                      filterBy="#{item.idZonaEmpresa}"
-                                      sortBy="#{item.idZonaEmpresa}">                        
-                                <h:outputText value="#{item.idZonaEmpresa}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListZonaEmpresaTitle_descrZona}"
-                                      filterBy="#{item.descrZona}"
-                                      sortBy="#{item.descrZona}">                        
-                                <h:outputText value="#{item.descrZona}"/>
-                            </p:column>
-                            <p:column>                        
-                                <p:commandButton ajax="false" action="#{zonaEmpresaController.prepareView}" title="#{bundle.ListZonaEmpresaViewLink}" icon="ui-icon-search"/>
-                                <p:commandButton ajax="false" action="#{zonaEmpresaController.prepareEdit}" title="#{bundle.ListZonaEmpresaEditLink}" icon="ui-icon-pencil"/>
-                                <p:commandButton oncomplete="confirmationDelete.show();" process="@this"
-                                                 title="#{bundle.ListZonaEmpresaDestroyLink}" icon="ui-icon-trash">
-                                    <f:setPropertyActionListener value="#{item}" target="#{zonaEmpresaController.selected}"/>
-                                </p:commandButton>
-                            </p:column>
-                        </p:dataTable>
-                    </h:panelGroup>
-                    <br />
-                    <p:commandButton ajax="false" action="#{zonaEmpresaController.prepareCreate}" value="#{bundle.ListZonaEmpresaCreateLink}" icon="ui-icon-document"/>
-                </div>        
-            </h:form>
+            <div id="Layout_Titulo_Formulario_Agef"> <h2>SEGUIMIENTO AL APRENDIZ EN ETAPA PRODUCTIVA</h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen"> #{bundle.ListZonaEmpresaTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br>  
+                    <h:form id="listZonaEmpresa" styleClass="jsfcrud_list_form">
+                        <div id="list" align="center">
+                            <p:growl id="msgs" showDetail="false" sticky="false"/>
+                            <h:outputText escape="false" value="#{bundle.ListZonaEmpresaEmpty}" rendered="#{zonaEmpresaController.lazyModel.rowCount == 0}"/>
+                            <h:panelGroup rendered="#{zonaEmpresaController.lazyModel.rowCount > 0}">
+                                <p:dataTable id="tableListZonaEmpresa" 
+                                             value="#{zonaEmpresaController.lazyModel}" 
+                                             var="item" 
+                                             paginator="true" rows="10" paginatorAlwaysVisible="false"
+                                             paginatorTemplate="{FirstPageLink} {PreviousPageLink}
+                                             {PageLinks} {NextPageLink}
+                                             {LastPageLink} {RowsPerPageDropdown}"  
+                                             rowsPerPageTemplate="5,10,15" paginatorPosition="bottom"
+                                             lazy="true"
+                                             emptyMessage="No se encontraron datos con el criterio dado"
+                                             widgetVar="tableZonaEmpresa">
+                                    <p:column headerText="#{bundle.ListZonaEmpresaTitle_idZonaEmpresa}"
+                                              filterBy="#{item.idZonaEmpresa}"
+                                              sortBy="#{item.idZonaEmpresa}">                        
+                                        <h:outputText value="#{item.idZonaEmpresa}"/>
+                                    </p:column>
+                                    <p:column headerText="#{bundle.ListZonaEmpresaTitle_descrZona}"
+                                              filterBy="#{item.descrZona}"
+                                              sortBy="#{item.descrZona}">                        
+                                        <h:outputText value="#{item.descrZona}"/>
+                                    </p:column>
+                                    <p:column>                        
+                                        <p:commandButton ajax="false" action="#{zonaEmpresaController.prepareView}" title="#{bundle.ListZonaEmpresaViewLink}" icon="ui-icon-search"/>
+                                        <p:commandButton ajax="false" action="#{zonaEmpresaController.prepareEdit}" title="#{bundle.ListZonaEmpresaEditLink}" icon="ui-icon-pencil"/>
+                                        <p:commandButton oncomplete="confirmationDelete.show();" process="@this"
+                                                         title="#{bundle.ListZonaEmpresaDestroyLink}" icon="ui-icon-trash">
+                                            <f:setPropertyActionListener value="#{item}" target="#{zonaEmpresaController.selected}"/>
+                                        </p:commandButton>
+                                    </p:column>
+                                </p:dataTable>
+                            </h:panelGroup>
+                            <br />
+                            <p:commandButton ajax="false" action="#{zonaEmpresaController.prepareCreate}" value="#{bundle.ListZonaEmpresaCreateLink}" icon="ui-icon-document"/>
+                        </div>        
+                    </h:form>
+                    <br></br>
+                </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen1">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
         <ui:define name="dialogs">
             <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  

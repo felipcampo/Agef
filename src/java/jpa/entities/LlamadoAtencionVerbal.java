@@ -77,6 +77,12 @@ public class LlamadoAtencionVerbal implements Serializable {
     @Size(min = 1, max = 2147483647)
     @Column(name = "situacion")
     private String situacion;
+    @JoinColumn(name = "id_usuario3", referencedColumnName = "id_usuario")
+    @ManyToOne(optional = false)
+    private Usuario idUsuario3;
+    @JoinColumn(name = "id_usuario2", referencedColumnName = "id_usuario")
+    @ManyToOne(optional = false)
+    private Usuario idUsuario2;
     @JoinColumn(name = "id_estado_llamado", referencedColumnName = "id_estado_llamado")
     @ManyToOne(optional = false)
     private EstadoLlamado idEstadoLlamado;
@@ -158,6 +164,22 @@ public class LlamadoAtencionVerbal implements Serializable {
 
     public void setSituacion(String situacion) {
         this.situacion = situacion;
+    }
+
+    public Usuario getIdUsuario3() {
+        return idUsuario3;
+    }
+
+    public void setIdUsuario3(Usuario idUsuario3) {
+        this.idUsuario3 = idUsuario3;
+    }
+
+    public Usuario getIdUsuario2() {
+        return idUsuario2;
+    }
+
+    public void setIdUsuario2(Usuario idUsuario2) {
+        this.idUsuario2 = idUsuario2;
     }
 
     public EstadoLlamado getIdEstadoLlamado() {

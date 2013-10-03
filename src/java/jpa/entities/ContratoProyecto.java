@@ -6,7 +6,6 @@ package jpa.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,13 +17,11 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -46,8 +43,6 @@ public class ContratoProyecto implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_contrato_proyecto")
     private Integer idContratoProyecto;
-    @Basic(optional = false)
-    @NotNull
     @Lob
     @Column(name = "arc_cop")
     private byte[] arcCop;
@@ -72,8 +67,6 @@ public class ContratoProyecto implements Serializable {
     @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
     @ManyToOne(optional = false)
     private Empresa idEmpresa;
-    @OneToMany(mappedBy = "idContratoProyecto")
-    private List<ModalidadProductiva> modalidadProductivaList;
 
     public ContratoProyecto() {
     }
@@ -82,9 +75,8 @@ public class ContratoProyecto implements Serializable {
         this.idContratoProyecto = idContratoProyecto;
     }
 
-    public ContratoProyecto(Integer idContratoProyecto, byte[] arcCop, Date fecSub, Date ffiCop, Date finCop) {
+    public ContratoProyecto(Integer idContratoProyecto, Date fecSub, Date ffiCop, Date finCop) {
         this.idContratoProyecto = idContratoProyecto;
-        this.arcCop = arcCop;
         this.fecSub = fecSub;
         this.ffiCop = ffiCop;
         this.finCop = finCop;
@@ -144,15 +136,6 @@ public class ContratoProyecto implements Serializable {
 
     public void setIdEmpresa(Empresa idEmpresa) {
         this.idEmpresa = idEmpresa;
-    }
-
-    @XmlTransient
-    public List<ModalidadProductiva> getModalidadProductivaList() {
-        return modalidadProductivaList;
-    }
-
-    public void setModalidadProductivaList(List<ModalidadProductiva> modalidadProductivaList) {
-        this.modalidadProductivaList = modalidadProductivaList;
     }
 
     @Override

@@ -9,12 +9,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import jpa.entities.ContratoProyecto;
 
-/**
- *
- * @author leoandresm
- */
 @Stateless
 public class ContratoProyectoFacade extends AbstractFacade<ContratoProyecto> {
+
     @PersistenceContext(unitName = "AgefPU")
     private EntityManager em;
 
@@ -26,5 +23,4 @@ public class ContratoProyectoFacade extends AbstractFacade<ContratoProyecto> {
     public ContratoProyectoFacade() {
         super(ContratoProyecto.class);
     }
-    
 }

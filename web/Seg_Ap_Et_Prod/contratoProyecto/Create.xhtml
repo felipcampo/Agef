@@ -11,68 +11,18 @@
             <h:outputText value="#{bundle.CreateContratoProyectoTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+            <div id="Layout_Titulo_Formulario_Agef"> <h2>SEGUIMIENTO AL APRENDIZ EN ETAPA PRODUCTIVA</h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen">#{bundle.CreateContratoProyectoTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br>
             <p:growl id="msgs" showDetail="false" sticky="false"/>
             <h:form id="formContratoProyecto">
                 <div id="form" align="center">
                     <p:panelGrid>
                         <f:facet name="header">
-                            <p:row><p:column colspan="3">#{bundle.CreateContratoProyectoTitle}</p:column></p:row>                            
-                        </f:facet>                        
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateContratoProyectoLabel_idContratoProyecto}" for="idContratoProyecto" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputText id="idContratoProyecto" value="#{contratoProyectoController.selected.idContratoProyecto}" title="#{bundle.CreateContratoProyectoTitle_idContratoProyecto}" required="true" requiredMessage="#{bundle.CreateContratoProyectoRequiredMessage_idContratoProyecto}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idContratoProyecto"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateContratoProyectoLabel_arcCop}" for="arcCop" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputTextarea rows="4" cols="30" id="arcCop" value="#{contratoProyectoController.selected.arcCop}" title="#{bundle.CreateContratoProyectoTitle_arcCop}" required="true" requiredMessage="#{bundle.CreateContratoProyectoRequiredMessage_arcCop}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="arcCop"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateContratoProyectoLabel_fecSub}" for="fecSub" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm:ss" showOn="button" id="fecSub" value="#{contratoProyectoController.selected.fecSub}" title="#{bundle.CreateContratoProyectoTitle_fecSub}" required="true" requiredMessage="#{bundle.CreateContratoProyectoRequiredMessage_fecSub}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="fecSub"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateContratoProyectoLabel_ffiCop}" for="ffiCop" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="ffiCop" value="#{contratoProyectoController.selected.ffiCop}" title="#{bundle.CreateContratoProyectoTitle_ffiCop}" required="true" requiredMessage="#{bundle.CreateContratoProyectoRequiredMessage_ffiCop}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="ffiCop"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateContratoProyectoLabel_finCop}" for="finCop" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="finCop" value="#{contratoProyectoController.selected.finCop}" title="#{bundle.CreateContratoProyectoTitle_finCop}" required="true" requiredMessage="#{bundle.CreateContratoProyectoRequiredMessage_finCop}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="finCop"/>
-                            </p:column>
-                        </p:row>
+                            <p:row><p:column colspan="3"></p:column></p:row>                            
+                        </f:facet>
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateContratoProyectoLabel_idUsuario}" for="idUsuario" />
@@ -98,6 +48,41 @@
                             <p:column style="border-left: white;">
                                 <p:message for="idEmpresa"/>
                             </p:column>
+                        </p:row>                        
+                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateContratoProyectoLabel_ffiCop}" for="ffiCop" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:calendar  navigator="true" pattern="MM/dd/yyyy"  locale="es" showOn="button" id="ffiCop" value="#{contratoProyectoController.selected.ffiCop}" title="#{bundle.CreateContratoProyectoTitle_ffiCop}" required="true" requiredMessage="#{bundle.CreateContratoProyectoRequiredMessage_ffiCop}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="ffiCop"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateContratoProyectoLabel_finCop}" for="finCop" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" locale="es" showOn="button" id="finCop" value="#{contratoProyectoController.selected.finCop}" title="#{bundle.CreateContratoProyectoTitle_finCop}" required="true" requiredMessage="#{bundle.CreateContratoProyectoRequiredMessage_finCop}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="finCop"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateContratoProyectoLabel_arcCop}" for="arcCop" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:fileUpload id="arcCop"  label="Buscar" cancelLabel="Limpiar" uploadLabel="Cargar" fileUploadListener="#{contratoProyectoController.selected.arcCop}" mode="advanced" dragDropSupport="false"  
+                                          multiple="false" sizeLimit="10000000" allowTypes="/(\.|\/)(zip|rar|doc|doc?x|pdf)$/" />
+                                </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="arcCop"/>
+                            </p:column>
                         </p:row>
                     </p:panelGrid>
                     <br />
@@ -109,6 +94,14 @@
                     <p:commandButton ajax="false" action="#{contratoProyectoController.prepareList}" value="#{bundle.CreateContratoProyectoShowAllLink}" immediate="true"/>
                 </div>
             </h:form>
+            <br></br>
+                </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen1">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
     </ui:composition>
 

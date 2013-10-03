@@ -10,44 +10,36 @@
         <ui:define name="title">
             <h:outputText value="#{bundle.CreateSeguimientoProductivaTitle}"></h:outputText>
         </ui:define>
+        <ui:define name="menumodulo">
+            <div id="Layoutmenu">
+                <p:menubar  style="float: right">
+                    <p:menuitem url="../index_seg_et_prod.xhtml" value="Inicio" />
+                    <p:submenu label="Empresa: ">
+                        <p:menuitem url="../seguimientoProductiva/List.xhtml" value="Seguimientos Realizados."/>
+                    </p:submenu>
+                    <p:submenu label="Coordinador: ">
+                        <p:menuitem url="../seguimientoProductiva/List.xhtml" value="Seguimientos Realizados."/>
+                    </p:submenu>
+                    <p:submenu label="Instructor Auditor: ">
+                        <p:menuitem url="../seguimientoProductiva/List.xhtml" value="Seguimientos Realizados."/>
+                    </p:submenu>
+                </p:menubar>
+
+            </div>
+        </ui:define>
         <ui:define name="body">
-
             <div id="Layout_Titulo_Formulario_Agef"> <h2>SEGUIMIENTO AL APRENDIZ EN ETAPA PRODUCTIVA</h2></div>
-
-            <h3 id="margen"> #{bundle.CreateSeguimientoProductivaTitle}</h3>
-
-            <br></br>                    
-
+            &nbsp;
             <p:growl id="msgs" showDetail="false" sticky="false"/>
             <h:form id="formSeguimientoProductiva">
                 <div id="form" align="center"> 
-
                     <br />
                     <br />  
-
                     <p:panelGrid id="usuario">
 
                         <p:row>  
                             <p:column styleClass="ui-widget-header" colspan="4"><p align="center">1. INFORMACIÓN GENERAL</p></p:column> 
-                        </p:row>                                
-
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateSeguimientoProductivaLabel_idVisitaEtapaProductiva}" for="idVisitaEtapaProductiva" />
-                            </p:column>
-                            <p:column colspan="3">    
-                                <p:selectOneMenu id="idVisitaEtapaProductiva" value="#{seguimientoProductivaController.selected.idVisitaEtapaProductiva}" >
-                                    <f:selectItems value="#{visitaEtapaProductivaController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>                                        
-                            </p:column>                                    
-
-                        </p:row>
-
-                        <p:row>  
-                            <p:column colspan="4" styleClass="ui-widget-header">  
-                                <p:spacer height="0"/>  
-                            </p:column>  
-                        </p:row>
+                        </p:row>  
 
                         <p:row>  
                             <p:column> 
@@ -151,7 +143,7 @@
 
                         <p:row>                                      
                             <p:column> <h:outputText value="#{bundle.ViewEmpresaLabel_razonSocialEmpresa}"/></p:column>  
-                            <p:column colspan="2"> <h:outputText value="#{seguimientoProductivaController.selected.idEmpresa.razonSocialEmpresa}" title="#{bundle.ViewEmpresaTitle_razonSocialEmpresa}"/></p:column>   
+                            <p:column colspan="2"> <h:outputText value="#{seguimientoProductivaController.selected.idEmpresa.razonSocialEmp}" title="#{bundle.ViewEmpresaTitle_razonSocialEmpresa}"/></p:column>   
                         </p:row> 
 
                         <p:row>                                      
@@ -171,12 +163,12 @@
 
                         <p:row>                                      
                             <p:column><h:outputText value="#{bundle.ViewEmpresaLabel_emailEmpresa}"/></p:column>  
-                            <p:column colspan="2"><h:outputText value="#{seguimientoProductivaController.selected.idEmpresa.emailEmpresa}" title="#{bundle.ViewEmpresaTitle_emailEmpresa}"/></p:column>   
+                            <p:column colspan="2"><h:outputText value="#{seguimientoProductivaController.selected.idEmpresa.emailEmp}" title="#{bundle.ViewEmpresaTitle_emailEmpresa}"/></p:column>   
                         </p:row> 
 
                         <p:row>                                      
                             <p:column><h:outputText value="#{bundle.ViewEmpresaLabel_wwwEmp}"/></p:column>  
-                            <p:column colspan="2"> <h:outputText value="#{seguimientoProductivaController.selected.idEmpresa.wwwEmp}" title="#{bundle.ViewEmpresaTitle_wwwEmp}"/></p:column>   
+                            <p:column colspan="2"> <h:outputText value="#{seguimientoProductivaController.selected.idEmpresa.webEmp}" title="#{bundle.ViewEmpresaTitle_wwwEmp}"/></p:column>   
                         </p:row>                  
 
 
@@ -369,9 +361,8 @@
                     <br />
                 </div>
             </h:form>
+
             <br></br>
-
-
 
         </ui:define>
 
@@ -396,7 +387,7 @@
                                 <h:outputLabel value="#{bundle.CreateUsuarioLabel_numeroDocumento}" for="numeroDocumento" />
                             </p:column>
                             <p:column style="border-right: white">    
-                                <p:inputText id="numeroDocumento" value="#{seguimientoProductivaController.usuarioActual.numeroDocumento}" title="#{bundle.CreateUsuarioTitle_numeroDocumento}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_numeroDocumento}"/>
+                                <p:inputText id="numeroDocumento" value="#{seguimientoProductivaController.usuarioActual.numeroDocumento}" title="#{bundle.CreateUsuarioTitle_numeroDocumento}" />
                             </p:column>
                             <p:column style="border-left: white;">
                                 <p:message for="numeroDocumento"/>
@@ -407,7 +398,7 @@
                                 <h:outputLabel value="#{bundle.CreateUsuarioLabel_nomUsu}" for="nomUsu" />
                             </p:column>
                             <p:column style="border-right: white">    
-                                <p:inputText id="nomUsu" value="#{seguimientoProductivaController.usuarioActual.nomUsu}" title="#{bundle.CreateUsuarioTitle_nomUsu}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_nomUsu}"/>
+                                <p:inputText id="nomUsu" value="#{seguimientoProductivaController.usuarioActual.nomUsu}" title="#{bundle.CreateUsuarioTitle_nomUsu}" />
                             </p:column>
                             <p:column style="border-left: white;">
                                 <p:message for="nomUsu"/>
@@ -418,7 +409,7 @@
                                 <h:outputLabel value="#{bundle.CreateUsuarioLabel_apeUsu}" for="apeUsu" />
                             </p:column>
                             <p:column style="border-right: white">    
-                                <p:inputText id="apeUsu" value="#{seguimientoProductivaController.usuarioActual.apeUsu}" title="#{bundle.CreateUsuarioTitle_apeUsu}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_apeUsu}"/>
+                                <p:inputText id="apeUsu" value="#{seguimientoProductivaController.usuarioActual.apeUsu}" title="#{bundle.CreateUsuarioTitle_apeUsu}" />
                             </p:column>
                             <p:column style="border-left: white;">
                                 <p:message for="apeUsu"/>
@@ -478,7 +469,7 @@
                                 <h:outputLabel value="#{bundle.CreateEmpresaLabel_razonSocialEmpresa}" for="razonSocialEmpresa" />
                             </p:column>
                             <p:column style="border-right: white">    
-                                <p:inputText id="razonSocialEmpresa" value="#{seguimientoProductivaController.empresaActual.razonSocialEmpresa}" title="#{bundle.CreateEmpresaTitle_razonSocialEmpresa}" />
+                                <p:inputText id="razonSocialEmpresa" value="#{seguimientoProductivaController.empresaActual.razonSocialEmp}" title="#{bundle.CreateEmpresaTitle_razonSocialEmpresa}" />
                             </p:column>
                             <p:column style="border-left: white;">
                                 <p:message for="razonSocialEmpresa"/>
@@ -503,7 +494,7 @@
                             <h:outputText value="#{item.idEmpresa}"/>
                         </p:column>
                         <p:column>
-                            <h:outputText value="#{item.razonSocialEmpresa}"/>
+                            <h:outputText value="#{item.razonSocialEmp}"/>
                         </p:column>
 
                         <p:column>
@@ -513,7 +504,8 @@
                             </p:commandButton>
                         </p:column>
                     </p:dataTable>  
-                </h:form>                     
+                </h:form>
+
             </p:dialog>
 
         </ui:define> 

@@ -11,6 +11,11 @@
             <h:outputText value="#{bundle.ListCriterioSeguimientoTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+            <div id="Layout_Titulo_Formulario_Agef"> <h2>SEGUIMIENTO AL APRENDIZ EN ETAPA PRODUCTIVA</h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen">#{bundle.ListCriterioSeguimientoTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br>
             <h:form id="listCriterioSeguimiento" styleClass="jsfcrud_list_form">
                 <div id="list" align="center">
                     <p:growl id="msgs" showDetail="false" sticky="false"/>
@@ -32,16 +37,6 @@
                                       sortBy="#{item.idCriterioSeguimiento}">                        
                                 <h:outputText value="#{item.idCriterioSeguimiento}"/>
                             </p:column>
-                            <p:column headerText="#{bundle.ListCriterioSeguimientoTitle_obsCep}"
-                                      filterBy="#{item.obsCep}"
-                                      sortBy="#{item.obsCep}">                        
-                                <h:outputText value="#{item.obsCep}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListCriterioSeguimientoTitle_valCep}"
-                                      filterBy="#{item.valCep}"
-                                      sortBy="#{item.valCep}">                        
-                                <h:outputText value="#{item.valCep}"/>
-                            </p:column>
                             <p:column headerText="#{bundle.ListCriterioSeguimientoTitle_idSeguimientoProductiva}"
                                       filterBy="#{item.idSeguimientoProductiva}"
                                       sortBy="#{item.idSeguimientoProductiva}">                        
@@ -50,7 +45,7 @@
                             <p:column headerText="#{bundle.ListCriterioSeguimientoTitle_idCriterioEvaluacion}"
                                       filterBy="#{item.idCriterioEvaluacion}"
                                       sortBy="#{item.idCriterioEvaluacion}">                        
-                                <h:outputText value="#{item.idCriterioEvaluacion}"/>
+                                <h:outputText  value="#{item.idCriterioEvaluacion}"/>
                             </p:column>
                             <p:column>                        
                                 <p:commandButton ajax="false" action="#{criterioSeguimientoController.prepareView}" title="#{bundle.ListCriterioSeguimientoViewLink}" icon="ui-icon-search"/>
@@ -66,6 +61,14 @@
                     <p:commandButton ajax="false" action="#{criterioSeguimientoController.prepareCreate}" value="#{bundle.ListCriterioSeguimientoCreateLink}" icon="ui-icon-document"/>
                 </div>        
             </h:form>
+                    <br></br>
+                </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen1">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
         <ui:define name="dialogs">
             <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  

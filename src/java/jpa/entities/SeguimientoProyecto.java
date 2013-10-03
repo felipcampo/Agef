@@ -64,18 +64,6 @@ public class SeguimientoProyecto implements Serializable {
     private Date fechaProgramacionSeguimiento;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSeguimientoProyecto")
     private List<CriterioSeguimientoProyecto> criterioSeguimientoProyectoList;
-    @JoinColumn(name = "id_nivel_formacion", referencedColumnName = "id_nivel_formacion")
-    @ManyToOne
-    private NivelFormacion idNivelFormacion;
-    @JoinColumn(name = "id_sede_centro", referencedColumnName = "id_sede_centro")
-    @ManyToOne
-    private SedeCentro idSedeCentro;
-    @JoinColumn(name = "id_proyecto_formativo", referencedColumnName = "id_proyecto_formativo")
-    @ManyToOne
-    private ProyectoFormativo idProyectoFormativo;
-    @JoinColumn(name = "id_jornada_formacion", referencedColumnName = "id_jornada_formacion")
-    @ManyToOne
-    private JornadaFormacion idJornadaFormacion;
     @JoinColumn(name = "id_rol", referencedColumnName = "id_rol")
     @ManyToOne
     private Rol idRol;
@@ -88,9 +76,6 @@ public class SeguimientoProyecto implements Serializable {
     @JoinColumn(name = "id_resultado_aprendizaje", referencedColumnName = "id_resultado_aprendizaje")
     @ManyToOne
     private ResultadoAprendizaje idResultadoAprendizaje;
-    @JoinColumn(name = "id_regional", referencedColumnName = "id_regional")
-    @ManyToOne
-    private Regional idRegional;
     @JoinColumn(name = "id_ficha_caracterizacion", referencedColumnName = "id_ficha_caracterizacion")
     @ManyToOne
     private FichaCaracterizacion idFichaCaracterizacion;
@@ -159,38 +144,6 @@ public class SeguimientoProyecto implements Serializable {
         this.criterioSeguimientoProyectoList = criterioSeguimientoProyectoList;
     }
 
-    public NivelFormacion getIdNivelFormacion() {
-        return idNivelFormacion;
-    }
-
-    public void setIdNivelFormacion(NivelFormacion idNivelFormacion) {
-        this.idNivelFormacion = idNivelFormacion;
-    }
-
-    public SedeCentro getIdSedeCentro() {
-        return idSedeCentro;
-    }
-
-    public void setIdSedeCentro(SedeCentro idSedeCentro) {
-        this.idSedeCentro = idSedeCentro;
-    }
-
-    public ProyectoFormativo getIdProyectoFormativo() {
-        return idProyectoFormativo;
-    }
-
-    public void setIdProyectoFormativo(ProyectoFormativo idProyectoFormativo) {
-        this.idProyectoFormativo = idProyectoFormativo;
-    }
-
-    public JornadaFormacion getIdJornadaFormacion() {
-        return idJornadaFormacion;
-    }
-
-    public void setIdJornadaFormacion(JornadaFormacion idJornadaFormacion) {
-        this.idJornadaFormacion = idJornadaFormacion;
-    }
-
     public Rol getIdRol() {
         return idRol;
     }
@@ -221,14 +174,6 @@ public class SeguimientoProyecto implements Serializable {
 
     public void setIdResultadoAprendizaje(ResultadoAprendizaje idResultadoAprendizaje) {
         this.idResultadoAprendizaje = idResultadoAprendizaje;
-    }
-
-    public Regional getIdRegional() {
-        return idRegional;
-    }
-
-    public void setIdRegional(Regional idRegional) {
-        this.idRegional = idRegional;
     }
 
     public FichaCaracterizacion getIdFichaCaracterizacion() {

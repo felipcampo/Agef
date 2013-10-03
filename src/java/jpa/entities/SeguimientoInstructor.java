@@ -76,6 +76,9 @@ public class SeguimientoInstructor implements Serializable {
     private String nomIns;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSeguimientoInstructor")
     private List<CriterioSeguimientoInstructor> criterioSeguimientoInstructorList;
+    @JoinColumn(name = "id_rol", referencedColumnName = "id_rol")
+    @ManyToOne(optional = false)
+    private Rol idRol;
     @JoinColumn(name = "id_plan_mejoramiento", referencedColumnName = "id_plan_mejoramiento")
     @ManyToOne(optional = false)
     private PlanMejoramiento idPlanMejoramiento;
@@ -88,9 +91,6 @@ public class SeguimientoInstructor implements Serializable {
     @JoinColumn(name = "id_criterio_seguimiento_instructor", referencedColumnName = "id_criterio_seguimiento_instructor")
     @ManyToOne(optional = false)
     private CriterioSeguimientoInstructor idCriterioSeguimientoInstructor;
-    @JoinColumn(name = "id_rol", referencedColumnName = "id_rol")
-    @ManyToOne(optional = false)
-    private Rol idRol;
     @JoinColumn(name = "id_grado_juicio", referencedColumnName = "id_grado_juicio")
     @ManyToOne(optional = false)
     private GradoJuicio idGradoJuicio;
@@ -183,6 +183,14 @@ public class SeguimientoInstructor implements Serializable {
         this.criterioSeguimientoInstructorList = criterioSeguimientoInstructorList;
     }
 
+    public Rol getIdRol() {
+        return idRol;
+    }
+
+    public void setIdRol(Rol idRol) {
+        this.idRol = idRol;
+    }
+
     public PlanMejoramiento getIdPlanMejoramiento() {
         return idPlanMejoramiento;
     }
@@ -213,14 +221,6 @@ public class SeguimientoInstructor implements Serializable {
 
     public void setIdCriterioSeguimientoInstructor(CriterioSeguimientoInstructor idCriterioSeguimientoInstructor) {
         this.idCriterioSeguimientoInstructor = idCriterioSeguimientoInstructor;
-    }
-
-    public Rol getIdRol() {
-        return idRol;
-    }
-
-    public void setIdRol(Rol idRol) {
-        this.idRol = idRol;
     }
 
     public GradoJuicio getIdGradoJuicio() {

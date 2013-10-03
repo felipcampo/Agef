@@ -98,10 +98,10 @@ public class ZonaEmpresaController implements Serializable {
     public String create() {
         try {
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("ZonaEmpresaCreated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("properties/Bundle").getString("ZonaEmpresaCreated"));
             return "View";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/properties/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("properties/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }
     }
@@ -114,10 +114,10 @@ public class ZonaEmpresaController implements Serializable {
     public String update() {
         try {
             getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("ZonaEmpresaUpdated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("properties/Bundle").getString("ZonaEmpresaUpdated"));
             return "View";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/properties/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("properties/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }
     }
@@ -131,9 +131,9 @@ public class ZonaEmpresaController implements Serializable {
     private void performDestroy() {
         try {
             getFacade().remove(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("ZonaEmpresaDeleted"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("properties/Bundle").getString("ZonaEmpresaDeleted"));
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/properties/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("properties/Bundle").getString("PersistenceErrorOccured"));
         }
     }
 
@@ -161,9 +161,9 @@ public class ZonaEmpresaController implements Serializable {
             return controller.ejbFacade.find(getKey(value));
         }
 
-        java.lang.String getKey(String value) {
-            java.lang.String key;
-            key = value;
+        java.lang.Short getKey(String value) {
+            java.lang.Short key;
+            key = Short.valueOf(value);
             return key;
         }
 

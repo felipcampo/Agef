@@ -109,9 +109,6 @@ public class EvaluacionSeguimiento implements Serializable {
     @JoinColumn(name = "id_guia_aprendizaje", referencedColumnName = "id_guia_aprendizaje")
     @ManyToOne(optional = false)
     private GuiaAprendizaje idGuiaAprendizaje;
-    @JoinColumn(name = "id_resultado_aprendizaje", referencedColumnName = "id_resultado_aprendizaje")
-    @ManyToOne(optional = false)
-    private ResultadoAprendizaje idResultadoAprendizaje;
     @JoinColumn(name = "id_evidencia_aprendizaje", referencedColumnName = "id_evidencia_aprendizaje")
     @ManyToOne(optional = false)
     private EvidenciaAprendizaje idEvidenciaAprendizaje;
@@ -126,6 +123,8 @@ public class EvaluacionSeguimiento implements Serializable {
     private Usuario idUsuario;
     @OneToMany(mappedBy = "idEvaluacionSeguimiento")
     private List<Alistamiento> alistamientoList;
+    @OneToMany(mappedBy = "idEvaluacionSeguimiento")
+    private List<ResultadoAprendizaje> resultadoAprendizajeList;
 
     public EvaluacionSeguimiento() {
     }
@@ -260,14 +259,6 @@ public class EvaluacionSeguimiento implements Serializable {
         this.idGuiaAprendizaje = idGuiaAprendizaje;
     }
 
-    public ResultadoAprendizaje getIdResultadoAprendizaje() {
-        return idResultadoAprendizaje;
-    }
-
-    public void setIdResultadoAprendizaje(ResultadoAprendizaje idResultadoAprendizaje) {
-        this.idResultadoAprendizaje = idResultadoAprendizaje;
-    }
-
     public EvidenciaAprendizaje getIdEvidenciaAprendizaje() {
         return idEvidenciaAprendizaje;
     }
@@ -307,6 +298,15 @@ public class EvaluacionSeguimiento implements Serializable {
 
     public void setAlistamientoList(List<Alistamiento> alistamientoList) {
         this.alistamientoList = alistamientoList;
+    }
+
+    @XmlTransient
+    public List<ResultadoAprendizaje> getResultadoAprendizajeList() {
+        return resultadoAprendizajeList;
+    }
+
+    public void setResultadoAprendizajeList(List<ResultadoAprendizaje> resultadoAprendizajeList) {
+        this.resultadoAprendizajeList = resultadoAprendizajeList;
     }
 
     @Override

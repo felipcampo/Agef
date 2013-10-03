@@ -34,17 +34,8 @@
                         <p:column style="border-right: white">    
                             <p:inputTextarea rows="4" cols="30" id="solucionInc" value="#{seguimientoProductivaController.selectedIncidenteProductiva.solucionInc}" title="#{bundle.CreateIncidenteProductivaTitle_solucionInc}" required="true" requiredMessage="#{bundle.CreateIncidenteProductivaRequiredMessage_solucionInc}"/>
                         </p:column>                       
-                    </p:row>                    
-                    <p:row>
-                        <p:column>
-                            <h:outputLabel value="#{bundle.CreateIncidenteProductivaLabel_idVisitaEtapaProductiva}" for="idVisitaEtapaProductiva" />
-                        </p:column>
-                        <p:column style="border-right: white">    
-                            <p:selectOneMenu id="idVisitaEtapaProductiva" value="#{seguimientoProductivaController.selectedIncidenteProductiva.idVisitaEtapaProductiva}" required="true" requiredMessage="#{bundle.CreateIncidenteProductivaRequiredMessage_idVisitaEtapaProductiva}">
-                                <f:selectItems value="#{visitaEtapaProductivaController.itemsAvailableSelectOne}"/>
-                            </p:selectOneMenu>
-                        </p:column>                       
-                    </p:row>
+                    </p:row>                   
+                    
                 </p:panelGrid>
                 <br />
                 <br />

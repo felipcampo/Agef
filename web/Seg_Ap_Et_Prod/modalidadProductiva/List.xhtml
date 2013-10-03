@@ -11,66 +11,70 @@
             <h:outputText value="#{bundle.ListModalidadProductivaTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-            <h:form id="listModalidadProductiva" styleClass="jsfcrud_list_form">
-                <div id="list" align="center">
-                    <p:growl id="msgs" showDetail="false" sticky="false"/>
-                    <h:outputText escape="false" value="#{bundle.ListModalidadProductivaEmpty}" rendered="#{modalidadProductivaController.lazyModel.rowCount == 0}"/>
-                    <h:panelGroup rendered="#{modalidadProductivaController.lazyModel.rowCount > 0}">
-                        <p:dataTable id="tableListModalidadProductiva" 
-                                     value="#{modalidadProductivaController.lazyModel}" 
-                                     var="item" 
-                                     paginator="true" rows="10" paginatorAlwaysVisible="false"
-                                     paginatorTemplate="{FirstPageLink} {PreviousPageLink}
-                                     {PageLinks} {NextPageLink}
-                                     {LastPageLink} {RowsPerPageDropdown}"  
-                                     rowsPerPageTemplate="5,10,15" paginatorPosition="bottom"
-                                     lazy="true"
-                                     emptyMessage="No se encontraron datos con el criterio dado"
-                                     widgetVar="tableModalidadProductiva">
-                            <p:column headerText="#{bundle.ListModalidadProductivaTitle_idModalidadProductiva}"
-                                      filterBy="#{item.idModalidadProductiva}"
-                                      sortBy="#{item.idModalidadProductiva}">                        
-                                <h:outputText value="#{item.idModalidadProductiva}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListModalidadProductivaTitle_detalleMododalidad}"
-                                      filterBy="#{item.detalleMododalidad}"
-                                      sortBy="#{item.detalleMododalidad}">                        
-                                <h:outputText value="#{item.detalleMododalidad}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListModalidadProductivaTitle_duracionMod}"
-                                      filterBy="#{item.duracionMod}"
-                                      sortBy="#{item.duracionMod}">                        
-                                <h:outputText value="#{item.duracionMod}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListModalidadProductivaTitle_informacionRequisitos}"
-                                      filterBy="#{item.informacionRequisitos}"
-                                      sortBy="#{item.informacionRequisitos}">                        
-                                <h:outputText value="#{item.informacionRequisitos}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListModalidadProductivaTitle_idTipoModalidadProductiva}"
-                                      filterBy="#{item.idTipoModalidadProductiva}"
-                                      sortBy="#{item.idTipoModalidadProductiva}">                        
-                                <h:outputText value="#{item.idTipoModalidadProductiva}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListModalidadProductivaTitle_idContratoProyecto}"
-                                      filterBy="#{item.idContratoProyecto}"
-                                      sortBy="#{item.idContratoProyecto}">                        
-                                <h:outputText value="#{item.idContratoProyecto}"/>
-                            </p:column>
-                            <p:column>                        
-                                <p:commandButton ajax="false" action="#{modalidadProductivaController.prepareView}" title="#{bundle.ListModalidadProductivaViewLink}" icon="ui-icon-search"/>
-                                <p:commandButton ajax="false" action="#{modalidadProductivaController.prepareEdit}" title="#{bundle.ListModalidadProductivaEditLink}" icon="ui-icon-pencil"/>
-                                <p:commandButton oncomplete="confirmationDelete.show();" process="@this"
-                                                 title="#{bundle.ListModalidadProductivaDestroyLink}" icon="ui-icon-trash">
-                                    <f:setPropertyActionListener value="#{item}" target="#{modalidadProductivaController.selected}"/>
-                                </p:commandButton>
-                            </p:column>
-                        </p:dataTable>
-                    </h:panelGroup>
-                    <br />
-                    <p:commandButton ajax="false" action="#{modalidadProductivaController.prepareCreate}" value="#{bundle.ListModalidadProductivaCreateLink}" icon="ui-icon-document"/>
-                </div>        
-            </h:form>
+            <div id="Layout_Titulo_Formulario_Agef"> <h2>SEGUIMIENTO AL APRENDIZ EN ETAPA PRODUCTIVA</h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen">#{bundle.ListModalidadProductivaTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br>
+                    <h:form id="listModalidadProductiva" styleClass="jsfcrud_list_form">
+                        <div id="list" align="center">
+                            <p:growl id="msgs" showDetail="false" sticky="false"/>
+                            <h:outputText escape="false" value="#{bundle.ListModalidadProductivaEmpty}" rendered="#{modalidadProductivaController.lazyModel.rowCount == 0}"/>
+                            <h:panelGroup rendered="#{modalidadProductivaController.lazyModel.rowCount > 0}">
+                                <p:dataTable id="tableListModalidadProductiva" 
+                                             value="#{modalidadProductivaController.lazyModel}" 
+                                             var="item" 
+                                             paginator="true" rows="10" paginatorAlwaysVisible="false"
+                                             paginatorTemplate="{FirstPageLink} {PreviousPageLink}
+                                             {PageLinks} {NextPageLink}
+                                             {LastPageLink} {RowsPerPageDropdown}"  
+                                             rowsPerPageTemplate="5,10,15" paginatorPosition="bottom"
+                                             lazy="true"
+                                             emptyMessage="No se encontraron datos con el criterio dado"
+                                             widgetVar="tableModalidadProductiva">
+                                    <p:column headerText="#{bundle.ListModalidadProductivaTitle_idModalidadProductiva}"
+                                              filterBy="#{item.idModalidadProductiva}"
+                                              sortBy="#{item.idModalidadProductiva}">                        
+                                        <h:outputText value="#{item.idModalidadProductiva}"/>
+                                    </p:column>
+                                    <p:column headerText="#{bundle.ListModalidadProductivaTitle_detalleMododalidad}"
+                                              filterBy="#{item.detalleMododalidad}"
+                                              sortBy="#{item.detalleMododalidad}">                        
+                                        <h:outputText value="#{item.detalleMododalidad}"/>
+                                    </p:column>
+                                    <p:column headerText="#{bundle.ListModalidadProductivaTitle_duracionMod}"
+                                              filterBy="#{item.duracionMod}"
+                                              sortBy="#{item.duracionMod}">                        
+                                        <h:outputText value="#{item.duracionMod}"/>
+                                    </p:column>
+                                    <p:column headerText="#{bundle.ListModalidadProductivaTitle_informacionRequisitos}"
+                                              filterBy="#{item.informacionRequisitos}"
+                                              sortBy="#{item.informacionRequisitos}">                        
+                                        <h:outputText value="#{item.informacionRequisitos}"/>
+                                    </p:column>                         
+
+                                    <p:column>                        
+                                        <p:commandButton ajax="false" action="#{modalidadProductivaController.prepareView}" title="#{bundle.ListModalidadProductivaViewLink}" icon="ui-icon-search"/>
+                                        <p:commandButton ajax="false" action="#{modalidadProductivaController.prepareEdit}" title="#{bundle.ListModalidadProductivaEditLink}" icon="ui-icon-pencil"/>
+                                        <p:commandButton oncomplete="confirmationDelete.show();" process="@this"
+                                                         title="#{bundle.ListModalidadProductivaDestroyLink}" icon="ui-icon-trash">
+                                            <f:setPropertyActionListener value="#{item}" target="#{modalidadProductivaController.selected}"/>
+                                        </p:commandButton>
+                                    </p:column>
+                                </p:dataTable>
+                            </h:panelGroup>
+                            <br />
+                            <p:commandButton ajax="false" action="#{modalidadProductivaController.prepareCreate}" value="#{bundle.ListModalidadProductivaCreateLink}" icon="ui-icon-document"/>
+                        </div>        
+                    </h:form>
+                    <br></br>
+                </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen1">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
         <ui:define name="dialogs">
             <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  

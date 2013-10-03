@@ -54,9 +54,14 @@ public class CentroFormacion implements Serializable {
     private String nomCen;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCentroFormacion")
     private List<Programa> programaList;
+    @JoinColumn(name = "id_sede_centro", referencedColumnName = "id_sede_centro")
+    @ManyToOne
+    private SedeCentro idSedeCentro;
     @JoinColumn(name = "id_regional", referencedColumnName = "id_regional")
     @ManyToOne(optional = false)
     private Regional idRegional;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCentroFormacion")
+    private List<PlanMejoramiento> planMejoramientoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCentroFormacion")
     private List<SeguimientoProductiva> seguimientoProductivaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCentroFormativo")
@@ -108,12 +113,29 @@ public class CentroFormacion implements Serializable {
         this.programaList = programaList;
     }
 
+    public SedeCentro getIdSedeCentro() {
+        return idSedeCentro;
+    }
+
+    public void setIdSedeCentro(SedeCentro idSedeCentro) {
+        this.idSedeCentro = idSedeCentro;
+    }
+
     public Regional getIdRegional() {
         return idRegional;
     }
 
     public void setIdRegional(Regional idRegional) {
         this.idRegional = idRegional;
+    }
+
+    @XmlTransient
+    public List<PlanMejoramiento> getPlanMejoramientoList() {
+        return planMejoramientoList;
+    }
+
+    public void setPlanMejoramientoList(List<PlanMejoramiento> planMejoramientoList) {
+        this.planMejoramientoList = planMejoramientoList;
     }
 
     @XmlTransient

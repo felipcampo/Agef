@@ -11,12 +11,17 @@
             <h:outputText value="#{bundle.ViewConcertacionPlanTrabajoProductivaTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+            <div id="Layout_Titulo_Formulario_Agef"> <h2>SEGUIMIENTO AL APRENDIZ EN ETAPA PRODUCTIVA</h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen">#{bundle.ViewConcertacionPlanTrabajoProductivaTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br>
             <p:growl id="msgs" showDetail="false" sticky="false"/> 
             <h:form>
                 <div id="form" align="center">
                     <p:panelGrid columns="2">
                         <f:facet name="header">
-                            <p:row><p:column>#{bundle.ViewConcertacionPlanTrabajoProductivaTitle}</p:column></p:row>                            
+                            <p:row><p:column></p:column></p:row>                            
                         </f:facet>
                         <h:outputText value="#{bundle.ViewConcertacionPlanTrabajoProductivaLabel_idConcertacionPlanTrabajoProductiva}"/>
                         <h:outputText value="#{concertacionPlanTrabajoProductivaController.selected.idConcertacionPlanTrabajoProductiva}" title="#{bundle.ViewConcertacionPlanTrabajoProductivaTitle_idConcertacionPlanTrabajoProductiva}"/>
@@ -45,6 +50,14 @@
                     <p:commandButton ajax="false" action="#{concertacionPlanTrabajoProductivaController.prepareList}" value="#{bundle.ViewConcertacionPlanTrabajoProductivaShowAllLink}"/>
                 </div>            
             </h:form>
+            <br></br>
+                </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen1">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
         <ui:define name="dialogs">
             <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  

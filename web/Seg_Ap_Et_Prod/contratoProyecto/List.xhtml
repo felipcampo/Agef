@@ -11,6 +11,11 @@
             <h:outputText value="#{bundle.ListContratoProyectoTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+            <div id="Layout_Titulo_Formulario_Agef"> <h2>SEGUIMIENTO AL APRENDIZ EN ETAPA PRODUCTIVA</h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen">#{bundle.ListContratoProyectoTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br>
             <h:form id="listContratoProyecto" styleClass="jsfcrud_list_form">
                 <div id="list" align="center">
                     <p:growl id="msgs" showDetail="false" sticky="false"/>
@@ -27,23 +32,16 @@
                                      lazy="true"
                                      emptyMessage="No se encontraron datos con el criterio dado"
                                      widgetVar="tableContratoProyecto">
-                            <p:column headerText="#{bundle.ListContratoProyectoTitle_idContratoProyecto}"
-                                      filterBy="#{item.idContratoProyecto}"
-                                      sortBy="#{item.idContratoProyecto}">                        
-                                <h:outputText value="#{item.idContratoProyecto}"/>
+                            <p:column headerText="#{bundle.ListContratoProyectoTitle_idUsuario}"
+                                      filterBy="#{item.idUsuario.numeroDocumento}"
+                                      sortBy="#{item.idUsuario.numeroDocumento}">                        
+                                <h:outputText value="#{item.idUsuario.numeroDocumento}"/>
                             </p:column>
-                            <p:column headerText="#{bundle.ListContratoProyectoTitle_arcCop}"
-                                      filterBy="#{item.arcCop}"
-                                      sortBy="#{item.arcCop}">                        
-                                <h:outputText value="#{item.arcCop}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListContratoProyectoTitle_fecSub}"
-                                      filterBy="#{item.fecSub}"
-                                      sortBy="#{item.fecSub}">                        
-                                <h:outputText value="#{item.fecSub}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                                </h:outputText>
-                            </p:column>
+                            <p:column headerText="#{bundle.ListContratoProyectoTitle_idEmpresa}"
+                                      filterBy="#{item.idEmpresa.razonSocialEmp}"
+                                      sortBy="#{item.idEmpresa.razonSocialEmp}">                        
+                                <h:outputText value="#{item.idEmpresa.razonSocialEmp}"/>
+                            </p:column>                         
                             <p:column headerText="#{bundle.ListContratoProyectoTitle_ffiCop}"
                                       filterBy="#{item.ffiCop}"
                                       sortBy="#{item.ffiCop}">                        
@@ -58,16 +56,7 @@
                                     <f:convertDateTime pattern="MM/dd/yyyy" />
                                 </h:outputText>
                             </p:column>
-                            <p:column headerText="#{bundle.ListContratoProyectoTitle_idUsuario}"
-                                      filterBy="#{item.idUsuario}"
-                                      sortBy="#{item.idUsuario}">                        
-                                <h:outputText value="#{item.idUsuario}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListContratoProyectoTitle_idEmpresa}"
-                                      filterBy="#{item.idEmpresa}"
-                                      sortBy="#{item.idEmpresa}">                        
-                                <h:outputText value="#{item.idEmpresa}"/>
-                            </p:column>
+
                             <p:column>                        
                                 <p:commandButton ajax="false" action="#{contratoProyectoController.prepareView}" title="#{bundle.ListContratoProyectoViewLink}" icon="ui-icon-search"/>
                                 <p:commandButton ajax="false" action="#{contratoProyectoController.prepareEdit}" title="#{bundle.ListContratoProyectoEditLink}" icon="ui-icon-pencil"/>
@@ -82,6 +71,14 @@
                     <p:commandButton ajax="false" action="#{contratoProyectoController.prepareCreate}" value="#{bundle.ListContratoProyectoCreateLink}" icon="ui-icon-document"/>
                 </div>        
             </h:form>
+                    <br></br>
+                </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen1">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
         <ui:define name="dialogs">
             <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  

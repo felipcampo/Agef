@@ -11,16 +11,11 @@
             <h:outputText value="#{bundle.CreateFactorProductivaTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-
-
             <div id="Layout_Titulo_Formulario_Agef"> <h2>SEGUIMIENTO AL APRENDIZ EN ETAPA PRODUCTIVA</h2></div>
             <div id="Layout_Nom_Form_Agef">
-                <h3 id="margen"> #{bundle.CreateFactorProductivaTitle}</h3>
+                <h3 id="margen">#{bundle.CreateFactorProductivaTitle}</h3>
                 <div id="Layout_Formulario_Agef">
-                    <br></br>                    
-
-
-
+                    <br></br>
                     <p:growl id="msgs" showDetail="false" sticky="false"/>
                     <h:form id="formFactorProductiva">
                         <div id="form" align="center">
@@ -33,7 +28,7 @@
                                         <h:outputLabel value="#{bundle.CreateFactorProductivaLabel_idFactorProductiva}" for="idFactorProductiva" />
                                     </p:column>
                                     <p:column style="border-right: white">    
-                                        <p:inputText id="idFactorProductiva" value="#{factorProductivaController.selected.idFactorProductiva}" title="#{bundle.CreateFactorProductivaTitle_idFactorProductiva}" required="true" requiredMessage="#{bundle.CreateFactorProductivaRequiredMessage_idFactorProductiva}"/>
+                                        <p:inputText disabled="true" id="idFactorProductiva" value="#{factorProductivaController.selected.idFactorProductiva}" title="#{bundle.CreateFactorProductivaTitle_idFactorProductiva}" required="true" requiredMessage="#{bundle.CreateFactorProductivaRequiredMessage_idFactorProductiva}"/>
                                     </p:column>
                                     <p:column style="border-left: white;">
                                         <p:message for="idFactorProductiva"/>
@@ -60,15 +55,13 @@
                             <br />
                             <p:commandButton ajax="false" action="#{factorProductivaController.prepareList}" value="#{bundle.CreateFactorProductivaShowAllLink}" immediate="true"/>
                         </div>
-                    </h:form>
-
-                    <br></br>
+                    </h:form><br></br>
                 </div>
             </div>
             <div id="Layout_Info_Agef">
                 <h4>INFORMACION</h4>
                 <hr></hr>
-                <p id="margen">Informacion de ayuda para formularios</p>
+                <p id="margen1">Informacion de ayuda para formularios</p>
             </div>
         </ui:define>
     </ui:composition>

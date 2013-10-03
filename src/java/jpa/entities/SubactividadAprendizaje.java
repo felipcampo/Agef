@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "SubactividadAprendizaje.findAll", query = "SELECT s FROM SubactividadAprendizaje s"),
-    @NamedQuery(name = "SubactividadAprendizaje.findByIdSubactividadProyecto", query = "SELECT s FROM SubactividadAprendizaje s WHERE s.idSubactividadAprendizaje = :idSubactividadAprendizaje"),
+    @NamedQuery(name = "SubactividadAprendizaje.findByIdSubactividadProyecto", query = "SELECT s FROM SubactividadAprendizaje s WHERE s.idSubactividadProyecto = :idSubactividadProyecto"),
     @NamedQuery(name = "SubactividadAprendizaje.findByDescrNombreSubPro", query = "SELECT s FROM SubactividadAprendizaje s WHERE s.descrNombreSubPro = :descrNombreSubPro")})
 public class SubactividadAprendizaje implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -40,7 +40,7 @@ public class SubactividadAprendizaje implements Serializable {
     @NotNull
     @Size(min = 1, max = 255)
     @Column(name = "id_subactividad_proyecto")
-    private String idSubactividadAprendizaje;
+    private String idSubactividadProyecto;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
@@ -56,20 +56,20 @@ public class SubactividadAprendizaje implements Serializable {
     }
 
     public SubactividadAprendizaje(String idSubactividadProyecto) {
-        this.idSubactividadAprendizaje = idSubactividadProyecto;
+        this.idSubactividadProyecto = idSubactividadProyecto;
     }
 
     public SubactividadAprendizaje(String idSubactividadProyecto, String descrNombreSubPro) {
-        this.idSubactividadAprendizaje = idSubactividadProyecto;
+        this.idSubactividadProyecto = idSubactividadProyecto;
         this.descrNombreSubPro = descrNombreSubPro;
     }
 
-    public String getIdSubactividadAprendizaje() {
-        return idSubactividadAprendizaje;
+    public String getIdSubactividadProyecto() {
+        return idSubactividadProyecto;
     }
 
-    public void setIdSubactividadAprendizaje(String idSubactividadProyecto) {
-        this.idSubactividadAprendizaje = idSubactividadProyecto;
+    public void setIdSubactividadProyecto(String idSubactividadProyecto) {
+        this.idSubactividadProyecto = idSubactividadProyecto;
     }
 
     public String getDescrNombreSubPro() {
@@ -100,7 +100,7 @@ public class SubactividadAprendizaje implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idSubactividadAprendizaje != null ? idSubactividadAprendizaje.hashCode() : 0);
+        hash += (idSubactividadProyecto != null ? idSubactividadProyecto.hashCode() : 0);
         return hash;
     }
 
@@ -111,7 +111,7 @@ public class SubactividadAprendizaje implements Serializable {
             return false;
         }
         SubactividadAprendizaje other = (SubactividadAprendizaje) object;
-        if ((this.idSubactividadAprendizaje == null && other.idSubactividadAprendizaje != null) || (this.idSubactividadAprendizaje != null && !this.idSubactividadAprendizaje.equals(other.idSubactividadAprendizaje))) {
+        if ((this.idSubactividadProyecto == null && other.idSubactividadProyecto != null) || (this.idSubactividadProyecto != null && !this.idSubactividadProyecto.equals(other.idSubactividadProyecto))) {
             return false;
         }
         return true;
@@ -119,7 +119,7 @@ public class SubactividadAprendizaje implements Serializable {
 
     @Override
     public String toString() {
-        return "jpa.entities.SubactividadAprendizaje[ idSubactividadProyecto=" + idSubactividadAprendizaje + " ]";
+        return "jpa.entities.SubactividadAprendizaje[ idSubactividadProyecto=" + idSubactividadProyecto + " ]";
     }
     
 }

@@ -330,7 +330,7 @@ public class SeguimientoProductivaController implements Serializable {
     }
 
     public void buscarEmpresa() {
-        if (empresaActual.getIdEmpresa() == null && empresaActual.getRazonSocialEmpresa().equals("")) {
+        if (empresaActual.getIdEmpresa() == null && empresaActual.getRazonSocialEmp().equals("")) {
             JsfUtil.addErrorMessage(ResourceBundle.getBundle("properties/Bundle").getString("CriteriosVacios"));
         } else {
             try {
@@ -355,13 +355,18 @@ public class SeguimientoProductivaController implements Serializable {
 
     public String create() {
         try {
-            current.setIdUsuario(usuarioActual);
-            current.setIdEmpresa(empresaActual);
             getFacadeConcertacion().create(concertacionActual);
             current.setIdConcertacionPlanTrabajoProductiva(concertacionActual);
-            getFacadeIncidente().create(incidenteActual);
-            current.setIdIncidenteProductiva(incidenteActual);
+            if (incidenteActual.getDetalleIncidente() != null) {
+                getFacadeIncidente().create(incidenteActual);
+                current.setIdIncidenteProductiva(incidenteActual);
+            }
+
             getFacade().create(current);
+            for (CriterioSeguimiento criterio : listCriteriosSeg) {
+                criterio.setIdSeguimientoProductiva(current);
+                getFacadeEvalCriterioSeg().create(criterio);
+            }
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("SeguimientoProductivaCreated"));
             return "View";
         } catch (Exception e) {

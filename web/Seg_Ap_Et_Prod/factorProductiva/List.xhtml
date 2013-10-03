@@ -11,46 +11,59 @@
             <h:outputText value="#{bundle.ListFactorProductivaTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-            <h:form id="listFactorProductiva" styleClass="jsfcrud_list_form">
-                <div id="list" align="center">
-                    <p:growl id="msgs" showDetail="false" sticky="false"/>
-                    <h:outputText escape="false" value="#{bundle.ListFactorProductivaEmpty}" rendered="#{factorProductivaController.lazyModel.rowCount == 0}"/>
-                    <h:panelGroup rendered="#{factorProductivaController.lazyModel.rowCount > 0}">
-                        <p:dataTable id="tableListFactorProductiva" 
-                                     value="#{factorProductivaController.lazyModel}" 
-                                     var="item" 
-                                     paginator="true" rows="10" paginatorAlwaysVisible="false"
-                                     paginatorTemplate="{FirstPageLink} {PreviousPageLink}
-                                     {PageLinks} {NextPageLink}
-                                     {LastPageLink} {RowsPerPageDropdown}"  
-                                     rowsPerPageTemplate="5,10,15" paginatorPosition="bottom"
-                                     lazy="true"
-                                     emptyMessage="No se encontraron datos con el criterio dado"
-                                     widgetVar="tableFactorProductiva">
-                            <p:column headerText="#{bundle.ListFactorProductivaTitle_idFactorProductiva}"
-                                      filterBy="#{item.idFactorProductiva}"
-                                      sortBy="#{item.idFactorProductiva}">                        
-                                <h:outputText value="#{item.idFactorProductiva}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListFactorProductivaTitle_nomFactorProductiva}"
-                                      filterBy="#{item.nomFactorProductiva}"
-                                      sortBy="#{item.nomFactorProductiva}">                        
-                                <h:outputText value="#{item.nomFactorProductiva}"/>
-                            </p:column>
-                            <p:column>                        
-                                <p:commandButton ajax="false" action="#{factorProductivaController.prepareView}" title="#{bundle.ListFactorProductivaViewLink}" icon="ui-icon-search"/>
-                                <p:commandButton ajax="false" action="#{factorProductivaController.prepareEdit}" title="#{bundle.ListFactorProductivaEditLink}" icon="ui-icon-pencil"/>
-                                <p:commandButton oncomplete="confirmationDelete.show();" process="@this"
-                                                 title="#{bundle.ListFactorProductivaDestroyLink}" icon="ui-icon-trash">
-                                    <f:setPropertyActionListener value="#{item}" target="#{factorProductivaController.selected}"/>
-                                </p:commandButton>
-                            </p:column>
-                        </p:dataTable>
-                    </h:panelGroup>
-                    <br />
-                    <p:commandButton ajax="false" action="#{factorProductivaController.prepareCreate}" value="#{bundle.ListFactorProductivaCreateLink}" icon="ui-icon-document"/>
-                </div>        
-            </h:form>
+            <div id="Layout_Titulo_Formulario_Agef"> <h2>SEGUIMIENTO AL APRENDIZ EN ETAPA PRODUCTIVA</h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen">#{bundle.ListFactorProductivaTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br> 
+                    <h:form id="listFactorProductiva" styleClass="jsfcrud_list_form">
+                        <div id="list" align="center">
+                            <p:growl id="msgs" showDetail="false" sticky="false"/>
+                            <h:outputText escape="false" value="#{bundle.ListFactorProductivaEmpty}" rendered="#{factorProductivaController.lazyModel.rowCount == 0}"/>
+                            <h:panelGroup rendered="#{factorProductivaController.lazyModel.rowCount > 0}">
+                                <p:dataTable id="tableListFactorProductiva" 
+                                             value="#{factorProductivaController.lazyModel}" 
+                                             var="item" 
+                                             paginator="true" rows="10" paginatorAlwaysVisible="false"
+                                             paginatorTemplate="{FirstPageLink} {PreviousPageLink}
+                                             {PageLinks} {NextPageLink}
+                                             {LastPageLink} {RowsPerPageDropdown}"  
+                                             rowsPerPageTemplate="5,10,15" paginatorPosition="bottom"
+                                             lazy="true"
+                                             emptyMessage="No se encontraron datos con el criterio dado"
+                                             widgetVar="tableFactorProductiva">
+                                    <p:column headerText="#{bundle.ListFactorProductivaTitle_idFactorProductiva}"
+                                              filterBy="#{item.idFactorProductiva}"
+                                              sortBy="#{item.idFactorProductiva}">                        
+                                        <h:outputText value="#{item.idFactorProductiva}"/>
+                                    </p:column>
+                                    <p:column headerText="#{bundle.ListFactorProductivaTitle_nomFactorProductiva}"
+                                              filterBy="#{item.nomFactorProductiva}"
+                                              sortBy="#{item.nomFactorProductiva}">                        
+                                        <h:outputText value="#{item.nomFactorProductiva}"/>
+                                    </p:column>
+                                    <p:column>                        
+                                        <p:commandButton ajax="false" action="#{factorProductivaController.prepareView}" title="#{bundle.ListFactorProductivaViewLink}" icon="ui-icon-search"/>
+                                        <p:commandButton ajax="false" action="#{factorProductivaController.prepareEdit}" title="#{bundle.ListFactorProductivaEditLink}" icon="ui-icon-pencil"/>
+                                        <p:commandButton oncomplete="confirmationDelete.show();" process="@this"
+                                                         title="#{bundle.ListFactorProductivaDestroyLink}" icon="ui-icon-trash">
+                                            <f:setPropertyActionListener value="#{item}" target="#{factorProductivaController.selected}"/>
+                                        </p:commandButton>
+                                    </p:column>
+                                </p:dataTable>
+                            </h:panelGroup>
+                            <br />
+                            <p:commandButton ajax="false" action="#{factorProductivaController.prepareCreate}" value="#{bundle.ListFactorProductivaCreateLink}" icon="ui-icon-document"/>
+                        </div>        
+                    </h:form>
+                    <br></br>
+                </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen1">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
         <ui:define name="dialogs">
             <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  

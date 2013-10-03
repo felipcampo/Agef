@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -55,13 +56,14 @@ public class ResultadoAprendizaje implements Serializable {
     @ManyToMany(mappedBy = "resultadoAprendizajeList")
     private List<Competencia> competenciaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idResultadoAprendizaje")
-    private List<EvaluacionSeguimiento> evaluacionSeguimientoList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idResultadoAprendizaje")
     private List<ReporteNovedad> reporteNovedadList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idResultadoAprendizaje")
     private List<ProgramacionProyecto> programacionProyectoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idResultadoAprendizaje")
     private List<PlanMejoramiento> planMejoramientoList1;
+    @JoinColumn(name = "id_evaluacion_seguimiento", referencedColumnName = "id_evaluacion_seguimiento")
+    @ManyToOne
+    private EvaluacionSeguimiento idEvaluacionSeguimiento;
     @OneToMany(mappedBy = "idResultadoAprendizaje")
     private List<CriterioEvaluacion> criterioEvaluacionList;
     @OneToMany(mappedBy = "idResultadoAprendizaje")
@@ -114,15 +116,6 @@ public class ResultadoAprendizaje implements Serializable {
     }
 
     @XmlTransient
-    public List<EvaluacionSeguimiento> getEvaluacionSeguimientoList() {
-        return evaluacionSeguimientoList;
-    }
-
-    public void setEvaluacionSeguimientoList(List<EvaluacionSeguimiento> evaluacionSeguimientoList) {
-        this.evaluacionSeguimientoList = evaluacionSeguimientoList;
-    }
-
-    @XmlTransient
     public List<ReporteNovedad> getReporteNovedadList() {
         return reporteNovedadList;
     }
@@ -147,6 +140,14 @@ public class ResultadoAprendizaje implements Serializable {
 
     public void setPlanMejoramientoList1(List<PlanMejoramiento> planMejoramientoList1) {
         this.planMejoramientoList1 = planMejoramientoList1;
+    }
+
+    public EvaluacionSeguimiento getIdEvaluacionSeguimiento() {
+        return idEvaluacionSeguimiento;
+    }
+
+    public void setIdEvaluacionSeguimiento(EvaluacionSeguimiento idEvaluacionSeguimiento) {
+        this.idEvaluacionSeguimiento = idEvaluacionSeguimiento;
     }
 
     @XmlTransient

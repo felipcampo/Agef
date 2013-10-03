@@ -45,7 +45,7 @@
                     </p:row>                    
                     <p:row>
                         <p:column colspan="2">
-                            <p:fileUpload id="eviApr" fileUploadListener="#{concertacionPlanTrabajoProductivaController.selected.eviApr}" mode="advanced" dragDropSupport="false"  
+                            <p:fileUpload id="eviApr" label="Buscar" cancelLabel="Limpiar" uploadLabel="Cargar" fileUploadListener="#{concertacionPlanTrabajoProductivaController.selected.eviApr}" mode="advanced" dragDropSupport="false"  
                                           multiple="false" sizeLimit="10000000" allowTypes="/(\.|\/)(gif|jpe?g|png|zip|rar|doc|doc?x|bmp|avi|pdf)$/" />
                         </p:column>
                     </p:row>
@@ -54,7 +54,7 @@
                 <br />
                 <p:commandButton process="@this, @form" update="@form, :msgs"  
                                  value="#{bundle.CreateConcertacionPlanTrabajoProductivaSaveLink}" oncomplete="if (!args.validationFailed) dlg.hide();" icon="ui-icon-disk"
-                                 actionListener="#{seguimientoProductivaController.concertacionActual}">
+                                >
                 </p:commandButton>
                 <br />
                 <br />               

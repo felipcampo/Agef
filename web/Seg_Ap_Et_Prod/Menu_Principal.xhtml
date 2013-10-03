@@ -7,23 +7,35 @@
 
 
     <ui:composition>
-        <h:form id="Menu_gestor">
+        <h:form id="Menu_Principal">
             <div id="Layoutmenu">
-                <p:menubar  style="float: right">
-                    <p:menuitem outcome="index_alistamiento.xhtml" value="Inicio"/>
-                    <p:submenu label="Realizar Alistamiento">
-                        <p:menuitem outcome="../Mod_Alistamiento/alistamiento/Create.xhtml" value="Alistamientos" />
-                        <p:menuitem outcome="realizar_alistamiento_titulado.xhtml" value="Formación titulado"  />
-                        <p:menuitem value="Virtual Complementarios" />
+                <p:menubar  style="float: right; background-color: #fc7323">
+                    <p:menuitem outcome="index_seg_et_prod.xhtml" value="Inicio"/>
+                    <p:submenu label="Empresa: ">
+                        <p:menuitem outcome="../Seg_Ap_Et_Prod/seguimientoProductiva/Create.xhtml" value="Realizar Seguimiento." />
+                        <p:menuitem outcome="../Seg_Ap_Et_Prod/seguimientoProductiva/List.xhtml" value="Seguimientos Realizados."  />
+
                     </p:submenu>
-                    <p:submenu label="Verificar Alistamiento">
-                        <p:menuitem value="Formación titulado" />
-                        <p:menuitem value="Cursos Complementarios" />
-                        <p:menuitem value="Virtual Complementarios" />
+                    <p:submenu label="Coordinador:">
+                        <p:menuitem outcome="../Seg_Ap_Et_Prod/seguimientoProductiva/List.xhtml" value="Seguimientos Realizados."  />
+                        <p:menuitem outcome="../Seg_Ap_Et_Prod/empresa/List.xhtml" value="Empresas Patrocinadoras."  />
+
                     </p:submenu>
-                    <p:submenu label="Otros">
-                        <p:menuitem value="Salir" />
-                        <p:menuitem value="Documentos" />
+                    <p:submenu label="Instructor-Auditor:">
+                        <p:menuitem outcome="../Seg_Ap_Et_Prod/seguimientoProductiva/List.xhtml" value="Seguimientos Realizados."  />
+                        <p:menuitem outcome="../Seg_Ap_Et_Prod/empresa/List.xhtml" value="Empresas Patrocinadoras."  />
+                    </p:submenu>
+                    <p:submenu label="Administrador:">
+                        <p:menuitem outcome="../Seg_Ap_Et_Prod/concertacionPlanTrabajoProductiva/List.xhtml" value="Plan Trabajo Prod."/>
+                        <p:menuitem outcome="../Seg_Ap_Et_Prod/contratoProyecto/List.xhtml" value="Contratos-Proyectos."/>
+                        <p:menuitem outcome="../Seg_Ap_Et_Prod/criterioSeguimiento/List.xhtml" value="Criterios Seguimiento."/>
+                        <p:menuitem outcome="../Seg_Ap_Et_Prod/empresa/List.xhtml" value="Empresas."/>
+                        <p:menuitem outcome="../Seg_Ap_Et_Prod/factorProductiva/List.xhtml" value="Factores Productiva."/>
+                        <p:menuitem outcome="../Seg_Ap_Et_Prod/incidenteProductiva/List.xhtml" value="Incidentes Productiva."/>
+                        <p:menuitem outcome="../Seg_Ap_Et_Prod/modalidadProductiva/List.xhtml" value="Modalidades Productiva."/>
+                        <p:menuitem outcome="../Seg_Ap_Et_Prod/seguimientoProductiva/List.xhtml" value="Seguimientos Productiva."/>
+                        <p:menuitem outcome="../Seg_Ap_Et_Prod/tipoContrato/List.xhtml" value="Tipo Contrato."/>
+                        <p:menuitem outcome="../Configuracion/zonaEmpresa/List.xhtml" value="Zona Empresa."/>
                     </p:submenu>
                 </p:menubar>
 

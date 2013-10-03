@@ -5,6 +5,7 @@ import jsf.util.JsfUtil;
 import jpa.sessions.ContratoProyectoFacade;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -97,11 +98,12 @@ public class ContratoProyectoController implements Serializable {
 
     public String create() {
         try {
+            current.setFecSub(new Date());
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("ContratoProyectoCreated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("properties/Bundle").getString("ContratoProyectoCreated"));
             return "View";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/properties/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("properties/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }
     }
@@ -114,10 +116,10 @@ public class ContratoProyectoController implements Serializable {
     public String update() {
         try {
             getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("ContratoProyectoUpdated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("properties/Bundle").getString("ContratoProyectoUpdated"));
             return "View";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/properties/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("properties/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }
     }
@@ -131,9 +133,9 @@ public class ContratoProyectoController implements Serializable {
     private void performDestroy() {
         try {
             getFacade().remove(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("ContratoProyectoDeleted"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("properties/Bundle").getString("ContratoProyectoDeleted"));
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/properties/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("properties/Bundle").getString("PersistenceErrorOccured"));
         }
     }
 

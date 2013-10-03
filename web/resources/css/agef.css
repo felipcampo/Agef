@@ -911,12 +911,14 @@ img, object, embed, video {
     {
         clear: both;
         float: left;
-        margin-left: 0;
-        width: 100%;
+        margin-left: 8.7%;
+        width: 82.69%;
+        margin-top: 2%;
+        
         display: block;
-        background-color: #fc7322;
+        background-color: #238276;
         color: #fff;
-        text-align: center;
+        text-align: left;
     }
     #LayoutForm_Seg_Ap_Et_Prod
     {
