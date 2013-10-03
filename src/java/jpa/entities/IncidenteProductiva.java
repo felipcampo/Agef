@@ -8,7 +8,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -39,8 +38,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "IncidenteProductiva.findAll", query = "SELECT i FROM IncidenteProductiva i"),
     @NamedQuery(name = "IncidenteProductiva.findByIdIncidenteProductiva", query = "SELECT i FROM IncidenteProductiva i WHERE i.idIncidenteProductiva = :idIncidenteProductiva"),
     @NamedQuery(name = "IncidenteProductiva.findByDetalleIncidente", query = "SELECT i FROM IncidenteProductiva i WHERE i.detalleIncidente = :detalleIncidente"),
-    @NamedQuery(name = "IncidenteProductiva.findByFecIncio", query = "SELECT i FROM IncidenteProductiva i WHERE i.fecIncio = :fecIncio"),
-    @NamedQuery(name = "IncidenteProductiva.findByTipoIncio", query = "SELECT i FROM IncidenteProductiva i WHERE i.tipoIncio = :tipoIncio")})
+    @NamedQuery(name = "IncidenteProductiva.findByFecIncio", query = "SELECT i FROM IncidenteProductiva i WHERE i.fecIncio = :fecIncio")})
 public class IncidenteProductiva implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -64,15 +62,10 @@ public class IncidenteProductiva implements Serializable {
     @Size(min = 1, max = 65535)
     @Column(name = "solucion_inc")
     private String solucionInc;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "tipo_incio")
-    private String tipoIncio;
     @JoinColumn(name = "id_visita_etapa_productiva", referencedColumnName = "id_visita_etapa_productiva")
     @ManyToOne(optional = false)
     private VisitaEtapaProductiva idVisitaEtapaProductiva;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idIncidenteProductiva")
+    @OneToMany(mappedBy = "idIncidenteProductiva")
     private List<SeguimientoProductiva> seguimientoProductivaList;
 
     public IncidenteProductiva() {
@@ -82,12 +75,11 @@ public class IncidenteProductiva implements Serializable {
         this.idIncidenteProductiva = idIncidenteProductiva;
     }
 
-    public IncidenteProductiva(Short idIncidenteProductiva, String detalleIncidente, Date fecIncio, String solucionInc, String tipoIncio) {
+    public IncidenteProductiva(Short idIncidenteProductiva, String detalleIncidente, Date fecIncio, String solucionInc) {
         this.idIncidenteProductiva = idIncidenteProductiva;
         this.detalleIncidente = detalleIncidente;
         this.fecIncio = fecIncio;
         this.solucionInc = solucionInc;
-        this.tipoIncio = tipoIncio;
     }
 
     public Short getIdIncidenteProductiva() {
@@ -120,14 +112,6 @@ public class IncidenteProductiva implements Serializable {
 
     public void setSolucionInc(String solucionInc) {
         this.solucionInc = solucionInc;
-    }
-
-    public String getTipoIncio() {
-        return tipoIncio;
-    }
-
-    public void setTipoIncio(String tipoIncio) {
-        this.tipoIncio = tipoIncio;
     }
 
     public VisitaEtapaProductiva getIdVisitaEtapaProductiva() {

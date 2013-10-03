@@ -106,7 +106,7 @@ public class PlaneacionPedagogica implements Serializable {
     private String observaciones;
     @JoinColumn(name = "id_subactividad_proyecto", referencedColumnName = "id_subactividad_proyecto")
     @ManyToOne(optional = false)
-    private SubactividadProyecto idSubactividadProyecto;
+    private SubactividadAprendizaje idSubactividadProyecto;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false)
     private Usuario idUsuario;
@@ -225,11 +225,11 @@ public class PlaneacionPedagogica implements Serializable {
         this.observaciones = observaciones;
     }
 
-    public SubactividadProyecto getIdSubactividadProyecto() {
+    public SubactividadAprendizaje getIdSubactividadProyecto() {
         return idSubactividadProyecto;
     }
 
-    public void setIdSubactividadProyecto(SubactividadProyecto idSubactividadProyecto) {
+    public void setIdSubactividadProyecto(SubactividadAprendizaje idSubactividadProyecto) {
         this.idSubactividadProyecto = idSubactividadProyecto;
     }
 

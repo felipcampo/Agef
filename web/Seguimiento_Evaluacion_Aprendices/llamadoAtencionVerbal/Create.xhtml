@@ -25,26 +25,18 @@
                     <p:panelGrid>
                         <f:facet name="header">
                             <p:row><p:column colspan="3">#{bundle.CreateLlamadoAtencionVerbalTitle}</p:column></p:row>                            
-                        </f:facet>                        
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateLlamadoAtencionVerbalLabel_idLlamadoAtencionVerbal}" for="idLlamadoAtencionVerbal" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputText id="idLlamadoAtencionVerbal" value="#{llamadoAtencionVerbalController.selected.idLlamadoAtencionVerbal}" title="#{bundle.CreateLlamadoAtencionVerbalTitle_idLlamadoAtencionVerbal}" required="true" requiredMessage="#{bundle.CreateLlamadoAtencionVerbalRequiredMessage_idLlamadoAtencionVerbal}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idLlamadoAtencionVerbal"/>
-                            </p:column>
+                        </f:facet> 
+                        <p:row>  
+                            <p:column styleClass="ui-widget-header" colspan="4"><p align="center"> INFORMACIÓN GENERAL</p></p:column> 
+                        </p:row> 
+                        <p:row>  
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateLlamadoAtencionVerbalLabel_fecha}" for="fecha" />
                             </p:column>
                             <p:column style="border-right: white">    
-                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecha" value="#{llamadoAtencionVerbalController.selected.fecha}" title="#{bundle.CreateLlamadoAtencionVerbalTitle_fecha}" required="true" requiredMessage="#{bundle.CreateLlamadoAtencionVerbalRequiredMessage_fecha}"/>
+                                <p:calendar locale="es" navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecha" value="#{llamadoAtencionVerbalController.selected.fecha}" title="#{bundle.CreateLlamadoAtencionVerbalTitle_fecha}" required="true" requiredMessage="#{bundle.CreateLlamadoAtencionVerbalRequiredMessage_fecha}"/>
                             </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="fecha"/>
-                            </p:column>
+                            
                         </p:row>
                         <p:row>
                             <p:column>
@@ -55,33 +47,54 @@
                                     <f:selectItems value="#{fichaCaracterizacionController.itemsAvailableSelectOne}"/>
                                 </p:selectOneMenu>
                             </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idFichaCaracterizacion"/>
-                            </p:column>
+                            
+                        </p:row>
+                        <p:row> 
+                            <p:column style="font-weight: bold;" rowspan="5">DATOS DEL APRENDIZ</p:column>  
+                        </p:row>
+                        <p:row>                                      
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateLlamadoAtencionVerbalLabel_idUsuario}" for="idUsuario" />
                             </p:column>
-                            <p:column style="border-right: white">    
-                                <p:selectOneMenu id="idUsuario" value="#{llamadoAtencionVerbalController.selected.idUsuario}" required="true" requiredMessage="#{bundle.CreateLlamadoAtencionVerbalRequiredMessage_idUsuario}">
-                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
+                            <p:column colspan="3">    
+                            <p:commandButton id="idUsuario" icon="ui-icon-search" onclick="dlgBuscarUsuario.show();" type="button"/>
+                            </p:column> 
+                                 </p:row>
+                        <p:row>
+                                    <p:column>
+                                <h:outputText value="#{bundle.ViewUsuarioLabel_nomUsu}"/> 
                             </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idUsuario"/>
-                            </p:column>
+                            <p:column colspan="2"><h:outputText value="#{usuarioController.selected.nomUsu}" title="#{bundle.ViewUsuarioTitle_nomUsu}"/> 
+                                <h:outputText value="#{planMejoramientoController.selected.idUsuario.nomUsu}" title="#{bundle.ViewUsuarioTitle_apeUsu}"/>
+                                <h:outputText value="#{planMejoramientoController.selected.idUsuario.apeUsu}" title="#{bundle.ViewUsuarioTitle_apeUsu}"/>
+                            </p:column> 
                         </p:row>
+                        <p:row>                                      
+                            <p:column><h:outputText value="#{bundle.ViewUsuarioLabel_emailMisenaUsu}"/></p:column>  
+                            <p:column colspan="2"><h:outputText value="#{planMejoramientoController.selected.idUsuario.emailMisenaUsu}" title="#{bundle.ViewUsuarioTitle_emailMisenaUsu}"/> </p:column>   
+                        </p:row> 
+                           <p:row>                                      
+                            <p:column> <h:outputText value="#{bundle.ViewUsuarioLabel_telUsu}"/></p:column>  
+                            <p:column colspan="2"><h:outputText value="#{planMejoramientoController.selected.idUsuario.telUsu}" title="#{bundle.ViewUsuarioTitle_telUsu}"/></p:column>   
+                        </p:row> 
+                        <p:row>  
+                            <p:column styleClass="ui-widget-header" colspan="4"><p align="center">1. SITUACIÓN A CORREGIR-DESCRIPCIÓN DETALLADA DE LA SITUACIÓN</p></p:column> 
+                        </p:row> 
                         <p:row>
                             <p:column>
-                                <h:outputLabel value="#{bundle.CreateLlamadoAtencionVerbalLabel_compromiso}" for="compromiso" />
+                                <h:outputLabel value="#{bundle.CreateLlamadoAtencionVerbalLabel_situacion}" for="situacion" />
                             </p:column>
                             <p:column style="border-right: white">    
-                                <p:inputTextarea rows="4" cols="30" id="compromiso" value="#{llamadoAtencionVerbalController.selected.compromiso}" title="#{bundle.CreateLlamadoAtencionVerbalTitle_compromiso}" required="true" requiredMessage="#{bundle.CreateLlamadoAtencionVerbalRequiredMessage_compromiso}"/>
+                                <p:inputTextarea rows="4" cols="30" id="situacion" value="#{llamadoAtencionVerbalController.selected.situacion}" title="#{bundle.CreateLlamadoAtencionVerbalTitle_situacion}" required="true" requiredMessage="#{bundle.CreateLlamadoAtencionVerbalRequiredMessage_situacion}"/>
                             </p:column>
                             <p:column style="border-left: white;">
-                                <p:message for="compromiso"/>
+                                <p:message for="situacion"/>
                             </p:column>
                         </p:row>
-                        <p:row>
+                        <p:row>  
+                            <p:column styleClass="ui-widget-header" colspan="4"><p align="center">2. DESCRIBA LA CAUSA-PORQUÉ SE PRESENTA LA SITUACIÓN</p></p:column> 
+                        </p:row> 
+                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateLlamadoAtencionVerbalLabel_descripcion}" for="descripcion" />
                             </p:column>
@@ -92,17 +105,9 @@
                                 <p:message for="descripcion"/>
                             </p:column>
                         </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateLlamadoAtencionVerbalLabel_efecto}" for="efecto" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputTextarea rows="4" cols="30" id="efecto" value="#{llamadoAtencionVerbalController.selected.efecto}" title="#{bundle.CreateLlamadoAtencionVerbalTitle_efecto}" required="true" requiredMessage="#{bundle.CreateLlamadoAtencionVerbalRequiredMessage_efecto}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="efecto"/>
-                            </p:column>
-                        </p:row>
+                        <p:row>  
+                            <p:column styleClass="ui-widget-header" colspan="4"><p align="center">3. INDIQUE IMPACTO Y EFECTO DE LA SITUACIÓN</p></p:column> 
+                        </p:row> 
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateLlamadoAtencionVerbalLabel_impacto}" for="impacto" />
@@ -116,15 +121,30 @@
                         </p:row>
                         <p:row>
                             <p:column>
-                                <h:outputLabel value="#{bundle.CreateLlamadoAtencionVerbalLabel_situacion}" for="situacion" />
+                                <h:outputLabel value="#{bundle.CreateLlamadoAtencionVerbalLabel_efecto}" for="efecto" />
                             </p:column>
                             <p:column style="border-right: white">    
-                                <p:inputTextarea rows="4" cols="30" id="situacion" value="#{llamadoAtencionVerbalController.selected.situacion}" title="#{bundle.CreateLlamadoAtencionVerbalTitle_situacion}" required="true" requiredMessage="#{bundle.CreateLlamadoAtencionVerbalRequiredMessage_situacion}"/>
+                                <p:inputTextarea rows="4" cols="30" id="efecto" value="#{llamadoAtencionVerbalController.selected.efecto}" title="#{bundle.CreateLlamadoAtencionVerbalTitle_efecto}" required="true" requiredMessage="#{bundle.CreateLlamadoAtencionVerbalRequiredMessage_efecto}"/>
                             </p:column>
                             <p:column style="border-left: white;">
-                                <p:message for="situacion"/>
+                                <p:message for="efecto"/>
                             </p:column>
                         </p:row>
+                        <p:row>  
+                            <p:column styleClass="ui-widget-header" colspan="4"><p align="center">4. COMPROMISO ADQUIRIDO POR EL APRENDIZ</p></p:column> 
+                        </p:row> 
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateLlamadoAtencionVerbalLabel_compromiso}" for="compromiso" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputTextarea rows="4" cols="30" id="compromiso" value="#{llamadoAtencionVerbalController.selected.compromiso}" title="#{bundle.CreateLlamadoAtencionVerbalTitle_compromiso}" required="true" requiredMessage="#{bundle.CreateLlamadoAtencionVerbalRequiredMessage_compromiso}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="compromiso"/>
+                            </p:column>
+                        </p:row>
+      
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateLlamadoAtencionVerbalLabel_idEstadoLlamado}" for="idEstadoLlamado" />
@@ -149,6 +169,78 @@
                 </div>
             </h:form>
         </ui:define>
+         <ui:define name="dialogs">
+           
+            <p:dialog id="buscarCliente" widgetVar="dlgBuscarUsuario" modal="true" resizable="false" 
+                      showEffect="clip" hideEffect="clip" closeOnEscape="true">
+                <h:form id="formularioBuscarUsuario"> 
+                    <p:panelGrid>                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateUsuarioLabel_numeroDocumento}" for="numeroDocumento" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="numeroDocumento" value="#{planMejoramientoController.usuarioActual.numeroDocumento}" title="#{bundle.CreateUsuarioTitle_numeroDocumento}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_numeroDocumento}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="numeroDocumento"/>
+                            </p:column> 
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateUsuarioLabel_nomUsu}" for="nomUsu" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="nomUsu" value="#{planMejoramientoController.usuarioActual.nomUsu}" title="#{bundle.CreateUsuarioTitle_nomUsu}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_nomUsu}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="nomUsu"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateUsuarioLabel_apeUsu}" for="apeUsu" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="apeUsu" value="#{planMejoramientoController.usuarioActual.apeUsu}" title="#{bundle.CreateUsuarioTitle_apeUsu}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_apeUsu}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="apeUsu"/>
+                            </p:column>
+                        </p:row>
+
+                        <p:row>
+                            <p:column colspan="3">
+                                <p:commandButton action="#{planMejoramientoController.buscarUsuario()}"
+                                                 value="Buscar"
+                                                 icon="ui-icon-search"
+                                                 process="@this,numeroDocumento,nomUsu,apeUsu"
+                                                 update="tablaUsuarios, :msgs"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <br /><br /><br />
+                    <p:dataTable value="#{planMejoramientoController.listBusquedaUsuarios}"
+                                 var="item" paginator="true" rows="5" id="tablaUsuarios">
+                        <p:column>
+                            <h:outputText value="#{item.numeroDocumento}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{item.nomUsu}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{item.apeUsu}"/>
+                        </p:column>
+                        <p:column>
+                            <p:commandButton id="botonSeleccionUsuario" update=":formPlanMejoramiento" action="#{planMejoramientoController.agregarUsuario}"
+                                             oncomplete="dlgBuscarUsuario.hide();" icon="ui-icon-plus">
+                                <f:setPropertyActionListener value="#{item}" target="#{planMejoramientoController.usuarioActual}"/>
+                            </p:commandButton>
+                        </p:column>
+                    </p:dataTable>  
+                </h:form>                     
+            </p:dialog>
+             </ui:define> 
     </ui:composition>
 
 </html>

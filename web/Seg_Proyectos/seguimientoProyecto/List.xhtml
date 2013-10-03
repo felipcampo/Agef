@@ -23,6 +23,13 @@
         </ui:define>
         
         <ui:define name="body">
+            
+             <div id="Layout_Titulo_Formulario_Agef"> <h2>SEGUIMIENTO A PROYECTOS</h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen"> Seleccione Seguimiento Programado</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br>  
+            
             <h:form id="listSeguimientoProyecto" styleClass="jsfcrud_list_form">
                 <div id="list" align="center">
                     <p:growl id="msgs" showDetail="false" sticky="false"/>
@@ -100,7 +107,16 @@
                     <p:commandButton ajax="false" action="#{seguimientoProyectoController.prepareCreate}" value="Programar Seguimiento" icon="ui-icon-calendar"/>
                 </div>        
             </h:form>
+                 <br></br>
+                </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
+        
         <ui:define name="dialogs">
             <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  
                              header="#{bundle.DeleteItemMessage}" severity="alert" widgetVar="confirmationDelete">  

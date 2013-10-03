@@ -47,9 +47,8 @@ public class Programa implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 255)
     @Column(name = "id_programa")
-    private String idPrograma;
+    private Integer idPrograma;
     @Basic(optional = false)
     @NotNull
     @Column(name = "version")
@@ -115,11 +114,11 @@ public class Programa implements Serializable {
     public Programa() {
     }
 
-    public Programa(String idPrograma) {
+    public Programa(Integer idPrograma) {
         this.idPrograma = idPrograma;
     }
 
-    public Programa(String idPrograma, short version, short durPrgLec, short durPrgPrac, String duracionTotalProg, String jusPrg, String nomPrg, short numTotCom, short numTotResApr, String reqIngPrg) {
+    public Programa(Integer idPrograma, short version, short durPrgLec, short durPrgPrac, String duracionTotalProg, String jusPrg, String nomPrg, short numTotCom, short numTotResApr, String reqIngPrg) {
         this.idPrograma = idPrograma;
         this.version = version;
         this.durPrgLec = durPrgLec;
@@ -132,11 +131,11 @@ public class Programa implements Serializable {
         this.reqIngPrg = reqIngPrg;
     }
 
-    public String getIdPrograma() {
+    public Integer getIdPrograma() {
         return idPrograma;
     }
 
-    public void setIdPrograma(String idPrograma) {
+    public void setIdPrograma(Integer idPrograma) {
         this.idPrograma = idPrograma;
     }
 

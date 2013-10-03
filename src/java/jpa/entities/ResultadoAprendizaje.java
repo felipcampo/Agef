@@ -15,7 +15,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -53,6 +52,8 @@ public class ResultadoAprendizaje implements Serializable {
         @JoinColumn(name = "id_plan_mejoramiento", referencedColumnName = "id_plan_mejoramiento")})
     @ManyToMany
     private List<PlanMejoramiento> planMejoramientoList;
+    @ManyToMany(mappedBy = "resultadoAprendizajeList")
+    private List<Competencia> competenciaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idResultadoAprendizaje")
     private List<EvaluacionSeguimiento> evaluacionSeguimientoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idResultadoAprendizaje")
@@ -61,13 +62,8 @@ public class ResultadoAprendizaje implements Serializable {
     private List<ProgramacionProyecto> programacionProyectoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idResultadoAprendizaje")
     private List<PlanMejoramiento> planMejoramientoList1;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idResultadoAprendizaje")
-    private List<EvidenciaAprendizaje> evidenciaAprendizajeList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idResultadoAprendizaje")
-    private List<ProyectoFormativo> proyectoFormativoList;
-    @JoinColumn(name = "id_competencia", referencedColumnName = "id_competencia")
-    @ManyToOne(optional = false)
-    private Competencia idCompetencia;
+    @OneToMany(mappedBy = "idResultadoAprendizaje")
+    private List<CriterioEvaluacion> criterioEvaluacionList;
     @OneToMany(mappedBy = "idResultadoAprendizaje")
     private List<SeguimientoProyecto> seguimientoProyectoList;
 
@@ -109,6 +105,15 @@ public class ResultadoAprendizaje implements Serializable {
     }
 
     @XmlTransient
+    public List<Competencia> getCompetenciaList() {
+        return competenciaList;
+    }
+
+    public void setCompetenciaList(List<Competencia> competenciaList) {
+        this.competenciaList = competenciaList;
+    }
+
+    @XmlTransient
     public List<EvaluacionSeguimiento> getEvaluacionSeguimientoList() {
         return evaluacionSeguimientoList;
     }
@@ -145,29 +150,12 @@ public class ResultadoAprendizaje implements Serializable {
     }
 
     @XmlTransient
-    public List<EvidenciaAprendizaje> getEvidenciaAprendizajeList() {
-        return evidenciaAprendizajeList;
+    public List<CriterioEvaluacion> getCriterioEvaluacionList() {
+        return criterioEvaluacionList;
     }
 
-    public void setEvidenciaAprendizajeList(List<EvidenciaAprendizaje> evidenciaAprendizajeList) {
-        this.evidenciaAprendizajeList = evidenciaAprendizajeList;
-    }
-
-    @XmlTransient
-    public List<ProyectoFormativo> getProyectoFormativoList() {
-        return proyectoFormativoList;
-    }
-
-    public void setProyectoFormativoList(List<ProyectoFormativo> proyectoFormativoList) {
-        this.proyectoFormativoList = proyectoFormativoList;
-    }
-
-    public Competencia getIdCompetencia() {
-        return idCompetencia;
-    }
-
-    public void setIdCompetencia(Competencia idCompetencia) {
-        this.idCompetencia = idCompetencia;
+    public void setCriterioEvaluacionList(List<CriterioEvaluacion> criterioEvaluacionList) {
+        this.criterioEvaluacionList = criterioEvaluacionList;
     }
 
     @XmlTransient

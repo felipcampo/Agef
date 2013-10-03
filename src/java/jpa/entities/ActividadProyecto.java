@@ -58,25 +58,26 @@ public class ActividadProyecto implements Serializable {
         @JoinColumn(name = "id_criterio_evaluacion", referencedColumnName = "id_criterio_evaluacion")})
     @ManyToMany
     private List<CriterioEvaluacion> criterioEvaluacionList;
+    @JoinTable(name = "actividad_proyecto_formativo", joinColumns = {
+        @JoinColumn(name = "id_actividad_proyecto", referencedColumnName = "id_actividad_proyecto")}, inverseJoinColumns = {
+        @JoinColumn(name = "id_proyecto_formativo", referencedColumnName = "id_proyecto_formativo")})
+    @ManyToMany
+    private List<ProyectoFormativo> proyectoFormativoList;
     @ManyToMany(mappedBy = "actividadProyectoList")
     private List<Competencia> competenciaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idActividadProyecto")
-    private List<EvaluacionSeguimiento> evaluacionSeguimientoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idActividadProyecto")
     private List<ProgramacionProyecto> programacionProyectoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idActividadProyecto")
     private List<GuiaAprendizaje> guiaAprendizajeList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idActividadProyecto")
-    private List<PlanMejoramiento> planMejoramientoList;
+    private List<Competencia> competenciaList1;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idActividadProyecto")
-    private List<SubactividadProyecto> subactividadProyectoList;
+    private List<PlanMejoramiento> planMejoramientoList;
     @JoinColumn(name = "id_fase_proyecto", referencedColumnName = "id_fase_proyecto")
     @ManyToOne(optional = false)
     private FaseProyecto idFaseProyecto;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idActividadProyecto")
     private List<Alistamiento> alistamientoList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idActividadProyecto")
-    private List<ProyectoFormativo> proyectoFormativoList;
 
     public ActividadProyecto() {
     }
@@ -125,21 +126,21 @@ public class ActividadProyecto implements Serializable {
     }
 
     @XmlTransient
+    public List<ProyectoFormativo> getProyectoFormativoList() {
+        return proyectoFormativoList;
+    }
+
+    public void setProyectoFormativoList(List<ProyectoFormativo> proyectoFormativoList) {
+        this.proyectoFormativoList = proyectoFormativoList;
+    }
+
+    @XmlTransient
     public List<Competencia> getCompetenciaList() {
         return competenciaList;
     }
 
     public void setCompetenciaList(List<Competencia> competenciaList) {
         this.competenciaList = competenciaList;
-    }
-
-    @XmlTransient
-    public List<EvaluacionSeguimiento> getEvaluacionSeguimientoList() {
-        return evaluacionSeguimientoList;
-    }
-
-    public void setEvaluacionSeguimientoList(List<EvaluacionSeguimiento> evaluacionSeguimientoList) {
-        this.evaluacionSeguimientoList = evaluacionSeguimientoList;
     }
 
     @XmlTransient
@@ -161,21 +162,21 @@ public class ActividadProyecto implements Serializable {
     }
 
     @XmlTransient
+    public List<Competencia> getCompetenciaList1() {
+        return competenciaList1;
+    }
+
+    public void setCompetenciaList1(List<Competencia> competenciaList1) {
+        this.competenciaList1 = competenciaList1;
+    }
+
+    @XmlTransient
     public List<PlanMejoramiento> getPlanMejoramientoList() {
         return planMejoramientoList;
     }
 
     public void setPlanMejoramientoList(List<PlanMejoramiento> planMejoramientoList) {
         this.planMejoramientoList = planMejoramientoList;
-    }
-
-    @XmlTransient
-    public List<SubactividadProyecto> getSubactividadProyectoList() {
-        return subactividadProyectoList;
-    }
-
-    public void setSubactividadProyectoList(List<SubactividadProyecto> subactividadProyectoList) {
-        this.subactividadProyectoList = subactividadProyectoList;
     }
 
     public FaseProyecto getIdFaseProyecto() {
@@ -193,15 +194,6 @@ public class ActividadProyecto implements Serializable {
 
     public void setAlistamientoList(List<Alistamiento> alistamientoList) {
         this.alistamientoList = alistamientoList;
-    }
-
-    @XmlTransient
-    public List<ProyectoFormativo> getProyectoFormativoList() {
-        return proyectoFormativoList;
-    }
-
-    public void setProyectoFormativoList(List<ProyectoFormativo> proyectoFormativoList) {
-        this.proyectoFormativoList = proyectoFormativoList;
     }
 
     @Override

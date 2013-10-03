@@ -10,8 +10,8 @@
         <ui:define name="title">
             <h:outputText value="#{bundle.CreateSeguimientoProyectoTitle}"></h:outputText>
         </ui:define>
-        
-       <ui:define name="menumodulo">
+
+        <ui:define name="menumodulo">
             <div id="Layoutmenu">
                 <p:menubar  style="float: right">
                     <p:menuitem url="../inicio_proyectos.xhtml" value="Inicio" />
@@ -21,10 +21,10 @@
 
             </div>
         </ui:define>
-        
+
         <ui:define name="body">
 
-            <div id="Layout_Titulo_Formulario_Agef"> <h2>SEGUIMIENTO AL APRENDIZ EN ETAPA PRODUCTIVA</h2></div>
+            <div id="Layout_Titulo_Formulario_Agef"> <h2>SEGUIMIENTO A PROYECTOS</h2></div>
             <div id="Layout_Nom_Form_Agef">
                 <h3 id="margen"> Programar Seguimiento</h3>
                 <div id="Layout_Formulario_Agef">
@@ -53,7 +53,7 @@
                                     <p:column>
                                         <p:selectOneMenu id="idProgramaFormacion" value="#{seguimientoProductivaController.selectedPrograma}">
                                             <f:selectItems value="#{programaController.itemsAvailableSelectOne}"/>
-                                            <p:ajax update="idFichaCaracterizacion"/>
+
                                         </p:selectOneMenu>
                                     </p:column>
                                 </p:row>
@@ -66,7 +66,13 @@
                                         <p:selectOneMenu id="idFichaCaracterizacion" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion}" required="true" requiredMessage="#{bundle.CreateSeguimientoProyectoRequiredMessage_idFichaCaracterizacion}" >
                                             <f:selectItems value="#{seguimientoProductivaController.itemsAvailableSelectOneFichaCaracterizacionByPrograma}"/>
                                         </p:selectOneMenu>
-                                    </p:column>                          
+
+                                    </p:column> 
+
+                                    <p:column >  
+                                        <p:commandButton process="@this" id="idFichaCaracterizacion2" icon="ui-icon-search" onclick="dlgBuscarFicha.show();"  type="button" />
+                                    </p:column>
+
                                 </p:row>
                                 <!---->
                                 <p:row>
@@ -133,6 +139,68 @@
                 <p id="margen">Informacion de ayuda para formularios</p>
             </div>
         </ui:define>
-    </ui:composition>
 
+
+
+        <ui:define name="dialogs">
+
+            <p:dialog id="buscarFichas" widgetVar="dlgBuscarFicha" modal="true" resizable="false">
+                <p:growl id="msgDialogoBuscar"/>
+                <p:tabView>
+                    <p:tab title="Buscar">
+                        <h:form id="formularioBuscar"> 
+                            <p:panelGrid>
+                                <p:row>
+                                    <p:column>   
+                                        <p:inputText id="idFichaCaracterizacion" value="#{seguimientoProyectoController.selectedFicha.idFichaCaracterizacion}" title="#{bundle.CreateFichaCaracterizacionTitle_idFichaCaracterizacion}"/>
+                                        <p:watermark value="#{bundle.CreateFichaCaracterizacionLabel_idFichaCaracterizacion}" for="idFichaCaracterizacion" />
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText id="nomPrograma" value="#{seguimientoProyectoController.selectedPrograma.nomPrg}" title="#{bundle.CreateProgramaTitle_nomPrg}" />
+                                        <p:watermark value="#{bundle.CreateProgramaLabel_nomPrg}" for="nomPrograma" />
+                                    </p:column>   
+                                    <p:column >
+                                        <p:commandButton action="#{seguimientoProyectoController.buscarFicha}"
+                                                         value="Buscar"
+                                                         icon="ui-icon-search"
+                                                         process="@this,idFichaCaracterizacion,nomPrograma"
+                                                         update="tablaFichaCaracterizacion, :msgDialogoBuscar"/>
+                                    </p:column>
+                                </p:row>
+                            </p:panelGrid>
+                            <br /><br /><br />
+                            <p:dataTable value="#{seguimientoProyectoController.listBusquedaFicha}"
+                                         var="item" paginator="true" rows="5" id="tablaFichaCaracterizacion">
+                                <p:column> 
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListFichaCaracterizacionTitle_idFichaCaracterizacion}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.idFichaCaracterizacion}"/>
+                                </p:column>
+                                <p:column >  
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListFichaCaracterizacionTitle_idProyectoFormativo}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.idProyectoFormativo}"/>
+                                </p:column>
+                                <p:column >  
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListFichaCaracterizacionTitle_idPrograma}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.idPrograma}"/>
+                                </p:column>
+                                <p:column>
+                                    <p:commandButton id="botonSeleccionFicha" process="@this" action="#{seguimientoProyectoController.agregarFicha()}"
+                                                     oncomplete="dlgBuscarFicha.hide();" icon="ui-icon-plus" update=":formSeguimientoProyecto, :buscarFichas">
+                                        <f:setPropertyActionListener value="#{item}" target="#{seguimientoProyectoController.selectedFicha}"/>
+                                    </p:commandButton>
+                                </p:column>
+                            </p:dataTable>
+                        </h:form>
+                    </p:tab>
+
+                </p:tabView>   
+            </p:dialog>
+        </ui:define>
+    </ui:composition>
 </html>

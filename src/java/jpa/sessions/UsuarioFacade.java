@@ -40,9 +40,9 @@ CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<Usuario> cq = cb.createQuery(Usuario.class);
         Root<Usuario> u = cq.from(Usuario.class);
         cq.where(cb.or(                
-                cb.equal(u.get(Usuario_.numeroDocumento), usuario.getNumeroDocumento()),
-                cb.equal(u.get(Usuario_.nomUsu), usuario.getNomUsu()),
-                cb.equal(u.get(Usuario_.apeUsu), usuario.getApeUsu())
+                cb.like(u.get(Usuario_.numeroDocumento), "%" + usuario.getNumeroDocumento() + "%"),
+                cb.like(u.get(Usuario_.nomUsu), "%" + usuario.getNomUsu() + "%"),
+                cb.like(u.get(Usuario_.apeUsu), "%" + usuario.getApeUsu() + "%")
                 ));
         TypedQuery<Usuario> q = getEntityManager().createQuery(cq);        
         return q.getResultList();

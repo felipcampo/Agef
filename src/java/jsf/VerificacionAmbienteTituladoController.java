@@ -6,9 +6,15 @@ import jpa.sessions.VerificacionAmbienteTituladoFacade;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
+import jpa.entities.FichaCaracterizacion;
+import jpa.entities.Programa;
+import jpa.sessions.FichaCaracterizacionFacade;
+import jpa.entities.Usuario;
+import jpa.sessions.UsuarioFacade;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -24,10 +30,19 @@ import org.primefaces.model.SortOrder;
 @SessionScoped
 public class VerificacionAmbienteTituladoController implements Serializable {
 
+    private FichaCaracterizacion currentFicha;
+    private Usuario usuarioActual;
+    private Programa currentPrograma;
+    private List<FichaCaracterizacion> listBusquedaFicha;
+    private List<Usuario> listBusquedaUsuarios;
     private VerificacionAmbienteTitulado current;
     private LazyDataModel<VerificacionAmbienteTitulado> lazyModel = null;
     @EJB
     private jpa.sessions.VerificacionAmbienteTituladoFacade ejbFacade;
+    @EJB
+    private jpa.sessions.FichaCaracterizacionFacade ejbFacadeFicha;
+    @EJB
+    private jpa.sessions.UsuarioFacade usuarioFacade;
 
     public VerificacionAmbienteTituladoController() {
     }
@@ -43,8 +58,98 @@ public class VerificacionAmbienteTituladoController implements Serializable {
         current = entity;
     }
 
+    public Usuario getUsuarioActual() {
+        if (usuarioActual == null) {
+            usuarioActual = new Usuario();
+        }
+        return usuarioActual;
+    }
+
+    public FichaCaracterizacion getSelectedFicha() {
+        if (currentFicha == null) {
+            currentFicha = new FichaCaracterizacion();
+        }
+        return currentFicha;
+    }
+
+    public void setSelectedFicha(FichaCaracterizacion entity) {
+        currentFicha = entity;
+    }
+
+    public void setUsuarioActual(Usuario usuario) {
+        usuarioActual = usuario;
+    }
+    
+
+    public Programa getSelectedPrograma() {
+        if (currentPrograma == null) {
+            currentPrograma = new Programa();
+        }
+        return currentPrograma;
+    }
+
+    private UsuarioFacade getUsuarioFacade() {
+        return usuarioFacade;
+    }
+
+    public void buscarUsuario() {
+        if (usuarioActual.getNumeroDocumento().equals("")
+                && usuarioActual.getNomUsu().equals("") && usuarioActual.getApeUsu().equals("")) {
+            JsfUtil.addErrorMessage(ResourceBundle.getBundle("propierties/Bundle").getString("CriteriosVacios"));
+        } else {
+            try {
+                listBusquedaUsuarios = getUsuarioFacade().findUsuario(usuarioActual);
+            } catch (Exception e) {
+                JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("propierties/Bundle").getString("PersistenceErrorOccured"));
+            }
+        }
+    }
+
+    public void agregarUsuario() {
+        current.setIdUsuario(usuarioActual);
+        usuarioActual = new Usuario();
+        listBusquedaUsuarios = new ArrayList<>();
+    }
+
+    public void setSelectedPrograma(Programa entity) {
+        currentPrograma = entity;
+    }
+
+    public void buscarFicha() {
+        if (getSelectedFicha().getIdFichaCaracterizacion() == null && getSelectedPrograma().getNomPrg().equals("")) {
+            JsfUtil.addErrorMessage(ResourceBundle.getBundle("propierties/Bundle").getString("CriteriosVacios"));
+        } else {
+            try {
+                listBusquedaFicha = getFacadeFicha().findByIdAndPrograma(currentFicha, currentPrograma);
+            } catch (Exception e) {
+                JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("propierties/Bundle").getString("PersistenceErrorOccured"));
+            }
+        }
+    }
+
+    public void agregarFicha() {
+        current.setIdFichaCaracterizacion(currentFicha);
+        currentFicha = new FichaCaracterizacion();
+        listBusquedaFicha = new ArrayList<>();
+    }
+
+    public List<FichaCaracterizacion> getListBusquedaFicha() {
+        return listBusquedaFicha;
+    }
+
+    public List<Usuario> getListBusquedaUsuarios() {
+        return listBusquedaUsuarios;
+    }
+    
+     
+     
     private VerificacionAmbienteTituladoFacade getFacade() {
         return ejbFacade;
+    }
+
+    private FichaCaracterizacionFacade getFacadeFicha() {
+
+        return ejbFacadeFicha;
     }
 
     public LazyDataModel<VerificacionAmbienteTitulado> getLazyModel() {
@@ -91,7 +196,13 @@ public class VerificacionAmbienteTituladoController implements Serializable {
     }
 
     public String prepareCreate() {
+        currentFicha = new FichaCaracterizacion();
+        usuarioActual = new Usuario();
+        currentPrograma = new Programa();
+        listBusquedaFicha = new ArrayList<>();
+        listBusquedaUsuarios = new ArrayList<>();
         current = new VerificacionAmbienteTitulado();
+
         return "Create";
     }
 

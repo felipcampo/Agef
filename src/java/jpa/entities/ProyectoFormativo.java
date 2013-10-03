@@ -1,3 +1,7 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package jpa.entities;
 
 import java.io.Serializable;
@@ -110,10 +114,6 @@ public class ProyectoFormativo implements Serializable {
     private String impTecnologico;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "ficha_asociada")
-    private int fichaAsociada;
-    @Basic(optional = false)
-    @NotNull
     @Lob
     @Size(min = 1, max = 65535)
     @Column(name = "plateamiento_problema")
@@ -148,6 +148,9 @@ public class ProyectoFormativo implements Serializable {
     @Size(min = 1, max = 65535)
     @Column(name = "resultado_proyecto")
     private String resultadoProyecto;
+    @Size(max = 70)
+    @Column(name = "ficha_asociada")
+    private String fichaAsociada;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 25)
@@ -210,6 +213,13 @@ public class ProyectoFormativo implements Serializable {
         @JoinColumn(name = "id_fase_proyecto", referencedColumnName = "id_fase_proyecto")})
     @ManyToMany
     private List<FaseProyecto> faseProyectoList;
+    @ManyToMany(mappedBy = "proyectoFormativoList")
+    private List<ActividadProyecto> actividadProyectoList;
+    @JoinTable(name = "proyecto_formativo_has_detalle_recurso", joinColumns = {
+        @JoinColumn(name = "id_proyecto_formativo", referencedColumnName = "id_proyecto_formativo")}, inverseJoinColumns = {
+        @JoinColumn(name = "id_datalle_recurso", referencedColumnName = "id_datalle_recurso")})
+    @ManyToMany
+    private List<DetalleRecurso> detalleRecursoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProyectoFormativo")
     private List<FichaCaracterizacion> fichaCaracterizacionList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProyectoFormativo")
@@ -222,21 +232,9 @@ public class ProyectoFormativo implements Serializable {
     private List<PraxisPedagogica> praxisPedagogicaList;
     @OneToMany(mappedBy = "idProyectoFormativo")
     private List<Alistamiento> alistamientoList;
-    @JoinColumn(name = "id_evidencia_aprendizaje", referencedColumnName = "id_evidencia_aprendizaje")
-    @ManyToOne
-    private EvidenciaAprendizaje idEvidenciaAprendizaje;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false)
     private Usuario idUsuario;
-    @JoinColumn(name = "id_datalle_recurso", referencedColumnName = "id_datalle_recurso")
-    @ManyToOne(optional = false)
-    private DetalleRecurso idDatalleRecurso;
-    @JoinColumn(name = "id_resultado_aprendizaje", referencedColumnName = "id_resultado_aprendizaje")
-    @ManyToOne(optional = false)
-    private ResultadoAprendizaje idResultadoAprendizaje;
-    @JoinColumn(name = "id_actividad_proyecto", referencedColumnName = "id_actividad_proyecto")
-    @ManyToOne(optional = false)
-    private ActividadProyecto idActividadProyecto;
     @JoinColumn(name = "id_programa", referencedColumnName = "id_programa")
     @ManyToOne(optional = false)
     private Programa idPrograma;
@@ -253,7 +251,7 @@ public class ProyectoFormativo implements Serializable {
         this.idProyectoFormativo = idProyectoFormativo;
     }
 
-    public ProyectoFormativo(String idProyectoFormativo, String nombreProyecto, int numResAprBasicos, int numResAprEspecifico, int numResAprTransversal, String programaFormacionRespuesta, String benficiarioProyecto, String impSocial, String impEconomico, String impactoAmbiental, String impTecnologico, int fichaAsociada, String plateamientoProblema, String justificacionProyecto, String objGeneral, String objEspecifico, String riesgosAsociados, String resultadoProyecto, String tiempoProyecto, String palabrasClaves, short numeroTotalResultados, boolean resuelveNecSectorProd, boolean mejoraProcesoProd, boolean involucraNvTec, boolean productoFinSusc, boolean productoObtPro, boolean desarrolloProSatis, boolean viabilidadProPlan, short intructoresReq, short aprendicesReq, String descrAmbApr) {
+    public ProyectoFormativo(String idProyectoFormativo, String nombreProyecto, int numResAprBasicos, int numResAprEspecifico, int numResAprTransversal, String programaFormacionRespuesta, String benficiarioProyecto, String impSocial, String impEconomico, String impactoAmbiental, String impTecnologico, String plateamientoProblema, String justificacionProyecto, String objGeneral, String objEspecifico, String riesgosAsociados, String resultadoProyecto, String tiempoProyecto, String palabrasClaves, short numeroTotalResultados, boolean resuelveNecSectorProd, boolean mejoraProcesoProd, boolean involucraNvTec, boolean productoFinSusc, boolean productoObtPro, boolean desarrolloProSatis, boolean viabilidadProPlan, short intructoresReq, short aprendicesReq, String descrAmbApr) {
         this.idProyectoFormativo = idProyectoFormativo;
         this.nombreProyecto = nombreProyecto;
         this.numResAprBasicos = numResAprBasicos;
@@ -265,7 +263,6 @@ public class ProyectoFormativo implements Serializable {
         this.impEconomico = impEconomico;
         this.impactoAmbiental = impactoAmbiental;
         this.impTecnologico = impTecnologico;
-        this.fichaAsociada = fichaAsociada;
         this.plateamientoProblema = plateamientoProblema;
         this.justificacionProyecto = justificacionProyecto;
         this.objGeneral = objGeneral;
@@ -375,14 +372,6 @@ public class ProyectoFormativo implements Serializable {
         this.impTecnologico = impTecnologico;
     }
 
-    public int getFichaAsociada() {
-        return fichaAsociada;
-    }
-
-    public void setFichaAsociada(int fichaAsociada) {
-        this.fichaAsociada = fichaAsociada;
-    }
-
     public String getPlateamientoProblema() {
         return plateamientoProblema;
     }
@@ -429,6 +418,14 @@ public class ProyectoFormativo implements Serializable {
 
     public void setResultadoProyecto(String resultadoProyecto) {
         this.resultadoProyecto = resultadoProyecto;
+    }
+
+    public String getFichaAsociada() {
+        return fichaAsociada;
+    }
+
+    public void setFichaAsociada(String fichaAsociada) {
+        this.fichaAsociada = fichaAsociada;
     }
 
     public String getTiempoProyecto() {
@@ -545,6 +542,24 @@ public class ProyectoFormativo implements Serializable {
     }
 
     @XmlTransient
+    public List<ActividadProyecto> getActividadProyectoList() {
+        return actividadProyectoList;
+    }
+
+    public void setActividadProyectoList(List<ActividadProyecto> actividadProyectoList) {
+        this.actividadProyectoList = actividadProyectoList;
+    }
+
+    @XmlTransient
+    public List<DetalleRecurso> getDetalleRecursoList() {
+        return detalleRecursoList;
+    }
+
+    public void setDetalleRecursoList(List<DetalleRecurso> detalleRecursoList) {
+        this.detalleRecursoList = detalleRecursoList;
+    }
+
+    @XmlTransient
     public List<FichaCaracterizacion> getFichaCaracterizacionList() {
         return fichaCaracterizacionList;
     }
@@ -598,44 +613,12 @@ public class ProyectoFormativo implements Serializable {
         this.alistamientoList = alistamientoList;
     }
 
-    public EvidenciaAprendizaje getIdEvidenciaAprendizaje() {
-        return idEvidenciaAprendizaje;
-    }
-
-    public void setIdEvidenciaAprendizaje(EvidenciaAprendizaje idEvidenciaAprendizaje) {
-        this.idEvidenciaAprendizaje = idEvidenciaAprendizaje;
-    }
-
     public Usuario getIdUsuario() {
         return idUsuario;
     }
 
     public void setIdUsuario(Usuario idUsuario) {
         this.idUsuario = idUsuario;
-    }
-
-    public DetalleRecurso getIdDatalleRecurso() {
-        return idDatalleRecurso;
-    }
-
-    public void setIdDatalleRecurso(DetalleRecurso idDatalleRecurso) {
-        this.idDatalleRecurso = idDatalleRecurso;
-    }
-
-    public ResultadoAprendizaje getIdResultadoAprendizaje() {
-        return idResultadoAprendizaje;
-    }
-
-    public void setIdResultadoAprendizaje(ResultadoAprendizaje idResultadoAprendizaje) {
-        this.idResultadoAprendizaje = idResultadoAprendizaje;
-    }
-
-    public ActividadProyecto getIdActividadProyecto() {
-        return idActividadProyecto;
-    }
-
-    public void setIdActividadProyecto(ActividadProyecto idActividadProyecto) {
-        this.idActividadProyecto = idActividadProyecto;
     }
 
     public Programa getIdPrograma() {

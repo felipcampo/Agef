@@ -62,6 +62,8 @@ public class Ciudad implements Serializable {
     private List<PlanMejoramiento> planMejoramientoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCiudadNacimiento")
     private List<Usuario> usuarioList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCiudad")
+    private List<Empresa> empresaList;
 
     public Ciudad() {
     }
@@ -141,6 +143,15 @@ public class Ciudad implements Serializable {
 
     public void setUsuarioList(List<Usuario> usuarioList) {
         this.usuarioList = usuarioList;
+    }
+
+    @XmlTransient
+    public List<Empresa> getEmpresaList() {
+        return empresaList;
+    }
+
+    public void setEmpresaList(List<Empresa> empresaList) {
+        this.empresaList = empresaList;
     }
 
     @Override

@@ -52,8 +52,6 @@ public class Ambiente implements Serializable {
     private char tipoAmbiente;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idAmbiente")
     private List<GuiaAprendizaje> guiaAprendizajeList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idAmbiente")
-    private List<EvidenciaAprendizaje> evidenciaAprendizajeList;
 
     public Ambiente() {
     }
@@ -99,15 +97,6 @@ public class Ambiente implements Serializable {
 
     public void setGuiaAprendizajeList(List<GuiaAprendizaje> guiaAprendizajeList) {
         this.guiaAprendizajeList = guiaAprendizajeList;
-    }
-
-    @XmlTransient
-    public List<EvidenciaAprendizaje> getEvidenciaAprendizajeList() {
-        return evidenciaAprendizajeList;
-    }
-
-    public void setEvidenciaAprendizajeList(List<EvidenciaAprendizaje> evidenciaAprendizajeList) {
-        this.evidenciaAprendizajeList = evidenciaAprendizajeList;
     }
 
     @Override

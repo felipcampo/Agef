@@ -7,7 +7,6 @@ package jpa.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -46,7 +45,7 @@ public class SedeCentro implements Serializable {
     private Short idSedeCentro;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 45)
+    @Size(min = 1, max = 60)
     @Column(name = "nom_sede_centro")
     private String nomSedeCentro;
     @Size(max = 150)
@@ -65,8 +64,6 @@ public class SedeCentro implements Serializable {
     @Size(min = 1, max = 10)
     @Column(name = "id_ciudad")
     private String idCiudad;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSedeCentro")
-    private List<FichaCaracterizacion> fichaCaracterizacionList;
     @OneToMany(mappedBy = "idSedeCentro")
     private List<SeguimientoProyecto> seguimientoProyectoList;
 
@@ -130,15 +127,6 @@ public class SedeCentro implements Serializable {
 
     public void setIdCiudad(String idCiudad) {
         this.idCiudad = idCiudad;
-    }
-
-    @XmlTransient
-    public List<FichaCaracterizacion> getFichaCaracterizacionList() {
-        return fichaCaracterizacionList;
-    }
-
-    public void setFichaCaracterizacionList(List<FichaCaracterizacion> fichaCaracterizacionList) {
-        this.fichaCaracterizacionList = fichaCaracterizacionList;
     }
 
     @XmlTransient

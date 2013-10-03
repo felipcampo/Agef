@@ -7,10 +7,18 @@
       xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
+
         <ui:define name="title">
             <h:outputText value="#{bundle.CreateAlistamientoTitle}"></h:outputText>
         </ui:define>
+
         <ui:define name="body">
+            
+            <div id="Layouttituloalistamiento">
+                <center>
+                    Crear Alistamiento
+                </center>
+            </div>
             <p:growl id="msgs" showDetail="false" sticky="false"/>
             <h:form id="formAlistamiento">
                 <div id="form" align="center">
@@ -55,8 +63,9 @@
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateAlistamientoLabel_idGuiaAprendizaje}" for="idGuiaAprendizaje" />
                             </p:column>
+
                             <p:column colspan="3">
-                                <p:commandButton id="idGuiaAprendizaje" value="Guia Aprendizaje" oncomplete="dlg.show();" process="@none"/>                          
+                                <p:commandButton id="idGuiaAprendizaje" value="Guia Aprendizaje"  oncomplete="dlg.show();" process="@none"/>                          
                             </p:column>
 
 
@@ -65,21 +74,18 @@
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateAlistamientoLabel_idEvaluacionSeguimiento}" for="idEvaluacionSeguimiento" />
                             </p:column>
-                            <p:column style="border-right: white">    
-                                <p:selectOneMenu id="idEvaluacionSeguimiento" value="#{alistamientoController.selected.idEvaluacionSeguimiento}" >
-                                    <f:selectItems value="#{evaluacionSeguimientoController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
+
+                            <p:column colspan="3">
+                                <p:commandButton id="idEvaluacionSeguimiento" value="Evaluacion y Seguimiento"  oncomplete="dlg2.show();" process="@none"/>                          
                             </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idEvaluacionSeguimiento"/>
-                            </p:column>
+
                         </p:row>
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateAlistamientoLabel_idPlaneacionPedagogica}" for="idPlaneacionPedagogica" />
                             </p:column>
                             <p:column colspan="3">
-                                <p:commandButton id="idPlaneacionPedagogica" value="planeacion" oncomplete="dlgo.show();" process="@none"/>                          
+                                <p:commandButton id="idPlaneacionPedagogica" value="planeacion" oncomplete="dlg3.show();" process="@none"/>                          
                             </p:column>
 
 
@@ -88,53 +94,40 @@
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateAlistamientoLabel_idProgramacionProyecto}" for="idProgramacionProyecto" />
                             </p:column>
-                            <p:column style="border-right: white">    
-                                <p:selectOneMenu id="idProgramacionProyecto" value="#{alistamientoController.selected.idProgramacionProyecto}" >
-                                    <f:selectItems value="#{programacionProyectoController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
+                            <p:column colspan="3">
+                                <p:commandButton id="idProgramacionProyecto" value="programacion Proyecto" oncomplete="dlg4.show();" process="@none"/>                          
                             </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idProgramacionProyecto"/>
-                            </p:column>
+
                         </p:row>
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateAlistamientoLabel_idVerificacionAmbienteTitulado}" for="idVerificacionAmbienteTitulado" />
                             </p:column>
-                            <p:column style="border-right: white">    
-                                <p:selectOneMenu id="idVerificacionAmbienteTitulado" value="#{alistamientoController.selected.idVerificacionAmbienteTitulado}" >
-                                    <f:selectItems value="#{verificacionAmbienteTituladoController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
+                            <p:column colspan="3">
+                                <p:commandButton id="idVerificacionAmbienteTitulado" value="Verificacion Ambiente " oncomplete="dlg5.show();" process="@none"/>                          
                             </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idVerificacionAmbienteTitulado"/>
-                            </p:column>
+
                         </p:row>
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateAlistamientoLabel_idFichaCaracterizacion}" for="idFichaCaracterizacion" />
                             </p:column>
-                            <p:column style="border-right: white">    
+                            <p:column colspan="3">    
                                 <p:selectOneMenu id="idFichaCaracterizacion" value="#{alistamientoController.selected.idFichaCaracterizacion}" required="true" requiredMessage="#{bundle.CreateAlistamientoRequiredMessage_idFichaCaracterizacion}">
                                     <f:selectItems value="#{fichaCaracterizacionController.itemsAvailableSelectOne}"/>
                                 </p:selectOneMenu>
                             </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idFichaCaracterizacion"/>
-                            </p:column>
+
                         </p:row>
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateAlistamientoLabel_idActividadProyecto}" for="idActividadProyecto" />
                             </p:column>
-                            <p:column style="border-right: white">    
-                                <p:selectOneMenu id="idActividadProyecto" value="#{alistamientoController.selected.idActividadProyecto}" required="true" requiredMessage="#{bundle.CreateAlistamientoRequiredMessage_idActividadProyecto}">
-                                    <f:selectItems value="#{actividadProyectoController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
+
+                            <p:column colspan="3">
+                                <p:commandButton id="idActividadProyecto" value="Actividades Proyectos"  oncomplete="dlg6.show();" process="@none"/>                          
                             </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idActividadProyecto"/>
-                            </p:column>
+
                         </p:row>
                         <p:row>
                             <p:column>
@@ -189,23 +182,38 @@
                     </p:panelGrid>
                     <br />
                     <br />
-
-                    <p:dialog  id="dialog"   closeOnEscape="true" header="#{bundle.CreateGuiaAprendizajeTitle}" widgetVar="dlg" minHeight="300" minWidth="450" 
-                               resizable="true" modal="false" showEffect="clip" hideEffect="clip">
-                        <ui:include src="../guiaAprendizaje/Create.xhtml" />
-                    </p:dialog>
-                    <p:dialog  id="dialog2"   closeOnEscape="true" header="#{bundle.CreatePlaneacionPedagogicaTitle}" widgetVar="dlgo" minHeight="300" minWidth="450" 
-                               resizable="true" modal="false" showEffect="clip" hideEffect="clip">
-                        <ui:include src="../guiaAprendizaje/Create.xhtml" />
-                    </p:dialog>
-
-
-
-                    <br />
                     <p:commandButton ajax="false" action="#{alistamientoController.prepareList}" value="#{bundle.CreateAlistamientoShowAllLink}" immediate="true"/>
                 </div>
             </h:form>
         </ui:define>
+        <ui:define name="dialogs">
+            <p:dialog  id="dialog1"   closeOnEscape="true" header="#{bundle.CreateGuiaAprendizajeTitle}" widgetVar="dlg" minHeight="300" minWidth="450" 
+                       resizable="true" modal="true" showEffect="clip" hideEffect="clip">
+                <ui:include src="../guiaAprendizaje/Create.xhtml" />
+            </p:dialog>    
+            <p:dialog  id="dialog2"   closeOnEscape="true" header="#{bundle.CreatePlaneacionPedagogicaTitle}" widgetVar="dlg3" minHeight="300" minWidth="450" 
+                       resizable="true" modal="true" showEffect="clip" hideEffect="clip">
+                <ui:include src="../planeacionPedagogica/Create.xhtml" />
+            </p:dialog> 
+            <p:dialog  id="dialogo"   closeOnEscape="true" header="#{bundle.CreateEvaluacionSeguimientoTitle}" widgetVar="dlg2" minHeight="300" minWidth="450" 
+                       resizable="true" modal="true" showEffect="clip" hideEffect="clip">
+                <ui:include src="/Seguimiento_Evaluacion_Aprendices/evaluacionSeguimiento/Create.xhtml" />
+            </p:dialog> 
+            <p:dialog  id="dialog4"   closeOnEscape="true" header="#{bundle.CreateProgramacionProyectoTitle}" widgetVar="dlg4" minHeight="300" minWidth="450" 
+                       resizable="true" modal="true" showEffect="clip" hideEffect="clip">
+                <ui:include src="../programacionProyecto/Create.xhtml" />
+            </p:dialog> 
+            <p:dialog  id="dialog5"   closeOnEscape="true" header="#{bundle.CreateVerificacionAmbienteTituladoTitle}" widgetVar="dlg5" minHeight="300" minWidth="450" 
+                       resizable="true" modal="true" showEffect="clip" hideEffect="clip">
+                <ui:include src="../verificacionAmbienteTitulado/Create.xhtml" />
+            </p:dialog> 
+            <p:dialog  id="dialog6"   closeOnEscape="true" header="#{bundle.CreateActividadProyectoTitle}" widgetVar="dlg6" minHeight="300" minWidth="450" 
+                       resizable="true" modal="true" showEffect="clip" hideEffect="clip">
+                <ui:include src="../actividadProyecto/Create.xhtml" />
+            </p:dialog> 
+
+        </ui:define>
+
     </ui:composition>
 
 </html>

@@ -51,17 +51,24 @@ public class CriterioEvaluacion implements Serializable {
     @Column(name = "nom_criterio")
     private String nomCriterio;
     @ManyToMany(mappedBy = "criterioEvaluacionList")
-    private List<ActividadProyecto> actividadProyectoList;
-    @ManyToMany(mappedBy = "criterioEvaluacionList")
     private List<EvidenciaAprendizaje> evidenciaAprendizajeList;
+    @ManyToMany(mappedBy = "criterioEvaluacionList")
+    private List<ActividadProyecto> actividadProyectoList;
+    @ManyToMany(mappedBy = "criterioEvaluacionList1")
+    private List<EvidenciaAprendizaje> evidenciaAprendizajeList1;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCriterioEvaluacion")
     private List<CriterioSeguimientoInstructor> criterioSeguimientoInstructorList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCriterioEvaluacion")
     private List<PlaneacionClase> planeacionClaseList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCriterioEvaluacion")
-    private List<EvidenciaAprendizaje> evidenciaAprendizajeList1;
+    private List<SeguimientoInstructor> seguimientoInstructorList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCriterioEvaluacion")
+    private List<EvidenciaAprendizaje> evidenciaAprendizajeList2;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCriterioEvaluacion")
     private List<CriterioSeguimientoProyecto> criterioSeguimientoProyectoList;
+    @JoinColumn(name = "id_resultado_aprendizaje", referencedColumnName = "id_resultado_aprendizaje")
+    @ManyToOne
+    private ResultadoAprendizaje idResultadoAprendizaje;
     @JoinColumn(name = "id_factor_productiva", referencedColumnName = "id_factor_productiva")
     @ManyToOne
     private FactorProductiva idFactorProductiva;
@@ -106,6 +113,15 @@ public class CriterioEvaluacion implements Serializable {
     }
 
     @XmlTransient
+    public List<EvidenciaAprendizaje> getEvidenciaAprendizajeList() {
+        return evidenciaAprendizajeList;
+    }
+
+    public void setEvidenciaAprendizajeList(List<EvidenciaAprendizaje> evidenciaAprendizajeList) {
+        this.evidenciaAprendizajeList = evidenciaAprendizajeList;
+    }
+
+    @XmlTransient
     public List<ActividadProyecto> getActividadProyectoList() {
         return actividadProyectoList;
     }
@@ -115,12 +131,12 @@ public class CriterioEvaluacion implements Serializable {
     }
 
     @XmlTransient
-    public List<EvidenciaAprendizaje> getEvidenciaAprendizajeList() {
-        return evidenciaAprendizajeList;
+    public List<EvidenciaAprendizaje> getEvidenciaAprendizajeList1() {
+        return evidenciaAprendizajeList1;
     }
 
-    public void setEvidenciaAprendizajeList(List<EvidenciaAprendizaje> evidenciaAprendizajeList) {
-        this.evidenciaAprendizajeList = evidenciaAprendizajeList;
+    public void setEvidenciaAprendizajeList1(List<EvidenciaAprendizaje> evidenciaAprendizajeList1) {
+        this.evidenciaAprendizajeList1 = evidenciaAprendizajeList1;
     }
 
     @XmlTransient
@@ -142,12 +158,21 @@ public class CriterioEvaluacion implements Serializable {
     }
 
     @XmlTransient
-    public List<EvidenciaAprendizaje> getEvidenciaAprendizajeList1() {
-        return evidenciaAprendizajeList1;
+    public List<SeguimientoInstructor> getSeguimientoInstructorList() {
+        return seguimientoInstructorList;
     }
 
-    public void setEvidenciaAprendizajeList1(List<EvidenciaAprendizaje> evidenciaAprendizajeList1) {
-        this.evidenciaAprendizajeList1 = evidenciaAprendizajeList1;
+    public void setSeguimientoInstructorList(List<SeguimientoInstructor> seguimientoInstructorList) {
+        this.seguimientoInstructorList = seguimientoInstructorList;
+    }
+
+    @XmlTransient
+    public List<EvidenciaAprendizaje> getEvidenciaAprendizajeList2() {
+        return evidenciaAprendizajeList2;
+    }
+
+    public void setEvidenciaAprendizajeList2(List<EvidenciaAprendizaje> evidenciaAprendizajeList2) {
+        this.evidenciaAprendizajeList2 = evidenciaAprendizajeList2;
     }
 
     @XmlTransient
@@ -157,6 +182,14 @@ public class CriterioEvaluacion implements Serializable {
 
     public void setCriterioSeguimientoProyectoList(List<CriterioSeguimientoProyecto> criterioSeguimientoProyectoList) {
         this.criterioSeguimientoProyectoList = criterioSeguimientoProyectoList;
+    }
+
+    public ResultadoAprendizaje getIdResultadoAprendizaje() {
+        return idResultadoAprendizaje;
+    }
+
+    public void setIdResultadoAprendizaje(ResultadoAprendizaje idResultadoAprendizaje) {
+        this.idResultadoAprendizaje = idResultadoAprendizaje;
     }
 
     public FactorProductiva getIdFactorProductiva() {

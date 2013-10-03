@@ -7,12 +7,10 @@
       xmlns:p="http://primefaces.org/ui">
 
     <ui:composition>
-       
-            <p:growl id="msgs" showDetail="false" sticky="false"/>
-            <h:form id="formPlaneacionPedagogica">
+        <p:scrollPanel style="width:500px;height:600px" mode="native">
+       <h:form id="formPlaneacionPedagogica">
                 <div id="form" align="center">
                     <p:panelGrid>
-                                              
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreatePlaneacionPedagogicaLabel_idPlaneacionPedagogica}" for="idPlaneacionPedagogica" />
@@ -183,7 +181,7 @@
                     <p:commandButton ajax="false" action="#{planeacionPedagogicaController.prepareList}" value="#{bundle.CreatePlaneacionPedagogicaShowAllLink}" immediate="true"/>
                 </div>
             </h:form>
-        
+        </p:scrollPanel>
     </ui:composition>
 
 </html>

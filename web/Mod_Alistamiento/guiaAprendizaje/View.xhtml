@@ -18,6 +18,22 @@
                         <f:facet name="header">
                             <p:row><p:column>#{bundle.ViewGuiaAprendizajeTitle}</p:column></p:row>                            
                         </f:facet>
+                        <h:outputLabel value="#{bundle.CreateProgramaLabel_nomPrg}" />
+                        <h:outputText id="nomPrg" value="#{guiaAprendizajeController.selected.idFichaCaracterizacion.idPrograma.nomPrg}" title="#{bundle.CreateProgramaTitle_nomPrg}"/>
+                        <h:outputLabel value="#{bundle.CreateProgramaLabel_version}" for="version" />
+                        <h:outputText id="version" value="#{guiaAprendizajeController.selected.idFichaCaracterizacion.idPrograma.version}" title="#{bundle.CreateProgramaTitle_nomPrg}"/>
+                        <h:outputLabel value="#{bundle.CreateProyectoFormativoLabel_nombreProyecto}" for="nombreProyecto" />
+                        <h:outputText value="#{guiaAprendizajeController.selected.idFichaCaracterizacion.idProyectoFormativo.nombreProyecto}" title="#{bundle.CreateProgramaTitle_nomPrg}"/>
+                        <h:outputLabel value="#{bundle.CreateFaseProyectoLabel_descrNomFasPro}" for="descrNomFasPro" />
+                        <h:outputText value="#{guiaAprendizajeController.selected.idFichaCaracterizacion.idProyectoFormativo.idActividadProyecto.idFaseProyecto.descrNomFasPro}" title="#{bundle.CreateProgramaTitle_nomPrg}"/>
+                        <h:outputLabel value="#{bundle.CreateActividadProyectoLabel_descrActividadProyecto}" for="descrActividadProyecto" />
+                        <h:outputText value="#{guiaAprendizajeController.selected.idFichaCaracterizacion.idProyectoFormativo.idActividadProyecto.descrActividadProyecto}" title="#{bundle.CreateProgramaTitle_nomPrg}"/>
+                        <h:outputLabel value="EVIDENCIAS DE APRENDIZAJE" for="descrEviApr" />
+                        <h:outputText value="#{guiaAprendizajeController.selected.idFichaCaracterizacion.idProyectoFormativo.idResultadoAprendizaje}" title="#{bundle.CreateProgramaTitle_nomPrg}"/>
+                        <h:outputLabel value="CRITERIOS DE EVALUACION" for="idCriterioEvaluacion" />
+                        <h:outputText value="#{guiaAprendizajeController.selected.idFichaCaracterizacion.idProyectoFormativo.idActividadProyecto.idActividadProyecto}" title="#{bundle.CreateProgramaTitle_nomPrg}"/>
+
+
                         <h:outputText value="#{bundle.ViewGuiaAprendizajeLabel_idGuiaAprendizaje}"/>
                         <h:outputText value="#{guiaAprendizajeController.selected.idGuiaAprendizaje}" title="#{bundle.ViewGuiaAprendizajeTitle_idGuiaAprendizaje}"/>
                         <h:outputText value="#{bundle.ViewGuiaAprendizajeLabel_introduccionGuia}"/>

@@ -153,12 +153,13 @@
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateEvaluacionSeguimientoLabel_tipo}" for="tipo" />
                             </p:column>
+                            <p:column>
                             <p:selectManyCheckbox id="tipo" value="#{evaluacionSeguimientoController.selected.tipo}" required="true" requiredMessage="#{bundle.CreateEvaluacionSeguimientoRequiredMessage_tipo}">  
             <f:selectItem itemLabel="Conocimiento" itemValue="Conocimiento" />  
             <f:selectItem itemLabel="Desempeño" itemValue="Desempeño" />  
             <f:selectItem itemLabel="Producto" itemValue="Producto" />  
         </p:selectManyCheckbox>  
-                            
+                        </p:column>    
                         </p:row>
                         <p:row>
                             <p:column>

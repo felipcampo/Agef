@@ -8,7 +8,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -73,7 +72,7 @@ public class ContratoProyecto implements Serializable {
     @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
     @ManyToOne(optional = false)
     private Empresa idEmpresa;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idContratoProyecto")
+    @OneToMany(mappedBy = "idContratoProyecto")
     private List<ModalidadProductiva> modalidadProductivaList;
 
     public ContratoProyecto() {

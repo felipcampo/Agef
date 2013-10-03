@@ -76,6 +76,12 @@ public class SeguimientoInstructor implements Serializable {
     private String nomIns;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSeguimientoInstructor")
     private List<CriterioSeguimientoInstructor> criterioSeguimientoInstructorList;
+    @JoinColumn(name = "id_plan_mejoramiento", referencedColumnName = "id_plan_mejoramiento")
+    @ManyToOne(optional = false)
+    private PlanMejoramiento idPlanMejoramiento;
+    @JoinColumn(name = "id_criterio_evaluacion", referencedColumnName = "id_criterio_evaluacion")
+    @ManyToOne(optional = false)
+    private CriterioEvaluacion idCriterioEvaluacion;
     @JoinColumn(name = "id_praxis_pedagogica", referencedColumnName = "id_praxis_pedagogica")
     @ManyToOne(optional = false)
     private PraxisPedagogica idPraxisPedagogica;
@@ -175,6 +181,22 @@ public class SeguimientoInstructor implements Serializable {
 
     public void setCriterioSeguimientoInstructorList(List<CriterioSeguimientoInstructor> criterioSeguimientoInstructorList) {
         this.criterioSeguimientoInstructorList = criterioSeguimientoInstructorList;
+    }
+
+    public PlanMejoramiento getIdPlanMejoramiento() {
+        return idPlanMejoramiento;
+    }
+
+    public void setIdPlanMejoramiento(PlanMejoramiento idPlanMejoramiento) {
+        this.idPlanMejoramiento = idPlanMejoramiento;
+    }
+
+    public CriterioEvaluacion getIdCriterioEvaluacion() {
+        return idCriterioEvaluacion;
+    }
+
+    public void setIdCriterioEvaluacion(CriterioEvaluacion idCriterioEvaluacion) {
+        this.idCriterioEvaluacion = idCriterioEvaluacion;
     }
 
     public PraxisPedagogica getIdPraxisPedagogica() {

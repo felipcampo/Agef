@@ -10,6 +10,16 @@
         <ui:define name="title">
             <h:outputText value="#{bundle.ListEvaluacionCriterioSeguimientoProyectoTitle}"></h:outputText>
         </ui:define>
+          <ui:define name="menumodulo">
+             <div id="Layoutmenu">
+                <p:menubar  style="float: right">
+                        <p:menuitem url="../inicio_proyectos.xhtml" value="Inicio" />
+                        <p:menuitem url="../seguimientoProyecto/Create.xhtml" value="Programar fechas de Seguimiento" />
+                        <p:menuitem url="../seguimientoProyecto/Edit.xhtml" value="Realizar Seguimiento a proyecto" />
+                </p:menubar>
+             
+            </div>
+        </ui:define>
         <ui:define name="body">
             
                   <div id="Layout_Titulo_Formulario_Agef"> <h2>SEGUIMIENTO A PROYECTOS</h2></div>

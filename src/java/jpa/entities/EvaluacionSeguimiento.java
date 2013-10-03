@@ -45,7 +45,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "EvaluacionSeguimiento.findByFecRecEvi", query = "SELECT e FROM EvaluacionSeguimiento e WHERE e.fecRecEvi = :fecRecEvi"),
     @NamedQuery(name = "EvaluacionSeguimiento.findByMedio", query = "SELECT e FROM EvaluacionSeguimiento e WHERE e.medio = :medio"),
     @NamedQuery(name = "EvaluacionSeguimiento.findByPertinencia", query = "SELECT e FROM EvaluacionSeguimiento e WHERE e.pertinencia = :pertinencia"),
-    @NamedQuery(name = "EvaluacionSeguimiento.findByTipo", query = "SELECT e FROM EvaluacionSeguimiento e WHERE e.tipo = :tipo"),
     @NamedQuery(name = "EvaluacionSeguimiento.findByVigencia", query = "SELECT e FROM EvaluacionSeguimiento e WHERE e.vigencia = :vigencia")})
 public class EvaluacionSeguimiento implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -102,13 +101,14 @@ public class EvaluacionSeguimiento implements Serializable {
     private boolean pertinencia;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "tipo")
-    private String tipo;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "vigencia")
     private boolean vigencia;
+    @JoinColumn(name = "id_medios", referencedColumnName = "id_medios")
+    @ManyToOne(optional = false)
+    private Medios idMedios;
+    @JoinColumn(name = "id_guia_aprendizaje", referencedColumnName = "id_guia_aprendizaje")
+    @ManyToOne(optional = false)
+    private GuiaAprendizaje idGuiaAprendizaje;
     @JoinColumn(name = "id_resultado_aprendizaje", referencedColumnName = "id_resultado_aprendizaje")
     @ManyToOne(optional = false)
     private ResultadoAprendizaje idResultadoAprendizaje;
@@ -118,9 +118,6 @@ public class EvaluacionSeguimiento implements Serializable {
     @JoinColumn(name = "id_ficha_caracterizacion", referencedColumnName = "id_ficha_caracterizacion")
     @ManyToOne(optional = false)
     private FichaCaracterizacion idFichaCaracterizacion;
-    @JoinColumn(name = "id_actividad_proyecto", referencedColumnName = "id_actividad_proyecto")
-    @ManyToOne(optional = false)
-    private ActividadProyecto idActividadProyecto;
     @JoinColumn(name = "id_usuario1", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false)
     private Usuario idUsuario1;
@@ -137,7 +134,7 @@ public class EvaluacionSeguimiento implements Serializable {
         this.idEvaluacionSeguimiento = idEvaluacionSeguimiento;
     }
 
-    public EvaluacionSeguimiento(Integer idEvaluacionSeguimiento, boolean aprendizaje, boolean autenticidad, boolean calidad, String carApr, Date fecIni, Date fecFin, Date fecRecEvi, String medio, boolean pertinencia, String tipo, boolean vigencia) {
+    public EvaluacionSeguimiento(Integer idEvaluacionSeguimiento, boolean aprendizaje, boolean autenticidad, boolean calidad, String carApr, Date fecIni, Date fecFin, Date fecRecEvi, String medio, boolean pertinencia, boolean vigencia) {
         this.idEvaluacionSeguimiento = idEvaluacionSeguimiento;
         this.aprendizaje = aprendizaje;
         this.autenticidad = autenticidad;
@@ -148,7 +145,6 @@ public class EvaluacionSeguimiento implements Serializable {
         this.fecRecEvi = fecRecEvi;
         this.medio = medio;
         this.pertinencia = pertinencia;
-        this.tipo = tipo;
         this.vigencia = vigencia;
     }
 
@@ -240,20 +236,28 @@ public class EvaluacionSeguimiento implements Serializable {
         this.pertinencia = pertinencia;
     }
 
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
     public boolean getVigencia() {
         return vigencia;
     }
 
     public void setVigencia(boolean vigencia) {
         this.vigencia = vigencia;
+    }
+
+    public Medios getIdMedios() {
+        return idMedios;
+    }
+
+    public void setIdMedios(Medios idMedios) {
+        this.idMedios = idMedios;
+    }
+
+    public GuiaAprendizaje getIdGuiaAprendizaje() {
+        return idGuiaAprendizaje;
+    }
+
+    public void setIdGuiaAprendizaje(GuiaAprendizaje idGuiaAprendizaje) {
+        this.idGuiaAprendizaje = idGuiaAprendizaje;
     }
 
     public ResultadoAprendizaje getIdResultadoAprendizaje() {
@@ -278,14 +282,6 @@ public class EvaluacionSeguimiento implements Serializable {
 
     public void setIdFichaCaracterizacion(FichaCaracterizacion idFichaCaracterizacion) {
         this.idFichaCaracterizacion = idFichaCaracterizacion;
-    }
-
-    public ActividadProyecto getIdActividadProyecto() {
-        return idActividadProyecto;
-    }
-
-    public void setIdActividadProyecto(ActividadProyecto idActividadProyecto) {
-        this.idActividadProyecto = idActividadProyecto;
     }
 
     public Usuario getIdUsuario1() {

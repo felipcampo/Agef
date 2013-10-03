@@ -71,10 +71,13 @@ public class Empresa implements Serializable {
     private String wwwEmp;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpresa")
     private List<ContratoProyecto> contratoProyectoList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpresa")
+    @OneToMany(mappedBy = "idEmpresa")
     private List<PlanMejoramiento> planMejoramientoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpresa")
     private List<SeguimientoProductiva> seguimientoProductivaList;
+    @JoinColumn(name = "id_ciudad", referencedColumnName = "id_ciudad")
+    @ManyToOne(optional = false)
+    private Ciudad idCiudad;
     @JoinColumn(name = "id_zona_empresa", referencedColumnName = "id_zona_empresa")
     @ManyToOne(optional = false)
     private ZonaEmpresa idZonaEmpresa;
@@ -175,6 +178,14 @@ public class Empresa implements Serializable {
 
     public void setSeguimientoProductivaList(List<SeguimientoProductiva> seguimientoProductivaList) {
         this.seguimientoProductivaList = seguimientoProductivaList;
+    }
+
+    public Ciudad getIdCiudad() {
+        return idCiudad;
+    }
+
+    public void setIdCiudad(Ciudad idCiudad) {
+        this.idCiudad = idCiudad;
     }
 
     public ZonaEmpresa getIdZonaEmpresa() {

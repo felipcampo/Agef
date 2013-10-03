@@ -74,8 +74,14 @@
                     <p:commandButton ajax="false" action="#{criterioEvaluacionController.prepareCreate}" value="#{bundle.ListCriterioEvaluacionCreateLink}" icon="ui-icon-document"/>
                 </div>        
             </h:form>
-                    
+               <div id="Layout_Info_Agef">
+                <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
+                    
+       
         <ui:define name="dialogs">
             <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  
                              header="#{bundle.DeleteItemMessage}" severity="alert" widgetVar="confirmationDelete">  

@@ -47,10 +47,8 @@ public class SeguimientoProductiva implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_seguimiento_productiva")
     private Integer idSeguimientoProductiva;
-    @Basic(optional = false)
-    @NotNull
     @Lob
-    @Size(min = 1, max = 2147483647)
+    @Size(max = 2147483647)
     @Column(name = "esp_rec")
     private String espRec;
     @Basic(optional = false)
@@ -81,10 +79,10 @@ public class SeguimientoProductiva implements Serializable {
     @Column(name = "tipo_informe")
     private String tipoInforme;
     @JoinColumn(name = "id_incidente_productiva", referencedColumnName = "id_incidente_productiva")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private IncidenteProductiva idIncidenteProductiva;
     @JoinColumn(name = "id_visita_etapa_productiva", referencedColumnName = "id_visita_etapa_productiva")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private VisitaEtapaProductiva idVisitaEtapaProductiva;
     @JoinColumn(name = "id_ficha_caracterizacion", referencedColumnName = "id_ficha_caracterizacion")
     @ManyToOne(optional = false)
@@ -112,9 +110,8 @@ public class SeguimientoProductiva implements Serializable {
         this.idSeguimientoProductiva = idSeguimientoProductiva;
     }
 
-    public SeguimientoProductiva(Integer idSeguimientoProductiva, String espRec, Date fecRepFin, Date fecRepIni, boolean juicioEva, boolean reconocimentoEspeciales, boolean requierePlanMejoramiento, String tipoInforme) {
+    public SeguimientoProductiva(Integer idSeguimientoProductiva, Date fecRepFin, Date fecRepIni, boolean juicioEva, boolean reconocimentoEspeciales, boolean requierePlanMejoramiento, String tipoInforme) {
         this.idSeguimientoProductiva = idSeguimientoProductiva;
-        this.espRec = espRec;
         this.fecRepFin = fecRepFin;
         this.fecRepIni = fecRepIni;
         this.juicioEva = juicioEva;
