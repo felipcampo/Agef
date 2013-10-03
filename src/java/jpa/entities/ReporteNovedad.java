@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADSI
+ * @author MAURICIO
  */
 @Entity
 @Table(name = "reporte_novedad")
@@ -103,18 +103,18 @@ public class ReporteNovedad implements Serializable {
     @Size(min = 1, max = 65535)
     @Column(name = "testigos_pruebas")
     private String testigosPruebas;
-    @JoinColumn(name = "id_desercion", referencedColumnName = "id_desercion")
-    @ManyToOne(optional = false)
-    private Desercion idDesercion;
-    @JoinColumn(name = "id_resultado_aprendizaje", referencedColumnName = "id_resultado_aprendizaje")
-    @ManyToOne(optional = false)
-    private ResultadoAprendizaje idResultadoAprendizaje;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false)
     private Usuario idUsuario;
+    @JoinColumn(name = "id_resultado_aprendizaje", referencedColumnName = "id_resultado_aprendizaje")
+    @ManyToOne(optional = false)
+    private ResultadoAprendizaje idResultadoAprendizaje;
     @JoinColumn(name = "id_ficha_caracterizacion", referencedColumnName = "id_ficha_caracterizacion")
     @ManyToOne(optional = false)
     private FichaCaracterizacion idFichaCaracterizacion;
+    @JoinColumn(name = "id_desercion", referencedColumnName = "id_desercion")
+    @ManyToOne(optional = false)
+    private Desercion idDesercion;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idReporteNovedad")
     private List<Comite> comiteList;
 
@@ -227,12 +227,12 @@ public class ReporteNovedad implements Serializable {
         this.testigosPruebas = testigosPruebas;
     }
 
-    public Desercion getIdDesercion() {
-        return idDesercion;
+    public Usuario getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setIdDesercion(Desercion idDesercion) {
-        this.idDesercion = idDesercion;
+    public void setIdUsuario(Usuario idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public ResultadoAprendizaje getIdResultadoAprendizaje() {
@@ -243,20 +243,20 @@ public class ReporteNovedad implements Serializable {
         this.idResultadoAprendizaje = idResultadoAprendizaje;
     }
 
-    public Usuario getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Usuario idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
     public FichaCaracterizacion getIdFichaCaracterizacion() {
         return idFichaCaracterizacion;
     }
 
     public void setIdFichaCaracterizacion(FichaCaracterizacion idFichaCaracterizacion) {
         this.idFichaCaracterizacion = idFichaCaracterizacion;
+    }
+
+    public Desercion getIdDesercion() {
+        return idDesercion;
+    }
+
+    public void setIdDesercion(Desercion idDesercion) {
+        this.idDesercion = idDesercion;
     }
 
     @XmlTransient

@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADSI
+ * @author MAURICIO
  */
 @Entity
 @Table(name = "actividad_proyecto")
@@ -63,7 +63,10 @@ public class ActividadProyecto implements Serializable {
         @JoinColumn(name = "id_proyecto_formativo", referencedColumnName = "id_proyecto_formativo")})
     @ManyToMany
     private List<ProyectoFormativo> proyectoFormativoList;
-    @ManyToMany(mappedBy = "actividadProyectoList")
+    @JoinTable(name = "competencia_actividad", joinColumns = {
+        @JoinColumn(name = "id_actividad_proyecto", referencedColumnName = "id_actividad_proyecto")}, inverseJoinColumns = {
+        @JoinColumn(name = "id_competencia", referencedColumnName = "id_competencia")})
+    @ManyToMany
     private List<Competencia> competenciaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idActividadProyecto")
     private List<ProgramacionProyecto> programacionProyectoList;

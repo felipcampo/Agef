@@ -11,12 +11,17 @@
             <h:outputText value="#{bundle.CreateDetalleRecursoTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+            <div id="Layout_Titulo_Formulario_Agef"> <h2> ALISTAMIENTO </h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen"> #{bundle.CreateDetalleRecursoTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br>
             <p:growl id="msgs" showDetail="false" sticky="false"/>
             <h:form id="formDetalleRecurso">
                 <div id="form" align="center">
                     <p:panelGrid>
                         <f:facet name="header">
-                            <p:row><p:column colspan="3">#{bundle.CreateDetalleRecursoTitle}</p:column></p:row>                            
+                            <p:row><p:column colspan="6"></p:column></p:row>                            
                         </f:facet>                        
                         <p:row>
                             <p:column>
@@ -28,9 +33,9 @@
                             <p:column style="border-left: white;">
                                 <p:message for="idDatalleRecurso"/>
                             </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
+                            
+                            
+                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateDetalleRecursoLabel_nombHerrEquiMate}" for="nombHerrEquiMate" />
                             </p:column>
                             <p:column style="border-right: white">    
@@ -39,7 +44,9 @@
                             <p:column style="border-left: white;">
                                 <p:message for="nombHerrEquiMate"/>
                             </p:column>
+                            
                         </p:row>
+                      
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateDetalleRecursoLabel_unidadMedida}" for="unidadMedida" />
@@ -50,8 +57,7 @@
                             <p:column style="border-left: white;">
                                 <p:message for="unidadMedida"/>
                             </p:column>
-                        </p:row>
-                        <p:row>
+                       
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateDetalleRecursoLabel_cantidad}" for="cantidad" />
                             </p:column>
@@ -72,8 +78,7 @@
                             <p:column style="border-left: white;">
                                 <p:message for="valorUnitario"/>
                             </p:column>
-                        </p:row>
-                        <p:row>
+                       
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateDetalleRecursoLabel_valorTotal}" for="valorTotal" />
                             </p:column>
@@ -94,8 +99,7 @@
                             <p:column style="border-left: white;">
                                 <p:message for="fuenteRecurso"/>
                             </p:column>
-                        </p:row>
-                        <p:row>
+                       
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateDetalleRecursoLabel_rubroProsupuestal}" for="rubroProsupuestal" />
                             </p:column>
@@ -116,6 +120,14 @@
                     <p:commandButton ajax="false" action="#{detalleRecursoController.prepareList}" value="#{bundle.CreateDetalleRecursoShowAllLink}" immediate="true"/>
                 </div>
             </h:form>
+            <br></br>
+                </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                 <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
     </ui:composition>
 

@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author ADSI
+ * @author MAURICIO
  */
 @Entity
 @Table(name = "comite")
@@ -58,19 +58,19 @@ public class Comite implements Serializable {
     private int numAct;
     @JoinColumn(name = "id_reporte_novedad", referencedColumnName = "id_reporte_novedad")
     @ManyToOne(optional = false)
-    private ReporteNovedad idReporteNovedad;
+    private Usuario idUsuario;
     @JoinColumn(name = "id_sancion", referencedColumnName = "id_sancion")
     @ManyToOne(optional = false)
     private Sancion idSancion;
+    @JoinColumn(name = "id_reporte_novedad", referencedColumnName = "id_reporte_novedad")
+    @ManyToOne(optional = false)
+    private ReporteNovedad idReporteNovedad;
     @JoinColumn(name = "id_ficha_caracterizacion", referencedColumnName = "id_ficha_caracterizacion")
     @ManyToOne(optional = false)
     private FichaCaracterizacion idFichaCaracterizacion;
     @JoinColumn(name = "id_falta", referencedColumnName = "id_falta")
     @ManyToOne(optional = false)
     private Falta idFalta;
-    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
-    @ManyToOne(optional = false)
-    private Usuario idUsuario;
 
     public Comite() {
     }
@@ -117,12 +117,12 @@ public class Comite implements Serializable {
         this.numAct = numAct;
     }
 
-    public ReporteNovedad getIdReporteNovedad() {
-        return idReporteNovedad;
+    public Usuario getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setIdReporteNovedad(ReporteNovedad idReporteNovedad) {
-        this.idReporteNovedad = idReporteNovedad;
+    public void setIdUsuario(Usuario idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public Sancion getIdSancion() {
@@ -131,6 +131,14 @@ public class Comite implements Serializable {
 
     public void setIdSancion(Sancion idSancion) {
         this.idSancion = idSancion;
+    }
+
+    public ReporteNovedad getIdReporteNovedad() {
+        return idReporteNovedad;
+    }
+
+    public void setIdReporteNovedad(ReporteNovedad idReporteNovedad) {
+        this.idReporteNovedad = idReporteNovedad;
     }
 
     public FichaCaracterizacion getIdFichaCaracterizacion() {
@@ -147,14 +155,6 @@ public class Comite implements Serializable {
 
     public void setIdFalta(Falta idFalta) {
         this.idFalta = idFalta;
-    }
-
-    public Usuario getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Usuario idUsuario) {
-        this.idUsuario = idUsuario;
     }
 
     @Override

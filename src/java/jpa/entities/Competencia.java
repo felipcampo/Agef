@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADSI
+ * @author MAURICIO
  */
 @Entity
 @Table(name = "competencia")
@@ -51,24 +51,24 @@ public class Competencia implements Serializable {
     @Size(min = 1, max = 65535)
     @Column(name = "nom_com")
     private String nomCom;
-    @ManyToMany(mappedBy = "competenciaList")
+    @JoinTable(name = "programa_competencia", joinColumns = {
+        @JoinColumn(name = "id_competencia", referencedColumnName = "id_competencia")}, inverseJoinColumns = {
+        @JoinColumn(name = "id_programa", referencedColumnName = "id_programa")})
+    @ManyToMany
     private List<Programa> programaList;
     @JoinTable(name = "competencia_resultado_aprendizaje", joinColumns = {
         @JoinColumn(name = "id_competencia", referencedColumnName = "id_competencia")}, inverseJoinColumns = {
         @JoinColumn(name = "id_resultado_aprendizaje", referencedColumnName = "id_resultado_aprendizaje")})
     @ManyToMany
     private List<ResultadoAprendizaje> resultadoAprendizajeList;
-    @JoinTable(name = "competencia_actividad", joinColumns = {
-        @JoinColumn(name = "id_competencia", referencedColumnName = "id_competencia")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_actividad_proyecto", referencedColumnName = "id_actividad_proyecto")})
-    @ManyToMany
+    @ManyToMany(mappedBy = "competenciaList")
     private List<ActividadProyecto> actividadProyectoList;
-    @JoinColumn(name = "id_actividad_proyecto", referencedColumnName = "id_actividad_proyecto")
-    @ManyToOne(optional = false)
-    private ActividadProyecto idActividadProyecto;
     @JoinColumn(name = "id_programa", referencedColumnName = "id_programa")
     @ManyToOne(optional = false)
     private Programa idPrograma;
+    @JoinColumn(name = "id_actividad_proyecto", referencedColumnName = "id_actividad_proyecto")
+    @ManyToOne(optional = false)
+    private ActividadProyecto idActividadProyecto;
 
     public Competencia() {
     }
@@ -134,20 +134,20 @@ public class Competencia implements Serializable {
         this.actividadProyectoList = actividadProyectoList;
     }
 
-    public ActividadProyecto getIdActividadProyecto() {
-        return idActividadProyecto;
-    }
-
-    public void setIdActividadProyecto(ActividadProyecto idActividadProyecto) {
-        this.idActividadProyecto = idActividadProyecto;
-    }
-
     public Programa getIdPrograma() {
         return idPrograma;
     }
 
     public void setIdPrograma(Programa idPrograma) {
         this.idPrograma = idPrograma;
+    }
+
+    public ActividadProyecto getIdActividadProyecto() {
+        return idActividadProyecto;
+    }
+
+    public void setIdActividadProyecto(ActividadProyecto idActividadProyecto) {
+        this.idActividadProyecto = idActividadProyecto;
     }
 
     @Override

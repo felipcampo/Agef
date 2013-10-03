@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADSI
+ * @author MAURICIO
  */
 @Entity
 @Table(name = "matriz_caracterizacion")
@@ -121,7 +121,10 @@ public class MatrizCaracterizacion implements Serializable {
     @Size(max = 65535)
     @Column(name = "justificacion_subsidio")
     private String justificacionSubsidio;
-    @ManyToMany(mappedBy = "matrizCaracterizacionList")
+    @JoinTable(name = "servicio_matriz", joinColumns = {
+        @JoinColumn(name = "id_matriz_caracterizacion", referencedColumnName = "id_matriz_caracterizacion")}, inverseJoinColumns = {
+        @JoinColumn(name = "id_servicio_vivienda", referencedColumnName = "id_servicio_vivienda")})
+    @ManyToMany
     private List<ServicioVivienda> servicioViviendaList;
     @JoinTable(name = "tipo_familia_matriz", joinColumns = {
         @JoinColumn(name = "id_matriz_caracterizacion", referencedColumnName = "id_matriz_caracterizacion")}, inverseJoinColumns = {
@@ -130,78 +133,78 @@ public class MatrizCaracterizacion implements Serializable {
     private List<TipoFamilia> tipoFamiliaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idMatrizCaracterizacion")
     private List<ControlCasoBieAprendiz> controlCasoBieAprendizList;
-    @JoinColumn(name = "id_cambio_residencia", referencedColumnName = "id_cambio_residencia")
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false)
-    private CambioResidencia idCambioResidencia;
-    @JoinColumn(name = "id_nivel_formacion", referencedColumnName = "id_nivel_formacion")
-    @ManyToOne(optional = false)
-    private NivelFormacion idNivelFormacion;
+    private Usuario idUsuario;
     @JoinColumn(name = "id_tipo_vivienda", referencedColumnName = "id_tipo_vivienda")
     @ManyToOne(optional = false)
     private TipoVivienda idTipoVivienda;
-    @JoinColumn(name = "id_contacto_emergencia", referencedColumnName = "id_contacto_emergencia")
-    @ManyToOne(optional = false)
-    private ContactoEmergencia idContactoEmergencia;
-    @JoinColumn(name = "id_nivel_alimentacion", referencedColumnName = "id_nivel_alimentacion")
-    @ManyToOne(optional = false)
-    private NivelAlimentacion idNivelAlimentacion;
-    @JoinColumn(name = "id_sisben", referencedColumnName = "id_sisben")
-    @ManyToOne
-    private Sisben idSisben;
     @JoinColumn(name = "id_tipo_sangre", referencedColumnName = "id_tipo_sangre")
     @ManyToOne(optional = false)
     private TipoSangre idTipoSangre;
-    @JoinColumn(name = "id_eps", referencedColumnName = "id_eps")
+    @JoinColumn(name = "id_sisben", referencedColumnName = "id_sisben")
     @ManyToOne
-    private Eps idEps;
+    private Sisben idSisben;
+    @JoinColumn(name = "id_programa_estado", referencedColumnName = "id_programa_estado")
+    @ManyToOne(optional = false)
+    private ProgramaEstado idProgramaEstado;
+    @JoinColumn(name = "id_ocupacion_jefe_hogar", referencedColumnName = "id_ocupacion_jefe_hogar")
+    @ManyToOne(optional = false)
+    private OcupacionJefeHogar idOcupacionJefeHogar;
+    @JoinColumn(name = "id_nivel_formacion", referencedColumnName = "id_nivel_formacion")
+    @ManyToOne(optional = false)
+    private NivelFormacion idNivelFormacion;
+    @JoinColumn(name = "id_nivel_conocimento_ingles", referencedColumnName = "id_nivel_conocimento")
+    @ManyToOne(optional = false)
+    private NivelConocimento idNivelConocimentoIngles;
+    @JoinColumn(name = "id_nivel_conocimento_informatica", referencedColumnName = "id_nivel_conocimento")
+    @ManyToOne(optional = false)
+    private NivelConocimento idNivelConocimentoInformatica;
+    @JoinColumn(name = "id_nivel_alimentacion", referencedColumnName = "id_nivel_alimentacion")
+    @ManyToOne(optional = false)
+    private NivelAlimentacion idNivelAlimentacion;
+    @JoinColumn(name = "id_motivo_inscripcion", referencedColumnName = "id_motivo_inscripcion")
+    @ManyToOne(optional = false)
+    private MotivoInscripcion idMotivoInscripcion;
     @JoinColumn(name = "id_medio_transporte", referencedColumnName = "id_medio_transporte")
     @ManyToOne(optional = false)
     private MedioTransporte idMedioTransporte;
     @JoinColumn(name = "id_actividad_academica", referencedColumnName = "id_actividad_academica")
     @ManyToOne(optional = false)
     private ActividadAcademica idActividadAcademica;
-    @JoinColumn(name = "id_escolaridad_aspirante", referencedColumnName = "id_escolaridad")
+    @JoinColumn(name = "id_cambio_residencia", referencedColumnName = "id_cambio_residencia")
     @ManyToOne(optional = false)
-    private Escolaridad idEscolaridadAspirante;
-    @JoinColumn(name = "id_motivo_inscripcion", referencedColumnName = "id_motivo_inscripcion")
-    @ManyToOne(optional = false)
-    private MotivoInscripcion idMotivoInscripcion;
-    @JoinColumn(name = "id_ficha_caracterizacion", referencedColumnName = "id_ficha_caracterizacion")
-    @ManyToOne(optional = false)
-    private FichaCaracterizacion idFichaCaracterizacion;
-    @JoinColumn(name = "id_programa_estado", referencedColumnName = "id_programa_estado")
-    @ManyToOne(optional = false)
-    private ProgramaEstado idProgramaEstado;
-    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
-    @ManyToOne(optional = false)
-    private Usuario idUsuario;
+    private CambioResidencia idCambioResidencia;
     @JoinColumn(name = "id_caracterizacion_poblacion", referencedColumnName = "id_caracterizacion_poblacion")
     @ManyToOne(optional = false)
     private CaracterizacionPoblacion idCaracterizacionPoblacion;
-    @JoinColumn(name = "id_jefe_hogar", referencedColumnName = "id_jefe_hogar")
+    @JoinColumn(name = "id_contacto_emergencia", referencedColumnName = "id_contacto_emergencia")
     @ManyToOne(optional = false)
-    private JefeHogar idJefeHogar;
-    @JoinColumn(name = "id_ocupacion_jefe_hogar", referencedColumnName = "id_ocupacion_jefe_hogar")
+    private ContactoEmergencia idContactoEmergencia;
+    @JoinColumn(name = "id_dependencia_economica", referencedColumnName = "id_dependencia_economica")
     @ManyToOne(optional = false)
-    private OcupacionJefeHogar idOcupacionJefeHogar;
-    @JoinColumn(name = "id_ingreso_mensual", referencedColumnName = "id_ingreso_mensual")
-    @ManyToOne(optional = false)
-    private IngresoMensual idIngresoMensual;
+    private DependenciaEconomica idDependenciaEconomica;
+    @JoinColumn(name = "id_eps", referencedColumnName = "id_eps")
+    @ManyToOne
+    private Eps idEps;
     @JoinColumn(name = "id_escolaridad_padre", referencedColumnName = "id_escolaridad")
     @ManyToOne
     private Escolaridad idEscolaridadPadre;
     @JoinColumn(name = "id_escolaridad_madre", referencedColumnName = "id_escolaridad")
     @ManyToOne
     private Escolaridad idEscolaridadMadre;
-    @JoinColumn(name = "id_dependencia_economica", referencedColumnName = "id_dependencia_economica")
+    @JoinColumn(name = "id_escolaridad_aspirante", referencedColumnName = "id_escolaridad")
     @ManyToOne(optional = false)
-    private DependenciaEconomica idDependenciaEconomica;
-    @JoinColumn(name = "id_nivel_conocimento_informatica", referencedColumnName = "id_nivel_conocimento")
+    private Escolaridad idEscolaridadAspirante;
+    @JoinColumn(name = "id_ficha_caracterizacion", referencedColumnName = "id_ficha_caracterizacion")
     @ManyToOne(optional = false)
-    private NivelConocimento idNivelConocimentoInformatica;
-    @JoinColumn(name = "id_nivel_conocimento_ingles", referencedColumnName = "id_nivel_conocimento")
+    private FichaCaracterizacion idFichaCaracterizacion;
+    @JoinColumn(name = "id_ingreso_mensual", referencedColumnName = "id_ingreso_mensual")
     @ManyToOne(optional = false)
-    private NivelConocimento idNivelConocimentoIngles;
+    private IngresoMensual idIngresoMensual;
+    @JoinColumn(name = "id_jefe_hogar", referencedColumnName = "id_jefe_hogar")
+    @ManyToOne(optional = false)
+    private JefeHogar idJefeHogar;
 
     public MatrizCaracterizacion() {
     }
@@ -397,20 +400,12 @@ public class MatrizCaracterizacion implements Serializable {
         this.controlCasoBieAprendizList = controlCasoBieAprendizList;
     }
 
-    public CambioResidencia getIdCambioResidencia() {
-        return idCambioResidencia;
+    public Usuario getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setIdCambioResidencia(CambioResidencia idCambioResidencia) {
-        this.idCambioResidencia = idCambioResidencia;
-    }
-
-    public NivelFormacion getIdNivelFormacion() {
-        return idNivelFormacion;
-    }
-
-    public void setIdNivelFormacion(NivelFormacion idNivelFormacion) {
-        this.idNivelFormacion = idNivelFormacion;
+    public void setIdUsuario(Usuario idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public TipoVivienda getIdTipoVivienda() {
@@ -421,20 +416,12 @@ public class MatrizCaracterizacion implements Serializable {
         this.idTipoVivienda = idTipoVivienda;
     }
 
-    public ContactoEmergencia getIdContactoEmergencia() {
-        return idContactoEmergencia;
+    public TipoSangre getIdTipoSangre() {
+        return idTipoSangre;
     }
 
-    public void setIdContactoEmergencia(ContactoEmergencia idContactoEmergencia) {
-        this.idContactoEmergencia = idContactoEmergencia;
-    }
-
-    public NivelAlimentacion getIdNivelAlimentacion() {
-        return idNivelAlimentacion;
-    }
-
-    public void setIdNivelAlimentacion(NivelAlimentacion idNivelAlimentacion) {
-        this.idNivelAlimentacion = idNivelAlimentacion;
+    public void setIdTipoSangre(TipoSangre idTipoSangre) {
+        this.idTipoSangre = idTipoSangre;
     }
 
     public Sisben getIdSisben() {
@@ -445,20 +432,60 @@ public class MatrizCaracterizacion implements Serializable {
         this.idSisben = idSisben;
     }
 
-    public TipoSangre getIdTipoSangre() {
-        return idTipoSangre;
+    public ProgramaEstado getIdProgramaEstado() {
+        return idProgramaEstado;
     }
 
-    public void setIdTipoSangre(TipoSangre idTipoSangre) {
-        this.idTipoSangre = idTipoSangre;
+    public void setIdProgramaEstado(ProgramaEstado idProgramaEstado) {
+        this.idProgramaEstado = idProgramaEstado;
     }
 
-    public Eps getIdEps() {
-        return idEps;
+    public OcupacionJefeHogar getIdOcupacionJefeHogar() {
+        return idOcupacionJefeHogar;
     }
 
-    public void setIdEps(Eps idEps) {
-        this.idEps = idEps;
+    public void setIdOcupacionJefeHogar(OcupacionJefeHogar idOcupacionJefeHogar) {
+        this.idOcupacionJefeHogar = idOcupacionJefeHogar;
+    }
+
+    public NivelFormacion getIdNivelFormacion() {
+        return idNivelFormacion;
+    }
+
+    public void setIdNivelFormacion(NivelFormacion idNivelFormacion) {
+        this.idNivelFormacion = idNivelFormacion;
+    }
+
+    public NivelConocimento getIdNivelConocimentoIngles() {
+        return idNivelConocimentoIngles;
+    }
+
+    public void setIdNivelConocimentoIngles(NivelConocimento idNivelConocimentoIngles) {
+        this.idNivelConocimentoIngles = idNivelConocimentoIngles;
+    }
+
+    public NivelConocimento getIdNivelConocimentoInformatica() {
+        return idNivelConocimentoInformatica;
+    }
+
+    public void setIdNivelConocimentoInformatica(NivelConocimento idNivelConocimentoInformatica) {
+        this.idNivelConocimentoInformatica = idNivelConocimentoInformatica;
+    }
+
+    public NivelAlimentacion getIdNivelAlimentacion() {
+        return idNivelAlimentacion;
+    }
+
+    public void setIdNivelAlimentacion(NivelAlimentacion idNivelAlimentacion) {
+        this.idNivelAlimentacion = idNivelAlimentacion;
+    }
+
+    public MotivoInscripcion getIdMotivoInscripcion() {
+        return idMotivoInscripcion;
+    }
+
+    public void setIdMotivoInscripcion(MotivoInscripcion idMotivoInscripcion) {
+        this.idMotivoInscripcion = idMotivoInscripcion;
     }
 
     public MedioTransporte getIdMedioTransporte() {
@@ -477,44 +504,12 @@ public class MatrizCaracterizacion implements Serializable {
         this.idActividadAcademica = idActividadAcademica;
     }
 
-    public Escolaridad getIdEscolaridadAspirante() {
-        return idEscolaridadAspirante;
+    public CambioResidencia getIdCambioResidencia() {
+        return idCambioResidencia;
     }
 
-    public void setIdEscolaridadAspirante(Escolaridad idEscolaridadAspirante) {
-        this.idEscolaridadAspirante = idEscolaridadAspirante;
-    }
-
-    public MotivoInscripcion getIdMotivoInscripcion() {
-        return idMotivoInscripcion;
-    }
-
-    public void setIdMotivoInscripcion(MotivoInscripcion idMotivoInscripcion) {
-        this.idMotivoInscripcion = idMotivoInscripcion;
-    }
-
-    public FichaCaracterizacion getIdFichaCaracterizacion() {
-        return idFichaCaracterizacion;
-    }
-
-    public void setIdFichaCaracterizacion(FichaCaracterizacion idFichaCaracterizacion) {
-        this.idFichaCaracterizacion = idFichaCaracterizacion;
-    }
-
-    public ProgramaEstado getIdProgramaEstado() {
-        return idProgramaEstado;
-    }
-
-    public void setIdProgramaEstado(ProgramaEstado idProgramaEstado) {
-        this.idProgramaEstado = idProgramaEstado;
-    }
-
-    public Usuario getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Usuario idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setIdCambioResidencia(CambioResidencia idCambioResidencia) {
+        this.idCambioResidencia = idCambioResidencia;
     }
 
     public CaracterizacionPoblacion getIdCaracterizacionPoblacion() {
@@ -525,28 +520,28 @@ public class MatrizCaracterizacion implements Serializable {
         this.idCaracterizacionPoblacion = idCaracterizacionPoblacion;
     }
 
-    public JefeHogar getIdJefeHogar() {
-        return idJefeHogar;
+    public ContactoEmergencia getIdContactoEmergencia() {
+        return idContactoEmergencia;
     }
 
-    public void setIdJefeHogar(JefeHogar idJefeHogar) {
-        this.idJefeHogar = idJefeHogar;
+    public void setIdContactoEmergencia(ContactoEmergencia idContactoEmergencia) {
+        this.idContactoEmergencia = idContactoEmergencia;
     }
 
-    public OcupacionJefeHogar getIdOcupacionJefeHogar() {
-        return idOcupacionJefeHogar;
+    public DependenciaEconomica getIdDependenciaEconomica() {
+        return idDependenciaEconomica;
     }
 
-    public void setIdOcupacionJefeHogar(OcupacionJefeHogar idOcupacionJefeHogar) {
-        this.idOcupacionJefeHogar = idOcupacionJefeHogar;
+    public void setIdDependenciaEconomica(DependenciaEconomica idDependenciaEconomica) {
+        this.idDependenciaEconomica = idDependenciaEconomica;
     }
 
-    public IngresoMensual getIdIngresoMensual() {
-        return idIngresoMensual;
+    public Eps getIdEps() {
+        return idEps;
     }
 
-    public void setIdIngresoMensual(IngresoMensual idIngresoMensual) {
-        this.idIngresoMensual = idIngresoMensual;
+    public void setIdEps(Eps idEps) {
+        this.idEps = idEps;
     }
 
     public Escolaridad getIdEscolaridadPadre() {
@@ -565,28 +560,36 @@ public class MatrizCaracterizacion implements Serializable {
         this.idEscolaridadMadre = idEscolaridadMadre;
     }
 
-    public DependenciaEconomica getIdDependenciaEconomica() {
-        return idDependenciaEconomica;
+    public Escolaridad getIdEscolaridadAspirante() {
+        return idEscolaridadAspirante;
     }
 
-    public void setIdDependenciaEconomica(DependenciaEconomica idDependenciaEconomica) {
-        this.idDependenciaEconomica = idDependenciaEconomica;
+    public void setIdEscolaridadAspirante(Escolaridad idEscolaridadAspirante) {
+        this.idEscolaridadAspirante = idEscolaridadAspirante;
     }
 
-    public NivelConocimento getIdNivelConocimentoInformatica() {
-        return idNivelConocimentoInformatica;
+    public FichaCaracterizacion getIdFichaCaracterizacion() {
+        return idFichaCaracterizacion;
     }
 
-    public void setIdNivelConocimentoInformatica(NivelConocimento idNivelConocimentoInformatica) {
-        this.idNivelConocimentoInformatica = idNivelConocimentoInformatica;
+    public void setIdFichaCaracterizacion(FichaCaracterizacion idFichaCaracterizacion) {
+        this.idFichaCaracterizacion = idFichaCaracterizacion;
     }
 
-    public NivelConocimento getIdNivelConocimentoIngles() {
-        return idNivelConocimentoIngles;
+    public IngresoMensual getIdIngresoMensual() {
+        return idIngresoMensual;
     }
 
-    public void setIdNivelConocimentoIngles(NivelConocimento idNivelConocimentoIngles) {
-        this.idNivelConocimentoIngles = idNivelConocimentoIngles;
+    public void setIdIngresoMensual(IngresoMensual idIngresoMensual) {
+        this.idIngresoMensual = idIngresoMensual;
+    }
+
+    public JefeHogar getIdJefeHogar() {
+        return idJefeHogar;
+    }
+
+    public void setIdJefeHogar(JefeHogar idJefeHogar) {
+        this.idJefeHogar = idJefeHogar;
     }
 
     @Override

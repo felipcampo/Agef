@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author ADSI
+ * @author MAURICIO
  */
 @Entity
 @Table(name = "llamado_atencion_verbal")
@@ -92,6 +92,12 @@ public class LlamadoAtencionVerbal implements Serializable {
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false)
     private Usuario idUsuario;
+    @JoinColumn(name = "id_ficha_caracterizacion", referencedColumnName = "id_ficha_caracterizacion")
+    @ManyToOne(optional = false)
+    private FichaCaracterizacion idFichaCaracterizacion;
+    @JoinColumn(name = "id_estado_llamado", referencedColumnName = "id_estado_llamado")
+    @ManyToOne(optional = false)
+    private EstadoLlamado idEstadoLlamado;
 
     public LlamadoAtencionVerbal() {
     }
@@ -186,8 +192,8 @@ public class LlamadoAtencionVerbal implements Serializable {
         return idEstadoLlamado;
     }
 
-    public void setIdEstadoLlamado(EstadoLlamado idEstadoLlamado) {
-        this.idEstadoLlamado = idEstadoLlamado;
+    public void setIdUsuario(Usuario idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public FichaCaracterizacion getIdFichaCaracterizacion() {
@@ -198,12 +204,12 @@ public class LlamadoAtencionVerbal implements Serializable {
         this.idFichaCaracterizacion = idFichaCaracterizacion;
     }
 
-    public Usuario getIdUsuario() {
-        return idUsuario;
+    public EstadoLlamado getIdEstadoLlamado() {
+        return idEstadoLlamado;
     }
 
-    public void setIdUsuario(Usuario idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setIdEstadoLlamado(EstadoLlamado idEstadoLlamado) {
+        this.idEstadoLlamado = idEstadoLlamado;
     }
 
     @Override

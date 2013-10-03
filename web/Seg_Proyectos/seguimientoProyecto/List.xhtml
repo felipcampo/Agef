@@ -14,22 +14,15 @@
          <ui:define name="menumodulo">
             <div id="Layoutmenu">
                 <p:menubar  style="float: right">
-                    <p:menuitem url="../inicio_proyectos.xhtml" value="Inicio" />
-                    <p:menuitem url="Create.xhtml" value="Programar fechas de Seguimiento" />
-                    <p:menuitem url="List.xhtml" value="Realizar Seguimiento a proyecto" />
+                    <p:menuitem outcome="/Seg_Proyectos/inicio_proyectos" value="Inicio" />
+                    <p:menuitem outcome="Create" value="Programar fechas de Seguimiento" />
+                    <p:menuitem outcome="List" value="Realizar Seguimiento a proyecto" />
                 </p:menubar>
 
             </div>
         </ui:define>
         
         <ui:define name="body">
-            
-             <div id="Layout_Titulo_Formulario_Agef"> <h2>SEGUIMIENTO A PROYECTOS</h2></div>
-            <div id="Layout_Nom_Form_Agef">
-                <h3 id="margen"> Seleccione Seguimiento Programado</h3>
-                <div id="Layout_Formulario_Agef">
-                    <br></br>  
-            
             <h:form id="listSeguimientoProyecto" styleClass="jsfcrud_list_form">
                 <div id="list" align="center">
                     <p:growl id="msgs" showDetail="false" sticky="false"/>
@@ -51,11 +44,7 @@
                                       sortBy="#{item.idSeguimientoProyecto}">                        
                                 <h:outputText value="#{item.idSeguimientoProyecto}"/>
                             </p:column>
-                             <p:column headerText="#{bundle.ListSeguimientoProyectoTitle_nomInstructor}"
-                                      filterBy="#{item.nomInstructor}"
-                                      sortBy="#{item.nomInstructor}">                        
-                                <h:outputText value="#{item.nomInstructor}"/>
-                            </p:column>
+                            
                             <p:column headerText="#{bundle.ListSeguimientoProyectoTitle_fechaProgramacionSeguimiento}"
                                       filterBy="#{item.fechaProgramacionSeguimiento}"
                                       sortBy="#{item.fechaProgramacionSeguimiento}">                        
@@ -63,36 +52,27 @@
                                     <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                                 </h:outputText>
                             </p:column>
-                            <p:column headerText="#{bundle.ListSeguimientoProyectoTitle_idSedeCentro}"
-                                      filterBy="#{item.idSedeCentro}"
-                                      sortBy="#{item.idSedeCentro}">                        
-                                <h:outputText value="#{item.idSedeCentro}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListSeguimientoProyectoTitle_idProyectoFormativo}"
-                                      filterBy="#{item.idProyectoFormativo}"
-                                      sortBy="#{item.idProyectoFormativo}">                        
-                                <h:outputText value="#{item.idProyectoFormativo}"/>
-                            </p:column>
+                           
+                          
                             <p:column headerText="#{bundle.ListSeguimientoProyectoTitle_idFichaCaracterizacion}"
                                       filterBy="#{item.idFichaCaracterizacion}"
                                       sortBy="#{item.idFichaCaracterizacion}">                        
                                 <h:outputText value="#{item.idFichaCaracterizacion}"/>
                             </p:column>
-                            <p:column headerText="#{bundle.ListSeguimientoProyectoTitle_idNivelFormacion}"
-                                      filterBy="#{item.idNivelFormacion}"
-                                      sortBy="#{item.idNivelFormacion}">                        
-                                <h:outputText value="#{item.idNivelFormacion}"/>
-                            </p:column>
+                            
+                           
                             <p:column headerText="#{bundle.ListSeguimientoProyectoTitle_idUsuario}"
-                                      filterBy="#{item.idUsuario}"
-                                      sortBy="#{item.idUsuario}">                        
-                                <h:outputText value="#{item.idUsuario}"/>
+                                      filterBy="#{item.idFichaCaracterizacion.idProyectoFormativo.idUsuario}"
+                                      sortBy="#{item.idFichaCaracterizacion.idProyectoFormativo.idUsuario}">                        
+                                <h:outputText value="#{item.idFichaCaracterizacion.idProyectoFormativo.idUsuario}"/>
                             </p:column>
-                            <p:column headerText="#{bundle.ListSeguimientoProyectoTitle_rolIdRol}"
-                                      filterBy="#{item.rolIdRol}"
-                                      sortBy="#{item.rolIdRol}">                        
-                                <h:outputText value="#{item.rolIdRol}"/>
+                            
+                                <p:column headerText="#{bundle.ListSeguimientoProyectoTitle_idRol}"
+                                      filterBy="#{item.idRol}"
+                                      sortBy="#{item.idRol}">                        
+                                <h:outputText value="#{item.idRol}"/>
                             </p:column>
+                           
                             <p:column>                        
                                 <p:commandButton ajax="false" action="#{seguimientoProyectoController.prepareView}" title="#{bundle.ListSeguimientoProyectoViewLink}" icon="ui-icon-search"/>
                                 <p:commandButton ajax="false" action="#{seguimientoProyectoController.prepareEdit}" title="#{bundle.ListSeguimientoProyectoEditLink}" icon="ui-icon-pencil"/>
@@ -107,14 +87,7 @@
                     <p:commandButton ajax="false" action="#{seguimientoProyectoController.prepareCreate}" value="Programar Seguimiento" icon="ui-icon-calendar"/>
                 </div>        
             </h:form>
-                 <br></br>
-                </div>
-            </div>
-            <div id="Layout_Info_Agef">
-                <h4>INFORMACION</h4>
-                <hr></hr>
-                <p id="margen">Informacion de ayuda para formularios</p>
-            </div>
+                
         </ui:define>
         
         <ui:define name="dialogs">

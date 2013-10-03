@@ -31,17 +31,6 @@
                         </p:row>      
                         <p:row>
                             <p:column>
-                                <h:outputLabel value="#{bundle.EditPlanMejoramientoLabel_actividadesDesarrollar}" for="actividadesDesarrollar" />
-                            </p:column>
-                            <p:column style="border-right: white"> 
-                                <p:inputTextarea rows="4" cols="30" id="actividadesDesarrollar" value="#{planMejoramientoController.selected.actividadesDesarrollar}" title="#{bundle.EditPlanMejoramientoTitle_actividadesDesarrollar}" required="true" requiredMessage="#{bundle.EditPlanMejoramientoRequiredMessage_actividadesDesarrollar}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="actividadesDesarrollar"/>
-                            </p:column>
-                        </p:row>      
-                        <p:row>
-                            <p:column>
                                 <h:outputLabel value="#{bundle.EditPlanMejoramientoLabel_observaciones}" for="observaciones" />
                             </p:column>
                             <p:column style="border-right: white"> 
@@ -56,43 +45,10 @@
                                 <h:outputLabel value="#{bundle.EditPlanMejoramientoLabel_evidenciaCam}" for="evidenciaCam" />
                             </p:column>
                             <p:column style="border-right: white"> 
-                                <p:inputTextarea rows="4" cols="30" id="evidenciaCam" value="#{planMejoramientoController.selected.evidenciaCam}" title="#{bundle.EditPlanMejoramientoTitle_evidenciaCam}" required="true" requiredMessage="#{bundle.EditPlanMejoramientoRequiredMessage_evidenciaCam}"/>
+                                <p:inputTextarea rows="4" cols="30" id="evidenciaCam" value="#{planMejoramientoController.selected.evidenciaCam}" title="#{bundle.EditPlanMejoramientoTitle_evidenciaCam}" />
                             </p:column>
                             <p:column style="border-left: white;">
                                 <p:message for="evidenciaCam"/>
-                            </p:column>
-                        </p:row>      
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.EditPlanMejoramientoLabel_fecFin}" for="fecFin" />
-                            </p:column>
-                            <p:column style="border-right: white"> 
-                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecFin" value="#{planMejoramientoController.selected.fecFin}" title="#{bundle.EditPlanMejoramientoTitle_fecFin}" required="true" requiredMessage="#{bundle.EditPlanMejoramientoRequiredMessage_fecFin}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="fecFin"/>
-                            </p:column>
-                        </p:row>      
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.EditPlanMejoramientoLabel_fecIni}" for="fecIni" />
-                            </p:column>
-                            <p:column style="border-right: white"> 
-                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecIni" value="#{planMejoramientoController.selected.fecIni}" title="#{bundle.EditPlanMejoramientoTitle_fecIni}" required="true" requiredMessage="#{bundle.EditPlanMejoramientoRequiredMessage_fecIni}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="fecIni"/>
-                            </p:column>
-                        </p:row>      
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.EditPlanMejoramientoLabel_fecRevision}" for="fecRevision" />
-                            </p:column>
-                            <p:column style="border-right: white"> 
-                                <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm:ss" showOn="button" id="fecRevision" value="#{planMejoramientoController.selected.fecRevision}" title="#{bundle.EditPlanMejoramientoTitle_fecRevision}" required="true" requiredMessage="#{bundle.EditPlanMejoramientoRequiredMessage_fecRevision}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="fecRevision"/>
                             </p:column>
                         </p:row>      
                         <p:row>
@@ -130,83 +86,6 @@
                         </p:row>      
                         <p:row>
                             <p:column>
-                                <h:outputLabel value="#{bundle.EditPlanMejoramientoLabel_lugar}" for="lugar" />
-                            </p:column>
-                            <p:column style="border-right: white"> 
-                                <p:inputText id="lugar" value="#{planMejoramientoController.selected.lugar}" title="#{bundle.EditPlanMejoramientoTitle_lugar}" required="true" requiredMessage="#{bundle.EditPlanMejoramientoRequiredMessage_lugar}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="lugar"/>
-                            </p:column>
-                        </p:row>      
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.EditPlanMejoramientoLabel_lugar2}" for="lugar2" />
-                            </p:column>
-                            <p:column style="border-right: white"> 
-                                <p:inputText id="lugar2" value="#{planMejoramientoController.selected.lugar2}" title="#{bundle.EditPlanMejoramientoTitle_lugar2}" required="true" requiredMessage="#{bundle.EditPlanMejoramientoRequiredMessage_lugar2}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="lugar2"/>
-                            </p:column>
-                        </p:row>      
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.EditPlanMejoramientoLabel_pertinencia}" for="pertinencia" />
-                            </p:column>
-                            <p:column style="border-right: white"> 
-                                <p:inputText id="pertinencia" value="#{planMejoramientoController.selected.pertinencia}" title="#{bundle.EditPlanMejoramientoTitle_pertinencia}" required="true" requiredMessage="#{bundle.EditPlanMejoramientoRequiredMessage_pertinencia}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="pertinencia"/>
-                            </p:column>
-                        </p:row>      
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.EditPlanMejoramientoLabel_vigencia}" for="vigencia" />
-                            </p:column>
-                            <p:column style="border-right: white"> 
-                                <p:inputText id="vigencia" value="#{planMejoramientoController.selected.vigencia}" title="#{bundle.EditPlanMejoramientoTitle_vigencia}" required="true" requiredMessage="#{bundle.EditPlanMejoramientoRequiredMessage_vigencia}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="vigencia"/>
-                            </p:column>
-                        </p:row>      
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.EditPlanMejoramientoLabel_autenticidad}" for="autenticidad" />
-                            </p:column>
-                            <p:column style="border-right: white"> 
-                                <p:inputText id="autenticidad" value="#{planMejoramientoController.selected.autenticidad}" title="#{bundle.EditPlanMejoramientoTitle_autenticidad}" required="true" requiredMessage="#{bundle.EditPlanMejoramientoRequiredMessage_autenticidad}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="autenticidad"/>
-                            </p:column>
-                        </p:row>      
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.EditPlanMejoramientoLabel_calidad}" for="calidad" />
-                            </p:column>
-                            <p:column style="border-right: white"> 
-                                <p:inputText id="calidad" value="#{planMejoramientoController.selected.calidad}" title="#{bundle.EditPlanMejoramientoTitle_calidad}" required="true" requiredMessage="#{bundle.EditPlanMejoramientoRequiredMessage_calidad}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="calidad"/>
-                            </p:column>
-                        </p:row>      
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.EditPlanMejoramientoLabel_aprendizaje}" for="aprendizaje" />
-                            </p:column>
-                            <p:column style="border-right: white"> 
-                                <p:inputText id="aprendizaje" value="#{planMejoramientoController.selected.aprendizaje}" title="#{bundle.EditPlanMejoramientoTitle_aprendizaje}" required="true" requiredMessage="#{bundle.EditPlanMejoramientoRequiredMessage_aprendizaje}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="aprendizaje"/>
-                            </p:column>
-                        </p:row>      
-                        <p:row>
-                            <p:column>
                                 <h:outputLabel value="#{bundle.EditPlanMejoramientoLabel_total}" for="total" />
                             </p:column>
                             <p:column style="border-right: white"> 
@@ -221,7 +100,7 @@
                                 <h:outputLabel value="#{bundle.EditPlanMejoramientoLabel_compromiso}" for="compromiso" />
                             </p:column>
                             <p:column style="border-right: white"> 
-                                <p:inputTextarea rows="4" cols="30" id="compromiso" value="#{planMejoramientoController.selected.compromiso}" title="#{bundle.EditPlanMejoramientoTitle_compromiso}" />
+                                <p:inputTextarea rows="4" cols="30" id="compromiso" value="#{planMejoramientoController.selected.compromiso}" title="#{bundle.EditPlanMejoramientoTitle_compromiso}" required="true" requiredMessage="#{bundle.EditPlanMejoramientoRequiredMessage_compromiso}"/>
                             </p:column>
                             <p:column style="border-left: white;">
                                 <p:message for="compromiso"/>
@@ -247,6 +126,19 @@
                             </p:column>
                             <p:column style="border-left: white;">
                                 <p:message for="fechaConcertacion"/>
+                            </p:column>
+                        </p:row>      
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditPlanMejoramientoLabel_idActividadPlan}" for="idActividadPlan" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:selectOneMenu id="idActividadPlan" value="#{planMejoramientoController.selected.idActividadPlan}" required="true" requiredMessage="#{bundle.EditPlanMejoramientoRequiredMessage_idActividadPlan}">
+                                    <f:selectItems value="#{actividadPlanController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idActividadPlan"/>
                             </p:column>
                         </p:row>      
                         <p:row>
@@ -280,7 +172,7 @@
                                 <h:outputLabel value="#{bundle.EditPlanMejoramientoLabel_idEmpresa}" for="idEmpresa" />
                             </p:column>
                             <p:column style="border-right: white"> 
-                                <p:selectOneMenu id="idEmpresa" value="#{planMejoramientoController.selected.idEmpresa}" required="true" requiredMessage="#{bundle.EditPlanMejoramientoRequiredMessage_idEmpresa}">
+                                <p:selectOneMenu id="idEmpresa" value="#{planMejoramientoController.selected.idEmpresa}" >
                                     <f:selectItems value="#{empresaController.itemsAvailableSelectOne}"/>
                                 </p:selectOneMenu>
                             </p:column>

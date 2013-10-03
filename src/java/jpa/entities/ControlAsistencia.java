@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author ADSI
+ * @author MAURICIO
  */
 @Entity
 @Table(name = "control_asistencia")
@@ -57,12 +57,12 @@ public class ControlAsistencia implements Serializable {
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false)
     private Usuario idUsuario;
-    @JoinColumn(name = "id_estado_aprendiz", referencedColumnName = "id_estado_aprendiz")
-    @ManyToOne(optional = false)
-    private EstadoAprendiz idEstadoAprendiz;
     @JoinColumn(name = "id_ficha_caracterizacion", referencedColumnName = "id_ficha_caracterizacion")
     @ManyToOne(optional = false)
     private FichaCaracterizacion idFichaCaracterizacion;
+    @JoinColumn(name = "id_estado_aprendiz", referencedColumnName = "id_estado_aprendiz")
+    @ManyToOne(optional = false)
+    private EstadoAprendiz idEstadoAprendiz;
 
     public ControlAsistencia() {
     }
@@ -124,20 +124,20 @@ public class ControlAsistencia implements Serializable {
         this.idUsuario = idUsuario;
     }
 
-    public EstadoAprendiz getIdEstadoAprendiz() {
-        return idEstadoAprendiz;
-    }
-
-    public void setIdEstadoAprendiz(EstadoAprendiz idEstadoAprendiz) {
-        this.idEstadoAprendiz = idEstadoAprendiz;
-    }
-
     public FichaCaracterizacion getIdFichaCaracterizacion() {
         return idFichaCaracterizacion;
     }
 
     public void setIdFichaCaracterizacion(FichaCaracterizacion idFichaCaracterizacion) {
         this.idFichaCaracterizacion = idFichaCaracterizacion;
+    }
+
+    public EstadoAprendiz getIdEstadoAprendiz() {
+        return idEstadoAprendiz;
+    }
+
+    public void setIdEstadoAprendiz(EstadoAprendiz idEstadoAprendiz) {
+        this.idEstadoAprendiz = idEstadoAprendiz;
     }
 
     @Override

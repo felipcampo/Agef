@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ADSI
+ * @author MAURICIO
  */
 @Entity
 @Table(name = "empresa")
@@ -73,12 +73,12 @@ public class Empresa implements Serializable {
     private List<PlanMejoramiento> planMejoramientoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpresa")
     private List<SeguimientoProductiva> seguimientoProductivaList;
-    @JoinColumn(name = "id_ciudad", referencedColumnName = "id_ciudad")
-    @ManyToOne(optional = false)
-    private Ciudad idCiudad;
     @JoinColumn(name = "id_zona_empresa", referencedColumnName = "id_zona_empresa")
     @ManyToOne(optional = false)
     private ZonaEmpresa idZonaEmpresa;
+    @JoinColumn(name = "id_ciudad", referencedColumnName = "id_ciudad")
+    @ManyToOne(optional = false)
+    private Ciudad idCiudad;
 
     public Empresa() {
     }
@@ -178,20 +178,20 @@ public class Empresa implements Serializable {
         this.seguimientoProductivaList = seguimientoProductivaList;
     }
 
-    public Ciudad getIdCiudad() {
-        return idCiudad;
-    }
-
-    public void setIdCiudad(Ciudad idCiudad) {
-        this.idCiudad = idCiudad;
-    }
-
     public ZonaEmpresa getIdZonaEmpresa() {
         return idZonaEmpresa;
     }
 
     public void setIdZonaEmpresa(ZonaEmpresa idZonaEmpresa) {
         this.idZonaEmpresa = idZonaEmpresa;
+    }
+
+    public Ciudad getIdCiudad() {
+        return idCiudad;
+    }
+
+    public void setIdCiudad(Ciudad idCiudad) {
+        this.idCiudad = idCiudad;
     }
 
     @Override

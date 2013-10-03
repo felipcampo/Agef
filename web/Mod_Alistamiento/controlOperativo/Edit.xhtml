@@ -11,12 +11,17 @@
             <h:outputText value="#{bundle.EditControlOperativoTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+              <div id="Layout_Titulo_Formulario_Agef"> <h2> ALISTAMIENTO </h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen"> #{bundle.EditControlOperativoTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br>
             <p:growl id="msgs" showDetail="false" sticky="false"/>
             <h:form id="formControlOperativo">
                 <div id="form" align="center">
                     <p:panelGrid>
                         <f:facet name="header">
-                            <p:row><p:column colspan="3">#{bundle.EditControlOperativoTitle}</p:column></p:row>                            
+                            <p:row><p:column colspan="10"></p:column></p:row>                            
                         </f:facet>                        
                         <p:row>
                             <p:column>
@@ -28,42 +33,7 @@
                             <p:column style="border-left: white;">
                                 <p:message for="idControlOperativo"/>
                             </p:column>
-                        </p:row>      
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.EditControlOperativoLabel_eleConOpe}" for="eleConOpe" />
-                            </p:column>
-                            <p:column style="border-right: white"> 
-                                <p:inputText id="eleConOpe" value="#{controlOperativoController.selected.eleConOpe}" title="#{bundle.EditControlOperativoTitle_eleConOpe}" />
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="eleConOpe"/>
-                            </p:column>
-                        </p:row>      
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.EditControlOperativoLabel_fecDilConOpe}" for="fecDilConOpe" />
-                            </p:column>
-                            <p:column style="border-right: white"> 
-                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecDilConOpe" value="#{controlOperativoController.selected.fecDilConOpe}" title="#{bundle.EditControlOperativoTitle_fecDilConOpe}" />
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="fecDilConOpe"/>
-                            </p:column>
-                        </p:row>      
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.EditControlOperativoLabel_sitConOpe}" for="sitConOpe" />
-                            </p:column>
-                            <p:column style="border-right: white"> 
-                                <p:inputText id="sitConOpe" value="#{controlOperativoController.selected.sitConOpe}" title="#{bundle.EditControlOperativoTitle_sitConOpe}" />
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="sitConOpe"/>
-                            </p:column>
-                        </p:row>      
-                        <p:row>
-                            <p:column>
+                             <p:column>
                                 <h:outputLabel value="#{bundle.EditControlOperativoLabel_idAlistamiento}" for="idAlistamiento" />
                             </p:column>
                             <p:column style="border-right: white"> 
@@ -74,7 +44,36 @@
                             <p:column style="border-left: white;">
                                 <p:message for="idAlistamiento"/>
                             </p:column>
+                        </p:row> 
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.EditControlOperativoLabel_eleConOpe}" for="eleConOpe" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:inputText id="eleConOpe" value="#{controlOperativoController.selected.eleConOpe}" title="#{bundle.EditControlOperativoTitle_eleConOpe}" />
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="eleConOpe"/>
+                            </p:column>
+                             <p:column>
+                                <h:outputLabel value="#{bundle.EditControlOperativoLabel_fecDilConOpe}" for="fecDilConOpe" />
+                            </p:column>
+                            <p:column style="border-right: white"> 
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fecDilConOpe" value="#{controlOperativoController.selected.fecDilConOpe}" title="#{bundle.EditControlOperativoTitle_fecDilConOpe}" />
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="fecDilConOpe"/>
+                            </p:column>
                         </p:row>      
+                        <p:row>
+                            <p:column colspan="2">
+                                <h:outputLabel value="#{bundle.EditControlOperativoLabel_sitConOpe}" for="sitConOpe" />
+                            </p:column>
+                            <p:column colspan="4"> 
+                                <p:inputText id="sitConOpe" value="#{controlOperativoController.selected.sitConOpe}" title="#{bundle.EditControlOperativoTitle_sitConOpe}" />
+                            </p:column>
+                         </p:row>    
+                                                  
                     </p:panelGrid>
                     <br />
                     <br />                
@@ -85,6 +84,15 @@
                     <p:commandButton ajax="false" action="#{controlOperativoController.prepareList}" value="#{bundle.EditControlOperativoShowAllLink}" immediate="true"/>
                 </div>
             </h:form>
+            
+<br></br>
+                </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                 <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
     </ui:composition>
 

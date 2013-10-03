@@ -11,12 +11,17 @@
             <h:outputText value="#{bundle.ViewDetalleRecursoTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+                <div id="Layout_Titulo_Formulario_Agef"> <h2> ALISTAMIENTO </h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen"> #{bundle.ViewDetalleRecursoTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br>
             <p:growl id="msgs" showDetail="false" sticky="false"/> 
             <h:form>
                 <div id="form" align="center">
                     <p:panelGrid columns="2">
                         <f:facet name="header">
-                            <p:row><p:column>#{bundle.ViewDetalleRecursoTitle}</p:column></p:row>                            
+                            <p:row><p:column></p:column></p:row>                            
                         </f:facet>
                         <h:outputText value="#{bundle.ViewDetalleRecursoLabel_idDatalleRecurso}"/>
                         <h:outputText value="#{detalleRecursoController.selected.idDatalleRecurso}" title="#{bundle.ViewDetalleRecursoTitle_idDatalleRecurso}"/>
@@ -47,6 +52,15 @@
                     <p:commandButton ajax="false" action="#{detalleRecursoController.prepareList}" value="#{bundle.ViewDetalleRecursoShowAllLink}"/>
                 </div>            
             </h:form>
+            
+<br></br>
+                </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                 <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
         <ui:define name="dialogs">
             <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  

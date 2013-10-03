@@ -42,34 +42,33 @@
                         </h:outputText>
                         <h:outputText value="#{bundle.ViewSeguimientoProyectoLabel_nomInstructor}"/>
                         <h:outputText value="#{seguimientoProyectoController.selected.nomInstructor}" title="#{bundle.ViewSeguimientoProyectoTitle_nomInstructor}"/>
-                        <h:outputText value="#{bundle.ViewSeguimientoProyectoLabel_evaluacionProyecto}"/>
-                        <h:outputText value="#{seguimientoProyectoController.selected.evaluacionProyecto}" title="#{bundle.ViewSeguimientoProyectoTitle_evaluacionProyecto}"/>
+                       
+                       
                         <h:outputText value="#{bundle.ViewSeguimientoProyectoLabel_fechaProgramacionSeguimiento}"/>
                         <h:outputText value="#{seguimientoProyectoController.selected.fechaProgramacionSeguimiento}" title="#{bundle.ViewSeguimientoProyectoTitle_fechaProgramacionSeguimiento}">
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                         </h:outputText>
                         <h:outputText value="#{bundle.ViewSeguimientoProyectoLabel_idSedeCentro}"/>
-                        <h:outputText value="#{seguimientoProyectoController.selected.idSedeCentro}" title="#{bundle.ViewSeguimientoProyectoTitle_idSedeCentro}"/>
+                        <h:outputText value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idPrograma.idCentroFormacion.idSedeCentro}" title="#{bundle.ViewSeguimientoProyectoTitle_idSedeCentro}"/>
+                        
                         <h:outputText value="#{bundle.ViewSeguimientoProyectoLabel_idProyectoFormativo}"/>
-                        <h:outputText value="#{seguimientoProyectoController.selected.idProyectoFormativo}" title="#{bundle.ViewSeguimientoProyectoTitle_idProyectoFormativo}"/>
+                        <h:outputText value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyectoFormativo}" title="#{bundle.ViewSeguimientoProyectoTitle_idProyectoFormativo}"/>
                         <h:outputText value="#{bundle.ViewSeguimientoProyectoLabel_idJornadaFormacion}"/>
-                        <h:outputText value="#{seguimientoProyectoController.selected.idJornadaFormacion}" title="#{bundle.ViewSeguimientoProyectoTitle_idJornadaFormacion}"/>
+                        
+                        <h:outputText value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idJornadaFormacion}" title="#{bundle.ViewSeguimientoProyectoTitle_idJornadaFormacion}"/>
                         <h:outputText value="#{bundle.ViewSeguimientoProyectoLabel_idFichaCaracterizacion}"/>
                         <h:outputText value="#{seguimientoProyectoController.selected.idFichaCaracterizacion}" title="#{bundle.ViewSeguimientoProyectoTitle_idFichaCaracterizacion}"/>
-                        <h:outputText value="#{bundle.ViewSeguimientoProyectoLabel_idNivelFormacion}"/>
-                        <h:outputText value="#{seguimientoProyectoController.selected.idNivelFormacion}" title="#{bundle.ViewSeguimientoProyectoTitle_idNivelFormacion}"/>
+                       
                         <h:outputText value="#{bundle.ViewSeguimientoProyectoLabel_idRegional}"/>
-                        <h:outputText value="#{seguimientoProyectoController.selected.idRegional}" title="#{bundle.ViewSeguimientoProyectoTitle_idRegional}"/>
+                        
+                        <h:outputText value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idPrograma.idCentroFormacion.idRegional}" title="#{bundle.ViewSeguimientoProyectoTitle_idRegional}"/>
                         <h:outputText value="#{bundle.ViewSeguimientoProyectoLabel_idResultadoAprendizaje}"/>
                         <h:outputText value="#{seguimientoProyectoController.selected.idResultadoAprendizaje}" title="#{bundle.ViewSeguimientoProyectoTitle_idResultadoAprendizaje}"/>
-                        <h:outputText value="#{bundle.ViewSeguimientoProyectoLabel_idTituloCriterio}"/>
-                        <h:outputText value="#{seguimientoProyectoController.selected.idTituloCriterio}" title="#{bundle.ViewSeguimientoProyectoTitle_idTituloCriterio}"/>
-                        <h:outputText value="#{bundle.ViewSeguimientoProyectoLabel_idUsuario}"/>
-                        <h:outputText value="#{seguimientoProyectoController.selected.idUsuario}" title="#{bundle.ViewSeguimientoProyectoTitle_idUsuario}"/>
+                       
                         <h:outputText value="#{bundle.ViewSeguimientoProyectoLabel_idArea}"/>
                         <h:outputText value="#{seguimientoProyectoController.selected.idArea}" title="#{bundle.ViewSeguimientoProyectoTitle_idArea}"/>
                         <h:outputText value="#{bundle.ViewSeguimientoProyectoLabel_rolIdRol}"/>
-                        <h:outputText value="#{seguimientoProyectoController.selected.rolIdRol}" title="#{bundle.ViewSeguimientoProyectoTitle_rolIdRol}"/>
+                        <h:outputText value="#{seguimientoProyectoController.selected.idRol}" title="#{bundle.ViewSeguimientoProyectoTitle_rolIdRol}"/>
                     </p:panelGrid>
                     <br />
                     <br />
