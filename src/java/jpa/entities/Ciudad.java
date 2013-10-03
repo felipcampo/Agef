@@ -12,7 +12,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -26,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author MAURICIO
+ * @author ADSI
  */
 @Entity
 @Table(name = "ciudad")
@@ -52,10 +51,7 @@ public class Ciudad implements Serializable {
     @Size(max = 10)
     @Column(name = "descr_zona")
     private String descrZona;
-    @JoinTable(name = "comuna_ciudad", joinColumns = {
-        @JoinColumn(name = "id_ciudad", referencedColumnName = "id_ciudad")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_comuna", referencedColumnName = "id_comuna")})
-    @ManyToMany
+    @ManyToMany(mappedBy = "ciudadList")
     private List<Comuna> comunaList;
     @JoinColumn(name = "id_departamento", referencedColumnName = "id_departamento")
     @ManyToOne(optional = false)

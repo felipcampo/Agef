@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author MAURICIO
+ * @author ADSI
  */
 @Entity
 @Table(name = "praxis_pedagogica")
@@ -70,15 +70,15 @@ public class PraxisPedagogica implements Serializable {
     private String revisor;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPraxisPedagogica")
     private List<SeguimientoInstructor> seguimientoInstructorList;
-    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
-    @ManyToOne(optional = false)
-    private Usuario idUsuario;
     @JoinColumn(name = "id_proyecto_formativo", referencedColumnName = "id_proyecto_formativo")
     @ManyToOne(optional = false)
     private ProyectoFormativo idProyectoFormativo;
     @JoinColumn(name = "id_centro_formativo", referencedColumnName = "id_centro_formacion")
     @ManyToOne(optional = false)
     private CentroFormacion idCentroFormativo;
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
+    @ManyToOne(optional = false)
+    private Usuario idUsuario;
 
     public PraxisPedagogica() {
     }
@@ -157,14 +157,6 @@ public class PraxisPedagogica implements Serializable {
         this.seguimientoInstructorList = seguimientoInstructorList;
     }
 
-    public Usuario getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Usuario idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
     public ProyectoFormativo getIdProyectoFormativo() {
         return idProyectoFormativo;
     }
@@ -179,6 +171,14 @@ public class PraxisPedagogica implements Serializable {
 
     public void setIdCentroFormativo(CentroFormacion idCentroFormativo) {
         this.idCentroFormativo = idCentroFormativo;
+    }
+
+    public Usuario getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Usuario idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     @Override

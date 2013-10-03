@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author MAURICIO
+ * @author ADSI
  */
 @Entity
 @Table(name = "verificacion_ambiente_titulado")
@@ -76,18 +76,18 @@ public class VerificacionAmbienteTitulado implements Serializable {
     @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
     private Date fecha;
+    @JoinColumn(name = "id_ficha_caracterizacion", referencedColumnName = "id_ficha_caracterizacion")
+    @ManyToOne(optional = false)
+    private FichaCaracterizacion idFichaCaracterizacion;
+    @JoinColumn(name = "id_lista_verificacion", referencedColumnName = "id_lista_verificacion")
+    @ManyToOne(optional = false)
+    private ListaVerificacion idListaVerificacion;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false)
     private Usuario idUsuario;
     @JoinColumn(name = "id_proyecto_formativo", referencedColumnName = "id_proyecto_formativo")
     @ManyToOne(optional = false)
     private ProyectoFormativo idProyectoFormativo;
-    @JoinColumn(name = "id_lista_verificacion", referencedColumnName = "id_lista_verificacion")
-    @ManyToOne(optional = false)
-    private ListaVerificacion idListaVerificacion;
-    @JoinColumn(name = "id_ficha_caracterizacion", referencedColumnName = "id_ficha_caracterizacion")
-    @ManyToOne(optional = false)
-    private FichaCaracterizacion idFichaCaracterizacion;
     @OneToMany(mappedBy = "idVerificacionAmbienteTitulado")
     private List<Alistamiento> alistamientoList;
 
@@ -163,6 +163,22 @@ public class VerificacionAmbienteTitulado implements Serializable {
         this.fecha = fecha;
     }
 
+    public FichaCaracterizacion getIdFichaCaracterizacion() {
+        return idFichaCaracterizacion;
+    }
+
+    public void setIdFichaCaracterizacion(FichaCaracterizacion idFichaCaracterizacion) {
+        this.idFichaCaracterizacion = idFichaCaracterizacion;
+    }
+
+    public ListaVerificacion getIdListaVerificacion() {
+        return idListaVerificacion;
+    }
+
+    public void setIdListaVerificacion(ListaVerificacion idListaVerificacion) {
+        this.idListaVerificacion = idListaVerificacion;
+    }
+
     public Usuario getIdUsuario() {
         return idUsuario;
     }
@@ -177,22 +193,6 @@ public class VerificacionAmbienteTitulado implements Serializable {
 
     public void setIdProyectoFormativo(ProyectoFormativo idProyectoFormativo) {
         this.idProyectoFormativo = idProyectoFormativo;
-    }
-
-    public ListaVerificacion getIdListaVerificacion() {
-        return idListaVerificacion;
-    }
-
-    public void setIdListaVerificacion(ListaVerificacion idListaVerificacion) {
-        this.idListaVerificacion = idListaVerificacion;
-    }
-
-    public FichaCaracterizacion getIdFichaCaracterizacion() {
-        return idFichaCaracterizacion;
-    }
-
-    public void setIdFichaCaracterizacion(FichaCaracterizacion idFichaCaracterizacion) {
-        this.idFichaCaracterizacion = idFichaCaracterizacion;
     }
 
     @XmlTransient

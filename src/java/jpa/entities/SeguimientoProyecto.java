@@ -22,12 +22,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author MAURICIO
+ * @author ADSI
  */
 @Entity
 @Table(name = "seguimiento_proyecto")
@@ -37,6 +38,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "SeguimientoProyecto.findByIdSeguimientoProyecto", query = "SELECT s FROM SeguimientoProyecto s WHERE s.idSeguimientoProyecto = :idSeguimientoProyecto"),
     @NamedQuery(name = "SeguimientoProyecto.findByFechaSeguimientoInicio", query = "SELECT s FROM SeguimientoProyecto s WHERE s.fechaSeguimientoInicio = :fechaSeguimientoInicio"),
     @NamedQuery(name = "SeguimientoProyecto.findByFechaSeguimientoFin", query = "SELECT s FROM SeguimientoProyecto s WHERE s.fechaSeguimientoFin = :fechaSeguimientoFin"),
+    @NamedQuery(name = "SeguimientoProyecto.findByNomInstructor", query = "SELECT s FROM SeguimientoProyecto s WHERE s.nomInstructor = :nomInstructor"),
     @NamedQuery(name = "SeguimientoProyecto.findByEvaluacionProyecto", query = "SELECT s FROM SeguimientoProyecto s WHERE s.evaluacionProyecto = :evaluacionProyecto"),
     @NamedQuery(name = "SeguimientoProyecto.findByFechaProgramacionSeguimiento", query = "SELECT s FROM SeguimientoProyecto s WHERE s.fechaProgramacionSeguimiento = :fechaProgramacionSeguimiento")})
 public class SeguimientoProyecto implements Serializable {
@@ -52,6 +54,9 @@ public class SeguimientoProyecto implements Serializable {
     @Column(name = "fecha_seguimiento_fin")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaSeguimientoFin;
+    @Size(max = 255)
+    @Column(name = "nom_instructor")
+    private String nomInstructor;
     @Column(name = "evaluacion_proyecto")
     private Long evaluacionProyecto;
     @Column(name = "fecha_programacion_seguimiento")
@@ -65,6 +70,9 @@ public class SeguimientoProyecto implements Serializable {
     @JoinColumn(name = "id_area", referencedColumnName = "id_area")
     @ManyToOne
     private Area idArea;
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
+    @ManyToOne
+    private Usuario idUsuario;
     @JoinColumn(name = "id_resultado_aprendizaje", referencedColumnName = "id_resultado_aprendizaje")
     @ManyToOne
     private ResultadoAprendizaje idResultadoAprendizaje;
@@ -101,6 +109,14 @@ public class SeguimientoProyecto implements Serializable {
 
     public void setFechaSeguimientoFin(Date fechaSeguimientoFin) {
         this.fechaSeguimientoFin = fechaSeguimientoFin;
+    }
+
+    public String getNomInstructor() {
+        return nomInstructor;
+    }
+
+    public void setNomInstructor(String nomInstructor) {
+        this.nomInstructor = nomInstructor;
     }
 
     public Long getEvaluacionProyecto() {
@@ -142,6 +158,14 @@ public class SeguimientoProyecto implements Serializable {
 
     public void setIdArea(Area idArea) {
         this.idArea = idArea;
+    }
+
+    public Usuario getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Usuario idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public ResultadoAprendizaje getIdResultadoAprendizaje() {

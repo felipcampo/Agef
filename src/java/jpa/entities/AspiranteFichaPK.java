@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author MAURICIO
+ * @author ADSI
  */
 @Embeddable
 public class AspiranteFichaPK implements Serializable {

@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author MAURICIO
+ * @author ADSI
  */
 @Entity
 @Table(name = "programacion_proyecto")
@@ -48,12 +48,12 @@ public class ProgramacionProyecto implements Serializable {
     @JoinColumn(name = "id_trimestre", referencedColumnName = "id_trimestre")
     @ManyToOne(optional = false)
     private Trimestre idTrimestre;
-    @JoinColumn(name = "id_resultado_aprendizaje", referencedColumnName = "id_resultado_aprendizaje")
-    @ManyToOne(optional = false)
-    private ResultadoAprendizaje idResultadoAprendizaje;
     @JoinColumn(name = "id_actividad_proyecto", referencedColumnName = "id_actividad_proyecto")
     @ManyToOne(optional = false)
     private ActividadProyecto idActividadProyecto;
+    @JoinColumn(name = "id_resultado_aprendizaje", referencedColumnName = "id_resultado_aprendizaje")
+    @ManyToOne(optional = false)
+    private ResultadoAprendizaje idResultadoAprendizaje;
     @OneToMany(mappedBy = "idProgramacionProyecto")
     private List<Alistamiento> alistamientoList;
 
@@ -89,20 +89,20 @@ public class ProgramacionProyecto implements Serializable {
         this.idTrimestre = idTrimestre;
     }
 
-    public ResultadoAprendizaje getIdResultadoAprendizaje() {
-        return idResultadoAprendizaje;
-    }
-
-    public void setIdResultadoAprendizaje(ResultadoAprendizaje idResultadoAprendizaje) {
-        this.idResultadoAprendizaje = idResultadoAprendizaje;
-    }
-
     public ActividadProyecto getIdActividadProyecto() {
         return idActividadProyecto;
     }
 
     public void setIdActividadProyecto(ActividadProyecto idActividadProyecto) {
         this.idActividadProyecto = idActividadProyecto;
+    }
+
+    public ResultadoAprendizaje getIdResultadoAprendizaje() {
+        return idResultadoAprendizaje;
+    }
+
+    public void setIdResultadoAprendizaje(ResultadoAprendizaje idResultadoAprendizaje) {
+        this.idResultadoAprendizaje = idResultadoAprendizaje;
     }
 
     @XmlTransient

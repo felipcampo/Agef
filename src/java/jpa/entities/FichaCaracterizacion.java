@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author MAURICIO
+ * @author ADSI
  */
 @Entity
 @Table(name = "ficha_caracterizacion")
@@ -90,21 +90,21 @@ public class FichaCaracterizacion implements Serializable {
     private List<ReporteNovedad> reporteNovedadList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idFichaCaracterizacion")
     private List<PlaneacionClase> planeacionClaseList;
-    @JoinColumn(name = "id_tipo_oferta", referencedColumnName = "id_tipo_oferta")
-    @ManyToOne(optional = false)
-    private TipoOferta idTipoOferta;
-    @JoinColumn(name = "id_tipo_formacion", referencedColumnName = "id_tipo_formacion")
-    @ManyToOne(optional = false)
-    private TipoFormacion idTipoFormacion;
-    @JoinColumn(name = "id_proyecto_formativo", referencedColumnName = "id_proyecto_formativo")
-    @ManyToOne(optional = false)
-    private ProyectoFormativo idProyectoFormativo;
     @JoinColumn(name = "id_programa", referencedColumnName = "id_programa")
     @ManyToOne(optional = false)
     private Programa idPrograma;
+    @JoinColumn(name = "id_proyecto_formativo", referencedColumnName = "id_proyecto_formativo")
+    @ManyToOne(optional = false)
+    private ProyectoFormativo idProyectoFormativo;
     @JoinColumn(name = "id_nivel_formacion", referencedColumnName = "id_nivel_formacion")
     @ManyToOne(optional = false)
     private NivelFormacion idNivelFormacion;
+    @JoinColumn(name = "id_tipo_formacion", referencedColumnName = "id_tipo_formacion")
+    @ManyToOne(optional = false)
+    private TipoFormacion idTipoFormacion;
+    @JoinColumn(name = "id_tipo_oferta", referencedColumnName = "id_tipo_oferta")
+    @ManyToOne(optional = false)
+    private TipoOferta idTipoOferta;
     @JoinColumn(name = "id_jornada_formacion", referencedColumnName = "id_jornada_formacion")
     @ManyToOne(optional = false)
     private JornadaFormacion idJornadaFormacion;
@@ -251,20 +251,12 @@ public class FichaCaracterizacion implements Serializable {
         this.planeacionClaseList = planeacionClaseList;
     }
 
-    public TipoOferta getIdTipoOferta() {
-        return idTipoOferta;
+    public Programa getIdPrograma() {
+        return idPrograma;
     }
 
-    public void setIdTipoOferta(TipoOferta idTipoOferta) {
-        this.idTipoOferta = idTipoOferta;
-    }
-
-    public TipoFormacion getIdTipoFormacion() {
-        return idTipoFormacion;
-    }
-
-    public void setIdTipoFormacion(TipoFormacion idTipoFormacion) {
-        this.idTipoFormacion = idTipoFormacion;
+    public void setIdPrograma(Programa idPrograma) {
+        this.idPrograma = idPrograma;
     }
 
     public ProyectoFormativo getIdProyectoFormativo() {
@@ -275,20 +267,28 @@ public class FichaCaracterizacion implements Serializable {
         this.idProyectoFormativo = idProyectoFormativo;
     }
 
-    public Programa getIdPrograma() {
-        return idPrograma;
-    }
-
-    public void setIdPrograma(Programa idPrograma) {
-        this.idPrograma = idPrograma;
-    }
-
     public NivelFormacion getIdNivelFormacion() {
         return idNivelFormacion;
     }
 
     public void setIdNivelFormacion(NivelFormacion idNivelFormacion) {
         this.idNivelFormacion = idNivelFormacion;
+    }
+
+    public TipoFormacion getIdTipoFormacion() {
+        return idTipoFormacion;
+    }
+
+    public void setIdTipoFormacion(TipoFormacion idTipoFormacion) {
+        this.idTipoFormacion = idTipoFormacion;
+    }
+
+    public TipoOferta getIdTipoOferta() {
+        return idTipoOferta;
+    }
+
+    public void setIdTipoOferta(TipoOferta idTipoOferta) {
+        this.idTipoOferta = idTipoOferta;
     }
 
     public JornadaFormacion getIdJornadaFormacion() {

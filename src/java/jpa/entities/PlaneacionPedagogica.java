@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author MAURICIO
+ * @author ADSI
  */
 @Entity
 @Table(name = "planeacion_pedagogica")
@@ -104,12 +104,12 @@ public class PlaneacionPedagogica implements Serializable {
     @Size(min = 1, max = 65535)
     @Column(name = "observaciones")
     private String observaciones;
-    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
-    @ManyToOne(optional = false)
-    private Usuario idUsuario;
     @JoinColumn(name = "id_subactividad_proyecto", referencedColumnName = "id_subactividad_proyecto")
     @ManyToOne(optional = false)
     private SubactividadAprendizaje idSubactividadProyecto;
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
+    @ManyToOne(optional = false)
+    private Usuario idUsuario;
     @JoinColumn(name = "id_proyecto_formativo", referencedColumnName = "id_proyecto_formativo")
     @ManyToOne(optional = false)
     private ProyectoFormativo idProyectoFormativo;
@@ -225,20 +225,20 @@ public class PlaneacionPedagogica implements Serializable {
         this.observaciones = observaciones;
     }
 
-    public Usuario getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Usuario idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
     public SubactividadAprendizaje getIdSubactividadProyecto() {
         return idSubactividadProyecto;
     }
 
     public void setIdSubactividadProyecto(SubactividadAprendizaje idSubactividadProyecto) {
         this.idSubactividadProyecto = idSubactividadProyecto;
+    }
+
+    public Usuario getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Usuario idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public ProyectoFormativo getIdProyectoFormativo() {

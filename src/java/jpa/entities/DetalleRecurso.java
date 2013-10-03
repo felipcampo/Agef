@@ -12,8 +12,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -25,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author MAURICIO
+ * @author ADSI
  */
 @Entity
 @Table(name = "detalle_recurso")
@@ -79,10 +77,7 @@ public class DetalleRecurso implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "rubro_prosupuestal")
     private String rubroProsupuestal;
-    @JoinTable(name = "proyecto_formativo_detalle_recurso", joinColumns = {
-        @JoinColumn(name = "id_datalle_recurso", referencedColumnName = "id_datalle_recurso")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_proyecto_formativo", referencedColumnName = "id_proyecto_formativo")})
-    @ManyToMany
+    @ManyToMany(mappedBy = "detalleRecursoList")
     private List<ProyectoFormativo> proyectoFormativoList;
 
     public DetalleRecurso() {

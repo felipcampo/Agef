@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author MAURICIO
+ * @author ADSI
  */
 @Entity
 @Table(name = "planeacion_clase")
@@ -73,6 +73,9 @@ public class PlaneacionClase implements Serializable {
     @Size(max = 65535)
     @Column(name = "observaciones")
     private String observaciones;
+    @JoinColumn(name = "id_criterio_evaluacion", referencedColumnName = "id_criterio_evaluacion")
+    @ManyToOne(optional = false)
+    private CriterioEvaluacion idCriterioEvaluacion;
     @JoinColumn(name = "id_usuario_instructor", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false)
     private Usuario idUsuarioInstructor;
@@ -82,9 +85,6 @@ public class PlaneacionClase implements Serializable {
     @JoinColumn(name = "id_ficha_caracterizacion", referencedColumnName = "id_ficha_caracterizacion")
     @ManyToOne(optional = false)
     private FichaCaracterizacion idFichaCaracterizacion;
-    @JoinColumn(name = "id_criterio_evaluacion", referencedColumnName = "id_criterio_evaluacion")
-    @ManyToOne(optional = false)
-    private CriterioEvaluacion idCriterioEvaluacion;
 
     public PlaneacionClase() {
     }
@@ -158,6 +158,14 @@ public class PlaneacionClase implements Serializable {
         this.observaciones = observaciones;
     }
 
+    public CriterioEvaluacion getIdCriterioEvaluacion() {
+        return idCriterioEvaluacion;
+    }
+
+    public void setIdCriterioEvaluacion(CriterioEvaluacion idCriterioEvaluacion) {
+        this.idCriterioEvaluacion = idCriterioEvaluacion;
+    }
+
     public Usuario getIdUsuarioInstructor() {
         return idUsuarioInstructor;
     }
@@ -180,14 +188,6 @@ public class PlaneacionClase implements Serializable {
 
     public void setIdFichaCaracterizacion(FichaCaracterizacion idFichaCaracterizacion) {
         this.idFichaCaracterizacion = idFichaCaracterizacion;
-    }
-
-    public CriterioEvaluacion getIdCriterioEvaluacion() {
-        return idCriterioEvaluacion;
-    }
-
-    public void setIdCriterioEvaluacion(CriterioEvaluacion idCriterioEvaluacion) {
-        this.idCriterioEvaluacion = idCriterioEvaluacion;
     }
 
     @Override

@@ -12,6 +12,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -26,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author MAURICIO
+ * @author ADSI
  */
 @Entity
 @Table(name = "proyecto_formativo")
@@ -207,7 +208,10 @@ public class ProyectoFormativo implements Serializable {
     @Size(min = 1, max = 65535)
     @Column(name = "descr_amb_apr")
     private String descrAmbApr;
-    @ManyToMany(mappedBy = "proyectoFormativoList")
+    @JoinTable(name = "proyecto_formativo_fase", joinColumns = {
+        @JoinColumn(name = "id_proyecto_formativo", referencedColumnName = "id_proyecto_formativo")}, inverseJoinColumns = {
+        @JoinColumn(name = "id_fase_proyecto", referencedColumnName = "id_fase_proyecto")})
+    @ManyToMany
     private List<FaseProyecto> faseProyectoList;
     @ManyToMany(mappedBy = "proyectoFormativoList")
     private List<ActividadProyecto> actividadProyectoList;

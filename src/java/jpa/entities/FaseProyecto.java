@@ -13,8 +13,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
@@ -28,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author MAURICIO
+ * @author ADSI
  */
 @Entity
 @Table(name = "fase_proyecto")
@@ -60,10 +58,7 @@ public class FaseProyecto implements Serializable {
     @Size(min = 1, max = 100)
     @Column(name = "descr_nom_fas_pro")
     private String descrNomFasPro;
-    @JoinTable(name = "proyecto_formativo_fase", joinColumns = {
-        @JoinColumn(name = "id_fase_proyecto", referencedColumnName = "id_fase_proyecto")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_proyecto_formativo", referencedColumnName = "id_proyecto_formativo")})
-    @ManyToMany
+    @ManyToMany(mappedBy = "faseProyectoList")
     private List<ProyectoFormativo> proyectoFormativoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idFaseProyecto")
     private List<PlanMejoramiento> planMejoramientoList;
