@@ -291,6 +291,7 @@ public class SeguimientoProductivaController implements Serializable {
 
     public String prepareView() {
         current = (SeguimientoProductiva) getLazyModel().getRowData();
+        listCriteriosSeg = getFacadeEvalCriterioSeg().findBySeguimiento(current);
         return "View";
     }
 

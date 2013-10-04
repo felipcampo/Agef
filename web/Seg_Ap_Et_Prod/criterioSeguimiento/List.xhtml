@@ -16,51 +16,46 @@
                 <h3 id="margen">#{bundle.ListCriterioSeguimientoTitle}</h3>
                 <div id="Layout_Formulario_Agef">
                     <br></br>
-            <h:form id="listCriterioSeguimiento" styleClass="jsfcrud_list_form">
-                <div id="list" align="center">
-                    <p:growl id="msgs" showDetail="false" sticky="false"/>
-                    <h:outputText escape="false" value="#{bundle.ListCriterioSeguimientoEmpty}" rendered="#{criterioSeguimientoController.lazyModel.rowCount == 0}"/>
-                    <h:panelGroup rendered="#{criterioSeguimientoController.lazyModel.rowCount > 0}">
-                        <p:dataTable id="tableListCriterioSeguimiento" 
-                                     value="#{criterioSeguimientoController.lazyModel}" 
-                                     var="item" 
-                                     paginator="true" rows="10" paginatorAlwaysVisible="false"
-                                     paginatorTemplate="{FirstPageLink} {PreviousPageLink}
-                                     {PageLinks} {NextPageLink}
-                                     {LastPageLink} {RowsPerPageDropdown}"  
-                                     rowsPerPageTemplate="5,10,15" paginatorPosition="bottom"
-                                     lazy="true"
-                                     emptyMessage="No se encontraron datos con el criterio dado"
-                                     widgetVar="tableCriterioSeguimiento">
-                            <p:column headerText="#{bundle.ListCriterioSeguimientoTitle_idCriterioSeguimiento}"
-                                      filterBy="#{item.idCriterioSeguimiento}"
-                                      sortBy="#{item.idCriterioSeguimiento}">                        
-                                <h:outputText value="#{item.idCriterioSeguimiento}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListCriterioSeguimientoTitle_idSeguimientoProductiva}"
-                                      filterBy="#{item.idSeguimientoProductiva}"
-                                      sortBy="#{item.idSeguimientoProductiva}">                        
-                                <h:outputText value="#{item.idSeguimientoProductiva}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListCriterioSeguimientoTitle_idCriterioEvaluacion}"
-                                      filterBy="#{item.idCriterioEvaluacion}"
-                                      sortBy="#{item.idCriterioEvaluacion}">                        
-                                <h:outputText  value="#{item.idCriterioEvaluacion}"/>
-                            </p:column>
-                            <p:column>                        
-                                <p:commandButton ajax="false" action="#{criterioSeguimientoController.prepareView}" title="#{bundle.ListCriterioSeguimientoViewLink}" icon="ui-icon-search"/>
-                                <p:commandButton ajax="false" action="#{criterioSeguimientoController.prepareEdit}" title="#{bundle.ListCriterioSeguimientoEditLink}" icon="ui-icon-pencil"/>
-                                <p:commandButton oncomplete="confirmationDelete.show();" process="@this"
-                                                 title="#{bundle.ListCriterioSeguimientoDestroyLink}" icon="ui-icon-trash">
-                                    <f:setPropertyActionListener value="#{item}" target="#{criterioSeguimientoController.selected}"/>
-                                </p:commandButton>
-                            </p:column>
-                        </p:dataTable>
-                    </h:panelGroup>
-                    <br />
-                    <p:commandButton ajax="false" action="#{criterioSeguimientoController.prepareCreate}" value="#{bundle.ListCriterioSeguimientoCreateLink}" icon="ui-icon-document"/>
-                </div>        
-            </h:form>
+                    <h:form id="listCriterioSeguimiento" styleClass="jsfcrud_list_form">
+                        <div id="list" align="center">
+                            <p:growl id="msgs" showDetail="false" sticky="false"/>
+                            <h:outputText escape="false" value="#{bundle.ListCriterioSeguimientoEmpty}" rendered="#{criterioSeguimientoController.lazyModel.rowCount == 0}"/>
+                            <h:panelGroup rendered="#{criterioSeguimientoController.lazyModel.rowCount > 0}">
+                                <p:dataTable id="tableListCriterioSeguimiento" 
+                                             value="#{criterioSeguimientoController.lazyModel}" 
+                                             var="item" 
+                                             paginator="true" rows="10" paginatorAlwaysVisible="false"
+                                             paginatorTemplate="{FirstPageLink} {PreviousPageLink}
+                                             {PageLinks} {NextPageLink}
+                                             {LastPageLink} {RowsPerPageDropdown}"  
+                                             rowsPerPageTemplate="5,10,15" paginatorPosition="bottom"
+                                             lazy="true"
+                                             emptyMessage="No se encontraron datos con el criterio dado"
+                                             widgetVar="tableCriterioSeguimiento">
+                                    <p:column headerText="#{bundle.ListCriterioSeguimientoTitle_idCriterioSeguimiento}"
+                                              sortBy="#{item.idCriterioSeguimiento}">                        
+                                        <h:outputText value="#{item.idCriterioSeguimiento}"/>
+                                    </p:column>
+                                    <p:column headerText="#{bundle.ListCriterioSeguimientoTitle_idSeguimientoProductiva}">                        
+                                        <h:outputText value="#{item.idSeguimientoProductiva}"/>
+                                    </p:column>
+                                    <p:column headerText="#{bundle.ListCriterioSeguimientoTitle_idCriterioEvaluacion}">                        
+                                        <h:outputText  value="#{item.idCriterioEvaluacion.nomCriterio}"/>
+                                    </p:column>
+                                    <p:column>                        
+                                        <p:commandButton ajax="false" action="#{criterioSeguimientoController.prepareView}" title="#{bundle.ListCriterioSeguimientoViewLink}" icon="ui-icon-search"/>
+                                        <p:commandButton ajax="false" action="#{criterioSeguimientoController.prepareEdit}" title="#{bundle.ListCriterioSeguimientoEditLink}" icon="ui-icon-pencil"/>
+                                        <p:commandButton oncomplete="confirmationDelete.show();" process="@this"
+                                                         title="#{bundle.ListCriterioSeguimientoDestroyLink}" icon="ui-icon-trash">
+                                            <f:setPropertyActionListener value="#{item}" target="#{criterioSeguimientoController.selected}"/>
+                                        </p:commandButton>
+                                    </p:column>
+                                </p:dataTable>
+                            </h:panelGroup>
+                            <br />
+                            <p:commandButton ajax="false" action="#{criterioSeguimientoController.prepareCreate}" value="#{bundle.ListCriterioSeguimientoCreateLink}" icon="ui-icon-document"/>
+                        </div>        
+                    </h:form>
                     <br></br>
                 </div>
             </div>

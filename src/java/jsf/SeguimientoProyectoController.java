@@ -5,10 +5,12 @@ import jsf.util.JsfUtil;
 import jpa.sessions.SeguimientoProyectoFacade;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -34,6 +36,7 @@ import jpa.sessions.CriterioSeguimientoProyectoFacade;
 import jpa.sessions.EvaluacionCriterioSeguimientoProyectoFacade;
 import jpa.sessions.FichaCaracterizacionFacade;
 import jpa.sessions.FichaUsuarioFacade;
+import org.apache.jasper.tagplugins.jstl.ForEach;
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
 
@@ -64,6 +67,36 @@ public class SeguimientoProyectoController implements Serializable {
 
     public SeguimientoProyectoController() {
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+    }
+
+    public int cumple() {
+        int i = 0;
+        if (listCriteriosSeg == null) {
+            return 0;
+        } else {
+            for (CriterioSeguimientoProyecto calificacion : listCriteriosSeg) {
+                if (calificacion.getIdEvaluacionCriterioSeguimientoProyecto() != null) {
+                    if (calificacion.getIdEvaluacionCriterioSeguimientoProyecto().getIdEvaluacionCriterioSeguimientoProyecto() == 1) {
+                        i++;
+                    }
+                }
+            }
+            return i;
+        }
+    }
+
+    public String getTimeDiff() {
+        if (current != null) {
+            Date dateOne = current.getFechaSeguimientoFin();
+            Date dateTwo = current.getFechaSeguimientoInicio();
+            String diff;
+            long timeDiff = Math.abs(dateOne.getTime() - dateTwo.getTime());
+            diff = String.format("%d hour(s) %d min(s)", TimeUnit.MILLISECONDS.toHours(timeDiff),
+                    TimeUnit.MILLISECONDS.toMinutes(timeDiff) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(timeDiff)));
+            return diff;
+        } else {
+            return "";
+        }
     }
 
     public SeguimientoProyecto getSelected() {
@@ -220,11 +253,6 @@ public class SeguimientoProyectoController implements Serializable {
 
             currentCriterioSeg = new CriterioSeguimientoProyecto();
             currentCriterioSeg.setIdCriterioEvaluacion(criterioEval);
-//            currentCriterioSeg.setIdEstadoJuicio(new EstadoJuicio((short) 1));
-//            currentCriterioSeg.setIdGradoJuicio(new GradoJuicio((short) 1));
-//            currentCriterioSeg.setIdTipoJuicio(new TipoJuicio((short) 1));
-//            currentCriterioSeg.setObsCriSeg("");
-            currentCriterioSeg.setIdEvaluacionCriterioSeguimientoProyecto(new EvaluacionCriterioSeguimientoProyecto((short) 1));
             listCriteriosSeg.add(currentCriterioSeg);
         }
 
@@ -236,7 +264,7 @@ public class SeguimientoProyectoController implements Serializable {
         try {
             getFacade().edit(current);
             for (CriterioSeguimientoProyecto criterio : listCriteriosSeg) {
-                if (criterio.getIdEstadoJuicio() != null) {
+                if (criterio.getIdEvaluacionCriterioSeguimientoProyecto() != null) {
                     criterio.setIdSeguimientoProyecto(current);
                     getFacadeCriterioSeg().create(criterio);
                 }

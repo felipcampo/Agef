@@ -40,13 +40,13 @@
                                         <h:outputLabel value="Regional" for="nomReg" />
                                     </p:column>
                                     <p:column colspan="1" >    
-                                        <h:outputText value="#{verificacionAmbienteTituladoController.selected.idProyectoFormativo.idPrograma.idCentroFormacion.idRegional.nomReg}" title="#{bundle.CreateProgramaTitle_nomPrg}"/>
+                                        <h:outputText value="#{verificacionAmbienteTituladoController.selected.idFichaCaracterizacion.idProyectoFormativo.idPrograma.idCentroFormacion.idRegional.nomReg}" />
                                     </p:column >
                                     <p:column colspan="2">
                                         <h:outputLabel value="Centro de Formacion" />
                                     </p:column>
                                     <p:column colspan="6" >    
-                                        <h:outputText value="#{verificacionAmbienteTituladoController.selected.idProyectoFormativo.idPrograma.idCentroFormacion.nomCen}" title="#{bundle.CreateProgramaTitle_nomPrg}"/>
+                                        <h:outputText value="#{verificacionAmbienteTituladoController.selected.idFichaCaracterizacion.idProyectoFormativo.idPrograma.idCentroFormacion.nomCen}" />
                                     </p:column >
                                 </p:row>
                                 <p:row>
@@ -54,13 +54,13 @@
                                         <h:outputLabel value="Programa de Formación"  />
                                     </p:column>
                                     <p:column colspan="1" >    
-                                        <h:outputText value="#{verificacionAmbienteTituladoController.selected.idProyectoFormativo.idPrograma.nomPrg}" title="#{bundle.CreateProgramaTitle_nomPrg}"/>
+                                        <h:outputText value="#{verificacionAmbienteTituladoController.selected.idFichaCaracterizacion.idProyectoFormativo.idPrograma.nomPrg}" />
                                     </p:column >
                                     <p:column colspan="2">
                                         <h:outputLabel value="Código de Programa" />
                                     </p:column>
                                     <p:column colspan="6" >    
-                                        <h:outputText value="#{verificacionAmbienteTituladoController.selected.idProyectoFormativo.idPrograma.idPrograma}" title="#{bundle.CreateProgramaTitle_nomPrg}"/>
+                                        <h:outputText value="#{verificacionAmbienteTituladoController.selected.idFichaCaracterizacion.idProyectoFormativo.idPrograma}" />
                                     </p:column >
                                 </p:row>
                                 <p:row>
@@ -164,14 +164,17 @@
                                     <p:column colspan="1">
                                         <h:outputLabel value="#{bundle.CreateVerificacionAmbienteTituladoLabel_idListaVerificacion}" for="idListaVerificacion" />
                                     </p:column>
-                                    <p:column colspan="9">
-                                        <p:commandButton id="idListaVerificacion" value="Lista Verificacion" onclick="dlg3.show();" process="@none"/>                          
+                                    <p:column colspan="9" style="border-right: white">    
+                                        <p:selectOneMenu id="idListaVerificacion" value="#{verificacionAmbienteTituladoController.selected.idListaVerificacion}" required="true" requiredMessage="#{bundle.CreateVerificacionAmbienteTituladoRequiredMessage_idListaVerificacion}">
+                                            <f:selectItems value="#{listaVerificacionController.itemsAvailableSelectOne}"/>
+                                        </p:selectOneMenu>
                                     </p:column>
-                                </p:row>  
+                                  
+                                </p:row> 
                             </p:panelGrid>
                             <br />
                             <br />
-                            <p:commandButton process="@this, @form" update="@form, :msgs"
+                            <p:commandButton process="@this, @form" update="@form, :msgs, :formListaVerificacion"
                                              action="#{verificacionAmbienteTituladoController.create}" value="#{bundle.CreateVerificacionAmbienteTituladoSaveLink}" icon="ui-icon-disk"/>
                             <br />
                             <br />
@@ -185,8 +188,8 @@
                 <h4>INFORMACION</h4>
                 <hr></hr>
                 <p id="margen">Informacion de ayuda para formularios <hr></hr><br/>
-                Lo primero que tendra que hacer es buscar la ficha de caracterización, en el 
-                botón de bucar que aparece en el centro del formuario.
+                    Lo primero que tendra que hacer es buscar la ficha de caracterización, en el 
+                    botón de bucar que aparece en el centro del formuario.
                 </p>
             </div>
         </ui:define>
@@ -197,7 +200,7 @@
                        resizable="true" modal="true" showEffect="clip" hideEffect="clip">
                 <ui:include src="../listaVerificacion/Create.xhtml" />
             </p:dialog> 
-             <p:dialog id="buscarFichas" widgetVar="dlgBuscarFichas" modal="true" resizable="false">
+            <p:dialog id="buscarFichas" widgetVar="dlgBuscarFichas" modal="true" resizable="false">
                 <p:growl id="msgDialogoBuscara"/>
                 <p:tabView>
                     <p:tab title="Buscar">
@@ -269,26 +272,26 @@
                                         <p:inputText id="nomUsu" value="#{verificacionAmbienteTituladoController.usuarioActual.nomUsu}" title="#{bundle.CreateUsuarioTitle_nomUsu}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_nomUsu}"/>
                                         <p:watermark value="#{bundle.CreateUsuarioLabel_nomUsu}" for="nomUsu" />
                                     </p:column>
-                                     <p:column style="border-right: white">    
+                                    <p:column style="border-right: white">    
                                         <p:inputText id="apeUsu" value="#{verificacionAmbienteTituladoController.usuarioActual.apeUsu}" title="#{bundle.CreateUsuarioTitle_apeUsu}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_apeUsu}"/>
                                         <p:watermark value="#{bundle.CreateUsuarioLabel_apeUsu}" for="apeUsu" />
                                     </p:column> 
                                 </p:row>
                                 <p:row>
-                                    
+
                                     <p:column colspan="3">
                                         <center>
-                                        <p:commandButton action="#{verificacionAmbienteTituladoController.buscarUsuario()}"
-                                                         value="Buscar"
-                                                         icon="ui-icon-search"
-                                                         process="@this,numeroDocumento,nomUsu,apeUsu"
-                                                         update="tablaUsuarios, :msgDialogoBuscar"/>
+                                            <p:commandButton action="#{verificacionAmbienteTituladoController.buscarUsuario()}"
+                                                             value="Buscar"
+                                                             icon="ui-icon-search"
+                                                             process="@this,numeroDocumento,nomUsu,apeUsu"
+                                                             update="tablaUsuarios, :msgDialogoBuscar"/>
                                         </center>
-                                         </p:column>
+                                    </p:column>
                                 </p:row>
-                                   
-                                        
-                                
+
+
+
                             </p:panelGrid>
                             <br /><br /><br />
                             <p:dataTable value="#{verificacionAmbienteTituladoController.listBusquedaUsuarios}"

@@ -32,31 +32,26 @@
                                              lazy="true"
                                              emptyMessage="No se encontraron datos con el criterio dado"
                                              widgetVar="tableConcertacionPlanTrabajoProductiva">
-                                    
+
                                     <p:column headerText="#{bundle.ListConcertacionPlanTrabajoProductivaTitle_actDes}"
-                                              filterBy="#{item.actDes}"
                                               sortBy="#{item.actDes}">                        
                                         <h:outputText value="#{item.actDes}"/>
                                     </p:column>
                                     <p:column headerText="#{bundle.ListConcertacionPlanTrabajoProductivaTitle_eviApr}"
-                                              filterBy="#{item.eviApr}"
                                               sortBy="#{item.eviApr}">                        
                                         <h:outputText value="#{item.eviApr}"/>
                                     </p:column>
                                     <p:column headerText="#{bundle.ListConcertacionPlanTrabajoProductivaTitle_fecCpt}"
-                                              filterBy="#{item.fecCpt}"
                                               sortBy="#{item.fecCpt}">                        
                                         <h:outputText value="#{item.fecCpt}">
                                             <f:convertDateTime pattern="MM/dd/yyyy" />
                                         </h:outputText>
                                     </p:column>
                                     <p:column headerText="#{bundle.ListConcertacionPlanTrabajoProductivaTitle_lugCpt}"
-                                              filterBy="#{item.lugCpt}"
                                               sortBy="#{item.lugCpt}">                        
                                         <h:outputText value="#{item.lugCpt}"/>
                                     </p:column>
                                     <p:column headerText="#{bundle.ListConcertacionPlanTrabajoProductivaTitle_obsCpt}"
-                                              filterBy="#{item.obsCpt}"
                                               sortBy="#{item.obsCpt}">                        
                                         <h:outputText value="#{item.obsCpt}"/>
                                     </p:column>

@@ -160,7 +160,7 @@ public class FaseProyecto implements Serializable {
 
     @Override
     public String toString() {
-        return "jpa.entities.FaseProyecto[ idFaseProyecto=" + idFaseProyecto + " ]";
+        return descrNomFasPro;
     }
     
 }

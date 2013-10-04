@@ -24,9 +24,9 @@
         </ui:define>
         
         <ui:define name="body">
-            <div id="Layout_Titulo_Formulario_Agef"> <h2>Seleccione Un Proyecto para realizar el Seguimiento</h2></div>
-            <h:form id="listSeguimientoProyecto" styleClass="jsfcrud_list_form">
-                <div id="list" align="center">
+              <h:form id="listSeguimientoProyecto" styleClass="jsfcrud_list_form">
+            <div  id="Layout_Titulo_Formulario_Agef"> <h2>Seleccione Un Proyecto para realizar el Seguimiento</h2></div>
+                  <div id="list" align="center">
                     <p:growl id="msgs" showDetail="false" sticky="false"/>
                     <h:outputText escape="false" value="#{bundle.ListSeguimientoProyectoEmpty}" rendered="#{seguimientoProyectoController.lazyModel.rowCount == 0}"/>
                     <h:panelGroup rendered="#{seguimientoProyectoController.lazyModel.rowCount > 0}">

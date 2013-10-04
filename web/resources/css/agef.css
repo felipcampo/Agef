@@ -399,6 +399,20 @@ img, object, embed, video {
 	
 }
 /************Css alistamiento********************/    
+#info
+{
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 13.7931%;
+	display: block;
+	-webkit-transition: all 0s 1s;
+	-moz-transition: all 0s 1s;
+	-ms-transition: all 0s 1s;
+	-o-transition: all 0s 1s;
+	transition: all 0s 1s;
+	margin-bottom: 0.5%;
+	}
 /* Diseño tableta: de 481 px a 768 px. Hereda estilos de: Diseño móvil. */
 
 @media only screen and (min-width: 481px) {
@@ -718,6 +732,20 @@ img, object, embed, video {
 	width: 79.5918%;
 	display: block;
 }
+#info
+{
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 8.1632%;
+	display: block;
+	-webkit-transition: all 0s 1s;
+	-moz-transition: all 0s 1s;
+	-ms-transition: all 0s 1s;
+	-o-transition: all 0s 1s;
+	transition: all 0s 1s;
+	margin-bottom: 1%;
+	}
 }
 
 /* Diseño escritorio: de 769 px hasta un máximo de 1232 px.  Hereda estilos de: Diseño móvil y Diseño tableta. */
@@ -1113,6 +1141,25 @@ img, object, embed, video {
 	width: 100%;
 	display: block;
 }
+#info
+{
+	clear: both;
+	float: left;
+	margin-left: 2px;
+	width: 100%;
+	display: block;
+	opacity: 0.8;
+	border-radius: 30px;
+	min-width: 35px;
+	min-height: 35px;
+	margin-bottom: 2%;
+	max-width: 35px;
+	-webkit-transition: all 0s 1s;
+	-moz-transition: all 0s 1s;
+	-ms-transition: all 0s 1s;
+	-o-transition: all 0s 1s;
+	transition: all 0s 1s;
+	}
 }
 
 #margen{margin:1.6%;

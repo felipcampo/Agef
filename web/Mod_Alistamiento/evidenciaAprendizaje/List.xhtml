@@ -37,64 +37,24 @@
                                       sortBy="#{item.idEvidenciaAprendizaje}">                        
                                 <h:outputText value="#{item.idEvidenciaAprendizaje}"/>
                             </p:column>
-                            <p:column headerText="#{bundle.ListEvidenciaAprendizajeTitle_autentico}"
-                                      filterBy="#{item.autentico}"
-                                      sortBy="#{item.autentico}">                        
-                                <h:outputText value="#{item.autentico}"/>
+                            <p:column headerText="#{bundle.ListEvidenciaAprendizajeTitle_nomEviApr}"
+                                      filterBy="#{item.nomEviApr}"
+                                      sortBy="#{item.nomEviApr}">                        
+                                <h:outputText value="#{item.nomEviApr}"/>
                             </p:column>
-                            <p:column headerText="#{bundle.ListEvidenciaAprendizajeTitle_calidad}"
-                                      filterBy="#{item.calidad}"
-                                      sortBy="#{item.calidad}">                        
-                                <h:outputText value="#{item.calidad}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListEvidenciaAprendizajeTitle_descrEviApr}"
-                                      filterBy="#{item.descrEviApr}"
-                                      sortBy="#{item.descrEviApr}">                        
-                                <h:outputText value="#{item.descrEviApr}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListEvidenciaAprendizajeTitle_fechaEvidenciaAprendizaje}"
+                               <p:column headerText="#{bundle.ListEvidenciaAprendizajeTitle_fechaEvidenciaAprendizaje}"
                                       filterBy="#{item.fechaEvidenciaAprendizaje}"
                                       sortBy="#{item.fechaEvidenciaAprendizaje}">                        
                                 <h:outputText value="#{item.fechaEvidenciaAprendizaje}">
                                     <f:convertDateTime pattern="MM/dd/yyyy" />
                                 </h:outputText>
                             </p:column>
-                            <p:column headerText="#{bundle.ListEvidenciaAprendizajeTitle_nomEviApr}"
-                                      filterBy="#{item.nomEviApr}"
-                                      sortBy="#{item.nomEviApr}">                        
-                                <h:outputText value="#{item.nomEviApr}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListEvidenciaAprendizajeTitle_pertinente}"
-                                      filterBy="#{item.pertinente}"
-                                      sortBy="#{item.pertinente}">                        
-                                <h:outputText value="#{item.pertinente}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListEvidenciaAprendizajeTitle_validez}"
-                                      filterBy="#{item.validez}"
-                                      sortBy="#{item.validez}">                        
-                                <h:outputText value="#{item.validez}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListEvidenciaAprendizajeTitle_idAmbiente}"
-                                      filterBy="#{item.idAmbiente}"
-                                      sortBy="#{item.idAmbiente}">                        
-                                <h:outputText value="#{item.idAmbiente}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListEvidenciaAprendizajeTitle_idCriterioEvaluacion}"
+                           <p:column headerText="#{bundle.ListEvidenciaAprendizajeTitle_idCriterioEvaluacion}"
                                       filterBy="#{item.idCriterioEvaluacion}"
                                       sortBy="#{item.idCriterioEvaluacion}">                        
                                 <h:outputText value="#{item.idCriterioEvaluacion}"/>
                             </p:column>
-                            <p:column headerText="#{bundle.ListEvidenciaAprendizajeTitle_idSubactividadProyecto}"
-                                      filterBy="#{item.idSubactividadProyecto}"
-                                      sortBy="#{item.idSubactividadProyecto}">                        
-                                <h:outputText value="#{item.idSubactividadProyecto}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListEvidenciaAprendizajeTitle_idResultadoAprendizaje}"
-                                      filterBy="#{item.idResultadoAprendizaje}"
-                                      sortBy="#{item.idResultadoAprendizaje}">                        
-                                <h:outputText value="#{item.idResultadoAprendizaje}"/>
-                            </p:column>
-                            <p:column>                        
+                             <p:column>                        
                                 <p:commandButton ajax="false" action="#{evidenciaAprendizajeController.prepareView}" title="#{bundle.ListEvidenciaAprendizajeViewLink}" icon="ui-icon-search"/>
                                 <p:commandButton ajax="false" action="#{evidenciaAprendizajeController.prepareEdit}" title="#{bundle.ListEvidenciaAprendizajeEditLink}" icon="ui-icon-pencil"/>
                                 <p:commandButton oncomplete="confirmationDelete.show();" process="@this"

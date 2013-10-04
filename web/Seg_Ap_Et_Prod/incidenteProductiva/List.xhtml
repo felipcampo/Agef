@@ -33,29 +33,23 @@
                                              emptyMessage="No se encontraron datos con el criterio dado"
                                              widgetVar="tableIncidenteProductiva">
                                     <p:column headerText="#{bundle.ListIncidenteProductivaTitle_idIncidenteProductiva}"
-                                              filterBy="#{item.idIncidenteProductiva}"
                                               sortBy="#{item.idIncidenteProductiva}">                        
                                         <h:outputText value="#{item.idIncidenteProductiva}"/>
                                     </p:column>
                                     <p:column headerText="#{bundle.ListIncidenteProductivaTitle_detalleIncidente}"
-                                              filterBy="#{item.detalleIncidente}"
                                               sortBy="#{item.detalleIncidente}">                        
                                         <h:outputText value="#{item.detalleIncidente}"/>
                                     </p:column>
                                     <p:column headerText="#{bundle.ListIncidenteProductivaTitle_fecIncio}"
-                                              filterBy="#{item.fecIncio}"
                                               sortBy="#{item.fecIncio}">                        
                                         <h:outputText value="#{item.fecIncio}">
                                             <f:convertDateTime pattern="MM/dd/yyyy" />
                                         </h:outputText>
                                     </p:column>
                                     <p:column headerText="#{bundle.ListIncidenteProductivaTitle_solucionInc}"
-                                              filterBy="#{item.solucionInc}"
                                               sortBy="#{item.solucionInc}">                        
                                         <h:outputText value="#{item.solucionInc}"/>
                                     </p:column>
-
-
                                     <p:column>                        
                                         <p:commandButton ajax="false" action="#{incidenteProductivaController.prepareView}" title="#{bundle.ListIncidenteProductivaViewLink}" icon="ui-icon-search"/>
                                         <p:commandButton ajax="false" action="#{incidenteProductivaController.prepareEdit}" title="#{bundle.ListIncidenteProductivaEditLink}" icon="ui-icon-pencil"/>

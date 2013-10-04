@@ -11,6 +11,11 @@
             <h:outputText value="#{bundle.ListFaseProyectoTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+             <div id="Layout_Titulo_Formulario_Agef"> <h2> ALISTAMIENTO </h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen"> #{bundle.ListFaseProyectoTitlee}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br>
             <h:form id="listFaseProyecto" styleClass="jsfcrud_list_form">
                 <div id="list" align="center">
                     <p:growl id="msgs" showDetail="false" sticky="false"/>
@@ -31,11 +36,6 @@
                                       filterBy="#{item.idFaseProyecto}"
                                       sortBy="#{item.idFaseProyecto}">                        
                                 <h:outputText value="#{item.idFaseProyecto}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListFaseProyectoTitle_descrFaseProyecto}"
-                                      filterBy="#{item.descrFaseProyecto}"
-                                      sortBy="#{item.descrFaseProyecto}">                        
-                                <h:outputText value="#{item.descrFaseProyecto}"/>
                             </p:column>
                             <p:column headerText="#{bundle.ListFaseProyectoTitle_durHorFas}"
                                       filterBy="#{item.durHorFas}"
@@ -61,6 +61,14 @@
                     <p:commandButton ajax="false" action="#{faseProyectoController.prepareCreate}" value="#{bundle.ListFaseProyectoCreateLink}" icon="ui-icon-document"/>
                 </div>        
             </h:form>
+                    <br></br>
+                </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                 <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
         <ui:define name="dialogs">
             <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  

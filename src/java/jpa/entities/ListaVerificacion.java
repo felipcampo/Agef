@@ -139,5 +139,9 @@ public class ListaVerificacion implements Serializable {
     public String toString() {
         return "jpa.entities.ListaVerificacion[ idListaVerificacion=" + idListaVerificacion + " ]";
     }
+
+    public void setIdVerificacionAmbienteTitulado(VerificacionAmbienteTitulado current) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

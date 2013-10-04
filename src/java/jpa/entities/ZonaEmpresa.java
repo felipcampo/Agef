@@ -107,7 +107,7 @@ public class ZonaEmpresa implements Serializable {
 
     @Override
     public String toString() {
-        return "jpa.entities.ZonaEmpresa[ idZonaEmpresa=" + idZonaEmpresa + " ]";
+        return descrZona;
     }
     
 }

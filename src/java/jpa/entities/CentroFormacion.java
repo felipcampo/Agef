@@ -178,7 +178,7 @@ public class CentroFormacion implements Serializable {
 
     @Override
     public String toString() {
-        return "jpa.entities.CentroFormacion[ idCentroFormacion=" + idCentroFormacion + " ]";
+        return nomCen + " ";
     }
     
 }

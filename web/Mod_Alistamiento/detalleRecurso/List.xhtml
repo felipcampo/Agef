@@ -42,22 +42,12 @@
                                       sortBy="#{item.nombHerrEquiMate}">                        
                                 <h:outputText value="#{item.nombHerrEquiMate}"/>
                             </p:column>
-                            <p:column headerText="#{bundle.ListDetalleRecursoTitle_unidadMedida}"
-                                      filterBy="#{item.unidadMedida}"
-                                      sortBy="#{item.unidadMedida}">                        
-                                <h:outputText value="#{item.unidadMedida}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListDetalleRecursoTitle_cantidad}"
+                             <p:column headerText="#{bundle.ListDetalleRecursoTitle_cantidad}"
                                       filterBy="#{item.cantidad}"
                                       sortBy="#{item.cantidad}">                        
                                 <h:outputText value="#{item.cantidad}"/>
                             </p:column>
-                            <p:column headerText="#{bundle.ListDetalleRecursoTitle_valorUnitario}"
-                                      filterBy="#{item.valorUnitario}"
-                                      sortBy="#{item.valorUnitario}">                        
-                                <h:outputText value="#{item.valorUnitario}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListDetalleRecursoTitle_valorTotal}"
+                              <p:column headerText="#{bundle.ListDetalleRecursoTitle_valorTotal}"
                                       filterBy="#{item.valorTotal}"
                                       sortBy="#{item.valorTotal}">                        
                                 <h:outputText value="#{item.valorTotal}"/>
@@ -66,11 +56,6 @@
                                       filterBy="#{item.fuenteRecurso}"
                                       sortBy="#{item.fuenteRecurso}">                        
                                 <h:outputText value="#{item.fuenteRecurso}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListDetalleRecursoTitle_rubroProsupuestal}"
-                                      filterBy="#{item.rubroProsupuestal}"
-                                      sortBy="#{item.rubroProsupuestal}">                        
-                                <h:outputText value="#{item.rubroProsupuestal}"/>
                             </p:column>
                             <p:column>                        
                                 <p:commandButton ajax="false" action="#{detalleRecursoController.prepareView}" title="#{bundle.ListDetalleRecursoViewLink}" icon="ui-icon-search"/>

@@ -41,13 +41,13 @@
                                         <h:outputLabel value="#{bundle.CreateProgramaLabel_nomPrg}" for="nomPrg" />
                                     </p:column>
                                     <p:column colspan="3" >    
-                                        <h:outputText id="nomPrg" value="#{guiaAprendizajeController.selected.idFichaCaracterizacion.idPrograma.nomPrg}" title="#{bundle.CreateProgramaTitle_nomPrg}"/>
+                                        <h:outputText id="nomPrg" value="#{guiaAprendizajeController.selected.idFichaCaracterizacion.idProyectoFormativo.idPrograma.nomPrg}" title="#{bundle.CreateProgramaTitle_nomPrg}"/>
                                     </p:column >
                                     <p:column colspan="1">
                                         <h:outputLabel value="#{bundle.CreateProgramaLabel_version}" for="version" />
                                     </p:column>
                                     <p:column colspan="5" >   
-                                        <h:outputText id="version" value="#{guiaAprendizajeController.selected.idFichaCaracterizacion.idPrograma.version}" title="#{bundle.CreateProgramaTitle_nomPrg}"/>
+                                        <h:outputText id="version" value="#{guiaAprendizajeController.selected.idFichaCaracterizacion.idProyectoFormativo.idPrograma.version}" title="#{bundle.CreateProgramaTitle_nomPrg}"/>
                                     </p:column>
                                 </p:row>
                                 <p:row>
@@ -59,45 +59,17 @@
                                     </p:column>
                                 </p:row>
                                 <p:row>
-                                    <p:column colspan="1">
-                                        <h:outputLabel value="#{bundle.CreateFaseProyectoLabel_descrNomFasPro}" for="descrNomFasPro" />
+                                    <p:column>
+                                        <h:outputLabel value="Codigo proyecto" for="idProyectoFormativo" />
                                     </p:column>
                                     <p:column colspan="9" >    
-                                        <h:outputText value="#{guiaAprendizajeController.selected.idFichaCaracterizacion.idProyectoFormativo.idActividadProyecto.idFaseProyecto.descrNomFasPro}" title="#{bundle.CreateProgramaTitle_nomPrg}"/>
+                                        <h:outputText value="#{guiaAprendizajeController.selected.idFichaCaracterizacion.idProyectoFormativo}" title="#{bundle.CreateProgramaTitle_nomPrg}"/>
                                     </p:column>
                                 </p:row>
-                                <p:row>
-                                    <p:column colspan="1">
-                                        <h:outputLabel value="#{bundle.CreateActividadProyectoLabel_descrActividadProyecto}" for="descrActividadProyecto" />
-                                    </p:column>
-                                    <p:column colspan="3" >    
-                                        <h:outputText value="#{guiaAprendizajeController.selected.idFichaCaracterizacion.idProyectoFormativo.idActividadProyecto.descrActividadProyecto}" title="#{bundle.CreateProgramaTitle_nomPrg}"/>
-                                    </p:column >
-                                    <p:column colspan="1">
-                                        <h:outputLabel value="#{bundle.CreateActividadProyectoLabel_duracionActividad}" for="duracionActividad" />
-                                    </p:column>
-                                    <p:column colspan="5" >    
-                                        <h:outputText value="#{guiaAprendizajeController.selected.idFichaCaracterizacion.idProyectoFormativo.idActividadProyecto.duracionActividad}" title="#{bundle.CreateProgramaTitle_nomPrg}"/>
-                                    </p:column>
-                                </p:row>
-                                <p:row>
-                                    <p:column colspan="1">
-                                        <h:outputLabel value="#{bundle.CreateCompetenciaLabel_nomCom}" for="nomCom" />
-                                    </p:column>
-                                    <p:column colspan="9" >    
-
-                                        <h:outputText value="#{guiaAprendizajeController.selected.idFichaCaracterizacion.idProyectoFormativo.idResultadoAprendizaje.idCompetencia.nomCom}" title="#{bundle.CreateProgramaTitle_nomPrg}"/>
-                                    </p:column>
-                                </p:row>
-                                <p:row>
-                                    <p:column colspan="1">
-                                        <h:outputLabel value="#{bundle.CreateResultadoAprendizajeLabel_descrNomResuApr}" for="descrNomResuApr" />
-                                    </p:column>
-                                    <p:column colspan="9" >    
-
-                                        <h:outputText value="#{guiaAprendizajeController.selected.idFichaCaracterizacion.idProyectoFormativo.idResultadoAprendizaje.descrNomResuApr}" title="#{bundle.CreateProgramaTitle_nomPrg}"/>
-                                    </p:column>
-                                </p:row>
+                                
+                                
+                            
+                           
                                 <p:row>
                                     <p:column colspan="10" styleClass="ui-widget-header" ><center>INTRODUCCION</center></p:column>
                                 </p:row>
@@ -150,22 +122,15 @@
                                 <p:row>
                                     <p:column colspan="10" styleClass="ui-widget-header" ><center>ACTIVIDADES DE EVALUACIÓN</center></p:column>
                                 </p:row>
-                                <p:row>
-                                    <p:column colspan="2">
-                                        <h:outputLabel value="EVIDENCIAS DE APRENDIZAJE" for="descrEviApr" />
-                                    </p:column>
-                                    <p:column colspan="8">
-                                        <h:outputLabel value="CRITERIOS DE EVALUACION" for="idCriterioEvaluacion" />
-                                    </p:column>
-                                </p:row>
+                               
                                 <p:row>
                                     <p:column colspan="2" >    
 
-                                        <h:outputText value="#{guiaAprendizajeController.selected.idFichaCaracterizacion.idProyectoFormativo.idEvidenciaAprendizaje.nomEviApr}" title="#{bundle.CreateProgramaTitle_nomPrg}"/>
+                                        <h:outputText value="#{guiaAprendizajeController.selected.idFichaCaracterizacion.idProyectoFormativo}" title="#{bundle.CreateProgramaTitle_nomPrg}"/>
                                     </p:column>
                                     <p:column colspan="8" >    
 
-                                        <h:outputText value="#{guiaAprendizajeController.selected.idFichaCaracterizacion.idProyectoFormativo.idEvidenciaAprendizaje.idCriterioEvaluacion}" title="#{bundle.CreateProgramaTitle_nomPrg}"/>
+                                        <h:outputText value="#{guiaAprendizajeController.selected.idFichaCaracterizacion.idProyectoFormativo}" title="#{bundle.CreateProgramaTitle_nomPrg}"/>
                                     </p:column>
                                 </p:row>
                                 <p:row>
@@ -176,23 +141,7 @@
 
                                     </p:column>
                                 </p:row>
-                                <p:row>
-                                     <p:column colspan="2" >    
-
-                                    </p:column>
-                                    <p:column colspan="8" >    
-
-                                    </p:column>
-                                </p:row>
-                                <p:row>
-                                     <p:column colspan="2" >    
-
-                                    </p:column>
-                                    <p:column colspan="8" >    
-
-                                    </p:column>
-                                </p:row>
-                                <p:row>
+                               <p:row>
                                     <p:column colspan="10" styleClass="ui-widget-header" ><center>AMBIENTES DE APRENDIZAJE, DEDIOS Y RECURSOS DIDACTICOS</center></p:column>
                                 </p:row>
                           

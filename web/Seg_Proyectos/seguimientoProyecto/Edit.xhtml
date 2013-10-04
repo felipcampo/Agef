@@ -62,10 +62,12 @@
                                 <h:outputLabel value="#{bundle.EditSeguimientoProyectoLabel_fechaSeguimientoFin}" for="fechaSeguimientoFin" />
                             </p:column>
                             <p:column colspan="4" style="border-right: white"> 
-                                <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm:ss" showOn="button" id="fechaSeguimientoFin" value="#{seguimientoProyectoController.selected.fechaSeguimientoFin}" title="#{bundle.EditSeguimientoProyectoTitle_fechaSeguimientoFin}" />
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm:ss" showOn="button" id="fechaSeguimientoFin" value="#{seguimientoProyectoController.selected.fechaSeguimientoFin}" title="#{bundle.EditSeguimientoProyectoTitle_fechaSeguimientoFin}" >
+                                    <p:ajax update="totalhoras"/>
+                                </p:calendar>
                             </p:column>
                             <p:column colspan="6" > 
-                                <p:inputText id="totalhoras" size="60" readonly="true" value=""  />
+                                <p:outputLabel id="totalhoras"   value="#{seguimientoProyectoController.getTimeDiff()}"  />
                             </p:column>
                         </p:row> 
 
@@ -225,7 +227,7 @@
                                 <h:outputLabel value="Analisis" />
                             </p:column>
                             <p:column colspan="3">
-                                <h:outputText id="an"   value="resultado  calculado" /> 
+                                <h:outputText id="an"  value="#{seguimientoProyectoController.cumple()}" /> 
 
                             </p:column>
                             <p:column colspan="1" style="border-right: white"> 
@@ -396,7 +398,8 @@
                             <p:column colspan="20" style="background-color: #fc7323;"><center><font color="white"><strong>Revision y seguimiento al proyecto</strong></font></center> </p:column> 
                         </p:row> 
                         <p:row> 
-                            <p:column colspan="20" >      
+                            <p:column colspan="20" > 
+                                <p:scrollPanel style="width:1130px;height:324px" mode="native"> 
                                 <p:dataTable id="tableListCriterioEvaluacion" 
                                              value="#{seguimientoProyectoController.listCriteriosSeg}" 
                                              var="item" editable="true" 
@@ -404,9 +407,10 @@
                                              paginatorTemplate="{FirstPageLink} {PreviousPageLink}
                                              {PageLinks} {NextPageLink}
                                              {LastPageLink} {RowsPerPageDropdown}"  
-                                             rowsPerPageTemplate="5,10,15" paginatorPosition="bottom"                                     
+                                             rowsPerPageTemplate="5,10,15" paginatorPosition="bottom"                                    
                                              emptyMessage="No se encontraron datos con el criterio dado"
                                              widgetVar="tableCriterioEvaluacion">
+                                    <p:ajax event="rowEdit"  update=":formSeguimientoProyecto:an" />  
                                     <p:column headerText="#{bundle.ListTituloCriterioTitle_descrNomTituloCriterio}">                        
                                         <h:outputText value="#{item.idCriterioEvaluacion.idTituloCriterio.descrNomTituloCriterio}"/>
                                     </p:column>
@@ -486,8 +490,9 @@
                                         <p:rowEditor />  
                                     </p:column> 
                                 </p:dataTable>
+                                    </p:scrollPanel> 
                             </p:column>
-
+ 
 
                         </p:row> 
 

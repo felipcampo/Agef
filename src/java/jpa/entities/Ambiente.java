@@ -121,7 +121,7 @@ public class Ambiente implements Serializable {
 
     @Override
     public String toString() {
-        return "jpa.entities.Ambiente[ idAmbiente=" + idAmbiente + " ]";
+        return descrNomAmb;
     }
     
 }

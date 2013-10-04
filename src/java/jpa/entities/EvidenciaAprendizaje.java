@@ -204,7 +204,7 @@ public class EvidenciaAprendizaje implements Serializable {
 
     @Override
     public String toString() {
-        return "jpa.entities.EvidenciaAprendizaje[ idEvidenciaAprendizaje=" + idEvidenciaAprendizaje + " ]";
+        return nomEviApr;
     }
     
 }

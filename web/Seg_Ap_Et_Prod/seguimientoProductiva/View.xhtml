@@ -84,6 +84,35 @@
                                 <h:outputText value="#{seguimientoProductivaController.selected.espRec}" title="#{bundle.ViewSeguimientoProductivaTitle_espRec}"/>
 
                             </p:panelGrid>
+                            
+                            &nbsp;
+                            &nbsp;
+
+                            <p:dataTable id="tableListCriterioEvaluacion" 
+                                         value="#{seguimientoProductivaController.listCriteriosSeg}" 
+                                         var="item"   
+                                         paginator="true" rows="15" paginatorAlwaysVisible="false"
+                                         paginatorTemplate="{FirstPageLink} {PreviousPageLink}
+                                         {PageLinks} {NextPageLink}
+                                         {LastPageLink} {RowsPerPageDropdown}"  
+                                         rowsPerPageTemplate="5,10,15" paginatorPosition="bottom"                                     
+                                         emptyMessage="No se encontraron datos con el criterio dado"
+                                         widgetVar="tableCriterioEvaluacion">
+
+                                <p:column headerText="CRITERIO">                        
+                                    <h:outputText  value="#{item.idCriterioEvaluacion.nomCriterio}"/>
+                                </p:column>                                     
+                                <p:column headerText="VALORACIÓN">                        
+                                    <h:outputText  value="SATISFATORIO" rendered="#{item.valCep}"/>
+                                    <h:outputText  value="POR MEJORAR" rendered="#{!item.valCep}"/>
+                                </p:column>  
+                                <p:column headerText="OBSERVACIÓN">                        
+                                    <h:outputText  value="#{item.obsCep}"/>
+                                </p:column>
+                            </p:dataTable>
+
+
+
                             <br />
                             <br />
                             <p:commandButton oncomplete="confirmationDelete.show();" process="@this" value="#{bundle.ListSeguimientoProductivaDestroyLink}"

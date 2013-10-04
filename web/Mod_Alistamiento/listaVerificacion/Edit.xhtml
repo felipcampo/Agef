@@ -11,6 +11,11 @@
             <h:outputText value="#{bundle.EditListaVerificacionTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+            <div id="Layout_Titulo_Formulario_Agef"> <h2>LISTA DE VERIFICACIÓN</h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen">#{bundle.EditListaVerificacionTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br>
             <p:growl id="msgs" showDetail="false" sticky="false"/>
             <h:form id="formListaVerificacion">
                 <div id="form" align="center">
@@ -72,6 +77,17 @@
                     <p:commandButton ajax="false" action="#{listaVerificacionController.prepareList}" value="#{bundle.EditListaVerificacionShowAllLink}" immediate="true"/>
                 </div>
             </h:form>
+            <br/><br/>
+                </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen">Informacion de ayuda para formularios <hr></hr><br/>
+                    Lo primero que tendra que hacer es buscar la ficha de caracterización, en el 
+                    botón de bucar que aparece en el centro del formuario.
+                </p>
+            </div>
         </ui:define>
     </ui:composition>
 

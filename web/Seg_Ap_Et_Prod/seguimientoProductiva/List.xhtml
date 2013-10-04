@@ -49,30 +49,20 @@
                                              lazy="true"
                                              emptyMessage="No se encontraron datos con el criterio dado"
                                              widgetVar="tableSeguimientoProductiva">
-                                    <p:column headerText="#{bundle.ListSeguimientoProductivaTitle_idUsuario}"
-                                              filterBy="#{item.idUsuario.numeroDocumento}"
-                                              sortBy="#{item.idUsuario.numeroDocumento}">                        
+                                    <p:column headerText="#{bundle.ListSeguimientoProductivaTitle_idUsuario}">                        
                                         <h:outputText value="#{item.idUsuario.numeroDocumento}"/>
                                     </p:column>
-                                    <p:column headerText="#{bundle.ListSeguimientoProductivaTitle_idEmpresa}"
-                                              filterBy="#{item.idEmpresa.razonSocialEmp}"
-                                              sortBy="#{item.idEmpresa.razonSocialEmp}">                        
+                                    <p:column headerText="#{bundle.ListSeguimientoProductivaTitle_idEmpresa}">                        
                                         <h:outputText value="#{item.idEmpresa.razonSocialEmp}"/>
                                     </p:column>
-                                    <p:column headerText="#{bundle.ListSeguimientoProductivaTitle_idFichaCaracterizacion}"
-                                              filterBy="#{item.idFichaCaracterizacion}"
-                                              sortBy="#{item.idFichaCaracterizacion}">                        
+                                    <p:column headerText="#{bundle.ListSeguimientoProductivaTitle_idFichaCaracterizacion}">                        
                                         <h:outputText value="#{item.idFichaCaracterizacion}"/>
                                     </p:column>
                                     <p:column headerText="#{bundle.ListSeguimientoProductivaTitle_tipoInforme}"
-                                              filterBy="#{item.tipoInforme}"
                                               sortBy="#{item.tipoInforme}">                        
                                         <h:outputText value="#{item.tipoInforme}"/>
                                     </p:column>
-
-                                    <p:column headerText="#{bundle.ListSeguimientoProductivaTitle_idModalidadProductiva}"
-                                              filterBy="#{item.idModalidadProductiva.detalleMododalidad}"
-                                              sortBy="#{item.idModalidadProductiva.detalleMododalidad}">                        
+                                    <p:column headerText="#{bundle.ListSeguimientoProductivaTitle_idModalidadProductiva}">                        
                                         <h:outputText value="#{item.idModalidadProductiva.detalleMododalidad}"/>
                                     </p:column>
 

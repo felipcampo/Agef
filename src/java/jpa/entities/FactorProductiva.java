@@ -106,7 +106,7 @@ public class FactorProductiva implements Serializable {
 
     @Override
     public String toString() {
-        return "jpa.entities.FactorProductiva[ idFactorProductiva=" + idFactorProductiva + " ]";
+        return idFactorProductiva + " " + nomFactorProductiva;
     }
     
 }

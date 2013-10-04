@@ -11,13 +11,18 @@
             <h:outputText value="#{bundle.ListSubactividadProyectoTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+              <div id="Layout_Titulo_Formulario_Agef"> <h2> ALISTAMIENTO </h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen"> #{bundle.ListSubactividadProyectoTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br>
             <h:form id="listSubactividadProyecto" styleClass="jsfcrud_list_form">
                 <div id="list" align="center">
                     <p:growl id="msgs" showDetail="false" sticky="false"/>
-                    <h:outputText escape="false" value="#{bundle.ListSubactividadProyectoEmpty}" rendered="#{subactividadProyectoController.lazyModel.rowCount == 0}"/>
-                    <h:panelGroup rendered="#{subactividadProyectoController.lazyModel.rowCount > 0}">
+                    <h:outputText escape="false" value="#{bundle.ListSubactividadProyectoEmpty}" rendered="#{subactividadAprendizajeController.lazyModel.rowCount == 0}"/>
+                    <h:panelGroup rendered="#{subactividadAprendizajeController.lazyModel.rowCount > 0}">
                         <p:dataTable id="tableListSubactividadProyecto" 
-                                     value="#{subactividadProyectoController.lazyModel}" 
+                                     value="#{subactividadAprendizajeController.lazyModel}" 
                                      var="item" 
                                      paginator="true" rows="10" paginatorAlwaysVisible="false"
                                      paginatorTemplate="{FirstPageLink} {PreviousPageLink}
@@ -28,9 +33,9 @@
                                      emptyMessage="No se encontraron datos con el criterio dado"
                                      widgetVar="tableSubactividadProyecto">
                             <p:column headerText="#{bundle.ListSubactividadProyectoTitle_idSubactividadProyecto}"
-                                      filterBy="#{item.idSubactividadProyecto}"
-                                      sortBy="#{item.idSubactividadProyecto}">                        
-                                <h:outputText value="#{item.idSubactividadProyecto}"/>
+                                      filterBy="#{item.idSubactividadAprendizaje}"
+                                      sortBy="#{item.idSubactividadAprendizaje}">                        
+                                <h:outputText value="#{item.idSubactividadAprendizaje}"/>
                             </p:column>
                             <p:column headerText="#{bundle.ListSubactividadProyectoTitle_descrNombreSubPro}"
                                       filterBy="#{item.descrNombreSubPro}"
@@ -38,30 +43,38 @@
                                 <h:outputText value="#{item.descrNombreSubPro}"/>
                             </p:column>
                             <p:column headerText="#{bundle.ListSubactividadProyectoTitle_idActividadProyecto}"
-                                      filterBy="#{item.idActividadProyecto}"
-                                      sortBy="#{item.idActividadProyecto}">                        
-                                <h:outputText value="#{item.idActividadProyecto}"/>
+                                      filterBy="#{item.idActividadAprendizaje}"
+                                      sortBy="#{item.idActividadAprendizaje}">                        
+                                <h:outputText value="#{item.idActividadAprendizaje}"/>
                             </p:column>
                             <p:column>                        
-                                <p:commandButton ajax="false" action="#{subactividadProyectoController.prepareView}" title="#{bundle.ListSubactividadProyectoViewLink}" icon="ui-icon-search"/>
-                                <p:commandButton ajax="false" action="#{subactividadProyectoController.prepareEdit}" title="#{bundle.ListSubactividadProyectoEditLink}" icon="ui-icon-pencil"/>
+                                <p:commandButton ajax="false" action="#{subactividadAprendizajeController.prepareView}" title="#{bundle.ListSubactividadProyectoViewLink}" icon="ui-icon-search"/>
+                                <p:commandButton ajax="false" action="#{subactividadAprendizajeController.prepareEdit}" title="#{bundle.ListSubactividadProyectoEditLink}" icon="ui-icon-pencil"/>
                                 <p:commandButton oncomplete="confirmationDelete.show();" process="@this"
                                                  title="#{bundle.ListSubactividadProyectoDestroyLink}" icon="ui-icon-trash">
-                                    <f:setPropertyActionListener value="#{item}" target="#{subactividadProyectoController.selected}"/>
+                                    <f:setPropertyActionListener value="#{item}" target="#{subactividadAprendizajeController.selected}"/>
                                 </p:commandButton>
                             </p:column>
                         </p:dataTable>
                     </h:panelGroup>
                     <br />
-                    <p:commandButton ajax="false" action="#{subactividadProyectoController.prepareCreate}" value="#{bundle.ListSubactividadProyectoCreateLink}" icon="ui-icon-document"/>
+                    <p:commandButton ajax="false" action="#{subactividadAprendizajeController.prepareCreate}" value="#{bundle.ListSubactividadProyectoCreateLink}" icon="ui-icon-document"/>
                 </div>        
             </h:form>
+                    <br></br>
+                </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                 <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
         <ui:define name="dialogs">
             <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  
                              header="#{bundle.DeleteItemMessage}" severity="alert" widgetVar="confirmationDelete">  
                 <p:commandButton id="confirmDeleteButtonYes" value="#{bundle.DeleteButtonYes}" update=":listSubactividadProyecto" oncomplete="confirmationDelete.hide();"  
-                                 action="#{subactividadProyectoController.destroy}"/>  
+                                 action="#{subactividadAprendizajeController.destroy}"/>  
                 <p:commandButton id="confirmDeleteButtonNot" value="#{bundle.DeleteButtonNot}" onclick="confirmationDelete.hide();" type="button" />   
             </p:confirmDialog>             
         </ui:define>

@@ -137,7 +137,7 @@ public class ModalidadProductiva implements Serializable {
 
     @Override
     public String toString() {
-        return "jpa.entities.ModalidadProductiva[ idModalidadProductiva=" + idModalidadProductiva + " ]";
+        return  detalleMododalidad;
     }
     
 }

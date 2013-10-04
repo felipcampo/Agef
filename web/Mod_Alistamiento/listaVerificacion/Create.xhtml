@@ -6,15 +6,34 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition >
-    
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateListaVerificacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+             <div id="Layout_Titulo_Formulario_Agef"> <h2>LISTA DE VERIFICACIÓN</h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen"> #{bundle.CreateListaVerificacionTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br>  
+            <p:growl id="msgs" showDetail="false" sticky="false"/>
             <h:form id="formListaVerificacion">
                 <div id="form" align="center">
                     <p:panelGrid>
                         <f:facet name="header">
                             <p:row><p:column colspan="3">#{bundle.CreateListaVerificacionTitle}</p:column></p:row>                            
                         </f:facet>                        
-                        
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel value="#{bundle.CreateListaVerificacionLabel_idListaVerificacion}" for="idListaVerificacion" />
+                            </p:column>
+                            <p:column style="border-right: white">    
+                                <p:inputText id="idListaVerificacion" value="#{listaVerificacionController.selected.idListaVerificacion}" title="#{bundle.CreateListaVerificacionTitle_idListaVerificacion}" required="true" requiredMessage="#{bundle.CreateListaVerificacionRequiredMessage_idListaVerificacion}"/>
+                            </p:column>
+                            <p:column style="border-left: white;">
+                                <p:message for="idListaVerificacion"/>
+                            </p:column>
+                        </p:row>
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateListaVerificacionLabel_variablesIndicadores}" for="variablesIndicadores" />
@@ -30,8 +49,9 @@
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateListaVerificacionLabel_cumplimiento}" for="cumplimiento" />
                             </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputText id="cumplimiento" value="#{listaVerificacionController.selected.cumplimiento}" title="#{bundle.CreateListaVerificacionTitle_cumplimiento}" required="true" requiredMessage="#{bundle.CreateListaVerificacionRequiredMessage_cumplimiento}"/>
+                            <p:column style="border-right: white">   
+                                <p:selectBooleanButton id="cumplimiento" value="#{listaVerificacionController.selected.cumplimiento}" onLabel="Si" offLabel="No" onIcon="ui-icon-check" offIcon="ui-icon-close" required="true" requiredMessage="#{bundle.CreateListaVerificacionRequiredMessage_cumplimiento}"/> 
+
                             </p:column>
                             <p:column style="border-left: white;">
                                 <p:message for="cumplimiento"/>
@@ -52,13 +72,24 @@
                     <br />
                     <br />
                     <p:commandButton process="@this, @form" update="@form, :msgs"
-                                       action="#{listaVerificacionController.create}" value="#{bundle.CreateListaVerificacionSaveLink}" icon="ui-icon-disk"/>
+                                     action="#{listaVerificacionController.create}" value="#{bundle.CreateListaVerificacionSaveLink}" icon="ui-icon-disk"/>
                     <br />
                     <br />
                     <p:commandButton ajax="false" action="#{listaVerificacionController.prepareList}" value="#{bundle.CreateListaVerificacionShowAllLink}" immediate="true"/>
                 </div>
             </h:form>
-       
+            <br></br>  
+             </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen">Informacion de ayuda para formularios <hr></hr><br/>
+                    Lo primero que tendra que hacer es buscar la ficha de caracterización, en el 
+                    botón de bucar que aparece en el centro del formuario.
+                </p>
+            </div>
+        </ui:define>
     </ui:composition>
 
 </html>

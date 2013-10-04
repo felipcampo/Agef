@@ -3,7 +3,9 @@ package jsf;
 import jpa.entities.VerificacionAmbienteTitulado;
 import jsf.util.JsfUtil;
 import jpa.sessions.VerificacionAmbienteTituladoFacade;
-
+import jpa.entities.ListaVerificacion;
+import jsf.VerificacionAmbienteTituladoController;
+import jpa.sessions.ListaVerificacionFacade;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.ArrayList;
@@ -31,6 +33,8 @@ import org.primefaces.model.SortOrder;
 public class VerificacionAmbienteTituladoController implements Serializable {
 
     private FichaCaracterizacion currentFicha;
+    private ListaVerificacion currentListaveri;
+    private List<ListaVerificacion> listListas;
     private Usuario usuarioActual;
     private Programa currentPrograma;
     private List<FichaCaracterizacion> listBusquedaFicha;
@@ -43,6 +47,9 @@ public class VerificacionAmbienteTituladoController implements Serializable {
     private jpa.sessions.FichaCaracterizacionFacade ejbFacadeFicha;
     @EJB
     private jpa.sessions.UsuarioFacade usuarioFacade;
+    @EJB
+    private jpa.sessions.ListaVerificacionFacade ejbFacadeListaverifica;
+    private VerificacionAmbienteTitulado idVerificacionAmbienteTitulado;
 
     public VerificacionAmbienteTituladoController() {
     }
@@ -58,6 +65,10 @@ public class VerificacionAmbienteTituladoController implements Serializable {
         current = entity;
     }
 
+    public void setIdVerificacionAmbienteTitulado(VerificacionAmbienteTitulado idVerificacionAmbienteTitulado) {
+        this.idVerificacionAmbienteTitulado = idVerificacionAmbienteTitulado;
+    }
+   
     public Usuario getUsuarioActual() {
         if (usuarioActual == null) {
             usuarioActual = new Usuario();
@@ -79,13 +90,16 @@ public class VerificacionAmbienteTituladoController implements Serializable {
     public void setUsuarioActual(Usuario usuario) {
         usuarioActual = usuario;
     }
-    
 
     public Programa getSelectedPrograma() {
         if (currentPrograma == null) {
             currentPrograma = new Programa();
         }
         return currentPrograma;
+    }
+
+    private ListaVerificacionFacade getFacadeListaveri() {
+        return ejbFacadeListaverifica;
     }
 
     private UsuarioFacade getUsuarioFacade() {
@@ -127,6 +141,11 @@ public class VerificacionAmbienteTituladoController implements Serializable {
         }
     }
 
+    public void agregarListaVerificacion() {
+        listListas.add(currentListaveri);
+        currentListaveri = new ListaVerificacion();
+    }
+
     public void agregarFicha() {
         current.setIdFichaCaracterizacion(currentFicha);
         currentFicha = new FichaCaracterizacion();
@@ -137,12 +156,30 @@ public class VerificacionAmbienteTituladoController implements Serializable {
         return listBusquedaFicha;
     }
 
+    public List<ListaVerificacion> getListaVerificacion() {
+        return listListas;
+    }
+    
+    
+    public ListaVerificacionFacade getFacadeListaVerificacion() {
+        return ejbFacadeListaverifica;
+    }
+
+    public List<ListaVerificacion> getListListaVerificacion() {
+        return listListas;
+    }
+
+    public ListaVerificacion getSelectedListaVerificacion() {
+        if (currentListaveri == null) {
+            currentListaveri = new ListaVerificacion();
+        }
+        return currentListaveri;
+    }
+
     public List<Usuario> getListBusquedaUsuarios() {
         return listBusquedaUsuarios;
     }
-    
-     
-     
+
     private VerificacionAmbienteTituladoFacade getFacade() {
         return ejbFacade;
     }
@@ -201,14 +238,26 @@ public class VerificacionAmbienteTituladoController implements Serializable {
         currentPrograma = new Programa();
         listBusquedaFicha = new ArrayList<>();
         listBusquedaUsuarios = new ArrayList<>();
+        currentListaveri = new ListaVerificacion();
+        listListas = new ArrayList<>();
         current = new VerificacionAmbienteTitulado();
+
 
         return "Create";
     }
 
     public String create() {
         try {
+
+            
+
             getFacade().create(current);
+
+            for (ListaVerificacion verificacion : listListas) {
+                verificacion.setIdVerificacionAmbienteTitulado(current);
+                getFacadeListaVerificacion().create(verificacion);
+            }
+
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("VerificacionAmbienteTituladoCreated"));
             return "View";
         } catch (Exception e) {

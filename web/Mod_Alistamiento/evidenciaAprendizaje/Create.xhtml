@@ -11,154 +11,64 @@
             <h:outputText value="#{bundle.CreateEvidenciaAprendizajeTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+                <div id="Layout_Titulo_Formulario_Agef"> <h2> ALISTAMIENTO </h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen"> #{bundle.CreateEvidenciaAprendizajeTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br>        
             <p:growl id="msgs" showDetail="false" sticky="false"/>
             <h:form id="formEvidenciaAprendizaje">
                 <div id="form" align="center">
                     <p:panelGrid>
                         <f:facet name="header">
-                            <p:row><p:column colspan="3">#{bundle.CreateEvidenciaAprendizajeTitle}</p:column></p:row>                            
+                            <p:row><p:column colspan="8"></p:column></p:row>                            
                         </f:facet>                        
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateEvidenciaAprendizajeLabel_idEvidenciaAprendizaje}" for="idEvidenciaAprendizaje" />
                             </p:column>
-                            <p:column style="border-right: white">    
+                            
+                            <p:column>    
                                 <p:inputText id="idEvidenciaAprendizaje" value="#{evidenciaAprendizajeController.selected.idEvidenciaAprendizaje}" title="#{bundle.CreateEvidenciaAprendizajeTitle_idEvidenciaAprendizaje}" required="true" requiredMessage="#{bundle.CreateEvidenciaAprendizajeRequiredMessage_idEvidenciaAprendizaje}"/>
                             </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idEvidenciaAprendizaje"/>
-                            </p:column>
                         </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateEvidenciaAprendizajeLabel_autentico}" for="autentico" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputText id="autentico" value="#{evidenciaAprendizajeController.selected.autentico}" title="#{bundle.CreateEvidenciaAprendizajeTitle_autentico}" required="true" requiredMessage="#{bundle.CreateEvidenciaAprendizajeRequiredMessage_autentico}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="autentico"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateEvidenciaAprendizajeLabel_calidad}" for="calidad" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputText id="calidad" value="#{evidenciaAprendizajeController.selected.calidad}" title="#{bundle.CreateEvidenciaAprendizajeTitle_calidad}" required="true" requiredMessage="#{bundle.CreateEvidenciaAprendizajeRequiredMessage_calidad}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="calidad"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateEvidenciaAprendizajeLabel_descrEviApr}" for="descrEviApr" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputTextarea rows="4" cols="30" id="descrEviApr" value="#{evidenciaAprendizajeController.selected.descrEviApr}" title="#{bundle.CreateEvidenciaAprendizajeTitle_descrEviApr}" required="true" requiredMessage="#{bundle.CreateEvidenciaAprendizajeRequiredMessage_descrEviApr}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="descrEviApr"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateEvidenciaAprendizajeLabel_fechaEvidenciaAprendizaje}" for="fechaEvidenciaAprendizaje" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:calendar navigator="true" pattern="MM/dd/yyyy" showOn="button" id="fechaEvidenciaAprendizaje" value="#{evidenciaAprendizajeController.selected.fechaEvidenciaAprendizaje}" title="#{bundle.CreateEvidenciaAprendizajeTitle_fechaEvidenciaAprendizaje}" required="true" requiredMessage="#{bundle.CreateEvidenciaAprendizajeRequiredMessage_fechaEvidenciaAprendizaje}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="fechaEvidenciaAprendizaje"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
+                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateEvidenciaAprendizajeLabel_nomEviApr}" for="nomEviApr" />
                             </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputTextarea rows="4" cols="30" id="nomEviApr" value="#{evidenciaAprendizajeController.selected.nomEviApr}" title="#{bundle.CreateEvidenciaAprendizajeTitle_nomEviApr}" required="true" requiredMessage="#{bundle.CreateEvidenciaAprendizajeRequiredMessage_nomEviApr}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="nomEviApr"/>
+                            
+                            <p:column>    
+                                <p:inputText id="nomEviApr" value="#{evidenciaAprendizajeController.selected.nomEviApr}" title="#{bundle.CreateEvidenciaAprendizajeTitle_nomEviApr}" required="true" requiredMessage="#{bundle.CreateEvidenciaAprendizajeRequiredMessage_nomEviApr}"/>
                             </p:column>
                         </p:row>
                         <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateEvidenciaAprendizajeLabel_pertinente}" for="pertinente" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputText id="pertinente" value="#{evidenciaAprendizajeController.selected.pertinente}" title="#{bundle.CreateEvidenciaAprendizajeTitle_pertinente}" required="true" requiredMessage="#{bundle.CreateEvidenciaAprendizajeRequiredMessage_pertinente}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="pertinente"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateEvidenciaAprendizajeLabel_validez}" for="validez" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputText id="validez" value="#{evidenciaAprendizajeController.selected.validez}" title="#{bundle.CreateEvidenciaAprendizajeTitle_validez}" required="true" requiredMessage="#{bundle.CreateEvidenciaAprendizajeRequiredMessage_validez}"/>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="validez"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateEvidenciaAprendizajeLabel_idAmbiente}" for="idAmbiente" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:selectOneMenu id="idAmbiente" value="#{evidenciaAprendizajeController.selected.idAmbiente}" required="true" requiredMessage="#{bundle.CreateEvidenciaAprendizajeRequiredMessage_idAmbiente}">
-                                    <f:selectItems value="#{ambienteController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idAmbiente"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
+                          <p:column>
                                 <h:outputLabel value="#{bundle.CreateEvidenciaAprendizajeLabel_idCriterioEvaluacion}" for="idCriterioEvaluacion" />
                             </p:column>
-                            <p:column style="border-right: white">    
+                             <p:column>    
                                 <p:selectOneMenu id="idCriterioEvaluacion" value="#{evidenciaAprendizajeController.selected.idCriterioEvaluacion}" required="true" requiredMessage="#{bundle.CreateEvidenciaAprendizajeRequiredMessage_idCriterioEvaluacion}">
                                     <f:selectItems value="#{criterioEvaluacionController.itemsAvailableSelectOne}"/>
                                 </p:selectOneMenu>
                             </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idCriterioEvaluacion"/>
-                            </p:column>
-                        </p:row>
+                         </p:row>
                         <p:row>
                             <p:column>
-                                <h:outputLabel value="#{bundle.CreateEvidenciaAprendizajeLabel_idSubactividadProyecto}" for="idSubactividadProyecto" />
+                                <h:outputLabel value="#{bundle.CreateEvidenciaAprendizajeLabel_fechaEvidenciaAprendizaje}" for="fechaEvidenciaAprendizaje" />
                             </p:column>
-                            <p:column style="border-right: white">    
-                                <p:selectOneMenu id="idSubactividadProyecto" value="#{evidenciaAprendizajeController.selected.idSubactividadProyecto}" required="true" requiredMessage="#{bundle.CreateEvidenciaAprendizajeRequiredMessage_idSubactividadProyecto}">
-                                    <f:selectItems value="#{subactividadProyectoController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idSubactividadProyecto"/>
+                            <p:column>    
+                                <p:calendar navigator="true"  pattern="MM/dd/yyyy" showOn="button" id="fechaEvidenciaAprendizaje" value="#{evidenciaAprendizajeController.selected.fechaEvidenciaAprendizaje}" title="#{bundle.CreateEvidenciaAprendizajeTitle_fechaEvidenciaAprendizaje}" required="true" requiredMessage="#{bundle.CreateEvidenciaAprendizajeRequiredMessage_fechaEvidenciaAprendizaje}"/>
                             </p:column>
                         </p:row>
-                        <p:row>
+                          <p:row>
                             <p:column>
-                                <h:outputLabel value="#{bundle.CreateEvidenciaAprendizajeLabel_idResultadoAprendizaje}" for="idResultadoAprendizaje" />
+                                <h:outputLabel value="#{bundle.CreateTipoEvidenciaAprendizajeLabel_idTipoEvidenciaAprendizaje}" for="idTipoEvidenciaAprendizaje" />
                             </p:column>
-                            <p:column style="border-right: white">    
-                                <p:selectOneMenu id="idResultadoAprendizaje" value="#{evidenciaAprendizajeController.selected.idResultadoAprendizaje}" required="true" requiredMessage="#{bundle.CreateEvidenciaAprendizajeRequiredMessage_idResultadoAprendizaje}">
-                                    <f:selectItems value="#{resultadoAprendizajeController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idResultadoAprendizaje"/>
+                            
+                            <p:column>    
+                                <p:inputText id="idTipoEvidenciaAprendizaje" value="#{tipoEvidenciaAprendizajeController.selected.idTipoEvidenciaAprendizaje}" title="#{bundle.CreateTipoEvidenciaAprendizajeTitle_idTipoEvidenciaAprendizaje}" required="true" requiredMessage="#{bundle.CreateTipoEvidenciaAprendizajeRequiredMessage_idTipoEvidenciaAprendizaje}"/>
                             </p:column>
                         </p:row>
-                    </p:panelGrid>
+              </p:panelGrid>
                     <br />
                     <br />
                     <p:commandButton process="@this, @form" update="@form, :msgs"
@@ -168,6 +78,14 @@
                     <p:commandButton ajax="false" action="#{evidenciaAprendizajeController.prepareList}" value="#{bundle.CreateEvidenciaAprendizajeShowAllLink}" immediate="true"/>
                 </div>
             </h:form>
+        <br></br>
+                </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                 <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen">Informacion de ayuda para formularios</p>
+            </div> 
         </ui:define>
     </ui:composition>
 

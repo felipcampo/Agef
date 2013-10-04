@@ -17,18 +17,19 @@
                     <p:panelGrid>
                         <f:facet name="header">
                             <p:row><p:column colspan="3">#{bundle.EditVerificacionAmbienteTituladoTitle}</p:column></p:row>                            
-                        </f:facet>                        
+                        </f:facet> 
                         <p:row>
                             <p:column>
-                                <h:outputLabel value="#{bundle.EditVerificacionAmbienteTituladoLabel_idVerificacionAmbienteTitulado}" for="idVerificacionAmbienteTitulado" />
+                                <h:outputLabel value="id Ficha de caracterización" for="idVerificacionAmbienteTitulado" />
                             </p:column>
                             <p:column style="border-right: white"> 
-                                <p:inputText id="idVerificacionAmbienteTitulado" value="#{verificacionAmbienteTituladoController.selected.idVerificacionAmbienteTitulado}" title="#{bundle.EditVerificacionAmbienteTituladoTitle_idVerificacionAmbienteTitulado}" required="true" requiredMessage="#{bundle.EditVerificacionAmbienteTituladoRequiredMessage_idVerificacionAmbienteTitulado}"/>
+                                <p:inputText id="idFichaCaracterizacion" value="#{verificacionAmbienteTituladoController.selected.idFichaCaracterizacion}" title="#{bundle.EditVerificacionAmbienteTituladoTitle_idVerificacionAmbienteTitulado}" required="true" requiredMessage="#{bundle.EditVerificacionAmbienteTituladoRequiredMessage_idVerificacionAmbienteTitulado}"/>
                             </p:column>
                             <p:column style="border-left: white;">
-                                <p:message for="idVerificacionAmbienteTitulado"/>
+                                <p:message for="idFichaCaracterizacion"/>
                             </p:column>
-                        </p:row>      
+                        </p:row> 
+                            
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.EditVerificacionAmbienteTituladoLabel_localizacion}" for="localizacion" />

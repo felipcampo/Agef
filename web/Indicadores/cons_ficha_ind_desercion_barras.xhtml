@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Indicador-Deserción"></h:outputText>
+        </ui:define>
+        <ui:define name="menumodulo">
+            <ui:include src="menu_indicadores.xhtml"/>
+        </ui:define>
+        <ui:define name="submenuficha">
+            <ui:include src="submenuficha.xhtml"/>
+            </ui:define>
+        <ui:define name="body">
+            <div id="Layoutcontenidoindicadores">
+              
+            <div align="center">
+   
+  
+             <p:barChart id="basic" value="#{fichaUsuarioController.chartModel}" legendPosition="ne"  
+                title="Indicador de Deserción" min="0" max="35" style="width:400px" animate="true" seriesColors="008f86,fc7323"/>       
+
+        
+        <p:button style="left: 250px; top:-18px;" value="Ver reporte"/>  
+     
+              
+                <table align="right" style="margin-top: -300px;">  
+                    <tr>
+                        <td><img src="imagenes/torta.png" /></td>
+                    </tr>
+                    <tr>
+                        <td><p:button href="cons_ficha_ind_desercion.xhtml" style="top: 3px; left:50px;" value="Ver diagrama" /></td>
+                    </tr>
+                    <tr>
+                        <td><br/></td>
+                    </tr>
+                    <tr>
+                        <td><img src="imagenes/GestionAmbiental.png" /></td>
+                    </tr>    
+                </table>
+                <h:outputText style="margin-left: 920px;" value="“La leña que se cortó en mil días, "></h:outputText> 
+                <h:outputText style="margin-left: 920px;" value="puede quemarse en uno solo.”  "></h:outputText>
+                
+            </div>
+            <br/>
+            </div>
+            </ui:define>
+    </ui:composition>
+
+</html>

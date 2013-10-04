@@ -190,7 +190,7 @@ public class ResultadoAprendizaje implements Serializable {
 
     @Override
     public String toString() {
-        return "jpa.entities.ResultadoAprendizaje[ idResultadoAprendizaje=" + idResultadoAprendizaje + " ]";
+        return descrNomResuApr;
     }
     
 }

@@ -19,11 +19,14 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.SelectItem;
+import jpa.entities.AspiranteFicha;
 import jpa.entities.EstadoAprendiz;
 import jpa.entities.EstadoAspirante;
 import jpa.entities.FichaUsuario;
 import jpa.entities.FichaCaracterizacion;
+import jpa.entities.NivelFormacion;
 import jpa.entities.Programa;
+import jpa.entities.TipoFormacion;
 import jpa.sessions.AspiranteFichaFacade;
 import jpa.sessions.FichaCaracterizacionFacade;
 import org.primefaces.model.LazyDataModel;
@@ -38,6 +41,7 @@ public class FichaUsuarioController implements Serializable {
 
     private FichaUsuario current;
     private FichaCaracterizacion ficha;
+    private NivelFormacion nivel;
     private DataModel items = null;
     private PieChartModel pieModel;
     private LazyDataModel<FichaUsuario> lazyModel = null;
@@ -53,13 +57,583 @@ public class FichaUsuarioController implements Serializable {
 
     public FichaUsuarioController() {
     }
-    
-        public String demandatecnologo() {
+
+    public String demandatecnologo() {
         pieModel = new PieChartModel();
+        List<AspiranteFicha> listAspiranteFicha = getFacadeAspirante().findByNivelEstados(new NivelFormacion((short) 4), new EstadoAspirante((short) 3), new TipoFormacion((short) 2));
+        int cuposFichas = 0;
+        for (AspiranteFicha aspiranteFicha : listAspiranteFicha) {
+            cuposFichas += aspiranteFicha.getFichaCaracterizacion().getNumCupFic();
+        }
+        pieModel.set("Inscritos", listAspiranteFicha.size());
+        pieModel.set("Capacidad", cuposFichas);
+        return "Ind_demanda_torta_tecnologo";
+    }
+
+    public String efectividadtecnologo() {
+        pieModel = new PieChartModel();
+        pieModel.set("Matriculados", getFacade().findByNivelEstados(new NivelFormacion((short) 4), new EstadoAprendiz((short) 1), new TipoFormacion((short) 2)).size());
+        pieModel.set("Certificados", getFacade().findByNivelEstados(new NivelFormacion((short) 4), new EstadoAprendiz((short) 2), new TipoFormacion((short) 2)).size());
+        return "Ind_efectividad_torta_tecnologo";
+    }
+
+    public String deserciontecnologo() {
+        pieModel = new PieChartModel();
+        pieModel.set("Matriculados", getFacade().findByNivelEstados(new NivelFormacion((short) 4), new EstadoAprendiz((short) 1), new TipoFormacion((short) 2)).size());
+        pieModel.set("Cancelados", getFacade().findByNivelEstados(new NivelFormacion((short) 4), new EstadoAprendiz((short) 3), new TipoFormacion((short) 2)).size());
+        return "Ind_desercion_torta_tecnologo";
+    }
+
+    public String esfuerzotecnologo() {
+        pieModel = new PieChartModel();
+        pieModel.set("Matriculados", getFacade().findByNivelEstados(new NivelFormacion((short) 4), new EstadoAprendiz((short) 1), new TipoFormacion((short) 2)).size());
+        pieModel.set("Anulados", getFacade().findByNivelEstados(new NivelFormacion((short) 4), new EstadoAprendiz((short) 7), new TipoFormacion((short) 2)).size());
+        return "Ind_esfuerzo_torta_tecnologo";
+    }
+
+    public String eficienciatecnologo() {
+        pieModel = new PieChartModel();
+        pieModel.set("Inscritos", getFacadeAspirante().findByNivelEstados(new NivelFormacion((short) 4), new EstadoAspirante((short) 3), new TipoFormacion((short) 2)).size());
+        pieModel.set("Matriculados", getFacade().findByNivelEstados(new NivelFormacion((short) 4), new EstadoAprendiz((short) 1), new TipoFormacion((short) 2)).size());
+        return "Ind_eficiencia_torta_tecnologo";
+    }
+
+    public String demandatecnico() {
+        pieModel = new PieChartModel();
+        List<AspiranteFicha> listAspiranteFicha = getFacadeAspirante().findByNivelEstados(new NivelFormacion((short) 3), new EstadoAspirante((short) 3), new TipoFormacion((short) 2));
+        int cuposFichas = 0;
+        for (AspiranteFicha aspiranteFicha : listAspiranteFicha) {
+            cuposFichas += aspiranteFicha.getFichaCaracterizacion().getNumCupFic();
+        }
+        pieModel.set("Inscritos", listAspiranteFicha.size());
+        pieModel.set("Capacidad", cuposFichas);
+        return "Ind_demanda_torta_tecnico";
+    }
+
+    public String efectividadtecnico() {
+        pieModel = new PieChartModel();
+        pieModel.set("Matriculados", getFacade().findByNivelEstados(new NivelFormacion((short) 3), new EstadoAprendiz((short) 1), new TipoFormacion((short) 2)).size());
+        pieModel.set("Certificados", getFacade().findByNivelEstados(new NivelFormacion((short) 3), new EstadoAprendiz((short) 2), new TipoFormacion((short) 2)).size());
+        return "Ind_efectividad_torta_tecnico";
+    }
+
+    public String deserciontecnico() {
+        pieModel = new PieChartModel();
+        pieModel.set("Matriculados", getFacade().findByNivelEstados(new NivelFormacion((short) 3), new EstadoAprendiz((short) 1), new TipoFormacion((short) 2)).size());
+        pieModel.set("Cancelados", getFacade().findByNivelEstados(new NivelFormacion((short) 3), new EstadoAprendiz((short) 3), new TipoFormacion((short) 2)).size());
+        return "Ind_desercion_torta_tecnico";
+    }
+
+    public String esfuerzotecnico() {
+        pieModel = new PieChartModel();
+        pieModel.set("Matriculados", getFacade().findByNivelEstados(new NivelFormacion((short) 3), new EstadoAprendiz((short) 1), new TipoFormacion((short) 2)).size());
+        pieModel.set("Anulados", getFacade().findByNivelEstados(new NivelFormacion((short) 3), new EstadoAprendiz((short) 7), new TipoFormacion((short) 2)).size());
+        return "Ind_esfuerzo_torta_tecnico";
+    }
+
+    public String eficienciatecnico() {
+        pieModel = new PieChartModel();
+        pieModel.set("Inscritos", getFacadeAspirante().findByNivelEstados(new NivelFormacion((short) 3), new EstadoAspirante((short) 3), new TipoFormacion((short) 2)).size());
+        pieModel.set("Matriculados", getFacade().findByNivelEstados(new NivelFormacion((short) 3), new EstadoAprendiz((short) 1), new TipoFormacion((short) 2)).size());
+        return "Ind_eficiencia_torta_tecnico";
+    }
+
+    public String demandacomplementaria() {
+        pieModel = new PieChartModel();
+        List<AspiranteFicha> listAspiranteFicha = getFacadeAspirante().findByNivelEstados(new NivelFormacion((short) 7), new EstadoAspirante((short) 3), new TipoFormacion((short) 2));
+        int cuposFichas = 0;
+        for (AspiranteFicha aspiranteFicha : listAspiranteFicha) {
+            cuposFichas += aspiranteFicha.getFichaCaracterizacion().getNumCupFic();
+        }
+        pieModel.set("Inscritos", listAspiranteFicha.size());
+        pieModel.set("Capacidad", cuposFichas);
+        return "Ind_demanda_torta_complementaria";
+    }
+
+    public String efectividadcomplementaria() {
+        pieModel = new PieChartModel();
+        pieModel.set("Matriculados", getFacade().findByNivelEstados(new NivelFormacion((short) 7), new EstadoAprendiz((short) 1), new TipoFormacion((short) 2)).size());
+        pieModel.set("Certificados", getFacade().findByNivelEstados(new NivelFormacion((short) 7), new EstadoAprendiz((short) 2), new TipoFormacion((short) 2)).size());
+        return "Ind_efectividad_torta_complementaria";
+    }
+
+    public String desercioncomplementaria() {
+        pieModel = new PieChartModel();
+        pieModel.set("Matriculados", getFacade().findByNivelEstados(new NivelFormacion((short) 7), new EstadoAprendiz((short) 1), new TipoFormacion((short) 2)).size());
+        pieModel.set("Cancelados", getFacade().findByNivelEstados(new NivelFormacion((short) 7), new EstadoAprendiz((short) 3), new TipoFormacion((short) 2)).size());
+        return "Ind_desercion_torta_complementaria";
+    }
+
+    public String esfuerzocomplementaria() {
+        pieModel = new PieChartModel();
+        pieModel.set("Matriculados", getFacade().findByNivelEstados(new NivelFormacion((short) 7), new EstadoAprendiz((short) 1), new TipoFormacion((short) 2)).size());
+        pieModel.set("Anulados", getFacade().findByNivelEstados(new NivelFormacion((short) 7), new EstadoAprendiz((short) 7), new TipoFormacion((short) 2)).size());
+        return "Ind_esfuerzo_torta_complementaria";
+    }
+
+    public String eficienciacomplementaria() {
+        pieModel = new PieChartModel();
+        pieModel.set("Inscritos", getFacadeAspirante().findByNivelEstados(new NivelFormacion((short) 7), new EstadoAspirante((short) 3), new TipoFormacion((short) 2)).size());
+        pieModel.set("Matriculados", getFacade().findByNivelEstados(new NivelFormacion((short) 7), new EstadoAprendiz((short) 1), new TipoFormacion((short) 2)).size());
+        return "Ind_eficiencia_torta_complementaria";
+    }
+
+    public String demandavirtual() {
+        pieModel = new PieChartModel();
+        List<AspiranteFicha> listAspiranteFicha = getFacadeAspirante().findByTipoEstados(new EstadoAspirante((short) 3), new TipoFormacion((short) 1));
+        int cuposFichas = 0;
+        for (AspiranteFicha aspiranteFicha : listAspiranteFicha) {
+            cuposFichas += aspiranteFicha.getFichaCaracterizacion().getNumCupFic();
+        }
+        pieModel.set("Inscritos", listAspiranteFicha.size());
+        pieModel.set("Capacidad", cuposFichas);
+        return "Ind_demanda_torta_virtual";
+    }
+
+    public String efectividadvirtual() {
+        pieModel = new PieChartModel();
+        pieModel.set("Matriculados", getFacade().findByTipoEstados(new EstadoAprendiz((short) 1), new TipoFormacion((short) 1)).size());
+        pieModel.set("Certificados", getFacade().findByTipoEstados(new EstadoAprendiz((short) 2), new TipoFormacion((short) 1)).size());
+        return "Ind_efectividad_torta_virtual";
+    }
+
+    public String desercionvirtual() {
+        pieModel = new PieChartModel();
+        pieModel.set("Matriculados", getFacade().findByTipoEstados(new EstadoAprendiz((short) 1), new TipoFormacion((short) 1)).size());
+        pieModel.set("Cancelados", getFacade().findByTipoEstados(new EstadoAprendiz((short) 3), new TipoFormacion((short) 1)).size());
+        return "Ind_desercion_torta_virtual";
+    }
+
+    public String esfuerzovirtual() {
+        pieModel = new PieChartModel();
+        pieModel.set("Matriculados", getFacade().findByTipoEstados(new EstadoAprendiz((short) 1), new TipoFormacion((short) 1)).size());
+        pieModel.set("Anulados", getFacade().findByTipoEstados(new EstadoAprendiz((short) 7), new TipoFormacion((short) 1)).size());
+        return "Ind_esfuerzo_torta_virtual";
+    }
+
+    public String eficienciavirtual() {
+        pieModel = new PieChartModel();
+        pieModel.set("Inscritos", getFacadeAspirante().findByTipoEstados(new EstadoAspirante((short) 3), new TipoFormacion((short) 1)).size());
+        pieModel.set("Matriculados", getFacade().findByTipoEstados(new EstadoAprendiz((short) 1), new TipoFormacion((short) 1)).size());
+        return "Ind_eficiencia_torta_virtual";
+    }
+
+    public String efectividadbarratecnologo() {
+
+        categoryModel = new CartesianChartModel();
+
+        ChartSeries matriculado = new ChartSeries();
+        matriculado.setLabel("Matriculados");
+
+        matriculado.set("Matriculados", getFacade().findByNivelEstados(new NivelFormacion((short) 4), new EstadoAprendiz((short) 1), new TipoFormacion((short) 2)).size());
+
+        ChartSeries certificado = new ChartSeries();
+        certificado.setLabel("Certificados");
+
+        certificado.set("Certificados", getFacade().findByNivelEstados(new NivelFormacion((short) 4), new EstadoAprendiz((short) 2), new TipoFormacion((short) 2)).size());
+
+        categoryModel.addSeries(matriculado);
+        categoryModel.addSeries(certificado);
+        return "Ind_efectividad_barra_tecnologo";
+
+    }
+    
+        public String eficienciabarratecnologo() {
+
+        categoryModel = new CartesianChartModel();
+       ChartSeries inscritos = new ChartSeries();
+        inscritos.setLabel("Inscritos");
+
+        inscritos.set("Inscritos", getFacade().findByNivelEstados(new NivelFormacion((short) 4), new EstadoAprendiz((short) 3), new TipoFormacion((short) 2)).size());
+
+        ChartSeries matriculados = new ChartSeries();
+        matriculados.setLabel("Matriculados");
+
+        matriculados.set("Matriculados", getFacade().findByNivelEstados(new NivelFormacion((short) 4), new EstadoAprendiz((short) 1), new TipoFormacion((short) 2)).size());
+
+        categoryModel.addSeries(inscritos);
+        categoryModel.addSeries(matriculados);
+       
+        return "Ind_eficiencia_barra_tecnologo";
+
+    }
+
+    public String demandabarratecnologo() {
+
+        categoryModel = new CartesianChartModel();
+        List<AspiranteFicha> listAspiranteFicha = getFacadeAspirante().findByNivelEstados(new NivelFormacion((short) 4), new EstadoAspirante((short) 3), new TipoFormacion((short) 2));
+        int cuposFichas = 0;
+        for (AspiranteFicha aspiranteFicha : listAspiranteFicha) {
+            cuposFichas += aspiranteFicha.getFichaCaracterizacion().getNumCupFic();
+        }
+        ChartSeries inscritos = new ChartSeries();
+        inscritos.setLabel("Inscritos");
+
+        inscritos.set("Inscritos", listAspiranteFicha.size());
+
+        ChartSeries capacidad = new ChartSeries();
+        capacidad.setLabel("Capacidad");
+
+        capacidad.set("Capacidad", cuposFichas);
+
+        categoryModel.addSeries(inscritos);
+        categoryModel.addSeries(capacidad);
+        return "Ind_demanda_barra_tecnologo";
+    }
+    
+    public String desercionbarratecnologo() {
+
+        categoryModel = new CartesianChartModel();
         ficha = current.getFichaCaracterizacion();
-        pieModel.set("Inscritos", getFacadeAspirante().findByFichasEstados(ficha, new EstadoAspirante((short) 3)).size());
-        pieModel.set("Capacidad", ficha.getNumCupFic());
-        return "cons_ficha_ind_demanda";
+
+        ChartSeries matriculado = new ChartSeries();
+        matriculado.setLabel("Matriculado");
+
+        matriculado.set("Matriculado", getFacade().findByNivelEstados(new NivelFormacion((short) 4), new EstadoAprendiz((short) 1), new TipoFormacion((short) 2)).size());
+
+        ChartSeries cancelado = new ChartSeries();
+        cancelado.setLabel("Cancelados");
+
+        cancelado.set("Cancelados", getFacade().findByNivelEstados(new NivelFormacion((short) 4), new EstadoAprendiz((short) 3), new TipoFormacion((short) 2)).size());
+
+        categoryModel.addSeries(matriculado);
+        categoryModel.addSeries(cancelado);
+        return "Ind_desercion_barra_tecnologo";
+
+    }
+    
+       public String efuerzobarratecnologo() {
+
+        categoryModel = new CartesianChartModel();
+        ficha = current.getFichaCaracterizacion();
+
+        ChartSeries matriculado = new ChartSeries();
+        matriculado.setLabel("Matriculados");
+
+        matriculado.set("Matriculados", getFacade().findByNivelEstados(new NivelFormacion((short) 4), new EstadoAprendiz((short) 1), new TipoFormacion((short) 2)).size());
+
+        ChartSeries anulado = new ChartSeries();
+        anulado.setLabel("Anulados");
+
+        anulado.set("Anulados", getFacade().findByNivelEstados(new NivelFormacion((short) 4), new EstadoAprendiz((short) 7), new TipoFormacion((short) 2)).size());
+
+        categoryModel.addSeries(matriculado);
+        categoryModel.addSeries(anulado);
+        return "Ind_esfuerzo_barra_tecnologo";
+
+    }
+       public String efectividadbarratecnico() {
+
+        categoryModel = new CartesianChartModel();
+
+        ChartSeries matriculado = new ChartSeries();
+        matriculado.setLabel("Matriculados");
+
+        matriculado.set("Matriculados", getFacade().findByNivelEstados(new NivelFormacion((short) 3), new EstadoAprendiz((short) 1), new TipoFormacion((short) 2)).size());
+
+        ChartSeries certificado = new ChartSeries();
+        certificado.setLabel("Certificados");
+
+        certificado.set("Certificados", getFacade().findByNivelEstados(new NivelFormacion((short) 3), new EstadoAprendiz((short) 2), new TipoFormacion((short) 2)).size());
+
+        categoryModel.addSeries(matriculado);
+        categoryModel.addSeries(certificado);
+        return "Ind_efectividad_barra_tecnico";
+
+    }
+    
+        public String eficienciabarratecnico() {
+
+        categoryModel = new CartesianChartModel();
+       ChartSeries inscritos = new ChartSeries();
+        inscritos.setLabel("Inscritos");
+
+        inscritos.set("Inscritos", getFacade().findByNivelEstados(new NivelFormacion((short) 3), new EstadoAprendiz((short) 3), new TipoFormacion((short) 2)).size());
+
+        ChartSeries matriculados = new ChartSeries();
+        matriculados.setLabel("Matriculados");
+
+        matriculados.set("Matriculados", getFacade().findByNivelEstados(new NivelFormacion((short) 3), new EstadoAprendiz((short) 1), new TipoFormacion((short) 2)).size());
+
+        categoryModel.addSeries(inscritos);
+        categoryModel.addSeries(matriculados);
+       
+        return "Ind_eficiencia_barra_tecnico";
+
+    }
+        
+         public String demandabarravirtual() {
+
+        categoryModel = new CartesianChartModel();
+        List<AspiranteFicha> listAspiranteFicha = getFacadeAspirante().findByTipoEstados(new EstadoAspirante((short) 3), new TipoFormacion((short) 1));
+        int cuposFichas = 0;
+        for (AspiranteFicha aspiranteFicha : listAspiranteFicha) {
+            cuposFichas += aspiranteFicha.getFichaCaracterizacion().getNumCupFic();
+        }
+        ChartSeries inscritos = new ChartSeries();
+        inscritos.setLabel("Inscritos");
+
+        inscritos.set("Inscritos", listAspiranteFicha.size());
+
+        ChartSeries capacidad = new ChartSeries();
+        capacidad.setLabel("Capacidad");
+
+        capacidad.set("Capacidad", cuposFichas);
+
+        categoryModel.addSeries(inscritos);
+        categoryModel.addSeries(capacidad);
+        return "Ind_demanda_barra_virtual";
+    }
+    
+    public String desercionbarravirtual() {
+
+        categoryModel = new CartesianChartModel();
+        ficha = current.getFichaCaracterizacion();
+
+        ChartSeries matriculado = new ChartSeries();
+        matriculado.setLabel("Matriculado");
+
+        matriculado.set("Matriculado", getFacade().findByTipoEstados(new EstadoAprendiz((short) 1), new TipoFormacion((short) 1)).size());
+
+        ChartSeries cancelado = new ChartSeries();
+        cancelado.setLabel("Cancelados");
+
+        cancelado.set("Cancelados", getFacade().findByTipoEstados(new EstadoAprendiz((short) 3), new TipoFormacion((short) 1)).size());
+
+        categoryModel.addSeries(matriculado);
+        categoryModel.addSeries(cancelado);
+        return "Ind_desercion_barra_virtual";
+
+    }
+    
+       public String efuerzobarravirtual() {
+
+        categoryModel = new CartesianChartModel();
+        ficha = current.getFichaCaracterizacion();
+
+        ChartSeries matriculado = new ChartSeries();
+        matriculado.setLabel("Matriculados");
+
+        matriculado.set("Matriculados", getFacade().findByTipoEstados(new EstadoAprendiz((short) 1), new TipoFormacion((short) 1)).size());
+
+        ChartSeries anulado = new ChartSeries();
+        anulado.setLabel("Anulados");
+
+        anulado.set("Anulados", getFacade().findByTipoEstados(new EstadoAprendiz((short) 7), new TipoFormacion((short) 1)).size());
+
+        categoryModel.addSeries(matriculado);
+        categoryModel.addSeries(anulado);
+        return "Ind_esfuerzo_barra_virtual";
+
+    }
+       public String efectividadbarravitual() {
+
+        categoryModel = new CartesianChartModel();
+
+        ChartSeries matriculado = new ChartSeries();
+        matriculado.setLabel("Matriculados");
+
+        matriculado.set("Matriculados", getFacade().findByTipoEstados(new EstadoAprendiz((short) 1), new TipoFormacion((short) 1)).size());
+
+        ChartSeries certificado = new ChartSeries();
+        certificado.setLabel("Certificados");
+
+        certificado.set("Certificados", getFacade().findByTipoEstados(new EstadoAprendiz((short) 2), new TipoFormacion((short) 1)).size());
+
+        categoryModel.addSeries(matriculado);
+        categoryModel.addSeries(certificado);
+        return "Ind_efectividad_barra_virtual";
+
+    }
+    
+        public String eficienciabarravirtual() {
+
+        categoryModel = new CartesianChartModel();
+       ChartSeries inscritos = new ChartSeries();
+        inscritos.setLabel("Inscritos");
+
+        inscritos.set("Inscritos", getFacade().findByTipoEstados(new EstadoAprendiz((short) 3), new TipoFormacion((short) 1)).size());
+
+        ChartSeries matriculados = new ChartSeries();
+        matriculados.setLabel("Matriculados");
+
+        matriculados.set("Matriculados", getFacade().findByTipoEstados(new EstadoAprendiz((short) 1), new TipoFormacion((short) 1)).size());
+
+        categoryModel.addSeries(inscritos);
+        categoryModel.addSeries(matriculados);
+       
+        return "Ind_eficiencia_barra_virtual";
+
+    }
+
+    public String demandabarratecnico() {
+
+        categoryModel = new CartesianChartModel();
+        List<AspiranteFicha> listAspiranteFicha = getFacadeAspirante().findByNivelEstados(new NivelFormacion((short) 3), new EstadoAspirante((short) 3), new TipoFormacion((short) 2));
+        int cuposFichas = 0;
+        for (AspiranteFicha aspiranteFicha : listAspiranteFicha) {
+            cuposFichas += aspiranteFicha.getFichaCaracterizacion().getNumCupFic();
+        }
+        ChartSeries inscritos = new ChartSeries();
+        inscritos.setLabel("Inscritos");
+
+        inscritos.set("Inscritos", listAspiranteFicha.size());
+
+        ChartSeries capacidad = new ChartSeries();
+        capacidad.setLabel("Capacidad");
+
+        capacidad.set("Capacidad", cuposFichas);
+
+        categoryModel.addSeries(inscritos);
+        categoryModel.addSeries(capacidad);
+        return "Ind_demanda_barra_tecnico";
+    }
+    
+    public String desercionbarratecnico() {
+
+        categoryModel = new CartesianChartModel();
+        ficha = current.getFichaCaracterizacion();
+
+        ChartSeries matriculado = new ChartSeries();
+        matriculado.setLabel("Matriculado");
+
+        matriculado.set("Matriculado", getFacade().findByNivelEstados(new NivelFormacion((short) 3), new EstadoAprendiz((short) 1), new TipoFormacion((short) 2)).size());
+
+        ChartSeries cancelado = new ChartSeries();
+        cancelado.setLabel("Cancelados");
+
+        cancelado.set("Cancelados", getFacade().findByNivelEstados(new NivelFormacion((short) 3), new EstadoAprendiz((short) 3), new TipoFormacion((short) 2)).size());
+
+        categoryModel.addSeries(matriculado);
+        categoryModel.addSeries(cancelado);
+        return "Ind_desercion_barra_tecnico";
+
+    }
+    
+           public String efectividadbarracomplementaria() {
+
+        categoryModel = new CartesianChartModel();
+
+        ChartSeries matriculado = new ChartSeries();
+        matriculado.setLabel("Matriculados");
+
+        matriculado.set("Matriculados", getFacade().findByNivelEstados(new NivelFormacion((short) 7), new EstadoAprendiz((short) 1), new TipoFormacion((short) 2)).size());
+
+        ChartSeries certificado = new ChartSeries();
+        certificado.setLabel("Certificados");
+
+        certificado.set("Certificados", getFacade().findByNivelEstados(new NivelFormacion((short) 7), new EstadoAprendiz((short) 2), new TipoFormacion((short) 2)).size());
+
+        categoryModel.addSeries(matriculado);
+        categoryModel.addSeries(certificado);
+        return "Ind_efectividad_barra_complementaria";
+
+    }
+    
+        public String eficienciabarracomplemetaria() {
+
+        categoryModel = new CartesianChartModel();
+       ChartSeries inscritos = new ChartSeries();
+        inscritos.setLabel("Inscritos");
+
+        inscritos.set("Inscritos", getFacade().findByNivelEstados(new NivelFormacion((short) 7), new EstadoAprendiz((short) 3), new TipoFormacion((short) 2)).size());
+
+        ChartSeries matriculados = new ChartSeries();
+        matriculados.setLabel("Matriculados");
+
+        matriculados.set("Matriculados", getFacade().findByNivelEstados(new NivelFormacion((short) 7), new EstadoAprendiz((short) 1), new TipoFormacion((short) 2)).size());
+
+        categoryModel.addSeries(inscritos);
+        categoryModel.addSeries(matriculados);
+       
+        return "Ind_eficiencia_barra_complementaria";
+
+    }
+
+    public String demandabarracomplementaria() {
+
+        categoryModel = new CartesianChartModel();
+        List<AspiranteFicha> listAspiranteFicha = getFacadeAspirante().findByNivelEstados(new NivelFormacion((short) 7), new EstadoAspirante((short) 3), new TipoFormacion((short) 2));
+        int cuposFichas = 0;
+        for (AspiranteFicha aspiranteFicha : listAspiranteFicha) {
+            cuposFichas += aspiranteFicha.getFichaCaracterizacion().getNumCupFic();
+        }
+        ChartSeries inscritos = new ChartSeries();
+        inscritos.setLabel("Inscritos");
+
+        inscritos.set("Inscritos", listAspiranteFicha.size());
+
+        ChartSeries capacidad = new ChartSeries();
+        capacidad.setLabel("Capacidad");
+
+        capacidad.set("Capacidad", cuposFichas);
+
+        categoryModel.addSeries(inscritos);
+        categoryModel.addSeries(capacidad);
+        return "Ind_demanda_barra_complementaria";
+    }
+    
+    public String desercionbarracomplementaria() {
+
+        categoryModel = new CartesianChartModel();
+        ficha = current.getFichaCaracterizacion();
+
+        ChartSeries matriculado = new ChartSeries();
+        matriculado.setLabel("Matriculado");
+
+        matriculado.set("Matriculado", getFacade().findByNivelEstados(new NivelFormacion((short) 7), new EstadoAprendiz((short) 1), new TipoFormacion((short) 2)).size());
+
+        ChartSeries cancelado = new ChartSeries();
+        cancelado.setLabel("Cancelados");
+
+        cancelado.set("Cancelados", getFacade().findByNivelEstados(new NivelFormacion((short) 7), new EstadoAprendiz((short) 3), new TipoFormacion((short) 2)).size());
+
+        categoryModel.addSeries(matriculado);
+        categoryModel.addSeries(cancelado);
+        return "Ind_desercion_barra_complementaria";
+
+    }
+    
+       public String efuerzobarratecnico() {
+
+        categoryModel = new CartesianChartModel();
+        ficha = current.getFichaCaracterizacion();
+
+        ChartSeries matriculado = new ChartSeries();
+        matriculado.setLabel("Matriculados");
+
+        matriculado.set("Matriculados", getFacade().findByNivelEstados(new NivelFormacion((short) 3), new EstadoAprendiz((short) 1), new TipoFormacion((short) 2)).size());
+
+        ChartSeries anulado = new ChartSeries();
+        anulado.setLabel("Anulados");
+
+        anulado.set("Anulados", getFacade().findByNivelEstados(new NivelFormacion((short) 3), new EstadoAprendiz((short) 7), new TipoFormacion((short) 2)).size());
+
+        categoryModel.addSeries(matriculado);
+        categoryModel.addSeries(anulado);
+        return "Ind_esfuerzo_barra_tecnico";
+
+    }
+    
+       public String efuerzobarracomplementaria() {
+
+        categoryModel = new CartesianChartModel();
+        ficha = current.getFichaCaracterizacion();
+
+        ChartSeries matriculado = new ChartSeries();
+        matriculado.setLabel("Matriculados");
+
+        matriculado.set("Matriculados", getFacade().findByNivelEstados(new NivelFormacion((short) 7), new EstadoAprendiz((short) 1), new TipoFormacion((short) 2)).size());
+
+        ChartSeries anulado = new ChartSeries();
+        anulado.setLabel("Anulados");
+
+        anulado.set("Anulados", getFacade().findByNivelEstados(new NivelFormacion((short) 7), new EstadoAprendiz((short) 7), new TipoFormacion((short) 2)).size());
+
+        categoryModel.addSeries(matriculado);
+        categoryModel.addSeries(anulado);
+        return "Ind_esfuerzo_barra_complementaria";
+
     }
 
     public String demanda() {
@@ -78,7 +652,7 @@ public class FichaUsuarioController implements Serializable {
         return "cons_ficha_ind_efectividad";
     }
 
-    public String deserción() {
+    public String desercion() {
         pieModel = new PieChartModel();
         ficha = current.getFichaCaracterizacion();
         pieModel.set("Matriculados", getFacade().findByEstado(ficha, new EstadoAprendiz((short) 1)).size());
@@ -102,23 +676,23 @@ public class FichaUsuarioController implements Serializable {
         return "cons_ficha_ind_eficiencia";
     }
 
-    public String decersionbarra() {
+    public String desercionbarra() {
 
         categoryModel = new CartesianChartModel();
         ficha = current.getFichaCaracterizacion();
 
-        ChartSeries anulado = new ChartSeries();
-        anulado.setLabel("Anulados");
-
-        anulado.set("Anulados", getFacade().findByEstado(ficha, new EstadoAprendiz((short) 1)).size());
-
         ChartSeries matriculado = new ChartSeries();
-        matriculado.setLabel("Matriculados");
+        matriculado.setLabel("Matriculado");
 
-        matriculado.set("Matriculados", getFacade().findByEstado(ficha, new EstadoAprendiz((short) 3)).size());
+        matriculado.set("Matriculado", getFacade().findByEstado(ficha, new EstadoAprendiz((short) 1)).size());
 
-        categoryModel.addSeries(anulado);
+        ChartSeries cancelado = new ChartSeries();
+        cancelado.setLabel("Cancelados");
+
+        cancelado.set("Cancelados", getFacade().findByEstado(ficha, new EstadoAprendiz((short) 3)).size());
+
         categoryModel.addSeries(matriculado);
+        categoryModel.addSeries(cancelado);
         return "cons_ficha_ind_desercion_barras";
 
     }

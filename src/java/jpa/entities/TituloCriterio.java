@@ -131,7 +131,7 @@ public class TituloCriterio implements Serializable {
 
     @Override
     public String toString() {
-        return "jpa.entities.TituloCriterio[ idTituloCriterio=" + idTituloCriterio + " ]";
+        return descrNomTituloCriterio;
     }
     
 }

@@ -218,7 +218,7 @@ public class ActividadProyecto implements Serializable {
 
     @Override
     public String toString() {
-        return "jpa.entities.ActividadProyecto[ idActividadProyecto=" + idActividadProyecto + " ]";
+        return descrActividadProyecto;
     }
     
 }

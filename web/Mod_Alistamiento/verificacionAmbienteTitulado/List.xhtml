@@ -11,6 +11,11 @@
             <h:outputText value="#{bundle.ListVerificacionAmbienteTituladoTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+            <div id="Layout_Titulo_Formulario_Agef"> <h2>VERIFICACIÓN DE AMBIENTES</h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen"> #{bundle.ListVerificacionAmbienteTituladoTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br> 
             <h:form id="listVerificacionAmbienteTitulado" styleClass="jsfcrud_list_form">
                 <div id="list" align="center">
                     <p:growl id="msgs" showDetail="false" sticky="false"/>
@@ -64,22 +69,8 @@
                                     <f:convertDateTime pattern="MM/dd/yyyy" />
                                 </h:outputText>
                             </p:column>
-                            <p:column headerText="#{bundle.ListVerificacionAmbienteTituladoTitle_idListaVerificacion}"
-                                      filterBy="#{item.idListaVerificacion}"
-                                      sortBy="#{item.idListaVerificacion}">                        
-                                <h:outputText value="#{item.idListaVerificacion}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListVerificacionAmbienteTituladoTitle_idUsuario}"
-                                      filterBy="#{item.idUsuario}"
-                                      sortBy="#{item.idUsuario}">                        
-                                <h:outputText value="#{item.idUsuario}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListVerificacionAmbienteTituladoTitle_idProyectoFormativo}"
-                                      filterBy="#{item.idProyectoFormativo}"
-                                      sortBy="#{item.idProyectoFormativo}">                        
-                                <h:outputText value="#{item.idProyectoFormativo}"/>
-                            </p:column>
-                            <p:column>                        
+                           
+                             <p:column>                        
                                 <p:commandButton ajax="false" action="#{verificacionAmbienteTituladoController.prepareView}" title="#{bundle.ListVerificacionAmbienteTituladoViewLink}" icon="ui-icon-search"/>
                                 <p:commandButton ajax="false" action="#{verificacionAmbienteTituladoController.prepareEdit}" title="#{bundle.ListVerificacionAmbienteTituladoEditLink}" icon="ui-icon-pencil"/>
                                 <p:commandButton oncomplete="confirmationDelete.show();" process="@this"
@@ -93,6 +84,16 @@
                     <p:commandButton ajax="false" action="#{verificacionAmbienteTituladoController.prepareCreate}" value="#{bundle.ListVerificacionAmbienteTituladoCreateLink}" icon="ui-icon-document"/>
                 </div>        
             </h:form>
+                                 <br/><br/>
+                </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen">Informacion de ayuda para formularios <hr></hr><br/>
+                   
+                </p>
+            </div>
         </ui:define>
         <ui:define name="dialogs">
             <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  

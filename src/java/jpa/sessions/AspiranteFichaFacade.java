@@ -62,5 +62,17 @@ public class AspiranteFichaFacade extends AbstractFacade<AspiranteFicha> {
         List<AspiranteFicha> results = q.getResultList();
         return results;
     }
-    
+          public List<AspiranteFicha> findByTipoEstados(EstadoAspirante estado, TipoFormacion tipo) {
+        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<AspiranteFicha> cq = cb.createQuery(AspiranteFicha.class);
+        Root<AspiranteFicha> aspirante = cq.from(AspiranteFicha.class);
+        Join<AspiranteFicha, FichaCaracterizacion> join = aspirante.join(AspiranteFicha_.fichaCaracterizacion);
+        cq.where(cb.and(
+                cb.equal(aspirante.get(AspiranteFicha_.estadoAspirante), estado),
+                cb.equal(join.get(FichaCaracterizacion_.idTipoFormacion), tipo)));
+        TypedQuery<AspiranteFicha> q = getEntityManager().createQuery(cq);
+        List<AspiranteFicha> results = q.getResultList();
+        return results;
+    }
+
 }

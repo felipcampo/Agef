@@ -172,7 +172,7 @@ public class Competencia implements Serializable {
 
     @Override
     public String toString() {
-        return "jpa.entities.Competencia[ idCompetencia=" + idCompetencia + " ]";
+        return nomCom;
     }
     
 }

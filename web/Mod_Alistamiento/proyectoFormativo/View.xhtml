@@ -11,7 +11,7 @@
             <h:outputText value="#{bundle.ViewProyectoFormativoTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-            <p:growl id="msgs" showDetail="false" sticky="false"/> 
+                     <p:growl id="msgs" showDetail="false" sticky="false"/> 
             <h:form>
                 <div id="form" align="center">
                     <p:panelGrid columns="2">
@@ -82,12 +82,7 @@
                         <h:outputText value="#{proyectoFormativoController.selected.descrAmbApr}" title="#{bundle.ViewProyectoFormativoTitle_descrAmbApr}"/>
                         <h:outputText value="#{bundle.ViewProyectoFormativoLabel_idUsuario}"/>
                         <h:outputText value="#{proyectoFormativoController.selected.idUsuario}" title="#{bundle.ViewProyectoFormativoTitle_idUsuario}"/>
-                        <h:outputText value="#{bundle.ViewProyectoFormativoLabel_idDatalleRecurso}"/>
-                        <h:outputText value="#{proyectoFormativoController.selected.idDatalleRecurso}" title="#{bundle.ViewProyectoFormativoTitle_idDatalleRecurso}"/>
-                        <h:outputText value="#{bundle.ViewProyectoFormativoLabel_idResultadoAprendizaje}"/>
-                        <h:outputText value="#{proyectoFormativoController.selected.idResultadoAprendizaje}" title="#{bundle.ViewProyectoFormativoTitle_idResultadoAprendizaje}"/>
-                        <h:outputText value="#{bundle.ViewProyectoFormativoLabel_idActividadProyecto}"/>
-                        <h:outputText value="#{proyectoFormativoController.selected.idActividadProyecto}" title="#{bundle.ViewProyectoFormativoTitle_idActividadProyecto}"/>
+                        
                         <h:outputText value="#{bundle.ViewProyectoFormativoLabel_idPrograma}"/>
                         <h:outputText value="#{proyectoFormativoController.selected.idPrograma}" title="#{bundle.ViewProyectoFormativoTitle_idPrograma}"/>
                         <h:outputText value="#{bundle.ViewProyectoFormativoLabel_idEstadoProyecto}"/>
@@ -105,7 +100,7 @@
                     <p:commandButton ajax="false" action="#{proyectoFormativoController.prepareList}" value="#{bundle.ViewProyectoFormativoShowAllLink}"/>
                 </div>            
             </h:form>
-        </ui:define>
+                </ui:define>
         <ui:define name="dialogs">
             <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  
                              header="#{bundle.DeleteItemMessage}" severity="alert" widgetVar="confirmationDelete">  

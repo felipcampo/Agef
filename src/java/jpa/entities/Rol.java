@@ -133,7 +133,7 @@ public class Rol implements Serializable {
 
     @Override
     public String toString() {
-        return "jpa.entities.Rol[ idRol=" + idRol + " ]";
+        return descrRol;
     }
     
 }

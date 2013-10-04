@@ -11,6 +11,11 @@
             <h:outputText value="#{bundle.CreateResultadoAprendizajeTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+           <div id="Layout_Titulo_Formulario_Agef"> <h2> ALISTAMIENTO </h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen"> #{bundle.CreateResultadoAprendizajeTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br>   
             <p:growl id="msgs" showDetail="false" sticky="false"/>
             <h:form id="formResultadoAprendizaje">
                 <div id="form" align="center">
@@ -40,19 +45,7 @@
                                 <p:message for="descrNomResuApr"/>
                             </p:column>
                         </p:row>
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.CreateResultadoAprendizajeLabel_idCompetencia}" for="idCompetencia" />
-                            </p:column>
-                            <p:column style="border-right: white">    
-                                <p:selectOneMenu id="idCompetencia" value="#{resultadoAprendizajeController.selected.idCompetencia}" required="true" requiredMessage="#{bundle.CreateResultadoAprendizajeRequiredMessage_idCompetencia}">
-                                    <f:selectItems value="#{competenciaController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idCompetencia"/>
-                            </p:column>
-                        </p:row>
+                      
                     </p:panelGrid>
                     <br />
                     <br />
@@ -63,6 +56,14 @@
                     <p:commandButton ajax="false" action="#{resultadoAprendizajeController.prepareList}" value="#{bundle.CreateResultadoAprendizajeShowAllLink}" immediate="true"/>
                 </div>
             </h:form>
+            <br></br>
+                </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                 <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
     </ui:composition>
 

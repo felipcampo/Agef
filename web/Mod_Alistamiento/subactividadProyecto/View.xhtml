@@ -11,6 +11,11 @@
             <h:outputText value="#{bundle.ViewSubactividadProyectoTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+              <div id="Layout_Titulo_Formulario_Agef"> <h2> ALISTAMIENTO </h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen"> #{bundle.ViewSubactividadProyectoTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br>
             <p:growl id="msgs" showDetail="false" sticky="false"/> 
             <h:form>
                 <div id="form" align="center">
@@ -19,11 +24,11 @@
                             <p:row><p:column>#{bundle.ViewSubactividadProyectoTitle}</p:column></p:row>                            
                         </f:facet>
                         <h:outputText value="#{bundle.ViewSubactividadProyectoLabel_idSubactividadProyecto}"/>
-                        <h:outputText value="#{subactividadProyectoController.selected.idSubactividadProyecto}" title="#{bundle.ViewSubactividadProyectoTitle_idSubactividadProyecto}"/>
+                        <h:outputText value="#{subactividadAprendizajeController.selected.idSubactividadAprendizaje}" title="#{bundle.ViewSubactividadProyectoTitle_idSubactividadProyecto}"/>
                         <h:outputText value="#{bundle.ViewSubactividadProyectoLabel_descrNombreSubPro}"/>
-                        <h:outputText value="#{subactividadProyectoController.selected.descrNombreSubPro}" title="#{bundle.ViewSubactividadProyectoTitle_descrNombreSubPro}"/>
+                        <h:outputText value="#{subactividadAprendizajeController.selected.descrNombreSubPro}" title="#{bundle.ViewSubactividadProyectoTitle_descrNombreSubPro}"/>
                         <h:outputText value="#{bundle.ViewSubactividadProyectoLabel_idActividadProyecto}"/>
-                        <h:outputText value="#{subactividadProyectoController.selected.idActividadProyecto}" title="#{bundle.ViewSubactividadProyectoTitle_idActividadProyecto}"/>
+                        <h:outputText value="#{subactividadAprendizajeController.selected.idActividadAprendizaje}" title="#{bundle.ViewSubactividadProyectoTitle_idActividadProyecto}"/>
                     </p:panelGrid>
                     <br />
                     <br />
@@ -31,12 +36,20 @@
                                      title="#{bundle.ListSubactividadProyectoDestroyLink}" icon="ui-icon-trash">
                     </p:commandButton>
                     <p:button outcome="Edit" value="#{bundle.ViewSubactividadProyectoEditLink}" icon="ui-icon-pencil"/>
-                    <p:commandButton ajax="false" action="#{subactividadProyectoController.prepareCreate}" value="#{bundle.ViewSubactividadProyectoCreateLink}" icon="ui-icon-document"/>
+                    <p:commandButton ajax="false" action="#{subactividadAprendizajeController.prepareCreate}" value="#{bundle.ViewSubactividadProyectoCreateLink}" icon="ui-icon-document"/>
                     <br />
                     <br />
-                    <p:commandButton ajax="false" action="#{subactividadProyectoController.prepareList}" value="#{bundle.ViewSubactividadProyectoShowAllLink}"/>
+                    <p:commandButton ajax="false" action="#{subactividadAprendizajeController.prepareList}" value="#{bundle.ViewSubactividadProyectoShowAllLink}"/>
                 </div>            
             </h:form>
+            <br></br>
+                </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                 <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
         <ui:define name="dialogs">
             <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  

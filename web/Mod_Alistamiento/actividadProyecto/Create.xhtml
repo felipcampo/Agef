@@ -21,32 +21,26 @@
                 <div id="form" align="center">
                     <p:panelGrid>
                         <f:facet name="header">
-                            <p:row><p:column colspan="12"></p:column></p:row>                            
+                            <p:row><p:column colspan="8"></p:column></p:row>                            
                         </f:facet>                        
                         <p:row>
                             <p:column colspan="2">
                                 <h:outputLabel value="#{bundle.CreateActividadProyectoLabel_idActividadProyecto}" for="idActividadProyecto" />
                             </p:column>
-                            <p:column colspan="3">    
+                            <p:column colspan="2">    
                                 <p:inputText id="idActividadProyecto" value="#{actividadProyectoController.selected.idActividadProyecto}" title="#{bundle.CreateActividadProyectoTitle_idActividadProyecto}" required="true" requiredMessage="#{bundle.CreateActividadProyectoRequiredMessage_idActividadProyecto}"/>
                             </p:column>
                             
-                            <p:column>
-                                <p:message for="idActividadProyecto"/>
-                            </p:column>
-                            
-                            <p:column colspan="3">
+                           <p:column colspan="2">
                                 <h:outputLabel value="#{bundle.CreateActividadProyectoLabel_idFaseProyecto}" for="idFaseProyecto" />
                             </p:column>
                             
-                            <p:column>    
+                            <p:column colspan="1">    
                                 <p:selectOneMenu id="idFaseProyecto" value="#{actividadProyectoController.selected.idFaseProyecto}" required="true" requiredMessage="#{bundle.CreateActividadProyectoRequiredMessage_idFaseProyecto}">
                                     <f:selectItems value="#{faseProyectoController.itemsAvailableSelectOne}"/>
                                 </p:selectOneMenu>
                             </p:column>
-                              <p:column>
-                                <p:message for="idFaseProyecto"/>
-                            </p:column>
+                            
                         </p:row>
                         <p:row>
                             <p:column colspan="2">
@@ -55,20 +49,15 @@
                            <p:column colspan="2">    
                                 <p:inputText id="descrActividadProyecto" value="#{actividadProyectoController.selected.descrActividadProyecto}" title="#{bundle.CreateActividadProyectoTitle_descrActividadProyecto}" required="true" requiredMessage="#{bundle.CreateActividadProyectoRequiredMessage_descrActividadProyecto}"/>
                             </p:column>
-                              <p:column colspan="2">
-                                <p:message for="descrActividadProyecto"/>
-                            </p:column>
-                            
+                                                        
                             <p:column colspan="2">
                                 <h:outputLabel value="#{bundle.CreateActividadProyectoLabel_duracionActividad}" for="duracionActividad" />
                             </p:column>
                             
-                            <p:column colspan="2">    
+                            <p:column colspan="1">    
                                 <p:inputText id="duracionActividad" value="#{actividadProyectoController.selected.duracionActividad}" title="#{bundle.CreateActividadProyectoTitle_duracionActividad}" required="true" requiredMessage="#{bundle.CreateActividadProyectoRequiredMessage_duracionActividad}"/>
                             </p:column>
-                            <p:column>
-                                <p:message for="duracionActividad"/>
-                            </p:column> 
+                          
                         </p:row>
                 </p:panelGrid>
                     <br />

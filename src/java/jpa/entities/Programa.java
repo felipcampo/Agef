@@ -286,7 +286,7 @@ public class Programa implements Serializable {
 
     @Override
     public String toString() {
-        return "jpa.entities.Programa[ idPrograma=" + idPrograma + " ]";
+        return nomPrg;
     }
     
 }

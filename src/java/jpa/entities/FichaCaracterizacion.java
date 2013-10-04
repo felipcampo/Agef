@@ -429,7 +429,7 @@ public class FichaCaracterizacion implements Serializable {
 
     @Override
     public String toString() {
-        return "jpa.entities.FichaCaracterizacion[ idFichaCaracterizacion=" + idFichaCaracterizacion + " ]";
+        return idFichaCaracterizacion + " ";
     }
     
 }

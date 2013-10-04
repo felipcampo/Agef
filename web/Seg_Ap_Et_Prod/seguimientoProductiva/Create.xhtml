@@ -105,7 +105,7 @@
                             <p:column>
                                 <h:outputText value="#{bundle.ViewUsuarioLabel_nomUsu}"/> 
                             </p:column>  
-                            <p:column colspan="2"><h:outputText value="#{usuarioController.selected.nomUsu}" title="#{bundle.ViewUsuarioTitle_nomUsu}"/> 
+                            <p:column id="nombre" colspan="2"><h:outputText value="#{usuarioController.selected.nomUsu}" title="#{bundle.ViewUsuarioTitle_nomUsu}"/> 
                                 <h:outputText value="#{seguimientoProductivaController.selected.idUsuario.nomUsu}" title="#{bundle.ViewUsuarioTitle_apeUsu}"/>
                                 <h:outputText value="#{seguimientoProductivaController.selected.idUsuario.apeUsu}" title="#{bundle.ViewUsuarioTitle_apeUsu}"/>
                             </p:column>   
@@ -113,12 +113,12 @@
 
                         <p:row>                                      
                             <p:column> <h:outputText value="#{bundle.ViewUsuarioLabel_telUsu}"/></p:column>  
-                            <p:column colspan="2"><h:outputText value="#{seguimientoProductivaController.selected.idUsuario.telUsu}" title="#{bundle.ViewUsuarioTitle_telUsu}"/></p:column>   
+                            <p:column colspan="2"><h:outputText id="telefono" value="#{seguimientoProductivaController.selected.idUsuario.telUsu}" title="#{bundle.ViewUsuarioTitle_telUsu}"/></p:column>   
                         </p:row>  
 
                         <p:row>                                      
                             <p:column><h:outputText value="#{bundle.ViewUsuarioLabel_emailMisenaUsu}"/></p:column>  
-                            <p:column colspan="2"><h:outputText value="#{seguimientoProductivaController.selected.idUsuario.emailMisenaUsu}" title="#{bundle.ViewUsuarioTitle_emailMisenaUsu}"/> </p:column>   
+                            <p:column colspan="2"><h:outputText id="correo" value="#{seguimientoProductivaController.selected.idUsuario.emailMisenaUsu}" title="#{bundle.ViewUsuarioTitle_emailMisenaUsu}"/> </p:column>   
                         </p:row> 
 
                         <p:row>  
@@ -140,35 +140,37 @@
                                 <p:commandButton id="idEmpresa" icon="ui-icon-search" onclick="dlgBuscarEmpresa.show();" type="button"/>
                             </p:column>
                         </p:row> 
+                        
+                        <p:row>                                      
+                            <p:column> <h:outputText value="#{bundle.ViewEmpresaLabel_idEmpresa}"/></p:column>  
+                            <p:column colspan="2"><h:outputText id="nit" value="#{seguimientoProductivaController.selected.idEmpresa.idEmpresa}" title="#{bundle.ViewEmpresaTitle_idEmpresa}"/></p:column>   
+                        </p:row> 
 
                         <p:row>                                      
                             <p:column> <h:outputText value="#{bundle.ViewEmpresaLabel_razonSocialEmpresa}"/></p:column>  
-                            <p:column colspan="2"> <h:outputText value="#{seguimientoProductivaController.selected.idEmpresa.razonSocialEmp}" title="#{bundle.ViewEmpresaTitle_razonSocialEmpresa}"/></p:column>   
-                        </p:row> 
+                            <p:column colspan="2"> <h:outputText id="empresa" value="#{seguimientoProductivaController.selected.idEmpresa.razonSocialEmp}" title="#{bundle.ViewEmpresaTitle_razonSocialEmpresa}"/></p:column>   
+                        </p:row>                    
+                        
 
                         <p:row>                                      
                             <p:column> <h:outputText value="#{bundle.ViewEmpresaLabel_dirEmp}"/></p:column>  
-                            <p:column colspan="2"><h:outputText value="#{seguimientoProductivaController.selected.idEmpresa.dirEmp}" title="#{bundle.ViewEmpresaTitle_dirEmp}"/></p:column>   
-                        </p:row> 
-
-                        <p:row>                                      
-                            <p:column> <h:outputText value="#{bundle.ViewEmpresaLabel_idEmpresa}"/></p:column>  
-                            <p:column colspan="2"><h:outputText value="#{seguimientoProductivaController.selected.idEmpresa.idEmpresa}" title="#{bundle.ViewEmpresaTitle_idEmpresa}"/></p:column>   
-                        </p:row> 
+                            <p:column colspan="2"><h:outputText id="direccion" value="#{seguimientoProductivaController.selected.idEmpresa.dirEmp}" title="#{bundle.ViewEmpresaTitle_dirEmp}"/></p:column>   
+                        </p:row>
+                        
 
                         <p:row>                                      
                             <p:column><h:outputText value="#{bundle.ViewEmpresaLabel_tel1Emp}"/></p:column>  
-                            <p:column colspan="2"> <h:outputText value="#{seguimientoProductivaController.selected.idEmpresa.tel1Emp}" title="#{bundle.ViewEmpresaTitle_tel1Emp}"/></p:column>   
+                            <p:column colspan="2"> <h:outputText id="fijo" value="#{seguimientoProductivaController.selected.idEmpresa.tel1Emp}" title="#{bundle.ViewEmpresaTitle_tel1Emp}"/></p:column>   
                         </p:row> 
 
                         <p:row>                                      
                             <p:column><h:outputText value="#{bundle.ViewEmpresaLabel_emailEmpresa}"/></p:column>  
-                            <p:column colspan="2"><h:outputText value="#{seguimientoProductivaController.selected.idEmpresa.emailEmp}" title="#{bundle.ViewEmpresaTitle_emailEmpresa}"/></p:column>   
+                            <p:column colspan="2"><h:outputText id="email" value="#{seguimientoProductivaController.selected.idEmpresa.emailEmp}" title="#{bundle.ViewEmpresaTitle_emailEmpresa}"/></p:column>   
                         </p:row> 
 
                         <p:row>                                      
                             <p:column><h:outputText value="#{bundle.ViewEmpresaLabel_wwwEmp}"/></p:column>  
-                            <p:column colspan="2"> <h:outputText value="#{seguimientoProductivaController.selected.idEmpresa.webEmp}" title="#{bundle.ViewEmpresaTitle_wwwEmp}"/></p:column>   
+                            <p:column colspan="2"> <h:outputText id="sitio" value="#{seguimientoProductivaController.selected.idEmpresa.webEmp}" title="#{bundle.ViewEmpresaTitle_wwwEmp}"/></p:column>   
                         </p:row>                  
 
 
@@ -439,7 +441,7 @@
                             <h:outputText value="#{item.apeUsu}"/>
                         </p:column>
                         <p:column>
-                            <p:commandButton id="botonSeleccionUsuario" update=":formSeguimientoProductiva" action="#{seguimientoProductivaController.agregarUsuario}"
+                            <p:commandButton id="botonSeleccionUsuario" update=":formSeguimientoProductiva:nombre, :formSeguimientoProductiva:correo, :formSeguimientoProductiva:telefono" action="#{seguimientoProductivaController.agregarUsuario}"
                                              oncomplete="dlgBuscarUsuario.hide();" icon="ui-icon-plus">
                                 <f:setPropertyActionListener value="#{item}" target="#{seguimientoProductivaController.usuarioActual}"/>
                             </p:commandButton>
@@ -498,7 +500,8 @@
                         </p:column>
 
                         <p:column>
-                            <p:commandButton id="botonSeleccionEmpresa" update=":formSeguimientoProductiva, :buscarEmpresa" action="#{seguimientoProductivaController.agregarEmpresa}"
+                            <p:commandButton id="botonSeleccionEmpresa" update=":formSeguimientoProductiva:empresa, :formSeguimientoProductiva:direccion, :formSeguimientoProductiva:nit,
+                                             :formSeguimientoProductiva:fijo, :formSeguimientoProductiva:email" action="#{seguimientoProductivaController.agregarEmpresa}"
                                              oncomplete="dlgBuscarEmpresa.hide();" icon="ui-icon-plus">
                                 <f:setPropertyActionListener value="#{item}" target="#{seguimientoProductivaController.empresaActual}"/>
                             </p:commandButton>

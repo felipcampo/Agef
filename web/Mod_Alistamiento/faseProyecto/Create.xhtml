@@ -11,6 +11,11 @@
             <h:outputText value="#{bundle.CreateFaseProyectoTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+               <div id="Layout_Titulo_Formulario_Agef"> <h2> ALISTAMIENTO </h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen"> #{bundle.CreateFaseProyectoTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br>
             <p:growl id="msgs" showDetail="false" sticky="false"/>
             <h:form id="formFaseProyecto">
                 <div id="form" align="center">
@@ -72,6 +77,14 @@
                     <p:commandButton ajax="false" action="#{faseProyectoController.prepareList}" value="#{bundle.CreateFaseProyectoShowAllLink}" immediate="true"/>
                 </div>
             </h:form>
+            <br></br>
+                </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                 <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
     </ui:composition>
 

@@ -160,7 +160,7 @@ public class SedeCentro implements Serializable {
 
     @Override
     public String toString() {
-        return "jpa.entities.SedeCentro[ idSedeCentro=" + idSedeCentro + " ]";
+        return idSedeCentro + " " + nomSedeCentro;
     }
     
 }

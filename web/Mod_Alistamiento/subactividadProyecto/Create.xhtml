@@ -11,6 +11,11 @@
             <h:outputText value="#{bundle.CreateSubactividadProyectoTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+              <div id="Layout_Titulo_Formulario_Agef"> <h2> ALISTAMIENTO </h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen"> #{bundle.CreateSubactividadProyectoTitle}</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br>
             <p:growl id="msgs" showDetail="false" sticky="false"/>
             <h:form id="formSubactividadProyecto">
                 <div id="form" align="center">
@@ -22,47 +27,49 @@
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateSubactividadProyectoLabel_idSubactividadProyecto}" for="idSubactividadProyecto" />
                             </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputText id="idSubactividadProyecto" value="#{subactividadProyectoController.selected.idSubactividadProyecto}" title="#{bundle.CreateSubactividadProyectoTitle_idSubactividadProyecto}" required="true" requiredMessage="#{bundle.CreateSubactividadProyectoRequiredMessage_idSubactividadProyecto}"/>
+                            <p:column>    
+                                <p:inputText id="idSubactividadProyecto" value="#{subactividadAprendizajeController.selected.idSubactividadAprendizaje}" />
                             </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idSubactividadProyecto"/>
-                            </p:column>
+                            
                         </p:row>
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateSubactividadProyectoLabel_descrNombreSubPro}" for="descrNombreSubPro" />
                             </p:column>
-                            <p:column style="border-right: white">    
-                                <p:inputText id="descrNombreSubPro" value="#{subactividadProyectoController.selected.descrNombreSubPro}" title="#{bundle.CreateSubactividadProyectoTitle_descrNombreSubPro}" required="true" requiredMessage="#{bundle.CreateSubactividadProyectoRequiredMessage_descrNombreSubPro}"/>
+                            <p:column >    
+                                <p:inputText id="descrNombreSubPro" value="#{subactividadAprendizajeController.selected.descrNombreSubPro}" title="#{bundle.CreateSubactividadProyectoTitle_descrNombreSubPro}" required="true" requiredMessage="#{bundle.CreateSubactividadProyectoRequiredMessage_descrNombreSubPro}"/>
                             </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="descrNombreSubPro"/>
-                            </p:column>
+                           
                         </p:row>
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.CreateSubactividadProyectoLabel_idActividadProyecto}" for="idActividadProyecto" />
                             </p:column>
-                            <p:column style="border-right: white">    
-                                <p:selectOneMenu id="idActividadProyecto" value="#{subactividadProyectoController.selected.idActividadProyecto}" required="true" requiredMessage="#{bundle.CreateSubactividadProyectoRequiredMessage_idActividadProyecto}">
-                                    <f:selectItems value="#{actividadProyectoController.itemsAvailableSelectOne}"/>
+                            <p:column >    
+                                <p:selectOneMenu id="idActividadAprendizaje" value="#{subactividadAprendizajeController.selected.idActividadAprendizaje}" required="true" requiredMessage="El campo actividad de aprendizaje es requerido">
+                                    <f:selectItems value="#{actividadAprendizajeController.itemsAvailableSelectOne}"/>
                                 </p:selectOneMenu>
                             </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idActividadProyecto"/>
-                            </p:column>
+                           
                         </p:row>
                     </p:panelGrid>
                     <br />
                     <br />
                     <p:commandButton process="@this, @form" update="@form, :msgs"
-                                     action="#{subactividadProyectoController.create}" value="#{bundle.CreateSubactividadProyectoSaveLink}" icon="ui-icon-disk"/>
+                                     action="#{subactividadAprendizajeController.create}" value="#{bundle.CreateSubactividadProyectoSaveLink}" icon="ui-icon-disk"/>
                     <br />
                     <br />
-                    <p:commandButton ajax="false" action="#{subactividadProyectoController.prepareList}" value="#{bundle.CreateSubactividadProyectoShowAllLink}" immediate="true"/>
+                    <p:commandButton ajax="false" action="#{subactividadAprendizajeController.prepareList}" value="#{bundle.CreateSubactividadProyectoShowAllLink}" immediate="true"/>
                 </div>
             </h:form>
+            <br></br>
+                </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                 <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
     </ui:composition>
 

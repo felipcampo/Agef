@@ -119,7 +119,7 @@ public class SubactividadAprendizaje implements Serializable {
 
     @Override
     public String toString() {
-        return "jpa.entities.SubactividadAprendizaje[ idSubactividadProyecto=" + idSubactividadProyecto + " ]";
+        return descrNombreSubPro;
     }
     
 }

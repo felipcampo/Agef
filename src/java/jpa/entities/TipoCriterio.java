@@ -106,7 +106,7 @@ public class TipoCriterio implements Serializable {
 
     @Override
     public String toString() {
-        return "jpa.entities.TipoCriterio[ idTipoCriterio=" + idTipoCriterio + " ]";
+        return nomTipoCriterio;
     }
     
 }

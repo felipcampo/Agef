@@ -135,19 +135,7 @@
                                 <p:message for="idAmbiente"/>
                             </p:column>
                         </p:row>      
-                        <p:row>
-                            <p:column>
-                                <h:outputLabel value="#{bundle.EditGuiaAprendizajeLabel_idDatalleRecurso}" for="idDatalleRecurso" />
-                            </p:column>
-                            <p:column style="border-right: white"> 
-                                <p:selectOneMenu id="idDatalleRecurso" value="#{guiaAprendizajeController.selected.idDatalleRecurso}" required="true" requiredMessage="#{bundle.EditGuiaAprendizajeRequiredMessage_idDatalleRecurso}">
-                                    <f:selectItems value="#{detalleRecursoController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
-                            </p:column>
-                            <p:column style="border-left: white;">
-                                <p:message for="idDatalleRecurso"/>
-                            </p:column>
-                        </p:row>      
+                           
                         <p:row>
                             <p:column>
                                 <h:outputLabel value="#{bundle.EditGuiaAprendizajeLabel_idActividadProyecto}" for="idActividadProyecto" />
