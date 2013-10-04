@@ -10,10 +10,21 @@
         <ui:define name="title">
             <h:outputText value="#{bundle.ListCriterioEvaluacionTitle}"></h:outputText>
         </ui:define>
+
+        <ui:define name="menumodulo">
+            <div id="Layoutmenu">
+                <p:menubar  style="float: right">
+                    <p:menuitem url="../../Seg_Proyectos/inicio_proyectos.xhtml" value="Inicio" />
+
+                </p:menubar>
+
+            </div>
+        </ui:define>
+
         <ui:define name="body">
-            
-          
-            
+
+
+
             <h:form id="listCriterioEvaluacion" styleClass="jsfcrud_list_form">
                 <div id="list" align="center">
                     <p:growl id="msgs" showDetail="false" sticky="false"/>
@@ -21,7 +32,7 @@
                     <h:panelGroup rendered="#{criterioEvaluacionController.lazyModel.rowCount > 0}">
                         <p:dataTable id="tableListCriterioEvaluacion" 
                                      value="#{criterioEvaluacionController.lazyModel}" 
-                                     var="item" 
+                                     var="item"
                                      paginator="true" rows="10" paginatorAlwaysVisible="false"
                                      paginatorTemplate="{FirstPageLink} {PreviousPageLink}
                                      {PageLinks} {NextPageLink}
@@ -30,27 +41,17 @@
                                      lazy="true"
                                      emptyMessage="No se encontraron datos con el criterio dado"
                                      widgetVar="tableCriterioEvaluacion">
-                            <p:column headerText="#{bundle.ListCriterioEvaluacionTitle_idCriterioEvaluacion}"
-                                      filterBy="#{item.idCriterioEvaluacion}"
-                                      sortBy="#{item.idCriterioEvaluacion}">                        
+                            <p:column  headerText="#{bundle.ListCriterioEvaluacionTitle_idCriterioEvaluacion}"
+                                      >                        
                                 <h:outputText value="#{item.idCriterioEvaluacion}"/>
                             </p:column>
-                            <p:column headerText="#{bundle.ListCriterioEvaluacionTitle_detallesCriterio}"
-                                      filterBy="#{item.detallesCriterio}"
-                                      sortBy="#{item.detallesCriterio}">                        
-                                <h:outputText value="#{item.detallesCriterio}"/>
-                            </p:column>
+                            
                             <p:column headerText="#{bundle.ListCriterioEvaluacionTitle_nomCriterio}"
                                       filterBy="#{item.nomCriterio}"
                                       sortBy="#{item.nomCriterio}">                        
                                 <h:outputText value="#{item.nomCriterio}"/>
                             </p:column>
-                            <p:column headerText="#{bundle.ListCriterioEvaluacionTitle_idFactorProductiva}"
-                                      filterBy="#{item.idFactorProductiva}"
-                                      sortBy="#{item.idFactorProductiva}">                        
-                                <h:outputText value="#{item.idFactorProductiva}"/>
-                            </p:column>
-                            <p:column headerText="#{bundle.ListCriterioEvaluacionTitle_idTituloCriterio}"
+                           <p:column headerText="#{bundle.ListCriterioEvaluacionTitle_idTituloCriterio}"
                                       filterBy="#{item.idTituloCriterio}"
                                       sortBy="#{item.idTituloCriterio}">                        
                                 <h:outputText value="#{item.idTituloCriterio}"/>
@@ -74,14 +75,7 @@
                     <p:commandButton ajax="false" action="#{criterioEvaluacionController.prepareCreate}" value="#{bundle.ListCriterioEvaluacionCreateLink}" icon="ui-icon-document"/>
                 </div>        
             </h:form>
-               <div id="Layout_Info_Agef">
-                <h4>INFORMACION</h4>
-                <hr></hr>
-                <p id="margen">Informacion de ayuda para formularios</p>
-            </div>
         </ui:define>
-                    
-       
         <ui:define name="dialogs">
             <p:confirmDialog id="confirmDelete" message="#{bundle.DeleteItemTitle}"  
                              header="#{bundle.DeleteItemMessage}" severity="alert" widgetVar="confirmationDelete">  

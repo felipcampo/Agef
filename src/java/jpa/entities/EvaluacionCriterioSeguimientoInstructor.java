@@ -107,7 +107,7 @@ public class EvaluacionCriterioSeguimientoInstructor implements Serializable {
 
     @Override
     public String toString() {
-        return "jpa.entities.EvaluacionCriterioSeguimientoInstructor[ idEvaluacionCriterioSeguimientoInstructor=" + idEvaluacionCriterioSeguimientoInstructor + " ]";
+        return nomEvaluacionCriterioInstructores;
     }
     
 }

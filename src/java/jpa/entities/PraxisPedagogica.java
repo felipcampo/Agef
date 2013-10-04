@@ -203,7 +203,7 @@ public class PraxisPedagogica implements Serializable {
 
     @Override
     public String toString() {
-        return "jpa.entities.PraxisPedagogica[ idPraxisPedagogica=" + idPraxisPedagogica + " ]";
+        return desPra + "" + observaciones;
     }
     
 }

@@ -11,6 +11,13 @@
             <h:outputText value="#{bundle.CreateTituloCriterioTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+            
+            <div id="Layout_Titulo_Formulario_Agef"> <h2>TITULO DE CRITERIO</h2></div>
+            <div id="Layout_Nom_Form_Agef">
+                <h3 id="margen">Crear Titulo de Criterio</h3>
+                <div id="Layout_Formulario_Agef">
+                    <br></br> 
+            
             <p:growl id="msgs" showDetail="false" sticky="false"/>
             <h:form id="formTituloCriterio">
                 <div id="form" align="center">
@@ -63,7 +70,15 @@
                     <p:commandButton ajax="false" action="#{tituloCriterioController.prepareList}" value="#{bundle.CreateTituloCriterioShowAllLink}" immediate="true"/>
                 </div>
             </h:form>
+            <br></br>
+                </div>
+            </div>
+            <div id="Layout_Info_Agef">
+                <h4>INFORMACION</h4>
+                <hr></hr>
+                <p id="margen">Informacion de ayuda para formularios</p>
+            </div>
         </ui:define>
-    </ui:composition>
+       </ui:composition>
 
 </html>

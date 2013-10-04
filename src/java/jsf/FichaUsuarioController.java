@@ -5,6 +5,7 @@ import jsf.util.JsfUtil;
 import jpa.sessions.FichaUsuarioFacade;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,20 +17,202 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import javax.faces.model.DataModel;
 import javax.faces.model.SelectItem;
+import jpa.entities.EstadoAprendiz;
+import jpa.entities.EstadoAspirante;
+import jpa.entities.FichaUsuario;
+import jpa.entities.FichaCaracterizacion;
+import jpa.entities.Programa;
+import jpa.sessions.AspiranteFichaFacade;
+import jpa.sessions.FichaCaracterizacionFacade;
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
+import org.primefaces.model.chart.PieChartModel;
+import org.primefaces.model.chart.CartesianChartModel;
+import org.primefaces.model.chart.ChartSeries;
 
 @ManagedBean(name = "fichaUsuarioController")
 @SessionScoped
 public class FichaUsuarioController implements Serializable {
 
     private FichaUsuario current;
+    private FichaCaracterizacion ficha;
+    private DataModel items = null;
+    private PieChartModel pieModel;
     private LazyDataModel<FichaUsuario> lazyModel = null;
+    private CartesianChartModel categoryModel;
+    private Programa currentPrograma;
+    private List<FichaCaracterizacion> listBusquedaFicha;
     @EJB
     private jpa.sessions.FichaUsuarioFacade ejbFacade;
+    @EJB
+    private FichaCaracterizacionFacade ejbFacadeFicha;
+    @EJB
+    private jpa.sessions.AspiranteFichaFacade ejbFacadeAspirante;
 
     public FichaUsuarioController() {
+    }
+    
+        public String demandatecnologo() {
+        pieModel = new PieChartModel();
+        ficha = current.getFichaCaracterizacion();
+        pieModel.set("Inscritos", getFacadeAspirante().findByFichasEstados(ficha, new EstadoAspirante((short) 3)).size());
+        pieModel.set("Capacidad", ficha.getNumCupFic());
+        return "cons_ficha_ind_demanda";
+    }
+
+    public String demanda() {
+        pieModel = new PieChartModel();
+        ficha = current.getFichaCaracterizacion();
+        pieModel.set("Inscritos", getFacadeAspirante().findByFichasEstados(ficha, new EstadoAspirante((short) 3)).size());
+        pieModel.set("Capacidad", ficha.getNumCupFic());
+        return "cons_ficha_ind_demanda";
+    }
+
+    public String efectividad() {
+        pieModel = new PieChartModel();
+        ficha = current.getFichaCaracterizacion();
+        pieModel.set("Matriculados", getFacade().findByEstado(ficha, new EstadoAprendiz((short) 1)).size());
+        pieModel.set("Certificados", getFacade().findByEstado(ficha, new EstadoAprendiz((short) 2)).size());
+        return "cons_ficha_ind_efectividad";
+    }
+
+    public String deserción() {
+        pieModel = new PieChartModel();
+        ficha = current.getFichaCaracterizacion();
+        pieModel.set("Matriculados", getFacade().findByEstado(ficha, new EstadoAprendiz((short) 1)).size());
+        pieModel.set("Cancelados", getFacade().findByEstado(ficha, new EstadoAprendiz((short) 3)).size());
+        return "cons_ficha_ind_desercion";
+    }
+
+    public String esfuerzo() {
+        pieModel = new PieChartModel();
+        ficha = current.getFichaCaracterizacion();
+        pieModel.set("Matriculados", getFacade().findByEstado(ficha, new EstadoAprendiz((short) 1)).size());
+        pieModel.set("Anulados", getFacade().findByEstado(ficha, new EstadoAprendiz((short) 7)).size());
+        return "cons_ficha_ind_esfuerzo";
+    }
+
+    public String eficiencia() {
+        pieModel = new PieChartModel();
+        ficha = current.getFichaCaracterizacion();
+        pieModel.set("Inscritos", getFacadeAspirante().findByFichasEstados(ficha, new EstadoAspirante((short) 3)).size());
+        pieModel.set("Matriculados", getFacade().findByEstado(ficha, new EstadoAprendiz((short) 1)).size());
+        return "cons_ficha_ind_eficiencia";
+    }
+
+    public String decersionbarra() {
+
+        categoryModel = new CartesianChartModel();
+        ficha = current.getFichaCaracterizacion();
+
+        ChartSeries anulado = new ChartSeries();
+        anulado.setLabel("Anulados");
+
+        anulado.set("Anulados", getFacade().findByEstado(ficha, new EstadoAprendiz((short) 1)).size());
+
+        ChartSeries matriculado = new ChartSeries();
+        matriculado.setLabel("Matriculados");
+
+        matriculado.set("Matriculados", getFacade().findByEstado(ficha, new EstadoAprendiz((short) 3)).size());
+
+        categoryModel.addSeries(anulado);
+        categoryModel.addSeries(matriculado);
+        return "cons_ficha_ind_desercion_barras";
+
+    }
+
+    public String demandabarra() {
+
+        categoryModel = new CartesianChartModel();
+        ficha = current.getFichaCaracterizacion();
+
+        ChartSeries inscritos = new ChartSeries();
+        inscritos.setLabel("Inscritos");
+
+        inscritos.set("Inscritos", getFacadeAspirante().findByFichasEstados(ficha, new EstadoAspirante((short) 3)).size());
+
+        ChartSeries capacidad = new ChartSeries();
+        capacidad.setLabel("Capacidad");
+
+        capacidad.set("Capacidad", ficha.getNumCupFic());
+
+        categoryModel.addSeries(inscritos);
+        categoryModel.addSeries(capacidad);
+        return "cons_ficha_ind_demanda_barra";
+
+    }
+
+    public String efectividadbarra() {
+
+        categoryModel = new CartesianChartModel();
+        ficha = current.getFichaCaracterizacion();
+
+        ChartSeries matriculado = new ChartSeries();
+        matriculado.setLabel("Matriculados");
+
+        matriculado.set("Matriculados", getFacade().findByEstado(ficha, new EstadoAprendiz((short) 1)).size());
+
+        ChartSeries certificado = new ChartSeries();
+        certificado.setLabel("Certificados");
+
+        certificado.set("Certificados", getFacade().findByEstado(ficha, new EstadoAprendiz((short) 2)).size());
+
+        categoryModel.addSeries(matriculado);
+        categoryModel.addSeries(certificado);
+        return "cons_ficha_ind_efectividad_barra";
+
+    }
+
+    public String eficienciabarra() {
+
+        categoryModel = new CartesianChartModel();
+        ficha = current.getFichaCaracterizacion();
+
+        ChartSeries inscritos = new ChartSeries();
+        inscritos.setLabel("Inscritos");
+
+        inscritos.set("Inscritos", getFacadeAspirante().findByFichasEstados(ficha, new EstadoAspirante((short) 3)).size());
+
+        ChartSeries matriculados = new ChartSeries();
+        matriculados.setLabel("Matriculados");
+
+        matriculados.set("Matriculados", getFacade().findByEstado(ficha, new EstadoAprendiz((short) 1)).size());
+
+        categoryModel.addSeries(inscritos);
+        categoryModel.addSeries(matriculados);
+        return "cons_ficha_ind_eficiencia_barra";
+
+    }
+
+    public String efuerzobarra() {
+
+        categoryModel = new CartesianChartModel();
+        ficha = current.getFichaCaracterizacion();
+
+        ChartSeries matriculado = new ChartSeries();
+        matriculado.setLabel("Matriculados");
+
+        matriculado.set("Matriculados", getFacade().findByEstado(ficha, new EstadoAprendiz((short) 1)).size());
+
+        ChartSeries anulado = new ChartSeries();
+        anulado.setLabel("Anulados");
+
+        anulado.set("Anulados", getFacade().findByEstado(ficha, new EstadoAprendiz((short) 7)).size());
+
+        categoryModel.addSeries(matriculado);
+        categoryModel.addSeries(anulado);
+        return "cons_ficha_ind_esfuerzo_barra";
+
+    }
+
+    public CartesianChartModel getChartModel() {
+        return categoryModel;
+    }
+
+    public PieChartModel getPieModel() {
+        return pieModel;
     }
 
     public FichaUsuario getSelected() {
@@ -40,12 +223,70 @@ public class FichaUsuarioController implements Serializable {
         return current;
     }
 
+    public FichaCaracterizacion getSelectedFicha() {
+        if (ficha == null) {
+            ficha = new FichaCaracterizacion();
+        }
+        return ficha;
+    }
+
     public void setSelected(FichaUsuario entity) {
         current = entity;
     }
 
+    public void setSelectedFicha(FichaCaracterizacion entity) {
+        ficha = entity;
+    }
+
+    public Programa getSelectedPrograma() {
+        if (currentPrograma == null) {
+            currentPrograma = new Programa();
+        }
+        return currentPrograma;
+    }
+
+    public void setSelectedPrograma(Programa entity) {
+        currentPrograma = entity;
+    }
+
+    public void buscarFicha() {
+        if (getSelectedFicha().getIdFichaCaracterizacion() == null && getSelectedPrograma().getNomPrg().equals("")) {
+            JsfUtil.addErrorMessage(ResourceBundle.getBundle("properties/Bundle").getString("CriteriosVacios"));
+        } else {
+            try {
+                listBusquedaFicha = getFacadeFicha().findByIdAndPrograma(ficha, currentPrograma);
+            } catch (Exception e) {
+                JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("properties/Bundle").getString("PersistenceErrorOccured"));
+            }
+        }
+    }
+
+    public String agregarFicha() {
+        current.setFichaCaracterizacion(ficha);
+        ficha = new FichaCaracterizacion();
+        listBusquedaFicha = new ArrayList<>();
+        return "Consultaficha";
+    }
+
+    public List<FichaCaracterizacion> getListBusquedaFicha() {
+        return listBusquedaFicha;
+    }
+
     private FichaUsuarioFacade getFacade() {
         return ejbFacade;
+    }
+
+    private AspiranteFichaFacade getFacadeAspirante() {
+        return ejbFacadeAspirante;
+    }
+
+    private FichaCaracterizacionFacade getFacadeFicha() {
+        return ejbFacadeFicha;
+    }
+
+    public String prepareList() {
+        recreateModel();
+        return "List";
     }
 
     public LazyDataModel<FichaUsuario> getLazyModel() {
@@ -81,14 +322,18 @@ public class FichaUsuarioController implements Serializable {
         return lazyModel;
     }
 
-    public String prepareList() {
-        recreateModel();
-        return "List";
-    }
-
     public String prepareView() {
         current = (FichaUsuario) getLazyModel().getRowData();
         return "View";
+    }
+
+    public String prepareConsulta() {
+        current = new FichaUsuario();
+        current.setFichaUsuarioPK(new jpa.entities.FichaUsuarioPK());
+        ficha = new FichaCaracterizacion();
+        currentPrograma = new Programa();
+        listBusquedaFicha = new ArrayList<>();
+        return "formularioficha";
     }
 
     public String prepareCreate() {
@@ -153,6 +398,10 @@ public class FichaUsuarioController implements Serializable {
 
     public SelectItem[] getItemsAvailableSelectOne() {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
+    }
+
+    public SelectItem[] getItemsAvailableSelectOneFicha() {
+        return JsfUtil.getSelectItems(ejbFacadeFicha.findAll(), true);
     }
 
     @FacesConverter(forClass = FichaUsuario.class)

@@ -18,7 +18,7 @@
                         <p:menuitem value="Complementario" outcome="consulta_tip_form.xhtml"/>
                         <p:menuitem value="Virtual" outcome="consulta_tip_form.xhtml"/>
                     </p:submenu>
-                    <p:menuitem value="Consulta por Ficha" url="formularioficha.xhtml" />
+                    <p:menuitem value="Consulta por Ficha" action="#{fichaUsuarioController.prepareConsulta}" />
                     <p:menuitem value="Consulta Global" url="consulta_global.xhtml" />
                    
                 </p:menubar>

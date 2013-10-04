@@ -17,14 +17,18 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.faces.model.SelectItem;
+import javax.servlet.http.HttpSession;
 import jpa.entities.CriterioEvaluacion;
 import jpa.entities.CriterioSeguimientoProyecto;
 import jpa.entities.EstadoAprendiz;
+import jpa.entities.EstadoJuicio;
 import jpa.entities.EvaluacionCriterioSeguimientoProyecto;
 import jpa.entities.FichaCaracterizacion;
 import jpa.entities.FichaUsuario;
+import jpa.entities.GradoJuicio;
 import jpa.entities.Programa;
 import jpa.entities.TipoCriterio;
+import jpa.entities.TipoJuicio;
 import jpa.sessions.CriterioEvaluacionFacade;
 import jpa.sessions.CriterioSeguimientoProyectoFacade;
 import jpa.sessions.EvaluacionCriterioSeguimientoProyectoFacade;
@@ -59,6 +63,7 @@ public class SeguimientoProyectoController implements Serializable {
     private jpa.sessions.FichaCaracterizacionFacade ejbFacadeFicha;
 
     public SeguimientoProyectoController() {
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
     }
 
     public SeguimientoProyecto getSelected() {
@@ -193,22 +198,14 @@ public class SeguimientoProyectoController implements Serializable {
 
     public String prepareCreate() {
         current = new SeguimientoProyecto();
-        currentFicha = new FichaCaracterizacion();
-        currentPrograma = new Programa();
-        listBusquedaFicha = new ArrayList<>();
         return "Create";
     }
 
     public String create() {
         try {
             getFacade().create(current);
-            for (CriterioSeguimientoProyecto criterio : listCriteriosSeg) {
-                criterio.setIdSeguimientoProyecto(current);
-
-                getFacadeCriterioSeg().create(criterio);
-            }
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("SeguimientoProyectoCreated"));
-            return "View";
+            return "List";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/properties/Bundle").getString("PersistenceErrorOccured"));
             return null;
@@ -220,17 +217,30 @@ public class SeguimientoProyectoController implements Serializable {
         listCriteriosSeg = new ArrayList<>();
         listCriteriosEval = getFacadeCriterioEval().findByTipo(new TipoCriterio((short) 1));
         for (CriterioEvaluacion criterioEval : listCriteriosEval) {
+
             currentCriterioSeg = new CriterioSeguimientoProyecto();
             currentCriterioSeg.setIdCriterioEvaluacion(criterioEval);
-            currentCriterioSeg.setIdEvaluacionCriterioSeguimientoProyecto(new EvaluacionCriterioSeguimientoProyecto());
+//            currentCriterioSeg.setIdEstadoJuicio(new EstadoJuicio((short) 1));
+//            currentCriterioSeg.setIdGradoJuicio(new GradoJuicio((short) 1));
+//            currentCriterioSeg.setIdTipoJuicio(new TipoJuicio((short) 1));
+//            currentCriterioSeg.setObsCriSeg("");
+            currentCriterioSeg.setIdEvaluacionCriterioSeguimientoProyecto(new EvaluacionCriterioSeguimientoProyecto((short) 1));
             listCriteriosSeg.add(currentCriterioSeg);
         }
+
+
         return "Edit";
     }
 
     public String update() {
         try {
             getFacade().edit(current);
+            for (CriterioSeguimientoProyecto criterio : listCriteriosSeg) {
+                if (criterio.getIdEstadoJuicio() != null) {
+                    criterio.setIdSeguimientoProyecto(current);
+                    getFacadeCriterioSeg().create(criterio);
+                }
+            }
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("SeguimientoProyectoUpdated"));
             return "View";
         } catch (Exception e) {
@@ -258,6 +268,10 @@ public class SeguimientoProyectoController implements Serializable {
         lazyModel = null;
     }
 
+    public int getAprendicesByMatriculado() {
+        return getUsuariosByFicha(new EstadoAprendiz((short) 1)).size();
+    }
+
     public int getAprendicesByCancelado() {
         return getUsuariosByFicha(new EstadoAprendiz((short) 3)).size();
     }
@@ -271,6 +285,10 @@ public class SeguimientoProyectoController implements Serializable {
     }
 
     public int getAprendicesByCondicionado() {
+        return getUsuariosByFicha(new EstadoAprendiz((short) 8)).size();
+    }
+
+    public int getAprendicesByActivos() {
         return getUsuariosByFicha(new EstadoAprendiz((short) 7)).size();
     }
 
@@ -302,9 +320,9 @@ public class SeguimientoProyectoController implements Serializable {
             return controller.ejbFacade.find(getKey(value));
         }
 
-        java.lang.String getKey(String value) {
-            java.lang.String key;
-            key = value;
+        java.lang.Integer getKey(String value) {
+            java.lang.Integer key;
+            key = Integer.valueOf(value);
             return key;
         }
 

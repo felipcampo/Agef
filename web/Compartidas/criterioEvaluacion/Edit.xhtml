@@ -41,7 +41,7 @@
                                 <h:outputLabel value="#{bundle.EditCriterioEvaluacionLabel_detallesCriterio}" for="detallesCriterio" />
                             </p:column>
                             <p:column style="border-right: white"> 
-                                <p:inputTextarea rows="4" cols="30" id="detallesCriterio" value="#{criterioEvaluacionController.selected.detallesCriterio}" title="#{bundle.EditCriterioEvaluacionTitle_detallesCriterio}" required="true" requiredMessage="#{bundle.EditCriterioEvaluacionRequiredMessage_detallesCriterio}"/>
+                                <p:inputTextarea rows="4" cols="30" id="detallesCriterio" value="#{criterioEvaluacionController.selected.detallesCriterio}" title="#{bundle.EditCriterioEvaluacionTitle_detallesCriterio}"/>
                             </p:column>
                             <p:column style="border-left: white;">
                                 <p:message for="detallesCriterio"/>
@@ -63,7 +63,7 @@
                                 <h:outputLabel value="#{bundle.EditCriterioEvaluacionLabel_idFactorProductiva}" for="idFactorProductiva" />
                             </p:column>
                             <p:column style="border-right: white"> 
-                                <p:selectOneMenu id="idFactorProductiva" value="#{criterioEvaluacionController.selected.idFactorProductiva}" required="true" requiredMessage="#{bundle.EditCriterioEvaluacionRequiredMessage_idFactorProductiva}">
+                                <p:selectOneMenu id="idFactorProductiva" value="#{criterioEvaluacionController.selected.idFactorProductiva}">
                                     <f:selectItems value="#{factorProductivaController.itemsAvailableSelectOne}"/>
                                 </p:selectOneMenu>
                             </p:column>

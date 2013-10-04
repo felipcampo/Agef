@@ -293,7 +293,7 @@ public class SeguimientoInstructor implements Serializable {
 
     @Override
     public String toString() {
-        return "jpa.entities.SeguimientoInstructor[ idSeguimientoInstructor=" + idSeguimientoInstructor + " ]";
+        return nomIns;
     }
     
 }

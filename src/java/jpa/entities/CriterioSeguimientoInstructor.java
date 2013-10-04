@@ -141,7 +141,7 @@ public class CriterioSeguimientoInstructor implements Serializable {
 
     @Override
     public String toString() {
-        return "jpa.entities.CriterioSeguimientoInstructor[ idCriterioSeguimientoInstructor=" + idCriterioSeguimientoInstructor + " ]";
+        return obsCriIns;
     }
     
 }

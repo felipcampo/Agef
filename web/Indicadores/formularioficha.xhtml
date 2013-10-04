@@ -3,40 +3,118 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
-         <h:outputStylesheet name=""/>
-          <h:outputStylesheet name="../css/agef.css"/>
-           <h:outputStylesheet name="css/agef_theme.css"/>
+        <h:outputStylesheet name=""/>
+        <h:outputStylesheet name="../css/agef.css"/>
+        <h:outputStylesheet name="css/agef_theme.css"/>
     </h:head>
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="Consulta-Ficha"></h:outputText>
         </ui:define>
-          <ui:define name="menumodulo">
+        <ui:define name="menumodulo">
             <ui:include src="menu_indicadores.xhtml"/>
-            </ui:define>
+        </ui:define>
         <ui:define name="body">
-        <div><center>
-                 <table align="right" style="margin-top: 50px;">  
-                    <tr>
-                        <td><img src="imagenes/tierra2.png" /></td>
-                    </tr>    
-                </table>
-                <table align="center" style="margin-top: 50px; border: 2;">
-        <tr>Ingrese numero de ficha:
-        </tr>
-        <tr>
-         <input name="consultar" type="text" value="" size="6" maxlength="6" />
-        </tr>
-        <td>
-        <p:button id="botona" value="Consultar" href="Consultaficha.xhtml"/>
-        </td>
-        </table>
-    
-            </center>
-      </div>
-            </ui:define>
+            <div><center>
+                    <table align="right" style="margin-top: 50px;">  
+                        <tr>
+                            <td><img src="imagenes/tierra2.png" /></td>
+                        </tr>   
+                    </table>
+                    <h:form>
+                        <table align="center" style="margin-top: 50px;">
+                            <tr>Ingrese numero de ficha:
+                            </tr>
+                            <tr>
+                                <p:panelGrid>
+                                    <f:facet  name="header">
+                                        <p:row>
+                                            <p:column colspan="1">
+                                                <h:outputLabel value="#{bundle.CreateGuiaAprendizajeLabel_idFichaCaracterizacion}" for="idFichaCaracterizacion" />
+                                            </p:column>
+                                            <p:column colspan="3">
+
+                                                <p:commandButton process="@this" id="idFichaCaracterizacion2" icon="ui-icon-search" onclick="dlgBuscarFicha.show();"  type="button" />
+
+                                            </p:column> 
+                                           
+                                        </p:row>
+                                    </f:facet>
+                                </p:panelGrid>
+                               
+                            </tr>
+                            <td>
+                            </td>
+                        </table>
+                    </h:form>
+
+                </center>
+            </div>
+        </ui:define>
+
+        <ui:define name="dialogs">
+
+            <p:dialog id="buscarFichas" widgetVar="dlgBuscarFicha" modal="true" resizable="false">
+                <p:growl id="msgDialogoBuscar"/>
+                <p:tabView>
+                    <p:tab title="Buscar">
+                        <h:form id="formularioBuscar"> 
+                            <p:panelGrid>
+                                <p:row>
+                                    <p:column>   
+                                        <p:inputText id="idFichaCaracterizacion" value="#{fichaUsuarioController.selectedFicha.idFichaCaracterizacion}" title="#{bundle.CreateFichaCaracterizacionTitle_idFichaCaracterizacion}"/>
+                                        <p:watermark value="#{bundle.CreateFichaCaracterizacionLabel_idFichaCaracterizacion}" for="idFichaCaracterizacion" />
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText id="nomPrograma" value="#{fichaUsuarioController.selectedPrograma.nomPrg}" title="#{bundle.CreateProgramaTitle_nomPrg}" />
+                                        <p:watermark value="#{bundle.CreateProgramaLabel_nomPrg}" for="nomPrograma" />
+                                    </p:column>   
+                                    <p:column >
+                                        <p:commandButton action="#{fichaUsuarioController.buscarFicha()}"
+                                                         value="Buscar"
+                                                         icon="ui-icon-search"
+                                                         process="@this,idFichaCaracterizacion,nomPrograma"
+                                                         update="tablaFichaCaracterizacion, :msgDialogoBuscar"/>
+                                    </p:column>
+                                </p:row>
+                            </p:panelGrid>
+                            <br /><br /><br />
+                            <p:dataTable value="#{fichaUsuarioController.listBusquedaFicha}"
+                                         var="item" paginator="true" rows="5" id="tablaFichaCaracterizacion">
+                                <p:column> 
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListFichaCaracterizacionTitle_idFichaCaracterizacion}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.idFichaCaracterizacion}"/>
+                                </p:column>
+                                <p:column >  
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListFichaCaracterizacionTitle_idProyectoFormativo}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.idProyectoFormativo}"/>
+                                </p:column>
+                                <p:column >  
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListFichaCaracterizacionTitle_idPrograma}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.idPrograma}"/>
+                                </p:column>
+                                <p:column>
+                                    <p:commandButton id="botonSeleccionFicha" process="@this" action="#{fichaUsuarioController.agregarFicha}"
+                                                     oncomplete="dlgBuscarFicha.hide();" icon="ui-icon-plus" update=":formGuiaAprendizaje, :buscarFichas">
+                                        <f:setPropertyActionListener value="#{item}" target="#{fichaUsuarioController.selectedFicha}"/>
+                                    </p:commandButton>
+                                </p:column>
+                            </p:dataTable>
+                        </h:form>
+                    </p:tab>
+
+                </p:tabView>   
+            </p:dialog>
+        </ui:define>
     </ui:composition>
 
 </html>

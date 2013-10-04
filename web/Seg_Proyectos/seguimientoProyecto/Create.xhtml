@@ -48,9 +48,18 @@
                                     </p:column> 
 
                                     <p:column >  
-                                        <p:commandButton process="@this" id="idFichaCaracterizacion2" icon="ui-icon-search" onclick="dlgBuscarFicha.show();"  type="button" />
+                                        <p:commandButton title="Buscar Ficha" process="@this" id="idFichaCaracterizacion2" icon="ui-icon-search" onclick="dlgBuscarFicha.show();"  type="button" />
                                     </p:column>
 
+                                </p:row>
+                                <p:row>
+                                  <p:column>
+                                        <h:outputLabel value="Instructor" for="idFichaCaracterizacion" />
+                                    </p:column> 
+                                    <p:column >    
+                                         <h:outputText value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyectoFormativo.idUsuario}"/>
+                                    </p:column> 
+                                    
                                 </p:row>
                                 <!---->
                                 <p:row>
@@ -96,7 +105,7 @@
                                     <p:column>
                                         <h:outputLabel value="#{bundle.CreateSeguimientoProyectoLabel_rolIdRol}" for="idRol" />
                                     </p:column>
-                                    <p:column style="border-right: white">    
+                                    <p:column >    
                                         <p:selectOneMenu id="idRol" value="#{seguimientoProyectoController.selected.idRol}" >
                                             <f:selectItems value="#{rolController.itemsAvailableSelectOne}"/>
                                         </p:selectOneMenu>

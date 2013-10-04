@@ -14,11 +14,11 @@
         <ui:define name="menumodulo">
             <div id="Layoutmenu">
                 <p:menubar  style="float: right">
-                    <p:menuitem url="../inicio_proyectos.xhtml" value="Inicio" />
-                    <p:menuitem url="Create.xhtml" value="Programar fechas de Seguimiento" />
-                    <p:menuitem url="List.xhtml" value="Realizar Seguimiento a proyecto" />
+                    <p:menuitem outcome="/Seg_Proyectos/inicio_proyectos.xhtml" value="Inicio" />
+                    <p:menuitem outcome="Create" value="Programar fechas de Seguimiento" />
+                    <p:menuitem outcome="List" value="Realizar Seguimiento a proyecto" />
                 </p:menubar>
-         </div>
+            </div>
         </ui:define>
 
         <ui:define name="body">
@@ -37,7 +37,7 @@
                                     <h:outputLabel value="#{bundle.EditSeguimientoProyectoLabel_idSeguimientoProyecto}" for="idSeguimientoProyecto" />
                                 </p:column>
                                 <p:column colspan="5" style="border-right: white"> 
-                                    <p:inputText id="idSeguimientoProyecto" value="#{seguimientoProyectoController.selected.idSeguimientoProyecto}" title="#{bundle.EditSeguimientoProyectoTitle_idSeguimientoProyecto}" required="true" requiredMessage="#{bundle.EditSeguimientoProyectoRequiredMessage_idSeguimientoProyecto}"/>
+                                    <p:inputText id="idSeguimientoProyecto" readonly="true" value="#{seguimientoProyectoController.selected.idSeguimientoProyecto}" title="#{bundle.EditSeguimientoProyectoTitle_idSeguimientoProyecto}" required="true" requiredMessage="#{bundle.EditSeguimientoProyectoRequiredMessage_idSeguimientoProyecto}"/>
                                 </p:column>
                             </p:row>                            
                         </f:facet> 
@@ -56,7 +56,7 @@
                                 <h:outputLabel value="#{bundle.EditSeguimientoProyectoLabel_fechaSeguimientoInicio}" for="fechaSeguimientoInicio" />
                             </p:column>
                             <p:column colspan="4" style="border-right: white"> 
-                                <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm:ss" showOn="button" id="fechaSeguimientoInicio" value="#{seguimientoProyectoController.selected.fechaSeguimientoInicio}" title="#{bundle.EditSeguimientoProyectoTitle_fechaSeguimientoInicio}" />
+                                <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm:ss" showOn="button" id="fechaSeguimientoInicio" value="#{seguimientoProyectoController.selected.fechaSeguimientoInicio}" title="#{bundle.EditSeguimientoProyectoTitle_fechaSeguimientoInicio}" required="true"/>
                             </p:column>
                             <p:column colspan="3">
                                 <h:outputLabel value="#{bundle.EditSeguimientoProyectoLabel_fechaSeguimientoFin}" for="fechaSeguimientoFin" />
@@ -65,12 +65,12 @@
                                 <p:calendar navigator="true" pattern="MM/dd/yyyy HH:mm:ss" showOn="button" id="fechaSeguimientoFin" value="#{seguimientoProyectoController.selected.fechaSeguimientoFin}" title="#{bundle.EditSeguimientoProyectoTitle_fechaSeguimientoFin}" />
                             </p:column>
                             <p:column colspan="6" > 
-                                <p:inputText id="totalhoras" readonly="true" value="Total horas" title=""  />
+                                <p:inputText id="totalhoras" size="60" readonly="true" value=""  />
                             </p:column>
                         </p:row> 
 
                         <p:row>
-                             <p:column colspan="3">
+                            <p:column colspan="3">
                                 <h:outputLabel value="#{bundle.EditSeguimientoProyectoLabel_idFichaCaracterizacion}" for="idFichaCaracterizacion" />
                             </p:column>
                             <p:column colspan="4" > 
@@ -78,7 +78,7 @@
                                 </p:inputText>
                             </p:column>
                             <p:column colspan="3">
-                                <h:outputLabel value="Programa de formacion" for="Programa de formacion" />
+                                <h:outputLabel value="Programa de formacion" for="idProgramadeFormacion" />
                             </p:column >
                             <p:column  colspan="10" > 
                                 <p:inputText id="idProgramadeFormacion" readonly="true" size="60"  value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idPrograma.nomPrg}" >
@@ -91,16 +91,15 @@
                                 <h:outputLabel value="F. Apertura Ficha"/>
                             </p:column>
                             <p:column colspan="4" >
-                                <p:inputText id="idFechaAperturaFicha" readonly="true"   value="fecha ap ficha" >
-                                </p:inputText>
+                                <h:outputText id="idFechaAperturaFicha"   value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.fecIniEtaLec}" />
+
                             </p:column>
                             <p:column colspan="3">
                                 <h:outputLabel value="Proyecto" for="" />
                             </p:column >
                             <p:column  colspan="10" > 
-                                <p:selectOneMenu id="idProyectoFormativo" value="#{seguimientoProyectoController.selected.idProyectoFormativo}" >
-                                    <f:selectItems value="#{proyectoFormativoController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
+                                <h:outputText id="idProyectoFormativo" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyectoFormativo}" />
+
                             </p:column>
                         </p:row>
 
@@ -110,9 +109,8 @@
                                 <h:outputLabel value="#{bundle.EditSeguimientoProyectoLabel_idNivelFormacion}" for="idNivelFormacion" />
                             </p:column>
                             <p:column colspan="3" > 
-                                <p:selectOneMenu id="idNivelFormacion" value="#{seguimientoProyectoController.selected.idNivelFormacion}" >
-                                    <f:selectItems value="#{nivelFormacionController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
+                                <h:outputText id="idNivelFormacion" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idNivelFormacion}" />
+
                             </p:column>
 
                             <p:column colspan="1">
@@ -128,9 +126,8 @@
                                 <h:outputLabel value="#{bundle.EditSeguimientoProyectoLabel_idJornadaFormacion}" for="idJornadaFormacion" />
                             </p:column>
                             <p:column colspan="9" > 
-                                <p:selectOneMenu id="idJornadaFormacion" value="#{seguimientoProyectoController.selected.idJornadaFormacion}" >
-                                    <f:selectItems value="#{jornadaFormacionController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
+                                <h:outputText id="idJornadaFormacion" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idJornadaFormacion}" />
+
                             </p:column>
                         </p:row>
 
@@ -139,19 +136,19 @@
                                 <h:outputLabel value="Duracion etapa lectiva"  />
                             </p:column>
                             <p:column colspan="4" > 
-                                <p:inputText id="durPrgLec"  value="Duracion"  />
+                                <h:outputText id="durPrgLec"  value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idPrograma.durPrgLec}"  />
                             </p:column>
                             <p:column colspan="3">
                                 <h:outputLabel value="D. etapa productiva" />
                             </p:column>
                             <p:column colspan="4" > 
-                                <p:inputText id="durPrgPrac"  value="Duracion"  />
+                                <h:outputText id="durPrgPrac"  value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idPrograma.durPrgPrac}"  />
                             </p:column>
                             <p:column colspan="3">
                                 <h:outputLabel value="M.formacion" />
                             </p:column>
                             <p:column colspan="3"> 
-                                <p:inputText id="duracionTotalProg" readonly="true" value="duracion programa" />
+                                <p:inputText id="duracionTotalProg" readonly="true" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idPrograma.duracionTotalProg}" />
                             </p:column>
                         </p:row> 
 
@@ -159,20 +156,16 @@
                             <p:column colspan="3">
                                 <h:outputLabel value="#{bundle.EditSeguimientoProyectoLabel_idRegional}" for="idRegional" />
                             </p:column>
-                             <p:column>
-                                <p:selectOneMenu id="idRegional" value="#{seguimientoProductivaController.selectedRegional}" required="true" requiredMessage="#{bundle.CreateCentroFormacionRequiredMessage_idRegional}">
-                                    <f:selectItems value="#{seguimientoProductivaController.itemsAvailableSelectOneRegional}"/>
-                                    <p:ajax update="codCen"/>
-                                </p:selectOneMenu>
+                            <p:column colspan="3">
+                                <h:outputText id="idRegional" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idPrograma.idCentroFormacion.idRegional}"  />
+
                             </p:column>
 
                             <p:column colspan="3">
-                                <h:outputLabel value="#{bundle.EditSeguimientoProyectoLabel_idSedeCentro}" for="idSedeCentro" />
+                                <h:outputLabel value="#{bundle.EditSeguimientoProyectoLabel_idSedeCentro}" for="codCen" />
                             </p:column >
-                            <p:column>
-                                <p:selectOneMenu id="codCen" value="#{seguimientoProductivaController.selected.idCentroFormacion}" required="true" requiredMessage="#{bundle.CreateSeguimientoProductivaRequiredMessage_idCentroFormacion}">
-                                    <f:selectItems value="#{seguimientoProductivaController.itemsAvailableSelectOneCentroByRegional}"/>
-                                </p:selectOneMenu>
+                            <p:column colspan="11">
+                                <h:outputText id="codCen" value="#{seguimientoProductivaController.selected.idFichaCaracterizacion.idPrograma.idCentroFormacion}" />
                             </p:column> 
                         </p:row>
 
@@ -180,17 +173,17 @@
                             <p:column colspan="3">
                                 <h:outputLabel value="Duracion en horas"  />
                             </p:column>
+                            <!-- -->
+
                             <p:column colspan="4" > 
-                                <p:inputText id="dh" readonly="true" value="cantidad de horas de duracion" />
+                                <h:outputText id="dh"  value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idPrograma.duracionTotalProg}" />
                             </p:column>
 
                             <p:column colspan="3">
                                 <h:outputLabel value="Instructor"  />
                             </p:column >
                             <p:column  colspan="10" > 
-                                <p:selectOneMenu id="nomInstructor" value="#{seguimientoProyectoController.selected.nomInstructor}" >
-                                    <f:selectItems value="#{seguimientoProyectoController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
+                                <h:outputText id="nomInstructor" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyectoFormativo.idUsuario}" />
                             </p:column>
                         </p:row>
 
@@ -199,13 +192,13 @@
                                 <h:outputLabel value="Matriculados" />
                             </p:column>
                             <p:column colspan="4" > 
-                                <p:inputText id="m" readonly="true" value="cantidad" />
+                                <p:inputText id="m" readonly="true" value="#{seguimientoProyectoController.aprendicesByMatriculado}" />
                             </p:column>
                             <p:column colspan="3">
                                 <h:outputLabel value="Activos" />
                             </p:column>
                             <p:column colspan="4" > 
-                                <p:inputText id="a" readonly="true" value="cantidad" />
+                                <p:inputText id="a" readonly="true" value="#{seguimientoProyectoController.aprendicesByActivos}" />
                             </p:column>
                             <p:column colspan="3">
                                 <h:outputLabel value="% Desercion" />
@@ -219,9 +212,8 @@
                                 <h:outputLabel value="Evaluador" for="idUsuario" />
                             </p:column>
                             <p:column colspan="17" > 
-                                <p:selectOneMenu id="idUsuario" value="#{seguimientoProyectoController.selected.idUsuario}" >
-                                    <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
-                                </p:selectOneMenu>
+                                <h:outputText id="idUsuario"  value="#{seguimientoProyectoController.selected.idRol}" />
+
                             </p:column>   
                         </p:row> 
                         <p:row>
@@ -233,7 +225,7 @@
                                 <h:outputLabel value="Analisis" />
                             </p:column>
                             <p:column colspan="3">
-                                <p:inputText id="an" size="8" readonly="true" value="resultado  calculado" /> 
+                                <h:outputText id="an"   value="resultado  calculado" /> 
 
                             </p:column>
                             <p:column colspan="1" style="border-right: white"> 
@@ -277,7 +269,7 @@
                             </p:column>   
 
                             <p:column colspan="15"> 
-                                <p:inputText id="b" readonly="true" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyectoFormativo.benficiarioProyecto}" size="70"/>
+                                <h:outputText id="b" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyectoFormativo.benficiarioProyecto}" />
                             </p:column>  
 
                         </p:row>
@@ -290,7 +282,7 @@
                             </p:column>   
 
                             <p:column colspan="15"> 
-                                <p:inputText id="Ip"  readonly="true" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyectoFormativo.impSocial}" size="70"/>
+                                <h:outputText id="Ip"  value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyectoFormativo.impSocial}" />
                             </p:column> 
                         </p:row>
 
@@ -302,7 +294,7 @@
                             </p:column>   
 
                             <p:column colspan="15"> 
-                                <p:inputText id="Ie" readonly="true" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyectoFormativo.impEconomico}" size="70"/>
+                                <h:outputText id="Ie" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyectoFormativo.impEconomico}" />
                             </p:column>  
                         </p:row>
 
@@ -314,7 +306,7 @@
                             </p:column>   
 
                             <p:column colspan="15"> 
-                                <p:inputText id="iam"  readonly="true" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyectoFormativo.impactoAmbiental}" size="70"/>
+                                <h:outputText id="iam"  value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyectoFormativo.impactoAmbiental}" />
                             </p:column>  
                         </p:row>
                         <p:row>
@@ -323,7 +315,7 @@
                             </p:column>   
 
                             <p:column colspan="15"> 
-                                <p:inputText id="It"  readonly="true" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyectoFormativo.impTecnologico}" size="70"/>
+                                <h:outputText id="It" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyectoFormativo.impTecnologico}" />
                             </p:column>  
                         </p:row>
                         <p:row>
@@ -342,7 +334,7 @@
                             </p:column>   
 
                             <p:column colspan="12"> 
-                                <p:inputText id="aplazados" readonly="true" value="#{seguimientoProyectoController.aprendicesByAplazado}" />
+                                <h:outputText id="aplazados" value="#{seguimientoProyectoController.aprendicesByAplazado}" />
                             </p:column>  
                             <p:column rowspan="4"> 
                                 <h:outputLabel value="#{bundle.EditSeguimientoProyectoLabel_evaluacionProyecto}" />
@@ -356,7 +348,7 @@
                             </p:column>   
 
                             <p:column colspan="12"> 
-                                <p:inputText id="cancelados"  readonly="true" value="#{seguimientoProyectoController.aprendicesByCancelado}"/>
+                                <h:outputText id="cancelados" value="#{seguimientoProyectoController.aprendicesByCancelado}"/>
                             </p:column>   
 
                         </p:row>
@@ -367,7 +359,7 @@
                             </p:column>   
 
                             <p:column colspan="12"> 
-                                <p:inputText id="trasladados"  readonly="true" value="#{seguimientoProyectoController.aprendicesByTrasladado}"/>
+                                <h:outputText id="trasladados" value="#{seguimientoProyectoController.aprendicesByTrasladado}"/>
                             </p:column>   
                         </p:row>
 
@@ -378,7 +370,7 @@
                             </p:column>   
 
                             <p:column colspan="12"> 
-                                <p:inputText id="condicionados"  readonly="true" value="#{seguimientoProyectoController.aprendicesByCondicionado}"/>
+                                <h:outputText id="condicionados" value="#{seguimientoProyectoController.aprendicesByCondicionado}"/>
                             </p:column>   
 
                         </p:row>
@@ -387,16 +379,16 @@
                                 <h:outputLabel value="Competencias Actuales"  />
                             </p:column>
                             <p:column colspan="4" > 
-                                <p:inputText id="competenciasactuales" readonly="true" value="viene de otra tabla" />
+                                <h:outputText id="competenciasactuales" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idPrograma.numTotCom}" />
                             </p:column>
 
 
                             <p:column colspan="3">
                                 <h:outputLabel value="#{bundle.EditSeguimientoProyectoLabel_idResultadoAprendizaje}" for="idResultadoAprendizaje" />
                             </p:column>
-                             <p:column  colspan="10" > 
-                               <p:inputText id="idResultadoAprendizaje" readonly="true" value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyectoFormativo.numeroTotalResultados}" />
-                             </p:column>
+                            <p:column  colspan="10" > 
+                                <h:outputText id="idResultadoAprendizaje"  value="#{seguimientoProyectoController.selected.idFichaCaracterizacion.idProyectoFormativo.numeroTotalResultados}" />
+                            </p:column>
                         </p:row>
 
 
@@ -421,6 +413,7 @@
                                     <p:column headerText="#{bundle.ListCriterioEvaluacionTitle_idCriterioEvaluacion}">                        
                                         <h:outputText value="#{item.idCriterioEvaluacion.nomCriterio}"/>
                                     </p:column>
+
                                     <p:column headerText="#{bundle.ListEvaluacionCriterioSeguimientoProyectoTitle_nomEvaCri}">                        
                                         <p:cellEditor>  
                                             <f:facet name="output">  
@@ -433,6 +426,62 @@
                                             </f:facet> 
                                         </p:cellEditor>  
                                     </p:column>
+
+
+
+                                    <p:column headerText="#{bundle.CreateCriterioSeguimientoProyectoLabel_idTipoJuicio}">                        
+                                        <p:cellEditor>  
+                                            <f:facet name="output">  
+                                                <h:outputText value="#{item.idTipoJuicio.nomTipJui}" />  
+                                            </f:facet>  
+                                            <f:facet name="input">  
+                                                <p:selectOneMenu id="idTipoJuicio" value="#{item.idTipoJuicio}" >
+                                                    <f:selectItems value="#{tipoJuicioController.itemsAvailableSelectOne}"/>
+                                                </p:selectOneMenu>
+                                            </f:facet> 
+                                        </p:cellEditor>  
+                                    </p:column>
+
+
+
+                                    <p:column headerText="#{bundle.CreateCriterioSeguimientoProyectoLabel_idGradoJuicio}">                        
+                                        <p:cellEditor>  
+                                            <f:facet name="output">  
+                                                <h:outputText value="#{item.idGradoJuicio.descrGradoJuicio}" />  
+                                            </f:facet>  
+                                            <f:facet name="input">  
+                                                <p:selectOneMenu id="idGradoJuicio" value="#{item.idGradoJuicio}" >
+                                                    <f:selectItems value="#{gradoJuicioController.itemsAvailableSelectOne}"/>
+                                                </p:selectOneMenu>
+                                            </f:facet> 
+                                        </p:cellEditor>  
+                                    </p:column>
+
+
+                                    <p:column headerText="#{bundle.CreateCriterioSeguimientoProyectoLabel_idEstadoJuicio}">                        
+                                        <p:cellEditor>  
+                                            <f:facet name="output">  
+                                                <h:outputText value="#{item.idEstadoJuicio.nomEstadoJuicio}" />  
+                                            </f:facet>  
+                                            <f:facet name="input">  
+                                                <p:selectOneMenu id="idEstadoJuicio" value="#{item.idEstadoJuicio}" >
+                                                    <f:selectItems value="#{estadoJuicioController.itemsAvailableSelectOne}"/>
+                                                </p:selectOneMenu>
+                                            </f:facet> 
+                                        </p:cellEditor>  
+                                    </p:column>
+
+                                    <p:column headerText="#{bundle.CreateCriterioSeguimientoProyectoLabel_obsCriSeg}">                        
+                                        <p:cellEditor>  
+                                            <f:facet name="output">  
+                                                <h:outputText value="#{item.obsCriSeg}" />  
+                                            </f:facet>  
+                                            <f:facet name="input">  
+                                        <h:inputText  value="#{item.obsCriSeg}"/>
+                                        </f:facet> 
+                                        </p:cellEditor>  
+                                    </p:column>
+
                                     <p:column style="width:6%">  
                                         <p:rowEditor />  
                                     </p:column> 
