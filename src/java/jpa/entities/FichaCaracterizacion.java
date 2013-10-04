@@ -84,12 +84,17 @@ public class FichaCaracterizacion implements Serializable {
     private List<EstadoFicha> estadoFichaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "fichaCaracterizacion")
     private List<FichaUsuario> fichaUsuarioList;
+    @OneToMany(mappedBy = "idFichaCaracterizacion")
+    private List<CriterioSeguimientoInstructor> criterioSeguimientoInstructorList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idFichaCaracterizacion")
     private List<EvaluacionSeguimiento> evaluacionSeguimientoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idFichaCaracterizacion")
     private List<ReporteNovedad> reporteNovedadList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idFichaCaracterizacion")
     private List<PlaneacionClase> planeacionClaseList;
+    @JoinColumn(name = "id_centro_formacion", referencedColumnName = "id_centro_formacion")
+    @ManyToOne(optional = false)
+    private CentroFormacion idCentroFormacion;
     @JoinColumn(name = "id_programa", referencedColumnName = "id_programa")
     @ManyToOne(optional = false)
     private Programa idPrograma;
@@ -225,6 +230,15 @@ public class FichaCaracterizacion implements Serializable {
     }
 
     @XmlTransient
+    public List<CriterioSeguimientoInstructor> getCriterioSeguimientoInstructorList() {
+        return criterioSeguimientoInstructorList;
+    }
+
+    public void setCriterioSeguimientoInstructorList(List<CriterioSeguimientoInstructor> criterioSeguimientoInstructorList) {
+        this.criterioSeguimientoInstructorList = criterioSeguimientoInstructorList;
+    }
+
+    @XmlTransient
     public List<EvaluacionSeguimiento> getEvaluacionSeguimientoList() {
         return evaluacionSeguimientoList;
     }
@@ -249,6 +263,14 @@ public class FichaCaracterizacion implements Serializable {
 
     public void setPlaneacionClaseList(List<PlaneacionClase> planeacionClaseList) {
         this.planeacionClaseList = planeacionClaseList;
+    }
+
+    public CentroFormacion getIdCentroFormacion() {
+        return idCentroFormacion;
+    }
+
+    public void setIdCentroFormacion(CentroFormacion idCentroFormacion) {
+        this.idCentroFormacion = idCentroFormacion;
     }
 
     public Programa getIdPrograma() {
@@ -429,7 +451,7 @@ public class FichaCaracterizacion implements Serializable {
 
     @Override
     public String toString() {
-        return idFichaCaracterizacion + " ";
+        return "jpa.entities.FichaCaracterizacion[ idFichaCaracterizacion=" + idFichaCaracterizacion + " ]";
     }
     
 }

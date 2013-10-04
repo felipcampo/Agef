@@ -52,8 +52,6 @@ public class CentroFormacion implements Serializable {
     @Size(min = 1, max = 100)
     @Column(name = "nom_cen")
     private String nomCen;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCentroFormacion")
-    private List<Programa> programaList;
     @JoinColumn(name = "id_sede_centro", referencedColumnName = "id_sede_centro")
     @ManyToOne
     private SedeCentro idSedeCentro;
@@ -61,7 +59,7 @@ public class CentroFormacion implements Serializable {
     @ManyToOne(optional = false)
     private Regional idRegional;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCentroFormacion")
-    private List<PlanMejoramiento> planMejoramientoList;
+    private List<FichaCaracterizacion> fichaCaracterizacionList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCentroFormacion")
     private List<SeguimientoProductiva> seguimientoProductivaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCentroFormativo")
@@ -104,15 +102,6 @@ public class CentroFormacion implements Serializable {
         this.nomCen = nomCen;
     }
 
-    @XmlTransient
-    public List<Programa> getProgramaList() {
-        return programaList;
-    }
-
-    public void setProgramaList(List<Programa> programaList) {
-        this.programaList = programaList;
-    }
-
     public SedeCentro getIdSedeCentro() {
         return idSedeCentro;
     }
@@ -130,12 +119,12 @@ public class CentroFormacion implements Serializable {
     }
 
     @XmlTransient
-    public List<PlanMejoramiento> getPlanMejoramientoList() {
-        return planMejoramientoList;
+    public List<FichaCaracterizacion> getFichaCaracterizacionList() {
+        return fichaCaracterizacionList;
     }
 
-    public void setPlanMejoramientoList(List<PlanMejoramiento> planMejoramientoList) {
-        this.planMejoramientoList = planMejoramientoList;
+    public void setFichaCaracterizacionList(List<FichaCaracterizacion> fichaCaracterizacionList) {
+        this.fichaCaracterizacionList = fichaCaracterizacionList;
     }
 
     @XmlTransient
@@ -178,7 +167,7 @@ public class CentroFormacion implements Serializable {
 
     @Override
     public String toString() {
-        return nomCen + " ";
+        return "jpa.entities.CentroFormacion[ idCentroFormacion=" + idCentroFormacion + " ]";
     }
     
 }

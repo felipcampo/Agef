@@ -15,7 +15,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -101,9 +100,6 @@ public class Programa implements Serializable {
         @JoinColumn(name = "id_competencia", referencedColumnName = "id_competencia")})
     @ManyToMany
     private List<Competencia> competenciaList;
-    @JoinColumn(name = "id_centro_formacion", referencedColumnName = "id_centro_formacion")
-    @ManyToOne(optional = false)
-    private CentroFormacion idCentroFormacion;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPrograma")
     private List<FichaCaracterizacion> fichaCaracterizacionList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPrograma")
@@ -229,14 +225,6 @@ public class Programa implements Serializable {
         this.competenciaList = competenciaList;
     }
 
-    public CentroFormacion getIdCentroFormacion() {
-        return idCentroFormacion;
-    }
-
-    public void setIdCentroFormacion(CentroFormacion idCentroFormacion) {
-        this.idCentroFormacion = idCentroFormacion;
-    }
-
     @XmlTransient
     public List<FichaCaracterizacion> getFichaCaracterizacionList() {
         return fichaCaracterizacionList;
@@ -286,7 +274,7 @@ public class Programa implements Serializable {
 
     @Override
     public String toString() {
-        return nomPrg;
+        return "jpa.entities.Programa[ idPrograma=" + idPrograma + " ]";
     }
     
 }

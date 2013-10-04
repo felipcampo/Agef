@@ -10,6 +10,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
@@ -32,12 +34,13 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "CriterioSeguimientoInstructor.findAll", query = "SELECT c FROM CriterioSeguimientoInstructor c"),
-    @NamedQuery(name = "CriterioSeguimientoInstructor.findByIdCriterioSeguimientoInstructor", query = "SELECT c FROM CriterioSeguimientoInstructor c WHERE c.idCriterioSeguimientoInstructor = :idCriterioSeguimientoInstructor")})
+    @NamedQuery(name = "CriterioSeguimientoInstructor.findByIdCriterioSeguimientoInstructor", query = "SELECT c FROM CriterioSeguimientoInstructor c WHERE c.idCriterioSeguimientoInstructor = :idCriterioSeguimientoInstructor"),
+    @NamedQuery(name = "CriterioSeguimientoInstructor.findByEstoyAcuerdo", query = "SELECT c FROM CriterioSeguimientoInstructor c WHERE c.estoyAcuerdo = :estoyAcuerdo")})
 public class CriterioSeguimientoInstructor implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "id_criterio_seguimiento_instructor")
     private Integer idCriterioSeguimientoInstructor;
     @Basic(optional = false)
@@ -46,8 +49,15 @@ public class CriterioSeguimientoInstructor implements Serializable {
     @Size(min = 1, max = 65535)
     @Column(name = "obs_cri_ins")
     private String obsCriIns;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "estoy_acuerdo")
+    private boolean estoyAcuerdo;
+    @JoinColumn(name = "id_ficha_caracterizacion", referencedColumnName = "id_ficha_caracterizacion")
+    @ManyToOne
+    private FichaCaracterizacion idFichaCaracterizacion;
     @JoinColumn(name = "id_seguimiento_instructor", referencedColumnName = "id_seguimiento_instructor")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private SeguimientoInstructor idSeguimientoInstructor;
     @JoinColumn(name = "id_evaluacion_criterio_seguimiento_instructor", referencedColumnName = "id_evaluacion_criterio_seguimiento_instructor")
     @ManyToOne(optional = false)
@@ -65,9 +75,10 @@ public class CriterioSeguimientoInstructor implements Serializable {
         this.idCriterioSeguimientoInstructor = idCriterioSeguimientoInstructor;
     }
 
-    public CriterioSeguimientoInstructor(Integer idCriterioSeguimientoInstructor, String obsCriIns) {
+    public CriterioSeguimientoInstructor(Integer idCriterioSeguimientoInstructor, String obsCriIns, boolean estoyAcuerdo) {
         this.idCriterioSeguimientoInstructor = idCriterioSeguimientoInstructor;
         this.obsCriIns = obsCriIns;
+        this.estoyAcuerdo = estoyAcuerdo;
     }
 
     public Integer getIdCriterioSeguimientoInstructor() {
@@ -84,6 +95,22 @@ public class CriterioSeguimientoInstructor implements Serializable {
 
     public void setObsCriIns(String obsCriIns) {
         this.obsCriIns = obsCriIns;
+    }
+
+    public boolean getEstoyAcuerdo() {
+        return estoyAcuerdo;
+    }
+
+    public void setEstoyAcuerdo(boolean estoyAcuerdo) {
+        this.estoyAcuerdo = estoyAcuerdo;
+    }
+
+    public FichaCaracterizacion getIdFichaCaracterizacion() {
+        return idFichaCaracterizacion;
+    }
+
+    public void setIdFichaCaracterizacion(FichaCaracterizacion idFichaCaracterizacion) {
+        this.idFichaCaracterizacion = idFichaCaracterizacion;
     }
 
     public SeguimientoInstructor getIdSeguimientoInstructor() {
@@ -141,7 +168,7 @@ public class CriterioSeguimientoInstructor implements Serializable {
 
     @Override
     public String toString() {
-        return obsCriIns;
+        return "jpa.entities.CriterioSeguimientoInstructor[ idCriterioSeguimientoInstructor=" + idCriterioSeguimientoInstructor + " ]";
     }
     
 }

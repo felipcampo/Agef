@@ -98,10 +98,10 @@ public class MatrizCaracterizacionController implements Serializable {
     public String create() {
         try {
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("MatrizCaracterizacionCreated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("properties/Bundle").getString("MatrizCaracterizacionCreated"));
             return "View";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/properties/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("properties/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }
     }
@@ -114,10 +114,10 @@ public class MatrizCaracterizacionController implements Serializable {
     public String update() {
         try {
             getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("MatrizCaracterizacionUpdated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("properties/Bundle").getString("MatrizCaracterizacionUpdated"));
             return "View";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/properties/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("properties/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }
     }
@@ -131,9 +131,9 @@ public class MatrizCaracterizacionController implements Serializable {
     private void performDestroy() {
         try {
             getFacade().remove(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("MatrizCaracterizacionDeleted"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("properties/Bundle").getString("MatrizCaracterizacionDeleted"));
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/properties/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("properties/Bundle").getString("PersistenceErrorOccured"));
         }
     }
 

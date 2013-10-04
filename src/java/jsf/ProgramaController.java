@@ -98,10 +98,10 @@ public class ProgramaController implements Serializable {
     public String create() {
         try {
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("ProgramaCreated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("properties/Bundle").getString("ProgramaCreated"));
             return "View";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/properties/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("properties/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }
     }
@@ -114,10 +114,10 @@ public class ProgramaController implements Serializable {
     public String update() {
         try {
             getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("ProgramaUpdated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("properties/Bundle").getString("ProgramaUpdated"));
             return "View";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/properties/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("properties/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }
     }
@@ -131,9 +131,9 @@ public class ProgramaController implements Serializable {
     private void performDestroy() {
         try {
             getFacade().remove(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("ProgramaDeleted"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("properties/Bundle").getString("ProgramaDeleted"));
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/properties/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("properties/Bundle").getString("PersistenceErrorOccured"));
         }
     }
 

@@ -98,10 +98,10 @@ public class RolController implements Serializable {
     public String create() {
         try {
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("RolCreated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("properties/Bundle").getString("RolCreated"));
             return "View";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/properties/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("properties/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }
     }
@@ -114,10 +114,10 @@ public class RolController implements Serializable {
     public String update() {
         try {
             getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("RolUpdated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("properties/Bundle").getString("RolUpdated"));
             return "View";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/properties/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("properties/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }
     }
@@ -131,9 +131,9 @@ public class RolController implements Serializable {
     private void performDestroy() {
         try {
             getFacade().remove(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/properties/Bundle").getString("RolDeleted"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("properties/Bundle").getString("RolDeleted"));
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/properties/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("properties/Bundle").getString("PersistenceErrorOccured"));
         }
     }
 
@@ -161,9 +161,9 @@ public class RolController implements Serializable {
             return controller.ejbFacade.find(getKey(value));
         }
 
-        java.lang.Short getKey(String value) {
-            java.lang.Short key;
-            key = Short.valueOf(value);
+        java.lang.String getKey(String value) {
+            java.lang.String key;
+            key = value;
             return key;
         }
 
